@@ -1,50 +1,74 @@
 # Code Reading Studio
 
-コードリーディング勉強会のための、構造・動作・言語設計を行き来する読解ツール。
-TypeScript経験あり・Rust未経験の読者を想定しています。
+Rethの起動を、全体像から実際のコードまで追う読解ツールです。
+TypeScriptの経験があり、Rustをこれから読む人に向けて説明しています。
 
 ## 起動
 
-Node.js 22以上、Gitを用意してください。追加npmパッケージは不要です。
+Node.js 22以上とGitを用意してください。npmパッケージの追加は不要です。
 
 ```sh
 git clone --recurse-submodules https://github.com/stanah/code-reading-studio-public.git
 cd code-reading-studio-public
-node local-app/server.mjs targets/reth 1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607
+node local-app/server.mjs targets/reth 3d592ece6de8c4559987416a544fc215fd6d6921
 ```
 
-http://127.0.0.1:4317 を開きます。AI接続設定は `local-app/README.md` を参照。
-初回取得時にサブモジュールを省略した場合は `git submodule update --init --recursive` を実行してください。
+[起動ガイド](http://127.0.0.1:4317/startup)を開きます。
+取得済みの作業ツリーでは `git submodule update --init --recursive` で対象をそろえます。
+Reth自体をビルドしたり、ノードを起動したりする必要はありません。
 
-## リポジトリ構成
+## 読み方
 
-- `local-app/`: Git読み取りAPI、段階的な探索、読解ノート保存、AIアダプター
-- `dist/`: 固定スナップショットによるブラウザー向け読解ガイド
-- `ui/`: 共通ヘッダーの動作とデザイントークン・共通スタイル
-- `scripts/`: ガイドデータと共通UIの生成
-- `tests/`, `local-app/test/`: 自動テスト
-- `targets/reth/`: 読解対象のGitサブモジュール
+| 入口 | できること |
+| --- | --- |
+| 起動ガイド `/startup` | CLI → ノードの準備 → 稼働中の処理を、段階ごとに読む |
+| ファイルから読む `/files` | Gitのツリー、検索、行番号付き本文からコードを追う |
+| 説明資料 `/guide` | 全体の図と短い説明で予習・復習する。印刷も可能 |
+| 構造・送信経路・Rustのガイド `/` | 責務、トランザクション送信、言語構文を行き来する |
 
-## 読解対象の管理
+起動ガイドでは、処理の目的、入力と出力、待機する箇所を先に確認します。
+その後、ファイル表示または行範囲付きのメモ画面へ進めます。
+ファイル表示では、Markdownや設定ファイルも読めます。
+本文は400行ずつ表示し、前後の移動や行の指定で続きを開けます。
 
-Rethは `1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607` に固定しています。
-Rethへの変更は本体リポジトリのファイルとして取り込みません。親リポジトリは `.gitmodules` とコミット参照を管理します。
-更新時はサブモジュール内で対象コミットをcheckoutし、親側で `git add targets/reth` します。
-ガイドの注釈・行番号は固定コミットに対応します。対象を更新する場合は読解データも検証・更新してください。
-異なるコミットをローカルで開く場合、現在の日本語ガイドは適用されません。
+## 対象バージョン
 
-## テスト
+Reth **v2.7.0**、コミット `3d592ece6de8c4559987416a544fc215fd6d6921` に固定しています。
+指定は [`reading-target.json`](reading-target.json) にあります。
+Rustファイルは1,283個、Rustファイルを持つCargo配下グループは146個です。
+
+コードと説明を同じコミットで照合しています。別のコミットを開くと、
+この版専用の起動ガイドと送信経路の注釈は表示しません。
+
+- [起動の読解資料](docs/reth-startup-guide.md)
+- [ブラウザー用の説明資料](docs/reading-guide.html)
+- [バージョン差分と起動経路の調査](docs/reth-v2.7.0-startup-research.md)
+- [yomiyasuによる推敲と検査の記録](docs/yomiyasu-review.md)
+
+## データと検証
+
+メモは `local-app/.reading-data/` に保存します。Gitの追跡対象外です。
+AI接続は任意です。設定方法と送信するデータは [`local-app/README.md`](local-app/README.md) を参照してください。
 
 ```sh
 npm --prefix local-app test
 node tests/smoke.cjs
 node tests/atlas.cjs
 node tests/zoom.cjs
+node scripts/check-reading-data.mjs
 ```
 
-## 現在の範囲
+最後の検査は、全ての解説範囲・ハッシュ・ソースリンクと固定コミットを照合します。
+説明はソースを読んで作成したもので、Rethを動かした実行トレースではありません。
+関数候補の抽出には字句パターンを使っています。AST、マクロ展開、呼び出し解析は行いません。
 
-動作・Rustガイドはトランザクション送信経路の執筆済み解説です。関数抽出は字句解析で、ASTや呼び出し関係の解析ではありません。
-デスクトップの主要導線、メモの保存・再起動復元、ガイドと実コードの往復はブラウザーで確認済みです。実AIによる生成、スマートフォン幅、勉強会での利用評価は未検証です。検証範囲と次の作業は `docs/HANDOFF.md` を参照してください。
-このリポジトリには自動デプロイ設定を含めていません。
-Reth由来のソース抜粋のMITライセンス表記は `dist/reth-LICENSE-MIT.txt` にあります。
+## 構成
+
+- `local-app/`: Git読み取りAPI、ガイド、ファイル表示、読解メモ
+- `docs/`: 説明資料、調査、開発ガイド
+- `dist/`: 固定データを使う静的版。起動の説明資料も含む
+- `ui/`, `scripts/`: 共通UIとデータの生成・検査
+- `targets/reth/`: 固定コミットのGitサブモジュール
+
+リポジトリはprivateで運用しています。pushによる自動公開は設定していません。
+Rethのソース抜粋には [`dist/reth-LICENSE-MIT.txt`](dist/reth-LICENSE-MIT.txt) が適用されます。

@@ -3,8 +3,8 @@
     const hash = new URLSearchParams(location.hash.slice(1));
     const query = new URLSearchParams(location.search);
     const page = location.pathname.split('/').pop();
-    const step = document.body.dataset.readingStep || hash.get('step') || query.get('step');
-    const view = hash.get('lens') || (page === 'lenses.html' ? 'flow' : 'structure');
+    const step = ['startup','files','guide'].includes(page) ? null : (document.body.dataset.readingStep || hash.get('step') || query.get('step'));
+    const view = ['files','startup','guide'].includes(page) ? page : (hash.get('lens') || (page === 'lenses.html' ? 'flow' : 'structure'));
     document.querySelectorAll('.studio-nav [data-view]').forEach(a => {
       if (a.dataset.view === view) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');

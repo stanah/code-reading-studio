@@ -1,0 +1,116 @@
+:root {
+  color-scheme: light;
+  --ink: #20352e;
+  --muted: #55685f;
+  --green: #17694f;
+  --line: #d8e2db;
+  --paper: #ffffff;
+  --wash: #f4f7f3;
+  --accent: #e9f2e9;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--wash);
+  font: 16px/1.75 -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+main { max-width: 1040px; margin: 0 auto; padding: 48px 40px 64px; }
+header { padding-bottom: 28px; border-bottom: 2px solid var(--green); }
+.eyebrow { margin: 0 0 8px; font-size: 12px; letter-spacing: .12em; color: var(--green); }
+h1 { margin: 0 0 18px; font-size: clamp(28px, 4vw, 42px); line-height: 1.35; letter-spacing: -.025em; }
+h2 { margin: 0 0 18px; font-size: 25px; line-height: 1.45; }
+h3 { margin: 24px 0 8px; font-size: 19px; line-height: 1.5; }
+p { margin: 10px 0; }
+.lead { max-width: 48em; font-size: 18px; }
+.source-version { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+nav { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px; font-size: 14px; }
+main > nav { margin: 0 0 30px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+nav a { text-decoration: none; }
+section { margin-top: 36px; }
+a { color: var(--green); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 3px solid #84b99a; outline-offset: 4px; }
+code { font: .89em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+p code, li code, td code { background: var(--accent); border-radius: 3px; padding: 2px 4px; }
+pre { overflow-x: auto; padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; line-height: 1.7; }
+pre code { background: none; }
+figure { margin: 24px 0; }
+figcaption, .caption { margin-top: 9px; font-size: 13px; color: var(--muted); }
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.phase { padding: 20px; background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--green); border-radius: 6px; }
+.phase .number { color: var(--green); font: 13px/1.5 ui-monospace, monospace; }
+.phase h3 { margin: 4px 0 9px; font-size: 19px; }
+.phase p { margin: 0; font-size: 14px; }
+.phase .result { display: block; margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 13px; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.steps > li { position: relative; margin: 14px 0; padding: 18px 22px 18px 64px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; counter-increment: step; }
+.steps > li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 20px; top: 18px; color: var(--green); font: 16px/1.6 ui-monospace, monospace; }
+.steps h3 { margin: 0 0 6px; }
+.steps p { margin: 5px 0; }
+.step-card { margin: 14px 0; padding: 18px 22px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; }
+.step-card h3 { margin: 0 0 8px; }
+.step-card p { margin: 6px 0; }
+.refs { font-size: 13px; color: var(--muted); }
+.refs a { margin-right: 12px; }
+.callout { padding: 16px 20px; margin: 20px 0; background: var(--accent); border-left: 4px solid var(--green); border-radius: 0 5px 5px 0; }
+.callout p { margin: 0; }
+table { width: 100%; margin: 18px 0; border-collapse: collapse; font-size: 14px; }
+th { background: var(--accent); text-align: left; color: var(--ink); }
+th, td { padding: 12px 14px; border: 1px solid var(--line); vertical-align: top; }
+td:first-child { width: 23%; }
+.loop-map { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.loop { padding: 18px 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; }
+.loop h3 { margin: 0 0 8px; font-size: 18px; }
+.loop p { margin: 5px 0; font-size: 14px; }
+.loop .trigger { color: var(--green); font-size: 13px; }
+ol, ul { padding-left: 1.5em; }
+li { margin: 7px 0; }
+footer { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+.print-button { font: inherit; font-size: 13px; padding: 8px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 5px; color: var(--green); cursor: pointer; }
+.toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; gap: 16px; }
+.toolbar a { font-size: 13px; }
+@media (max-width: 680px) {
+  main { padding: 24px 18px 40px; }
+  .phases, .loop-map { grid-template-columns: 1fr; }
+  .steps > li { padding: 16px 16px 16px 52px; }
+  .steps > li::before { left: 16px; }
+  table { font-size: 13px; }
+  th, td { padding: 10px 9px; }
+  td:first-child { width: 28%; }
+  h2 { font-size: 23px; }
+}
+@page { size: A4; margin: 15mm 14mm; }
+@media print {
+  :root { --ink: #17261f; --muted: #43554a; --line: #b9c9bd; }
+  html { scroll-behavior: auto; }
+  body { background: white; font-size: 10pt; line-height: 1.55; }
+  main { max-width: none; margin: 0; padding: 0; }
+  .toolbar, nav { display: none; }
+  header { padding-bottom: 14px; }
+  h1 { font-size: 26pt; margin-bottom: 10px; }
+  h2 { font-size: 17pt; margin-bottom: 12px; }
+  h3 { font-size: 12pt; }
+  .lead { font-size: 11pt; }
+  .source-version, .refs, figcaption, .caption { font-size: 8pt; }
+  section { margin-top: 23px; }
+  h2, h3, caption { break-after: avoid; }
+  p { orphans: 3; widows: 3; }
+  table, .phase, .loop, .step-card, .steps > li, .callout { break-inside: avoid; }
+  .phases { gap: 8px; }
+  .phase { padding: 12px; }
+  .phase h3 { font-size: 12pt; }
+  .phase p, .phase .result, .loop p, .loop .trigger { font-size: 9pt; }
+  .loop-map { gap: 8px; }
+  .loop { padding: 12px; }
+  .loop h3 { font-size: 11pt; }
+  .steps > li { margin: 9px 0; padding: 12px 14px 12px 44px; }
+  .step-card { margin: 9px 0; padding: 12px 14px; }
+  .steps > li::before { left: 13px; top: 12px; font-size: 10pt; }
+  table { font-size: 9pt; }
+  th, td { padding: 8px 9px; }
+  a { color: inherit; }
+  footer { font-size: 8pt; }
+  .page-break { break-before: page; }
+}

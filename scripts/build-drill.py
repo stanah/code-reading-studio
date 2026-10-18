@@ -1,4 +1,4 @@
-import pathlib,json
+import pathlib,json,subprocess
 root=pathlib.Path(__file__).resolve().parents[1]; out=root/'dist';repo=root/'targets'/'reth'
 atlas=json.loads((out/'atlas-data.js').read_text().removeprefix('window.RETH_ATLAS = ').removesuffix(';\n'))
 models={}
@@ -25,7 +25,7 @@ roles={
 }
 seeds={}
 for p in atlas['files']:
- path=p['path'];f=repo/path
- if path.startswith('crates/rpc/rpc-eth-api/src/helpers/') and f.exists():seeds[path]=f.read_text()
+ path=p['path']
+ if path.startswith('crates/rpc/rpc-eth-api/src/helpers/'):seeds[path]=subprocess.check_output(['git','-C',str(repo),'show',atlas['commit']+':'+path]).decode()
 (out/'drill-data.js').write_text('window.RETH_DRILL = '+json.dumps(dict(components=models,roles=roles,seed=seeds),ensure_ascii=False,separators=(',',':'))+';\n')
 print('Generated components for',len(models),'areas')

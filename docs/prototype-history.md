@@ -5,7 +5,7 @@ The `dist/` directory contains a buildless HTML/CSS/JavaScript guide for a code-
 ## Reading pack and provenance
 
 - Repository: https://github.com/paradigmxyz/reth
-- Commit: `1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607` (2026-10-10)
+- Commit: `3d592ece6de8c4559987416a544fc215fd6d6921` (v2.7.0, 2026-09-28)
 - Topic: `eth_sendRawTransaction` to the transaction pool
 - Six steps and five related-code detours with verbatim Rust excerpts, original line numbers, SHA-256 hashes and commit-pinned source links
 - Default route: no raw transaction forwarder; blob-sidecar conversion is folded and can be expanded
@@ -25,7 +25,7 @@ The presentation button opens `?present=1` in another window. BroadcastChannel s
 
 ## Repository atlas
 
-`index.html` shows all 1,301 tracked Rust files at the pinned commit, organized into 11 responsibility areas. Directory rules make classification inspectable; groups are a reading aid, not a resolved dependency graph. Conceptual relationships and four question-based scopes lead into a folder/path explorer. Only the transaction submission path has prepared explanations.
+`index.html` shows all 1,283 tracked Rust files at the pinned commit, organized into 11 responsibility areas. Directory rules make classification inspectable; groups are a reading aid, not a resolved dependency graph. Conceptual relationships and four question-based scopes lead into a folder/path explorer. The transaction submission path has interactive explanations. The startup reading material is available in `startup.html`; the local application also offers an interactive startup guide and a full file tree.
 
 `reader.html?step=<anchor-id>` opens a prepared excerpt, including related-code detours.
 
@@ -55,4 +55,4 @@ These logic tests cover navigation, detours, persistence, source folds and hashe
 
 The desktop atlas and progressive reading screens, and the Rust-guide-to-source return path, have been checked in a browser. Full-page visual coverage, smartphone widths, pop-up behavior, cross-window synchronization and use in an actual study session remain unverified. See `docs/HANDOFF.md` for the verification scope.
 
-To regenerate the atlas, use `python3 scripts/build-atlas.py targets/reth` with the target at the documented commit. The generator currently combines a Git tree index with source text read from the working tree. Confirm that the target is clean and at the intended commit before regeneration; reading all source text directly from the pinned commit remains a planned improvement. The target is never executed by the generator.
+To regenerate the atlas, use `python3 scripts/build-atlas.py targets/reth` with the target at the documented commit. The generator reads the tree and every source body from the commit in `reading-target.json`, including when the target working tree contains changes. Run `node scripts/check-reading-data.mjs` after generation to verify the excerpts, links, hashes and file index. The target is never executed by the generator.

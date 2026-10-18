@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-10-19",
+  "target": {
+    "repository": "paradigmxyz/reth",
+    "version": "v2.7.0",
+    "commit": "3d592ece6de8c4559987416a544fc215fd6d6921"
+  },
+  "checks": {
+    "localAppTests": {
+      "passed": 20,
+      "failed": 0,
+      "scope": "Node tests; loopback HTTP APIs included"
+    },
+    "staticSuites": [
+      "tests/smoke.cjs",
+      "tests/atlas.cjs",
+      "tests/zoom.cjs"
+    ],
+    "sourceAnchors": {
+      "transaction": 11,
+      "startup": 11,
+      "loops": 5,
+      "seedFiles": 49
+    },
+    "document": {
+      "normalizedVisibleTextMatchesMarkdown": true,
+      "linksPreserved": 24,
+      "sourceRangesReviewed": 21
+    },
+    "browser": {
+      "engine": "Codex in-app browser",
+      "checked": [
+        "startup overview and step navigation",
+        "Rust disclosure and understanding check",
+        "guide to source ranges and return",
+        "file tree and path search",
+        "non-Rust file and tail window",
+        "HTML guide rendering"
+      ],
+      "consoleWarningsOrErrorsAtGuide": 0
+    },
+    "semanticReview": "Independent source review; Terminate conditions corrected before finalization"
+  },
+  "notRun": [
+    "Reth build or node execution",
+    "P2P connection or chain synchronization",
+    "printed PDF visual verification"
+  ],
+  "reviewedFileSha256": {
+    "docs/reth-startup-guide.md": "7bc3935f67a9c4264686c9c845e26982bfbb6c8e5d807958f4317b1054898ee9",
+    "local-app/startup-guide.json": "e6eec8390950ad4a02648b2b2a8fff409f511b2966245e4d7de8f7de34ce9be2",
+    "docs/reading-guide.html": "9dc35b897d523f5e1091ae6c17565ff7211324016bd0b73a00c7a478900beea5"
+  }
+}

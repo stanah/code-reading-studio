@@ -6,15 +6,24 @@ export async function git(repo,...args){return (await exec('git',['-C',repo,...a
 export const digest=s=>createHash('sha256').update(s).digest('hex');
 export async function indexRepository(repo,ref='HEAD'){
  const commit=(await git(repo,'rev-parse','--verify',`${ref}^{commit}`)).trim();
- const paths=(await git(repo,'ls-tree','-rz','--name-only',commit)).split('\0').filter(Boolean);
+ const entries=(await git(repo,'ls-tree','-rlz',commit)).split('\0').filter(Boolean).map(record=>{const tab=record.indexOf('\t');const [mode,type,oid,size]=record.slice(0,tab).trim().split(/\s+/);return {path:record.slice(tab+1),mode,type,oid,size:Number(size)||0};}).filter(entry=>entry.type==='blob');
+ const paths=entries.map(entry=>entry.path);
  const rust=paths.filter(p=>p.endsWith('.rs')); const manifests=paths.filter(p=>p.endsWith('Cargo.toml'));
  const crates=manifests.map(path=>{const directory=path.slice(0,-10);return {id:path,directory,name:directory.replace(/\/$/,'').split('/').pop()||'workspace',files:[]}}).sort((a,b)=>b.directory.length-a.directory.length);
  for(const path of rust){const c=crates.find(c=>path.startsWith(c.directory));if(c)c.files.push(path);}
  const areas=[...new Set(crates.filter(c=>c.files.length).map(c=>c.directory.startsWith('crates/')?c.directory.split('/')[1]:c.directory.split('/')[0]||'root'))].sort();
  for(const c of crates)c.area=c.directory.startsWith('crates/')?c.directory.split('/')[1]:c.directory.split('/')[0]||'root';
- return {repo,commit,id:digest(repo+'@'+commit).slice(0,20),paths,rust,crates:crates.filter(c=>c.files.length),areas};
+ return {repo,commit,id:digest(repo+'@'+commit).slice(0,20),paths,entries,rust,crates:crates.filter(c=>c.files.length),areas};
 }
 export async function readSource(index,path){if(!index.paths.includes(path))throw Error('追跡対象外のパスです');return git(index.repo,'show',`${index.commit}:${path}`);}
+export async function readFileAtCommit(index,path){
+ const entry=index.entries.find(entry=>entry.path===path);if(!entry)throw Error('追跡対象外のパスです');
+ const result={path,commit:index.commit,size:entry.size,binary:false,truncated:false,source:''};
+ if(entry.size>2*1024*1024)return {...result,truncated:true,reason:'2 MiBを超えるファイルです。GitHubリンクから確認できます。'};
+ const {stdout}=await exec('git',['-C',index.repo,'cat-file','blob',entry.oid],{encoding:'buffer',maxBuffer:2*1024*1024+1024,timeout:120000,env:{...process.env,GIT_TERMINAL_PROMPT:'0'}});
+ if(stdout.includes(0))return {...result,binary:true,reason:'バイナリファイルのため、本文は表示しません。'};
+ try{return {...result,source:new TextDecoder('utf-8',{fatal:true}).decode(stdout)}}catch{return {...result,binary:true,reason:'UTF-8のテキストではないため、本文は表示しません。'}}
+}
 // Lexical candidates only: not a Rust AST, call graph, or semantic resolution.
 export function functions(source){
  const lines=source.split('\n'),out=[];

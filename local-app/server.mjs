@@ -2,12 +2,15 @@ import http from 'node:http';
 import {readFile,writeFile,mkdir,rename} from 'node:fs/promises';
 import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {randomBytes} from 'node:crypto';
-import {indexRepository,readSource,functions,evidence,generateExplanation,digest} from './core.mjs';
+import {randomBytes,createHash} from 'node:crypto';
+import {indexRepository,readSource,readFileAtCommit,functions,evidence,generateExplanation,digest} from './core.mjs';
 const root=dirname(fileURLToPath(import.meta.url));
 export async function createStudio({repo,ref='HEAD',dataDir=join(root,'.reading-data'),ai={},port=4317}){
  const index=await indexRepository(resolve(repo),ref);await mkdir(dataDir,{recursive:true});
  const annotations=JSON.parse(await readFile(join(root,'annotations.json'),'utf8'));
+ let guide;try{guide=JSON.parse(await readFile(join(root,'startup-guide.json'),'utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
+ const guideReady=guide?.commit===index.commit;
+ const version=guideReady?guide.version:(annotations.commit===index.commit?annotations.version:undefined);
  if(index.commit===annotations.commit){for(const c of index.crates)c.area=annotations.pathAreas[c.files[0]]||c.area;index.areas=[...new Set(index.crates.map(c=>c.area))];index.areaDetails=annotations.areas;}
  const token=randomBytes(24).toString('hex'),cache=new Map();const stateFile=join(dataDir,index.id+'.json');
  const source=async path=>{if(cache.has(path))return cache.get(path);const s=await readSource(index,path);if(cache.size>=20)cache.delete(cache.keys().next().value);cache.set(path,s);return s};
@@ -23,7 +26,10 @@ export async function createStudio({repo,ref='HEAD',dataDir=join(root,'.reading-
    const url=new URL(req.url,'http://'+local);
    if(url.pathname.startsWith('/api/')){
     if(req.headers['x-studio-token']!==token)return json({error:'Token required'},403);
-    if(req.method==='GET'&&url.pathname==='/api/index')return json({...index,repo:undefined,paths:undefined,aiReady:!!(ai.url&&ai.model),roles:index.commit===annotations.commit?annotations.roles:{},steps:index.commit===annotations.commit?annotations.steps:[]});
+    if(req.method==='GET'&&url.pathname==='/api/index')return json({...index,repo:undefined,paths:undefined,entries:undefined,version,startupReady:guideReady,aiReady:!!(ai.url&&ai.model),roles:{...(index.commit===annotations.commit?annotations.roles:{}),...(guideReady?guide.roles:{})},steps:index.commit===annotations.commit?annotations.steps:[],startupSteps:guideReady?guide.steps.map(({id,title,source})=>({id,title,source})):[]});
+    if(req.method==='GET'&&url.pathname==='/api/tree')return json({commit:index.commit,version,entries:index.entries.map(({path,type,size})=>({path,type,size}))});
+    if(req.method==='GET'&&url.pathname==='/api/file')return json(await readFileAtCommit(index,url.searchParams.get('path')));
+    if(req.method==='GET'&&url.pathname==='/api/startup')return guideReady?json(guide):json({error:'このコミットの起動ガイドはありません。ファイルからコードを確認できます。',commit:index.commit},404);
     if(req.method==='GET'&&url.pathname==='/api/crate'){const c=index.crates.find(c=>c.id===url.searchParams.get('id'));if(!c)throw Error('クレートが見つかりません');const manifest=await source(c.id);const entry=c.files.find(p=>p===c.directory+'src/lib.rs')||c.files.find(p=>p===c.directory+'src/main.rs');const text=entry?await source(entry):'';return json({manifest,entry,docs:text.split('\n').filter(l=>l.startsWith('//!')).slice(0,35).map(l=>l.slice(3)).join('\n')});}
     if(req.method==='GET'&&url.pathname==='/api/source'){const path=url.searchParams.get('path'),s=await source(path);return json({path,commit:index.commit,source:s,functions:functions(s),docs:s.split('\n').filter(l=>l.startsWith('//!')).slice(0,30).map(l=>l.slice(3)).join('\n')});}
     if(req.method==='GET'&&url.pathname==='/api/state')return json(state);
@@ -43,8 +49,15 @@ export async function createStudio({repo,ref='HEAD',dataDir=join(root,'.reading-
     return json({error:'Not found'},404);
    }
    if(req.method!=='GET')return json({error:'Method not allowed'},405);
-   const assets={'/':'index.html','/app.js':'app.js','/lenses.js':'lenses.js','/style.css':'style.css','/studio.css':'studio.css','/studio.js':'studio.js'};const file=assets[url.pathname];if(!file)return json({error:'Not found'},404);
-   let content=await readFile(join(root,'public',file),'utf8');if(file==='index.html')content=content.replace('__TOKEN__',token);
+   if(url.pathname==='/guide'||url.pathname==='/guide.css'){
+    const file=url.pathname==='/guide'?'reading-guide.html':'reading-guide.css';
+    const content=await readFile(join(root,'../docs',file),'utf8');
+    const printScript="document.getElementById('guide-print').addEventListener('click',()=>window.print());";
+    const printHash=createHash('sha256').update(printScript).digest('base64');
+    res.writeHead(200,{'Content-Type':file.endsWith('.css')?'text/css':'text/html; charset=utf-8','X-Content-Type-Options':'nosniff','Content-Security-Policy':`default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'sha256-${printHash}'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'none'`});res.end(content);return;
+   }
+   const assets={'/':'index.html','/files':'files.html','/files.js':'files.js','/files.css':'files.css','/startup':'startup.html','/startup.js':'startup.js','/startup.css':'startup.css','/app.js':'app.js','/lenses.js':'lenses.js','/style.css':'style.css','/studio.css':'studio.css','/studio.js':'studio.js'};const file=assets[url.pathname];if(!file)return json({error:'Not found'},404);
+   let content=await readFile(join(root,'public',file),'utf8');if(file.endsWith('.html'))content=content.replace('__TOKEN__',token);
    res.writeHead(200,{'Content-Type':file.endsWith('.js')?'text/javascript':file.endsWith('.css')?'text/css':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'self'; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'"});res.end(content);
   }catch(e){json({error:e.message},400);}
  });

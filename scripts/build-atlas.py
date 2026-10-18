@@ -1,7 +1,10 @@
 """Build a Rust path index from the pinned Git tree; never execute target code."""
 import pathlib, subprocess, json, sys
 root=pathlib.Path(sys.argv[1]); out=pathlib.Path(__file__).resolve().parents[1]/'dist'
-sha=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
+target=json.loads((out.parent/'reading-target.json').read_text())
+sha=target['commit']
+subprocess.check_call(['git','cat-file','-e',sha+'^{commit}'],cwd=root)
+def source(path):return subprocess.check_output(['git','show',sha+':'+path],cwd=root).decode()
 tree=subprocess.check_output(['git','ls-tree','-r','--name-only',sha],cwd=root,text=True).splitlines()
 def area(id,name,en,description,prefixes,entry,question,neighbors,color):
  return dict(id=id,name=name,en=en,description=description,prefixes=prefixes,entry=entry,question=question,neighbors=neighbors,color=color)
@@ -30,15 +33,14 @@ topics=[
  dict(id='transaction',title='送信したトランザクションは、どこへ行く？',desc='JSON-RPC → プール。その後の伝播・選択は別の問いとして扱う。',areas=['rpc','pool','network','payload'],entries=['crates/rpc/rpc-eth-api/src/core.rs','crates/transaction-pool/src/lib.rs'],ready=True,scope='今回解説済み：RPC 受付からプール追加まで。'),
  dict(id='block',title='新しいブロックは、どう検証される？',desc='Engine API とチェーン進行、実行、永続化の責務を分けて読む。',areas=['rpc','engine','execution','storage'],entries=['crates/engine/tree/src/lib.rs','crates/consensus/consensus/src/lib.rs','crates/evm/evm/src/lib.rs'],ready=False,scope='入口の候補。関数単位の経路・解説は未作成。'),
  dict(id='sync',title='まっさらなノードは、どう追いつく？',desc='ピアからの取得と、同期の段階、実行、保存を追う。',areas=['network','sync','engine','execution','storage'],entries=['crates/stages/stages/src/lib.rs','crates/engine/tree/src/lib.rs'],ready=False,scope='入口の候補。各モードの詳細は追加読解が必要。'),
- dict(id='boot',title='起動時に、何が組み立てられる？',desc='main からノードのビルダーへ。全体を構成する部品をつかむ。',areas=['node','rpc','network','engine'],entries=['bin/reth/src/main.rs','crates/node/builder/src/lib.rs'],ready=False,scope='入口の候補。起動経路の解説は未作成。')]
+ dict(id='boot',title='起動時に、何が組み立てられる？',desc='main からノードのビルダーへ。全体を構成する部品をつかむ。',areas=['node','rpc','network','engine'],entries=['bin/reth/src/main.rs','crates/node/builder/src/lib.rs'],ready=True,scope='CLI → ノードの準備 → 稼働中の処理を、起動資料で解説しています。')]
 seed={}
 for p in {p for a in areas for p in a['entry']}:
- f=root/p
- if f.exists() and f.stat().st_size>0:seed[p]=f.read_text()
+ if p in tree:seed[p]=source(p)
 # Include the actual files behind the existing source-backed reading pack.
 pack=json.loads((out/'reth-data.js').read_text().removeprefix('window.RETH_PACK = ').removesuffix(';\n'))
 for s in pack['steps']+pack['details']:
- seed[s['path']]=(root/s['path']).read_text()
-data=dict(commit=sha,files=files,areas=areas,topics=topics,totalTracked=len(tree),totalRust=len(files),totalCargo=sum(p.endswith('Cargo.toml') for p in tree),seed=seed)
+ seed[s['path']]=source(s['path'])
+data=dict(commit=sha,version=target['version'],files=files,areas=areas,topics=topics,totalTracked=len(tree),totalRust=len(files),totalCargo=sum(p.endswith('Cargo.toml') for p in tree),seed=seed)
 (out/'atlas-data.js').write_text('window.RETH_ATLAS = '+json.dumps(data,ensure_ascii=False,separators=(',',':'))+';\n')
 print(json.dumps({k:data[k] for k in ['totalTracked','totalRust','totalCargo']}));print('seed files:',len(seed))

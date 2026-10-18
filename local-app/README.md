@@ -5,15 +5,26 @@ Node.js 22以上とGitがあれば、追加パッケージのインストール�
 ```sh
 git clone --recurse-submodules https://github.com/stanah/code-reading-studio-public.git
 cd code-reading-studio-public
-node local-app/server.mjs targets/reth 1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607
+node local-app/server.mjs targets/reth 3d592ece6de8c4559987416a544fc215fd6d6921
 ```
 
-ブラウザーで http://127.0.0.1:4317 を開きます。
+ブラウザーで http://127.0.0.1:4317/startup を開きます。
+読解対象はReth v2.7.0です。
 サブモジュールを省略して取得した場合は、リポジトリのルートで `git submodule update --init --recursive` を実行してください。
 別のローカルリポジトリを読む場合は、`targets/reth` をそのパスに置き換えます。コミット引数を省略すると起動時のHEADを固定します。
 対象リポジトリのビルドやコード実行は不要です。
 
-## 使い方
+## 起動を読む
+
+`/startup`ではCLI、ノードの準備、稼働中の処理の順に説明を開きます。
+各処理は短い要約、入出力、Rustの補足、理解チェック、根拠の行範囲を持ちます。
+`/guide`には図を使った説明資料があります。
+
+`/files`ではGitのファイルツリー、名前検索、行番号付き本文から直接読めます。
+設定やMarkdownも対象です。本文は400行ずつ表示し、前後移動と行指定で全体を追えます。
+2 MiB超とバイナリの本文は表示しません。作業ツリーの変更は読み込みません。
+
+## 構造と送信経路を読む
 
 1. 全体の責務領域を選択。
 2. Cargoクレートを選択。
@@ -21,7 +32,7 @@ node local-app/server.mjs targets/reth 1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607
 4. 関数を選び、入力・出力・処理・副作用・分岐を確認。
 5. 根拠のコードへ進み、1〜240行の範囲を指定してメモやAI解説を保存。
 
-Rethの固定コミットでは、11領域の案内とトランザクション送信経路6箇所の読解メモを用意しています。
+Rethの固定コミットでは、11領域の案内、起動経路11箇所、トランザクション送信経路6箇所の読解メモを用意しています。
 例: RPC → rpc-eth-api → src/helpers/transaction.rs → send_raw_transaction → コード。
 他のコミットではこの固定解説を適用せず、ディレクトリ階層と原文ドキュメントを表示します。
 
@@ -33,7 +44,7 @@ Rethの固定コミットでは、11領域の案内とトランザクション�
 OpenAI互換のChat Completions APIを使用します。秘密鍵はサーバー環境変数のみで保持します。
 
 ```sh
-AI_BASE_URL=http://127.0.0.1:1234/v1 AI_MODEL=your-model node local-app/server.mjs targets/reth 1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607
+AI_BASE_URL=http://127.0.0.1:1234/v1 AI_MODEL=your-model node local-app/server.mjs targets/reth 3d592ece6de8c4559987416a544fc215fd6d6921
 ```
 
 認証が必要なサービスでは `AI_API_KEY` も設定してください。
@@ -47,7 +58,8 @@ AI未設定でも、探索・メモ保存・JSON出力は利用できます。
 - `core.mjs`: Gitスナップショット索引、ソース取得、宣言候補、根拠ハッシュ、AIアダプター。
 - `server.mjs`: localhost API、原文取得、永続化。対象リポジトリは読み取り専用。
 - `public/`: フレームワーク不要のWeb UI。Git由来の文字列・AI本文はHTMLとして実行しません。
-- `annotations.json`: 特定コミットに限定したRethの案内・解説。
+- `annotations.json`: 特定コミットに限定したRethの領域・送信経路の解説。
+- `startup-guide.json`: 起動経路、稼働中の処理、ファイルの責務、ソースの根拠。
 - `.reading-data/<repository-and-commit-id>.json`: 保存先。`READING_DATA_DIR` で変更可能。
 - `PORT`: 既定4317。サーバーは127.0.0.1のみにバインド。
 
@@ -63,10 +75,11 @@ AI未設定でも、探索・メモ保存・JSON出力は利用できます。
 
 ```sh
 npm --prefix local-app test
+node scripts/check-reading-data.mjs
 ```
 
 Git固定コミット、未コミット変更の除外、パス検証、範囲ハッシュ、HTTP認証とOrigin/Host検証、保存・再起動復元・削除、AIアダプターのテスト用HTTPサーバーとの接続を検証しています。
-Reth実データで1,301 Rustファイル、147個のRustファイルを持つCargo配下グループを検出。
+Reth実データで1,283 Rustファイル、146個のRustファイルを持つCargo配下グループを検出。
 デスクトップブラウザーで主要な探索導線、ガイドと実コードの往復、メモの保存・再起動復元、発表表示でのメモ非表示を確認済みです。実AIサービスでの生成、スマートフォン幅、勉強会での利用評価は未実施です。
 
 ## v0.2 — 読み方を切り替える

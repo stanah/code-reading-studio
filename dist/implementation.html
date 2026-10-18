@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ローカル実装 | Code Reading Studio</title><link rel="stylesheet" href="atlas.css"><link rel="stylesheet" href="studio.css"><script defer src="studio.js"></script></head><body><header class="studio-header"><a class="studio-brand" href="lenses.html"><span class="studio-mark">⌘</span>Code Reading Studio</a><span class="studio-project">paradigmxyz / reth</span><span class="studio-mode">READING WORKSPACE</span><a class="studio-download" href="implementation.html">ローカル版</a></header><nav class="studio-nav" aria-label="読み方"><a data-view="structure" href="lenses.html#lens=structure">構造から読む</a><a data-view="flow" href="lenses.html#lens=flow">動作から読む</a><a data-view="rust" href="lenses.html#lens=rust">Rust・設計から読む</a><a href="index.html">全体マップ・ファイル</a><span class="studio-profile">TypeScript経験あり · Rustは初めて</span></nav><main class="studio-install">
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ローカル実装 | Code Reading Studio</title><link rel="stylesheet" href="atlas.css"><link rel="stylesheet" href="studio.css"><script defer src="studio.js"></script></head><body><header class="studio-header"><a class="studio-brand" href="startup.html"><span class="studio-mark">⌘</span>Code Reading Studio</a><span class="studio-project">paradigmxyz / reth · v2.7.0</span><span class="studio-mode">READING WORKSPACE</span><a class="studio-download" href="implementation.html">ローカル版</a></header><nav class="studio-nav" aria-label="読み方"><a data-view="startup" href="startup.html">起動ガイド</a><a data-view="structure" href="lenses.html#lens=structure">構造から読む</a><a data-view="flow" href="lenses.html#lens=flow">送信経路を読む</a><a data-view="rust" href="lenses.html#lens=rust">Rust・設計</a><a data-view="files" href="index.html">ファイルから読む</a></nav><main class="studio-install">
 <p>LOCAL IMPLEMENTATION / v0.2</p>
 <h1>実リポジトリで、<br>一段ずつコードを読む。</h1>
 <p>Gitから実際の構成とソースを取得するローカルアプリです。責務領域 → Cargoクレート → モジュール → 関数と処理 → 実コードの順に進み、コード範囲に紐づくメモを保存できます。</p>
@@ -7,7 +7,7 @@
 <p>Node.js 22以上とGitを用意してください。次のコマンドでアプリと読解対象のRethを取得し、ローカルサーバーを起動します。追加パッケージのインストールは不要です。</p>
 <pre>git clone --recurse-submodules https://github.com/stanah/code-reading-studio-public.git
 cd code-reading-studio-public
-node local-app/server.mjs targets/reth 1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607</pre>
+node local-app/server.mjs targets/reth 3d592ece6de8c4559987416a544fc215fd6d6921</pre>
 <p>起動後、<code>http://127.0.0.1:4317</code> を開いてください。サブモジュールを省略して取得した場合は、リポジトリのルートで <code>git submodule update --init --recursive</code> を実行します。Rethのビルドや実行は不要です。</p>
 <h2>3つの見方とTypeScriptからのRust入門</h2>
 <p>動作・構造・Rustの見方を切り替えながら、選んだ処理を維持します。Rust未経験を前提に、TypeScriptの簡略例と違いを表示します。<a href="lenses.html">ブラウザーで読解ガイドを開く →</a></p>

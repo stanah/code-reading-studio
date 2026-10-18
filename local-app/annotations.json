@@ -1,5 +1,5 @@
 {
-  "commit": "1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607",
+  "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
   "roles": {
     "crates/rpc/rpc-eth-api/src/helpers/transaction.rs": {
       "name": "トランザクションの送信・取得",
@@ -91,7 +91,6 @@
     "crates/cli/commands/src/download/mod.rs": "node",
     "crates/cli/commands/src/download/planning.rs": "node",
     "crates/cli/commands/src/download/progress.rs": "node",
-    "crates/cli/commands/src/download/prune.rs": "node",
     "crates/cli/commands/src/download/session.rs": "node",
     "crates/cli/commands/src/download/source.rs": "node",
     "crates/cli/commands/src/download/tui.rs": "node",
@@ -144,9 +143,7 @@
     "crates/consensus/debug-client/src/providers/etherscan.rs": "engine",
     "crates/consensus/debug-client/src/providers/mod.rs": "engine",
     "crates/consensus/debug-client/src/providers/rpc.rs": "engine",
-    "crates/dst/src/lib.rs": "foundation",
     "crates/e2e-test-utils/src/chain_spec.rs": "foundation",
-    "crates/e2e-test-utils/src/engine.rs": "foundation",
     "crates/e2e-test-utils/src/lib.rs": "foundation",
     "crates/e2e-test-utils/src/network.rs": "foundation",
     "crates/e2e-test-utils/src/node.rs": "foundation",
@@ -173,7 +170,6 @@
     "crates/e2e-test-utils/tests/rocksdb/main.rs": "foundation",
     "crates/engine/execution-cache/src/cached_state.rs": "engine",
     "crates/engine/execution-cache/src/lib.rs": "engine",
-    "crates/engine/execution-cache/src/precompile_cache.rs": "engine",
     "crates/engine/execution-cache/src/txpool.rs": "engine",
     "crates/engine/invalid-block-hooks/src/lib.rs": "engine",
     "crates/engine/invalid-block-hooks/src/witness.rs": "engine",
@@ -213,6 +209,7 @@
     "crates/engine/tree/src/tree/payload_processor/receipt_root_task.rs": "engine",
     "crates/engine/tree/src/tree/payload_validator.rs": "engine",
     "crates/engine/tree/src/tree/persistence_state.rs": "engine",
+    "crates/engine/tree/src/tree/precompile_cache.rs": "engine",
     "crates/engine/tree/src/tree/state.rs": "engine",
     "crates/engine/tree/src/tree/state_root_strategy/mod.rs": "engine",
     "crates/engine/tree/src/tree/state_root_strategy/sparse_trie.rs": "engine",
@@ -310,29 +307,20 @@
     "crates/ethereum/node/src/lib.rs": "node",
     "crates/ethereum/node/src/node.rs": "node",
     "crates/ethereum/node/src/payload.rs": "node",
-    "crates/ethereum/node/src/snap/context.rs": "node",
-    "crates/ethereum/node/src/snap/handoff.rs": "node",
-    "crates/ethereum/node/src/snap/mod.rs": "node",
-    "crates/ethereum/node/src/snap/run.rs": "node",
-    "crates/ethereum/node/src/snap/selection.rs": "node",
     "crates/ethereum/node/tests/e2e/blobs.rs": "node",
     "crates/ethereum/node/tests/e2e/custom_genesis.rs": "node",
     "crates/ethereum/node/tests/e2e/dev.rs": "node",
     "crates/ethereum/node/tests/e2e/eip6780.rs": "node",
     "crates/ethereum/node/tests/e2e/eth.rs": "node",
-    "crates/ethereum/node/tests/e2e/finality.rs": "node",
     "crates/ethereum/node/tests/e2e/forkchoice.rs": "node",
     "crates/ethereum/node/tests/e2e/invalid_payload.rs": "node",
     "crates/ethereum/node/tests/e2e/main.rs": "node",
     "crates/ethereum/node/tests/e2e/p2p.rs": "node",
     "crates/ethereum/node/tests/e2e/pool.rs": "node",
     "crates/ethereum/node/tests/e2e/prestate.rs": "node",
-    "crates/ethereum/node/tests/e2e/reorg.rs": "node",
-    "crates/ethereum/node/tests/e2e/restart.rs": "node",
     "crates/ethereum/node/tests/e2e/rpc.rs": "node",
     "crates/ethereum/node/tests/e2e/selfdestruct.rs": "node",
     "crates/ethereum/node/tests/e2e/simulate.rs": "node",
-    "crates/ethereum/node/tests/e2e/snap.rs": "node",
     "crates/ethereum/node/tests/e2e/utils.rs": "node",
     "crates/ethereum/node/tests/it/builder.rs": "node",
     "crates/ethereum/node/tests/it/exex.rs": "node",
@@ -550,7 +538,6 @@
     "crates/net/network/tests/it/startup.rs": "network",
     "crates/net/network/tests/it/transaction_hash_fetching.rs": "network",
     "crates/net/network/tests/it/txgossip.rs": "network",
-    "crates/net/network/tests/it/utils.rs": "network",
     "crates/net/p2p/src/block_access_lists/client.rs": "network",
     "crates/net/p2p/src/block_access_lists/mod.rs": "network",
     "crates/net/p2p/src/bodies/client.rs": "network",
@@ -608,7 +595,6 @@
     "crates/node/builder/src/node.rs": "node",
     "crates/node/builder/src/rpc.rs": "node",
     "crates/node/builder/src/setup.rs": "node",
-    "crates/node/builder/src/sync.rs": "node",
     "crates/node/builder/src/txpool_prewarm.rs": "node",
     "crates/node/core/build.rs": "node",
     "crates/node/core/src/args/database.rs": "node",
@@ -887,8 +873,6 @@
     "crates/snap-sync/src/generation.rs": "sync",
     "crates/snap-sync/src/lib.rs": "sync",
     "crates/snap-sync/src/pivot.rs": "sync",
-    "crates/snap-sync/src/reorg.rs": "sync",
-    "crates/snap-sync/src/repair.rs": "sync",
     "crates/snap-sync/src/session.rs": "sync",
     "crates/snap-sync/src/storage/download.rs": "sync",
     "crates/snap-sync/src/storage/mod.rs": "sync",
@@ -1205,12 +1189,10 @@
     "crates/trie/parallel/src/proof_task.rs": "storage",
     "crates/trie/parallel/src/proof_task_metrics.rs": "storage",
     "crates/trie/parallel/src/state_root_task.rs": "storage",
-    "crates/trie/parallel/src/storage_proof.rs": "storage",
     "crates/trie/parallel/src/value_encoder.rs": "storage",
     "crates/trie/sparse/src/arena/branch_child_idx.rs": "storage",
     "crates/trie/sparse/src/arena/cursor.rs": "storage",
     "crates/trie/sparse/src/arena/mod.rs": "storage",
-    "crates/trie/sparse/src/arena/node_arena.rs": "storage",
     "crates/trie/sparse/src/arena/nodes.rs": "storage",
     "crates/trie/sparse/src/lib.rs": "storage",
     "crates/trie/sparse/src/metrics.rs": "storage",
@@ -1367,7 +1349,7 @@
         "network"
       ],
       "color": "#547fbc",
-      "count": 202,
+      "count": 191,
       "manifests": 16
     },
     {
@@ -1433,7 +1415,7 @@
         "engine"
       ],
       "color": "#638db0",
-      "count": 194,
+      "count": 193,
       "manifests": 14
     },
     {
@@ -1460,7 +1442,7 @@
         "storage"
       ],
       "color": "#a88752",
-      "count": 124,
+      "count": 122,
       "manifests": 8
     },
     {
@@ -1559,7 +1541,7 @@
         "rpc"
       ],
       "color": "#658e68",
-      "count": 290,
+      "count": 288,
       "manifests": 22
     },
     {
@@ -1600,8 +1582,8 @@
         "execution"
       ],
       "color": "#91919a",
-      "count": 94,
-      "manifests": 21
+      "count": 92,
+      "manifests": 20
     }
   ],
   "steps": [
@@ -1611,7 +1593,7 @@
       "file": "core.rs",
       "start": 920,
       "end": 924,
-      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607/crates/rpc/rpc-eth-api/src/core.rs#L920-L924",
+      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/core.rs#L920-L924",
       "contentHash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f",
       "title": "RPC の入口を読む",
       "question": "署名済みトランザクションは、どこへ渡る？",
@@ -1644,7 +1626,7 @@
       "file": "transaction.rs",
       "start": 81,
       "end": 109,
-      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607/crates/rpc/rpc-eth-api/src/helpers/transaction.rs#L81-L109",
+      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/helpers/transaction.rs#L81-L109",
       "contentHash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
       "title": "デコードして送信者を復元",
       "question": "バイト列は、どうプール用の型になる？",
@@ -1677,7 +1659,7 @@
       "file": "transaction.rs",
       "start": 32,
       "end": 114,
-      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607/crates/rpc/rpc/src/eth/helpers/transaction.rs#L32-L114",
+      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/helpers/transaction.rs#L32-L114",
       "contentHash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
       "title": "通常の送信経路を追う",
       "question": "どの条件で、ローカルのプールへ進む？",
@@ -1720,7 +1702,7 @@
       "file": "core.rs",
       "start": 489,
       "end": 504,
-      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607/crates/rpc/rpc/src/eth/core.rs#L489-L504",
+      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/core.rs#L489-L504",
       "contentHash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
       "title": "追加要求をチャネルへ送る",
       "question": "RPC は、プールへの追加をどう待つ？",
@@ -1753,7 +1735,7 @@
       "file": "batcher.rs",
       "start": 69,
       "end": 105,
-      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607/crates/transaction-pool/src/batcher.rs#L69-L105",
+      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/batcher.rs#L69-L105",
       "contentHash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
       "title": "バッチをプールへ引き渡す",
       "question": "要求はいつ、一件または複数件で処理される？",
@@ -1786,7 +1768,7 @@
       "file": "lib.rs",
       "start": 495,
       "end": 528,
-      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607/crates/transaction-pool/src/lib.rs#L495-L528",
+      "sourceUrl": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/lib.rs#L495-L528",
       "contentHash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
       "title": "検証してプールに追加",
       "question": "成功したら、すでにチェーンへ記録された？",
@@ -1819,5 +1801,6 @@
       "edge": "",
       "edgeLine": 500
     }
-  ]
+  ],
+  "version": "v2.7.0"
 }

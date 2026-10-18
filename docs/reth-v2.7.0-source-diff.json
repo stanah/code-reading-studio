@@ -1,0 +1,6945 @@
+{
+  "repository": "https://github.com/paradigmxyz/reth",
+  "direction": "previousReadingPinToRequestedRelease",
+  "before": {
+    "commit": "1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607",
+    "commitDate": "2026-10-10T03:08:17Z",
+    "description": "Previous reading pin; later upstream commit than the requested release"
+  },
+  "after": {
+    "version": "v2.7.0",
+    "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "commitDate": "2026-09-28T11:49:29+01:00"
+  },
+  "method": "Compare the mode, type and object ID of every tracked path from git ls-tree -rz --full-tree for the two commits; renames are not inferred. before/after record tree entries, not runtime behavior.",
+  "counts": {
+    "total": 501,
+    "modified": 478,
+    "removed": 22,
+    "added": 1
+  },
+  "changes": [
+    {
+      "path": ".config/zepter.yaml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c2673c05f0db40bd0cf6c5972cddf804fda05385"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d2d5dfb5255f30c6692a3e3f9d57daee4158d211"
+      }
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "663f292fb8f6e43d9e55366e9de5c392865a31fc"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cde8861896c5d246244f0ebc7e90446eb428fb55"
+      }
+    },
+    {
+      "path": ".github/scripts/bench-scheduled-refs.sh",
+      "status": "modified",
+      "before": {
+        "mode": "100755",
+        "type": "blob",
+        "oid": "0607682d54d1fbf9e6a6b655c94b82501f1d37e4"
+      },
+      "after": {
+        "mode": "100755",
+        "type": "blob",
+        "oid": "44122a0be47cf462ff846fe591ed593c0b9be93a"
+      }
+    },
+    {
+      "path": ".github/scripts/bench-state-test.sh",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0f69f53e5695905075f252e2848e8ec8c8ea3113"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f72e998c8cc49e31cff44b34dfe1b9e0035a1db5"
+      }
+    },
+    {
+      "path": ".github/scripts/verify_image_arch.sh",
+      "status": "modified",
+      "before": {
+        "mode": "100755",
+        "type": "blob",
+        "oid": "a54128bfb1528017c73cce0f31116ae40ea50c2b"
+      },
+      "after": {
+        "mode": "100755",
+        "type": "blob",
+        "oid": "9746b97edd2b5a153b7b407f6325b6eb2b8811c7"
+      }
+    },
+    {
+      "path": ".github/sts/cargo-update-pr.sts.yaml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ac47cf05871f4fc61562fbb3c5fcc3c6a22bc800"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "75ec78bd80f6f372a07c99a40d73096f5ea7be3d"
+      }
+    },
+    {
+      "path": ".github/workflows/bench-benchmarkoor.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "75d1646e339a0a81efeb8419021195a93e0749f1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e2b4c03eee60f2b5367513007acb144cfec852f9"
+      }
+    },
+    {
+      "path": ".github/workflows/bench-scheduled.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1259d03c31bfa641ceaa70ebbd5915e6e09852af"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2cb2e34498bda102193e14ce26af2093758ad5fa"
+      }
+    },
+    {
+      "path": ".github/workflows/bench.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "85093f3273cd47ba7c67b9ee0891b906d48b3852"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "afddfab67acd1bcb9d48d0f8884f1a9ae8952637"
+      }
+    },
+    {
+      "path": ".github/workflows/book.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b7e712761ecda08e69e8ebdcd563a4eb1e5d2337"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ffdb189146fb3047b787215a314272af8eef6388"
+      }
+    },
+    {
+      "path": ".github/workflows/check-alloy.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f902b6a012eacf219b6e2305e8ab51f67a64c9ba"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3f15cf387d14cc923a359c872084cc9bb9b0826f"
+      }
+    },
+    {
+      "path": ".github/workflows/compact.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5bd2ddb4562a6ddd6d57a991bcb532bc221cfa00"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "edfa4252704c8915997c2db1631d8512198f110f"
+      }
+    },
+    {
+      "path": ".github/workflows/cyclops-audit.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d30cee631cf259d588684beb0bc925f4d3600399"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d468bfaba3d577b2dc7e65c140bccb74a7446881"
+      }
+    },
+    {
+      "path": ".github/workflows/dependencies.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5a6559e75a8e78a9674fee95e72d8836daeb5783"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fab87788aa14e8883f270ad856f467446d5e131a"
+      }
+    },
+    {
+      "path": ".github/workflows/docker-test.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c1748eb4f520abc637dcf2f31ab48466a13e870d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "246f9cc5c46677dd4fc5ac407e0e4625e7d07a6b"
+      }
+    },
+    {
+      "path": ".github/workflows/docker.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d8ec33a3242e5bffcb801443270a8ecfa5f9a89f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1e40ad717b4b0deb0df9f9095b1c2ac75d1e542a"
+      }
+    },
+    {
+      "path": ".github/workflows/e2e.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "be197cb3328882677869623b319da167d710930c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "74739c415e37604fc0601c4637ceb56e52b6cb08"
+      }
+    },
+    {
+      "path": ".github/workflows/hive.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6819c09e881968474dfd7be7eceddfda8b0daed5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "428ab9d65ed83db0ff205c4928cd6a072c216569"
+      }
+    },
+    {
+      "path": ".github/workflows/integration.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "35c354238018d6fdbf6a2123dded0770c685cac4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "412d6db76c5d30092faa3b9f117b2cd0fc54e0f8"
+      }
+    },
+    {
+      "path": ".github/workflows/kurtosis.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1a25f022e5d2ad1df333c599577eb60718a9c57e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f2a0f4c84fe2ecffcf1f669d17da53ca9f7bbabf"
+      }
+    },
+    {
+      "path": ".github/workflows/lint-actions.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f8fa18664f28c4c0d65a1ba7d6e22cc5fef4867c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e9950d740c9a2cbd66dac7569ba68703322be870"
+      }
+    },
+    {
+      "path": ".github/workflows/lint.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "972a8e354176eed84479051e93ac8e8ad911f01f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6cd6ab01ae07391aae33fe13063ba26ee43323d2"
+      }
+    },
+    {
+      "path": ".github/workflows/release-dist.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e9fb04b8b8cbe0661a2f84a5b9c69b59b9c6ae6a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "59bffb49b81e3dab518b9a33a926e6c18ddf5165"
+      }
+    },
+    {
+      "path": ".github/workflows/release-reproducible.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7c2d1f778828151410f34a15d9de9a06cadcf8d8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "66b0b485b236db111442874f3c0d667005b9f483"
+      }
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "404be37cae29f21642b45deaa49aa8a8257424a0"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "859178ba70ce0af3bd0f0a370d1a551b70334ecd"
+      }
+    },
+    {
+      "path": ".github/workflows/reproducible-build.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "83615d7e878ff053468d9429818239abed83ca0f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "950a0dc54a2247e82ea64c956490eff66476c2f4"
+      }
+    },
+    {
+      "path": ".github/workflows/scan-github-actions.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3039bdbbe7e9b1cd014279f2a6f99d971c6c2bd1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4bbf84d159c11db19456f5b3a17f81627e3e0a9c"
+      }
+    },
+    {
+      "path": ".github/workflows/stage.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "56cb1691a57fa0f6638a6119516b2ca4f6105934"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0b8af9b96e1643c1e7da958120c0e8f2fd583e2e"
+      }
+    },
+    {
+      "path": ".github/workflows/sync-era.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4c3baeb8654983b6a6841823c78fb7b2490c668c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2bd45132f010c7037cde1bf46c53cde2d1812c97"
+      }
+    },
+    {
+      "path": ".github/workflows/sync.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3089ad1eb40758139e280d418814695e2edbcd04"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a6748b5372e1fafb79be0747749dc195c36cf475"
+      }
+    },
+    {
+      "path": ".github/workflows/unit.yml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4b8b325f51f44d86f8ceeda26d3e8dde74df2bf4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cf325c776c9fe49bc2783f46ab7a0f4393ad1994"
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6da244abd33e9ec6c7b407ab2272a750389e3e02"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3ed9e42e7fe75792a00cbb5d6169043a14f87027"
+      }
+    },
+    {
+      "path": "Cargo.lock",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "928f7f6e3c75a46563c9993949f44640e3c50164"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7640e82587a5a4c42a5fcedb8daaf9a5d158f9bc"
+      }
+    },
+    {
+      "path": "Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "85d5694ca06e1a8869bf27dfc4b8b0488149e283"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "83ad952b80874119fb5b93b2ad96b01578222cd4"
+      }
+    },
+    {
+      "path": "Makefile",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "75e3b8284459dbde54e9420a096a80b1c0cb29fd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a8ce91dbc06f4e8babb446654ee95436c610bc59"
+      }
+    },
+    {
+      "path": "bin/reth/src/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6fca869a43e8240534506edd0f2fcd25a94681f8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "40c1050c53050bc556c3980e73b3ba5343022251"
+      }
+    },
+    {
+      "path": "bin/reth/tests/it/download/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "65a33233746f29f2db6e2e72bc236ffaf1405933"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d76377e40931f763a2d25bd50d34f069e67d99d0"
+      }
+    },
+    {
+      "path": "crates/chain-state/src/in_memory.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3ccc971dbe7220368f2cd1220e43f201845709ae"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1e6b2af6338c7edbb1e9329229ee7dd624065217"
+      }
+    },
+    {
+      "path": "crates/chain-state/src/notifications.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b0c97aeb18552825f164f7876992eee6cac86800"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8ff25845d448036e5e1727b6f7476593197c2b6e"
+      }
+    },
+    {
+      "path": "crates/chain-state/src/preserved_sparse_trie.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0715217353f24e93702abb50dc18bc99a3f2c8ae"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2d36422283d356118de3664ecbdf37b48189da7e"
+      }
+    },
+    {
+      "path": "crates/chain-state/src/test_utils.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "12a2e98b2e5c667444c6a635ca6a118940bb079b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e2688390019c14804ab94f2991beb3e039c41ffa"
+      }
+    },
+    {
+      "path": "crates/chainspec/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bdfc5b0363e3a708fa454618401247aae7ec3d20"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "458f464d87c7c4bce4ce7ae82245eea0e3a180fc"
+      }
+    },
+    {
+      "path": "crates/chainspec/src/spec.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ef4252c33dd206f004656efc75de784ecb2a4bec"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "58c772bf592baaf09586cc62b4bdc4ff00008064"
+      }
+    },
+    {
+      "path": "crates/cli/commands/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "838a65b609cdd6a65454308221025d595a092592"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f28d39c3218770971a7173a0d73c694faa2aaec3"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/common.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e866527b3861d51b6bf136881e1b7fd3034d3b71"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "77cd552633fa6cc7f362ab6413cabe5797bf61a4"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/db/account_storage.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3319f49591192a1db282315aaf24ca1f765e5393"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d307ac5a0fa2bf24321878fe61c76400826349b8"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/db/checksum/rocksdb.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0821126912ec2f23433daeb1936f9bc284fa1b14"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d2d06d72511411af3c6252dd30696184bfed403f"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/db/get.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aad3b745c1533c6636d73b425ea1012bda481657"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e81057bbae398beacea46f862aa15c9e63820ff5"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/db/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fad6be2c84ce28f9693ab07c9f8c8d32512463fb"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "abac9fe0b08a81569eafdf7d9a1236558e8fe1b9"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/download/archive.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "beca5b0688dcd85a8d8ff2e2d1be2490565ac899"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c4e46e1ddbfc270ba249250eb2ea8a06dc5b1a20"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/download/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5e181f8058b8318acd710aff9b5558175d7f1527"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3726743f6bc6a202212ffe13f9bc60cf96c6377b"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/download/planning.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fe2748a9d80f5071d869c2080d4c286502d3d0eb"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6a3f84579864890a37a679f60a90d3b932a0d650"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/download/progress.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a0f0cf508e8dfdd63917058ece9b287619754507"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b0b6b50f696187c0fdff4e5be3eb7db3acbe0fa0"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/download/prune.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "354f42b55bc867fc2a6324894982017c1f0b8d6b"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/cli/commands/src/download/session.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a46bed2511537cbe8ddc30c6a72b66f5d0c8d0be"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9aa898e66b540087a8b68613d7277841b90293bc"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/download/tui.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fd5f4b92f9cb5a2d934babf630daa22ba081b83c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "08319e978f945a25bb5674601c08271551fc511c"
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/download/verify.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "897b6c415f040e20b3f2e28314fc0b5f01b2ae40"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d87c7bf6fef921e772acf339fc4eace037c49b9f"
+      }
+    },
+    {
+      "path": "crates/cli/util/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "880ddcfabb09a5a8d8544d19f98b872e47c3347d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d215716450ad1293ca5799df57b545ae609d3a77"
+      }
+    },
+    {
+      "path": "crates/cli/util/src/allocator.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1d5fa7b05e761ab26b16a62274cbe78a4c94d214"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7541d64908a85bb3f3f3a5e754b0132f2ffd5d6b"
+      }
+    },
+    {
+      "path": "crates/config/src/config.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d95d5e259ab31808179d29d8a58454fd8a947b7c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e0d28692579f3820a98ccbedba5a23b08700fdc4"
+      }
+    },
+    {
+      "path": "crates/consensus/common/src/validation.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "967dfefb91e6a7f409b2e72fd76a7f4b6903bc8e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9fcac6f6baac1515d3ee2e3db0db4be48ac35462"
+      }
+    },
+    {
+      "path": "crates/consensus/consensus/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "68c1e44153c4b3fdcb5a7108980d9554c95f2ba9"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0223f2d5df7a8b74c2fe0086f1cd9c719f3dbe08"
+      }
+    },
+    {
+      "path": "crates/dst/Cargo.toml",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d9f7f3ec38a1daf242ff6dd9537c3d89ea712a9a"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/dst/README.md",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "de6d286d034f0b583acc4f55a39e424927dfb599"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/dst/src/lib.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2405f0450432b411e4aaa367fe04bc9d6663fc5f"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/e2e-test-utils/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aeeff5243c481073cb1a675ae4611b915702e8bd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fcf902070fa1c6883d7f44141356d68c45a579f2"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/README.md",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f6a56d4f4d9dc88b181d55040e87fb2a7d977174"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/e2e-test-utils/src/engine.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b8aaa3f2bd78993506fff56d906c1aeea6151b73"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/e2e-test-utils/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "53b6d89f20d9e66703e5c57a539721f08170900d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d1631f7189189aff65471360d681c85f505f2502"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/node.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "62ca4c2ffee8a2f97091fea1578e8ff232379c94"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7eb43c73b7dbe9185ef4e26a66523e29e764436d"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/payload.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c928f8cbc264e831ff7b6df51b74156577a8855d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fe0d4452c9f29ba27ad9004e564cfbf1ddd0d6f5"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/receipt.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a41e6bddf1984bcfd6c0551913fd905c6720d6b2"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7462104c8e831ffce6806c24fd2daf59d21c1200"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/rpc.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "29f405ee1cdaabf3de3dc175a36cd58accd627ba"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bc40b9235a9c6c9202d4aa1654e410266a243f09"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/setup_builder.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b09e1317beb01a38e9187b93588972d22ab12379"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d891e4eb1838935a71ab748b0dff592ef0ba0030"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/setup_import.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2efec72df9346e4fb6ff7adfc2ac63d11bdc6d6a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b1ddda23f095f4e6d7ae87f44480b982561d4733"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/test_rlp_utils.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3b1be40ebad88ab0006b0489b8120805029100b5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a05f62b92eec99dbc1f33cda962a262876550874"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/testsuite/README.md",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "eb2fdd103624db0b62d0f8e75882a052e17c2106"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "51ac9e9712cbb3a8ae9f37b9e4fe08a2ae5df9f9"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/testsuite/actions/custom_fcu.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9bd94b62198f5bd5bdd67ddfb9b678f1fcb8d6f3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "397947caef1538ed6bbeefe4665afb1026fa541c"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/testsuite/actions/fork.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "06215b132b2c0a4fba65d326a492ee57e083c4a4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "154b695addea48921ce08cc046a2abbaa8768a1a"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/testsuite/actions/produce_blocks.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "17eff3ce19d04eafe3f37fff391721e31d641eaa"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6475566afd1297b117019509ba56a58bce332cad"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/testsuite/actions/reorg.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "74ad90dac70bb9f5110315a49b11f2fc7488af3e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2b2adec86601caf5180831afa30b92d5f817e88e"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/testsuite/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3e69785e7c08eb07f14cc0c998b2224e9d1fa907"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b7776ae425ebe65d1910a6dcd744e6c8c9a26a85"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/testsuite/setup.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6a38768207c673c02d55a488469a8b76d16a61d5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3e10ea822e07cb4a08ff3703ef8ced28e5957c85"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/transaction.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e44aa35a2c1a76273452e95098a094fa13354dec"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0125203374b33fd55a7631370b8731134b84e8ba"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/trie.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8a407fba6d82aedb6dc49b1d5e27e73a04129413"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5e091cf76e07fe7153223a32c62ae9ae1eec186c"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/wait.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e4925b46c5ed10b79eeb883138deca9d675bb960"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aa669ebe8e808b2544daeae9668a16a7b92aa30b"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/src/wallet.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "77e7b0f41bd571d87c579fdf4f97c3e96c0e4fab"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ed93166b758138ed8a6c09428cd358ca263d5aea"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/tests/e2e-testsuite/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aff88cda15ba8b685587c343f2c15ed79da09da2"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2d1c625900a54b9ad9c618c0c1ab0939fbdf99cb"
+      }
+    },
+    {
+      "path": "crates/e2e-test-utils/tests/rocksdb/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4871f8074bbc61bf7ff1c06c996f2dc50820adfc"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "15d5d00b1316263f3aaa77a2976dad143e0369ba"
+      }
+    },
+    {
+      "path": "crates/engine/execution-cache/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "228ad2483e3e708558a6ef807e0976030e17e04c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f6e482d8a6424b87e6ab830a1315a93c0694ad10"
+      }
+    },
+    {
+      "path": "crates/engine/execution-cache/src/cached_state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c082ca3258368f600843acdc72247e6605d6e94c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1783bd07f155b46d9bc7e3d02853aa9d2b81dcf6"
+      }
+    },
+    {
+      "path": "crates/engine/execution-cache/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "79d0b3b9549d4f106f484fb862c5d1ca634cb608"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a419b9e31678ad9e567dd090f3152299f2ebaf32"
+      }
+    },
+    {
+      "path": "crates/engine/execution-cache/src/precompile_cache.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "57f6c5b5a817e2da0e36d109f746e519ad019888"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/engine/execution-cache/src/txpool.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0faab603b842ba2783558a7993956258827ef6d9"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "66eed02eeb201653864295b590b37b0f9e436312"
+      }
+    },
+    {
+      "path": "crates/engine/invalid-block-hooks/src/witness.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b07090c86d70cde9e04682a4e75d0975571a4b56"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "811d8543cb0791d896db7299c1b0f3ac0686ad9c"
+      }
+    },
+    {
+      "path": "crates/engine/primitives/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e2bbd083af319458f6ba182d187bc78cff36debd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c1a55fed60786ee3dc6d5d7412330cf6703796e6"
+      }
+    },
+    {
+      "path": "crates/engine/primitives/src/config.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "abd8eeeac1f4c6cc8627255fc6b51bf124949cb5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a1f1b5324d6e0ea6c09143f0e50c2fdf42b97170"
+      }
+    },
+    {
+      "path": "crates/engine/primitives/src/forkchoice.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d8106cf38b1771652e6acdc295ec5437ea63f5a6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "533bbeb41bbee589004ff3caa4da2468ded8f6c8"
+      }
+    },
+    {
+      "path": "crates/engine/primitives/src/message.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3fb2caa786e2f8eee5e097a6be71206c824f5659"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "951f31964217ecbbe0b8104959b6085658cea501"
+      }
+    },
+    {
+      "path": "crates/engine/tree/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "477c286b3d3ef0a7b5c81c30ec01c1e885959a50"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "834498130557ebef1349ffc4325046e9ca0b5480"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/backfill.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "dca90c42bcbe3f602d0806219eb58eaa4fad8a67"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b96f9e252201a2aed195a9a1ca83dd5ac19445c8"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/engine.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f4b642e6ae45d86b6e56e2d6c63709ee104b934d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4217cf447f74362d081aac9f6dfa7c7a451cd955"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/launch.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "45e42f039d60b0ba6dc315093be120fc14894a39"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "24297608bb191b31658d4caec2caa2f5336e8855"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/persistence.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f19afa6b48bb26e633cabe8d562bd032fb8f84e6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f466dad914e0d0b4ca8357c98df1c4d26c1d086f"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/block_buffer.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "afb607515fc396677eff8dd46f8558bf7f329241"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c0e917eb613e9a00c159ceaeb9c509cd308159b4"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/metrics.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c6bc0cc44868a1fa38c6b1771474077fca433c3b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3532f1b2c2905a6a42ca7c007517d57448a3eac8"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e66a35354f426da5c401994f0a3b1001ac20c5ae"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c2cb7dc1bdbcc28d1983cc56e5a2b11c43accb09"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/payload_processor/bal/execute.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "eeede74eb8c3eacaee6e251e0cd0716371852447"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "90cca4e3b7313e75ddcb2801dc48634c10f6a41c"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/payload_processor/bal/ordered_outputs.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2621b2d7a62c267f95ef154b9769c1dfe9c151e3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "544c0e6eb4a404be090f31fe01a17866d2fe0cac"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/payload_processor/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bcc9a998a10797e56a9608180a461c51006fc7d3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f3170406683e20fe2aa5771e1dfcb33c772334c5"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/payload_processor/prewarm.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5024ee9154ff2c9c25b541e1d51bc5f7f67f2667"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c4a289d6a7db7a67a5f4640437c02601624589f5"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/payload_processor/receipt_root_task.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e7fadb08c98e4cd3d05abf81dc24267502ac589f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "263b61693eef91336ad2f3b77483cb8a71d57036"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "be804df8d45ab23825adc26ab2f52b616606f286"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "89f5f7fc5489273e03e897fdb9f1b73c05eb110b"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/precompile_cache.rs",
+      "status": "added",
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e4b570043ab545ac500f7f7acd5f470c2cf25961"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/state_root_strategy/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a468f9b4b9c93a8b20dc201c5f4bb46ad2edaf26"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aefd61b06b151cd86f69443a49a104507c412cda"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/state_root_strategy/sparse_trie.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b88563e90d8f53bec11bdf11d74201003f401bb3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bcf4ea141216147b815004b5f4b47d7083dd09ab"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/tests.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b413ef22801170f9d155f6e7cf36da50a26e3666"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "de102c4710ecdcfdbd9fa245711181a490ec6b72"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/txpool_prewarm/control.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a235c748a574b38ba9758f9b1defebadefabbb2f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "da71c87c97c46ee9626bf602d87b69d600ff4e5b"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/txpool_prewarm/worker.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "00037b1e2e54528cd80b52b09e01b0c576d23035"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9a44cbf0d189c3d9991ce61897eac827b565a629"
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/types.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bf65a775be44334d3caabdb50f8b4f34ce911b09"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9e11a88426aeff6101f111e8eaddd8e549e9f184"
+      }
+    },
+    {
+      "path": "crates/engine/tree/tests/e2e-testsuite/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2dec03894c7f51b923b22aa030d088055d751e91"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "55b88a3d21243d8026a109bb48f45a7d413cc306"
+      }
+    },
+    {
+      "path": "crates/engine/util/src/engine_store.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "539d6af88d7b8481b42d0703fb0be1881fdda8b8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "80bdd0a2a920ef89e5127c5b1c857996baa92b2d"
+      }
+    },
+    {
+      "path": "crates/engine/util/src/reorg.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aa15ddf9712c02f958fda40097bf7a91e3dd93fc"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5f31301aa5bf5854459ef49b07168f7f86016b9d"
+      }
+    },
+    {
+      "path": "crates/engine/util/src/skip_fcu.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b3f3b6aa8af581bfb75e2a0293d22020585e33b7"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2cdd44ffb58e0250bbf9cc2c0bca444196b12fe0"
+      }
+    },
+    {
+      "path": "crates/engine/util/src/skip_new_payload.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1d8c812c46d4b255849944a65336898dd6ea8e5b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fa818f5453894caaf76b7469715acd1a65ef7526"
+      }
+    },
+    {
+      "path": "crates/era-utils/src/export/ere.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b13fcb4213768ca9d2e389f017eb175651ade170"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "737160c7c27dd0c8d573976d77cd610208fb2ce0"
+      }
+    },
+    {
+      "path": "crates/era-utils/src/history.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "924cee9bd3790f027194cd48666ca09d8d6ea5fa"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "618e88cf35a44c8dac61f99c4654b5fc0c520536"
+      }
+    },
+    {
+      "path": "crates/era/src/era1/file.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9bb38a0ec8524343646e69ce62e69edb042a1498"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e3b29d3f14910a326477bbad4bf42aa2d4fa370e"
+      }
+    },
+    {
+      "path": "crates/era/src/era1/types/execution.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "71cfe23181e1fa47ee6ff42d1226ef74e5e9d47c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "08f1ca88ff99eac631047cdd9964d7125ba43988"
+      }
+    },
+    {
+      "path": "crates/era/src/ere/file.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ca9dc0e183adfca12eedd9c8447914aacfc7c78a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "41d4e8da9e4bc1d500a3ad3a519a9037472cf947"
+      }
+    },
+    {
+      "path": "crates/era/src/ere/types/execution.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "da06052d28c3b890a5474530cce39bbe2f880063"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4f8e853d4cc132512750c008b10054bdda04c993"
+      }
+    },
+    {
+      "path": "crates/era/src/ere/types/group.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "064d51d1d4399c0e05714cd31b99d8710e697b52"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "62acdee56eeeb871a624e6fc9fef24cd8f454d16"
+      }
+    },
+    {
+      "path": "crates/era/src/test_utils.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0985e3f21385078f8d4e1d0b4a5be8c26479c7e5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0dd3c139866d0890370b8d664fad590f7e1c7a60"
+      }
+    },
+    {
+      "path": "crates/ethereum/cli/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a7c6c75a4e65dd776b117ee0d5402a69b7380cce"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c0bf2c532a7343580a8a23579e02dedde05d816d"
+      }
+    },
+    {
+      "path": "crates/ethereum/cli/src/app.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "226208a0a50ba69473a4390085bc8b3307aef470"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "44fe4dbde982341772088211ae0d3d138b85d553"
+      }
+    },
+    {
+      "path": "crates/ethereum/consensus/src/validation.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "57362d3ecb7306bd7d4c5ef4ef57aeec9325f3a1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a144e50289f47f772ed430ebb0144a553aaab7f3"
+      }
+    },
+    {
+      "path": "crates/ethereum/evm/tests/execute.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3a2a664a6398a579b1d9095f9aebf800b7a0743d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "03b466943a137d97fcf0b87f918885d9a0d1d46f"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "22eda4d570a667150714df6bd735000e50962867"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "37de01f4c6861465a16d5ab308df692113a4ea45"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/src/engine_ssz_proxy.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "82351c03383ca9fb5ff662d90fea4cdae5cbb991"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "06bda66b1bbc3607b0a81372741cbd9139dce9b5"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a121c564e9955a747ee909b9873701af2cc3dcfa"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e2e93efc81ebef6a1f91b6829ecae3fe52d43a64"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/src/node.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "faee0a291041e129cc74d2fca0f95bcae972f382"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9c268e05d3a66fd6fc449457e47491b12915b1b6"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/src/snap/context.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c83f1b85b5a50745aae4f027307c8df8f6ae37aa"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/src/snap/handoff.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "141a92fb80fcc27c039c4340cda380e82b82a271"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/src/snap/mod.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2bdc9e889073da3bfb8a35be0f422e2925ba23ac"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/src/snap/run.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d81db1ff0726e4a82e08f9f2cde6c036956ffe73"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/src/snap/selection.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a835cbf502447fd906bb56ebac106b17dba16897"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/blobs.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c04ca28f52f07d4ce276949a4b34e15bbebbe104"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "feef4cc18a92c196ba51ba0d56b3f8fae444e68d"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/custom_genesis.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "12127e9143f16cf91e4c6a41d873f02cba0b5cae"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0b11d6a1e14c455c4dd4230aabe4e7150a98b87e"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/dev.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f2fdfdf3955cc49a662c9eb6235a3f2f844f715f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ebe920d88cc6494b0a236c3a68a237ea18d016b7"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/eip6780.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "40ede7263404358830e8974ea14f5af4f6fd27b1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a40de697b8ba605db9d84282decb47c267e7d4f5"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/eth.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8988a035322794c10c8b6158f58a45b95ac69dcd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b7f2e263816e02a033c84dd56a3297158df5f69f"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/finality.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "32054879d1190a6dc1403b9dbd78f3477325a4b2"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/forkchoice.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cc5d36bd6b035e8cc3eec500b09bf1f63930c922"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3dc23e654b80ce4c67f7ad7305a8365c94649cff"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/invalid_payload.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "47688ccdcdf3fe90b9316517fa1d2f33c3e13c31"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bb52ef19e0b062b9f40ff8176f176173721bf91c"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fcf33b6cdebaa712f869124b8009d0b339d13dc9"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7272b4fade89e7f15935fdac5a5216445a82ba46"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/p2p.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "09bc3e1338528587c355ab266fbd3ba247248495"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cb076baf9061eb879fbc51abf6f327781e17e5e6"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/pool.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4fd5b296f2fccff7f3532416bf91822a45270e40"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9b68ff9ff80d146c6974dc9df175d6d6a533a484"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/reorg.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "936db184de45c90f7c60926991eda9365b0c6a21"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/restart.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "83cd3a53a79b9203aaa48a09ce522109ad9c82b1"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/rpc.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9363fe05330437bbfa9cc77e1522050c23e2c590"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "976d6c6e3317c2194c3ba3b944525fbb99071d8e"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/selfdestruct.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "955a468ec5e94bd555481517f49603c0578e682d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8efcbaa9c2234b062237afab43cc48619586f627"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/simulate.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9b957bb6fedd8d8ebbb3c59c41ad5362a6d21d1f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3beed8791146115726b9232a2963279b15cb74a0"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/snap.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d0f0c8004ff97cfd2455440f0745295fa0cfe47b"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/ethereum/node/tests/e2e/utils.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3727b01b1fa54dbcff7d5a1be74b457179ebf8d6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e7bf3e9c5431a261c50e7fd117d11bb2e0682c30"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/it/builder.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0969b5afcdd02133c72a27f8e91f822cecc75b74"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5961f422e552f341128a4c3a9d829e8f35fe7d64"
+      }
+    },
+    {
+      "path": "crates/ethereum/node/tests/it/testing.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "be97c1deeee76290d3c93d36c5030033c086eadd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d736afcdd3586b837b848676cb899b1e1b3fcd6d"
+      }
+    },
+    {
+      "path": "crates/ethereum/primitives/src/receipt.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cc27d283821081485a3da1e37ad33a741d8a1a2e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cb7adb88562b52939abab6a10d3c03b299891d5c"
+      }
+    },
+    {
+      "path": "crates/ethereum/reth/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6d36b4ef2ea4ef162b593c2c74432deb154cc574"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "05b0744ab264f2541b4f935da95105e367b46a94"
+      }
+    },
+    {
+      "path": "crates/evm/evm/src/execute.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7aa2d261950a94c9cdd8f458145e4a8bacf11c79"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5edee39ead69a50b0d9182f6f0f466e4564b1a95"
+      }
+    },
+    {
+      "path": "crates/evm/evm/src/sender_recovery.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5a506b05b0d79b4d45be97e9ca8fcf64f6fcfe1e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b3665bc4ed29f717a3279a3fe61b9e0be06b9c5e"
+      }
+    },
+    {
+      "path": "crates/evm/execution-errors/src/trie.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0a5910618245c04abd1d548550d016a9be32e475"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ac650a976fe66ddc084c32f70a7fe20eadd02ceb"
+      }
+    },
+    {
+      "path": "crates/evm/execution-types/src/chain.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0744dca73a1a4328cc47c67de94bd5aa062f601a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "79d078938b9f0edcdd082e3fc4a95a56378b8e71"
+      }
+    },
+    {
+      "path": "crates/evm/execution-types/src/execute.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bc78755cc528829134130690b29ec08b685c1246"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "572349cb50a7bc7eca8712b73bcb1e773a00de9b"
+      }
+    },
+    {
+      "path": "crates/evm/execution-types/src/execution_outcome.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "de046d7211891176c1b30b9f77e0571a029ef8f3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "dbc47168465c5f6022ca23438997ffb14aa74489"
+      }
+    },
+    {
+      "path": "crates/exex/exex/src/manager.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "50c4da01e4ee32bfef04e6d764f762b6af0fb67d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e8355a852343c6d0c31a4eaedd1491a38d28aa56"
+      }
+    },
+    {
+      "path": "crates/exex/exex/src/wal/storage.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "12d6f12d5ad6e7c05a715227e72e7b53d4acf1c1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a69509c05bcbe45afb5f6f23846ec6d3c295055d"
+      }
+    },
+    {
+      "path": "crates/metrics/src/thread.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "835b4e4cac06c280a5380f3ecdb235fd345602a4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "80d7b4a06b11251b8bf42efeb956896e054696ec"
+      }
+    },
+    {
+      "path": "crates/net/banlist/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "05e91cf2f2977803d5c97b325908bfc244881b61"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2de02e13c3071313fa0953f7a8dcb5b9c4faf70f"
+      }
+    },
+    {
+      "path": "crates/net/discv4/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1616ba6704f5cee543b96ee113d461f0a4e67cf3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d54ac82d4e08ab5be8a95b9cdd80d0f3b02b1ce1"
+      }
+    },
+    {
+      "path": "crates/net/discv4/src/proto.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ee9968e9aaf25d4e2232b0b183d97d300e012730"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ca7e15e08b069b9834d0d085ed55960baeea45ca"
+      }
+    },
+    {
+      "path": "crates/net/discv5/src/filter.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e449b511753914f724b3cef19a67e7d46033e719"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "def00f54dc3a42a1b663024a9e5785e6b49e8c91"
+      }
+    },
+    {
+      "path": "crates/net/dns/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8486c4794a137171087102367d43413daa7b5f34"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6d7c581d940d9439d401183d701d5f07696da06b"
+      }
+    },
+    {
+      "path": "crates/net/downloaders/src/receipt_file_client.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a00bac298e9f7e7fbd200995eae436c164f6a913"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "60af1e70275bcf93032bffcdb4c6a72a6aafc213"
+      }
+    },
+    {
+      "path": "crates/net/downloaders/src/snap/block_access_list.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9d9d6a97909c7d56a08c13f8ecde478b0e57b789"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d1d56110456c50060781ff060d85a9559f2840c7"
+      }
+    },
+    {
+      "path": "crates/net/downloaders/src/snap/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "32916b876aa49fbd7f711a8a50ed545c79f114e2"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b8c32e65db62660379489f6cc01e21e8d3741ac0"
+      }
+    },
+    {
+      "path": "crates/net/downloaders/src/snap/storage.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b1517ebae5c073e692ad908b51f2df9255d2c58a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6b810820bd46a9b872a9ce1502a753528f462bdc"
+      }
+    },
+    {
+      "path": "crates/net/ecies/src/algorithm.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2bbb525dfae733dc44f745e30f6b374bad755068"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "020e0bf239e873c2b2ce7c01cbd9115e57896e36"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/block_access_lists.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "222b5c4b9464cca9407688353768cb85306efdfe"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a6c97fe20ec26d7a161f1d28fd3c52278040c234"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/blocks.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2b0e8f45383096aa11da366919ed4398bea907e4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "23bb2a419ff53f6e54fcea56263c1cfb9a1bdcc3"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/broadcast.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9a3b770780d2c55e6a05d774e429b58f90cf1da5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7e2e9e308743be9bacc4a809503c6073521d0239"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/header.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d5472513444650ec1c35f216db9aa43d1f19ff7c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e6a1c6c404a1c8e543edeab7b753b6e9dde2bc3a"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/message.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8ebf0f6b476e7793da6a87bf1207efe02da86309"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1bff4f036ec83eb332899f7243be709d55a776ae"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/receipts.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c03afc5ad1339e0541b90f8d47f535652b89ce61"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c0733fbbf6d6acde5b24f512438f14a9172fb150"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/snap.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e45bcde3ac47923e3a4ad1ce821ef66e5738728e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3a2c40f0920ebe265ce043593659cd7e369568ad"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aeb088deda56e869346582b84821b9fdf8db971a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1f14535b2eaa8a619bf3cd1e33e72acc9d1dbaff"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/status.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e04e62da0d012654968b920ebbf76a80ea0940b1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "244bcd35ab42eaae8e67e4c4c8d904974bb3cc2c"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire-types/src/transactions.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fee2c59135f9e2e3d885721d1e37c4df1920f685"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c2f8e1c1074d9a0532d16ffe495ca0dbe3c3dc51"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire/src/capability.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4814e400b3971ea0a4934d1b4b9f2bdb53c22887"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b8ae5acaeb6aad671d1b0e1adc134056e3e9a66a"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire/src/ethstream.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8ef4d3d3e92676861f7c5fea8bed1b96aefd25b1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a42f6d3a471bd17ff37b081008b1d59684879369"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire/src/p2pstream.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "62dac05ef9ba6c698dca78bbb23dbb3e057d5e55"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "721102a0ed1d542d64b92a4adbf32dd789313a0d"
+      }
+    },
+    {
+      "path": "crates/net/eth-wire/src/protocol.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "667a600bff0e5f0db2f933681d986eb24006a982"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cd4bd2fd41347e272ac8eda9443c8e34dd732b89"
+      }
+    },
+    {
+      "path": "crates/net/nat/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d3d780ac46a8cc8a4e8444c00b025129d5d8a6bb"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a02f10c53d4b5c3be5d53d9054000dec5cbb3452"
+      }
+    },
+    {
+      "path": "crates/net/network-api/src/noop.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "85774b1690b5dcf2171ff05b5ed3392fdbd18984"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f9f069dafe5d68bdd8c5176d733f0e75e4235e11"
+      }
+    },
+    {
+      "path": "crates/net/network-types/src/peers/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a296de97241805996bc48b8d122b9906ba9dd536"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a86841068b70d90c5c8f16a119d335e6fd12c5c0"
+      }
+    },
+    {
+      "path": "crates/net/network-types/src/peers/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2e379db286fb8725588d03416194167278ca6111"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aeacd539d6d8e335043e8dbdc2978885348a6835"
+      }
+    },
+    {
+      "path": "crates/net/network/src/eth_requests.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "13c91ba19576d6a1aab20c91ec1fa35f39cb4893"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b549b31720eb9a9b590e3572746d3d9787cf9ceb"
+      }
+    },
+    {
+      "path": "crates/net/network/src/fetch/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5488935d2ccc37b20daad3177a2e252fbf60e4c1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d6074df64207919697f218db69e32ab0541d5c0f"
+      }
+    },
+    {
+      "path": "crates/net/network/src/peers.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "73e7af1c33b1f486072d43f5bd6a3608fefb8d9f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "39c0d090a107a9e1917a68c413f3e4acfb6da77b"
+      }
+    },
+    {
+      "path": "crates/net/network/src/required_block_filter.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3dad07a89f64eb6bb9b03f6699d77afc2240358b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e7bcbf3850ef4bbf4458ff0f5792b915ab805750"
+      }
+    },
+    {
+      "path": "crates/net/network/src/session/active.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4ff9495cdfc62e931d269f39362ced1d3f66e3ad"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8f7b38e0684c07bf3fa3417b8529944e91614d83"
+      }
+    },
+    {
+      "path": "crates/net/network/src/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8df58ea1d54fa405baff268d84205e959d832742"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "549e158ba72e72830eacb35215ced2489dec4066"
+      }
+    },
+    {
+      "path": "crates/net/network/src/test_utils/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "12f9d64fbd411f6596da3836b5ba326a968ab08e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aca2594fb064df130a98be0025537cac611dc837"
+      }
+    },
+    {
+      "path": "crates/net/network/src/test_utils/testnet.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3981b542ba94233a2211adca386331d5bdda8e2a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0b5d6b9b2a6743af254081abd0bbd6cf0a390117"
+      }
+    },
+    {
+      "path": "crates/net/network/src/transactions/announcement.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ce7dfe0d07eaa247c3be41bcb5037c7e4e467722"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bec79dce9dbf473b977d8f14c4cfa6f69e6349a5"
+      }
+    },
+    {
+      "path": "crates/net/network/src/transactions/fetcher.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e02ab7a87e09e291ccaa41baf66d98aeccf41cc1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d32d738ed7c3a072826d79969d101512cc8d2177"
+      }
+    },
+    {
+      "path": "crates/net/network/src/transactions/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3c6dbd20ceba5fcb560ac57514ba618d58d491c6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7627e080e00105972066df8b79c1c6b9f35f1057"
+      }
+    },
+    {
+      "path": "crates/net/network/src/transactions/test_harness.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9eb113351929d5d2ef2e78d2421497591b2e8cc4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bad9cf7653c69fe32e162c6f384c33bca114ee39"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/big_pooled_txs_req.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f10cb52d7e0af88aec383ebff4995c85800bff41"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "691ef5d379d4fac4e436790df4b1becbeeacdd3e"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/connect.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "659e4bcc0a02f2e9ab0febc63f20d687fbf82555"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0567bf5680ab8d81904cd1072d30597c7c7881ca"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/eth72.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8483a48bd31499bbaffb0144c67907c794d87a70"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "dfa1a5230dfc7050fbae6fc1fc215910ffe5e8c0"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "731af277d146b50bccaf80ccd8cfa3878b7341ba"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "939ff89f3b88a70dde2bd5b6650597b69e2bfdd5"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/multiplex.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "25d19a2a94d0a211855e616d5b43c1dbd6b16b7f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9646282002cc06752a52ee2024576a33d72b78df"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/requests.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4f82729af62b1d7d21507c2010d712b2dd89b5ac"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "905c23d9a4910df139562e2ae33d9a40ba2a058d"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/session.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "84941aa07b028242cc0cf747edc051f7ff27b7b3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "24875a0f410948ba6dbf22b72244578ed3ee66b5"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/snap/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e4166016b9ec779f426fc86c2669e01caecab99e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "61597cf8cb22150298afa11afb8f190dbc526cf5"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/snap/protocol.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d985c000cbc6a6f4e71a091443c827dae5f88dd8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "55697436544be932f160c0a0443d84334a24593d"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/startup.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "675b7c851a4d03b6a3760d532bf171df370d183b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1574a2e03f0dd992b560acbb22bc91a9ae98a42f"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/transaction_hash_fetching.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "66f5cee5f5b124b2d74cca6bdacd166bd9e0d8cc"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2fb6b7ddc9218fff1e3cd9fb6e6691acef6c0aa9"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/txgossip.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "41732185a43f8b9571cd2495eaddf60e6232cb65"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ab1338cc4ab2c5978cf76d1526beb7df4e087dd1"
+      }
+    },
+    {
+      "path": "crates/net/network/tests/it/utils.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "45484977eb6b6951ce30ee443a6c45294b673e0b"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/net/p2p/src/full_block.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cf27dc28efd2810d405781dc4dac21bf217a7c5c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c6b260f96b3a3e7877142b3324d222c18b5c781f"
+      }
+    },
+    {
+      "path": "crates/net/p2p/src/headers/client.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bc48b8c5ba5b36cc175716a0a1648dee970d0095"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "23cfcdf9d7e061cafae9bdffae9740f87d9bffe1"
+      }
+    },
+    {
+      "path": "crates/net/p2p/src/receipts/client.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "dcafa7ee166d323dc39a40756b8217fcc7d2c144"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "54def51bf5f672b75d1fba756741947a35274765"
+      }
+    },
+    {
+      "path": "crates/net/peers/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "51bce7f7ceff18b3f0e068bb1a70614c7f987e9a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "959fae8da08ec5654fd88895f9cb5f02da0a327d"
+      }
+    },
+    {
+      "path": "crates/net/peers/src/node_record.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ecd61b720d79d6fefcf14839944236852c2e7d66"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "891d253f81183c97936b705c5cfc8e5dc6700713"
+      }
+    },
+    {
+      "path": "crates/net/peers/src/trusted_peer.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9cc2ba77f4dd406118ee900566e7f41910f037c8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6eef50e714c0d07d86c0e4992556ec0c6f9f9f21"
+      }
+    },
+    {
+      "path": "crates/node/builder/src/builder/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "45e26592bf5c9cdf3222b18b18910ad355efccf0"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a8b8ec8b8e4ff10cd261bc1269ead15545fab4d2"
+      }
+    },
+    {
+      "path": "crates/node/builder/src/launch/common.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4f56bb1f1fd4eca57de6eccadd2d0573be64fd8f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1a7146c96c5157593f760bdc24ab9057d8aec20c"
+      }
+    },
+    {
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4ab601ef75c50db905a39243e0a9d07bdd3b2b6c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4380c35622f3b157d5e50a28928d3223f89c3b86"
+      }
+    },
+    {
+      "path": "crates/node/builder/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "71d13e16cf5f0382331affeec9c005e30bee0bc1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a872200443711bad6bf28b7a3befeefbdd21b62d"
+      }
+    },
+    {
+      "path": "crates/node/builder/src/rpc.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "38632c3cd95ab0c628a1ec1c67e27b93bd585a03"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e8bbf40ec9e9b526b76127b1bb7c4db3a2bf28a4"
+      }
+    },
+    {
+      "path": "crates/node/builder/src/sync.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8eb0cd00067df4596486c7d79a1243d693d10f92"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/node/core/src/args/database.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c848874070cbf67c547ae1054e8c9bcd1471c390"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6554f2acabc2c250d051e87b40e3f51e0375b8d9"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/datadir_args.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fcf7bed5a8615dcd55e84f3b26e781edc5b4b4a1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ad24ac5ab97dc7e8a1fd58a41856b392687ca483"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/debug.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b1588e9699fc985da0f697b1b6e5552a230f422b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "83074c0f66e909cd89d1501c2baaf6728b151756"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/dev.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9fb85200dfa69237998777440eb9c91ad33b5511"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "18af3c81fa1de90d2e050f12a1ddb4598b5e2e86"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/engine.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "02870d3a683490198a8b3bc23c40e9a45c26466e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0441a5e850ced70db392ca6230a25d04fb212772"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/jit.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "251d4bcbf7ed61c2ea2bf8021c61173b86bd1827"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9a81a40394ed68eb81ec887d90f0b5b27c8fefab"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/log.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "561ee59ea0ebd7682b636f48ca7c469516b39f25"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "931a64075717c92337a14f49d054abbc07173fa7"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/network.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9a1377057ab350e9090176407792c1a01119a65f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d381fd7576a849eaa1437671c69e855df6552279"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/pruning.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c8e40630a1deee2fd120ff1c80bcb0099f9245e4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "557d9b3d4a27001943b0c06109232ea782f4439a"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/rpc_server.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a390fc9be95456d31b834c8b1e2d3c1cd91fdab7"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "86d01bf434c43f629996aae41ec09f6ce676fa1f"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/rpc_state_cache.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0fabcd766c172f4bb8e8f440ad6e13baa4e1f035"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1f61dcdd6a07b79373909d3d675801ab61ad81ac"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/static_files.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3ce338c9e824c9bd61e7984960bc9d3cc1d4bf31"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ce0247c42fac91c7d571cdefaa8deead1bc16585"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/storage.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a5b1c6823e2fdb345ca163fd1efa6be52a102e3a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1237c7dd6de5b2849985b657288e8ac0c849d5ca"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/txpool.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cf67114f007758d2bb3ad63fcb9850bb1636f48e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9b7fea97bafba6f177f6c16cbcc2ee4f1da74d80"
+      }
+    },
+    {
+      "path": "crates/node/core/src/args/types.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "eaedd84c83b2be5a32241d9a9e6ad1cfbf19dd8b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5f034ca1ec1c49b9dce92f3a480141ddee255472"
+      }
+    },
+    {
+      "path": "crates/node/core/src/utils.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "04c5878638906b83490b4e0eac68469a8a263e9a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e63337c27350c85f870434e4736d1858c9ce5d53"
+      }
+    },
+    {
+      "path": "crates/node/ethstats/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1c012e630163d95619a425587b7cdc41784025e0"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6ffad3177029e944d4907384ed3f3c4a38f118af"
+      }
+    },
+    {
+      "path": "crates/node/ethstats/src/ethstats.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ffde51f12009bdd4b08ac304afd89541c7df8000"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e77badda816fd3918e3922c8867b93810cd5e7e2"
+      }
+    },
+    {
+      "path": "crates/payload/basic/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "689d10c39611d943d6e6169ade846297407b9656"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ddb602d4685e3d40bbd9e2d350b424bd9eede076"
+      }
+    },
+    {
+      "path": "crates/payload/primitives/src/traits.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2ad71729a761458f6b40be1713a05c1b342f9e77"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "981c0547a2f72ace4a4af28da1e93d10e7105d42"
+      }
+    },
+    {
+      "path": "crates/prune/prune/src/db_ext.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "33a687e437d2d89976d5f840eb7f21ddcd08184c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "736bc48a477fe98e2410212ee094f6b1217ea33f"
+      }
+    },
+    {
+      "path": "crates/prune/prune/src/segments/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a81a3f0d3823ab1ac247108453859a16f312f603"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "429ee60f24e92cf2567b308c1cf072a516438b6c"
+      }
+    },
+    {
+      "path": "crates/prune/prune/src/segments/user/storage_history.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d2aa4052f3a9db445a210c7dc40930d54f266503"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "79eb40b4ef650df68bc59759449356ab7e846bae"
+      }
+    },
+    {
+      "path": "crates/prune/types/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1b305c00d31506e0112b9d9e2169a87bfcce7f1b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "64f5fa7cf02427120cfa1645bbb12c1f203f93fd"
+      }
+    },
+    {
+      "path": "crates/prune/types/src/checkpoint.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "338fd4570bd6fd8b167698e890bb5b325f58fe0c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1a3a92d8d1a43bc8ba6e271284781ae1803003dc"
+      }
+    },
+    {
+      "path": "crates/prune/types/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c863fb98a726d52c03f781d9f1a70496d878e5fe"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "88d2d6490e6136c451ee69a67716e4d56a36187f"
+      }
+    },
+    {
+      "path": "crates/prune/types/src/mode.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "058e857047013f4c96bf029f5e8f7099fc89b245"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ed4852247ff453a5eadc0edd604cc167919ad6ca"
+      }
+    },
+    {
+      "path": "crates/prune/types/src/pruner.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "19abfee39dde733df750c1b37a966f32b08fef8e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c50c3b93c643c442054e0f4d68d648fc079a9e8b"
+      }
+    },
+    {
+      "path": "crates/prune/types/src/target.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9c310a48b57c428f03a2fef3f5a82241bb996a41"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "596109573047c4962a98355ad42bcfab4567b3da"
+      }
+    },
+    {
+      "path": "crates/revm/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fff895a1ca9798d5e01a76f346670ff1d1aa29cd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0280dfca248ff7289e97c1a4492d7abbc058e59c"
+      }
+    },
+    {
+      "path": "crates/revm/src/database.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bf21e27aa9f87da4401fedd3fc50adfd0061bbc1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d05f37620a70b78e79eed413bd1e7c3ceab26e75"
+      }
+    },
+    {
+      "path": "crates/revm/src/witness.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "15c14baecee2f04a2f7af43a1cce1a8f03c8f6f3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "21a6980a3334c3121d9a9b051cfa455359341a30"
+      }
+    },
+    {
+      "path": "crates/rpc/ipc/src/stream_codec.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "85f708c2023d48912e18a5975904f4ec0b099783"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8db8fc19ce099120a31ce5f3daeadc30fbdde1c9"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-builder/tests/it/http.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5bcedef37d6519b48d1257dda76519c2dba3b9c8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3025b61c3f8b1c17034affd1daefacc34f1f72a6"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-e2e-tests/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6ddd76cd04c0790387ba3a07d859ef4401a668f8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "78c0474049794b4151c0bed87ea77bb36f97bd91"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-e2e-tests/README.md",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "36ca9771bc10975782da1330090a1fb2afd540a1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "03d6081cb2da6fb963745116c8bbd8eed6b50247"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-e2e-tests/src/rpc_compat.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c39987cba5dcde75982d133f2a639ecbeec1579a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d6b48e3f4fbe5380fb55b087a4970622da8d3618"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-engine-api/src/engine_api.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bfb8f89d7eeff1a45438be0c1452e6aaf371725b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "161bd58f155a00144bb739d5a2d8d523a5a3179e"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e1b0384e73bcc2e5b821c6672c73cc0d34c029af"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1a10bd76071948877bb03a76b14d8c73aad42ea5"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/blocking_task.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "15bc881d0cc2bf43e1848f0ad395fdfdd6d738b3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f6918948cf0944142a44da2d79bd7c5a1fcdfaa4"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/call.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "710cf1adb024feea72cf58e37998d4285d5a3bb6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ce47b596fd025579d69e60f19f6743b719883725"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/config.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0f14518faa86ef888c7ba01b8dc8a3b9ff7a3f85"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "18c5c65f315d294b37ecfed6c5fb701c1eb39c86"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/estimate.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "21113e85094edddf6b4c59d9d69cb4e53709f0e2"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7f4fe4f5b71c18aaff1f99b575ca40a1bb6171c2"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/fee.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ecbb13fab09acc856bbd78af11002dfd49779ab1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e000f7abfa32cfcf5d12dffc8d8892e883db2c43"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/pending_block.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0efe5829cbac342bb96f2910c894aa63006563d3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7b85eecb9cecae6aac58f968bdd47e7463b49a62"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "16de52b85d67696340c983c821a2dc368cbfa67b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ecf933eacac74c3dcc8fa2d023f224a6f35fedb4"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/trace.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "69cd0b7f89147e56a414c2ec02ad06ac835577e7"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d51921713e59b0d7aa4479bf1400c389b3c54774"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ed5b918a1c3dcc6f7382792932c034f51cdd72a4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2a2ed08ee8902538acee10e945eb00e4ad2aaa77"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-types/src/cache/config.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ea74b7e49072d3d6b965b689580649366d7d7c6e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "19a1868f6a49f00a22090b05f8dcf34a00e6256e"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-types/src/cache/db.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "884f4774897449f6939f36bd1c9788c7d1959d9a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "81a4e6b40d1d66ec9a12f447bdbc0e7afd7f4907"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-types/src/cache/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ece915da6644c6aca8aaeaa628d01aa3679cd5f3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9c4ce8962450a2ad80f704913d0321f24b48dba0"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-types/src/error/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c67469461b313e6f53d4dfc593562d9567d47bf0"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2049db7cb6841fbaf764ccf8b06b1247d0d660d8"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-types/src/pending_block.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f831552657c8f35f2faa24b1d9e0d75bbffe7d74"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7e8f52bdc6fc8937de9da9c80eb42ae86297a1b6"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-types/src/simulate.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "13280e1276bbef007ff53418cf80f3a94e98e1a6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6f44f39d0895f8a1ea7c23998374da426a4323e0"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-layer/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "96c7940544de7c1b3d86ed7d5d6761ae6ac833d6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b9507fc2addf0a53f3b56f35f9a592b9f57a7ffd"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-layer/src/decompression_layer.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3ee2e939a3a523c10838393544d6d17b3a4f466b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "077003c5e9893aeed24b4008e07a0384e9c27a67"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "313df9a108863abccfb367490e0d8dff4d5c616b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "da210b42a8eb4e75e15e8a92e402368732374aaf"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/chain_config.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "822c5391dfd3e2720398ccb219b2234fa74b6301"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8fadb1a9275ceb45975e2e46322c1a224d0485c6"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/debug.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "948de2c08a674b6065aefcaa38e3d269dac4db3b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3c137519b8353637b33957b0c2d3a37a64ebc30f"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/bundle.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fd36562bcf51857fb74c5fd2e2993b9119e20092"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "43b776afecea92fd759b3de7f08de51b8a78a08a"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/core.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a29f14d4c930a8b37bc002aac9a4ae2e7e5579ef"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4fb2731cf148cb6cfc0cbaa4861f9b11b5065d79"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/filter.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e43d4ef218d6676a245810d559a736d3ce779592"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7a60f2ee743979c81149e8fd7287c54ba2241a5d"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/helpers/signer.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3a6907c497fad3f49a65d8a0270c48257f72444a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "086d8334e287d5ac7f17fa04a1d43ec7357da84b"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/helpers/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0e01c9d137af19c5609de057711d4ee48bbcbeb8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ee30428095ba265688e8eb63ea5c67d09a7b2efb"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "69c2c92a755ece60620016cb615acc5bf2c4e257"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "15546b68442e3f421f9a2b951de8d57999ec6395"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/sim_bundle.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bc441bfb2d996d6724cf2fe396ec907ba63d500d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "288230d48511ab8f2539f97c89f0ca56a11c0a35"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/otterscan.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "024e057a75bba65f262fecf752d4d3e27ec2f13d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "54355746a60e41432dc42b83dbaf8bea3414d8f0"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/trace.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4e043de7a38f21abee3ca681f0147397401cbe18"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4aa98ac83fef1d651f1a70322322c94027ebccab"
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/validation.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e2895ad6e81c35e07e158bb6f05a8ab9581d8d7d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2cd5cbaf854be19cba23ea133709bb162353a59f"
+      }
+    },
+    {
+      "path": "crates/snap-sync/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "06fc33335327782d970971dac93b2df55f0bb98a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "afd5eaf5a91c467f82528f6d294d852a2519e26a"
+      }
+    },
+    {
+      "path": "crates/snap-sync/README.md",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1bd75031d9336d5a7569987f06ea391fd25b4718"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "374be8529aa7f41641ca9dec416d83cd960f24e1"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/account/download.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "63f3de24609d0881cabb74336a0713af04c89814"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6c01563a34167aaef52dd3f4ce85329cdee6dd4d"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/account/store.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6db9626434a8dd7af6d2ce974bf5640d16dcb075"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b0029233cc3f831c6f6bb4a0217a518f08546e79"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/attempt.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "61ae118bd14f43422b3b23bfb70c1c5b9eb1bc5b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1d0cbfd38e0b220f6dec334f9b5633168e6160eb"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/bootstrap.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "efe9f4d68595f2244891476c87fcfb2ce9f9ff82"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a549d05ff930e15dcb9883b7c847f5e256efab1b"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/bytecode/download.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3bb3daea133b5f9aeeb8430f33ea2dc52b0f1f10"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cafe6c8b1eab99cf74b6a221b1037c617f41bbdd"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/bytecode/store.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "79fcf5a70e433fbb0ad8d1c4a95730e33db059ff"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0c5a33fec1857073d9af24bdce6d3f20297b2fac"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/catch_up/apply.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d74b65c34ebb06fac242946c029dc173997f21d2"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "efaa524e50df86ad400e064a8d818c29e4231eeb"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/catch_up/download.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c868810b5c4877cb0578b526d74dffb6e66d2fa7"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8baebfc3164ad8f49c7698d47a337af8f6ff9c0b"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/catch_up/store.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1796a73f21680ce1bcf50fe1a39b2875d61617d6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "63a411c2b85d6beecfac73a8730062a1680588da"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/common/download.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "03bc495e70527f276677eab97b33068b2654b6b9"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "973b64ac075799eb3c2a38bb0bf7c28281378a41"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/error.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3263121ced29e6f9e0958ae962799c6b8301195b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7a6fc4fe45097e9a1f514e82dcbdaa8130c87d32"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/generation.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "256917791b2f1ba8ad2905850fedaa59d83b67f5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "defc67e34db42b2e3af89900371e64aa63b29d36"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ae428292ff1a07e155372428c3f6950a58b6e226"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4a8cdbfb2a625eaec0043f5148018e5bf45e9f20"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/pivot.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "773d69d4e7ce902c3a506c4c0e22e060268cc92b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bfa4ed267a5a4f95007681dd90a4bd6ce6fe86f8"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/reorg.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e91162ab92c4713f25a3aecaee4cc2738905a337"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/snap-sync/src/repair.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9cff9764986e0cb6e707b5ab453142fd3aea6a94"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/snap-sync/src/session.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9d51d38d38d4a2c3fb9aac79856e38102ba2e485"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b29b5d0bdd1c7b7afed00b9e3f86e8e97ebefa31"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/storage/download.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "adc6da87115dfa5d61debec6047271e60bc24256"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "258dd8371fa84a817a36cc35c16624ace5eaf757"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/storage/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "45e3f558b9b38dedf14b2ef149be91df0c32c6e2"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d6433124c3667d541e5cbc1f2d7ae4338bcb0b12"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/storage/store.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b4188b46fd4a433bbf298cf8051a80b2cec4c67a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e3373bbf3afad8c1b5814d901004252e628ebf88"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/test_utils.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6154f9d7610fb87773f5c6cfab810e96e875f512"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "02454668ee872cc6b92b0656be249fb14895916e"
+      }
+    },
+    {
+      "path": "crates/snap-sync/src/verify.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b174002ab582898bbd1c587162131090717a3b1e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "75b5277051ab476740d950e95ef7a99e1f202148"
+      }
+    },
+    {
+      "path": "crates/stages/api/src/error.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f4ec811fa7283b52c9496fe306361416686a3c89"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fab6e849d0e318f653ed4d2e80510ba10a9b09aa"
+      }
+    },
+    {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0905482e05e531ae162d3d24e4616ead14d65dd4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7ae0ecb9ac870a3fece068e37b583cb7ad9354e6"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/bodies.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ad9b366d811b2c295440263cfd4ebdd670e3bcb9"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "649b48b86e590c7edf8aa9e638843457de2d9b47"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/execution/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bc24943d2cb541dfeea4ece30f6580cf2d8805d8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9051cc731dd25f2399d8c6c147e7e6117431e27d"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/execution/slot_preimages.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c312b4fd8e5f112ae19006b545a0b516982cd924"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2bdd776dd9f62b5a68a14563eb425fe5b09be685"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/finish.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fc0a13dcbf119d4f127cb8d3cd5c407ff0beec59"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8d676c35b9929efbcb3902238b62d6df6da9fc06"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/hashing_account.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4c5a525d7a4eb8a00916adb0cc8b34e94b716c16"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d1d350cb35a3c9f6a7b8558b40ae7e9f5cbcb7dc"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/hashing_storage.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "eb415132c17c323447939341baf1599b6bf8e5a6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e2680636917e3936923307933e361e472d501ed7"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/headers.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7beda91e6c3931618bcf92390f8a1a3b0f78cb70"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a128d82c671b72b87549872735c23a70de044d9d"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/index_account_history.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "03686d2fa9e31f9dfd708aedf53bc66065d2cf5b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "617be0a5ee7808acf036cb006ded050b4b1999f8"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/index_storage_history.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6b55168fc82e9587b09fd9fc89df8d4d52cce1f4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "182bc1c96f50475048c13f624d91674e4363a2ec"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/merkle.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5c7b7729bc8096fd22f83dedea683d499975392f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a6eca099b269181ad302370e21fe148e89e65327"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b99a3599be77ee8322524ef715d19164ad576e88"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cfac4cf0b3286c047a7a785d3e6d4fb6a1d7ab65"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/prune.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "96f1f12187084b6b2de32909c0be4ae02cd9e238"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8ae849d15608a276f457561dca824ea8d29a9743"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/sender_recovery.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ab2cfb2624cacf698cca04b30aa14e95488c4d49"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2aa998041455b706b5d9d4f833066d0b146469e5"
+      }
+    },
+    {
+      "path": "crates/stages/stages/src/stages/tx_lookup.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "40e1ab807ee1f98db679047b73bb38933b99132b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ae808a0e7c8ed386b2933836a9432897799c86c1"
+      }
+    },
+    {
+      "path": "crates/stages/stages/tests/pipeline.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ba8ba47323375aa7c8e838683d49d0d8fd7ed8c0"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "784f2e21b5de484266eac0b2f8cc29c482d11895"
+      }
+    },
+    {
+      "path": "crates/stages/stages/tests/preimage.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "757e84d8746262ab5fa4cced02f607e6d36687d9"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d87849ce20437347f8c88879ca5167e781cada57"
+      }
+    },
+    {
+      "path": "crates/stages/types/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "185981c76f32308a9e7b3672df4c928070d455c6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "83276b46f2dc1cb1385168a103b04a518c8fd133"
+      }
+    },
+    {
+      "path": "crates/stages/types/src/checkpoints.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "60090cd97159cd1570c7cdab30e31eb41630350f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b56f8596f33509a0b0bf485c54037e5c2bf5261e"
+      }
+    },
+    {
+      "path": "crates/storage/db-api/src/models/integer_list.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cc5fb8ead179d551bc02f52695a293080ef2b3a1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "06a993e75e854e9a3041e3689927d3e687d68a34"
+      }
+    },
+    {
+      "path": "crates/storage/db-common/src/init.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "beab22aee07e33c0c6fe6b8560db7156aa5473bf"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "39b6958960d7675c8cdb14e90389de7071fa6dff"
+      }
+    },
+    {
+      "path": "crates/storage/db-models/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1b01c1acd30e6619352cd5c6def186fbea554514"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "339faca53778193a1d3f7fb86dcd457cdcb0dcd0"
+      }
+    },
+    {
+      "path": "crates/storage/db/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8067f633a7d60d49f8d9dec58a30258ab0c72578"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6c01c4b62f7cbaecb6f702c05ba7b6f605ce4727"
+      }
+    },
+    {
+      "path": "crates/storage/db/src/implementation/mdbx/cursor.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "936109acc22d84f4e5f9b5eb5aa7e64c8894a404"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cd642980576559ee9781574c9da83cdd6d7d18e1"
+      }
+    },
+    {
+      "path": "crates/storage/db/src/implementation/mdbx/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ac3555d70719790f6e1edbe8d9f4787221b09f30"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bd5024ff8e467260b0a07fbdcd175676e8fcc4b9"
+      }
+    },
+    {
+      "path": "crates/storage/db/src/implementation/mdbx/tx.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "90274425571865bf8e1e61a394a7c46193c75411"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "396233508f86a54fc6039d884056728776ab3fc6"
+      }
+    },
+    {
+      "path": "crates/storage/errors/src/provider.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "449ed45e98ae422be9550707a496a20f550a4235"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8c61f4b95b232314ee608b16db189290812e2e28"
+      }
+    },
+    {
+      "path": "crates/storage/libmdbx-rs/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9bdf3901ddd01818f8821225fe875dce331bfc2a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "540bdedd33b9c2db57235769eaab98930501d158"
+      }
+    },
+    {
+      "path": "crates/storage/libmdbx-rs/src/txn_manager.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "53c0691730be9e92f1a59cdcb3ad218ef3956f4c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f927c09fe2d1c47bbc3ea033127c1f1066c66205"
+      }
+    },
+    {
+      "path": "crates/storage/nippy-jar/src/cursor.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7e62c53a222b8f125d48ec9250c141967170480e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4fc74a57264983bc31a127eedc9518c05c51be24"
+      }
+    },
+    {
+      "path": "crates/storage/nippy-jar/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fc1a381f3efb14512e47defc574929684c1fe8a5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c1d6cefb316a695e0e2538a7a7fc4a550ef7182e"
+      }
+    },
+    {
+      "path": "crates/storage/nippy-jar/src/writer.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6bcc7bf3831c7fd7eb9f2bb0f0043779a55db2ee"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "44fd47d0d42509ca29c31ff83cec88164b8e419a"
+      }
+    },
+    {
+      "path": "crates/storage/provider/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3b695a3253aafbfa665b9911f93d978a413d09c0"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b2d8be7e29c90300e989d74f54ec0298303d3411"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/bal.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "40feb09126080f962c8a1cd3ae253d5a76f492d1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b75f2c66291e8c1f8119f72ada58effdc3152e61"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/bal/rocksdb.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b7c89a3c02bf434375ef259a0ab4b6abf841e797"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6940693ccd667389090f248f3189a6742ee6f99b"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/either_writer.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d63590a3cb98e95b686128e235c465d16dd53e21"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0a448d1f19bddeb0524533dc8392924a3267c452"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/blockchain_provider.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "aced5bb6991d6804df8fedc4ec235bf664f977ad"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "78e2bdfcd3892f2a25b40e3e0a36fc5a3c865187"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/consistent.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f0193b00e1628be76c64979019feee9ddcf6334c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8dd750ef9217c0c06f14d427dc0c61b872692c2a"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/database/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "238dec62e8d6a55ed70489e7d19bf253a4007ccb"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fa55e1a946c4ace6975a2171daab540bf71b6bb9"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/database/provider.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1d6c45ae69fd9d68afad5248ec015fc26df9c884"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4aee893a1bd403f436a75c657f133c37439c67a1"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/rocksdb/invariants.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d069a7889b6c6bec3c87d74efb09a20f7d9ffd43"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ded24e92438242f995f23ab187b77a4a317517ab"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/rocksdb/provider.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bd6d49fb61aa62e32f67cb801e2cfec9e2d1a994"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b681c382c642c4783e1a8d499586704fd29e07e0"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/state/latest.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "eedc47e58fb735c77b7033468ec7dd55acc23873"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "788c60e9bd821a5179e060644ea56b6b46d9c0c6"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/static_file/manager.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "296f9c53450600a26301b0c7eefb04217f340bb6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4a382aef3596642be75d05a57a9fa4d6769ee967"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/static_file/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b7caa7498cc59a16f6656b6131b41bb1ecf790b5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2fac861f3c43bfa925c9e89235b600419dff9209"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/static_file/writer.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "65c943ce40488962137240db18a34fdd52306c60"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0d33110d4f91841e3eca505f912e9d4e0486fdc8"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/providers/static_file/writer_tests.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "056bd950dcd4c1a2e5eab1b116ab804ec10adef7"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f85201df2cdd5c17812e0f3a2a04825ef56dcfc4"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/test_utils/blocks.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d558386b3734586567badf8a453af86f780f64b7"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d6185d77a170ca40be2a365988853891616d7351"
+      }
+    },
+    {
+      "path": "crates/storage/provider/src/test_utils/mock.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9025f2f61c416959686bb2556727321063242392"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d370fda62a9847dc51f856160895401171c73355"
+      }
+    },
+    {
+      "path": "crates/storage/rpc-provider/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "da0db3c6a91be158b53743ef97c4eb474293e87e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "540a56f521af12b7e1710399a59a821388cdbc06"
+      }
+    },
+    {
+      "path": "crates/storage/rpc-provider/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "53d922edfa134221740f10f5bfc33d954949974e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "91449d0f9a6b0b675a051b599520b096979661ab"
+      }
+    },
+    {
+      "path": "crates/storage/storage-api/src/bal.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b84c1f056c29d661b33f46bafb1c2905315f99c1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ca2cd456d274efd963c84eeea0c46d18069cb563"
+      }
+    },
+    {
+      "path": "crates/storage/storage-api/src/block.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c9a87be0482db355097982a8bca3a4807d75e9c5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "020d6752305f52f1aac59de7d6eddcdd56b9db67"
+      }
+    },
+    {
+      "path": "crates/storage/storage-api/src/block_indices.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5b9472128ee8d3c22467a59997ab792e1383161f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6122872cf3ed932a8d94303d9d3e7259de6325a0"
+      }
+    },
+    {
+      "path": "crates/storage/storage-api/src/block_writer.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8acbfc778e8fb3cc6f352c57bb30c12972bb442f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bf4adae93ad7dce794c4241b2fed1d56b4098e94"
+      }
+    },
+    {
+      "path": "crates/storage/storage-api/src/evm.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c96ffc457ffd29f32cd43c19cddc1c1d2b71f94d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "550a6fa1bc4a7ac75250846cb985f5bd873d9c57"
+      }
+    },
+    {
+      "path": "crates/storage/storage-overlay/src/builder.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e65ec2cb70276bcc7973630c9b380f27e9b1811d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "615c730e1c649a9cdc5a5c9e7ab7611fabc4918b"
+      }
+    },
+    {
+      "path": "crates/storage/storage-overlay/src/changeset_cache.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bd6fe9546923b74cd5824216b8d7de582ac115b1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "69191d65ae915b57f1990415d4cc9c3e691b49c8"
+      }
+    },
+    {
+      "path": "crates/storage/storage-overlay/src/manager.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c1ef0164064fdbbdecfb9587a96404c644d6c14b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4b1349fcfdf5304443ae0452004b65d9438735dc"
+      }
+    },
+    {
+      "path": "crates/storage/storage-overlay/src/manager_metrics.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8b0a8b2b3984a7322d644f82ab9b554c70663e6a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ea0cb2cfbf89abd99eeb3046506482023eef2a4e"
+      }
+    },
+    {
+      "path": "crates/storage/storage-overlay/src/provider.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a1cb51f2c9234532d05ff67a9c60b4286e80a73d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0999d125b4568261c37c6c20628b30afee089af8"
+      }
+    },
+    {
+      "path": "crates/tasks/src/cancel.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "60121c2be626160ce6aa60163732dff46a270853"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0d09172958b0d529f6fa46ca2478684b28c06324"
+      }
+    },
+    {
+      "path": "crates/tasks/src/pool.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "78c234da5ede330aeb111787d0ea75d22cce484b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c6c718fb39c33ec2d04a9bf6c4e517917ebfa389"
+      }
+    },
+    {
+      "path": "crates/tasks/src/runtime.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b77bba82871b13564c4cc797679c222973bf8856"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "666a40c6e7760284e20066e6813ec297c24d9c47"
+      }
+    },
+    {
+      "path": "crates/tasks/src/worker_map.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b5932eda45cb0deff6ea0b23599c18a8194b6e26"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e54fbf0a6910a617d303fcc27a52bc3735e99d3b"
+      }
+    },
+    {
+      "path": "crates/tracing-otlp/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d59c57da52040093171c92b6d9a0320e03b02afd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "026b96bafdac8e8af11a34bfbcf55ad03c6e3bec"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/blobstore/mem.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c689112d42c839a45947f2a2d8827ee94fe39528"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "634c3afe1b2b6f64637086011c35f03ff319ea7e"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/blobstore/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "32723b40b5ee93589406d1e04fccb3f79e11a343"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "caad2a9854ff8e230e4e1f8527bd93123eae4b4e"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/config.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b6951097a19692e49f4459d128f22930d7b6dec3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c3938f7fa0f1b57f942ef27731cdb5806b406c7b"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/error.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9f74d9d725b8584c0b7dd1791805d156d57bbdd4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b580f66d9af02f4c37407432a31e0929fcc5bb7f"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/identifier.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f7aafb6d6805dafa152cbaa09d99b40e873cdf55"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "169952841a15733d6ff12d5a2b81b44db782a5ef"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/maintain.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fc64188a5c2cb193f8e44f02b18ee25cba570c2e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a7a26f52b8353f0f73f169851efe5f1ec5f7ed4c"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/metrics.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "65f792d72f52732d4dbdf3c641008f50ee0da947"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0ba69ac2f4b9ef446da11599c58a6c67f08ac7dd"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/pool/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a45aaf6c4c462996533a178c507871186913972d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "10ec0143a2a4afdc8300e3968b76149992f9200c"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/pool/parked.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "30c8e757ac5356c6084782d1d0858e11f9fce611"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7bd524fcde54d609b078f004d60a67848851b27a"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/pool/pending.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "59be47f7c8293498821b3eb6e7f8fbd834243663"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "272ede0546fd64d6a5fcf187ed16e52805653620"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/pool/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5f5515d415efdb0837705a4fb4ac78cc4d377715"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "20351a7a0e9daa97fb3ea4a0a5ee610277f3e301"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/pool/txpool.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fc6d085a2300c5e8a8db2a49e59b61321711f15d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "493aca1eef1b7a15f6af061849217474411fc822"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/test_utils/mock.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "03393522b0e199241f753d8c519d776faa52cc58"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "68d0654858398418c25ebf0381ab0eb0a1c6e7f1"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/traits.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d964d68fc26415584ecffc93c20abb843c51fddf"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ef4d74953fb96ceae93ed407dbe4ed9518667141"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d1c9caf40917c71b309330b9fa1734765ac769bd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "21c9065d270365169df74e65c2ef0e677f968295"
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/validate/task.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c6b571ba4b15eaa2f001507b935812d266cc8f1b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d71150b854963a23519beae824c0498b0d119236"
+      }
+    },
+    {
+      "path": "crates/trie/common/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9c38b5b2fc8015a5a95b792944c787d436d30e87"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7df50c735f67c1847bcad0002e9474d8c4689c6b"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/account.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8228a48c57cad7a02ee08116cb37343f3335143f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "382157e4f92e4d82249a2c76788b3381bb373034"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/hash_builder/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e31fe8962a1a106911902518334cea894fdf6e49"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "dc35f7150e49ab7a1926d43c98ebcfe4ccc1e91f"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/hashed_state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ccca8ad4244baed06a2671de939ccf184f7d9d3b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6a8e3a87f32e707ecf8c4af2c026722d81990096"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e74fcc657188b956cd4eee9c34b96f091a959bbe"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "55e88dca1e7ab61310663d090b9430e67315611f"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/ordered_root.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "70104514c435250b53029b6d3044968de605f197"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "03a30db0e20dd4f25c349498b9081128370cf1b2"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/prefix_set.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "930eec38502906a6a8b6bd4e2662025ea58b3720"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e3de9ba77bf46061b20261d99d3e351a3892ca26"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/proofs.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5878611b1b789806ede5e597a967b5161b4acf35"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b90ee5b0123c5aca413dde1103290f31c86f44f0"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/range_proof.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "91c332bbbeafb557a36f4a8ffd3dbc37ab86a047"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "11592b7ef419007418a9bbf0e62dd2cb6c3bdb1d"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/target_v2.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "26ae07f84bf6be03e232ba408aeb5c1f4a832c7d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "087f56085172205023f7a5d8bbab5cbe7b1d843a"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/trie_data.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7ea6dbaf47a19633a15b5a6dff4ef6f76cc8cb7e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c52c26e629fe6e1b31cbd615f539c2dee80a6b36"
+      }
+    },
+    {
+      "path": "crates/trie/common/src/updates.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "19286a6f67f055a07a9e2d217e00cccb847fa7f8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6a905c6e1ee0ad30f809ef44d3679ff8f5f338be"
+      }
+    },
+    {
+      "path": "crates/trie/db/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d6c335ac672c3687b9810c9cf3dc135a741eddbb"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0600e389bab05efbb2199ada16126ef299047271"
+      }
+    },
+    {
+      "path": "crates/trie/db/src/prefix_set.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9ab0434341020c77089c002d775327eba9a24ee7"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4335e2bd3f1b06999843e192c1167eb4c353f5c5"
+      }
+    },
+    {
+      "path": "crates/trie/db/src/proof.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cf33dff56b2e9e9be2a5681f26fbe761bcec1faa"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "934c3fecd4e9c4d2c23e05db93fed3029b20d24d"
+      }
+    },
+    {
+      "path": "crates/trie/db/src/state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b747b9b97da19df2e5fce7ba5b4d5d422fed5a84"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "61ffb4848a6ed990e9d1205da3a3ed7dead775b4"
+      }
+    },
+    {
+      "path": "crates/trie/db/src/storage.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e249bfb0fd63a60b2216cadbe3602227513f874a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e634723f1b2c8b36d490886e90f62d5a4dce1ebc"
+      }
+    },
+    {
+      "path": "crates/trie/db/src/trie_cursor.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4e25a2f7d5c814dee4e653f22d607d7b0a94a777"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "250d049d87447a3db22eceadd4b5a978d11036ca"
+      }
+    },
+    {
+      "path": "crates/trie/db/tests/proof.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b7b7e93e0699e47134d90bbaeec06ef8794ab343"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0136a11a895969cec3ac14324359616434dadb29"
+      }
+    },
+    {
+      "path": "crates/trie/db/tests/trie.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1ffa70da4fb77fb788d2bdac1b83868722f0cecf"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "126b46e00f6bca8620af4ce71a86087084b3370b"
+      }
+    },
+    {
+      "path": "crates/trie/db/tests/witness.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4967df96226c07c2c9ebeb3d89b1cdc986d318c1"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b15520dc949c691bf18a3850364b56d20d037769"
+      }
+    },
+    {
+      "path": "crates/trie/parallel/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6003a943ea111e0b82f3fff5eb1468ce5c7c1c4d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "806bcc6c75b2a9b42ceeef263bbea9c0d1599314"
+      }
+    },
+    {
+      "path": "crates/trie/parallel/src/error.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6ac1ef8d335a45525ad4e57c1ebc095afefdaf8f"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "75ecaa590ee0a4616bc826931bb111d01be83117"
+      }
+    },
+    {
+      "path": "crates/trie/parallel/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "54337fb42f28d83bfc15376fec391a44e68b00fe"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e8da61d8d3c43029a84a267ae8979e83127de475"
+      }
+    },
+    {
+      "path": "crates/trie/parallel/src/proof_task.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "21514fecd0ce3cf182cfc529ccd53f193514d2dc"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "4851eb6264f5e6812751dff08a813acd3f8d6b4a"
+      }
+    },
+    {
+      "path": "crates/trie/parallel/src/proof_task_metrics.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2a80526d646c25eb6c71c9eab6ee5661e7fc706d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "92e35c7938ac2e17fa28632f399137ac2276cc50"
+      }
+    },
+    {
+      "path": "crates/trie/parallel/src/state_root_task.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "64e84d026f40a6f8197c526dc21844bb50c4d807"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "937130c6dc56838d6e303f4018430a7921790b08"
+      }
+    },
+    {
+      "path": "crates/trie/parallel/src/storage_proof.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "76712eea0e0aec600cdaa57a079cc46389972e80"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/trie/parallel/src/value_encoder.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "06fca4004fa040b7fab49544a3bf351b47188af0"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6f2b4745ca0bb6b22ce9a0808303bb77f0fd6282"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "84a3ab6ce819b3396f702f3365e613ee52cca620"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "0888117dd744ae90b1d408e0e1fc5ee90c9074b5"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/src/arena/branch_child_idx.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "15e41a35cdf7ef0beec560ba8bb024ceac6747a8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "825d42c9e297849f4e589e6969afedbb2acc2aed"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/src/arena/cursor.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "090a84935f5349cf0e1f97d4ad08e46ca82c0b8e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d328e10bc1a6e3ae1a208c3aaacd273400b318bf"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/src/arena/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3f336693ee8f0cbfa28bc59b1d093bc96fc725ca"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c0c4091a591976371d0c43b89b85f24127282e52"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/src/arena/node_arena.rs",
+      "status": "removed",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "278ab3eddaaf5e6aeb0aead5d852dbc5ab4ec875"
+      },
+      "after": null
+    },
+    {
+      "path": "crates/trie/sparse/src/arena/nodes.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "00eaba72eb3f4f0e17148129b708ea7a87148c2b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "df226831057ec610137536c8f1139609475a23d6"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/src/traits.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cae190fb363364edeab3d39d7e71f61b4a7a2713"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2f8ffc08b250c1fd2579ebb5100da8a1214b9c14"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/src/trie.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d1bd197ca7547e0c992a2c0b677ecc9f42ba4103"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e4a3e429c56f00cf160d3349aa7d671cfe9d3cbc"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/find_leaf.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b3fd218b713537551da8c550209c73200240eac8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e78ae18d734594ebe18e6988a5511ecd88cc9d52"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/get_leaf_value.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "095b6c33c703b31687ae86ffac4f1745c5e71ec4"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a9873e72e30d38113d411fd3ffc7625f7f2c18d5"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/lifecycle.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "270f5744bcc81d7b5d04154346f9d6f48611013a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1cd8988952e03a13f0392ae692752b2708541150"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2852a1ba44c977961ef877a745a02cb70a95c7b6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7fdab8685abc9661500d2d421bb4c8e527e8f26e"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/prune.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8ee43284d4c42c7644ba353b869027592d99d9db"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "624b3b41cd29a8f2549ff70aeae262bf3d19192a"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/reveal_nodes.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "dbceec3c9549092bdbed9eb94249073200aa87e8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8da0e3c9fdff07fa52b437df1b12e7e733ae910b"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/root.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7bcc2cb7fd19ba33bee2dd5da35cddea97bd0331"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "45f0c89abd3892e78962b29ea00b755496c8f743"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/set_root.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7af439bb64c9d827f1029ede08fa203c3b3beb56"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "3d0d57fd54b491ce63ec3b7d65dd5e52755f365d"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/take_updates.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b67205d28a52534a6bdf052817fb021289200132"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "581d7097b5e0a470cff76b2616f0a95c6f2c36aa"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/update_leaves.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d4272b7d8c456dc8534a0743405e7ed88ee8c0ea"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fe88d81dec3ac8dc97158467797e848524ae12be"
+      }
+    },
+    {
+      "path": "crates/trie/sparse/tests/suite/wipe_clear.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "435cdd1a6da07ce08002c23b0b255a0e4704e015"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ab4677a1cfde5e155fa9550d528d2a194675f7d6"
+      }
+    },
+    {
+      "path": "crates/trie/trie/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e2d436f0c4eb31a06740fd49e556170cafbd79e8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9b698d9a95c53d6e4d67790b04ee9ab977914887"
+      }
+    },
+    {
+      "path": "crates/trie/trie/benches/proof_v2.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "243c5659ae5dee9213e159885d27033beb021793"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f007e19a6043f4278fda44f6ea8b44143397324f"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/changesets.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c13786f082dc65c82d837f4981b804b7bdbdb6d6"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "30942e5eb6126273ecbc34240321a79a7b783036"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/hashed_cursor/metrics.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "dede1052b5b5715f513acc97fd7842347a681991"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8cca1a1c1be544233e3a1cfc6390b422e9b27b6c"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/hashed_cursor/mock.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d3513751a2664bb466021c62b5e81fd6197615a2"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "15edd97adee4566da1d7683ccf0bd95db58a6eac"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/hashed_cursor/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "23486adbde22e382baee32b8013fb743b6fff0d5"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ea526cc769cef5fba4b77a430d60f51529c4c02c"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/hashed_cursor/post_state.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "642ea8450462c6077c27b9a9208e5341f1602f5e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ee460545e53c09c32332efe0330463dfb078afef"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/lib.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ee58d94a0875152a25e17da647a8f98ae9ee9d61"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "90c54fbce2820be7ead07697f1d865f7afa5eb55"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/node_iter.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8335bc32613db71255cb22d4d2e42bfc0a213a20"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c47917adca1f6b23295aa7176f740b1e112fbf04"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/progress.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f7e721ea069463208691b99c80d2e555b792d6fd"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1eab18318f2a1c4b524851071b68c13e36ffd4c9"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/proof_v2/mod.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7a81e8cd73c1399e0f92db271c348b57ecda96dc"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "f3dc4a0f61e5f37cf986f5a0bbde62c8361f05c7"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/test_utils.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "176f371627faa1ba8d88edd0b54f80c3c33f1800"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1b904b68f88a5dc5e95d8c03666414f9528593b3"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/trie.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9ff833dc9ce94b42859f92bee53410db3e9a0dd8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "bf3144046de046a5f0f8429ddb92d2f1fc4c9804"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/trie_cursor/in_memory.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "8db7853e804b95bdcc3fcb05e29fe8dfa470129c"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1d704cc4abf1ef4bb3b33bfcdcafed9cd0891232"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/trie_cursor/metrics.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "14167568f3678090ae71b49222fe42034172d392"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1c256f6124f957b8059953067d2a62950990a742"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/verify.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5ab0c84862575840a475fb8d6a7dbf1c7b8384d0"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fcf751bb5a3a384fb40a3c625ba247f2863487e6"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/walker.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "23203f0323860642782de75a1ceb52a4fff81563"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a84425785754eb37c315fe684911734032176f54"
+      }
+    },
+    {
+      "path": "crates/trie/trie/src/witness.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "78026f1805882995e3455863339815cac8d3c684"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "851d3eb434ac3abfd917bac1f6551cdb7dd04de4"
+      }
+    },
+    {
+      "path": "deny.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "b5e1c05d1a5f49c53b2df1ae45d2974c568fc84e"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "be45b22db4490a5a209179ba0b714022ed5a3870"
+      }
+    },
+    {
+      "path": "docs/vocs/bun.lock",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "88fd4f0762b84738523a1e3c522b612d00721765"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9119416209d16e493d7265b5b55cc9aa6b44b4bd"
+      }
+    },
+    {
+      "path": "docs/vocs/docs/pages/cli/reth/download.mdx",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "04a2a3220d8aad6668c1dc2b612c6ca0968e33ba"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6817a3c413b67e2ae86788f540cf36cf87f98465"
+      }
+    },
+    {
+      "path": "docs/vocs/docs/pages/cli/reth/node.mdx",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "78814d4969415e7c5510c8a6c832d411bd75b48d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "29c42d9925f5342091d483375af445c6070997fc"
+      }
+    },
+    {
+      "path": "docs/vocs/docs/pages/cli/reth/p2p/body.mdx",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1758598d62e053a37159b3ba39d2930351f87d69"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "cac838b76cf6be9b26617396df7641dbab5c4fcf"
+      }
+    },
+    {
+      "path": "docs/vocs/docs/pages/cli/reth/p2p/header.mdx",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "94cd50070ed90add82aa93e76788ebf4962a11d8"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "6519ff3760421382fd506ca29fb514475e41ddf5"
+      }
+    },
+    {
+      "path": "docs/vocs/docs/pages/cli/reth/stage/run.mdx",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "ae4ce0b117ac3e189558719833c66535d884369a"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "7a0b858f4b92e416b6b2edb5652c5fd7df0957ba"
+      }
+    },
+    {
+      "path": "docs/vocs/docs/pages/run/configuration.mdx",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5be5e0db42450605536c0c611d83f14efd3c181d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "d922544a77d4d0204ba3174133b4a8e5722669b9"
+      }
+    },
+    {
+      "path": "examples/beacon-api-sidecar-fetcher/src/mined_sidecar.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e7f303e946bd4171d13afd88aa295fff76dea2df"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "5ebf273a4045e4620efaabcf67ad43566bacb4c8"
+      }
+    },
+    {
+      "path": "examples/bsc-p2p/src/block_import/service.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "661e50ae4019c3cef7c97bb3963fe7c38d6701e3"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2b37fcdce005cb197b236b1c8b2db37dbe5384b9"
+      }
+    },
+    {
+      "path": "examples/bsc-p2p/src/chainspec.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "fcf7de99d2a5356b210945bf7a985ad5416fd565"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "1896593b039fa3313c61fc31dbe0667714c4b593"
+      }
+    },
+    {
+      "path": "examples/custom-beacon-withdrawals/src/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "806906d03bae0453329503edfb37cd1154a8c210"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "9ab3e6bbf6a0bc81b7ae12894af29a8e23c50616"
+      }
+    },
+    {
+      "path": "examples/custom-inspector/src/main.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "757e41fccf1fd5eaad2740952d493e633248e04b"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "e4ec329bfef0b0b02701d292683bee7b03b72118"
+      }
+    },
+    {
+      "path": "testing/ef-tests/Cargo.toml",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "065f1960aaf99fe2e4e7e62d7ef244c7874dce2d"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "424e95dcc37a721b40ce9dc4681cb2c84245408a"
+      }
+    },
+    {
+      "path": "testing/ef-tests/src/cases/blockchain_test.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "2f0b51bda419a3b4a6ad8644475a873be940e0f9"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "15a6ba7cc8899e561a71ea5c967b1d61519cffe3"
+      }
+    },
+    {
+      "path": "testing/ef-tests/src/models.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "c576462a3ebeb5632878f09e2ad338df1456df52"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "a2cb4f78679987f0765f8403df99db9aad1db9bf"
+      }
+    },
+    {
+      "path": "testing/testing-utils/src/generators.rs",
+      "status": "modified",
+      "before": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "152dcfb84e83f9104e9bb8ab31894e7e8c9d3888"
+      },
+      "after": {
+        "mode": "100644",
+        "type": "blob",
+        "oid": "89cc4c943a62ec8e0dc48adc8dd8701e60cc1211"
+      }
+    }
+  ]
+}

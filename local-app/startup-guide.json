@@ -1,0 +1,680 @@
+{
+  "version": "v2.7.0",
+  "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "title": "CLIからノードの継続処理まで",
+  "summary": "reth nodeの入口から、設定・DB・部品の準備を経て、Engineとネットワークが処理を続ける仕組みを追う。全11点は読む順番であり、タスクの開始順とは異なる。backfillとlive同期は同時に進めない。",
+  "stages": [
+    {
+      "id": "cli",
+      "title": "CLIと終了監視",
+      "summary": "コマンドを選び、起動処理を終了まで監視する。",
+      "steps": [
+        "entry",
+        "dispatch",
+        "supervisor"
+      ]
+    },
+    {
+      "id": "prepare",
+      "title": "ノードを組み立てる",
+      "summary": "設定・DB・主要な部品・Engineの接続を準備する。タスクの一部はこの段階から動き始める。",
+      "steps": [
+        "database",
+        "context",
+        "components",
+        "services"
+      ]
+    },
+    {
+      "id": "run",
+      "title": "稼働中の処理を分けて読む",
+      "summary": "稼働中の各処理が何を待ち、何を担当するかを読む。複数のタスクとスレッドが協調してノードを動かす。",
+      "steps": [
+        "orchestrator",
+        "tree",
+        "network",
+        "backfill"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "entry",
+      "stage": "cli",
+      "title": "CLIから起動用の処理を渡す",
+      "question": "mainはノードのどこまでを担当する？",
+      "summary": "引数を読み、EthereumNodeを起動する非同期処理をCLIへ渡す。起動後はhandleを使ってノードの終了を待つ。",
+      "input": "プロセスのコマンドライン引数",
+      "output": "CLI全体の実行結果。node選択時には起動後の終了待機まで続く。",
+      "actions": [
+        "Cli::parse()で引数を型にする。",
+        "runへasync クロージャーを渡す。",
+        "クロージャー内でEthereumNodeを選び、起動完了をawaitする。",
+        "得られたhandleのwait_for_node_exitをawaitする。"
+      ],
+      "boundary": "mainにはブロックを処理し続けるループはない。JIT有効時のhelper分岐はこの案内の主線から外す。",
+      "check": {
+        "question": "launchのawaitが戻ればプロセスは終了する？",
+        "answer": "終了しない。続くwait_for_node_exit().awaitがノードの終了結果を待つ。"
+      },
+      "rust": {
+        "term": "async move closure",
+        "explanation": "後で実行する非同期処理を値として渡す。moveは必要な値をクロージャー側へ移す。",
+        "ts": "async () => { const handle = await launch(); await handle.waitForExit(); } に形が近い。",
+        "limit": "RustのFutureはpollされて進む。JavaScriptのPromiseと、呼び出した時点の実行開始や所有権は同じではない。"
+      },
+      "source": {
+        "path": "bin/reth/src/main.rs",
+        "symbol": "main",
+        "start": 33,
+        "end": 48,
+        "hash": "fa6e17b75f46bef74d5bcd122d25f92116d1d07ca9e598ccb20b109d1484070c",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/bin/reth/src/main.rs#L33-L48"
+      },
+      "next": [
+        "dispatch"
+      ]
+    },
+    {
+      "id": "dispatch",
+      "stage": "cli",
+      "title": "nodeサブコマンドを選ぶ",
+      "question": "どの分岐で通常のノード起動へ入る？",
+      "summary": "コマンドenumをmatchし、Nodeの場合はRPCの公開モジュール指定を検証して、runnerへNodeCommand::executeを渡す。",
+      "input": "解析済みCLI、実行環境を持つrunner、起動用クロージャー",
+      "output": "nodeコマンドを終了監視付きで実行する処理",
+      "actions": [
+        "match cli.commandのNode分岐を見る。",
+        "http.apiとws.apiの選択を検証する。",
+        "FnLauncherで起動用クロージャーを包んでexecuteへ渡す。"
+      ],
+      "boundary": "init/import/dbなどは別のコマンド経路。Node分岐のRPC設定検証はRPCサーバーの起動ではない。",
+      "check": {
+        "question": "Node分岐から最初に直接呼ぶノード準備処理は？",
+        "answer": "runnerのクロージャー内で呼ぶcommand.execute(ctx, FnLauncher::new(...))。"
+      },
+      "rust": {
+        "term": "enumとmatch",
+        "explanation": "Commandsの各variantを分岐し、Nodeに入っているcommand値を取り出す。",
+        "ts": "kindを持つdiscriminated unionをswitchする書き方に近い。",
+        "limit": "Rustのenumはvariantごとのpayloadを型で保持し、matchの網羅性もコンパイラが確認する。"
+      },
+      "source": {
+        "path": "crates/ethereum/cli/src/app.rs",
+        "symbol": "run_commands_with",
+        "start": 159,
+        "end": 192,
+        "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/cli/src/app.rs#L159-L192"
+      },
+      "next": [
+        "supervisor"
+      ]
+    },
+    {
+      "id": "supervisor",
+      "stage": "cli",
+      "title": "起動処理と終了条件を監視する",
+      "question": "CLIの待機は何を待っている？",
+      "summary": "実行環境上でコマンドを動かし、コマンド完了、終了シグナル、criticalタスクのpanicを監視する。正常な終了条件ではgraceful shutdownを試みる。",
+      "input": "CliContextを受け取ってFutureを返すコマンド",
+      "output": "コマンドまたは監視側の終了結果",
+      "actions": [
+        "cli_contextでタスク管理と実行contextを作る。",
+        "block_onで非同期処理を駆動する。",
+        "run_until_ctrl_cとrun_to_completion_or_panicが終了条件を監視する。",
+        "正常終了側でgraceful shutdownし、最後に実行環境を閉じる。"
+      ],
+      "boundary": "この層はプロセスを終了まで監視する。トランザクションやブロックを繰り返し処理する層ではない。エラー時と正常時の終了経路は異なる。",
+      "check": {
+        "question": "Ctrl-Cがなくても待機は終わる？",
+        "answer": "コマンドのFutureが完了した場合や、監視対象のcriticalタスクがpanicした場合にも終わり得る。"
+      },
+      "rust": {
+        "term": "Futureとblock_on",
+        "explanation": "Futureは進行途中の非同期計算。block_onは呼び出し元を待たせながら実行環境でその計算を進める。",
+        "ts": "非同期のstartNode()をプロセスのentry pointでawaitし、signal/errorと競合させる構造に近い。",
+        "limit": "JavaScriptに同じblock_onはない。このRustコードでは同期mainから実行環境へ入り、OSスレッドと非同期タスクを使い分ける。"
+      },
+      "source": {
+        "path": "crates/cli/runner/src/lib.rs",
+        "symbol": "CliRunner::run_command_until_exit",
+        "start": 63,
+        "end": 102,
+        "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/cli/runner/src/lib.rs#L63-L102"
+      },
+      "next": [
+        "database"
+      ]
+    },
+    {
+      "id": "database",
+      "stage": "prepare",
+      "title": "引数を設定に変えてDBを開く",
+      "question": "CLIの値はどこでノードの材料に変わる？",
+      "summary": "NodeCommandをNodeConfigへ組み替え、データディレクトリのDBを開く。設定・DB・タスクの実行器をNodeBuilderに渡してlauncherを呼ぶ。",
+      "input": "NodeCommand、CliContext、Launcher",
+      "output": "DBと実行contextを持つNodeBuilderを受け取ったlauncherの実行結果",
+      "actions": [
+        "engine設定をvalidateする。",
+        "引数をNodeConfigへ組み替える。",
+        "datadirからdb_pathを決め、init_dbを呼ぶ。",
+        "NodeBuilderへdatabaseとtask_executorを結び、entrypointをawaitする。"
+      ],
+      "boundary": "DBを開くこととgenesis/provider/部品群の準備は別段階。launcherはmainで渡した起動クロージャーへつながる。",
+      "check": {
+        "question": "この時点でネットワークの継続処理は完成している？",
+        "answer": "まだ。この関数はDB付きbuilderをlauncherへ渡すところまで。各部品の生成は後続のlaunchで行う。"
+      },
+      "rust": {
+        "term": "Resultと?",
+        "explanation": "成功なら中身を取り出し、失敗なら現在の関数からエラーを返す。DB初期化や設定検証の失敗は上の層へ伝わる。",
+        "ts": "await openDatabase()が失敗して呼び出し元へ伝わる流れに似ている。",
+        "limit": "?は例外そのものではなくResult/Option等の早期return。型に現れるエラー経路を読む。"
+      },
+      "source": {
+        "path": "crates/cli/commands/src/node.rs",
+        "symbol": "NodeCommand::execute",
+        "start": 157,
+        "end": 225,
+        "hash": "687cca2e2fe17fd8ce1f54a4c854791e9a615879aede465c96c20bf6ea7b40a3",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/cli/commands/src/node.rs#L157-L225"
+      },
+      "next": [
+        "context"
+      ]
+    },
+    {
+      "id": "context",
+      "stage": "prepare",
+      "title": "設定・provider・genesisを準備する",
+      "question": "DBを開いた後、何を揃えて部品生成へ進む？",
+      "summary": "EngineNodeLauncherが設定を読み込み、ピアを解決し、DBへアクセスするproviderを準備する。genesisとmetricsも準備して部品の生成へ進む。",
+      "input": "NodeConfig、開いたDB、タスクの実行器、部品 builder",
+      "output": "設定、provider、初期状態、部品群を備えたlaunch context",
+      "actions": [
+        "TOMLとピア設定を読み、DBをattachする。",
+        "設定を調整してprovider factoryを作る。",
+        "Prometheus、genesis、metrics タスクを準備する。",
+        "BlockchainProviderを作り、with_componentsをawaitする。"
+      ],
+      "boundary": "with_genesisは各チェーンの初期状態を整える段階。これだけで最新tipへの同期が済んだとは言えない。",
+      "check": {
+        "question": "with_componentsより先に準備されるDB読み書きの窓口は？",
+        "answer": "provider factoryとBlockchainProvider。部品はそれらを持つcontextを受け取る。"
+      },
+      "rust": {
+        "term": "builderの型の変化",
+        "explanation": "with_*をつなぎ、材料を追加したcontextを次の段階へ渡す。型引数にも準備済みの能力が反映される。",
+        "ts": "設定オブジェクトへ段階的に依存を組み立てるfluent builderに近い。",
+        "limit": "単一オブジェクトを書き換えるだけとは限らない。Rustでは受け渡しのたびに型や所有者が変わる場合がある。"
+      },
+      "source": {
+        "path": "crates/node/builder/src/launch/engine.rs",
+        "symbol": "EngineNodeLauncher::launch_node / launch context",
+        "start": 101,
+        "end": 140,
+        "hash": "67b1d28700a9ebe0a2d0736498bc87779f95b415af2b0573a4537f263a6cf31b",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L101-L140"
+      },
+      "next": [
+        "components",
+        "services"
+      ]
+    },
+    {
+      "id": "components",
+      "stage": "prepare",
+      "title": "EVM・pool・ネットワークなどを組み立てる",
+      "question": "ノードを構成する主要な部品は何か？",
+      "summary": "EVM設定、transaction pool、ネットワーク、payload builder service、consensusを順に作り、Componentsとして返す。後の部品は先に作った部品を利用する。",
+      "input": "providerや設定を備えたBuilderContext",
+      "output": "pool・EVM設定・ネットワーク・payload builder handle・consensus",
+      "actions": [
+        "EVM設定を作ってpoolへ渡す。",
+        "poolを使ってネットワークを作る。",
+        "poolとEVM設定を使うpayload builder serviceを起動する。",
+        "consensusを作りComponentsへまとめる。"
+      ],
+      "boundary": "生成と同時に起動するタスクもある。この資料ではネットワークの稼働処理を後で読むが、実際のspawnは初期化のこの経路で行われる。",
+      "check": {
+        "question": "pool.clone()はtransaction全件をコピーするという意味？",
+        "answer": "その断定はできない。ここでは部品のhandle等をcloneして渡す。具体的なcloneの動作はその型の実装に依存する。"
+      },
+      "rust": {
+        "term": "traitと関連型",
+        "explanation": "builderごとに実装の契約をtraitで表し、返すPool/Network/EVMなどの具体型を関連型で結び付ける。",
+        "ts": "TypeScriptのinterfaceとgeneric型を使った依存の組立に近い。",
+        "limit": "Rustのtrait境界にはSend等の制約もあり、動的なJavaScriptオブジェクトの交換と同一ではない。"
+      },
+      "source": {
+        "path": "crates/node/builder/src/components/builder.rs",
+        "symbol": "ComponentsBuilder::build_components",
+        "start": 375,
+        "end": 403,
+        "hash": "acf421ecf15af4f79502ffe35f6a53011085d8a002c65656cc76732108e62ba7",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/components/builder.rs#L375-L403"
+      },
+      "next": [
+        "services",
+        "network"
+      ]
+    },
+    {
+      "id": "services",
+      "stage": "prepare",
+      "title": "Engine API・pipeline・treeをつなぐ",
+      "question": "外部からの要求と内部の同期処理はどこで接続される？",
+      "summary": "ネットワークのクライアントと段階的同期用pipelineを用意し、Engine API要求を受け取るチャネルを作る。それらをEngineOrchestratorBuilderに渡してチェーンを進める構造を組む。",
+      "input": "生成済み部品群、provider、チェーン設定",
+      "output": "要求ストリーム・pipeline・tree側サービスを結び付けたorchestrator",
+      "actions": [
+        "ネットワークからfetch clientを得る。",
+        "consensus_engineの送受信チャネルとpipelineを作る。",
+        "Engine API側へ渡すbeacon_engine_handle等を用意する。",
+        "要求ストリーム・pipeline・provider・payload builder等をorchestrator builderへ渡す。"
+      ],
+      "boundary": "buildの内部でtreeとpersistenceの処理が起動する。RPC等のadd-onsはこの後にlaunchされる。ここで用意したpipelineは、必要時にbackfillとして走る。",
+      "check": {
+        "question": "pipelineを生成した直後からbackfillは常に動き続ける？",
+        "answer": "違う。PipelineSyncはまずIdleで保持し、targetが設定されてpollされたときにタスクを起動する。"
+      },
+      "rust": {
+        "term": "channelとhandle",
+        "explanation": "送信側handleと受信ストリームを分け、生成した部品間で要求やイベントを渡す。",
+        "ts": "キューを介したworker/message passingに近い。",
+        "limit": "Rustの型付きチャネルや所有権、送信失敗・切断の扱いはEventEmitterと同一ではない。"
+      },
+      "source": {
+        "path": "crates/node/builder/src/launch/engine.rs",
+        "symbol": "EngineNodeLauncher::launch_node / engine wiring",
+        "start": 145,
+        "end": 266,
+        "hash": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L145-L266"
+      },
+      "next": [
+        "orchestrator",
+        "tree",
+        "backfill"
+      ]
+    },
+    {
+      "id": "orchestrator",
+      "stage": "run",
+      "title": "Engineのイベントと終了要求を待つ",
+      "question": "起動後、Engine全体を進め続ける処理はどれか？",
+      "summary": "consensus engineのタスクがorchestratorの次イベント、ローカルで作られたpayload、終了要求を待つ。イベントに応じてネットワークの同期状態等を更新し、treeへ処理を渡す。",
+      "input": "orchestrator、built payload ストリーム、終了要求チャネル、graceful shutdown signal",
+      "output": "チェーンイベントの通知、ネットワーク状態更新、treeへの要求、最後の終了結果",
+      "actions": [
+        "initial targetがあればbackfill開始を指示する。",
+        "loop内のtokio::select!で複数の準備済みイベントを処理する。",
+        "built payloadはtree側へ挿入要求として渡す。",
+        "停止要求を受け取った場合、またはgraceful shutdown時にtreeへTerminateを送る。graceful shutdownでは完了通知を待ってループを抜ける。",
+        "ループを抜けた後、終了結果をoneshotへ送る。"
+      ],
+      "boundary": "orchestratorの待機、treeの実処理、ネットワークのI/Oは別の責務。単一のmain loopが全部を直接処理するわけではない。",
+      "check": {
+        "question": "mainのwait_for_node_exitへ結果が届く起点は？",
+        "answer": "このタスクがexit.send(res)を実行する。launcherが受信側からNodeExitFutureを作ってNodeHandleへ渡す。"
+      },
+      "rust": {
+        "term": "tokio::select!",
+        "explanation": "複数のFuture/Streamを待ち、準備できた枝を進める。このselectをloopが繰り返す。",
+        "ts": "whileループ内で複数イベントをPromise.raceする構造に近い。",
+        "limit": "Promise.raceと異なり未選択Futureの扱いやcancel safetyを考える必要がある。別OSスレッドのtree処理をこのselectが直接実行するわけではない。"
+      },
+      "source": {
+        "path": "crates/node/builder/src/launch/engine.rs",
+        "symbol": "consensus_engine task",
+        "start": 317,
+        "end": 413,
+        "hash": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L317-L413"
+      },
+      "next": [
+        "tree",
+        "network",
+        "backfill"
+      ]
+    },
+    {
+      "id": "tree",
+      "stage": "run",
+      "title": "専用スレッドでEngine要求を処理する",
+      "question": "ブロック処理と永続化の調整はどこで繰り返す？",
+      "summary": "EngineApiTreeHandlerの専用OSスレッドがEngine messageや永続化完了を処理する。永続化が遅れて閾値に達すると、新規要求を取り出さず永続化側を待つ。",
+      "input": "Engine要求チャネル、永続化完了通知、payload build完了通知",
+      "output": "Engine処理結果・チェーンイベント・必要な永続化処理",
+      "actions": [
+        "まず永続化の完了を確認する。",
+        "backpressure条件に応じて通常イベントか永続化だけを待つ。",
+        "Engine messageをon_engine_messageへ渡す。",
+        "イベント後にadvance_persistenceを呼ぶ。"
+      ],
+      "boundary": "runは現在のOSスレッドを同期的に待たせる。asyncのawaitループではない。backfill中のDB書き込みの排他制御と、永続化待ちによるbackpressureは別の制御。",
+      "check": {
+        "question": "永続化が追いつかない場合も新しい要求を無制限に実行する？",
+        "answer": "しない。閾値では入力チャネルから取り出すのを止め、永続化完了を待つ。ただし上流のunbounded チャネルに要求が溜まる可能性は残る。"
+      },
+      "rust": {
+        "term": "loopとControlFlow",
+        "explanation": "loopは明示的な反復。handlerがBreakを返す、チャネルが切れる、致命的なエラー等でrunを抜ける。",
+        "ts": "専用workerのメッセージ受信ループを想像すると役割をつかみやすい。",
+        "limit": "このコードはOSスレッド上で同期的に待つ。ブラウザーのメインスレッドやJavaScriptのevent loopへそのまま対応させない。"
+      },
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "symbol": "EngineApiTreeHandler::run",
+        "start": 517,
+        "end": 606,
+        "hash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L517-L606"
+      },
+      "next": [
+        "backfill"
+      ]
+    },
+    {
+      "id": "network",
+      "stage": "run",
+      "title": "ネットワークの入出力をpollで進める",
+      "question": "ピア通信はどの反復処理で進む？",
+      "summary": "NetworkManagerはFutureとしてpollされ、内部handleからの要求とswarmのイベントを処理する。一度に処理する量の上限に達したら、executorへ制御を返す。",
+      "input": "NetworkHandle経由の要求、ピア接続や通信に由来するswarmイベント",
+      "output": "ネットワーク状態の更新、各要求・通信イベントの処理",
+      "actions": [
+        "handleの受信チャネルを処理する。",
+        "swarmのイベントストリームを処理する。",
+        "上限まで処理しても仕事が残っていれば、wakeを予約してPendingを返す。",
+        "何も直ちに進められなければPendingを返す。"
+      ],
+      "boundary": "Future::pollの中の反復。CLI終了監視やEngine Treeとは別のタスクで、nodeの部品初期化時にspawnされる。",
+      "check": {
+        "question": "Poll::Pendingはネットワークが終了したという意味？",
+        "answer": "違う。今は結果を返せないのでexecutorに制御を返す状態。wakerで再びpollされる機会を作る。"
+      },
+      "rust": {
+        "term": "Poll・Context・Waker",
+        "explanation": "pollは今進められる仕事を進める。Pendingなら待機し、wakerが次に進める機会をexecutorへ知らせる。",
+        "ts": "イベント待ちのcallbackを登録してevent loopへ返る役割に近い。",
+        "limit": "RustではFutureをexecutorが明示的にpollする。JavaScriptのPromiseの内部モデルと同じAPIではない。"
+      },
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "symbol": "Future for NetworkManager::poll",
+        "start": 1134,
+        "end": 1203,
+        "hash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/manager.rs#L1134-L1203"
+      },
+      "next": [
+        "backfill"
+      ]
+    },
+    {
+      "id": "backfill",
+      "stage": "run",
+      "title": "必要なときだけ段階的同期を走らせる",
+      "question": "大きな同期範囲はいつ、どのように処理される？",
+      "summary": "PipelineSyncはtargetを受け、Idleならpipelineをタスクへ移す。結果をoneshotで待ち、終了したpipelineを再びIdleとして保持する。",
+      "input": "BackfillAction::Startで設定されたtarget、Idleなpipeline",
+      "output": "Started / Finished / TaskDroppedイベントと再利用できるpipeline",
+      "actions": [
+        "targetがないIdle状態では起動しない。",
+        "targetを取り出してpipelineのタスクをspawnする。",
+        "pipeline.run_as_fut(Some(target))を待つ。",
+        "oneshotの結果からIdle状態へ戻し、完了を通知する。"
+      ],
+      "boundary": "backfillとlive syncは排他的な同期モード。pipeline実行中のDB書き込みとtree側の書き込みを同時に進めない。run_as_futは同期targetならrun_loopで各stageを進め、Unwind targetなら巻き戻して戻る。",
+      "check": {
+        "question": "backfillが終わるとPipelineSync自身も必ず終了する？",
+        "answer": "しない。pipelineをIdleへ戻してFinishedを返す。次のtargetを受けて再実行できる。ノード全体の終了は別の設定・監視経路で決まる。"
+      },
+      "rust": {
+        "term": "enumによる状態とOption::take",
+        "explanation": "Idle/Runningをenumで表し、takeでpipelineやtargetを取り出して所有権をタスクへ移す。",
+        "ts": "idle/runningのdiscriminated unionとjob queueに近い。",
+        "limit": "Rustでは移した値を元の場所から同時利用できない。JavaScriptの参照共有だけでは同じ所有権制約は得られない。"
+      },
+      "source": {
+        "path": "crates/engine/tree/src/backfill.rs",
+        "symbol": "PipelineSync::try_spawn_pipeline / poll_pipeline",
+        "start": 123,
+        "end": 183,
+        "hash": "b04ca743e3203651126f4c80adf62b084637154e66662ef9ec358b82d9bf1c6b",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/backfill.rs#L123-L183"
+      },
+      "next": []
+    }
+  ],
+  "loops": [
+    {
+      "name": "CLIの終了監視",
+      "role": "コマンド完了・シグナル・criticalタスクのpanicを監視する待機層。ブロック処理のループではない。",
+      "trigger": "runnerがコマンドを実行環境へ入れる。",
+      "wait": "command Future、タスク管理、Ctrl-C。UnixではSIGTERMも対象。",
+      "source": {
+        "path": "crates/cli/runner/src/lib.rs",
+        "symbol": "run_to_completion_or_panic / run_until_ctrl_c",
+        "start": 228,
+        "end": 294,
+        "hash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/cli/runner/src/lib.rs#L228-L294"
+      }
+    },
+    {
+      "name": "consensus engineのイベントループ",
+      "role": "orchestratorを駆動し、built payloadと終了要求をtreeへ渡す。",
+      "trigger": "launcherがcriticalタスクとしてspawnする。",
+      "wait": "orchestrator.next()、built_payloads.next()、終了要求、graceful shutdown。",
+      "source": {
+        "path": "crates/node/builder/src/launch/engine.rs",
+        "symbol": "consensus_engine task loop",
+        "start": 329,
+        "end": 413,
+        "hash": "4df33038adafbba10133d79fc403ff5cc60b8273d3a1a71192da21ed9916ebe1",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L329-L413"
+      }
+    },
+    {
+      "name": "Engine Treeの専用スレッド",
+      "role": "要求を実処理し、永続化との進行を調整する。backfill中のDB書き込み排他もtree側の状態と連携する。",
+      "trigger": "EngineApiTreeHandler::spawn_newがengine OSスレッドを作りrunを呼ぶ。",
+      "wait": "通常は入力イベント。backpressure時には永続化完了だけを待つ。",
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "symbol": "EngineApiTreeHandler::run",
+        "start": 517,
+        "end": 606,
+        "hash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L517-L606"
+      }
+    },
+    {
+      "name": "NetworkManagerのpoll",
+      "role": "handleの要求とswarmイベントを処理してP2Pネットワークを進める。",
+      "trigger": "部品生成時にネットワークのタスクをspawnし、実行環境がFutureをpollする。",
+      "wait": "受信チャネルとswarmの準備を待ち、処理予算でもPendingを返す。",
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "symbol": "Future for NetworkManager::poll",
+        "start": 1134,
+        "end": 1203,
+        "hash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/manager.rs#L1134-L1203"
+      }
+    },
+    {
+      "name": "必要時のbackfill pipeline",
+      "role": "targetまでの段階的同期を行う。live syncとの同時実行ではなく、排他的な同期モードとして使う。",
+      "trigger": "target設定後のpollで、pipelineがIdleならタスクをspawnする。",
+      "wait": "pipelineのタスクからのoneshot結果。完了後はIdleへ戻る。",
+      "source": {
+        "path": "crates/engine/tree/src/backfill.rs",
+        "symbol": "PipelineSync state transitions",
+        "start": 138,
+        "end": 208,
+        "hash": "a2c3ad029f4949d95f1a82897280e67e0649c9b8df7b011ebe1b9e11ededfa6d",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/backfill.rs#L138-L208"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "to": "dispatch",
+      "label": "Cli::runを経由してコマンド分岐へ",
+      "kind": "call",
+      "from": "entry"
+    },
+    {
+      "to": "supervisor",
+      "label": "run_command_until_exit",
+      "kind": "call",
+      "from": "dispatch"
+    },
+    {
+      "to": "database",
+      "label": "command(ctx)でexecuteを実行",
+      "kind": "call",
+      "from": "supervisor"
+    },
+    {
+      "to": "context",
+      "label": "launcherとmainの起動クロージャーを経由",
+      "kind": "call",
+      "from": "database"
+    },
+    {
+      "to": "components",
+      "label": "with_components",
+      "kind": "call",
+      "from": "context"
+    },
+    {
+      "to": "network",
+      "label": "build_network内でネットワークのタスクを起動",
+      "kind": "spawn",
+      "from": "components"
+    },
+    {
+      "to": "services",
+      "label": "部品準備後にEngineを組立",
+      "kind": "call",
+      "from": "context"
+    },
+    {
+      "to": "tree",
+      "label": "build内のspawn_newで専用スレッドを起動",
+      "kind": "spawn",
+      "from": "services"
+    },
+    {
+      "to": "orchestrator",
+      "label": "組立後にconsensus engineのタスクを起動",
+      "kind": "spawn",
+      "from": "services"
+    },
+    {
+      "to": "tree",
+      "label": "EngineHandler経由で型付きチャネルへ",
+      "kind": "channel",
+      "from": "orchestrator"
+    },
+    {
+      "to": "backfill",
+      "label": "初期targetまたはhandler要求で開始",
+      "kind": "spawn",
+      "from": "orchestrator"
+    },
+    {
+      "to": "orchestrator",
+      "label": "mainのNodeHandleを通して終了を待機",
+      "kind": "wait",
+      "from": "supervisor"
+    }
+  ],
+  "evidenceStatus": "固定commitのソースを静的に読んだ案内。ノードの起動・接続・同期完了を実機で検証した記録ではない。",
+  "roles": {
+    "bin/reth/src/main.rs": {
+      "name": "rethバイナリーの入口",
+      "role": "CLIへEthereumノードの起動処理を渡し、起動後の終了結果を待つ。",
+      "input": "プロセスの引数",
+      "output": "CLI実行結果とプロセス終了コード"
+    },
+    "crates/ethereum/cli/src/app.rs": {
+      "name": "CLIアプリケーションとコマンド分岐",
+      "role": "実行環境・ログ・metricsを準備し、サブコマンドに対応した実行経路を選ぶ。",
+      "input": "解析済みCLIと起動用launcher",
+      "output": "選択したコマンドの実行結果"
+    },
+    "crates/cli/runner/src/lib.rs": {
+      "name": "コマンドの実行と終了監視",
+      "role": "実行環境でコマンドを実行し、完了・シグナル・criticalタスクのpanicに応じて終了処理を行う。",
+      "input": "コマンドのFutureやCliContextを受け取る関数",
+      "output": "終了結果と実行環境の停止"
+    },
+    "crates/cli/commands/src/node.rs": {
+      "name": "nodeサブコマンドの準備",
+      "role": "引数をNodeConfigへ変換し、DB付きNodeBuilderをlauncherへ渡す。",
+      "input": "nodeの引数、実行context、launcher",
+      "output": "設定・DB・タスクの実行器を持つbuilderの起動結果"
+    },
+    "crates/node/builder/src/launch/engine.rs": {
+      "name": "Engineを使うノードの起動",
+      "role": "設定・provider・部品を準備し、pipeline・Engine・RPC等を接続してNodeHandleを返す。",
+      "input": "NodeBuilderWithComponentsとlaunch context",
+      "output": "稼働するノードのhandleと終了待機Future"
+    },
+    "crates/node/builder/src/components/builder.rs": {
+      "name": "ノードの主要部品の組立",
+      "role": "EVM、pool、ネットワーク、payload builder、consensusのbuilderを呼び、依存を渡す。",
+      "input": "設定・providerを持つBuilderContext",
+      "output": "生成したComponents"
+    },
+    "crates/engine/tree/src/tree/mod.rs": {
+      "name": "Engine Treeの要求処理",
+      "role": "専用スレッドでEngine要求を処理し、チェーン状態と永続化の進行を調整する。",
+      "input": "Engine要求、ダウンロード済みブロック、永続化完了等",
+      "output": "Engine結果、チェーンイベント、永続化・同期に関する要求"
+    },
+    "crates/net/network/src/manager.rs": {
+      "name": "P2Pネットワークの進行管理",
+      "role": "handleからの要求とswarmイベントをpollし、ピア通信やネットワーク状態を進める。",
+      "input": "内部要求チャネルとP2P通信イベント",
+      "output": "ネットワーク状態の更新と関連イベントの処理"
+    },
+    "crates/engine/tree/src/backfill.rs": {
+      "name": "backfill同期の状態管理",
+      "role": "段階的同期pipelineをIdle/Runningで管理し、targetに応じてタスクを起動して結果を返す。",
+      "input": "BackfillAction::Startとpipeline",
+      "output": "Started・Finished・TaskDroppedイベント"
+    },
+    "crates/engine/tree/src/launch.rs": {
+      "name": "Engine内部サービスの配線",
+      "role": "downloader・persistence・tree・要求handler・backfillを結び、orchestratorを作る。",
+      "input": "provider、pipeline、要求ストリーム、Engine各部品",
+      "output": "ChainOrchestrator"
+    },
+    "crates/engine/tree/src/chain.rs": {
+      "name": "チェーン進行とbackfillの調整",
+      "role": "handlerとbackfillをpollし、開始・完了やチェーンイベントを上下へ伝える。",
+      "input": "ChainHandlerとBackfillSync",
+      "output": "ChainEventとhandlerへの同期状態通知"
+    },
+    "crates/engine/tree/src/engine.rs": {
+      "name": "Engine要求の中継",
+      "role": "要求ストリーム・ブロックのダウンロード処理・treeのチャネルを接続し、要求と結果イベントを取り次ぐ。",
+      "input": "Engine API要求、ダウンロード結果、treeイベント",
+      "output": "treeへのmessage、上位へのチェーン/backfill/ダウンロードイベント"
+    },
+    "crates/node/builder/src/handle.rs": {
+      "name": "起動済みノードのhandle",
+      "role": "ノードの部品群と終了Futureを保持し、終了待機の入口を提供する。",
+      "input": "起動済みノードと終了Future",
+      "output": "node_exit_futureの結果"
+    }
+  }
+}
