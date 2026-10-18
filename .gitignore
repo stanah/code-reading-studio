@@ -1,0 +1,12 @@
+node_modules/
+**/.reading-data/
+.env
+.env.*
+!.env.example
+.openai/
+dist/code-reading-studio-local.zip
+.DS_Store
+
+# Local working files and generated review outputs
+/work/
+/outputs/

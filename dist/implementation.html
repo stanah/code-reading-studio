@@ -1,0 +1,20 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ローカル実装 | Code Reading Studio</title><link rel="stylesheet" href="atlas.css"><link rel="stylesheet" href="studio.css"><script defer src="studio.js"></script></head><body><header class="studio-header"><a class="studio-brand" href="lenses.html"><span class="studio-mark">⌘</span>Code Reading Studio</a><span class="studio-project">paradigmxyz / reth</span><span class="studio-mode">READING WORKSPACE</span><a class="studio-download" href="implementation.html">ローカル版</a></header><nav class="studio-nav" aria-label="読み方"><a data-view="structure" href="lenses.html#lens=structure">構造から読む</a><a data-view="flow" href="lenses.html#lens=flow">動作から読む</a><a data-view="rust" href="lenses.html#lens=rust">Rust・設計から読む</a><a href="index.html">全体マップ・ファイル</a><span class="studio-profile">TypeScript経験あり · Rustは初めて</span></nav><main class="studio-install">
+<p>LOCAL IMPLEMENTATION / v0.2</p>
+<h1>実リポジトリで、<br>一段ずつコードを読む。</h1>
+<p>Gitから実際の構成とソースを取得するローカルアプリです。責務領域 → Cargoクレート → モジュール → 関数と処理 → 実コードの順に進み、コード範囲に紐づくメモを保存できます。</p>
+<a class="download" href="https://github.com/stanah/code-reading-studio-public">GitHubでソースと起動手順を見る</a>
+<h2>取得と起動</h2>
+<p>Node.js 22以上とGitを用意してください。次のコマンドでアプリと読解対象のRethを取得し、ローカルサーバーを起動します。追加パッケージのインストールは不要です。</p>
+<pre>git clone --recurse-submodules https://github.com/stanah/code-reading-studio-public.git
+cd code-reading-studio-public
+node local-app/server.mjs targets/reth 1a4dbbe11264fd52e6e9fbe768aa83f9a6b73607</pre>
+<p>起動後、<code>http://127.0.0.1:4317</code> を開いてください。サブモジュールを省略して取得した場合は、リポジトリのルートで <code>git submodule update --init --recursive</code> を実行します。Rethのビルドや実行は不要です。</p>
+<h2>3つの見方とTypeScriptからのRust入門</h2>
+<p>動作・構造・Rustの見方を切り替えながら、選んだ処理を維持します。Rust未経験を前提に、TypeScriptの簡略例と違いを表示します。<a href="lenses.html">ブラウザーで読解ガイドを開く →</a></p>
+<h2>実装済み</h2>
+<ul><li>固定コミットからのファイル索引・ソース取得</li><li>5段階の探索、原文ドキュメント、関数宣言候補</li><li>Rethの11領域と送信経路6箇所の読解メモ</li><li>行範囲・メモの永続化、JSON出力、発表表示</li><li>設定可能なAI接続と、根拠範囲つき解説の保存</li></ul>
+<h2>検証と現在の範囲</h2>
+<p>ローカル版の自動テスト8件と静的版の3テストスクリプトが通過しています。デスクトップブラウザーでは主要な探索導線、ガイドと実コードの往復、メモの保存・再起動復元、発表表示でのメモ非表示を確認済みです。</p>
+<p>関数抽出は字句パターンで、ASTや呼び出し関係の解析は未実装です。動作・Rustガイドは固定コミットの送信経路に対する執筆済み解説です。実AIサービスでの生成、スマートフォン幅、全ページの見た目、静的版の別窓共有、勉強会での利用評価は未検証です。</p>
+<p>AI未設定でも探索と保存は動きます。AI接続設定は <code>local-app/README.md</code>、検証範囲は <code>docs/HANDOFF.md</code> に記載しています。この静的ガイドと、手元のリポジトリを読むローカルアプリには機能の違いがあります。</p>
+</main></body></html>
