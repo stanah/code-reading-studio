@@ -10,3 +10,13 @@ body .atlas-main,body .zoom-main,body .shell main{padding:28px 32px}.atlas-title
 @media(max-width:900px){.studio-project{display:none}.studio-profile{width:100%;margin:0;padding:0 15px 4px}.studio-header .studio-mode{display:none}.studio-header .studio-download{margin-left:auto}.atlas-title{align-items:flex-start}.atlas-stats{gap:14px}.level strong{font-size:11px}}
 @media(max-width:700px){body .studio-header{padding:12px 16px;gap:12px;height:auto;min-height:60px}.studio-header .studio-brand{font-size:15px}.studio-nav{padding:7px 10px}.studio-nav a{padding:6px 10px;font-size:12px}body header.context-toolbar{padding:8px 16px;flex-wrap:wrap}body .atlas-main,body .zoom-main,body .shell main,#lens-root,.studio-install{padding:22px 16px}.atlas-title h1,.zoom-heading h1,h1{font-size:24px}.card{padding:18px}.domain-card{padding:12px}.domain-card strong{font-size:12px}.lens-tabs{display:none}.studio-profile{font-size:10px}.context-toolbar .badge{display:none}}
 .shell li{color:var(--studio-muted)}.shell li.active{color:var(--studio-green)}.shell .search{background:white;color:var(--studio-ink)}.shell .card .meta{color:var(--studio-muted)}.shell .toolbar input{background:white;color:var(--studio-ink)}.shell label{color:var(--studio-muted)}.shell .note{color:#395f50}.studio-header a:hover{color:var(--studio-green)}
+
+/* Keep prose in the Rust lessons readable on wide screens. */
+#lens-root article.card > p:not(.meta),
+#lens-root article.card > .note,
+#view article.card > p:not(.meta),
+#view article.card > .note {
+  max-width: 48em;
+  font-size: 15px;
+  line-height: 1.9;
+}

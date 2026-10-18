@@ -19,7 +19,19 @@ const annotations=JSON.parse(await read('local-app/annotations.json'));
 const startup=JSON.parse(await read('local-app/startup-guide.json'));
 for(const data of [pack,atlas,lenses,annotations,startup])assert.equal(data.commit,target.commit,'Stale data commit');
 assert.equal(startup.version,target.version);
+// JSON-normalize values created in a separate VM realm before deep comparison.
+const plain=value=>JSON.parse(JSON.stringify(value));
+assert.deepEqual(annotations.steps,plain(pack.steps.map(({code,...step})=>step)),'Local transaction explanations must match the static pack');
+assert.deepEqual(annotations.areas,plain(atlas.areas),'Local area explanations must match the atlas');
+assert.deepEqual(annotations.roles,plain(drill.roles),'Local module explanations must match the drill data');
+assert.deepEqual(annotations.pathAreas,plain(Object.fromEntries(atlas.files.map(f=>[f.path,f.area]))),'Local area mapping must match the atlas');
+assert.deepEqual(plain(lenses.steps.map(({structureUrl,...step})=>step)),annotations.steps,'Lens explanations must match the local reader');
+assert.equal(await read('dist/lenses.js'),await read('local-app/public/lenses.js'),'Static and local Rust lessons must match');
 assert.deepEqual([...atlas.files.map(f=>f.path)].sort(),[...index.rust].sort(),'Static file index must match Git');
+const readerHtml=await read('dist/reader.html'),zoomHtml=await read('dist/zoom.html');
+assert.ok(readerHtml.includes(`id="snapshot-link" href="https://github.com/${target.repository}/commit/${target.commit}"`),'Reader badge must link to the selected commit');
+assert.ok(readerHtml.match(/id="snapshot-link"[^>]*>([^<]+)/)?.[1].startsWith(target.commit.slice(0,12)),'Reader badge text must match the selected commit');
+assert.ok(zoomHtml.includes(`id="zoom-reference">参照：${target.commit.slice(0,12)}`),'Structure footer must show the selected commit');
 const cache=new Map();
 async function source(path){assert.ok(index.paths.includes(path),path);if(!cache.has(path))cache.set(path,await git(repo,'show',target.commit+':'+path));return cache.get(path);}
 async function anchor(s,hash,url,code){

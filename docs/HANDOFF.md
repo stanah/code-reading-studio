@@ -44,12 +44,15 @@ APIにはセッションのトークンが必要です。サーバーは127.0.0.
 python3 scripts/build-atlas.py targets/reth
 python3 scripts/build-drill.py
 node scripts/build-lenses.cjs
+node scripts/build-annotations.cjs
 python3 scripts/build-guide.py
 python3 scripts/build-design.py
 node scripts/check-reading-data.mjs
 ```
 
 索引と本文は、いずれも固定コミットから読みます。
+`build-annotations.cjs`は送信経路・領域・モジュールの説明をローカル版へ同期します。
+`check-reading-data.mjs`は説明のコピー間の一致も確認します。
 `build-guide.py`は資料のMarkdownとCSSから、`docs/reading-guide.html`と`dist/startup.html`を更新します。
 `build-design.py`は既存の共通ヘッダーも更新します。配布コピーだけを個別に直さないでください。
 静的版の`dist/startup.html`は説明資料のコピーです。ローカル版のAPIやファイルツリーは使いません。
@@ -90,7 +93,7 @@ backfill時に呼ばれる`Pipeline::run_as_fut`と`run_loop`を区別します�
 Rustの類推はTypeScriptで簡単に示し、同じでない点を添えます。
 FutureとPromise、タスクとOSスレッド、プール追加とブロック確定を区別します。
 資料にはyomiyasuを適用し、数値・条件・否定・根拠を変えずに推敲します。
-手順と検査の記録は`yomiyasu-review.md`にあります。
+起動資料の検査記録は`yomiyasu-review.md`、既存3画面の検査記録は`yomiyasu-existing-review.md`にあります。
 
 ## 制限と運用
 

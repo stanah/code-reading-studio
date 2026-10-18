@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-19",
+  "baseline": "4fda42a4a758addd25b90805d0ba14f53e10f612",
+  "target": {
+    "repository": "paradigmxyz/reth",
+    "version": "v2.7.0",
+    "commit": "3d592ece6de8c4559987416a544fc215fd6d6921"
+  },
+  "skill": {
+    "repository": "https://github.com/nanaism/yomiyasu",
+    "version": "2.0.1",
+    "commit": "84e1f5b15e497538fcfe19ab7e9c6f6d138f19ff"
+  },
+  "coverage": {
+    "transaction_fields": 189,
+    "transaction_steps": 6,
+    "detours": 5,
+    "structure_fields": 90,
+    "areas": 11,
+    "topics": 4,
+    "rpc_components": 4,
+    "module_roles": 6,
+    "rust_lessons": 5,
+    "flow_groups": 3,
+    "lesson_and_group_fields": 44,
+    "static_lens_screen_texts": 44,
+    "lens_render_cases": 38,
+    "selected_ui_passages": 28
+  },
+  "checks": {
+    "local_app_tests_passed": 20,
+    "static_suites_passed": [
+      "smoke",
+      "atlas",
+      "zoom"
+    ],
+    "transaction_anchors": 11,
+    "startup_anchors": 16,
+    "source_seed_files": 49,
+    "transaction_non_prose_equal": true,
+    "generator_non_prose_ast_equal": true,
+    "local_static_copy_equal": true,
+    "reference_badges_match_target": true,
+    "reth_built_or_executed": false
+  },
+  "browser": {
+    "local_width": 667,
+    "static_width": 1265,
+    "flow_rust_source_roundtrip": true,
+    "selected_step_retained_across_lenses": true,
+    "local_console_warnings_errors": 0,
+    "screenshots": [
+      "flow.png",
+      "rust-result.png",
+      "structure.png",
+      "static-structure.png",
+      "static-structure-cards.png",
+      "static-rust-channel.png"
+    ],
+    "final_local_content_width": 652,
+    "rust_body_font_px": 15,
+    "rust_body_max_width_px": 720
+  },
+  "records": [
+    {
+      "corpus": "transaction",
+      "original_sha256": "72e8d91a43732dd847e34be62ed6b8982e76418eecd29764566605fece9b74aa",
+      "final_sha256": "73af2fc07afc75ef1b8a99dc5aaba77b0f4c07050da2a458e6e30fe5a39c8e33",
+      "verify": "yomiyasu-check: executed via=verify run=20261018T161615Z-e831c318 attempt=2 final=sha256:73af2fc07afc mode=rewrite doc_type=article reader=informed checks=lint,diff,materials meaning_risk=2 replay=skipped",
+      "硬化の検査": "硬化の検査: 候補なし",
+      "勢いの検査": "勢いの検査: 候補なし",
+      "見直し候補": "見直し候補: 原文 11件 → 最終稿 3件（lint の規則に当たった数で、点数ではありません。増えても減っても読みやすさの良し悪しは示しません）"
+    },
+    {
+      "corpus": "structure",
+      "original_sha256": "12e16a43431c18b1a95616ad92bfcb1c4ab198d93b9fb4e13ede797271c0f739",
+      "final_sha256": "69a46d26f29cd3a123abf5bd6d5869fdc863abe06fbc8c37e0881b9c67fb036c",
+      "verify": "yomiyasu-check: executed via=verify run=20261018T161613Z-41226d15 attempt=1 final=sha256:69a46d26f29c mode=rewrite doc_type=article reader=informed checks=lint,diff,materials meaning_risk=0 replay=skipped",
+      "硬化の検査": "硬化の検査: 候補なし",
+      "勢いの検査": "勢いの検査: 候補なし",
+      "見直し候補": "見直し候補: 原文 2件 → 最終稿 0件（lint の規則に当たった数で、点数ではありません。増えても減っても読みやすさの良し悪しは示しません）"
+    },
+    {
+      "corpus": "lenses",
+      "original_sha256": "1ee2ec08a420717a059ec2a8020b9e751098a10b7eb693082dedba5cad11f9ca",
+      "final_sha256": "ed2b9241ec1f7587b0272b11f95cb677fae689021df78cac7c80811912118a99",
+      "verify": "yomiyasu-check: executed via=verify run=20261018T161612Z-78aeb3b1 attempt=2 final=sha256:ed2b9241ec1f mode=rewrite doc_type=article reader=informed checks=lint,diff,materials meaning_risk=6 replay=skipped",
+      "硬化の検査": "硬化の検査: 候補2件",
+      "勢いの検査": "勢いの検査: 候補なし",
+      "見直し候補": "見直し候補: 原文 6件 → 最終稿 3件（lint の規則に当たった数で、点数ではありません。増えても減っても読みやすさの良し悪しは示しません）"
+    },
+    {
+      "corpus": "ui",
+      "original_sha256": "7b79fb135e805913dfdbb7c851a9019f68bb2c887a18d1b4d379837ae524b157",
+      "final_sha256": "7b72acac0f04a5326dea01a63bb345c78f06bbf4447d2a2010a2d1055ea422c4",
+      "verify": "yomiyasu-check: executed via=verify run=20261018T161614Z-c0ed646e attempt=2 final=sha256:7b72acac0f04 mode=rewrite doc_type=article reader=informed checks=lint,diff,materials meaning_risk=1 replay=skipped",
+      "硬化の検査": "硬化の検査: 候補2件",
+      "勢いの検査": "勢いの検査: 候補なし",
+      "見直し候補": "見直し候補: 原文 2件 → 最終稿 0件（lint の規則に当たった数で、点数ではありません。増えても減っても読みやすさの良し悪しは示しません）"
+    }
+  ]
+}

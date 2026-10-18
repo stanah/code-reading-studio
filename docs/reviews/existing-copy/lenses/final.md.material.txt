@@ -1,0 +1,96 @@
+<<<yomiyasu:material crates/rpc/rpc-eth-api/src/helpers/transaction.rs L81-109>>>
+    /// Decodes and recovers the transaction and submits it to the pool.
+    ///
+    /// Returns the hash of the transaction.
+    fn send_raw_transaction(
+        &self,
+        tx: Bytes,
+    ) -> impl Future<Output = Result<B256, Self::Error>> + Send {
+        async move {
+            let pool_transaction = self.recover_raw_pool_transaction(&tx)?;
+            self.send_pool_transaction(
+                TransactionOrigin::Local,
+                WithEncoded::new(tx, pool_transaction),
+            )
+            .await
+        }
+    }
+
+    /// Decodes and recovers a raw pool transaction, sharing sender recovery when configured.
+    fn recover_raw_pool_transaction(&self, tx: &[u8]) -> Result<PoolTx<Self::Pool>, Self::Error> {
+        match self.eth_api_settings().sender_recovery_cache.as_ref() {
+            Some(cache) => {
+                <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction_with_cache(
+                    tx, cache,
+                )
+            }
+            None => <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction(tx),
+        }
+        .map_err(Self::Error::from_eth_err)
+    }
+
+<<<yomiyasu:material crates/rpc/rpc/src/eth/core.rs L480-506>>>
+
+    /// Returns the transaction batch sender
+    #[inline]
+    pub const fn tx_batch_sender(
+        &self,
+    ) -> &mpsc::UnboundedSender<BatchTxRequest<<N::Pool as TransactionPool>::Transaction>> {
+        &self.tx_batch_sender
+    }
+
+    /// Adds an _unvalidated_ transaction into the pool via the transaction batch sender.
+    #[inline]
+    pub async fn add_pool_transaction(
+        &self,
+        origin: reth_transaction_pool::TransactionOrigin,
+        transaction: <N::Pool as TransactionPool>::Transaction,
+    ) -> Result<AddedTransactionOutcome, EthApiError> {
+        let (response_tx, response_rx) = tokio::sync::oneshot::channel();
+        let request = reth_transaction_pool::BatchTxRequest::new(origin, transaction, response_tx);
+
+        self.tx_batch_sender()
+            .send(request)
+            .map_err(|_| reth_rpc_eth_types::EthApiError::BatchTxSendError)?;
+
+        Ok(response_rx.await??)
+    }
+
+    /// Returns the pending block kind
+
+<<<yomiyasu:material crates/transaction-pool/src/batcher.rs L1-35>>>
+//! Transaction batching for `Pool` insertion for high-throughput scenarios
+//!
+//! This module provides transaction batching logic to reduce lock contention when processing
+//! many concurrent transaction pool insertions.
+
+use crate::{
+    error::PoolError, AddedTransactionOutcome, PoolTransaction, TransactionOrigin, TransactionPool,
+};
+use pin_project::pin_project;
+use std::{
+    future::Future,
+    pin::Pin,
+    task::{ready, Context, Poll},
+};
+use tokio::sync::{mpsc, oneshot};
+
+/// A single batch transaction request
+#[derive(Debug)]
+pub struct BatchTxRequest<T: PoolTransaction> {
+    /// Origin of the transaction (e.g. Local, External)
+    origin: TransactionOrigin,
+    /// Tx to be inserted in to the pool
+    pool_tx: T,
+    /// Channel to send result back to caller
+    response_tx: oneshot::Sender<Result<AddedTransactionOutcome, PoolError>>,
+}
+
+impl<T> BatchTxRequest<T>
+where
+    T: PoolTransaction,
+{
+    /// Create a new batch transaction request
+    pub const fn new(
+        origin: TransactionOrigin,
+        pool_tx: T,

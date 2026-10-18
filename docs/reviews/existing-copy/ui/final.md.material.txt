@@ -1,0 +1,7 @@
+<<<yomiyasu:material local-app/core.mjs L11-L16>>>
+ const rust=paths.filter(p=>p.endsWith('.rs')); const manifests=paths.filter(p=>p.endsWith('Cargo.toml'));
+ const crates=manifests.map(path=>{const directory=path.slice(0,-10);return {id:path,directory,name:directory.replace(/\/$/,'').split('/').pop()||'workspace',files:[]}}).sort((a,b)=>b.directory.length-a.directory.length);
+ for(const path of rust){const c=crates.find(c=>path.startsWith(c.directory));if(c)c.files.push(path);}
+ const areas=[...new Set(crates.filter(c=>c.files.length).map(c=>c.directory.startsWith('crates/')?c.directory.split('/')[1]:c.directory.split('/')[0]||'root'))].sort();
+ for(const c of crates)c.area=c.directory.startsWith('crates/')?c.directory.split('/')[1]:c.directory.split('/')[0]||'root';
+ return {repo,commit,id:digest(repo+'@'+commit).slice(0,20),paths,entries,rust,crates:crates.filter(c=>c.files.length),areas};

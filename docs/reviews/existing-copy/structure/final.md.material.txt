@@ -1,0 +1,628 @@
+# Reth 3d592ece6de8c4559987416a544fc215fd6d6921 module documentation
+
+## crates/node/builder/src/lib.rs
+1: //! Standalone crate for Reth configuration and builder types.
+2: //!
+3: //! # features
+4: //! - `js-tracer`: Enable the `JavaScript` tracer for the `debug_trace` endpoints
+
+## crates/rpc/rpc-eth-api/src/lib.rs
+1: //! Reth RPC `eth_` API implementation
+2: //!
+3: //! ## Feature Flags
+4: //!
+5: //! - `client`: Enables JSON-RPC client support.
+
+## crates/rpc/rpc-engine-api/src/lib.rs
+1: //! The implementation of Engine API.
+2: //! [Read more](https://github.com/ethereum/execution-apis/tree/main/src/engine).
+
+## crates/transaction-pool/src/lib.rs
+1: //! Reth's transaction pool implementation.
+2: //!
+3: //! This crate provides a generic transaction pool implementation.
+4: //!
+5: //! ## Functionality
+6: //!
+7: //! The transaction pool is responsible for
+8: //!
+9: //!    - recording incoming transactions
+10: //!    - providing existing transactions
+11: //!    - ordering and providing the best transactions for block production
+12: //!    - monitoring memory footprint and enforce pool size limits
+13: //!    - storing blob data for transactions in a separate blobstore on insertion
+14: //!
+
+## crates/net/network/src/lib.rs
+1: //! reth P2P networking.
+2: //!
+3: //! Ethereum's networking protocol is specified in [devp2p](https://github.com/ethereum/devp2p).
+4: //!
+5: //! In order for a node to join the ethereum p2p network it needs to know what nodes are already
+6: //! part of that network. This includes public identities (public key) and addresses (where to reach
+7: //! them).
+8: //!
+9: //! ## Bird's Eye View
+10: //!
+11: //! See also diagram in [`NetworkManager`]
+12: //!
+13: //! The `Network` is made up of several, separate tasks:
+14: //!
+
+## crates/net/p2p/src/lib.rs
+1: //! Provides abstractions and commonly used types for p2p.
+2: //!
+3: //! ## Feature Flags
+4: //!
+5: //! - `test-utils`: Export utilities for testing
+
+## crates/stages/stages/src/lib.rs
+1: //! Staged syncing primitives for reth.
+2: //!
+3: //! This crate contains the syncing primitives [`Pipeline`] and [`Stage`], as well as all stages
+4: //! that reth uses to sync.
+5: //!
+6: //! A pipeline can be configured using [`Pipeline::builder()`].
+7: //!
+8: //! For ease of use, this crate also exposes a set of [`StageSet`]s, which are collections of stages
+9: //! that perform specific functions during sync. Stage sets can be customized; it is possible to
+10: //! add, disable and replace stages in the set.
+11: //!
+12: //! # Examples
+13: //!
+14: //! ```
+
+## crates/snap-sync/src/lib.rs
+
+
+## crates/engine/tree/src/lib.rs
+1: //! This crate includes the core components for advancing a reth chain.
+2: //!
+3: //! ## Functionality
+4: //!
+5: //! The components in this crate are involved in:
+6: //! * Handling and reacting to incoming consensus events ([`EngineHandler`](engine::EngineHandler))
+7: //! * Advancing the chain ([`ChainOrchestrator`](chain::ChainOrchestrator))
+8: //! * Keeping track of the chain structure in-memory ([`TreeState`](tree::state::TreeState))
+9: //! * Performing backfill sync and handling its progress ([`BackfillSync`](backfill::BackfillSync))
+10: //! * Downloading blocks ([`BlockDownloader`](download::BlockDownloader)), and
+11: //! * Persisting blocks and performing pruning
+12: //!   ([`PersistenceService`](persistence::PersistenceService))
+13: //!
+14: //! ## Design and motivation
+
+## crates/consensus/consensus/src/lib.rs
+1: //! Consensus protocol functions
+2: //!
+3: //! # Trait hierarchy
+4: //!
+5: //! Consensus validation is split across three traits, each adding a layer:
+6: //!
+7: //! - [`HeaderValidator`] — validates a header in isolation and against its parent. Used early in
+8: //!   the validation pipeline before block execution.
+9: //!
+10: //! - [`Consensus`] — extends `HeaderValidator` with block body validation. Checks that the body
+11: //!   matches the header (tx root, ommer hash, withdrawals) and runs pre-execution checks. Used
+12: //!   before a block is executed.
+13: //!
+14: //! - [`FullConsensus`] — extends `Consensus` with post-execution validation. Checks execution
+
+## crates/evm/evm/src/lib.rs
+1: //! Traits for configuring an EVM specifics.
+2: //!
+3: //! # Revm features
+4: //!
+5: //! This crate does __not__ enforce specific revm features such as `blst` or `c-kzg`, which are
+6: //! critical for revm's evm internals, it is the responsibility of the implementer to ensure the
+7: //! proper features are selected.
+
+## crates/ethereum/evm/src/lib.rs
+1: //! EVM config for vanilla ethereum.
+2: //!
+3: //! # Revm features
+4: //!
+5: //! This crate does __not__ enforce specific revm features such as `blst` or `c-kzg`, which are
+6: //! critical for revm's evm internals, it is the responsibility of the implementer to ensure the
+7: //! proper features are selected.
+
+## crates/payload/builder/src/lib.rs
+1: //! This crate defines abstractions to create and update payloads (blocks):
+2: //! - [`PayloadJobGenerator`]: a type that knows how to create new jobs for creating payloads based
+3: //!   on [`PayloadAttributes`](alloy_rpc_types::engine::PayloadAttributes).
+4: //! - [`PayloadJob`]: a type that yields (better) payloads over time.
+5: //!
+6: //! This crate comes with the generic [`PayloadBuilderService`] responsible for managing payload
+7: //! jobs.
+8: //!
+9: //! ## Node integration
+10: //!
+11: //! In a standard node the [`PayloadBuilderService`] sits downstream of the engine API, or rather
+12: //! the component that handles requests from the consensus layer like `engine_forkchoiceUpdatedV1`.
+13: //!
+14: //! Payload building is enabled if the forkchoice update request contains payload attributes.
+
+## crates/ethereum/payload/src/lib.rs
+1: //! A basic Ethereum payload builder implementation.
+
+## crates/storage/provider/src/lib.rs
+1: //! Collection of traits and trait implementations for common database operations.
+2: //!
+3: //! ## Feature Flags
+4: //!
+5: //! - `test-utils`: Export utilities for testing
+
+## crates/trie/trie/src/lib.rs
+1: //! The implementation of Merkle Patricia Trie, a cryptographically
+2: //! authenticated radix trie that is used to store key-value bindings.
+3: //! <https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/>
+4: //!
+5: //! ## Feature Flags
+6: //!
+7: //! - `rayon`: uses rayon for parallel [`HashedPostState`] creation.
+8: //! - `test-utils`: Export utilities for testing
+
+## crates/exex/exex/src/lib.rs
+1: //! Execution extensions (`ExEx`).
+2: //!
+3: //! An execution extension is a task that listens to state changes of the node.
+4: //!
+5: //! Some examples of such state derives are rollups, bridges, and indexers.
+6: //!
+7: //! An `ExEx` is a [`Future`] resolving to a `Result<()>` that is run indefinitely alongside the
+8: //! node.
+9: //!
+10: //! `ExEx`'s are initialized using an async closure that resolves to the `ExEx`; this closure gets
+11: //! passed an [`ExExContext`] where it is possible to spawn additional tasks and modify Reth.
+12: //!
+13: //! Most `ExEx`'s will want to derive their state from the [`CanonStateNotification`] channel given
+14: //! in [`ExExContext`]. A new notification is emitted whenever blocks are executed in live and
+
+## crates/chainspec/src/lib.rs
+1: //! The spec of an Ethereum network
+
+## crates/tasks/src/lib.rs
+1: //! Reth task management.
+2: //!
+3: //! # Feature Flags
+4: //!
+5: //! - `rayon`: Enable rayon thread pool for blocking tasks.
+
+# Reth 3d592ece6de8c4559987416a544fc215fd6d6921 selected declarations and implementation
+
+## crates/rpc/rpc-eth-api/src/core.rs
+380:     /// Sends signed transaction, returning its hash.
+381:     #[method(name = "sendRawTransaction")]
+382:     async fn send_raw_transaction(&self, bytes: Bytes) -> RpcResult<B256>;
+383: 
+384:     /// Sends a signed transaction and awaits the transaction receipt.
+385:     ///
+386:     /// This will return a timeout error if the transaction isn't included within some time period.
+387:     #[method(name = "sendRawTransactionSync")]
+388:     async fn send_raw_transaction_sync(
+389:         &self,
+390:         bytes: Bytes,
+391:         timeout_ms: Option<u64>,
+392:     ) -> RpcResult<R>;
+393: 
+394:     /// Returns an Ethereum specific signature with: sign(keccak256("\x19Ethereum Signed Message:\n"
+395:     /// + len(message) + message))).
+396:     #[method(name = "sign")]
+919: 
+920:     /// Handler for: `eth_sendRawTransaction`
+921:     async fn send_raw_transaction(&self, tx: Bytes) -> RpcResult<B256> {
+922:         trace!(target: "rpc::eth", ?tx, "Serving eth_sendRawTransaction");
+923:         Ok(EthTransactions::send_raw_transaction(self, tx).await?)
+924:     }
+925: 
+926:     /// Handler for: `eth_sendRawTransactionSync`
+927:     async fn send_raw_transaction_sync(
+928:         &self,
+929:         tx: Bytes,
+
+## crates/rpc/rpc-eth-api/src/helpers/transaction.rs
+63: ///
+64: /// This implementation follows the behaviour of Geth and disables the basefee check for tracing.
+65: pub trait EthTransactions: LoadTransaction<Provider: BlockReaderIdExt> {
+66:     /// Returns a handle for signing data.
+67:     ///
+68:     /// Signer access in default (L1) trait method implementations.
+69:     fn signers(&self) -> &SignersForRpc<Self::Provider, Self::NetworkTypes>;
+70: 
+71:     /// Returns a list of addresses owned by provider.
+72:     fn accounts(&self) -> Vec<Address> {
+73:         self.signers().read().iter().flat_map(|s| s.accounts()).collect()
+75: 
+76:     /// Returns the timeout duration for `send_raw_transaction_sync` RPC method.
+77:     fn send_raw_transaction_sync_timeout(&self) -> Duration {
+78:         self.eth_api_settings().send_raw_transaction_sync_timeout
+79:     }
+80: 
+81:     /// Decodes and recovers the transaction and submits it to the pool.
+82:     ///
+83:     /// Returns the hash of the transaction.
+84:     fn send_raw_transaction(
+85:         &self,
+86:         tx: Bytes,
+87:     ) -> impl Future<Output = Result<B256, Self::Error>> + Send {
+88:         async move {
+89:             let pool_transaction = self.recover_raw_pool_transaction(&tx)?;
+90:             self.send_pool_transaction(
+91:                 TransactionOrigin::Local,
+92:                 WithEncoded::new(tx, pool_transaction),
+93:             )
+94:             .await
+95:         }
+96:     }
+97: 
+98:     /// Decodes and recovers a raw pool transaction, sharing sender recovery when configured.
+99:     fn recover_raw_pool_transaction(&self, tx: &[u8]) -> Result<PoolTx<Self::Pool>, Self::Error> {
+100:         match self.eth_api_settings().sender_recovery_cache.as_ref() {
+101:             Some(cache) => {
+102:                 <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction_with_cache(
+103:                     tx, cache,
+104:                 )
+105:             }
+106:             None => <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction(tx),
+110: 
+111:     /// Submits the transaction to the pool with the given [`TransactionOrigin`].
+112:     fn send_transaction(
+113:         &self,
+114:         origin: TransactionOrigin,
+115:         tx: WithEncoded<Recovered<PoolPooledTx<Self::Pool>>>,
+116:     ) -> impl Future<Output = Result<B256, Self::Error>> + Send {
+117:         async move {
+118:             let (encoded, recovered) = tx.split();
+119:             let pool_transaction =
+120:                 <Self::Pool as TransactionPool>::Transaction::from_pooled(recovered);
+134:     ///
+135:     /// And awaits the receipt.
+136:     fn send_raw_transaction_sync(
+137:         &self,
+138:         tx: Bytes,
+139:         timeout_ms: Option<u64>,
+140:     ) -> impl Future<Output = Result<RpcReceipt<Self::NetworkTypes>, Self::Error>> + Send
+141:     where
+142:         Self: LoadReceipt + 'static,
+143:     {
+144:         let this = self.clone();
+500:     /// Signs transaction with a matching signer, if any and submits the transaction to the pool.
+501:     /// Returns the hash of the signed transaction.
+502:     fn send_transaction_request(
+503:         &self,
+504:         mut request: RpcTxReq<Self::NetworkTypes>,
+505:     ) -> impl Future<Output = Result<B256, Self::Error>> + Send
+506:     where
+507:         Self: EthApiSpec + LoadBlock + EstimateCall + LoadFee,
+508:     {
+509:         async move {
+510:             let from = match request.as_ref().from() {
+
+## crates/transaction-pool/src/batcher.rs
+69:     async fn process_request(pool: &Pool, req: BatchTxRequest<Pool::Transaction>) {
+70:         let BatchTxRequest { origin, pool_tx, response_tx } = req;
+71:         let pool_result = pool.add_transaction(origin, pool_tx).await;
+72:         let _ = response_tx.send(pool_result);
+73:     }
+74: 
+75:     /// Process a batch of transaction requests with per-transaction origins
+76:     async fn process_batch(pool: &Pool, batch: Vec<BatchTxRequest<Pool::Transaction>>) {
+77:         if batch.len() == 1 {
+78:             Self::process_request(pool, batch.into_iter().next().expect("batch is not empty"))
+79:                 .await;
+89:                 batch.into_iter().map(|req| (req.pool_tx, req.response_tx)).unzip();
+90: 
+91:             let pool_results = pool.add_transactions(origin, transactions).await;
+92:             for (response_tx, pool_result) in response_txs.into_iter().zip(pool_results) {
+93:                 let _ = response_tx.send(pool_result);
+94:             }
+95:             return
+96:         }
+97: 
+98:         let (transactions, response_txs): (Vec<_>, Vec<_>) =
+99:             batch.into_iter().map(|req| ((req.origin, req.pool_tx), req.response_tx)).unzip();
+100: 
+101:         let pool_results = pool.add_transactions_with_origins(transactions).await;
+102:         for (response_tx, pool_result) in response_txs.into_iter().zip(pool_results) {
+103:             let _ = response_tx.send(pool_result);
+104:         }
+105:     }
+106: }
+107: 
+108: impl<Pool> Future for BatchTxProcessor<Pool>
+109: where
+117:         loop {
+118:             // Drain all available requests from the receiver
+119:             ready!(this.request_rx.poll_recv_many(cx, this.buf, *this.max_batch_size));
+120: 
+121:             if !this.buf.is_empty() {
+122:                 let batch = std::mem::take(this.buf);
+123:                 let pool = this.pool.clone();
+124:                 tokio::spawn(async move {
+125:                     Self::process_batch(&pool, batch).await;
+126:                 });
+127:                 this.buf.reserve(1);
+
+## crates/transaction-pool/src/lib.rs
+484:     }
+485: 
+486:     async fn add_transaction_and_subscribe(
+487:         &self,
+488:         origin: TransactionOrigin,
+489:         transaction: Self::Transaction,
+490:     ) -> PoolResult<TransactionEvents> {
+491:         let tx = self.validate(origin, transaction).await;
+492:         self.pool.add_transaction_and_subscribe(origin, tx)
+493:     }
+494: 
+495:     async fn add_transaction(
+496:         &self,
+497:         origin: TransactionOrigin,
+498:         transaction: Self::Transaction,
+499:     ) -> PoolResult<AddedTransactionOutcome> {
+500:         let tx = self.validate(origin, transaction).await;
+501:         let mut results = self.pool.add_transactions(origin, std::iter::once(tx));
+502:         results.pop().expect("result length is the same as the input")
+503:     }
+504: 
+505:     async fn add_transactions(
+506:         &self,
+507:         origin: TransactionOrigin,
+508:         transactions: Vec<Self::Transaction>,
+509:     ) -> Vec<PoolResult<AddedTransactionOutcome>> {
+510:         if transactions.is_empty() {
+511:             return Vec::new()
+512:         }
+513:         let validated =
+516:     }
+517: 
+518:     async fn add_transactions_with_origins(
+519:         &self,
+520:         transactions: Vec<(TransactionOrigin, Self::Transaction)>,
+521:     ) -> Vec<PoolResult<AddedTransactionOutcome>> {
+522:         if transactions.is_empty() {
+523:             return Vec::new()
+524:         }
+525:         let origins: Vec<_> = transactions.iter().map(|(origin, _)| *origin).collect();
+526:         let validated = self.pool.validator().validate_transactions(transactions).await;
+
+## crates/rpc/rpc/src/eth/helpers/transaction.rs
+7: use reth_chainspec::{ChainSpecProvider, EthereumHardforks};
+8: use reth_primitives_traits::{AlloyBlockHeader, WithEncoded};
+9: use reth_rpc_convert::RpcConvert;
+10: use reth_rpc_eth_api::{
+11:     helpers::{spec::SignersForRpc, EthTransactions, LoadTransaction},
+12:     FromEvmError, RpcNodeCore,
+13: };
+14: use reth_rpc_eth_types::{error::RpcPoolError, EthApiError};
+15: use reth_storage_api::BlockReaderIdExt;
+16: use reth_transaction_pool::{
+17:     error::Eip4844PoolTransactionError, AddedTransactionOutcome, EthBlobTransactionSidecar,
+37:         let (tx, mut pool_transaction) = tx.split();
+38: 
+39:         // Optionally convert legacy blob sidecars to EIP-7594 format when Osaka is active
+40:         // This is opt-in via --rpc.force-blob-sidecar-upcasting
+41:         if self.inner.force_blob_sidecar_upcasting() && pool_transaction.is_eip4844() {
+42:             let EthBlobTransactionSidecar::Present(sidecar) = pool_transaction.take_blob() else {
+43:                 return Err(EthApiError::PoolError(RpcPoolError::Eip4844(
+44:                     Eip4844PoolTransactionError::MissingEip4844BlobSidecar,
+45:                 )));
+46:             };
+47:             let sidecar = sidecar.into_sidecar();
+60:                     {
+61:                         BlobTransactionSidecarVariant::Eip7594(
+62:                             self.blob_sidecar_converter().convert(sidecar).await.ok_or_else(
+63:                                 || {
+64:                                     RpcPoolError::Eip4844(
+65:                                         Eip4844PoolTransactionError::InvalidEip4844Blob(
+66:                                             BlobTransactionValidationError::InvalidProof,
+67:                                         ),
+68:                                     )
+69:                                 },
+70:                             )?,
+87: 
+88:         // forward the transaction to the specific endpoint if configured.
+89:         if let Some(client) = self.raw_tx_forwarder() {
+90:             tracing::debug!(target: "rpc::eth", hash = %pool_transaction.hash(), "forwarding raw transaction to forwarder");
+91:             let rlp_hex = hex::encode_prefixed(&tx);
+92: 
+93:             // broadcast raw transaction to subscribers if there is any.
+94:             self.broadcast_raw_transaction(tx);
+95: 
+96:             let hash =
+97:                 client.request("eth_sendRawTransaction", (rlp_hex,)).await.inspect_err(|err| {
+98:                     tracing::debug!(target: "rpc::eth", %err, hash=% *pool_transaction.hash(), "failed to forward raw transaction");
+148:     use reth_transaction_pool::{
+149:         test_utils::{testing_pool, TestPool, TransactionGenerator},
+150:         EthPooledTransaction, PoolPooledTx, TransactionOrigin, TransactionPool,
+151:     };
+152: 
+153:     fn mock_eth_api(
+154:         accounts: AddressMap<ExtendedAccount>,
+155:     ) -> EthApi<
+156:         RpcNodeCoreAdapter<MockEthProvider, TestPool, NoopNetwork, EthEvmConfig>,
+157:         EthRpcConverter<ChainSpec>,
+158:     > {
+338:             .build();
+339:         let raw = raw_transfer_tx();
+340:         let transaction = EthPooledTransaction::decode_raw_transaction(&raw).unwrap();
+341:         let sender = transaction.try_recover().unwrap();
+342: 
+343:         let err = eth_api.send_raw_transaction_sync(raw, Some(1)).await.unwrap_err();
+344:         assert!(matches!(err, EthApiError::TransactionConfirmationTimeout { .. }));
+345:         assert_eq!(cache.get(transaction.tx_hash()), Some(sender));
+346:         assert_eq!(eth_api.pool().len(), 1);
+347:     }
+348: 
+438: 
+439:     #[tokio::test]
+440:     async fn send_transaction_preserves_provided_gas_limit() {
+441:         let signers = DevSigner::random_signers(1);
+442:         let address = signers[0].accounts()[0];
+443:         let accounts = AddressMap::from_iter([(
+444:             address,
+445:             ExtendedAccount::new(0, U256::from(10_000_000_000_000_000_000u64)),
+446:         )]);
+447:         let eth_api = mock_eth_api(accounts);
+448:         eth_api.signers().write().extend(signers);
+467: 
+468:     #[tokio::test]
+469:     async fn send_transaction_fills_missing_fee_fields() {
+470:         let signers = DevSigner::random_signers(1);
+471:         let address = signers[0].accounts()[0];
+472:         let accounts = AddressMap::from_iter([(
+473:             address,
+474:             ExtendedAccount::new(0, U256::from(10_000_000_000_000_000_000u64)),
+475:         )]);
+476:         let eth_api = mock_eth_api(accounts);
+477:         eth_api.signers().write().extend(signers);
+494: 
+495:     #[tokio::test]
+496:     async fn send_transaction_rejects_mismatched_chain_id() {
+497:         let signers = DevSigner::random_signers(1);
+498:         let address = signers[0].accounts()[0];
+499:         let accounts = AddressMap::from_iter([(
+500:             address,
+501:             ExtendedAccount::new(0, U256::from(10_000_000_000_000_000_000u64)),
+502:         )]);
+503:         let eth_api = mock_eth_api(accounts);
+504:         eth_api.signers().write().extend(signers);
+
+## crates/rpc/rpc/src/eth/core.rs
+228: /// Container type `EthApi`
+229: #[expect(missing_debug_implementations)]
+230: pub struct EthApiInner<N: RpcNodeCore, Rpc: RpcConvert> {
+231:     /// The components of the node.
+232:     components: N,
+233:     /// All configured Signers
+234:     signers: SignersForRpc<N::Provider, Rpc::Network>,
+235:     /// The async cache frontend for eth related data
+236:     eth_cache: EthStateCache<N::Primitives>,
+237:     /// The async gas oracle frontend for gas price suggestions
+238:     gas_oracle: GasPriceOracle<N::Provider>,
+
+## crates/snap-sync/src/lib.rs
+23: mod test_utils;
+24: 
+25: pub use account::{
+26:     AccountCoverage, AccountRangeDownload, AccountRangeStep, SnapAccountStore, VerifiedRange,
+27: };
+28: pub use attempt::{SnapAttemptStore, SnapWrite};
+29: pub use bootstrap::{
+30:     SnapBootstrap, SnapBootstrapOutcome, SnapSyncContext, DEFAULT_RANGES_PER_CHECK,
+31: };
+32: pub use bytecode::{BytecodeDownload, BytecodeStep, SnapBytecodeStore, DEFAULT_CODE_HASHES};
+33: pub use catch_up::{
+34:     BalStateUpdate, BlockAccessListCatchUp, CatchUpProgress, CatchUpStep, DownloadedAccount,
+35:     SnapCatchUpStore, DEFAULT_BAL_RESPONSE_BYTES, DEFAULT_CATCH_UP_BLOCKS,
+36: };
+37: pub use common::{DEFAULT_RESPONSE_BYTES, MAX_HASH};
+
+## crates/rpc/rpc-eth-api/src/helpers/mod.rs
+1: //! Behaviour needed to serve `eth_` RPC requests, divided into general database reads and
+2: //! specific database access.
+3: //!
+4: //! Traits with `Load` prefix, read atomic data from database, e.g. a block or transaction. Any
+5: //! database read done in more than one default `Eth` trait implementation, is defined in a `Load`
+6: //! trait.
+7: //!
+8: //! Traits with `Eth` prefix, compose specific data needed to serve RPC requests in the `eth`
+9: //! namespace. They use `Load` traits as building blocks. [`EthTransactions`] also writes data
+10: //! (submits transactions). Based on the `eth_` request method semantics, request methods are
+11: //! divided into: [`EthTransactions`], [`EthBlocks`], [`EthFees`], [`EthState`] and [`EthCall`].
+15: //! all the `Eth` traits, e.g. `reth_rpc::EthApi`.
+16: 
+17: pub mod bal;
+18: pub mod block;
+19: pub mod blocking_task;
+20: pub mod call;
+21: pub mod config;
+22: pub mod estimate;
+23: pub mod fee;
+24: pub mod pending_block;
+25: pub mod receipt;
+26: pub mod signer;
+27: pub mod spec;
+48: 
+49: /// Extension trait that bundles traits needed for tracing transactions.
+50: pub trait TraceExt:
+51:     LoadTransaction + LoadBlock + SpawnBlocking + Trace + Call + GetBlockAccessList
+52: {
+53: }
+54: 
+55: impl<T> TraceExt for T where T: LoadTransaction + LoadBlock + Trace + Call + GetBlockAccessList {}
+56: 
+57: /// Helper trait to unify all `eth` rpc server building block traits, for simplicity.
+58: ///
+59: /// This trait is automatically implemented for any type that implements all the `Eth` traits.
+60: pub trait FullEthApi:
+61:     FullEthApiTypes
+62:     + EthApiSpec
+63:     + EthTransactions
+64:     + EthBlocks
+65:     + EthState
+66:     + EthCall
+67:     + EthFees
+68:     + EthSubscriptions
+
+## crates/rpc/rpc/src/eth/mod.rs
+
+
+## crates/net/network/src/lib.rs
+9: //! ## Bird's Eye View
+10: //!
+11: //! See also diagram in [`NetworkManager`]
+12: //!
+13: //! The `Network` is made up of several, separate tasks:
+14: //!
+15: //!    - `Transactions Task`: is a spawned
+16: //!      [`TransactionsManager`](crate::transactions::TransactionsManager) future that:
+17: //!
+18: //!        * Responds to incoming transaction related requests
+19: //!        * Requests missing transactions from the `Network`
+26: //!        * Responds to incoming ETH related requests: `Headers`, `Bodies`
+27: //!
+28: //!    - `Discovery Task`: is a spawned [`Discv4`](reth_discv4::Discv4) future that handles peer
+29: //!      discovery and emits new peers to the `Network`
+30: //!
+31: //!    - [`NetworkManager`] task advances the state of the `Network`, which includes:
+32: //!
+33: //!        * Initiating new _outgoing_ connections to discovered peers
+34: //!        * Handling _incoming_ TCP connections from peers
+35: //!        * Peer management
+36: //!        * Route requests:
+37: //!             - from remote peers to corresponding tasks
+38: //!             - from local to remote peers
+39: //!
+48: //! # async fn launch() {
+49: //! use reth_network::{
+50: //!     config::rng_secret_key, EthNetworkPrimitives, NetworkConfig, NetworkManager,
+51: //! };
+52: //! use reth_network_peers::mainnet_nodes;
+53: //! use reth_storage_api::noop::NoopProvider;
+54: //! use reth_tasks::Runtime;
+55: //!
+56: //! // This block provider implementation is used for testing purposes.
+57: //! let client = NoopProvider::default();
+58: //!
+152: pub use reth_eth_wire_types::{primitives, EthNetworkPrimitives, NetworkPrimitives};
+153: pub use reth_network_api::{
+154:     events, BlockDownloaderProvider, DiscoveredEvent, DiscoveryEvent, NetworkEvent,
+155:     NetworkEventListenerProvider, NetworkInfo, PeerRequest, PeerRequestSender, Peers, PeersInfo,
+156: };
+157: pub use reth_network_p2p::sync::{NetworkSyncUpdater, SyncState};
+158: pub use reth_network_types::{PeersConfig, SessionsConfig};
+159: pub use session::{
+160:     ActiveSessionHandle, ActiveSessionMessage, Direction, EthRlpxConnection, PeerInfo,
+161:     PendingSessionEvent, PendingSessionHandle, PendingSessionHandshakeError, SessionCommand,
+162:     SessionEvent, SessionId, SessionManager,
+165: pub use builder::NetworkBuilder;
+166: pub use config::{NetworkConfig, NetworkConfigBuilder};
+167: pub use discovery::Discovery;
+168: pub use fetch::FetchClient;
+169: pub use flattened_response::FlattenedResponse;
+170: pub use manager::NetworkManager;
+171: pub use metrics::TxTypesCounter;
+172: pub use network::{NetworkHandle, NetworkProtocols};
+173: pub use swarm::NetworkConnectionState;
+174: 
+175: /// re-export p2p interfaces
