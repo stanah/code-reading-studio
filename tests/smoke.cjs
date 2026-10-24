@@ -13,7 +13,7 @@ function setup(search = '', saved = {}) {
   const messages = [];
   const el = id => {
     if (!els.has(id)) els.set(id, {
-      textContent: '', innerHTML: '', value: '', dataset: {},
+      id, textContent: '', innerHTML: '', value: '', dataset: {}, setAttribute(name,value){this[name]=value}, replaceWith(node){els.set(this.id,node)},
       classList: {toggle() {}, add() {}, remove() {}}, style: {setProperty() {}},
       scrollTop: 0, offsetTop: 0, scrollIntoView() {}, showModal() {this.open = true},
       close() {this.open = false}, click() {},
@@ -24,7 +24,7 @@ function setup(search = '', saved = {}) {
   const ctx = {
     URLSearchParams, location: {search, pathname: '/'},
     localStorage: {getItem: k => storage.get(k), setItem: (k, v) => storage.set(k, v)},
-    document: {getElementById: el, querySelectorAll: () => [], querySelector: () => null,
+    document: {createElement: () => ({dataset:{},setAttribute(name,value){this[name]=value},replaceWith(node){els.set(this.id,node)}}), getElementById: el, querySelectorAll: () => [], querySelector: () => null,
       documentElement: el('root'), body: el('body'), addEventListener() {}},
     window: {}, BroadcastChannel: Channel, setTimeout, clearTimeout, console,
   };
@@ -36,6 +36,8 @@ function setup(search = '', saved = {}) {
 const app = setup();
 assert.equal(app.run('steps.length'), 6);
 assert.equal(app.run('current().id'), 'rpc');
+assert.equal(app.el('inline-reading-help').dataset.helpContext,'rpc');
+assert.equal(app.el('inline-reading-help').dataset.helpCommit,app.run('pack.commit'));
 for (let i = 0; i < 6; i++) {
   app.run(`navigate(${i}); detour(current().related); render(); back()`);
   assert.equal(app.run('state.pos'), i);

@@ -166,7 +166,8 @@ async function mount() {
     current.line = code.line;
     if (current.end) current.end = code.selectionEnd;
     context(tree.nodes.get(current.path));
-    $('#files-content').innerHTML = `<div class="files-panel"><div class="files-code-heading"><strong>${escapeHtml(current.path.split('/').pop())}</strong><button type="button" id="files-copy-link">この行のリンクをコピー</button></div><div class="files-code-controls"><span>${code.start}–${code.end} / ${code.total.toLocaleString()} 行</span>${code.previous ? `<a href="${escapeHtml(fileUrl(current.path, code.previous))}">← 前の400行</a>` : ''}${code.next ? `<a href="${escapeHtml(fileUrl(current.path, code.next))}">次の400行 →</a>` : ''}<form id="files-jump"><label for="files-line">行へ移動</label><input id="files-line" name="line" type="number" min="1" max="${code.total}" value="${code.line}" required><button type="submit">表示</button></form></div><div class="files-code-scroll" tabindex="0" aria-label="ソースコード。左右上下にスクロールできます"><pre class="files-code">${code.html}</pre></div><div class="files-code-footer">行番号を選ぶと、その行を含むURLになります。全文は400行ずつ表示します。</div></div>`;
+    $('#files-content').innerHTML = `<div data-reading-help="" data-help-path="${escapeHtml(current.path)}" data-help-line="${code.line}" data-help-commit="${escapeHtml(index.commit)}" data-help-open="true"></div><details class="manual-source" open><summary>ファイル全体と行範囲を見る</summary><div class="files-panel"><div class="files-code-heading"><strong>${escapeHtml(current.path.split('/').pop())}</strong><button type="button" id="files-copy-link">この行のリンクをコピー</button></div><div class="files-code-controls"><span>${code.start}–${code.end} / ${code.total.toLocaleString()} 行</span>${code.previous ? `<a href="${escapeHtml(fileUrl(current.path, code.previous))}">← 前の400行</a>` : ''}${code.next ? `<a href="${escapeHtml(fileUrl(current.path, code.next))}">次の400行 →</a>` : ''}<form id="files-jump"><label for="files-line">行へ移動</label><input id="files-line" name="line" type="number" min="1" max="${code.total}" value="${code.line}" required><button type="submit">表示</button></form></div><div class="files-code-scroll" tabindex="0" aria-label="ソースコード。左右上下にスクロールできます"><pre class="files-code">${code.html}</pre></div><div class="files-code-footer">行番号を選ぶと、その行を含むURLになります。全文は400行ずつ表示します。</div></div></details>`;
+    globalThis.ReadingHelp?.mount($('#files-content'));
     requestAnimationFrame(() => {
       const row = document.getElementById('L' + code.line), scroller = $('.files-code-scroll');
       if (row && scroller) scroller.scrollTop = Math.max(0, row.offsetTop - scroller.clientHeight / 3);
@@ -185,6 +186,7 @@ async function mount() {
 
   async function render() {
     const request = ++sequence;
+    document.body.classList?.remove('has-guided-file');
     current = readLocation(location.search);
     for (const parent of ancestorPaths(current.path)) expanded.add(parent);
     const node = tree.nodes.get(current.path);

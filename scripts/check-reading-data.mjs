@@ -13,7 +13,7 @@ const repo=resolve(root,'targets/reth');
 assert.equal((await git(repo,'rev-parse','HEAD')).trim(),target.commit,'Submodule must use the declared target');
 const index=await indexRepository(repo,target.commit);
 const context={window:{}};
-for(const file of ['reth-data.js','atlas-data.js','drill-data.js','lenses-pack.js'])vm.runInNewContext(await read('dist/'+file),context);
+for(const file of ['reth-data.js','atlas-data.js','drill-data.js','lenses-pack.js','reading-help-data.js'])vm.runInNewContext(await read('dist/'+file),context);
 const {RETH_PACK:pack,RETH_ATLAS:atlas,RETH_DRILL:drill,LENSES_PACK:lenses}=context.window;
 const annotations=JSON.parse(await read('local-app/annotations.json'));
 const startup=JSON.parse(await read('local-app/startup-guide.json'));
@@ -43,6 +43,11 @@ async function anchor(s,hash,url,code){
 }
 for(const s of [...pack.steps,...pack.details])await anchor(s,s.contentHash,s.sourceUrl,s.code);
 for(const s of annotations.steps)await anchor(s,s.contentHash,s.sourceUrl);
+const help=context.window.READING_HELP_DATA;assert.equal(help.commit,target.commit);
+for(const c of Object.values(help.contexts)){
+ await anchor(c.source,c.source.hash,c.source.url,c.source.code);
+ for(const line of c.lines)assert.ok(c.source.code.split('\n')[line.line-c.source.start]?.includes(line.match),'Stale inline hint');
+}
 const ids=new Set(startup.steps.map(s=>s.id));assert.equal(ids.size,startup.steps.length);
 for(const stage of startup.stages)for(const id of stage.steps)assert.ok(ids.has(id),'Unknown stage step: '+id);
 for(const s of [...startup.steps,...startup.loops]){
@@ -50,4 +55,4 @@ for(const s of [...startup.steps,...startup.loops]){
  for(const id of s.next||[])assert.ok(ids.has(id),'Unknown next step: '+id);
 }
 for(const data of [atlas,drill])for(const [path,text] of Object.entries(data.seed))assert.equal(text,await source(path),'Stale seed '+path);
-console.log(JSON.stringify({result:'PASS',version:target.version,commit:target.commit,rustFiles:index.rust.length,crateGroups:index.crates.length,transactionAnchors:pack.steps.length+pack.details.length,startupSteps:startup.steps.length,loopAnchors:startup.loops.length,seedFiles:cache.size}));
+console.log(JSON.stringify({result:'PASS',version:target.version,commit:target.commit,rustFiles:index.rust.length,crateGroups:index.crates.length,transactionAnchors:pack.steps.length+pack.details.length,helpContexts:Object.keys(help.contexts).length,lineHints:Object.values(help.contexts).reduce((n,c)=>n+c.lines.length,0),startupSteps:startup.steps.length,loopAnchors:startup.loops.length,seedFiles:cache.size}));

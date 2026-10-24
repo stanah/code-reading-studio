@@ -1,0 +1,703 @@
+{
+  "terms": {
+    "rpc": {
+      "name": "RPC",
+      "meaning": "アプリがノードへ、名前を指定して処理を頼む窓口です。",
+      "example": "例：残高を尋ねる要求と、署名済みトランザクションを送る要求があります。"
+    },
+    "node": {
+      "name": "ノード",
+      "meaning": "ネットワークに参加し、届いたデータをルールで確かめるコンピューターです。",
+      "example": "Rethは、その中の実行・検証・状態管理を担うソフトウェアです。"
+    },
+    "bytes": {
+      "name": "バイト列",
+      "meaning": "データを小さな数の並びとして表したものです。文字や金額の項目が、送信用の形式にまとめられています。",
+      "example": "見方の例：送信用の数の並び → 項目を読み取る → 宛先や署名などを扱えるデータ。ここでは実際の署名済みデータの例は送信しません。"
+    },
+    "recover": {
+      "name": "送信者の復元",
+      "meaning": "署名済みデータの署名などから、送信者のアドレスを求めて確かめる処理です。",
+      "example": "ウォレットを開いたり、秘密鍵を取り出したりする処理ではありません。署名の問題などで失敗する場合があります。"
+    },
+    "pool": {
+      "name": "トランザクションプール",
+      "meaning": "まだブロックに取り込まれていないトランザクションを、ノードが検証して保持する場所です。",
+      "example": "プール追加の成功、ブロックへの取り込み、履歴の確定はそれぞれ別です。"
+    },
+    "hash": {
+      "name": "ハッシュ",
+      "meaning": "データから計算する、識別に使う値です。",
+      "example": "送信の応答にハッシュが返っても、取り込みや確定が終わったことは示しません。"
+    },
+    "cli": {
+      "name": "CLI・コマンド",
+      "meaning": "文字で指示を入力する操作の入口です。reth nodeはノードの起動を頼むコマンドです。",
+      "example": "この読解アプリではコマンドを実行せず、Rethがその指示をどう読むかをコードで確かめます。"
+    },
+    "evm": {
+      "name": "EVM",
+      "meaning": "Ethereumのプログラムを、決められたルールで動かす仕組みです。",
+      "example": "実行結果として変わる残高やデータを、実行側のRethが検証します。"
+    },
+    "engine": {
+      "name": "Engine API",
+      "meaning": "合意側のソフトウェアと、実行側のRethが要求や結果を受け渡す窓口です。",
+      "example": "ウォレット向けRPCの窓口と区別します。合意側は履歴の選択や確定を追います。"
+    },
+    "database": {
+      "name": "データベース・DB",
+      "meaning": "ブロックや状態などを保存し、必要なときに読み出すための仕組みです。",
+      "example": "起動時には、どこに保存するかを決めて開きます。"
+    },
+    "genesis": {
+      "name": "genesis",
+      "meaning": "チェーンの出発点となる最初の状態・ブロックです。",
+      "example": "ノードは選んだネットワークに対応する出発点を使います。"
+    },
+    "function": {
+      "name": "関数・呼び出し",
+      "meaning": "処理をひとまとまりにし、必要な場所から使えるようにしたものです。",
+      "example": "fnの後が名前、丸かっこの中が受け取るデータ、{ }の中が処理のまとまりです。名前(...)でその処理を呼び出します。"
+    },
+    "argument": {
+      "name": "引数・入力",
+      "meaning": "処理へ渡すデータです。丸かっこの中に並びます。",
+      "example": "tx: Bytesは「txという名前で、Bytesという種類のデータを受け取る」という指定です。"
+    },
+    "return": {
+      "name": "戻り値・出力",
+      "meaning": "呼び出した処理から、呼び出し元へ返る結果です。",
+      "example": "関数宣言の -> の後は、返す結果の種類です。成功か失敗かを含めて返す場合もあります。"
+    },
+    "variable": {
+      "name": "let・値の名前",
+      "meaning": "途中の結果を、後で使える名前に結びつけます。",
+      "example": "let handle = ... は、右側で得た値をhandleという名前で使えるようにする書き方です。"
+    },
+    "await": {
+      "name": ".await・Future",
+      "meaning": "この処理の結果が用意できるまで待つ場所です。RustではFutureという、処理の進行と結果を表す値を進めて待ちます。",
+      "example": "結果がまだ用意できない間は、ほかの処理へ実行を譲れます。asyncだけで別スレッドが作られるわけではありません。"
+    },
+    "question": {
+      "name": "?・失敗を返す",
+      "meaning": "このResultに付く ? は、成功なら中身を取り出し、失敗なら現在の関数やasyncブロックからエラーを返します。",
+      "example": "失敗ならそこでエラーを返し、その後の成功処理へは進みません。ここではResultに付いた?の役割を説明しています。"
+    },
+    "double-question": {
+      "name": "??・2段階の失敗",
+      "meaning": "ここでは返答を受け取れたかを確認し、その後、受け取ったプール追加結果が成功かを確認します。",
+      "example": "response_rx.await??の最初の?が受信の失敗、次の?がプール追加結果の失敗を扱います。"
+    },
+    "result": {
+      "name": "Result・Ok・Err",
+      "meaning": "成功の値か、失敗の情報のどちらかを返す形です。",
+      "example": "Ok(値)は成功、Err(エラー)は失敗を表します。この送信経路では成功時にハッシュなどが返ります。"
+    },
+    "type": {
+      "name": "型",
+      "meaning": "扱うデータや結果の種類を指定するための約束です。",
+      "example": "例：Bytesはバイト列の種類です。B256はハッシュなど、32バイトの値を表す種類です。"
+    },
+    "borrow": {
+      "name": "&self・&tx",
+      "meaning": "&は値を借りて使うことを表します。&selfは、この処理の対象を借りる指定です。",
+      "example": "ここでは元の持ち主が値を持ったまま、読み取る処理へ貸せます。"
+    },
+    "trait": {
+      "name": "trait・Self",
+      "meaning": "型が提供する操作などの約束と、それを実装する型を表す書き方です。",
+      "example": "Selfは今の実装の型です。実装を差し替えられる境界を読むときに確かめます。"
+    },
+    "channel": {
+      "name": "チャネル・oneshot",
+      "meaning": "別の処理へデータを渡すための経路です。oneshotで送れる返答は1回です。",
+      "example": "送信用の口を要求に添え、受信用の口を持つ側が結果を待ちます。"
+    },
+    "closure": {
+      "name": "move・使う値を取り込む",
+      "meaning": "クロージャーやasyncブロックが、外側の値を自分の側へ取り込む指定です。値の型によって、所有権の移動やコピーが起きます。",
+      "example": "起動の入口では実行する処理をクロージャーとして渡します。送信経路のasync moveブロックでは、そこで必要な値を非同期処理へ取り込みます。"
+    },
+    "handle": {
+      "name": "handle",
+      "meaning": "別の部品へ指示を出したり、その状態を待ったりするための値です。",
+      "example": "起動の入口では、起動後に得たhandleでノードの終了を待ちます。ほかの箇所では操作する相手が異なるため、周囲の処理も確認します。"
+    },
+    "thread": {
+      "name": "スレッド・タスク",
+      "meaning": "スレッドはOSが処理を進める実行の単位です。非同期タスクは、待ちを含む処理を実行環境に進めてもらう単位です。",
+      "example": "両者は一対一とは限りません。どこで別の処理を始め、何を待つかを分けます。"
+    },
+    "poll": {
+      "name": "poll・Pending",
+      "meaning": "非同期処理を進められるか確かめる呼び出しです。すぐには結果が出ないときはPendingを返します。",
+      "example": "後で再び進めてもらえるよう通知を予約する場合もあります。"
+    },
+    "jit": {
+      "name": "JITの分岐",
+      "meaning": "実行時に処理をコンパイルする機能に関する分岐です。",
+      "example": "この起動の読解では、その補助処理の分岐を主線から外し、コマンド処理を渡す箇所に注目します。"
+    },
+    "async": {
+      "name": "async",
+      "meaning": "待ちを含む処理を、Futureとして扱える形に書くための指定です。",
+      "example": "async関数を呼ぶとFutureが得られます。本体を進めるには、.awaitなどによるポーリングが必要です。asyncだけで別スレッドが作られるわけではありません。"
+    },
+    "logging": {
+      "name": "ログに値を表示する ?",
+      "meaning": "trace! や info! などのログを記録する式では、? は続く値をデバッグ用の形で記録する指定です。",
+      "example": "例：trace!(?tx) の ?tx は値の記録方法です。work().await? のように、失敗時にエラーを返す ? とは役割が違います。"
+    },
+    "option-question": {
+      "name": "?・値がなければここで戻る",
+      "meaning": "この行の ? は Option に付いています。Someなら中身の値を取り出し、Noneなら現在の関数からNoneを返します。",
+      "example": "同期の目標がなければ、ここでNoneを返して処理を終えます。この ? はエラーを返す説明ではありません。"
+    }
+  },
+  "contexts": {
+    "tx:rpc": {
+      "intro": "署名済みデータを受け取り、送信の担当処理へ渡して、結果を返す入口です。",
+      "terms": [
+        "rpc",
+        "bytes",
+        "hash"
+      ],
+      "lines": [
+        {
+          "line": 921,
+          "match": "tx: Bytes",
+          "label": "入力を受け取る",
+          "explanation": "send_raw_transactionという関数が、txという名前でバイト列を受け取ります。&selfはこの処理の対象です。"
+        },
+        {
+          "line": 922,
+          "match": "?tx",
+          "label": "動作の記録を残す",
+          "explanation": "trace!は調査用のログを記録します。?txはログにtxを表示する指定で、失敗を返す演算子ではありません。この行自体はプール追加やブロック取り込みを行いません。"
+        },
+        {
+          "line": 923,
+          "match": "send_raw_transaction(self, tx)",
+          "label": "次の処理へ渡して待つ",
+          "explanation": "受け取ったtxを担当処理へ渡します。.awaitでその結果を待ちます。この一行だけでブロックへ取り込むわけではありません。"
+        },
+        {
+          "line": 923,
+          "match": ".await?",
+          "label": "成功・失敗を返す",
+          "explanation": "?は失敗ならエラーを早く返します。成功なら中身を取り出し、外側のOk(...)で成功の結果として返します。ここは?が1個です。"
+        }
+      ],
+      "note": "L920は人向けのコメントです。L924の } はこの関数の処理の終わりを示します。L922のログと、L923の結果の受け渡しを分けて読みます。"
+    },
+    "tx:recover": {
+      "intro": "送信用のデータから項目を読み、署名から送信者を復元して、次の担当へ渡します。",
+      "terms": [
+        "bytes",
+        "recover",
+        "pool"
+      ],
+      "lines": [
+        {
+          "line": 86,
+          "match": "tx: Bytes",
+          "label": "送信用データを受け取る",
+          "explanation": "txは元のバイト列です。この関数全体は後続の追加結果まで待ち、最終的にハッシュまたはエラーを返します。"
+        },
+        {
+          "line": 89,
+          "match": "recover_raw_pool_transaction",
+          "label": "送信者を復元する",
+          "explanation": "元のデータを借りて読み、プールで扱うトランザクションを得ます。失敗したら?でこのasyncブロックから返ります。"
+        },
+        {
+          "line": 92,
+          "match": "WithEncoded::new",
+          "label": "元データと復元結果を渡す",
+          "explanation": "元のバイト列txと、復元したpool_transactionを組にします。"
+        },
+        {
+          "line": 94,
+          "match": ".await",
+          "label": "後続の結果を待つ",
+          "explanation": "次の送信処理が終わるのを待ち、その結果をこの関数の結果にします。"
+        }
+      ],
+      "note": ""
+    },
+    "tx:submit": {
+      "intro": "設定による分岐を確認し、通常の経路ではプール追加の結果からハッシュを返します。",
+      "terms": [
+        "pool",
+        "hash",
+        "bytes"
+      ],
+      "lines": [
+        {
+          "line": 37,
+          "match": "tx.split()",
+          "label": "データを分ける",
+          "explanation": "元のバイト列と、プールで扱うトランザクションを取り出します。"
+        },
+        {
+          "line": 89,
+          "match": "raw_tx_forwarder",
+          "label": "転送する設定を確認する",
+          "explanation": "転送先がある場合は別の経路へ進みます。その前には設定に応じたblob sidecarの変換があります。"
+        },
+        {
+          "line": 111,
+          "match": "add_pool_transaction",
+          "label": "通常経路で追加を待つ",
+          "explanation": "転送先がない通常経路で、プールへの追加を依頼して結果を待ちます。"
+        },
+        {
+          "line": 113,
+          "match": "Ok(hash)",
+          "label": "識別子を返す",
+          "explanation": "成功時に取り出したhashを返します。ブロックへの取り込みや確定の通知ではありません。"
+        }
+      ],
+      "note": "通常経路はL108・111・113。上の変換・転送の分岐は、必要なときに原文で確かめます。"
+    },
+    "tx:queue": {
+      "intro": "追加の要求を処理する側へ渡し、その要求専用の返答を待つ場所です。",
+      "terms": [
+        "pool",
+        "channel",
+        "hash"
+      ],
+      "lines": [
+        {
+          "line": 496,
+          "match": "oneshot::channel()",
+          "label": "返答用の経路を作る",
+          "explanation": "送信用response_txと受信用response_rxを用意します。この経路で送れる返答は1回です。"
+        },
+        {
+          "line": 497,
+          "match": "BatchTxRequest::new",
+          "label": "返答口を要求に添える",
+          "explanation": "要求を処理する側が返せるよう、送信用の口を要求に添えます。"
+        },
+        {
+          "line": 500,
+          "match": ".send(request)",
+          "label": "要求を渡す",
+          "explanation": "内部キューへ要求を渡します。ここでの送信成功だけでは、プール追加の成功は分かりません。"
+        },
+        {
+          "line": 503,
+          "match": "response_rx.await??",
+          "label": "返答と追加結果を確認する",
+          "explanation": "返答を待ち、受信の失敗と、受け取った追加結果の失敗を順に扱います。この箇所には?が2個あります。"
+        }
+      ],
+      "note": ""
+    },
+    "tx:batch": {
+      "intro": "届いた要求をまとめてプールへ渡し、それぞれの要求に結果を返します。",
+      "terms": [
+        "pool",
+        "channel"
+      ],
+      "lines": [
+        {
+          "line": 71,
+          "match": "pool.add_transaction",
+          "label": "1件の追加結果を待つ",
+          "explanation": "1件を処理するときの呼び出しです。プールでの追加結果を待ちます。"
+        },
+        {
+          "line": 72,
+          "match": "response_tx.send",
+          "label": "要求した側へ返す",
+          "explanation": "その要求の返答口へ、得られた追加結果を送ります。"
+        },
+        {
+          "line": 91,
+          "match": "pool.add_transactions",
+          "label": "同じ出所の要求をまとめる",
+          "explanation": "複数件の追加をまとめて依頼します。続くループでそれぞれに結果を返します。"
+        },
+        {
+          "line": 101,
+          "match": "add_transactions_with_origins",
+          "label": "出所が異なる場合も扱う",
+          "explanation": "各トランザクションの出所を保ってまとめて依頼し、要求ごとの結果を返します。"
+        }
+      ],
+      "note": ""
+    },
+    "tx:pool": {
+      "intro": "受け取ったトランザクションを検証し、内部プールへ渡して追加の成否を返します。",
+      "terms": [
+        "pool",
+        "hash"
+      ],
+      "lines": [
+        {
+          "line": 500,
+          "match": "self.validate",
+          "label": "検証結果を待つ",
+          "explanation": "この要求のトランザクションを検証します。具体的な検証条件は、この抜粋だけでは分かりません。"
+        },
+        {
+          "line": 501,
+          "match": "self.pool.add_transactions",
+          "label": "内部プールへ渡す",
+          "explanation": "検証結果を内部プールへ渡します。検証の結果だけでなく、追加の成否も次に返します。"
+        },
+        {
+          "line": 502,
+          "match": "results.pop()",
+          "label": "追加結果を返す",
+          "explanation": "1件分の結果を取り出して返します。ブロック取り込みやレシートを待つ処理ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:entry": {
+      "intro": "文字のコマンドを読み、ノードの起動を頼む処理を渡します。起動したあとは、ノードの終了を待ちます。",
+      "terms": [
+        "cli",
+        "node",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 40,
+          "match": "Cli::<EthereumChainSpecParser>::parse()",
+          "label": "コマンドを読む",
+          "explanation": "文字で渡された指示をCli::parse()で読みます。run(...)には、ノードを起動する処理そのものを渡します。"
+        },
+        {
+          "line": 42,
+          "match": "let handle",
+          "label": "ノードを起動して待つ",
+          "explanation": "EthereumNodeを選び、起動の完了を.awaitで待ちます。得られた値をhandleという名前で持ちます。"
+        },
+        {
+          "line": 44,
+          "match": "wait_for_node_exit",
+          "label": "ノードの終了を待つ",
+          "explanation": "起動完了とは別に、動いているノードが終了するのを待ちます。"
+        }
+      ],
+      "note": "主な読解箇所はL40・42・44です。L33–38は障害調査に関する準備です。"
+    },
+    "startup:dispatch": {
+      "intro": "いくつかあるコマンドからnodeを選び、ノードを動かす処理へ渡します。",
+      "terms": [
+        "cli",
+        "rpc",
+        "node"
+      ],
+      "lines": [
+        {
+          "line": 179,
+          "match": "match cli.command",
+          "label": "どのコマンドか分ける",
+          "explanation": "入力されたコマンドの種類ごとに、担当する処理を選びます。"
+        },
+        {
+          "line": 183,
+          "match": "validate_selection",
+          "label": "公開するRPCを確かめる",
+          "explanation": "HTTPで公開する操作の選び方を検証します。WebSocket側の指定も続いて確認します。"
+        },
+        {
+          "line": 190,
+          "match": "command.execute",
+          "label": "起動を担当する処理へ渡す",
+          "explanation": "コマンドを実行する処理へ、起動の方法を渡します。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:supervisor": {
+      "intro": "ノードを動かす処理を進めながら、終了の指示や重大な失敗を監視します。",
+      "terms": [
+        "cli",
+        "thread"
+      ],
+      "lines": [
+        {
+          "line": 81,
+          "match": "cli_context",
+          "label": "実行の準備をする",
+          "explanation": "非同期の処理を管理するための情報を用意します。"
+        },
+        {
+          "line": 86,
+          "match": "run_until_ctrl_c",
+          "label": "終了条件を見ながら進める",
+          "explanation": "コマンドを動かし、終了指示や処理の完了を待ちます。外側では重大な失敗も監視します。"
+        },
+        {
+          "line": 96,
+          "match": "graceful_shutdown_with_timeout",
+          "label": "正常な終了側で後片づけする",
+          "explanation": "通常の終了条件なら、動いている処理を終えるよう試みます。"
+        },
+        {
+          "line": 99,
+          "match": "runtime_shutdown",
+          "label": "実行環境を閉じる",
+          "explanation": "最後に非同期の実行環境を閉じ、コマンドの結果を返します。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:database": {
+      "intro": "コマンドの指定を設定へまとめ、データを保存する場所を開いて、ノードの組み立てへ渡します。",
+      "terms": [
+        "database",
+        "node"
+      ],
+      "lines": [
+        {
+          "line": 189,
+          "match": "NodeConfig",
+          "label": "設定をまとめる",
+          "explanation": "保存先や通信などの指定を、NodeConfigという設定のまとまりにします。"
+        },
+        {
+          "line": 214,
+          "match": "init_db",
+          "label": "保存先を開く",
+          "explanation": "決めた場所でデータベースを初期化・オープンします。失敗は?で返ります。"
+        },
+        {
+          "line": 221,
+          "match": "NodeBuilder::new",
+          "label": "組み立ての材料をそろえる",
+          "explanation": "設定にデータベースや実行環境を結びつけます。"
+        },
+        {
+          "line": 225,
+          "match": "launcher.entrypoint",
+          "label": "起動の担当へ渡す",
+          "explanation": "そろえた材料を起動処理へ渡し、その結果を待ちます。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:context": {
+      "intro": "設定とデータへのアクセスを準備し、チェーンの出発点をそろえて、部品を作る処理へ進みます。",
+      "terms": [
+        "database",
+        "genesis",
+        "node"
+      ],
+      "lines": [
+        {
+          "line": 109,
+          "match": ".attach(database.clone())",
+          "label": "データベースを結びつける",
+          "explanation": "後の処理が保存されたデータを使えるようにします。"
+        },
+        {
+          "line": 126,
+          "match": ".with_genesis()",
+          "label": "チェーンの出発点をそろえる",
+          "explanation": "選んだチェーンのgenesisを準備します。"
+        },
+        {
+          "line": 140,
+          "match": ".with_components",
+          "label": "部品を作る処理へ進む",
+          "explanation": "設定やデータの準備が済んだら、ノードの各部品を組み立てます。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:components": {
+      "intro": "実行の設定、プール、通信などを、互いに必要なものを渡しながら組み立てます。",
+      "terms": [
+        "evm",
+        "pool",
+        "node"
+      ],
+      "lines": [
+        {
+          "line": 388,
+          "match": "build_evm",
+          "label": "実行の設定を作る",
+          "explanation": "Ethereumの処理を実行するための設定を用意します。"
+        },
+        {
+          "line": 389,
+          "match": "build_pool",
+          "label": "プールを作る",
+          "explanation": "実行の設定も渡し、未取り込みのトランザクションを扱う部品を作ります。"
+        },
+        {
+          "line": 390,
+          "match": "build_network",
+          "label": "通信の部品を作る",
+          "explanation": "プールを使う通信の部品を作ります。"
+        },
+        {
+          "line": 392,
+          "match": "spawn_payload_builder_service",
+          "label": "ブロック候補を作る処理を始める",
+          "explanation": "プールと実行の設定を使う、ブロック候補の実行部分を作るサービスを始めます。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:services": {
+      "intro": "合意側から届く要求と、過去のデータをそろえる処理などをつなぎます。",
+      "terms": [
+        "engine",
+        "database",
+        "node"
+      ],
+      "lines": [
+        {
+          "line": 163,
+          "match": "build_networked_pipeline",
+          "label": "過去のデータをそろえる仕組みを作る",
+          "explanation": "ネットワークから得るデータを、段階的に扱うpipelineを用意します。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:orchestrator": {
+      "intro": "入力や停止の指示を待ち、届いた出来事に合う担当へ処理を渡し続けます。",
+      "terms": [
+        "engine",
+        "thread",
+        "channel"
+      ],
+      "lines": [
+        {
+          "line": 332,
+          "match": "loop {",
+          "label": "繰り返し処理する",
+          "explanation": "入力を一度扱ったあとも、次の入力や停止指示を待てるよう繰り返します。"
+        },
+        {
+          "line": 333,
+          "match": "tokio::select!",
+          "label": "複数の入力を待つ",
+          "explanation": "いくつかある待ち先のうち、準備できたものに応じた処理を進めます。"
+        },
+        {
+          "line": 413,
+          "match": "spawn_critical_with_graceful_shutdown_signal",
+          "label": "管理される処理として始める",
+          "explanation": "終了要求を受けられる非同期タスクとして、ここまで用意した処理を始めます。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:tree": {
+      "intro": "合意側からの要求や保存の完了を処理します。保存が追いつかないときは、新たな入力より保存を待ちます。",
+      "terms": [
+        "engine",
+        "database",
+        "thread"
+      ],
+      "lines": [
+        {
+          "line": 521,
+          "match": "loop {",
+          "label": "入力を処理し続ける",
+          "explanation": "この専用スレッド上で、次の出来事を待って処理する流れを繰り返します。"
+        },
+        {
+          "line": 564,
+          "match": "wait_for_persistence_event",
+          "label": "保存側を待つ場合",
+          "explanation": "保存の遅れが条件を満たす場合には、保存側の出来事を待ちます。"
+        },
+        {
+          "line": 569,
+          "match": "wait_for_event",
+          "label": "通常の入力を待つ場合",
+          "explanation": "通常は、Engineの要求など次の出来事を待ちます。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:network": {
+      "intro": "ノード間の通信や内部からの要求を進めます。すぐに進められなければ、ほかの処理へ実行を譲ります。",
+      "terms": [
+        "node",
+        "poll",
+        "thread"
+      ],
+      "lines": [
+        {
+          "line": 1137,
+          "match": "fn poll",
+          "label": "進められるかを確かめる入口",
+          "explanation": "実行環境がこのFutureを進めるときに呼ぶ処理です。"
+        },
+        {
+          "line": 1176,
+          "match": "from_handle_rx.poll_next_unpin",
+          "label": "内部からの要求を取り出す",
+          "explanation": "ノード内部の別の部品から届いた要求を処理します。"
+        },
+        {
+          "line": 1187,
+          "match": "this.swarm.poll_next_unpin",
+          "label": "通信からの出来事を取り出す",
+          "explanation": "ネットワーク側で起きた出来事を処理します。"
+        },
+        {
+          "line": 1202,
+          "match": "Poll::Pending",
+          "label": "いったん実行を譲る",
+          "explanation": "今すぐ返す最終結果はないと実行環境へ伝えます。"
+        }
+      ],
+      "note": ""
+    },
+    "startup:backfill": {
+      "intro": "過去のブロックなどをまとめてそろえる必要があるとき、段階的な同期を始めて結果を待ちます。",
+      "terms": [
+        "engine",
+        "channel",
+        "poll"
+      ],
+      "lines": [
+        {
+          "line": 143,
+          "match": "pending_pipeline_target.take()",
+          "label": "同期の目標を取り出す",
+          "explanation": "待機中のpipelineの同期目標を取り出します。take()の結果はOptionです。目標がSomeなら中身を取り出し、Noneなら ? によってこの関数からNoneを返します。"
+        },
+        {
+          "line": 150,
+          "match": "pipeline.run_as_fut",
+          "label": "同期処理を動かして待つ",
+          "explanation": "目標を渡して処理を進め、終わるのを待ちます。"
+        },
+        {
+          "line": 151,
+          "match": "tx.send(result)",
+          "label": "結果を返す",
+          "explanation": "完了した結果を、専用の返答経路で受け取り側へ送ります。"
+        },
+        {
+          "line": 174,
+          "match": "PipelineState::Idle",
+          "label": "次に備えて待機状態へ戻す",
+          "explanation": "受け取ったpipelineを保持し直し、次の要求に備えます。"
+        }
+      ],
+      "note": "",
+      "tokenHints": {
+        "143": {
+          "?": "option-question"
+        }
+      }
+    }
+  }
+}

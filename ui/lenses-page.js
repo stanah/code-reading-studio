@@ -14,5 +14,5 @@ function renderLenses() {
   }, params);
 }
 addEventListener('hashchange', renderLenses);
-document.addEventListener?.('learning-profile-change',renderLenses);
+
 renderLenses();

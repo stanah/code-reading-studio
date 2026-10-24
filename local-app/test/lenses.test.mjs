@@ -19,12 +19,12 @@ test('beginner explanations keep the same operation and evidence when switching 
  for(const step of steps){
   profile='foundation';c.ReadingLenses.render(root,data,{lens:'flow',step:step.id});
   assert.match(root.innerHTML,/<p class="guide-plain">/);
-  assert.match(root.innerHTML,/<details class="guide-technical">/);
+  assert.match(root.innerHTML,/<details class="guide-technical" data-code-detail>/);
   assert.ok(root.innerHTML.includes(step.detail.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;')));
   assert.ok(root.innerHTML.includes('href="#code='+step.id+'"'));
   assert.ok(root.innerHTML.includes('href="#file='+step.id+'"'));
   profile='code';c.ReadingLenses.render(root,data,{lens:'flow',step:step.id});
-  assert.doesNotMatch(root.innerHTML,/guide-technical|guide-plain/);
+  assert.match(root.innerHTML,/<details class="guide-technical" data-code-detail open>/);
   assert.ok(root.innerHTML.includes('href="#code='+step.id+'"'));
  }
 });

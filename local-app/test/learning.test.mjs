@@ -18,40 +18,35 @@ function app({local=true,href='http://localhost/',saved,blocked=false}={}){
  return {context,root,location,follow,controls,storage,events,api:context.LearningStudio};
 }
 
-test('new learners get one first action; changing experience changes the recommendation without marking lessons read',()=>{
+test('blockchain knowledge and code experience independently control the starting recommendation',()=>{
  const a=app();
  assert.match(a.root.innerHTML,/href="\/#lesson=blockchain">ここから読み始める/);
- assert.doesNotMatch(a.root.innerHTML,/href="\/reader/);
- a.api.setProfile('familiar');assert.match(a.root.innerHTML,/href="\/#lesson=reth">ここから読み始める/);
- a.api.setProfile('code');assert.match(a.root.innerHTML,/href="\/#lesson=reading">ここから読み始める/);
+ a.api.setPreference('chain','known');assert.match(a.root.innerHTML,/href="\/#lesson=reth">ここから読み始める/);
+ assert.equal(a.api.preferences().code,'first');
+ a.api.setPreference('code','rust');assert.match(a.root.innerHTML,/href="\/#lesson=reading">ここから読み始める/);
+ a.api.setPreference('chain','new');assert.equal(a.api.preferences().code,'rust');assert.match(a.root.innerHTML,/href="\/#lesson=blockchain">ここから読み始める/);
  assert.equal(a.api.readState().read.length,0);
 });
 
-test('reading order, explicit marks, resume per experience, reload, and undo keep learner intent',()=>{
+test('changing assistance preserves the current lesson DOM, URL, last place and explicit read marks',()=>{
  const a=app();
- for(const [i,id] of ['blockchain','ethereum','rpc','reth','send','startup','reading'].entries()){
-  a.follow(id,{mark:i>0});
-  assert.match(a.root.innerHTML,/自分の言葉で確かめる/);
-  assert.match(a.root.innerHTML,/考え方を見る/);
- }
+ for(const [i,id] of ['blockchain','ethereum','rpc','reth','send','startup','reading'].entries())a.follow(id,{mark:i>0});
  assert.equal(a.api.readState().read.length,6);
- assert.match(a.root.innerHTML,/href="\/reader#lens=flow&amp;step=rpc"|href="\/reader#lens=flow&step=rpc"/);
+ const url=a.location.href,html=a.root.innerHTML;
+ a.api.setPreference('chain','known');a.api.setPreference('code','other');
+ assert.equal(a.root.innerHTML,html,'assistance does not replace an active lesson');assert.equal(a.location.href,url);assert.equal(a.api.readState().last,'reading');
  const b=app({saved:JSON.parse(a.storage.values().next().value)});
- assert.match(b.root.innerHTML,/続きから読む/);assert.match(b.root.innerHTML,/#lesson=reading/);
- b.api.setProfile('familiar');assert.match(b.root.innerHTML,/#lesson=reth">ここから読み始める/);
- b.api.setProfile('foundation');assert.match(b.root.innerHTML,/#lesson=reading">続きから読む/);
- b.follow('blockchain');b.controls.get('blockchain').click({currentTarget:b.controls.get('blockchain')});
- assert.equal(b.api.readState().read.includes('blockchain'),false);
+ assert.match(b.root.innerHTML,/続きから読む/);assert.match(b.root.innerHTML,/#lesson=reading/);assert.equal(b.api.preferences().code,'other');
+ b.follow('blockchain');b.controls.get('blockchain').click({currentTarget:b.controls.get('blockchain')});assert.equal(b.api.readState().read.includes('blockchain'),false);
 });
 
-test('experience changes optional explanations, while blocked or malformed storage cannot block learning',()=>{
+test('legacy settings migrate conservatively and unavailable or malformed storage cannot block reading',()=>{
  const a=app({href:'http://localhost/#lesson=reth',blocked:true});
- assert.match(a.root.innerHTML,/<details class="learn-terms" open>/);
- a.api.setProfile('code');assert.match(a.root.innerHTML,/<details class="learn-terms">/);
- assert.match(a.root.innerHTML,/<details class="learn-sources" open>/);
+ assert.match(a.root.innerHTML,/<details class="learn-terms"[^>]* open>/);
+ const html=a.root.innerHTML;a.api.setPreference('code','rust');assert.equal(a.root.innerHTML,html);
  a.controls.get('reth').click();a.follow('send');assert.match(a.root.innerHTML,/要求を渡すこと/);
- const b=app({saved:{profile:'<script>',last:'missing',positions:{},read:['missing','reth']}});
- assert.equal(b.api.profile(),'foundation');assert.equal(b.api.readState().read.length,1);
+ const known=app({saved:{profile:'familiar',last:'send',read:['rpc']}});assert.equal(known.api.preferences().chain,'known');assert.equal(known.api.preferences().code,'first');assert.equal(known.api.readState().last,'send');
+ const b=app({saved:{profile:'constructor',last:'missing',read:['missing','reth']}});assert.equal(b.api.preferences().code,'first');assert.equal(b.api.readState().read.length,1);
  b.location.hash='#lesson=missing';b.api.render();assert.match(b.root.innerHTML,/読みどころが見つかりません/);
 });
 

@@ -4,7 +4,7 @@
 
 コードリーディングを通じてRethとブロックチェーンの仕組みを学ぶアプリです。
 ブロックチェーンの知識を前提にせず、基礎→Rethの役割→動作→根拠コードへ進みます。
-読み方による表示、導線の整理、確認基準は`learning-experience.md`を参照してください。
+2軸の補助設定、同じページでのヒント、導線の整理、確認基準は`learning-experience.md`を参照してください。
 説明はソースに基づく読解メモです。実行トレースや利用者による理解の認定ではありません。
 
 ## 対象と根拠
@@ -34,6 +34,7 @@ Rustファイルは1,283個、Rustファイルを持つCargo配下グループ�
 | `local-app/server.mjs` | localhost API、トークン・Host・Originの確認、ノート永続化 |
 | `ui/studio.js`, `ui/studio.css` | 共通ナビゲーションとスタイルの生成元 |
 | `ui/learning-content.js`, `ui/learning.js`, `ui/learning-page.html` | 共通の学習内容、読み方・記録・表示、入口HTMLの生成元 |
+| `ui/reading-help-content.json`, `ui/reading-help.js` | 17箇所の用語・処理と行の対応・記号のヒント。コードは固定Gitオブジェクトから取得 |
 | `docs/reth-startup-guide.md`, `docs/reading-guide.html` | 資料のMarkdown版とHTML版 |
 
 `/api/tree`は追跡済みblobの一覧を返します。`/api/file`はそのblobを読み、
@@ -48,6 +49,7 @@ python3 scripts/build-atlas.py targets/reth
 python3 scripts/build-drill.py
 node scripts/build-lenses.cjs
 node scripts/build-annotations.cjs
+node scripts/build-help.cjs
 python3 scripts/build-guide.py
 python3 scripts/build-design.py
 node scripts/check-reading-data.mjs
@@ -55,7 +57,8 @@ node scripts/check-reading-data.mjs
 
 索引と本文は、いずれも固定コミットから読みます。
 `build-annotations.cjs`は送信経路・領域・モジュールの説明をローカル版へ同期します。
-`check-reading-data.mjs`は説明のコピー間の一致も確認します。
+`build-help.cjs`は原文ハッシュ、処理と行の照合、文脈固有の記号注釈を検査し、ローカル版と静的版へ同じヒントを配布します。
+`check-reading-data.mjs`は説明のコピー間の一致と17箇所の抜粋も確認します。
 `build-guide.py`は資料のMarkdownとCSSから、`docs/reading-guide.html`と`dist/startup.html`を更新します。
 `build-design.py`は既存の共通ヘッダーも更新します。配布コピーだけを個別に直さないでください。
 静的版の`dist/startup.html`は説明資料のコピーです。ローカル版のAPIやファイルツリーは使いません。
@@ -80,7 +83,8 @@ node scripts/check-reading-data.mjs
 
 確認する導線:
 
-0. 初回の基礎説明→7つの読みどころ→実装解説→実コード→元の説明。読み方の変更でおすすめと詳しさが変わる。
+0. 初回の基礎説明→7つの読みどころ→実装解説→同じページで実コード。2軸と局所的な補助の変更で、選択行・ヒント・メモ入力を失わない。
+   操作評価の再現課題と限界は`adaptive-reading-review.md`に記録しています。
 
 1. 起動ガイドの全体像からCLI・準備・稼働の各段階を選べる。
 2. 個別処理の説明から該当ファイル・行へ進み、同じ説明へ戻れる。
@@ -95,7 +99,8 @@ node scripts/check-reading-data.mjs
 とくに、終了監視、Engine Treeの専用スレッド、networkのFuture、
 backfill時に呼ばれる`Pipeline::run_as_fut`と`run_loop`を区別します。
 
-Rustの類推はTypeScriptで簡単に示し、同じでない点を添えます。
+まず日本語で、その箇所の入力・出力・待ち・失敗を説明します。TypeScriptの類推は任意の補足として開ける形にし、同じでない点を添えます。
+Resultの?、Optionの?、tracingの?fieldを同一の説明にしません。関数や引数の知識も前提にしません。
 FutureとPromise、タスクとOSスレッド、プール追加とブロック確定を区別します。
 資料にはyomiyasuを適用し、数値・条件・否定・根拠を変えずに推敲します。
 起動資料の検査記録は`yomiyasu-review.md`、既存3画面の検査記録は`yomiyasu-existing-review.md`にあります。
