@@ -1,0 +1,637 @@
+{
+  "persona": "a",
+  "tasks": [
+    {
+      "id": "node",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "bin/reth/src/main.rs",
+        "start": 33,
+        "end": 48
+      },
+      "facts": {
+        "role": "コマンドを読みノード起動を渡し終了を待つ（L40/42/44）。",
+        "input": "起動方法/設定をコマンドラインから読む。L40 Cli parseと本文。",
+        "output": "L42でhandleを得てL44でノードの終了を待ち、CLIの結果を返す。",
+        "boundary": "L42起動完了とL44終了待ちは別。awaitは処理結果待ちで、起動完了でプロセス全体が終わるわけではない。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        40,
+        42,
+        44
+      ]
+    },
+    {
+      "id": "node-exit",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": false,
+      "source": {
+        "path": "crates/node/builder/src/handle.rs",
+        "start": 22,
+        "end": 32
+      },
+      "facts": {
+        "role": "起動済みノードの終了待機の入口（モジュール説明/関数名L23）。",
+        "input": "起動済みノードと終了Future（モジュール説明）。",
+        "output": "node_exit_futureの結果（モジュール説明）。成功/失敗を行へ対応させる説明は未対応。",
+        "boundary": null
+      },
+      "blockers": [
+        "7操作目の原文に処理説明・行ヒント未対応。8操作目の起動解説もこのファイルに対応していない。",
+        "閉じる対象の処理補助を開けないためhelpClosedの実施を確認できない。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。終了Futureの結果を返すとモジュール説明にはあるが、内部エラーが成功になるかをL24の記号から確かめる補助がない。",
+      "evidenceLines": [
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "id": "rpc",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "facts": {
+        "role": "署名済みデータを担当に渡す入口L923。",
+        "input": "L921 tx: Bytesは署名済みバイト列。",
+        "output": "L923の?で失敗を返しOkで成功ハッシュを返す。",
+        "boundary": "返答ハッシュは取り込み/確定完了ではない。ログL922と成否L923は別。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        921,
+        922,
+        923
+      ]
+    },
+    {
+      "id": "rpc-recovery",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": false,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "start": 81,
+        "end": 109
+      },
+      "facts": {
+        "role": "署名済みデータを読んで送信者を復元し、次の処理へ渡す（動作の本文）。",
+        "input": "署名済みバイト列（本文）。",
+        "output": "復元したトランザクションと元データ（本文）。キャッシュ別の原文対応は未確認。",
+        "boundary": "読めないデータ/署名の問題は失敗（本文）。キャッシュ未設定と失敗の区別は未確認。"
+      },
+      "blockers": [
+        "7操作で原文と一般補助へ到達したがキャッシュの分岐へ対応する行補助がない。",
+        "8操作目で記号補助のみ閉じた。両補助を閉じた条件と予測の根拠説明は未達。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "キャッシュ未設定と署名復元失敗の場合分けは、見た日本語説明だけでは答えられない。Some/None/map_errと未設定/失敗の対応を確かめられなかった。",
+      "evidenceLines": [
+        99,
+        100,
+        101,
+        106,
+        108
+      ]
+    },
+    {
+      "id": "pool",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "start": 495,
+        "end": 528
+      },
+      "additionalSources": [
+        {
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "start": 592,
+          "end": 598
+        }
+      ],
+      "facts": {
+        "role": "transactionを検証して内部プールへ渡すL500–502。",
+        "input": "transactionとorigin。検証例は要求chain IDとノード番号。",
+        "output": "1件分の追加結果L502。条件例は不一致L596でChainIdMismatch。",
+        "boundary": "追加は取り込みやレシート待ちではない。検証例は一条件で残高等は範囲外。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        500,
+        501,
+        502,
+        593,
+        594,
+        596
+      ]
+    },
+    {
+      "id": "pool-balance",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 3,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "3操作目の検証条件例には残高の処理・行補助がなく「残高など他の検証条件は範囲外」。残高検査へ進む日本語の入口がなくここで停止。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "残高検査の有効/無効の違いは答えられない。開いた一例はチェーンIDで、残高はこの範囲外と明示された。",
+      "evidenceLines": []
+    },
+    {
+      "id": "network",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "start": 1134,
+        "end": 1203
+      },
+      "facts": {
+        "role": "内部要求と通信出来事を処理するL1176/1187。",
+        "input": "ノード内部の要求と通信側の出来事（本文）。",
+        "output": "L1202のPendingで最終結果がないと伝え実行を譲る。",
+        "boundary": "仕事が残っていても再通知を予約する場合がある。停止/同期完了ではない。先頭forは型へのFuture実装と補助で区別。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        1134,
+        1176,
+        1187,
+        1202
+      ]
+    },
+    {
+      "id": "network-reputation",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 4,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "通信待機の説明からは相手の評価変更・信頼済み/未登録の条件へつながらず、4操作目は14件の英語crate名で日本語の責務差がない。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。通信待機の説明からは相手の評価変更・信頼済み/未登録の条件へつながらず、4操作目は14件の英語crate名で日本語の責務差がない。",
+      "evidenceLines": []
+    },
+    {
+      "id": "sync",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/stages/api/src/pipeline/mod.rs",
+        "start": 213,
+        "end": 259
+      },
+      "facts": {
+        "role": "段階一覧を順に一巡し進捗更新と巻き戻しを扱うL227/243。",
+        "input": "段階/前進捗/保存先を持つself、L223/227と本文。",
+        "output": "L258で次の制御情報を成功として返し、巻き戻しはL243–245でその指示を返す。",
+        "boundary": "L232?は段階失敗。具体的な段階条件/全同期モードは別範囲。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        223,
+        227,
+        232,
+        243,
+        244,
+        245,
+        258
+      ]
+    },
+    {
+      "id": "sync-unwind",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 4,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "既存の一巡処理では巻き戻しを呼ぶことだけ説明され、巻き戻し順と対象外条件は別実装。4操作目の8件のcrate一覧には、その詳細へ対応する日本語入口がなく停止。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。既存の一巡処理では巻き戻しを呼ぶことだけ説明され、巻き戻し順と対象外条件は別実装。4操作目の8件のcrate一覧には、その詳細へ対応する日本語入口がなく停止。",
+      "evidenceLines": []
+    },
+    {
+      "id": "engine",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "start": 517,
+        "end": 606
+      },
+      "facts": {
+        "role": "出来事の種類に応じ担当を選び繰り返し処理。L521/572。",
+        "input": "Engine要求、保存完了結果と開始時刻、保存進捗。L575/584。",
+        "output": "run自体は値を返さず処理し続けると本文が説明。",
+        "boundary": "保存遅延はL564で保存待ち、通常L569入力待ち。致命的エラーや切断で終えうる。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        521,
+        564,
+        569,
+        572,
+        575,
+        584
+      ]
+    },
+    {
+      "id": "engine-timestamp",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 4,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "要求/保存完了を振り分ける説明から時刻検査へつながらない。4操作目の11件のcrate一覧には時刻/同時刻の条件を示す日本語手掛かりがなく停止。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。要求/保存完了を振り分ける説明から時刻検査へつながらない。4操作目の11件のcrate一覧には時刻/同時刻の条件を示す日本語手掛かりがなく停止。",
+      "evidenceLines": []
+    },
+    {
+      "id": "execution",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/evm/evm/src/execute.rs",
+        "start": 596,
+        "end": 632
+      },
+      "facts": {
+        "role": "ブロック内の要求を順に取り出し実行し前後の変更をまとめるL620–631。",
+        "input": "送信者が復元された要求を含むblockとself（L596補助）。",
+        "output": "レシート等を含む実行結果またはエラー、L631 Ok(result)。",
+        "boundary": "L621?は一件の失敗。L631成功はcommit/履歴確定ではない。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        596,
+        620,
+        621,
+        627,
+        631
+      ]
+    },
+    {
+      "id": "execution-receipt",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 5,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "用語補助では実行成功印/使用ガスを扱う記録と分かるが、失敗でもレシートを作るかを原文へ対応させる入口がない。5操作目は同名evm等のcrate一覧で作成処理の選び方が分からず停止。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。用語補助では実行成功印/使用ガスを扱う記録と分かるが、失敗でもレシートを作るかを原文へ対応させる入口がない。5操作目は同名evm等のcrate一覧で作成処理の選び方が分からず停止。",
+      "evidenceLines": []
+    },
+    {
+      "id": "payload",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/ethereum/payload/src/lib.rs",
+        "start": 90,
+        "end": 102
+      },
+      "facts": {
+        "role": "argsと部品を候補作成の担当へ渡すL90/94。",
+        "input": "args、EVM設定、状態参照、プール、作成設定。L94–100。",
+        "output": "L101の最後の式のResultをそのまま返す。BuildOutcomeかPayloadBuilderError。",
+        "boundary": "採用/差し替えの全条件は抜粋外。候補作成と履歴確定は別。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        90,
+        94,
+        100,
+        101
+      ]
+    },
+    {
+      "id": "payload-cancel",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 4,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "候補作成の代表入口では全採用条件は抜粋外と表示。4操作目の7件crate一覧にガス枠超過/中止要求へ対応する日本語説明がなく、どれを選べばよいか確かめられず停止。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。候補作成の代表入口では全採用条件は抜粋外と表示。4操作目の7件crate一覧にガス枠超過/中止要求へ対応する日本語説明がなく、どれを選べばよいか確かめられず停止。",
+      "evidenceLines": []
+    },
+    {
+      "id": "storage",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/storage/provider/src/providers/database/provider.rs",
+        "start": 3965,
+        "end": 3991
+      },
+      "facts": {
+        "role": "保存部品の変更を保存先へ確定するcommit L3965。",
+        "input": "DB操作/静的ファイル/待機バッチを持つself（行補助/本文）。",
+        "output": "L3990追加データなし成功Ok(())または保存エラー。",
+        "boundary": "通常/巻き戻しをL3966で分ける。?失敗後は成功処理へ進まない。変更作成/全保存先原子性は範囲外。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        3965,
+        3966,
+        3973,
+        3979,
+        3984,
+        3990
+      ]
+    },
+    {
+      "id": "storage-account",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 4,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "保存確定の説明から現在アカウントの読取へつながらず、4操作目の22件crate一覧にハッシュ形式/アドレス/Optionの条件を示す日本語の手掛かりがない。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。保存確定の説明から現在アカウントの読取へつながらず、4操作目の22件crate一覧にハッシュ形式/アドレス/Optionの条件を示す日本語の手掛かりがない。",
+      "evidenceLines": []
+    },
+    {
+      "id": "extension",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/exex/exex/src/manager.rs",
+        "start": 609,
+        "end": 620
+      },
+      "facts": {
+        "role": "空きができるまで待ち通知出所とデータを送るL618/619。",
+        "input": "sourceとnotification（L613–616/入口補助）。",
+        "output": "L619で通知経路への送信成功またはSendError。",
+        "boundary": "L618受入可能まで待つ。送信成功は拡張処理完了/ブロック確定ではない。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        613,
+        618,
+        619
+      ]
+    },
+    {
+      "id": "extension-reorg",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 4,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "通知を送る入口の説明はあるが、採用/差し替え/取り消しから新旧を取得する処理の入口はない。4操作目は32件の例/型/実装の一覧で、新旧を取り出す対象との日本語対応がなく停止。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。通知を送る入口の説明はあるが、採用/差し替え/取り消しから新旧を取得する処理の入口はない。4操作目は32件の例/型/実装の一覧で、新旧を取り出す対象との日本語対応がなく停止。",
+      "evidenceLines": []
+    },
+    {
+      "id": "foundation",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/chainspec/src/spec.rs",
+        "start": 114,
+        "end": 143
+      },
+      "facts": {
+        "role": "組込mainnetのJSONを読みチェーン設定を組み立てるL116/119。",
+        "input": "mainnet.json文字列、mainnetルール。L116の入力補助とL118。",
+        "output": "L142で共有用ChainSpecへ変換して返す。",
+        "boundary": "L117 expectは失敗時panic。?でエラーを返す操作とは別。任意ファイル/接続/同期完了は範囲外。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        116,
+        117,
+        118,
+        119,
+        142
+      ]
+    },
+    {
+      "id": "foundation-fee",
+      "attempt": 1,
+      "status": "fail",
+      "clicks": 4,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "組み込みmainnet設定の代表説明から時刻別の基本手数料設定の選択へつながらない。4操作目の19件crate一覧に有効ルールなし/空一覧の代替値の日本語対応がなく停止。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未回答。組み込みmainnet設定の代表説明から時刻別の基本手数料設定の選択へつながらない。4操作目の19件crate一覧に有効ルールなし/空一覧の代替値の日本語対応がなく停止。",
+      "evidenceLines": []
+    }
+  ],
+  "observedTaskOrder": [
+    "node",
+    "node-exit",
+    "rpc",
+    "rpc-recovery",
+    "pool",
+    "pool-balance",
+    "network",
+    "network-reputation",
+    "sync",
+    "sync-unwind",
+    "engine",
+    "engine-timestamp",
+    "execution",
+    "execution-receipt",
+    "payload",
+    "payload-cancel",
+    "storage",
+    "storage-account",
+    "extension",
+    "extension-reorg",
+    "foundation",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": false,
+  "retention": {
+    "url": true,
+    "line": true,
+    "hint": true,
+    "noteDraft": true
+  },
+  "rawEvidenceLocation": "outputs/expanded-loop/baseline/persona-a/",
+  "limits": [
+    "AI UI operation and source-supported answers; not human comprehension or independent first-time discovery.",
+    "First trials only; failures and unmeasured tasks are never replaced by retries."
+  ]
+}

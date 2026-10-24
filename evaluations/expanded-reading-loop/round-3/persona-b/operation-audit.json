@@ -1,0 +1,794 @@
+{
+  "sourceLog": "expanded-loop/round-3/persona-b/operations.json",
+  "sourceLogHash": "8cc799165f5101633bd06b9d1a351764d1058f518ec5a7672441af4c8ee46204",
+  "observedTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": true,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 4,
+    "rpc": 4,
+    "pool": 5,
+    "network": 4,
+    "sync": 4,
+    "engine": 4,
+    "execution": 4,
+    "payload": 4,
+    "storage": 4,
+    "extension": 4,
+    "foundation": 4,
+    "node-exit": 5,
+    "rpc-recovery": 5,
+    "pool-balance": 5,
+    "network-reputation": 5,
+    "sync-unwind": 5,
+    "engine-timestamp": 5,
+    "execution-receipt": 5,
+    "payload-cancel": 5,
+    "storage-account": 5,
+    "extension-reorg": 5,
+    "foundation-fee": 5
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 5,
+      "action": "検証条件例を開く",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 2,
+      "action": "領域を開く",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 3,
+      "action": "対象原文を開く",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 4,
+      "action": "個別行ヒントを開く",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 5,
+      "action": "用語・行説明本文を閉じる",
+      "status": "performed"
+    }
+  ],
+  "excludedReadOnlyObservations": [
+    {
+      "task": "node",
+      "afterClick": 4,
+      "action": "原文と補助状態を観測"
+    },
+    {
+      "task": "rpc",
+      "afterClick": 4,
+      "action": "原文と補助状態を観測"
+    },
+    {
+      "task": "pool",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "network",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "sync",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "engine",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "execution",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "payload",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "storage",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "extension",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "foundation",
+      "afterClick": 4,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "node-exit",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "rpc-recovery",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "pool-balance",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "network-reputation",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "sync-unwind",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "engine-timestamp",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "execution-receipt",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "payload-cancel",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "storage-account",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "extension-reorg",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    },
+    {
+      "task": "foundation-fee",
+      "afterClick": 5,
+      "action": "原文と補助状態を新規観測"
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

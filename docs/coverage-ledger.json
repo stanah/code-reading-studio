@@ -1723,6 +1723,10 @@
         {
           "start": 114,
           "end": 143
+        },
+        {
+          "start": 538,
+          "end": 556
         }
       ],
       "status": "excerpt-only"
@@ -3245,8 +3249,13 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 254,
+          "end": 264
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/engine/primitives/src/message.rs",
@@ -4892,8 +4901,13 @@
       "area": "execution",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 12,
+          "end": 27
+        }
+      ],
+      "status": "whole-file-reviewed"
     },
     {
       "path": "crates/ethereum/evm/src/test_utils.rs",
@@ -5303,6 +5317,10 @@
         {
           "start": 90,
           "end": 102
+        },
+        {
+          "start": 265,
+          "end": 300
         }
       ],
       "status": "excerpt-only"
@@ -5897,8 +5915,13 @@
       "area": "extension",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 10,
+          "end": 48
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/fs-util/Cargo.toml",
@@ -7673,8 +7696,13 @@
       "area": "network",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 546,
+          "end": 585
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/net/network/src/protocol.rs",
@@ -9103,8 +9131,13 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 34,
+          "end": 51
+        }
+      ],
+      "status": "whole-file-reviewed"
     },
     {
       "path": "crates/node/core/src/lib.rs",
@@ -11151,6 +11184,10 @@
         {
           "start": 81,
           "end": 109
+        },
+        {
+          "start": 750,
+          "end": 760
         }
       ],
       "status": "excerpt-only"
@@ -12472,6 +12509,10 @@
         {
           "start": 213,
           "end": 259
+        },
+        {
+          "start": 302,
+          "end": 346
         }
       ],
       "status": "excerpt-only"
@@ -14634,8 +14675,13 @@
       "area": "storage",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 69,
+          "end": 84
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/storage/provider/src/providers/state/mod.rs",
@@ -15966,6 +16012,10 @@
         {
           "start": 592,
           "end": 598
+        },
+        {
+          "start": 783,
+          "end": 801
         }
       ],
       "status": "excerpt-only"

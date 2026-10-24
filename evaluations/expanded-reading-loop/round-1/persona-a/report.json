@@ -1,0 +1,493 @@
+{
+  "persona": "a",
+  "tasks": [
+    {
+      "id": "node",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "bin/reth/src/main.rs",
+        "start": 33,
+        "end": 48
+      },
+      "facts": {
+        "role": "コマンドを読み起動処理を渡し終了を待つL40/42/44。",
+        "input": "コマンドライン起動方法/設定。L40と本文。",
+        "output": "L42起動後のhandleを用いL44終了を待ちCLI全体の結果を返す。",
+        "boundary": "起動完了と終了待ちは別、awaitは処理結果待ち。起動完了でプロセス全体は終わらない。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        40,
+        42,
+        44
+      ]
+    },
+    {
+      "id": "node-exit",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 3,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/node/core/src/exit.rs",
+        "start": 34,
+        "end": 51
+      },
+      "facts": {
+        "role": "終了を表す内部処理を進め用意できた結果を返す（画面本文）。",
+        "input": "内部処理を持つselfと再通知cx（本文）。",
+        "output": "Readyの成功/エラーまたはPending（本文）。",
+        "boundary": "終了要求送信ではない。内部処理なしでもPending（本文）。"
+      },
+      "blockers": [
+        "旧11件完了前に追加課題を開いた順序逸脱。初回未計測として以後に成功へ繰り上げない。",
+        "順序逸脱のため診断試行を中断。観測済み内容は保持し成功へ繰り上げない。"
+      ],
+      "pass": false,
+      "helpClosed": false,
+      "prediction": "未実施。固定順序逸脱のため3操作で中断した。",
+      "evidenceLines": [
+        39,
+        40,
+        42,
+        45
+      ]
+    },
+    {
+      "id": "rpc",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "facts": {
+        "role": "署名済み要求を担当へ渡す入口L923。",
+        "input": "署名済みバイト列tx: Bytes、L921補助。",
+        "output": "成功時識別ハッシュ、失敗時RPCエラー。L923の?とOk。",
+        "boundary": "ハッシュは取り込み/確定完了ではない。ログL922と結果L923は別。"
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        921,
+        922,
+        923
+      ]
+    },
+    {
+      "id": "pool",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 3,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "順序逸脱のため診断試行を中断。観測済み内容は保持し成功へ繰り上げない。"
+      ],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "network",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "sync",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "engine",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "execution",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "payload",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "storage",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "extension",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "foundation",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "rpc-recovery",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "pool-balance",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "network-reputation",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "sync-unwind",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "engine-timestamp",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "execution-receipt",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "payload-cancel",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "storage-account",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "extension-reorg",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "foundation-fee",
+      "attempt": 1,
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": false,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [],
+      "pass": false,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    }
+  ],
+  "observedTaskOrder": [
+    "node",
+    "node-exit",
+    "rpc",
+    "pool"
+  ],
+  "orderMatchesPolicy": false,
+  "retention": {
+    "url": null,
+    "line": null,
+    "hint": null,
+    "noteDraft": null
+  },
+  "rawEvidenceLocation": "outputs/expanded-loop/round-1/persona-a/",
+  "limits": [
+    "AI UI operation and source-supported answers; not human comprehension or independent first-time discovery.",
+    "First trials only; failures and unmeasured tasks are never replaced by retries."
+  ]
+}

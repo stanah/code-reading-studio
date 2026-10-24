@@ -1,0 +1,678 @@
+{
+  "persona": "c",
+  "tasks": [
+    {
+      "id": "node",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "bin/reth/src/main.rs",
+        "start": 33,
+        "end": 48
+      },
+      "facts": {
+        "role": "コマンドを読み起動処理を渡し終了を待つ。",
+        "input": "コマンドラインの起動方法・設定。",
+        "output": "handleでノード終了を待ちCLI実行結果を返す。",
+        "boundary": "起動完了待ちL42と終了待ちL44は異なる。"
+      },
+      "factEvidence": {
+        "role": [
+          40,
+          42,
+          44
+        ],
+        "input": [
+          40
+        ],
+        "output": [
+          40,
+          42,
+          44
+        ],
+        "boundary": [
+          42,
+          44
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        40,
+        42,
+        44
+      ]
+    },
+    {
+      "id": "rpc",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 5,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "facts": {
+        "role": "署名済み要求を担当へ渡し結果を返す入口。",
+        "input": "tx:Bytesの署名済みバイト列。",
+        "output": "成功のハッシュかRPCエラー。",
+        "boundary": "返答は取り込み・確定完了ではなく、ログ?と失敗?は別。"
+      },
+      "factEvidence": {
+        "role": [
+          921,
+          923
+        ],
+        "input": [
+          921
+        ],
+        "output": [
+          921,
+          923
+        ],
+        "boundary": [
+          922,
+          923
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        921,
+        922,
+        923
+      ]
+    },
+    {
+      "id": "pool",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "start": 495,
+        "end": 528
+      },
+      "additionalSource": {
+        "path": "crates/transaction-pool/src/validate/eth.rs",
+        "start": 592,
+        "end": 598
+      },
+      "facts": {
+        "role": "検証後プールへ渡し追加結果を返す。条件例ではチェーンIDを比較。",
+        "input": "トランザクションとorigin。",
+        "output": "1件の追加結果、例ではID違いに検証エラー。",
+        "boundary": "入口だけでは全条件を読めず、例も一条件。追加と確定は別。"
+      },
+      "factEvidence": {
+        "role": [
+          500,
+          501,
+          594
+        ],
+        "input": [
+          497,
+          498
+        ],
+        "output": [
+          499,
+          502,
+          596
+        ],
+        "boundary": [
+          500,
+          596
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        497,
+        498,
+        499,
+        500,
+        501,
+        502,
+        593,
+        594,
+        596
+      ]
+    },
+    {
+      "id": "network",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "start": 1134,
+        "end": 1203
+      },
+      "facts": {
+        "role": "内部要求とネットワークの出来事を取り出して処理する。",
+        "input": "内部からの要求と通信側の出来事。",
+        "output": "今すぐ返す最終結果がなければPoll::Pending。",
+        "boundary": "実行を譲る状態であり停止や同期完了ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          1176,
+          1187
+        ],
+        "input": [
+          1176,
+          1187
+        ],
+        "output": [
+          1202
+        ],
+        "boundary": [
+          1202
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        1176,
+        1187,
+        1202
+      ]
+    },
+    {
+      "id": "sync",
+      "status": "not-measured",
+      "clicks": 3,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "engine",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "execution",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "payload",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "storage",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "extension",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "foundation",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "node-exit",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/node/core/src/exit.rs",
+        "start": 34,
+        "end": 51
+      },
+      "facts": {
+        "role": "終了対象の内部処理を進め結果を待つ。",
+        "input": "内部処理を持つselfと通知先cx。",
+        "output": "Readyの成功/エラー、またはPending。",
+        "boundary": "終了要求を送る処理ではなく、対象なしもL48でPending。"
+      },
+      "factEvidence": {
+        "role": [
+          39,
+          40
+        ],
+        "input": [
+          37,
+          39
+        ],
+        "output": [
+          43,
+          45,
+          48
+        ],
+        "boundary": [
+          39,
+          40,
+          48
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "成功にはならない。L45はErr(err)に対してPoll::Ready(Err(err))を返している。成功の場合のL43のOk(())とは別の行で、内部エラーをそのまま返す。",
+      "evidenceLines": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "predictionBasis": "今回開いた日本語行対応とErr補助を閉じた後、残った原文の同じ語を照合した。専門知識で補完していない。"
+    },
+    {
+      "id": "rpc-recovery",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "start": 750,
+        "end": 760
+      },
+      "facts": {
+        "role": "送信用データを読み解き署名から送信者を求め組にする。",
+        "input": "txバイト列と復元キャッシュ設定。",
+        "output": "Recoveredの組かEthApiError。",
+        "boundary": "キャッシュなしでも直接復元。秘密鍵を取り出す、プール追加、取込処理ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          752,
+          758
+        ],
+        "input": [
+          751,
+          753
+        ],
+        "output": [
+          751,
+          757,
+          758
+        ],
+        "boundary": [
+          755,
+          757
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "キャッシュ未設定はL755のNoneでtransaction.try_recover()を呼ぶため、それだけで失敗にはならない。署名復元が失敗したらL757でInvalidTransactionSignatureへ変換し、?で返す。",
+      "evidenceLines": [
+        751,
+        752,
+        753,
+        754,
+        755,
+        757,
+        758
+      ]
+    },
+    {
+      "id": "pool-balance",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/transaction-pool/src/validate/eth.rs",
+        "start": 783,
+        "end": 801
+      },
+      "facts": {
+        "role": "必要額と送信者残高を比較する残高検査。",
+        "input": "トランザクションの必要額、送信者残高、検査無効設定。",
+        "output": "不足時はInsufficientFundsのエラー、それ以外はOk(())。",
+        "boundary": "Okはこの検査を通過しただけで、無効設定でもOkとなる。実行や確定を示さない。"
+      },
+      "factEvidence": {
+        "role": [
+          790,
+          792
+        ],
+        "input": [
+          790,
+          792
+        ],
+        "output": [
+          794,
+          799
+        ],
+        "boundary": [
+          792,
+          799
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "必要額が残高より大きく検査が有効なら、L792の条件からL794のInsufficientFundsを返す。無効なら!self.disable_balance_checkを満たさず、不足分岐へ入らずL799のOk(())へ進む。",
+      "evidenceLines": [
+        790,
+        792,
+        794,
+        795,
+        799
+      ]
+    },
+    {
+      "id": "network-reputation",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "sync-unwind",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "engine-timestamp",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "execution-receipt",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "payload-cancel",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "storage-account",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "extension-reorg",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    },
+    {
+      "id": "foundation-fee",
+      "status": "not-measured",
+      "clicks": 0,
+      "reachedSource": false,
+      "inPlaceHints": null,
+      "source": null,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "固定順序逸脱が判明し、診断用試行を終了。未完了または未実施。"
+      ],
+      "pass": null,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": []
+    }
+  ],
+  "observedTaskOrder": [
+    "node",
+    "node-exit",
+    "rpc",
+    "rpc-recovery",
+    "pool",
+    "pool-balance",
+    "network",
+    "sync"
+  ],
+  "orderMatchesPolicy": false,
+  "retention": {
+    "url": null,
+    "line": null,
+    "hint": null,
+    "noteDraft": null
+  },
+  "rawEvidenceLocation": "outputs/expanded-loop/round-1/persona-c/",
+  "limits": [
+    "AI UI operation and source-supported answers; not human comprehension or independent first-time discovery.",
+    "First trials only; failures and unmeasured tasks are never replaced by retries."
+  ]
+}

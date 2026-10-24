@@ -1,0 +1,350 @@
+{
+  "sourceLog": "expanded-loop/round-1/persona-c/raw-operation-log.json",
+  "sourceLogHash": "779a9ff2e0138878f84500aaf08edcc72bb16e26f2d1a026bd6e060bfc48b6c3",
+  "observedTaskOrder": [
+    "node",
+    "node-exit",
+    "rpc",
+    "rpc-recovery",
+    "pool",
+    "pool-balance",
+    "network",
+    "sync"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": false,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 6,
+    "rpc": 5,
+    "pool": 7,
+    "network": 7,
+    "sync": 3,
+    "engine": 0,
+    "execution": 0,
+    "payload": 0,
+    "storage": 0,
+    "extension": 0,
+    "foundation": 0,
+    "node-exit": 6,
+    "rpc-recovery": 6,
+    "pool-balance": 7,
+    "network-reputation": 0,
+    "sync-unwind": 0,
+    "engine-timestamp": 0,
+    "execution-receipt": 0,
+    "payload-cancel": 0,
+    "storage-account": 0,
+    "extension-reorg": 0,
+    "foundation-fee": 0
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "ノードは、いつ起動を終えて何を待つ？",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "実コードをこの場で確かめる L33–48",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "ノードを起動して待つ L42",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 5,
+      "action": "ノードの終了を待つ L44",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 6,
+      "action": ".await の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "ノード領域",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "もう一つ読む：終了を待つ間、成功と失敗をどう返す？",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 4,
+      "action": "失敗をそのまま返す L45",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 5,
+      "action": "Err の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 6,
+      "action": "ヒントを閉じて原文だけ読む",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "click /送信要求の入口は何を受け取り、何を返す/",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "実コードをこの場で確かめる L920–924",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "成功・失敗を返す L923",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 5,
+      "action": "? の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 2,
+      "action": "click /送信要求の入口は何を受け取り、何を返す/",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 3,
+      "action": "もう一つ読む：受信したデータから送信者を求めるには？",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 4,
+      "action": "なければ直接復元を試す L755",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 5,
+      "action": "復元の失敗をエラーにする L757",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 6,
+      "action": "ヒントを閉じて原文だけ読む",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "click /プールに追加する前に、何を確かめる/",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "実コードをこの場で確かめる L495–528",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 4,
+      "action": "検証結果を待つ L500",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 5,
+      "action": ".await の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 6,
+      "action": "検証条件の一例を原文で確かめる",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 7,
+      "action": "違えば検証エラーを返す L596",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 2,
+      "action": "click /プールに追加する前に、何を確かめる/",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 3,
+      "action": "もう一つ読む：残高が足りない要求は、いつ失敗になる？",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 4,
+      "action": "検査有効と必要額の条件を選ぶ",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 5,
+      "action": "不足の戻りを選ぶ",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 6,
+      "action": "成功行を選ぶ",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 7,
+      "action": "補助を閉じ原文だけで予測する",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 2,
+      "action": "他の動作を開く",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 3,
+      "action": "通信待ちの動作を開く",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 4,
+      "action": "原文を開く",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 5,
+      "action": "内部要求を対応づける",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 6,
+      "action": "通信出来事を対応づける",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 7,
+      "action": "実行を譲る結果を対応づける",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 3,
+      "action": "click /122 files 過去のブロック/",
+      "status": "completed"
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

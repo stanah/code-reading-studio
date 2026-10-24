@@ -9,7 +9,7 @@ vm.runInNewContext(await read('../public/reading-help-data.js'),ctx);vm.runInNew
 const help=ctx.ReadingHelp,data=ctx.READING_HELP_DATA;
 
 test('every authored line hint is tied to the pinned excerpt, exact line and source hash',()=>{
- assert.equal(Object.keys(data.contexts).length,24);
+ assert.equal(Object.keys(data.contexts).length,35);
  for(const [id,c] of Object.entries(data.contexts)){
   assert.equal(createHash('sha256').update(c.source.code).digest('hex'),c.source.hash,id);
   for(const line of c.lines)assert.ok(c.source.code.split('\n')[line.line-c.source.start]?.includes(line.match),id+' L'+line.line);

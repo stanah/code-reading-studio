@@ -1,0 +1,184 @@
+{
+  "sourceLog": "expanded-loop/round-1/persona-a/raw-operation-log.json",
+  "sourceLogHash": "4068a1b63822f35202e9cfc41e10678b19bda1f99303c83b679619cfd644b7bc",
+  "observedTaskOrder": [
+    "node",
+    "node-exit",
+    "rpc",
+    "pool"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": false,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 7,
+    "rpc": 7,
+    "pool": 3,
+    "network": 0,
+    "sync": 0,
+    "engine": 0,
+    "execution": 0,
+    "payload": 0,
+    "storage": 0,
+    "extension": 0,
+    "foundation": 0,
+    "node-exit": 3,
+    "rpc-recovery": 0,
+    "pool-balance": 0,
+    "network-reputation": 0,
+    "sync-unwind": 0,
+    "engine-timestamp": 0,
+    "execution-receipt": 0,
+    "payload-cancel": 0,
+    "storage-account": 0,
+    "extension-reorg": 0,
+    "foundation-fee": 0
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "ノード起動の動作",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "起動原文展開",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "起動L42",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 5,
+      "action": "終了L44",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 6,
+      "action": "handle補助",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 7,
+      "action": ".await補助",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "終了待機内部をもう一つ読む",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "RPC原文展開",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "入力L921",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 5,
+      "action": "成否L923",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 6,
+      "action": "RpcResult補助",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 7,
+      "action": "ハッシュ補助",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "プール原文展開",
+      "status": true
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

@@ -1,0 +1,1104 @@
+{
+  "persona": "c",
+  "tasks": [
+    {
+      "id": "node",
+      "clicks": 5,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "bin/reth/src/main.rs",
+        "start": 33,
+        "end": 48
+      },
+      "facts": {
+        "role": "CLIのコマンドを読み起動を渡し終了を待つ。",
+        "input": "起動方法や設定を指定するCLI。",
+        "output": "handle経由の終了待ちとCLI全体実行結果。",
+        "boundary": "launchの完了待ちL42とノード終了待ちL44は別。"
+      },
+      "factEvidence": {
+        "role": [
+          40,
+          42,
+          44
+        ],
+        "input": [
+          40
+        ],
+        "output": [
+          42,
+          44
+        ],
+        "boundary": [
+          42,
+          44
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        40,
+        42,
+        44
+      ]
+    },
+    {
+      "id": "rpc",
+      "clicks": 4,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "facts": {
+        "role": "署名済みデータを送信担当へ渡す。",
+        "input": "tx:Bytesという署名済みバイト列。",
+        "output": "成功ハッシュ、失敗RPCエラー。",
+        "boundary": "ハッシュはブロック取り込みや確定完了ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          921,
+          923
+        ],
+        "input": [
+          921
+        ],
+        "output": [
+          921,
+          923
+        ],
+        "boundary": [
+          923
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        921,
+        923
+      ]
+    },
+    {
+      "id": "pool",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "start": 495,
+        "end": 528
+      },
+      "additionalSources": [
+        {
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "start": 592,
+          "end": 598
+        }
+      ],
+      "facts": {
+        "role": "検証後プールへ渡す。具体例は要求のIDとノードIDの比較。",
+        "input": "transactionとorigin、例では要求のchain_id。",
+        "output": "追加結果、例の不一致ではChainIdMismatch。",
+        "boundary": "例は検証一条件だけで全条件ではない。プール追加は確定ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          500,
+          501,
+          593,
+          594
+        ],
+        "input": [
+          497,
+          498,
+          593
+        ],
+        "output": [
+          502,
+          596
+        ],
+        "boundary": [
+          593,
+          596
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        500,
+        501,
+        593,
+        594,
+        497,
+        498,
+        502,
+        596
+      ]
+    },
+    {
+      "id": "network",
+      "clicks": 5,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "start": 1134,
+        "end": 1203
+      },
+      "facts": {
+        "role": "内部やネットワークからの出来事を取り出す。",
+        "input": "内部要求とネットワーク出来事。",
+        "output": "Poll::Pendingで今返せる最終結果なしを示す。",
+        "boundary": "実行を譲り再起床を頼み停止・同期完了を意味しない。"
+      },
+      "factEvidence": {
+        "role": [
+          1176,
+          1187
+        ],
+        "input": [
+          1176,
+          1187
+        ],
+        "output": [
+          1202
+        ],
+        "boundary": [
+          1202
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        1176,
+        1187,
+        1202
+      ]
+    },
+    {
+      "id": "sync",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/stages/api/src/pipeline/mod.rs",
+        "start": 213,
+        "end": 259
+      },
+      "facts": {
+        "role": "段階を順に完了させ進捗更新または巻戻する。",
+        "input": "段階一覧、前段進捗、保存先self。",
+        "output": "次のControlFlowかPipelineError。",
+        "boundary": "?は失敗を返し巻戻指示は巻戻後返却。各段階詳細は別。"
+      },
+      "factEvidence": {
+        "role": [
+          227,
+          232,
+          243
+        ],
+        "input": [
+          223,
+          232
+        ],
+        "output": [
+          223,
+          245,
+          258
+        ],
+        "boundary": [
+          232,
+          244,
+          245
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        227,
+        232,
+        243,
+        223,
+        245,
+        258,
+        244
+      ]
+    },
+    {
+      "id": "engine",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "start": 517,
+        "end": 606
+      },
+      "facts": {
+        "role": "出来事の種類に応じEngine要求か保存完了を担当処理へ振る。",
+        "input": "Engine要求、保存完了、保存進捗。",
+        "output": "run自体は値を返さず処理を続ける。",
+        "boundary": "保存側待ちと通常入力待ちを分け、エラーでループ終了もある。"
+      },
+      "factEvidence": {
+        "role": [
+          572,
+          575,
+          584
+        ],
+        "input": [
+          564,
+          569,
+          572
+        ],
+        "output": [
+          520,
+          521
+        ],
+        "boundary": [
+          564,
+          569,
+          591
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        572,
+        575,
+        584,
+        564,
+        569,
+        520,
+        521,
+        591
+      ]
+    },
+    {
+      "id": "execution",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/evm/evm/src/execute.rs",
+        "start": 596,
+        "end": 632
+      },
+      "facts": {
+        "role": "ブロックの要求を順に実行し状態変更と結果をまとめる。",
+        "input": "復元済み要求を持つブロックと状態self。",
+        "output": "BlockExecutionResultか実行エラー。",
+        "boundary": "?は途中失敗を返す。成功結果は保存commitや確定ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          614,
+          620,
+          621,
+          627
+        ],
+        "input": [
+          596
+        ],
+        "output": [
+          596,
+          631
+        ],
+        "boundary": [
+          621,
+          631
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        614,
+        620,
+        621,
+        627,
+        596,
+        631
+      ]
+    },
+    {
+      "id": "payload",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/ethereum/payload/src/lib.rs",
+        "start": 90,
+        "end": 102
+      },
+      "facts": {
+        "role": "候補を作る担当へ設定と入力を渡す。",
+        "input": "args、EVM設定、client、poolと作成設定。",
+        "output": "担当のResult<BuildOutcome,PayloadBuilderError>。",
+        "boundary": "全採用条件は範囲外で候補は採用・確定とは別。"
+      },
+      "factEvidence": {
+        "role": [
+          94
+        ],
+        "input": [
+          92,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100
+        ],
+        "output": [
+          93,
+          101
+        ],
+        "boundary": [
+          94,
+          101
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        94,
+        92,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        93,
+        101
+      ]
+    },
+    {
+      "id": "storage",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/storage/provider/src/providers/database/provider.rs",
+        "start": 3965,
+        "end": 3991
+      },
+      "facts": {
+        "role": "書き込み部品が持つ変更を保存先へ確定。",
+        "input": "静的ファイル、待機バッチ、DB操作self。",
+        "output": "Ok(())または保存のエラー。",
+        "boundary": "通常保存と巻戻を分ける。全保存先原子性や変更データ作成は保証範囲外。"
+      },
+      "factEvidence": {
+        "role": [
+          3965,
+          3973,
+          3979,
+          3984
+        ],
+        "input": [
+          3965,
+          3978,
+          3984
+        ],
+        "output": [
+          3984,
+          3990
+        ],
+        "boundary": [
+          3966,
+          3984
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        3965,
+        3973,
+        3979,
+        3984,
+        3978,
+        3990,
+        3966
+      ]
+    },
+    {
+      "id": "extension",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/exex/exex/src/manager.rs",
+        "start": 609,
+        "end": 620
+      },
+      "facts": {
+        "role": "経路が受け付けられるまで待ち通知を渡す。",
+        "input": "通知の出所sourceとnotification。",
+        "output": "通知経路送信成功かSendError。",
+        "boundary": "L619成功は拡張処理完了やブロック確定ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          618,
+          619
+        ],
+        "input": [
+          615,
+          616
+        ],
+        "output": [
+          617,
+          619
+        ],
+        "boundary": [
+          618,
+          619
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        618,
+        619,
+        615,
+        616,
+        617
+      ]
+    },
+    {
+      "id": "foundation",
+      "clicks": 5,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/chainspec/src/spec.rs",
+        "start": 114,
+        "end": 143
+      },
+      "facts": {
+        "role": "組込mainnetのJSONからチェーン設定を組む。",
+        "input": "mainnet.jsonの文字列とmainnetルール。",
+        "output": "共有するChainSpec。",
+        "boundary": "expect失敗はpanic。任意ファイル解析・接続・同期完了の処理ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          115,
+          116,
+          119
+        ],
+        "input": [
+          116,
+          118
+        ],
+        "output": [
+          115,
+          142
+        ],
+        "boundary": [
+          117
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "evidenceLines": [
+        115,
+        116,
+        119,
+        118,
+        142,
+        117
+      ]
+    },
+    {
+      "id": "node-exit",
+      "clicks": 5,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/node/core/src/exit.rs",
+        "start": 34,
+        "end": 51
+      },
+      "facts": {
+        "role": "内部終了処理の結果を待ち返す。",
+        "input": "self内の処理とcx。",
+        "output": "Ready(Ok/Err)またはPending。",
+        "boundary": "終了要求送信ではなく処理がない場合もPending。"
+      },
+      "factEvidence": {
+        "role": [
+          39,
+          40
+        ],
+        "input": [
+          37,
+          39
+        ],
+        "output": [
+          43,
+          45,
+          48
+        ],
+        "boundary": [
+          39,
+          48
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "L45のErrはReady(Err(err))を返すので成功ではない。成功を返すL43のReady(Ok(()))とは異なる。",
+      "evidenceLines": [
+        39,
+        40,
+        37,
+        43,
+        45,
+        48
+      ]
+    },
+    {
+      "id": "rpc-recovery",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "start": 750,
+        "end": 760
+      },
+      "facts": {
+        "role": "受信データを読み解き署名から送信者を得る。",
+        "input": "txバイト列と復元キャッシュ設定。",
+        "output": "transactionとsignerのRecovered、失敗EthApiError。",
+        "boundary": "キャッシュなし自体はエラーでなく秘密鍵取得やプール追加ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          752,
+          758
+        ],
+        "input": [
+          751,
+          753
+        ],
+        "output": [
+          757,
+          758
+        ],
+        "boundary": [
+          755,
+          757
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "キャッシュNoneはL755のtry_recoverへ進む。復元そのものの失敗はL757でInvalidTransactionSignatureに変換され?で返る。",
+      "evidenceLines": [
+        752,
+        758,
+        751,
+        753,
+        757,
+        755
+      ]
+    },
+    {
+      "id": "pool-balance",
+      "clicks": 6,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/transaction-pool/src/validate/eth.rs",
+        "start": 783,
+        "end": 801
+      },
+      "facts": {
+        "role": "検査有効時に必要額と残高の不足を判断する。",
+        "input": "transaction、sender、無効設定。",
+        "output": "不足ならInsufficientFunds、通ればOk(())。",
+        "boundary": "この検査だけの成功で無効時もOk。実行や確定成功とは別。"
+      },
+      "factEvidence": {
+        "role": [
+          790,
+          792
+        ],
+        "input": [
+          786,
+          787,
+          790,
+          792
+        ],
+        "output": [
+          794,
+          799
+        ],
+        "boundary": [
+          792,
+          799
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "必要額が大きく有効ならL792の条件でL794のエラーへ。無効なら!disable_balance_checkが成立せずL799のOk(())へ進む。",
+      "evidenceLines": [
+        790,
+        792,
+        786,
+        787,
+        794,
+        799
+      ]
+    },
+    {
+      "id": "network-reputation",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/net/network/src/peers.rs",
+        "start": 546,
+        "end": 585
+      },
+      "facts": {
+        "role": "登録相手と変更種別を見て評価を省略・調整・適用する。",
+        "input": "peer_id、rep、相手一覧。",
+        "output": "変更なしreturnまたは評価更新/リセットoutcome。",
+        "boundary": "outcome後の遮断全体は含まず信頼済み全変更免除ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          559,
+          561,
+          567,
+          579
+        ],
+        "input": [
+          546,
+          559
+        ],
+        "output": [
+          570,
+          579,
+          581,
+          584
+        ],
+        "boundary": [
+          579,
+          585
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "信頼済みTimeoutはL561内のL567に一致してL570でreturn。未登録はL559で相手を得られずL583–584でreturnし変更しない。",
+      "evidenceLines": [
+        559,
+        561,
+        567,
+        579,
+        546,
+        570,
+        581,
+        584,
+        585
+      ]
+    },
+    {
+      "id": "sync-unwind",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/stages/api/src/pipeline/mod.rs",
+        "start": 302,
+        "end": 346
+      },
+      "facts": {
+        "role": "同期実行の逆順で巻戻対象の段階を調べる。",
+        "input": "to、bad_block、段階保存先self。",
+        "output": "抜粋は対象選択、unwind全体は成功またはPipelineError。",
+        "boundary": "進捗が小さい段階はSkipped後continue、実巻戻や保存は後続。"
+      },
+      "factEvidence": {
+        "role": [
+          320,
+          335,
+          342
+        ],
+        "input": [
+          303,
+          305,
+          306
+        ],
+        "output": [
+          307
+        ],
+        "boundary": [
+          335,
+          342,
+          343
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "L320 revで実行と逆順に見る。L335で進捗番号<toならL342でSkipped通知しL343 continueで次段階へ進む。",
+      "evidenceLines": [
+        320,
+        335,
+        342,
+        303,
+        305,
+        306,
+        307,
+        343
+      ]
+    },
+    {
+      "id": "engine-timestamp",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/engine/primitives/src/lib.rs",
+        "start": 254,
+        "end": 264
+      },
+      "facts": {
+        "role": "次候補属性とheaderの時刻を比較。",
+        "input": "attrとheader。",
+        "output": "Ok(())またはInvalidTimestamp。",
+        "boundary": "Okは時刻検査を通っただけで候補完成や採用確定ではない。"
+      },
+      "factEvidence": {
+        "role": [
+          259
+        ],
+        "input": [
+          256,
+          257
+        ],
+        "output": [
+          260,
+          262
+        ],
+        "boundary": [
+          259,
+          262
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "同じ場合L259の<=に入るのでL260のエラー。大きい場合は入らずL262のOk(())。",
+      "evidenceLines": [
+        259,
+        256,
+        257,
+        260,
+        262
+      ]
+    },
+    {
+      "id": "execution-receipt",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/ethereum/evm/src/receipt.rs",
+        "start": 12,
+        "end": 27
+      },
+      "facts": {
+        "role": "実行結果をレシートへ組み立てる。",
+        "input": "ctxのtx_type、result、cumulative_gas_used。",
+        "output": "Receipt値、Result型ではない。",
+        "boundary": "実行後の記録化で保存確定は別。実行失敗もfalseで記録。"
+      },
+      "factEvidence": {
+        "role": [
+          17,
+          18,
+          22,
+          24
+        ],
+        "input": [
+          16,
+          17
+        ],
+        "output": [
+          16,
+          18,
+          25
+        ],
+        "boundary": [
+          18,
+          22
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "L18でReceiptを作りL22 successにis_success()を入れる。失敗ならfalseであってレシート作成自体をErrにしたり省略する枝はない。",
+      "evidenceLines": [
+        17,
+        18,
+        22,
+        24,
+        16,
+        25
+      ]
+    },
+    {
+      "id": "payload-cancel",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/ethereum/payload/src/lib.rs",
+        "start": 265,
+        "end": 300
+      },
+      "facts": {
+        "role": "要求のガス超過を飛ばす処理と候補作成中止を分ける。",
+        "input": "pool_tx、残り枠と使用量、ルール、cancel。",
+        "output": "次要求へのcontinueかOk(BuildOutcome::Cancelled)。",
+        "boundary": "無効印は候補イテレーター。continueの回は後続中止検査へ進まず全プール削除ともいえない。"
+      },
+      "factEvidence": {
+        "role": [
+          265,
+          287,
+          294,
+          299
+        ],
+        "input": [
+          265,
+          267,
+          297
+        ],
+        "output": [
+          294,
+          299
+        ],
+        "boundary": [
+          287,
+          294,
+          297
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "ガス超過はL287で印を付けL294 continueで次要求へ。中止検査L297まで進み真ならL299でCancelledを成功形式で返し関数を終える。",
+      "evidenceLines": [
+        265,
+        287,
+        294,
+        299,
+        267,
+        297
+      ]
+    },
+    {
+      "id": "storage-account",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/storage/provider/src/providers/state/latest.rs",
+        "start": 69,
+        "end": 84
+      },
+      "facts": {
+        "role": "保存設定から検索キーを選び現在のアカウントを読む。",
+        "input": "addressと設定・DB参照self。",
+        "output": "ProviderResult<Option<Account>>で値あり/なし/失敗。",
+        "boundary": "NoneとDB失敗は違い読取のみで残高変更や送信をしない。"
+      },
+      "factEvidence": {
+        "role": [
+          74,
+          75,
+          77,
+          80
+        ],
+        "input": [
+          73,
+          74,
+          75
+        ],
+        "output": [
+          73,
+          78,
+          80
+        ],
+        "boundary": [
+          73,
+          78,
+          80
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "ハッシュ形式はL75のkeccak256(address)をL77のHashedAccountsのキーにする。OptionのNoneは見つからないことでL78のmap_errで変換する読取失敗とは別。",
+      "evidenceLines": [
+        74,
+        75,
+        77,
+        80,
+        73,
+        78
+      ]
+    },
+    {
+      "id": "extension-reorg",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/exex/types/src/notification.rs",
+        "start": 10,
+        "end": 48
+      },
+      "facts": {
+        "role": "通知の種類からnewとoldを分けて取り出す。",
+        "input": "採用/差替/取消のself。",
+        "output": "新履歴committed_chainと旧履歴reverted_chainのSome/None。",
+        "boundary": "履歴取得で差替実行ではなく採用と確定も別。"
+      },
+      "factEvidence": {
+        "role": [
+          33,
+          42
+        ],
+        "input": [
+          34,
+          36,
+          43,
+          45
+        ],
+        "output": [
+          35,
+          36,
+          44,
+          45
+        ],
+        "boundary": [
+          35,
+          44
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "差替ではL35のnewとL44のoldを取得できる。取消通知だけならL36で新履歴はNone、旧履歴はL44にある。",
+      "evidenceLines": [
+        33,
+        42,
+        34,
+        36,
+        43,
+        45,
+        35,
+        44
+      ]
+    },
+    {
+      "id": "foundation-fee",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/chainspec/src/spec.rs",
+        "start": 538,
+        "end": 556
+      },
+      "facts": {
+        "role": "固定または時刻に有効な可変手数料設定を選ぶ。",
+        "input": "timestampとselfのルール一覧。",
+        "output": "BaseFeeParams、最終支払額ではない。",
+        "boundary": "該当なしは先頭、空は既定設定。現在時刻取得や額計算はしない。"
+      },
+      "factEvidence": {
+        "role": [
+          541,
+          546,
+          548
+        ],
+        "input": [
+          539,
+          540
+        ],
+        "output": [
+          539,
+          541,
+          548,
+          552
+        ],
+        "boundary": [
+          552
+        ]
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "L552で該当ルールがなくても一覧のfirstのparamsを選ぶ。空一覧ならfirstは値なしなのでunwrap_or_elseのBaseFeeParams::ethereumを使う。",
+      "evidenceLines": [
+        541,
+        546,
+        548,
+        539,
+        540,
+        552
+      ]
+    }
+  ],
+  "observedTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": true,
+  "retention": {
+    "url": true,
+    "line": true,
+    "hint": true,
+    "noteDraft": true
+  },
+  "rawEvidenceLocation": "outputs/expanded-loop/round-4/persona-c/",
+  "limits": [
+    "AI UI operation and source-supported answers; not human comprehension or independent first-time discovery.",
+    "First trials only; failures and unmeasured tasks are never replaced by retries."
+  ]
+}

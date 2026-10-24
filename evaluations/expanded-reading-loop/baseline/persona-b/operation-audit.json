@@ -1,0 +1,910 @@
+{
+  "sourceLog": "expanded-loop/baseline/persona-b/operations.json",
+  "sourceLogHash": "6ca07030ccddf250c42d6bb0195b13108513e6a47ec862a90924be04f135bb72",
+  "observedTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": true,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 6,
+    "rpc": 5,
+    "pool": 8,
+    "network": 5,
+    "sync": 6,
+    "engine": 6,
+    "execution": 6,
+    "payload": 6,
+    "storage": 6,
+    "extension": 6,
+    "foundation": 6,
+    "node-exit": 7,
+    "rpc-recovery": 8,
+    "pool-balance": 6,
+    "network-reputation": 8,
+    "sync-unwind": 6,
+    "engine-timestamp": 6,
+    "execution-receipt": 6,
+    "payload-cancel": 8,
+    "storage-account": 6,
+    "extension-reorg": 5,
+    "foundation-fee": 6
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "起動の動作",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "起動原文を展開",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "L42起動完了",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 5,
+      "action": ".awaitヒント",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 6,
+      "action": "L44終了待ち",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "RPC入口",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "RPC原文",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "L923成功失敗",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 5,
+      "action": "?ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "プール追加",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "プール原文",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 4,
+      "action": "L500検証待ち",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 5,
+      "action": ".awaitヒント",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 6,
+      "action": "検証条件例",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 7,
+      "action": "チェーンID補助",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 8,
+      "action": "L596条件エラー",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 2,
+      "action": "通信の待機",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 3,
+      "action": "通信原文",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 4,
+      "action": "L1202制御を譲る",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 5,
+      "action": "poll/Pending補助",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 2,
+      "action": "同期の段階",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 3,
+      "action": "同期原文",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 4,
+      "action": "L227順番",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 5,
+      "action": "forヒント",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 6,
+      "action": "L243巻戻し",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 2,
+      "action": "Engine要求",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 3,
+      "action": "Engine原文",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 4,
+      "action": "L572種類",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 5,
+      "action": "matchヒント",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 6,
+      "action": "L575担当処理",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 2,
+      "action": "ブロック実行",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 3,
+      "action": "実行原文",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 4,
+      "action": "L621一件実行",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 5,
+      "action": "?ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 6,
+      "action": "レシート補助",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 2,
+      "action": "候補構築入口",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 3,
+      "action": "候補入口原文",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 4,
+      "action": "L101結果",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 5,
+      "action": "Resultヒント",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 6,
+      "action": "候補補助",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 2,
+      "action": "保存",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 3,
+      "action": "保存原文",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 4,
+      "action": "L3984 DB確定",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 5,
+      "action": "?ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 6,
+      "action": "Okヒント",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 2,
+      "action": "拡張への通知",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 3,
+      "action": "通知原文",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 4,
+      "action": "L618空き待ち",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 5,
+      "action": ".awaitヒント",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 6,
+      "action": "通知用語補助",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 2,
+      "action": "組込み設定",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 3,
+      "action": "設定原文",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 4,
+      "action": "L117失敗",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 5,
+      "action": "expectヒント",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 6,
+      "action": "設定用語補助",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "解説範囲から終了待ち内部を探す",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "終了待ち内部を探すためnode領域",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 4,
+      "action": "node builderの構成を探す",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 5,
+      "action": "終了待機の入口handle",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 6,
+      "action": "wait_for_node_exit関数",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 7,
+      "action": "終了待ちの根拠コード",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 2,
+      "action": "RPC領域で復元を探す",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 3,
+      "action": "RPC crateのファイル一覧",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 4,
+      "action": "送信者復元を含む共通処理",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 5,
+      "action": "デコードと送信者復元の動作解説",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 6,
+      "action": "復元の根拠原文",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 7,
+      "action": "行の日本語対応を非表示",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 8,
+      "action": "その場コード補助を閉じ原文だけを探す",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 2,
+      "action": "残高検査を探すプール領域",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 3,
+      "action": "プールの検証モジュールを探す",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 4,
+      "action": "前の検証条件例と同じeth.rsを開く",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 5,
+      "action": "validate_sender_balance",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 6,
+      "action": "残高検査の根拠コード",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 2,
+      "action": "通信相手の評価を探す",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 3,
+      "action": "peersモジュールを探す",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 4,
+      "action": "信頼済みpeerのファイル",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 5,
+      "action": "通信領域へ戻って別構成を探す",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 6,
+      "action": "network本体から相手評価を探す",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 7,
+      "action": "network本体のpeers.rs",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 8,
+      "action": "apply_reputation_changeの入口",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 2,
+      "action": "同期の巻戻しを探す",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 3,
+      "action": "同期段階のapi構成",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 4,
+      "action": "同期のパイプライン本体",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 5,
+      "action": "unwind関数",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 6,
+      "action": "巻戻しの根拠コード",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 2,
+      "action": "Engine領域",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 3,
+      "action": "treeクレート",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 4,
+      "action": "要求処理のmod.rs",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 5,
+      "action": "候補属性を検査する処理",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 6,
+      "action": "根拠のコード",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 2,
+      "action": "実行領域",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 3,
+      "action": "Ethereumのevm",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 4,
+      "action": "receipt.rs",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 5,
+      "action": "build_receipt",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 6,
+      "action": "根拠コード",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 2,
+      "action": "候補作成領域",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 3,
+      "action": "Ethereum payload",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 4,
+      "action": "lib.rs",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 5,
+      "action": "default_ethereum_payload",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 6,
+      "action": "根拠コード",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 7,
+      "action": "終了行を350に変更",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 8,
+      "action": "範囲を表示",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 2,
+      "action": "保存領域",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 3,
+      "action": "provider",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 4,
+      "action": "現在状態のlatest.rs",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 5,
+      "action": "basic_account",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 6,
+      "action": "根拠コード",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 2,
+      "action": "拡張通知領域",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 3,
+      "action": "通知のtypes",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 4,
+      "action": "notification.rs",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 5,
+      "action": "ファイル先頭を読む",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 2,
+      "action": "基礎設定領域",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 3,
+      "action": "chainspec",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 4,
+      "action": "spec.rs",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 5,
+      "action": "base_fee_params_at_timestamp",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 6,
+      "action": "根拠コード",
+      "status": "performed"
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

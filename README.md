@@ -38,7 +38,8 @@ TypeScriptの比較は、自分で開く詳しい補足にあります。
 
 ## 対応範囲と達成状況
 
-11領域それぞれに、まず一つの処理を同じページで読む入口があります。
+11領域それぞれに、最初の処理と、条件を変えて読む追加の処理があります。
+同じページでヒントを開き、必要なら原文だけの表示へ切り替えられます。
 全Rustファイルを表示できますが、原文に結び付いた解説は一部です。
 [現在値と未達条件](docs/reading-status.md)、[全ファイルの台帳](docs/coverage-ledger.json)、
 [完了条件と計測方法](docs/measurement.md)を分けて記録しています。
@@ -94,3 +95,5 @@ node scripts/check-reading-data.mjs
 Rethのソース抜粋には [`dist/reth-LICENSE-MIT.txt`](dist/reth-LICENSE-MIT.txt) が適用されます。
 
 固定した条件に基づく4回の評価・改善は[計測評価の記録](docs/measured-reading-review.md)を参照してください。
+
+課題を1人22件へ広げた評価は[追加課題の評価記録](docs/expanded-reading-review.md)に記録しています。

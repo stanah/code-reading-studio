@@ -1,0 +1,35 @@
+[
+  {
+    "path": "crates/ethereum/evm/src/receipt.rs",
+    "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "sourceHash": "2af582716f2e08ba23ef8675cf1303e7038cb3da1736b8f0218e9b3458a31f97",
+    "reviewer": "root source review 2026-10-25",
+    "scope": "whole-file",
+    "allItemsChecked": true,
+    "operations": [
+      "RethReceiptBuilder: zero-size public builder, Debug/Clone/Copy/Default derives and non_exhaustive attribute",
+      "ReceiptBuilder implementation: Transaction=TransactionSigned; Receipt=Receipt; build_receipt maps tx_type, is_success, cumulative_gas_used and into_logs into Receipt"
+    ],
+    "branches": [
+      "No explicit if/match/loop or Result in this file; result.is_success delegates execution-status classification; false still constructs Receipt",
+      "No persistence or canonical/finalized-chain updates in this file"
+    ]
+  },
+  {
+    "path": "crates/node/core/src/exit.rs",
+    "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "sourceHash": "69ed6e454bc57e635c31178b012e2e79022c459a6f0099176cc212ad2e606b85",
+    "reviewer": "root source review 2026-10-25",
+    "scope": "whole-file",
+    "allItemsChecked": true,
+    "operations": [
+      "NodeExitFuture::new stores boxed pinned supplied future in Some",
+      "Future::poll examines optional consensus engine future; fmt::Debug redacts the future; test_node_exit_future awaits one successful future"
+    ],
+    "branches": [
+      "Some + ready! Pending propagates Pending; Ready Ok removes stored future and returns Ready Ok; Ready Err returns Ready Err",
+      "None returns Pending; constructor has Future Output eyre::Result + Send/static bound; no shutdown request sent",
+      "Included test covers successful await only; failure and empty branches were read, not claimed runtime tested"
+    ]
+  }
+]

@@ -1,0 +1,487 @@
+[
+  {
+    "task": "node-exit",
+    "goal": "終了を待つ内部で、成功・失敗・待機をどう区別するか読む",
+    "predictionPrompt": "待っている内部処理がエラーを返した場合、この待機処理は成功になるか。根拠行と結果を説明する",
+    "primarySource": {
+      "path": "crates/node/core/src/exit.rs",
+      "start": 34,
+      "end": 51,
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/core/src/exit.rs#L34-L51"
+    },
+    "sourceReading": {
+      "role": "終了を表す内部処理を進め、結果がまだなければ待機し、用意できた成功・エラーを返します。",
+      "boundaries": "終了の要求を送る処理ではありません。内部処理がない場合もPendingで、起動成功や同期完了とは区別します。",
+      "lines": [
+        {
+          "line": 39,
+          "match": "if let Some(rx)",
+          "label": "内部処理があるか確かめる",
+          "explanation": "Someなら待機対象を取り出し、ない場合は後ろのelseでPendingを返します。"
+        },
+        {
+          "line": 40,
+          "match": "match ready!",
+          "label": "まだ結果がなければ待つ",
+          "explanation": "ready!は内部処理がPendingなら、このpollもPendingで戻します。結果があれば成功・失敗を分けます。"
+        },
+        {
+          "line": 42,
+          "match": "this.consensus_engine_fut.take();",
+          "label": "成功した待機対象を取り除く",
+          "explanation": "成功した後、保持していた内部処理を取り除きます。"
+        },
+        {
+          "line": 45,
+          "match": "Err(err) =>",
+          "label": "失敗をそのまま返す",
+          "explanation": "内部処理のエラーをReady(Err(err))として返します。成功に変える処理ではありません。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "rpc-recovery",
+    "goal": "受信データから送信者を復元する処理と、失敗の返し方を読む",
+    "predictionPrompt": "復元用キャッシュが未設定の場合と、署名の復元に失敗した場合をそれぞれ説明する",
+    "primarySource": {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 750,
+      "end": 760,
+      "hash": "03aefeb423d3fff38a2750477cee38730e61c055dd8802693ef568cc2432cca8",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/helpers/transaction.rs#L750-L760"
+    },
+    "sourceReading": {
+      "role": "送信用のデータを読み解き、署名から送信者を求め、両方を組にして返します。",
+      "boundaries": "秘密鍵を取り出す処理でも、プール追加やブロックへの取り込みでもありません。キャッシュがなくても直接の復元を試みます。",
+      "lines": [
+        {
+          "line": 752,
+          "match": "decode_raw_transaction::<T>(tx)?",
+          "label": "まずデータを読み解く",
+          "explanation": "読み取りが失敗した場合は?で現在の関数からエラーを返します。"
+        },
+        {
+          "line": 754,
+          "match": "Some(cache) =>",
+          "label": "キャッシュがあれば使う",
+          "explanation": "キャッシュが設定されている場合はcache.recoverへ渡します。"
+        },
+        {
+          "line": 755,
+          "match": "None =>",
+          "label": "なければ直接復元を試す",
+          "explanation": "キャッシュがないこと自体をエラーにせず、transaction.try_recover()を呼びます。"
+        },
+        {
+          "line": 757,
+          "match": "map_err(|_|",
+          "label": "復元の失敗をエラーにする",
+          "explanation": "復元失敗をInvalidTransactionSignatureへ変換し、?で返します。"
+        },
+        {
+          "line": 758,
+          "match": "Ok(Recovered::",
+          "label": "復元した送信者とデータを返す",
+          "explanation": "ここまで成功したデータと送信者を組にして返します。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "pool-balance",
+    "goal": "残高の検査と、検査を省略する設定を読む",
+    "predictionPrompt": "必要額が残高より大きいとき、検査が有効の場合と無効の場合でどう変わるか説明する",
+    "primarySource": {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 783,
+      "end": 801,
+      "hash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L783-L801"
+    },
+    "sourceReading": {
+      "role": "必要額と送信者の残高を比べ、検査が有効で残高が不足していればエラーを返します。",
+      "boundaries": "Okはこの残高検査を通ったことだけです。無効設定の場合もOkとなり、他の検査・実行・確定の成功は示しません。",
+      "lines": [
+        {
+          "line": 790,
+          "match": "let cost =",
+          "label": "必要額を取得する",
+          "explanation": "トランザクションのcostを読みます。costの内部計算式はこの抜粋の外です。"
+        },
+        {
+          "line": 792,
+          "match": "if !self.disable_balance_check",
+          "label": "検査が有効で、残高より大きいか",
+          "explanation": "!は否定、&&は両方を満たす条件です。検査無効なら残高不足の分岐へ入りません。"
+        },
+        {
+          "line": 794,
+          "match": "return Err(InvalidTransactionError::InsufficientFunds",
+          "label": "不足のエラーを返す",
+          "explanation": "実際の残高と必要額をエラーに入れて返します。"
+        },
+        {
+          "line": 799,
+          "match": "Ok(())",
+          "label": "この検査の成功を返す",
+          "explanation": "不足分岐に入らなければ、この関数は成功を返します。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "network-reputation",
+    "goal": "通信相手への評価変更で、固定・信頼済みの相手をどう扱うか読む",
+    "predictionPrompt": "信頼済み相手へのTimeoutによる変更と、未登録の相手への変更をどう扱うか説明する",
+    "primarySource": {
+      "path": "crates/net/network/src/peers.rs",
+      "start": 546,
+      "end": 585,
+      "hash": "328b551bd002f7d8f169b7f7c409fcc5e30501d2f81530381de17c5488dd3944",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/peers.rs#L546-L585"
+    },
+    "sourceReading": {
+      "role": "相手と評価変更の種類を見て、変更の不要・免除・上限調整を経て評価を更新する入口です。",
+      "boundaries": "この抜粋はoutcomeを得るまでです。結果に応じた遮断など後続の処理全体は含みません。信頼済みでも全ての変更が免除されるわけではありません。",
+      "lines": [
+        {
+          "line": 549,
+          "match": "if rep.is_reset()",
+          "label": "リセットか通常の変更か分ける",
+          "explanation": "リセットならNone、通常は変更量を計算します。変更量が0なら戻ります。"
+        },
+        {
+          "line": 559,
+          "match": "if let Some(peer)",
+          "label": "登録された相手を取り出す",
+          "explanation": "相手が一覧にない場合は、後ろのelseで何も変更せず戻ります。"
+        },
+        {
+          "line": 561,
+          "match": "if peer.is_trusted()",
+          "label": "信頼済み・固定の相手を区別する",
+          "explanation": "どちらかの場合、次の特定の種類について変更を免除します。"
+        },
+        {
+          "line": 567,
+          "match": "ReputationChangeKind::Timeout",
+          "label": "通信条件による変更を免除する",
+          "explanation": "Timeoutなど列挙された種類ならreturnし、評価へ変更を適用しません。"
+        },
+        {
+          "line": 579,
+          "match": "peer.apply_reputation",
+          "label": "調整後の変更を適用する",
+          "explanation": "免除されない変更は、必要なら上限を調整してから相手に適用します。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "sync-unwind",
+    "goal": "同期の巻き戻し順序と、対象外の段階を飛ばす条件を読む",
+    "predictionPrompt": "目標番号より進捗番号が小さい段階はどうなるか、巻き戻す順序とともに説明する",
+    "primarySource": {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 302,
+      "end": 346,
+      "hash": "d142b6232a76ffd0f4dd005b8acfee11a7bcd6e8e2c19b5a28a86e1490c591bd",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/api/src/pipeline/mod.rs#L302-L346"
+    },
+    "sourceReading": {
+      "role": "保存済み進捗と目標を確認し、同期した順と逆に段階を見て、目標より手前の段階を飛ばします。",
+      "boundaries": "進捗が目標より小さい段階はSkipped通知後にcontinueします。等しい場合の処理や実際の段階の巻き戻し・保存は後続の範囲です。",
+      "lines": [
+        {
+          "line": 317,
+          "match": "ensure_unwind_target_unpruned",
+          "label": "戻れる範囲か確かめる",
+          "explanation": "削除設定とチェックポイントから目標を確認し、失敗なら?でエラーを返します。"
+        },
+        {
+          "line": 320,
+          "match": "let unwind_pipeline =",
+          "label": "同期と逆の順で段階を見る",
+          "explanation": "iter_mut().rev()で、実行した順と逆に各段階を取り出します。"
+        },
+        {
+          "line": 335,
+          "match": "if checkpoint.block_number < to",
+          "label": "目標より手前なら対象外",
+          "explanation": "現在の進捗が目標の番号より小さい場合だけ、次のスキップ処理に入ります。"
+        },
+        {
+          "line": 342,
+          "match": "self.event_sender.notify(PipelineEvent::Skipped",
+          "label": "飛ばしたことを通知する",
+          "explanation": "この段階は飛ばすと通知してから、continueで次の段階へ進みます。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "engine-timestamp",
+    "goal": "次のブロック候補への時刻の検査を読む",
+    "predictionPrompt": "候補の属性時刻が現在のヘッダーと同じ場合と、大きい場合の戻り値を説明する",
+    "primarySource": {
+      "path": "crates/engine/primitives/src/lib.rs",
+      "start": 254,
+      "end": 264,
+      "hash": "e654d1df933b4ad9d99d53578439a26297eb6cee35755981561bce6971bf190d",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/primitives/src/lib.rs#L254-L264"
+    },
+    "sourceReading": {
+      "role": "候補を作るための属性の時刻を、現在のヘッダーの時刻と比べます。",
+      "boundaries": "この関数は時刻の条件だけを検査します。Okは候補の作成完了や、履歴の採用・確定を意味しません。",
+      "lines": [
+        {
+          "line": 256,
+          "match": "attr: &Types::",
+          "label": "候補作成の属性を受け取る",
+          "explanation": "属性と比較先ヘッダーを借りて検査します。"
+        },
+        {
+          "line": 259,
+          "match": "if attr.timestamp() <=",
+          "label": "同じ時刻も失敗にする",
+          "explanation": "<=は小さいか等しいという条件なので、同じ時刻も失敗の分岐に入ります。"
+        },
+        {
+          "line": 260,
+          "match": "return Err(",
+          "label": "時刻のエラーを返す",
+          "explanation": "条件に入ればInvalidTimestampを返して関数を終えます。"
+        },
+        {
+          "line": 262,
+          "match": "Ok(())",
+          "label": "この時刻検査を通す",
+          "explanation": "条件に入らない、大きい時刻の場合は成功を返します。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "execution-receipt",
+    "goal": "実行結果からレシートへ移す情報を読む",
+    "predictionPrompt": "実行結果が失敗だった場合、レシート自体が作られないのか、成功印はどうなるか説明する",
+    "primarySource": {
+      "path": "crates/ethereum/evm/src/receipt.rs",
+      "start": 12,
+      "end": 27,
+      "hash": "299af6fbea744e4558ceb00f1a1941518efdfaf3849e3cccb595440e7820844e",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/evm/src/receipt.rs#L12-L27"
+    },
+    "sourceReading": {
+      "role": "実行結果から、種類・成功印・累積ガス・ログを持つレシートを組み立てます。",
+      "boundaries": "この関数は実行済みの結果を記録へ移します。実行失敗ならsuccessがfalseになり、レシートの作成自体をErrにする分岐はありません。保存や確定も別です。",
+      "lines": [
+        {
+          "line": 17,
+          "match": "let ReceiptBuilderCtx",
+          "label": "渡された情報を取り出す",
+          "explanation": "ctxから種類、実行結果、累積ガスを取り出します。"
+        },
+        {
+          "line": 18,
+          "match": "        Receipt {",
+          "label": "レシートを組み立てる",
+          "explanation": "この値が関数の戻り値になります。Errを返す関数宣言ではありません。"
+        },
+        {
+          "line": 22,
+          "match": "success: result.is_success()",
+          "label": "実行成功かを印にする",
+          "explanation": "実行が失敗ならfalseをsuccess欄へ入れます。それでもレシートの値を組み立てます。"
+        },
+        {
+          "line": 24,
+          "match": "logs: result.into_logs()",
+          "label": "実行結果のログを移す",
+          "explanation": "累積ガスとともに、実行結果から取り出したログをレシートへ入れます。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "payload-cancel",
+    "goal": "候補作成で取り込めない要求と、中止要求の分岐を読む",
+    "predictionPrompt": "ガス枠超過でスキップする場合と、その後の中止検査が真の場合の違いを説明する",
+    "primarySource": {
+      "path": "crates/ethereum/payload/src/lib.rs",
+      "start": 265,
+      "end": 300,
+      "hash": "51ff71fac90e873f0fa0f32e9c58e5d9e70e970a9952dbb2e9a6f934241cab7c",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/payload/src/lib.rs#L265-L300"
+    },
+    "sourceReading": {
+      "role": "要求が残りのガス枠に収まるかを判定し、超過なら飛ばし、中止されていれば候補作成を終えます。",
+      "boundaries": "無効の印は候補選択のイテレーターに付けます。プール全体から削除したとまでは言えません。continueすると、この回の中止検査へは進みません。",
+      "lines": [
+        {
+          "line": 265,
+          "match": "let exceeds_gas_limit",
+          "label": "ルールに応じて残りの枠と比べる",
+          "explanation": "Amsterdamが有効かで計算を分け、上限が残りの枠を超える場合にSomeを作ります。"
+        },
+        {
+          "line": 287,
+          "match": "best_txs.mark_invalid(",
+          "label": "入らない要求に印を付ける",
+          "explanation": "ガス枠を超えた要求は候補のイテレーターで無効にし、依存する要求も選ばないようにします。"
+        },
+        {
+          "line": 294,
+          "match": "            continue",
+          "label": "次の要求へ進む",
+          "explanation": "この回の残りを飛ばします。関数全体からCancelledを返すのとは異なります。"
+        },
+        {
+          "line": 299,
+          "match": "return Ok(BuildOutcome::Cancelled)",
+          "label": "中止なら候補作成を終える",
+          "explanation": "この中止検査まで進んで真なら、Cancelledという結果を成功の形で返します。中止をErrとしては返しません。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "storage-account",
+    "goal": "アドレスで現在のアカウント情報を読む2つの保存形式を比べる",
+    "predictionPrompt": "ハッシュ形式が有効の場合のキーと、見つからない場合のOptionと、読取エラーを区別する",
+    "primarySource": {
+      "path": "crates/storage/provider/src/providers/state/latest.rs",
+      "start": 69,
+      "end": 84,
+      "hash": "6ef8fd3d3c9f1d215d3ad00ad86b0bf602aa20098b5031c67818b6642c8f5327",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/storage/provider/src/providers/state/latest.rs#L69-L84"
+    },
+    "sourceReading": {
+      "role": "保存形式の設定を見て、アドレスそのものか、そのハッシュをキーに現在のアカウントを読みます。",
+      "boundaries": "読取専用の入口で、残高を増減したり送信を実行する処理ではありません。Noneは値なしで、DBの読取失敗とは別です。",
+      "lines": [
+        {
+          "line": 74,
+          "match": "if self.0.cached_storage_settings()",
+          "label": "保存形式で分ける",
+          "explanation": "ハッシュ形式が有効なら、次のハッシュしたアドレスを使う分岐へ入ります。"
+        },
+        {
+          "line": 75,
+          "match": "let hashed_address",
+          "label": "アドレスをハッシュする",
+          "explanation": "keccak256(address)で求めた値を、HashedAccountsの検索キーにします。"
+        },
+        {
+          "line": 77,
+          "match": "get_by_encoded_key::<tables::HashedAccounts>",
+          "label": "ハッシュ形式の表から読む",
+          "explanation": "取得結果のOptionはそのまま保ち、map_errでエラーの種類を合わせます。"
+        },
+        {
+          "line": 80,
+          "match": "self.tx().get_by_encoded_key::<tables::PlainAccountState>",
+          "label": "通常形式ではアドレスで読む",
+          "explanation": "else側は元のaddressをキーにPlainAccountStateから読みます。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "extension-reorg",
+    "goal": "採用・差し替え・取り消しの通知から新旧の履歴を取り出す処理を読む",
+    "predictionPrompt": "差し替え通知では新旧どちらを取得でき、単なる取り消し通知では何が得られないか説明する",
+    "primarySource": {
+      "path": "crates/exex/types/src/notification.rs",
+      "start": 10,
+      "end": 48,
+      "hash": "bcde49e579c27ab3c716d4ab713353ff9fb679aa5e9b642ab9296badff728e2f",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/exex/types/src/notification.rs#L10-L48"
+    },
+    "sourceReading": {
+      "role": "通知の種類に応じて、新しく採用した履歴と、外した古い履歴を別々に取り出します。",
+      "boundaries": "履歴を取り出す関数で、差し替え自体を実行する処理ではありません。採用通知と履歴の確定も別です。cloneはArcの共有参照を複製します。",
+      "lines": [
+        {
+          "line": 33,
+          "match": "pub fn committed_chain",
+          "label": "新しく採用した履歴を取り出す",
+          "explanation": "採用・差し替えならnewをSomeで返し、取り消しだけならNoneです。"
+        },
+        {
+          "line": 36,
+          "match": "Self::ChainReverted { .. } => None",
+          "label": "取り消しだけなら新履歴はない",
+          "explanation": "committed_chainでは取り消した履歴を新履歴としては返しません。"
+        },
+        {
+          "line": 42,
+          "match": "pub fn reverted_chain",
+          "label": "外した古い履歴を取り出す",
+          "explanation": "差し替え・取り消しならoldをSomeで返し、採用だけならNoneです。"
+        },
+        {
+          "line": 45,
+          "match": "Self::ChainCommitted { .. } => None",
+          "label": "採用だけなら旧履歴はない",
+          "explanation": "reverted_chainでは採用だけの通知から古い履歴を取り出せません。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  },
+  {
+    "task": "foundation-fee",
+    "goal": "時刻に応じた基本手数料の設定の選び方を読む",
+    "predictionPrompt": "可変設定で有効なルールが見つからない場合と、一覧自体が空の場合の代替値を説明する",
+    "primarySource": {
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 538,
+      "end": 556,
+      "hash": "5a8bb53a0f98e277a334ff58744a183276518fcc3dda2409205db13d2a645a00",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/chainspec/src/spec.rs#L538-L556"
+    },
+    "sourceReading": {
+      "role": "固定設定ならそのまま返し、可変設定なら指定された時刻で有効なルールの設定を選びます。",
+      "boundaries": "可変一覧を逆順に見て最初に有効なものを返します。該当なしなら一覧の先頭、空一覧ならEthereumの既定設定です。この関数は現在時刻の取得や手数料額の計算をしません。",
+      "lines": [
+        {
+          "line": 541,
+          "match": "BaseFeeParamsKind::Constant",
+          "label": "固定設定ならそのまま返す",
+          "explanation": "時刻で選び直さず、保持しているbf_paramsを返します。"
+        },
+        {
+          "line": 546,
+          "match": "for (fork, params)",
+          "label": "可変一覧を逆順に見る",
+          "explanation": "設定の一覧を逆順にたどります。有効なルールがあるか次のifで確かめます。"
+        },
+        {
+          "line": 548,
+          "match": "return *params",
+          "label": "最初に有効な設定を返す",
+          "explanation": "指定時刻で有効なら、その設定を返して関数を終えます。"
+        },
+        {
+          "line": 552,
+          "match": "bf_params.first()",
+          "label": "該当なしや空一覧を扱う",
+          "explanation": "有効なものがなくても一覧があれば先頭を使い、一覧が空ならBaseFeeParams::ethereumを使います。"
+        }
+      ]
+    },
+    "grading": "A real answer must be checked against these source lines; this rubric is not evidence of UI operation or participant success."
+  }
+]

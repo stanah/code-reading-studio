@@ -4,7 +4,7 @@
   const data=()=>globalThis.READING_HELP_DATA;
   const prefs=()=>globalThis.LearningStudio?.preferences?.()||{chain:'new',code:'first'};
   const mounted=new WeakSet(),transient=new Map();
-  const syntax={'.await':'await','.expect':'expect','if':'if','for':'for-context','match':'match','return':'early-return','??':'double-question','?':'question','async':'async','fn':'function','let':'variable','Result':'result','RpcResult':'result','Ok':'result','Err':'result','&self':'borrow','&tx':'borrow','->':'return','Bytes':'bytes','B256':'hash','Self':'trait','move':'closure','oneshot':'channel','handle':'handle'};
+  const syntax={'.await':'await','.expect':'expect','if':'if','for':'for-context','match':'match','return':'early-return','continue':'continue','Some':'option','None':'option','??':'double-question','?':'question','async':'async','fn':'function','let':'variable','Result':'result','RpcResult':'result','Ok':'result','Err':'result','&self':'borrow','&tx':'borrow','->':'return','Bytes':'bytes','B256':'hash','Self':'trait','move':'closure','oneshot':'channel','handle':'handle'};
   function context(id,commit){return data()?.commit===commit?data().contexts[id]:undefined;}
   function forSource(path,line,commit){
     if(data()?.commit!==commit)return;
@@ -12,7 +12,7 @@
   }
   function tokenMarkup(line,lineNumber,c){
     // Strings/comments and tracing's ?field formatting are not Rust error propagation.
-    return line.split(/(\/\/.*$|"(?:[^"\\]|\\.)*"|\.await|\.expect|\?\?|\?|&self\b|&tx\b|->|\b(?:async|fn|let|Result|RpcResult|Ok|Err|Bytes|B256|Self|move|oneshot|handle|if|for|match|return)\b)/g).map((part,index,parts)=>{
+    return line.split(/(\/\/.*$|"(?:[^"\\]|\\.)*"|\.await|\.expect|\?\?|\?|&self\b|&tx\b|->|\b(?:async|fn|let|Result|RpcResult|Ok|Err|Bytes|B256|Self|move|oneshot|handle|if|for|match|return|continue|Some|None)\b)/g).map((part,index,parts)=>{
       if(part.startsWith('//')||part.startsWith('"'))return esc(part);
       const override=c?.tokenHints?.[lineNumber]?.[part];
       if(override)return `<button type="button" class="rh-token" data-rh-term="${esc(override)}" aria-label="${esc(part)} の意味を表示">${esc(part)}</button>`;
@@ -25,7 +25,7 @@
   function render(id,commit,{openCode=false}={}){
     const c=context(id,commit);if(!c)return '';
     const options=prefs();
-    return `<section class="rh-panel" aria-label="この箇所の読解ヒント"><p class="rh-intro">${esc(c.intro)}</p><div class="rh-vocabulary" data-concept-hints><span>この言葉は？</span>${c.terms.map(id=>`<button type="button" data-rh-term="${esc(id)}">${esc(data().terms[id].name)}</button>`).join('')}</div><div class="rh-concept-answer" role="status" aria-live="polite" hidden></div><details class="rh-source"${openCode?' open':''}><summary>実コードをこの場で確かめる <span>L${c.source.start}–${c.source.end}</span></summary><div class="rh-source-body"><div class="rh-code-controls"><label><input type="checkbox" data-rh-basics${options.code==='first'?' checked':''}> コードの読み方を補う</label><label><input type="checkbox" data-rh-trace${options.code!=='rust'?' checked':''}> 日本語の処理と対応づける</label></div><div class="rh-basics"${options.code==='first'?'':' hidden'}><p>関数は処理のまとまり、引数は渡すデータ、戻り値は返る結果です。コード中の下線の付いた記号から、その意味を開けます。</p><div class="rh-basic-links">${['function','argument','return','type'].map(t=>`<button type="button" data-rh-term="${t}">${esc(data().terms[t].name)}</button>`).join('')}</div></div><div class="rh-trace"${options.code==='rust'?' hidden':''}><p>確かめたい処理を選ぶと、対応する行と説明を示します。</p><div class="rh-line-steps">${c.lines.map((line,i)=>`<button type="button" data-rh-line="${i}" aria-pressed="false">${esc(line.label)} <small>L${line.line}</small></button>`).join('')}</div><div class="rh-line-answer" role="status" aria-live="polite"><p>処理を選ぶか、下のコードの記号を選んでください。</p></div></div><div class="rh-symbol-answer" role="status" aria-live="polite" hidden></div><pre class="rh-code" tabindex="0" aria-label="${esc(c.title)}の実コード。記号の意味をその場で開けます">${codeHtml(c)}</pre>${c.note?`<p class="rh-source-note">${esc(c.note)}</p>`:''}<p class="rh-evidence">原文：${esc(c.source.path)} · ${esc(commit.slice(0,12))}。行番号・コードは原文のまま、ヒントは解説者による読解です。</p></div></details></section>`;
+    return `<section class="rh-panel" aria-label="この箇所の読解ヒント"><p class="rh-intro">${esc(c.intro)}</p><div class="rh-vocabulary" data-concept-hints><span>この言葉は？</span>${c.terms.map(id=>`<button type="button" data-rh-term="${esc(id)}">${esc(data().terms[id].name)}</button>`).join('')}</div><div class="rh-concept-answer" role="status" aria-live="polite" hidden></div><details class="rh-source"${openCode?' open':''}><summary>実コードをこの場で確かめる <span>L${c.source.start}–${c.source.end}</span></summary><div class="rh-source-body"><div class="rh-reading-mode"><button type="button" data-rh-code-only aria-pressed="false">ヒントを閉じて原文だけ読む</button></div><div class="rh-code-controls"><label><input type="checkbox" data-rh-basics${options.code==='first'?' checked':''}> コードの読み方を補う</label><label><input type="checkbox" data-rh-trace${options.code!=='rust'?' checked':''}> 日本語の処理と対応づける</label></div><div class="rh-basics"${options.code==='first'?'':' hidden'}><p>関数は処理のまとまり、引数は渡すデータ、戻り値は返る結果です。コード中の下線の付いた記号から、その意味を開けます。</p><div class="rh-basic-links">${['function','argument','return','type'].map(t=>`<button type="button" data-rh-term="${t}">${esc(data().terms[t].name)}</button>`).join('')}</div></div><div class="rh-trace"${options.code==='rust'?' hidden':''}><p>確かめたい処理を選ぶと、対応する行と説明を示します。</p><div class="rh-line-steps">${c.lines.map((line,i)=>`<button type="button" data-rh-line="${i}" aria-pressed="false">${esc(line.label)} <small>L${line.line}</small></button>`).join('')}</div><div class="rh-line-answer" role="status" aria-live="polite"><p>処理を選ぶか、下のコードの記号を選んでください。</p></div></div><div class="rh-symbol-answer" role="status" aria-live="polite" hidden></div><pre class="rh-code" tabindex="0" aria-label="${esc(c.title)}の実コード。記号の意味をその場で開けます">${codeHtml(c)}</pre>${c.note?`<p class="rh-source-note">${esc(c.note)}</p>`:''}<p class="rh-evidence">原文：${esc(c.source.path)} · ${esc(commit.slice(0,12))}。行番号・コードは原文のまま、ヒントは解説者による読解です。</p></div></details></section>`;
   }
   function termHtml(id){const t=data()?.terms[id];if(!t)return '';return `<div class="rh-answer-heading"><strong>${esc(t.name)}</strong><button type="button" data-rh-close aria-label="ヒントを閉じる">閉じる</button></div><p>${esc(t.meaning)}</p><p class="rh-example">${esc(t.example)}</p>`;}
   function applyPreferences(){
@@ -59,9 +59,16 @@
         const row=host.querySelector(`[data-code-line="${hint.line}"]`),scroller=host.querySelector('.rh-code');
         if(row&&scroller)scroller.scrollTop=Math.max(0,row.offsetTop-scroller.clientHeight/3);
       };
+      const setCodeOnly=value=>{
+        saved.codeOnly=value;host.classList.toggle('rh-code-only',value);host.closest('.area-followup')?.classList.toggle('is-code-only',value);
+        const control=host.querySelector('[data-rh-code-only]');control.setAttribute('aria-pressed',String(value));control.textContent=value?'ヒントを戻す':'ヒントを閉じて原文だけ読む';
+        if(Number.isInteger(saved.line))showLine(saved.line);
+      };
+      if(saved.codeOnly)setCodeOnly(true);
       host.addEventListener('click',event=>{
+        if(event.target.closest('[data-rh-code-only]')){setCodeOnly(!saved.codeOnly);return;}
         const term=event.target.closest('[data-rh-term]');
-        if(term){host._hintTrigger=term;const code=!!term.closest('.rh-source');showTerm(term.dataset.rhTerm,code);if(code&&Number.isInteger(saved.line))showLine(saved.line);return;}
+        if(term){if(saved.codeOnly)setCodeOnly(false);host._hintTrigger=term;const code=!!term.closest('.rh-source');showTerm(term.dataset.rhTerm,code);if(code&&Number.isInteger(saved.line))showLine(saved.line);return;}
         if(event.target.closest('[data-rh-close]')){event.target.closest('.rh-symbol-answer,.rh-concept-answer').hidden=true;delete saved.term;host._hintTrigger?.focus({preventScroll:true});if(Number.isInteger(saved.line))showLine(saved.line);return;}
         const button=event.target.closest('[data-rh-line]');if(button)showLine(Number(button.dataset.rhLine));
       });

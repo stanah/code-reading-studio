@@ -1,0 +1,700 @@
+{
+  "sourceLog": "expanded-loop/round-2/persona-b/operations.json",
+  "sourceLogHash": "fdb96e58e57580568c9f2a2d4eb6eb9428609e369b7dde23497ae2bca1efa650",
+  "observedTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": true,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 5,
+    "rpc": 5,
+    "pool": 5,
+    "network": 4,
+    "sync": 4,
+    "engine": 4,
+    "execution": 4,
+    "payload": 4,
+    "storage": 4,
+    "extension": 4,
+    "foundation": 4,
+    "node-exit": 5,
+    "rpc-recovery": 5,
+    "pool-balance": 5,
+    "network-reputation": 5,
+    "sync-unwind": 5,
+    "engine-timestamp": 5,
+    "execution-receipt": 5,
+    "payload-cancel": 5,
+    "storage-account": 6,
+    "extension-reorg": 5,
+    "foundation-fee": 5
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "ノード領域",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "実コード展開",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "L44終了待ち選択",
+      "status": "performed"
+    },
+    {
+      "task": "node",
+      "number": 5,
+      "action": ".awaitの意味",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "RPC領域",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "実コード展開",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "成功・失敗の行補助",
+      "status": "performed"
+    },
+    {
+      "task": "rpc",
+      "number": 5,
+      "action": ".awaitヒント",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "プール領域",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "追加入口の原文展開",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 4,
+      "action": "追加結果の行補助",
+      "status": "performed"
+    },
+    {
+      "task": "pool",
+      "number": 5,
+      "action": "検証条件の一例を開く",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 2,
+      "action": "通信領域",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 3,
+      "action": "原文を展開",
+      "status": "performed"
+    },
+    {
+      "task": "network",
+      "number": 4,
+      "action": "実行を譲る行補助",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 2,
+      "action": "同期領域",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 3,
+      "action": "同期原文展開",
+      "status": "performed"
+    },
+    {
+      "task": "sync",
+      "number": 4,
+      "action": "巻き戻しの行補助",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 2,
+      "action": "Engine領域",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 3,
+      "action": "Engine原文展開",
+      "status": "performed"
+    },
+    {
+      "task": "engine",
+      "number": 4,
+      "action": "振り分けの行補助",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 2,
+      "action": "実行領域",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 3,
+      "action": "実行原文展開",
+      "status": "performed"
+    },
+    {
+      "task": "execution",
+      "number": 4,
+      "action": "1件実行の行補助",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 2,
+      "action": "候補作成領域",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 3,
+      "action": "候補入口原文展開",
+      "status": "performed"
+    },
+    {
+      "task": "payload",
+      "number": 4,
+      "action": "担当結果の行補助",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 2,
+      "action": "保存領域",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 3,
+      "action": "保存原文展開",
+      "status": "performed"
+    },
+    {
+      "task": "storage",
+      "number": 4,
+      "action": "保存方法の行補助",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 2,
+      "action": "拡張通知領域",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 3,
+      "action": "通知送信の原文展開",
+      "status": "performed"
+    },
+    {
+      "task": "extension",
+      "number": 4,
+      "action": "経路待ちの行補助",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 2,
+      "action": "設定領域",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 3,
+      "action": "設定原文を展開",
+      "status": "performed"
+    },
+    {
+      "task": "foundation",
+      "number": 4,
+      "action": "読取失敗の行補助",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "ノード領域",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "終了待ち内部の読みどころ",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 4,
+      "action": "失敗を返す個別行ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "node-exit",
+      "number": 5,
+      "action": "ヒントを閉じ原文だけ読む",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 2,
+      "action": "RPC領域",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 3,
+      "action": "送信者復元の読解を開く",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 4,
+      "action": "復元失敗の個別ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 5,
+      "action": "補助を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 2,
+      "action": "プール領域",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 3,
+      "action": "残高検査の読解",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 4,
+      "action": "検査条件の個別ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 5,
+      "action": "原文だけにする",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 2,
+      "action": "通信領域",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 3,
+      "action": "通信相手の評価変更",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 4,
+      "action": "通信条件免除の行ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 5,
+      "action": "補助を閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 2,
+      "action": "同期領域",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 3,
+      "action": "巻き戻し順序の読解",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 4,
+      "action": "対象外条件の行ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 5,
+      "action": "原文だけにする",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 2,
+      "action": "Engine領域",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 3,
+      "action": "時刻検査の読解",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 4,
+      "action": "等しい時刻の個別ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 5,
+      "action": "原文のみへ",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 2,
+      "action": "実行領域",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 3,
+      "action": "レシートの読解",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 4,
+      "action": "成功印の個別ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 5,
+      "action": "原文だけにする",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 2,
+      "action": "候補作成領域",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 3,
+      "action": "候補スキップ/中止の読解",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 4,
+      "action": "continueの行ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 5,
+      "action": "原文だけにする",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 2,
+      "action": "保存領域",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 3,
+      "action": "アカウント読取の読解",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 4,
+      "action": "Optionの用語補助",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 5,
+      "action": "ハッシュ読取の個別ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "storage-account",
+      "number": 6,
+      "action": "用語と行ヒントを閉じる",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 2,
+      "action": "拡張領域",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 3,
+      "action": "通知の新旧履歴読解",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 4,
+      "action": "取消だけの場合の行ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 5,
+      "action": "原文だけへ",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 2,
+      "action": "設定領域",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 3,
+      "action": "手数料選択の読解",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 4,
+      "action": "代替値の個別ヒント",
+      "status": "performed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 5,
+      "action": "原文だけにする",
+      "status": "performed"
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

@@ -1,0 +1,1108 @@
+{
+  "sourceLog": "expanded-loop/round-4/persona-a/raw-operation-log.json",
+  "sourceLogHash": "2fc8050e90cf0fc32ce05d418ed132d839dc3a6c0450b28a572774cdc5600a8c",
+  "observedTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": true,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 7,
+    "rpc": 7,
+    "pool": 8,
+    "network": 8,
+    "sync": 8,
+    "engine": 8,
+    "execution": 8,
+    "payload": 8,
+    "storage": 8,
+    "extension": 8,
+    "foundation": 8,
+    "node-exit": 7,
+    "rpc-recovery": 7,
+    "pool-balance": 7,
+    "network-reputation": 8,
+    "sync-unwind": 8,
+    "engine-timestamp": 8,
+    "execution-receipt": 8,
+    "payload-cancel": 8,
+    "storage-account": 8,
+    "extension-reorg": 8,
+    "foundation-fee": 8
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "node",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "node",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "node",
+      "number": 7,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "rpc",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "rpc",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "rpc",
+      "number": 7,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "pool",
+      "number": 4,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "pool",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "pool",
+      "number": 6,
+      "action": "条件例を開く",
+      "status": null
+    },
+    {
+      "task": "pool",
+      "number": 7,
+      "action": "不一致の失敗",
+      "status": null
+    },
+    {
+      "task": "pool",
+      "number": 8,
+      "action": "チェーンID補助",
+      "status": null
+    },
+    {
+      "task": "network",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "network",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "network",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "network",
+      "number": 4,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "network",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "network",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "network",
+      "number": 7,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "network",
+      "number": 8,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "sync",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "sync",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "sync",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "sync",
+      "number": 4,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "sync",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "sync",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "sync",
+      "number": 7,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "sync",
+      "number": 8,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "engine",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "engine",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "engine",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "engine",
+      "number": 4,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "engine",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "engine",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "engine",
+      "number": 7,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "engine",
+      "number": 8,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "execution",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "execution",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "execution",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "execution",
+      "number": 4,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "execution",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "execution",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "execution",
+      "number": 7,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "execution",
+      "number": 8,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "payload",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "payload",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "payload",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "payload",
+      "number": 4,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "payload",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "payload",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "payload",
+      "number": 7,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "payload",
+      "number": 8,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "storage",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "storage",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "storage",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "storage",
+      "number": 4,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "storage",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "storage",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "storage",
+      "number": 7,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "storage",
+      "number": 8,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "extension",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "extension",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "extension",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "extension",
+      "number": 4,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "extension",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "extension",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "extension",
+      "number": 7,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "extension",
+      "number": 8,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "foundation",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "foundation",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "foundation",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "foundation",
+      "number": 4,
+      "action": "原文を開く",
+      "status": null
+    },
+    {
+      "task": "foundation",
+      "number": 5,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "foundation",
+      "number": 6,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "foundation",
+      "number": 7,
+      "action": "対応行を選ぶ",
+      "status": null
+    },
+    {
+      "task": "foundation",
+      "number": 8,
+      "action": "その場の記号補助",
+      "status": null
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "node-exit",
+      "number": 4,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "node-exit",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "node-exit",
+      "number": 6,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "node-exit",
+      "number": 7,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 3,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 4,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 6,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 7,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "pool-balance",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "pool-balance",
+      "number": 2,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "pool-balance",
+      "number": 3,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "pool-balance",
+      "number": 4,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "pool-balance",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "pool-balance",
+      "number": 6,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "pool-balance",
+      "number": 7,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "network-reputation",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "network-reputation",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "network-reputation",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "network-reputation",
+      "number": 4,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "network-reputation",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "network-reputation",
+      "number": 6,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "network-reputation",
+      "number": 7,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "network-reputation",
+      "number": 8,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "sync-unwind",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "sync-unwind",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "sync-unwind",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "sync-unwind",
+      "number": 4,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "sync-unwind",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "sync-unwind",
+      "number": 6,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "sync-unwind",
+      "number": 7,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "sync-unwind",
+      "number": 8,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 4,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 6,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 7,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 8,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "execution-receipt",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "execution-receipt",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "execution-receipt",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "execution-receipt",
+      "number": 4,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "execution-receipt",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "execution-receipt",
+      "number": 6,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "execution-receipt",
+      "number": 7,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "execution-receipt",
+      "number": 8,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "payload-cancel",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "payload-cancel",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "payload-cancel",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "payload-cancel",
+      "number": 4,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "payload-cancel",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "payload-cancel",
+      "number": 6,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "payload-cancel",
+      "number": 7,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "payload-cancel",
+      "number": 8,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "storage-account",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "storage-account",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "storage-account",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "storage-account",
+      "number": 4,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "storage-account",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "storage-account",
+      "number": 6,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "storage-account",
+      "number": 7,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "storage-account",
+      "number": 8,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "extension-reorg",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "extension-reorg",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "extension-reorg",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "extension-reorg",
+      "number": 4,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "extension-reorg",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "extension-reorg",
+      "number": 6,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "extension-reorg",
+      "number": 7,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "extension-reorg",
+      "number": 8,
+      "action": "補助を閉じる",
+      "status": null
+    },
+    {
+      "task": "foundation-fee",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": null
+    },
+    {
+      "task": "foundation-fee",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": null
+    },
+    {
+      "task": "foundation-fee",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": null
+    },
+    {
+      "task": "foundation-fee",
+      "number": 4,
+      "action": "追加の課題を開く",
+      "status": null
+    },
+    {
+      "task": "foundation-fee",
+      "number": 5,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "foundation-fee",
+      "number": 6,
+      "action": "条件に対応する行",
+      "status": null
+    },
+    {
+      "task": "foundation-fee",
+      "number": 7,
+      "action": "対象の補助",
+      "status": null
+    },
+    {
+      "task": "foundation-fee",
+      "number": 8,
+      "action": "補助を閉じる",
+      "status": null
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

@@ -1,0 +1,916 @@
+{
+  "sourceLog": "expanded-loop/round-3/persona-c/raw-operation-log.json",
+  "sourceLogHash": "36c4cd90e0a44726a9130fa3b5a407134a8bb6ed33fd363e4e3f9e70f3feb4ad",
+  "observedTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": true,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 5,
+    "rpc": 4,
+    "pool": 6,
+    "network": 5,
+    "sync": 6,
+    "engine": 7,
+    "execution": 6,
+    "payload": 6,
+    "storage": 6,
+    "extension": 6,
+    "foundation": 5,
+    "node-exit": 5,
+    "rpc-recovery": 6,
+    "pool-balance": 6,
+    "network-reputation": 8,
+    "sync-unwind": 8,
+    "engine-timestamp": 7,
+    "execution-receipt": 7,
+    "payload-cancel": 8,
+    "storage-account": 7,
+    "extension-reorg": 8,
+    "foundation-fee": 7
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 8,
+      "action": "scroll",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 8,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 8,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 8,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 1,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 2,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 3,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 4,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 5,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 6,
+      "action": "click",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 7,
+      "action": "click",
+      "status": "completed"
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

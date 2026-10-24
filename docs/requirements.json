@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "targetCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
-  "baseline": "dfe7d50c94f33b9a49518198dcd0e49bcaf31058",
+  "baseline": "4ab82ae8f44d5614084202c005cb76c0afb4a236",
   "frozenAt": "2026-10-25",
   "areas": [
     "COV",
@@ -79,8 +79,8 @@
     },
     {
       "id": "FR-EVAL-001",
-      "description": "Three personas complete all 11 fixed tasks within 8 clicks each with role/input/output/boundary supported by visible source, in-place hints and no blocker",
-      "metric": "passingPersonaTasks/33",
+      "description": "Three personas complete 22 fixed tasks each within 8 clicks, with source-supported role/input/output/boundary; 11 transfer tasks also require closed-help predictions and evidence lines; two consecutive rounds on the same build",
+      "metric": "passingPersonaTasks/66",
       "target": 1,
       "tests": [
         "local-app/test/measurement.test.mjs"
@@ -99,7 +99,7 @@
     },
     {
       "id": "FR-EVAL-003",
-      "description": "Actual novice learners independently explain role/input/output/failure from source after closing help; AI roleplay does not satisfy this gate",
+      "description": "Actual novice learners complete all 22 tasks each and explain source-supported role/input/output/failure with help closed; AI roleplay does not satisfy this gate",
       "metric": "humanStudy",
       "target": "verified",
       "tests": [
@@ -158,6 +158,83 @@
       {
         "id": "foundation",
         "goal": "チェーンの設定を読み取る処理と失敗時の扱いを読む"
+      },
+      {
+        "id": "node-exit",
+        "area": "node",
+        "goal": "終了を待つ内部で、成功・失敗・待機をどう区別するか読む",
+        "predictionPrompt": "待っている内部処理がエラーを返した場合、この待機処理は成功になるか。根拠行と結果を説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "rpc-recovery",
+        "area": "rpc",
+        "goal": "受信データから送信者を復元する処理と、失敗の返し方を読む",
+        "predictionPrompt": "復元用キャッシュが未設定の場合と、署名の復元に失敗した場合をそれぞれ説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "pool-balance",
+        "area": "pool",
+        "goal": "残高の検査と、検査を省略する設定を読む",
+        "predictionPrompt": "必要額が残高より大きいとき、検査が有効の場合と無効の場合でどう変わるか説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "network-reputation",
+        "area": "network",
+        "goal": "通信相手への評価変更で、固定・信頼済みの相手をどう扱うか読む",
+        "predictionPrompt": "信頼済み相手へのTimeoutによる変更と、未登録の相手への変更をどう扱うか説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "sync-unwind",
+        "area": "sync",
+        "goal": "同期の巻き戻し順序と、対象外の段階を飛ばす条件を読む",
+        "predictionPrompt": "目標番号より進捗番号が小さい段階はどうなるか、巻き戻す順序とともに説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "engine-timestamp",
+        "area": "engine",
+        "goal": "次のブロック候補への時刻の検査を読む",
+        "predictionPrompt": "候補の属性時刻が現在のヘッダーと同じ場合と、大きい場合の戻り値を説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "execution-receipt",
+        "area": "execution",
+        "goal": "実行結果からレシートへ移す情報を読む",
+        "predictionPrompt": "実行結果が失敗だった場合、レシート自体が作られないのか、成功印はどうなるか説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "payload-cancel",
+        "area": "payload",
+        "goal": "候補作成で取り込めない要求と、中止要求の分岐を読む",
+        "predictionPrompt": "ガス枠超過でスキップする場合と、その後の中止検査が真の場合の違いを説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "storage-account",
+        "area": "storage",
+        "goal": "アドレスで現在のアカウント情報を読む2つの保存形式を比べる",
+        "predictionPrompt": "ハッシュ形式が有効の場合のキーと、見つからない場合のOptionと、読取エラーを区別する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "extension-reorg",
+        "area": "extension",
+        "goal": "採用・差し替え・取り消しの通知から新旧の履歴を取り出す処理を読む",
+        "predictionPrompt": "差し替え通知では新旧どちらを取得でき、単なる取り消し通知では何が得られないか説明する",
+        "requiresClosedHelp": true
+      },
+      {
+        "id": "foundation-fee",
+        "area": "foundation",
+        "goal": "時刻に応じた基本手数料の設定の選び方を読む",
+        "predictionPrompt": "可変設定で有効なルールが見つからない場合と、一覧自体が空の場合の代替値を説明する",
+        "requiresClosedHelp": true
       }
     ],
     "maxClicks": 8,
@@ -168,6 +245,14 @@
       "boundary"
     ],
     "roundPassesRequired": 2,
-    "stopPolicy": "Do not lower gates or replace unobserved tasks with passes. A round can finish with productComplete=false; retain unmet conditions."
-  }
+    "stopPolicy": "Do not lower gates or replace unobserved tasks with passes. A round can finish with productComplete=false; retain unmet conditions.",
+    "expandedTaskCount": 11,
+    "requiredExtendedEvidence": [
+      "helpClosed",
+      "prediction",
+      "evidenceLines"
+    ],
+    "archive": "evaluations/expanded-reading-loop"
+  },
+  "previousPolicy": "evaluations/reading-loop/criteria.json"
 }

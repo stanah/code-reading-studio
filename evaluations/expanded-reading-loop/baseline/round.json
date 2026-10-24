@@ -1,0 +1,8 @@
+{
+  "id": "baseline",
+  "policyHash": "96218e2a2f4036e3f7e49e59816f2a393f9b5c0a3fa70c5acca32fc308df7922",
+  "buildHash": "9331f748ea244f6aca1052f65771340b66063d88de4293c015054ff65e6328e8",
+  "sourceCommit": "4ab82ae8f44d5614084202c005cb76c0afb4a236",
+  "kind": "AI UI operation evaluation",
+  "hashFormat": "runtime assets and API source v2"
+}

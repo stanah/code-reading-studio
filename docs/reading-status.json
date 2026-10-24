@@ -4,27 +4,31 @@
     "version": "v2.7.0",
     "commit": "3d592ece6de8c4559987416a544fc215fd6d6921"
   },
-  "measurementEngineHash": "2ce33cb676211d27187a1283b6b924ed3699a7b6faa6f4de1ce9facaf66493ba",
-  "policyHash": "60d660b58f7b6160647e7bcacb433a076b74a4f954271431c370ce76003f7ec3",
+  "measurementEngineHash": "94dd85a9e0410e9c9a7713811b7892cfbf6ee11e2e261cad6501f65248f08a54",
+  "policyHash": "96218e2a2f4036e3f7e49e59816f2a393f9b5c0a3fa70c5acca32fc308df7922",
   "metrics": {
     "inventoryAccounted": 1872,
     "totalTracked": 1872,
     "totalRust": 1283,
-    "anchoredRustFiles": 23,
-    "fullyReviewedRustFiles": 0,
+    "anchoredRustFiles": 29,
+    "fullyReviewedRustFiles": 2,
     "guidedAreas": 11,
     "totalAreas": 11,
     "invalidEvidence": 0,
-    "passingPersonaTasks": 33,
-    "totalPersonaTasks": 33,
+    "passingPersonaTasks": 66,
+    "totalPersonaTasks": 66,
     "retentionChecksPassed": 3,
     "totalRetentionChecks": 3,
     "humanStudy": "not-verified",
     "verifiedHumanTasks": 0,
     "humanParticipants": 0,
-    "totalHumanTasks": 33,
+    "totalHumanTasks": 66,
     "functionAndBranchCoverage": "not-measured",
-    "consecutivePassingRounds": 2
+    "consecutivePassingRounds": 2,
+    "totalTransferTasks": 33,
+    "passingTransferTasks": 33,
+    "passingOriginalTasks": 33,
+    "invalidProtocolTasks": 0
   },
   "gates": [
     {
@@ -64,8 +68,8 @@
     },
     {
       "id": "FR-EVAL-001",
-      "description": "Three personas complete all 11 fixed tasks within 8 clicks each with role/input/output/boundary supported by visible source, in-place hints and no blocker",
-      "metric": "passingPersonaTasks/33",
+      "description": "Three personas complete 22 fixed tasks each within 8 clicks, with source-supported role/input/output/boundary; 11 transfer tasks also require closed-help predictions and evidence lines; two consecutive rounds on the same build",
+      "metric": "passingPersonaTasks/66",
       "target": 1,
       "status": "pass"
     },
@@ -78,7 +82,7 @@
     },
     {
       "id": "FR-EVAL-003",
-      "description": "Actual novice learners independently explain role/input/output/failure from source after closing help; AI roleplay does not satisfy this gate",
+      "description": "Actual novice learners complete all 22 tasks each and explain source-supported role/input/output/failure with help closed; AI roleplay does not satisfy this gate",
       "metric": "humanStudy",
       "target": "verified",
       "status": "not-verified"
@@ -89,7 +93,7 @@
       "id": "node",
       "name": "起動・組み立て",
       "totalRust": 191,
-      "anchoredRustFiles": 6,
+      "anchoredRustFiles": 7,
       "guided": true
     },
     {
@@ -110,7 +114,7 @@
       "id": "network",
       "name": "P2P ネットワーク",
       "totalRust": 193,
-      "anchoredRustFiles": 1,
+      "anchoredRustFiles": 2,
       "guided": true
     },
     {
@@ -124,14 +128,14 @@
       "id": "engine",
       "name": "チェーンの進行・検証",
       "totalRust": 73,
-      "anchoredRustFiles": 2,
+      "anchoredRustFiles": 3,
       "guided": true
     },
     {
       "id": "execution",
       "name": "EVM・ブロック実行",
       "totalRust": 28,
-      "anchoredRustFiles": 1,
+      "anchoredRustFiles": 2,
       "guided": true
     },
     {
@@ -145,14 +149,14 @@
       "id": "storage",
       "name": "永続化・状態・トライ",
       "totalRust": 288,
-      "anchoredRustFiles": 1,
+      "anchoredRustFiles": 2,
       "guided": true
     },
     {
       "id": "extension",
       "name": "拡張・利用例",
       "totalRust": 75,
-      "anchoredRustFiles": 1,
+      "anchoredRustFiles": 2,
       "guided": true
     },
     {
@@ -168,6 +172,7 @@
       "persona": "a",
       "task": "node",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 7,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -176,6 +181,7 @@
       "persona": "a",
       "task": "rpc",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 7,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -184,6 +190,7 @@
       "persona": "a",
       "task": "pool",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -192,6 +199,7 @@
       "persona": "a",
       "task": "network",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -200,6 +208,7 @@
       "persona": "a",
       "task": "sync",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -208,6 +217,7 @@
       "persona": "a",
       "task": "engine",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -216,6 +226,7 @@
       "persona": "a",
       "task": "execution",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -224,6 +235,7 @@
       "persona": "a",
       "task": "payload",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -232,6 +244,7 @@
       "persona": "a",
       "task": "storage",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -240,6 +253,7 @@
       "persona": "a",
       "task": "extension",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -248,6 +262,106 @@
       "persona": "a",
       "task": "foundation",
       "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "node-exit",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "rpc-recovery",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "pool-balance",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "network-reputation",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "sync-unwind",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "engine-timestamp",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "execution-receipt",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "payload-cancel",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "storage-account",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "extension-reorg",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "foundation-fee",
+      "status": "pass",
+      "protocolValid": true,
       "clicks": 8,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -256,7 +370,8 @@
       "persona": "b",
       "task": "node",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -264,7 +379,8 @@
       "persona": "b",
       "task": "rpc",
       "status": "pass",
-      "clicks": 5,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -272,7 +388,8 @@
       "persona": "b",
       "task": "pool",
       "status": "pass",
-      "clicks": 8,
+      "protocolValid": true,
+      "clicks": 5,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -280,7 +397,8 @@
       "persona": "b",
       "task": "network",
       "status": "pass",
-      "clicks": 5,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -288,7 +406,8 @@
       "persona": "b",
       "task": "sync",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -296,7 +415,8 @@
       "persona": "b",
       "task": "engine",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -304,7 +424,8 @@
       "persona": "b",
       "task": "execution",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -312,7 +433,8 @@
       "persona": "b",
       "task": "payload",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -320,7 +442,8 @@
       "persona": "b",
       "task": "storage",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -328,7 +451,8 @@
       "persona": "b",
       "task": "extension",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -336,7 +460,107 @@
       "persona": "b",
       "task": "foundation",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 4,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "node-exit",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "rpc-recovery",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "pool-balance",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "network-reputation",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "sync-unwind",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "engine-timestamp",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "execution-receipt",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "payload-cancel",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "storage-account",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "extension-reorg",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "foundation-fee",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -344,7 +568,8 @@
       "persona": "c",
       "task": "node",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 5,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -352,7 +577,8 @@
       "persona": "c",
       "task": "rpc",
       "status": "pass",
-      "clicks": 5,
+      "protocolValid": true,
+      "clicks": 4,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -360,7 +586,8 @@
       "persona": "c",
       "task": "pool",
       "status": "pass",
-      "clicks": 7,
+      "protocolValid": true,
+      "clicks": 6,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -368,7 +595,8 @@
       "persona": "c",
       "task": "network",
       "status": "pass",
-      "clicks": 6,
+      "protocolValid": true,
+      "clicks": 5,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -376,6 +604,7 @@
       "persona": "c",
       "task": "sync",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 6,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -384,7 +613,8 @@
       "persona": "c",
       "task": "engine",
       "status": "pass",
-      "clicks": 8,
+      "protocolValid": true,
+      "clicks": 7,
       "sourceReviewed": true,
       "remainingBlockers": 0
     },
@@ -392,6 +622,7 @@
       "persona": "c",
       "task": "execution",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 6,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -400,6 +631,7 @@
       "persona": "c",
       "task": "payload",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 6,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -408,6 +640,7 @@
       "persona": "c",
       "task": "storage",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 6,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -416,6 +649,7 @@
       "persona": "c",
       "task": "extension",
       "status": "pass",
+      "protocolValid": true,
       "clicks": 6,
       "sourceReviewed": true,
       "remainingBlockers": 0
@@ -424,7 +658,107 @@
       "persona": "c",
       "task": "foundation",
       "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "node-exit",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "rpc-recovery",
+      "status": "pass",
+      "protocolValid": true,
       "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "pool-balance",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "network-reputation",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "sync-unwind",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "engine-timestamp",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "execution-receipt",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "payload-cancel",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "storage-account",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "extension-reorg",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "foundation-fee",
+      "status": "pass",
+      "protocolValid": true,
+      "clicks": 7,
       "sourceReviewed": true,
       "remainingBlockers": 0
     }
@@ -433,9 +767,9 @@
   "evaluation": {
     "id": "round-4",
     "previousRound": "round-3",
-    "policyHash": "60d660b58f7b6160647e7bcacb433a076b74a4f954271431c370ce76003f7ec3",
-    "buildHash": "9331f748ea244f6aca1052f65771340b66063d88de4293c015054ff65e6328e8",
-    "sourceCommit": "dfe7d50c94f33b9a49518198dcd0e49bcaf31058",
+    "policyHash": "96218e2a2f4036e3f7e49e59816f2a393f9b5c0a3fa70c5acca32fc308df7922",
+    "buildHash": "82fb6cfc3d69acad3a7c82d1d19855049958129a9e2eab84550548f608e920dd",
+    "sourceCommit": "4ab82ae8f44d5614084202c005cb76c0afb4a236",
     "kind": "AI UI operation evaluation",
     "hashFormat": "runtime assets and API source v2"
   }

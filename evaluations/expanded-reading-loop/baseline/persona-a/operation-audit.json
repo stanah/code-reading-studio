@@ -1,0 +1,910 @@
+{
+  "sourceLog": "expanded-loop/baseline/persona-a/raw-operation-log.json",
+  "sourceLogHash": "6f9702083f3d0ecad5ca7d47bdf5a185376c42ec26cea4c125cec63e854869ce",
+  "observedTaskOrder": [
+    "node",
+    "node-exit",
+    "rpc",
+    "rpc-recovery",
+    "pool",
+    "pool-balance",
+    "network",
+    "network-reputation",
+    "sync",
+    "sync-unwind",
+    "engine",
+    "engine-timestamp",
+    "execution",
+    "execution-receipt",
+    "payload",
+    "payload-cancel",
+    "storage",
+    "storage-account",
+    "extension",
+    "extension-reorg",
+    "foundation",
+    "foundation-fee"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": false,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 7,
+    "rpc": 7,
+    "pool": 8,
+    "network": 8,
+    "sync": 8,
+    "engine": 8,
+    "execution": 8,
+    "payload": 8,
+    "storage": 8,
+    "extension": 8,
+    "foundation": 8,
+    "node-exit": 8,
+    "rpc-recovery": 8,
+    "pool-balance": 3,
+    "network-reputation": 4,
+    "sync-unwind": 4,
+    "engine-timestamp": 4,
+    "execution-receipt": 5,
+    "payload-cancel": 4,
+    "storage-account": 4,
+    "extension-reorg": 4,
+    "foundation-fee": 4
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "ノードの起動/終了",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "起動原文展開",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "起動完了L42",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 5,
+      "action": "終了待ちL44",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 6,
+      "action": "handle個別補助",
+      "status": true
+    },
+    {
+      "task": "node",
+      "number": 7,
+      "action": ".await個別補助",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "終了待ちを含むノード領域",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "さらにファイルや構成",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 4,
+      "action": "起動コードで見たbuilderという名前を手掛かりに選ぶ",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 5,
+      "action": "終了待機の入口と説明されたhandle",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 6,
+      "action": "終了待機の関数L23",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 7,
+      "action": "根拠コードを読む",
+      "status": true
+    },
+    {
+      "task": "node-exit",
+      "number": 8,
+      "action": "最後の回復としてこのファイルの起動解説",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "RPC入口",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "RPC原文展開",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "入力L921",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 5,
+      "action": "成否L923",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 6,
+      "action": "RpcResult補助",
+      "status": true
+    },
+    {
+      "task": "rpc",
+      "number": 7,
+      "action": "ハッシュ補助",
+      "status": true
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 2,
+      "action": "受信データのRPC領域",
+      "status": true
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 3,
+      "action": "ファイル構成を調べる",
+      "status": true
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 4,
+      "action": "入口原文と同名のrpc-eth-api",
+      "status": true
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 5,
+      "action": "送信者の復元と説明されたtransaction",
+      "status": true
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 6,
+      "action": "日本語の「デコードして送信者を復元」を動作で読む",
+      "status": true
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 7,
+      "action": "復元の実コード展開",
+      "status": true
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 8,
+      "action": "コード記号の補助を閉じる",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "プール検証",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "プール原文展開",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 4,
+      "action": "追加結果L502",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 5,
+      "action": "検証条件例",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 6,
+      "action": "chain ID補助",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 7,
+      "action": "不一致L596",
+      "status": true
+    },
+    {
+      "task": "pool",
+      "number": 8,
+      "action": "Err補助",
+      "status": true
+    },
+    {
+      "task": "pool-balance",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "pool-balance",
+      "number": 2,
+      "action": "プール検証の領域",
+      "status": true
+    },
+    {
+      "task": "pool-balance",
+      "number": 3,
+      "action": "検証条件の一例",
+      "status": true
+    },
+    {
+      "task": "network",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "network",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "network",
+      "number": 3,
+      "action": "通信待機",
+      "status": true
+    },
+    {
+      "task": "network",
+      "number": 4,
+      "action": "通信原文",
+      "status": true
+    },
+    {
+      "task": "network",
+      "number": 5,
+      "action": "内部要求L1176",
+      "status": true
+    },
+    {
+      "task": "network",
+      "number": 6,
+      "action": "譲るL1202",
+      "status": true
+    },
+    {
+      "task": "network",
+      "number": 7,
+      "action": "Pending補助",
+      "status": true
+    },
+    {
+      "task": "network",
+      "number": 8,
+      "action": "for補助",
+      "status": true
+    },
+    {
+      "task": "network-reputation",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "network-reputation",
+      "number": 2,
+      "action": "ほかの動作",
+      "status": true
+    },
+    {
+      "task": "network-reputation",
+      "number": 3,
+      "action": "通信領域",
+      "status": true
+    },
+    {
+      "task": "network-reputation",
+      "number": 4,
+      "action": "相手評価をファイルから探す",
+      "status": true
+    },
+    {
+      "task": "sync",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "sync",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "sync",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "sync",
+      "number": 4,
+      "action": "同期原文展開",
+      "status": true
+    },
+    {
+      "task": "sync",
+      "number": 5,
+      "action": "段階L227",
+      "status": true
+    },
+    {
+      "task": "sync",
+      "number": 6,
+      "action": "結果L258",
+      "status": true
+    },
+    {
+      "task": "sync",
+      "number": 7,
+      "action": "巻き戻しL243",
+      "status": true
+    },
+    {
+      "task": "sync",
+      "number": 8,
+      "action": "Result補助",
+      "status": true
+    },
+    {
+      "task": "sync-unwind",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "sync-unwind",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "sync-unwind",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "sync-unwind",
+      "number": 4,
+      "action": "巻き戻し内部をファイルから探す",
+      "status": true
+    },
+    {
+      "task": "engine",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "engine",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "engine",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "engine",
+      "number": 4,
+      "action": "Engine原文展開",
+      "status": true
+    },
+    {
+      "task": "engine",
+      "number": 5,
+      "action": "種類L572",
+      "status": true
+    },
+    {
+      "task": "engine",
+      "number": 6,
+      "action": "Engine要求L575",
+      "status": true
+    },
+    {
+      "task": "engine",
+      "number": 7,
+      "action": "保存完了L584",
+      "status": true
+    },
+    {
+      "task": "engine",
+      "number": 8,
+      "action": "match補助",
+      "status": true
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 4,
+      "action": "時刻検査の対応ファイルを探す",
+      "status": true
+    },
+    {
+      "task": "execution",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "execution",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "execution",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "execution",
+      "number": 4,
+      "action": "実行原文展開",
+      "status": true
+    },
+    {
+      "task": "execution",
+      "number": 5,
+      "action": "実行入力L596",
+      "status": true
+    },
+    {
+      "task": "execution",
+      "number": 6,
+      "action": "一件ずつL620",
+      "status": true
+    },
+    {
+      "task": "execution",
+      "number": 7,
+      "action": "実行結果L631",
+      "status": true
+    },
+    {
+      "task": "execution",
+      "number": 8,
+      "action": "for個別補助",
+      "status": true
+    },
+    {
+      "task": "execution-receipt",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "execution-receipt",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "execution-receipt",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "execution-receipt",
+      "number": 4,
+      "action": "レシートの用語補助を開く",
+      "status": true
+    },
+    {
+      "task": "execution-receipt",
+      "number": 5,
+      "action": "レシート作成のファイルを探す",
+      "status": true
+    },
+    {
+      "task": "payload",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "payload",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "payload",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "payload",
+      "number": 4,
+      "action": "候補作成原文展開",
+      "status": true
+    },
+    {
+      "task": "payload",
+      "number": 5,
+      "action": "入力L90",
+      "status": true
+    },
+    {
+      "task": "payload",
+      "number": 6,
+      "action": "担当L94",
+      "status": true
+    },
+    {
+      "task": "payload",
+      "number": 7,
+      "action": "結果L101",
+      "status": true
+    },
+    {
+      "task": "payload",
+      "number": 8,
+      "action": "Result補助",
+      "status": true
+    },
+    {
+      "task": "payload-cancel",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "payload-cancel",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "payload-cancel",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "payload-cancel",
+      "number": 4,
+      "action": "中止検査の場所を探す",
+      "status": true
+    },
+    {
+      "task": "storage",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "storage",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "storage",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "storage",
+      "number": 4,
+      "action": "保存原文展開",
+      "status": true
+    },
+    {
+      "task": "storage",
+      "number": 5,
+      "action": "保存入力L3965",
+      "status": true
+    },
+    {
+      "task": "storage",
+      "number": 6,
+      "action": "方法L3966",
+      "status": true
+    },
+    {
+      "task": "storage",
+      "number": 7,
+      "action": "成功L3990",
+      "status": true
+    },
+    {
+      "task": "storage",
+      "number": 8,
+      "action": "?補助",
+      "status": true
+    },
+    {
+      "task": "storage-account",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "storage-account",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "storage-account",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "storage-account",
+      "number": 4,
+      "action": "現在のアカウント読取を探す",
+      "status": true
+    },
+    {
+      "task": "extension",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "extension",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "extension",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "extension",
+      "number": 4,
+      "action": "通知原文展開",
+      "status": true
+    },
+    {
+      "task": "extension",
+      "number": 5,
+      "action": "通知入力L613",
+      "status": true
+    },
+    {
+      "task": "extension",
+      "number": 6,
+      "action": "空き待ちL618",
+      "status": true
+    },
+    {
+      "task": "extension",
+      "number": 7,
+      "action": "送信L619",
+      "status": true
+    },
+    {
+      "task": "extension",
+      "number": 8,
+      "action": "Result補助",
+      "status": true
+    },
+    {
+      "task": "extension-reorg",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "extension-reorg",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "extension-reorg",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "extension-reorg",
+      "number": 4,
+      "action": "新旧履歴の取り出しを探す",
+      "status": true
+    },
+    {
+      "task": "foundation",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "foundation",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "foundation",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "foundation",
+      "number": 4,
+      "action": "設定原文展開",
+      "status": true
+    },
+    {
+      "task": "foundation",
+      "number": 5,
+      "action": "JSON入力L116",
+      "status": true
+    },
+    {
+      "task": "foundation",
+      "number": 6,
+      "action": "共有値L142",
+      "status": true
+    },
+    {
+      "task": "foundation",
+      "number": 7,
+      "action": "失敗L117",
+      "status": true
+    },
+    {
+      "task": "foundation",
+      "number": 8,
+      "action": "expect補助",
+      "status": true
+    },
+    {
+      "task": "foundation-fee",
+      "number": 1,
+      "action": "ホーム→コードを調べる",
+      "status": true
+    },
+    {
+      "task": "foundation-fee",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": true
+    },
+    {
+      "task": "foundation-fee",
+      "number": 3,
+      "action": "課題の領域を開く",
+      "status": true
+    },
+    {
+      "task": "foundation-fee",
+      "number": 4,
+      "action": "時刻別基本手数料の場所を探す",
+      "status": true
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

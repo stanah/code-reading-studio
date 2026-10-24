@@ -68,5 +68,115 @@
       "hash": "8e6b9d2e8ec6ae08600fc9e6bd1ed2f68d160aa36bbf0d5a582451d3c4f9c1ac",
       "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L592-L598"
     }
+  },
+  "node-exit": {
+    "title": "終了を待つ間、成功と失敗をどう返す？",
+    "source": {
+      "path": "crates/node/core/src/exit.rs",
+      "start": 34,
+      "end": 51,
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/core/src/exit.rs#L34-L51"
+    }
+  },
+  "rpc-recovery": {
+    "title": "受信したデータから送信者を求めるには？",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 750,
+      "end": 760,
+      "hash": "03aefeb423d3fff38a2750477cee38730e61c055dd8802693ef568cc2432cca8",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/helpers/transaction.rs#L750-L760"
+    }
+  },
+  "pool-balance": {
+    "title": "残高が足りない要求は、いつ失敗になる？",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 783,
+      "end": 801,
+      "hash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L783-L801"
+    }
+  },
+  "network-reputation": {
+    "title": "通信相手の評価変更を、いつ省略する？",
+    "source": {
+      "path": "crates/net/network/src/peers.rs",
+      "start": 546,
+      "end": 585,
+      "hash": "328b551bd002f7d8f169b7f7c409fcc5e30501d2f81530381de17c5488dd3944",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/peers.rs#L546-L585"
+    }
+  },
+  "sync-unwind": {
+    "title": "巻き戻す段階は、どの順に選ぶ？",
+    "source": {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 302,
+      "end": 346,
+      "hash": "d142b6232a76ffd0f4dd005b8acfee11a7bcd6e8e2c19b5a28a86e1490c591bd",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/api/src/pipeline/mod.rs#L302-L346"
+    }
+  },
+  "engine-timestamp": {
+    "title": "次の候補の時刻が同じだったら、どうなる？",
+    "source": {
+      "path": "crates/engine/primitives/src/lib.rs",
+      "start": 254,
+      "end": 264,
+      "hash": "e654d1df933b4ad9d99d53578439a26297eb6cee35755981561bce6971bf190d",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/primitives/src/lib.rs#L254-L264"
+    }
+  },
+  "execution-receipt": {
+    "title": "失敗した実行も、レシートには残る？",
+    "source": {
+      "path": "crates/ethereum/evm/src/receipt.rs",
+      "start": 12,
+      "end": 27,
+      "hash": "299af6fbea744e4558ceb00f1a1941518efdfaf3849e3cccb595440e7820844e",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/evm/src/receipt.rs#L12-L27"
+    }
+  },
+  "payload-cancel": {
+    "title": "候補に入れない要求と、候補作成の中止は同じ？",
+    "source": {
+      "path": "crates/ethereum/payload/src/lib.rs",
+      "start": 265,
+      "end": 300,
+      "hash": "51ff71fac90e873f0fa0f32e9c58e5d9e70e970a9952dbb2e9a6f934241cab7c",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/payload/src/lib.rs#L265-L300"
+    }
+  },
+  "storage-account": {
+    "title": "アドレスから読むとき、値なしとエラーをどう分ける？",
+    "source": {
+      "path": "crates/storage/provider/src/providers/state/latest.rs",
+      "start": 69,
+      "end": 84,
+      "hash": "6ef8fd3d3c9f1d215d3ad00ad86b0bf602aa20098b5031c67818b6642c8f5327",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/storage/provider/src/providers/state/latest.rs#L69-L84"
+    }
+  },
+  "extension-reorg": {
+    "title": "履歴の差し替え通知から、新旧どちらを取れる？",
+    "source": {
+      "path": "crates/exex/types/src/notification.rs",
+      "start": 10,
+      "end": 48,
+      "hash": "bcde49e579c27ab3c716d4ab713353ff9fb679aa5e9b642ab9296badff728e2f",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/exex/types/src/notification.rs#L10-L48"
+    }
+  },
+  "foundation-fee": {
+    "title": "時刻で使う手数料の設定を、どう選ぶ？",
+    "source": {
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 538,
+      "end": 556,
+      "hash": "5a8bb53a0f98e277a334ff58744a183276518fcc3dda2409205db13d2a645a00",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/chainspec/src/spec.rs#L538-L556"
+    }
   }
 }

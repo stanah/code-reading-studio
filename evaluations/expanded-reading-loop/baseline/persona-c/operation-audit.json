@@ -1,0 +1,838 @@
+{
+  "sourceLog": "expanded-loop/baseline/persona-c/raw-operation-log.json",
+  "sourceLogHash": "8bbe2e5f1385afc830af96717ef97d9ff4568a06d1a785e2a251d013be94d8d8",
+  "observedTaskOrder": [
+    "node",
+    "node-exit",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "requiredTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": false,
+  "reportOrderMatchesRawLog": true,
+  "clicksPerTask": {
+    "node": 6,
+    "rpc": 5,
+    "pool": 7,
+    "network": 8,
+    "sync": 6,
+    "engine": 8,
+    "execution": 6,
+    "payload": 6,
+    "storage": 6,
+    "extension": 6,
+    "foundation": 6,
+    "node-exit": 5,
+    "rpc-recovery": 6,
+    "pool-balance": 5,
+    "network-reputation": 5,
+    "sync-unwind": 5,
+    "engine-timestamp": 5,
+    "execution-receipt": 5,
+    "payload-cancel": 5,
+    "storage-account": 5,
+    "extension-reorg": 5,
+    "foundation-fee": 5
+  },
+  "passingTaskCountMismatches": [],
+  "operations": [
+    {
+      "task": "node",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 2,
+      "action": "ノードは、いつ起動を終えて何を待つ？",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 3,
+      "action": "実コードをこの場で確かめる L33–48",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 4,
+      "action": "ノードを起動して待つ L42",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 5,
+      "action": "ノードの終了を待つ L44",
+      "status": "completed"
+    },
+    {
+      "task": "node",
+      "number": 6,
+      "action": ".await の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 2,
+      "action": "解説がある範囲を確かめる",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 3,
+      "action": "ノードは、いつ起動を終えて何を待つ？",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 4,
+      "action": "さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "node-exit",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 2,
+      "action": "送信要求の入口は何を受け取り、何を返す？",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 3,
+      "action": "実コードをこの場で確かめる L920–924",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 4,
+      "action": "成功・失敗を返す L923",
+      "status": "completed"
+    },
+    {
+      "task": "rpc",
+      "number": 5,
+      "action": "? の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 2,
+      "action": "プールに追加する前に何を確かめる？",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 3,
+      "action": "実コードをこの場で確かめる L495–528",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 4,
+      "action": "検証結果を待つ L500",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 5,
+      "action": ".await の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 6,
+      "action": "検証条件の一例を原文で確かめる",
+      "status": "completed"
+    },
+    {
+      "task": "pool",
+      "number": 7,
+      "action": "違えば検証エラーを返す L596",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 2,
+      "action": "同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 3,
+      "action": "通信の出来事がない間は、どう待つ？",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 4,
+      "action": "実コードをこの場で確かめる L1134–1203",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 5,
+      "action": "内部からの要求を取り出す L1176",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 6,
+      "action": "通信からの出来事を取り出す L1187",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 7,
+      "action": "いったん実行を譲る L1202",
+      "status": "completed"
+    },
+    {
+      "task": "network",
+      "number": 8,
+      "action": "poll・Pending",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 3,
+      "action": "過去のブロックをそろえる仕事を、どう進める？",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 4,
+      "action": "実コードをこの場で確かめる L213–259",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 5,
+      "action": "その段階の完了を待つ L232",
+      "status": "completed"
+    },
+    {
+      "task": "sync",
+      "number": 6,
+      "action": "? の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 3,
+      "action": "届いた要求と、保存の完了をどう扱う？",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 4,
+      "action": "実コードをこの場で確かめる L517–606",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 5,
+      "action": "出来事の種類で分ける L572",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 6,
+      "action": "Engineの要求を処理する L575",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 7,
+      "action": "保存完了を処理する L584",
+      "status": "completed"
+    },
+    {
+      "task": "engine",
+      "number": 8,
+      "action": "match の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 3,
+      "action": "ブロック内の要求を、どの順に実行する？",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 4,
+      "action": "実コードをこの場で確かめる L596–632",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 5,
+      "action": "一件を実行する L621",
+      "status": "completed"
+    },
+    {
+      "task": "execution",
+      "number": 6,
+      "action": "? の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 3,
+      "action": "ブロック候補を作る処理へ、何を渡す？",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 4,
+      "action": "実コードをこの場で確かめる L90–102",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 5,
+      "action": "担当処理の結果を返す L101",
+      "status": "completed"
+    },
+    {
+      "task": "payload",
+      "number": 6,
+      "action": "Result の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 3,
+      "action": "状態の変更は、どう保存先へ確定する？",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 4,
+      "action": "実コードをこの場で確かめる L3965–3991",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 5,
+      "action": "DBの変更を確定 L3984",
+      "status": "completed"
+    },
+    {
+      "task": "storage",
+      "number": 6,
+      "action": "? の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 3,
+      "action": "新しい出来事を、拡張機能へどう伝える？",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 4,
+      "action": "実コードをこの場で確かめる L609–620",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 5,
+      "action": "経路の空きを待つ L618",
+      "status": "completed"
+    },
+    {
+      "task": "extension",
+      "number": 6,
+      "action": ".await の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 2,
+      "action": "ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 3,
+      "action": "チェーンの設定をどう読み、失敗したらどうなる？",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 4,
+      "action": "実コードをこの場で確かめる L114–143",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 5,
+      "action": "読み取れなければ停止する L117",
+      "status": "completed"
+    },
+    {
+      "task": "foundation",
+      "number": 6,
+      "action": ".expect の意味を表示",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 2,
+      "action": "読解ツール",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 3,
+      "action": "送信要求の入口",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 4,
+      "action": "誤クリック: 入力説明の本文（署名済みバイト列）を選択。画面変化なし。",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 5,
+      "action": "さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "rpc-recovery",
+      "number": 6,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 1,
+      "action": "コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 2,
+      "action": "プールに追加する前に、何を確かめる？",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 3,
+      "action": "検証条件の一例を原文で確かめる",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "pool-balance",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 3,
+      "action": "click /通信の出来事がない間は、どう待つ/",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "network-reputation",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 3,
+      "action": "click /過去のブロックをそろえる仕事を、どう進める/",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "sync-unwind",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 3,
+      "action": "click /届いた要求と、保存の完了をどう扱う/",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "engine-timestamp",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 3,
+      "action": "click /ブロック内の要求を、どの順に実行する/",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "execution-receipt",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 3,
+      "action": "click /ブロック候補を作る処理へ、何を渡す/",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "payload-cancel",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 3,
+      "action": "click /状態の変更は、どう保存先へ確定する/",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "storage-account",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 3,
+      "action": "click /新しい出来事を、拡張機能へどう伝える/",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "extension-reorg",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 1,
+      "action": "click コードを調べる",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 2,
+      "action": "click 同期・実行・保存など、ほかの動作を読む",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 3,
+      "action": "click /チェーンの設定をどう読み、失敗したらどうなる/",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 4,
+      "action": "click さらにファイルや構成を調べる",
+      "status": "completed"
+    },
+    {
+      "task": "foundation-fee",
+      "number": 5,
+      "action": "検索入力",
+      "status": "completed"
+    }
+  ],
+  "limits": "Derived from preserved UI-operation logs; not a human comprehension study."
+}

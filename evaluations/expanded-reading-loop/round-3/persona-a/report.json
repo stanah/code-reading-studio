@@ -1,0 +1,1358 @@
+{
+  "persona": "a",
+  "tasks": [
+    {
+      "id": "node",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "bin/reth/src/main.rs",
+        "start": 33,
+        "end": 48
+      },
+      "facts": {
+        "role": "文字のコマンドを読み、ノードを起動する処理を渡し、終了を待ちます。",
+        "input": "コマンドラインで指定された起動方法や設定。",
+        "output": "起動後のhandleでノードの終了を待ち、CLI全体の実行結果を返します。",
+        "boundary": "L42は起動の完了待ち、L44は終了待ちです。起動完了でプロセス全体が終了するわけではありません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            40,
+            42,
+            44
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            40
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            42,
+            44
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            42,
+            44
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        40,
+        42,
+        44
+      ]
+    },
+    {
+      "id": "rpc",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "facts": {
+        "role": "アプリから届いた署名済みデータを担当処理へ渡します。",
+        "input": "署名済みトランザクションのバイト列tx: Bytes。",
+        "output": "成功なら識別用のハッシュ、失敗ならRPCのエラー。",
+        "boundary": "返答のハッシュはブロックへの取り込みや確定の完了を意味しません。ログの?txと、失敗を返す.await?を分けて読みます。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            921,
+            923
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            921
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            923
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            922,
+            923
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        921,
+        922,
+        923
+      ]
+    },
+    {
+      "id": "pool",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "start": 495,
+        "end": 528
+      },
+      "additionalSource": {
+        "path": "crates/transaction-pool/src/validate/eth.rs",
+        "start": 592,
+        "end": 598
+      },
+      "facts": {
+        "role": "トランザクションを検証してから、内部プールへ渡して追加結果を返します。",
+        "input": "トランザクションと、その要求がどこから来たかを示すorigin。",
+        "output": "1件分のプール追加結果。検証や追加に失敗する場合もあります。",
+        "boundary": "下の追加入口だけでは検証の全条件は分かりません。「検証条件の一例」でチェーンID不一致のエラーを原文で確認できます。プール追加はブロックの確定とは別です。 条件例L593–596では指定チェーンIDがノードと異なると検証エラー。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            500,
+            501
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            495,
+            500
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            502
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            500,
+            502,
+            596
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        500,
+        501,
+        502,
+        593,
+        594,
+        596
+      ]
+    },
+    {
+      "id": "network",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "start": 1134,
+        "end": 1203
+      },
+      "facts": {
+        "role": "内部の要求やネットワークの出来事を取り出して処理します。",
+        "input": "ノード内部からの要求と、ネットワーク側の出来事。",
+        "output": "今すぐ返す最終結果がなければPoll::Pending。",
+        "boundary": "仕事が残る場合も実行を譲り、再び起こしてもらうよう通知します。停止や同期待ちの完了を意味しません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            1134,
+            1176,
+            1187
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            1176,
+            1187
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            1202
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            1202
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        1134,
+        1137,
+        1176,
+        1187,
+        1202
+      ]
+    },
+    {
+      "id": "sync",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/stages/api/src/pipeline/mod.rs",
+        "start": 213,
+        "end": 259
+      },
+      "facts": {
+        "role": "同期の仕事を段階ごとに進め、進捗や巻き戻しを扱います。",
+        "input": "段階の一覧、前段階の進捗、保存先を持つself。",
+        "output": "続行・進捗なし・巻き戻しなど次の制御情報、またはエラー。",
+        "boundary": "L232の?は段階の失敗を返します。巻き戻し指示ならL244で巻き戻し、L245で戻ります。各段階の詳細は別実装です。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            223,
+            227,
+            232
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            223,
+            227
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            243,
+            258
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            232,
+            243
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        223,
+        227,
+        232,
+        243,
+        258
+      ]
+    },
+    {
+      "id": "engine",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "start": 517,
+        "end": 606
+      },
+      "facts": {
+        "role": "Engineの要求や、保存側の完了を専用スレッドで扱います。",
+        "input": "Engineの要求、保存完了の出来事、保存の進み具合。",
+        "output": "出来事を処理し続けます。このrun自体は値を返さない形です。",
+        "boundary": "保存が追いつかない条件ではL564で保存側を待ち、通常はL569で入力を待ちます。保存監視などのエラーではループを終える場合があります。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            572,
+            575,
+            584
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            569,
+            572
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            521
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            564,
+            591
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        521,
+        564,
+        569,
+        572,
+        575,
+        584,
+        591
+      ]
+    },
+    {
+      "id": "execution",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/evm/evm/src/execute.rs",
+        "start": 596,
+        "end": 632
+      },
+      "facts": {
+        "role": "ブロック内のトランザクションを順に実行し、前後の状態変更と結果をまとめます。",
+        "input": "送信者が復元されたトランザクションを含むブロックと、状態を扱うself。",
+        "output": "レシートなどを含むブロック実行結果、または実行エラー。",
+        "boundary": "L621の?は一件の実行失敗を返します。L631の成功返却は、保存先へcommitしたことや履歴の確定を示しません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            620,
+            621,
+            627
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            596
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            631
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            621,
+            631
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        596,
+        614,
+        620,
+        621,
+        627,
+        631
+      ]
+    },
+    {
+      "id": "payload",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/ethereum/payload/src/lib.rs",
+        "start": 90,
+        "end": 102
+      },
+      "facts": {
+        "role": "候補作成の引数とノード部品を、担当処理へ渡します。",
+        "input": "候補作成の引数args、EVM設定、状態参照、プール、作成設定。",
+        "output": "候補作成の結果BuildOutcome、またはPayloadBuilderError。",
+        "boundary": "この入口は担当処理のResultをそのまま返します。取引の全採用条件は抜粋の外で、候補作成は履歴の採用・確定とは別です。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            90,
+            94
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            90,
+            94
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            101
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            101
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        90,
+        94,
+        100,
+        101
+      ]
+    },
+    {
+      "id": "storage",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/storage/provider/src/providers/database/provider.rs",
+        "start": 3965,
+        "end": 3991
+      },
+      "facts": {
+        "role": "書き込み用の部品が持つ変更を、保存先へ確定します。",
+        "input": "書き込み中のDB操作、静的ファイル、待機中のバッチを持つself。",
+        "output": "成功ならOk(())、失敗なら保存処理のエラー。",
+        "boundary": "通常の保存と巻き戻しを分けます。?の付いた保存が失敗すればエラーを返します。変更データの作成や、全保存先の原子性はこの範囲では示しません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            3965,
+            3984,
+            3990
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            3965
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            3990
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            3966
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        3965,
+        3966,
+        3973,
+        3979,
+        3984,
+        3990
+      ]
+    },
+    {
+      "id": "extension",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/exex/exex/src/manager.rs",
+        "start": 609,
+        "end": 620
+      },
+      "facts": {
+        "role": "通知経路の空きを待ってから、通知の出所とデータを渡します。",
+        "input": "sourceという出所と、notificationという出来事の通知。",
+        "output": "通知経路への送信が成功したか、SendErrorか。",
+        "boundary": "L618は受け付け可能になるまで待つ箇所です。L619の送信成功は拡張機能の処理完了やブロック確定を意味しません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            613,
+            618,
+            619
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            613
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            619
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            618,
+            619
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        613,
+        618,
+        619
+      ]
+    },
+    {
+      "id": "foundation",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/chainspec/src/spec.rs",
+        "start": 114,
+        "end": 143
+      },
+      "facts": {
+        "role": "組み込みmainnet用の設定を読み、ノードで使う設定値を組み立てます。",
+        "input": "Rethに組み込まれたmainnet.jsonの文字列と、mainnet用のルール設定。",
+        "output": "共有用のChainSpecというチェーン設定。",
+        "boundary": "L117のexpectは読み取り失敗時にpanicを起こします。利用者の任意ファイルの解析や、接続・同期完了を示す処理ではありません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            116,
+            119,
+            142
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            116,
+            119
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            142
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            117
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": null,
+      "prediction": null,
+      "evidenceLines": [
+        115,
+        116,
+        117,
+        119,
+        142
+      ]
+    },
+    {
+      "id": "node-exit",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/node/core/src/exit.rs",
+        "start": 34,
+        "end": 51
+      },
+      "facts": {
+        "role": "終了を表す内部処理を進め、結果がまだなければ待機し、用意できた成功・エラーを返します。",
+        "input": "内部処理を保持するselfと、再び実行してもらうための通知先cx。",
+        "output": "Poll::Readyの成功かエラー、またはPoll::Pending。",
+        "boundary": "終了の要求を送る処理ではありません。内部処理がない場合もPendingで、起動成功や同期完了とは区別します。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            39,
+            40
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            39,
+            40
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            42,
+            45
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            39,
+            40
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "内部の失敗はL45のErr(err)側からReady(Err(err))として戻る。Okの側へ変わらず、この待機処理も失敗。",
+      "evidenceLines": [
+        39,
+        40,
+        42,
+        45
+      ]
+    },
+    {
+      "id": "rpc-recovery",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "start": 750,
+        "end": 760
+      },
+      "facts": {
+        "role": "送信用のデータを読み解き、署名から送信者を求め、両方を組にして返します。",
+        "input": "txという名前で借りたバイト列と、復元キャッシュの設定。",
+        "output": "署名済みデータと送信者の組Recovered、またはEthApiError。",
+        "boundary": "秘密鍵を取り出す処理でも、プール追加やブロックへの取り込みでもありません。キャッシュがなくても直接の復元を試みます。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            752,
+            754,
+            755,
+            758
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            752,
+            754
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            757,
+            758
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            755
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "未設定ならL755のNoneから直接try_recover()を試す。署名の復元が失敗した場合はL757でInvalidTransactionSignatureへ置き換え?で返すので、L758の成功結果には進まない。",
+      "evidenceLines": [
+        752,
+        754,
+        755,
+        757,
+        758
+      ]
+    },
+    {
+      "id": "pool-balance",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/transaction-pool/src/validate/eth.rs",
+        "start": 783,
+        "end": 801
+      },
+      "facts": {
+        "role": "必要額と送信者の残高を比べ、検査が有効で残高が不足していればエラーを返します。",
+        "input": "トランザクション、送信者の状態、残高検査を無効にする設定。",
+        "output": "検査に通ればOk(())、不足ならInsufficientFunds。",
+        "boundary": "Okはこの残高検査を通ったことだけです。無効設定の場合もOkとなり、他の検査・実行・確定の成功は示しません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            790,
+            792
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            790,
+            792
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            794,
+            799
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            792,
+            799
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "L792の!disable_balance_checkとcost > balanceの両方が真のとき、L794で不足のErrとなる。検査無効ならその分岐に入らずL799でOk(())。これは残高検査だけの結果。",
+      "evidenceLines": [
+        790,
+        792,
+        794,
+        799
+      ]
+    },
+    {
+      "id": "network-reputation",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/net/network/src/peers.rs",
+        "start": 546,
+        "end": 585
+      },
+      "facts": {
+        "role": "相手と評価変更の種類を見て、変更の不要・免除・上限調整を経て評価を更新する入口です。",
+        "input": "相手の識別子peer_idと変更の種類rep、登録済みの相手一覧。",
+        "output": "変更なしで戻る場合か、相手の評価更新・リセットの結果outcome。",
+        "boundary": "この抜粋はoutcomeを得るまでです。結果に応じた遮断など後続の処理全体は含みません。信頼済みでも全ての変更が免除されるわけではありません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            549,
+            559,
+            561,
+            567,
+            579
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            549,
+            559
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            579
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            561,
+            567
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "信頼済み相手のTimeoutはL561の対象でL567の列挙に入りreturnし、評価を適用しない。未登録の相手はL559でSomeとして取り出せず、後のelseから変更しないで戻る。",
+      "evidenceLines": [
+        549,
+        559,
+        561,
+        567,
+        579
+      ]
+    },
+    {
+      "id": "sync-unwind",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/stages/api/src/pipeline/mod.rs",
+        "start": 302,
+        "end": 346
+      },
+      "facts": {
+        "role": "保存済み進捗と目標を確認し、同期した順と逆に段階を見て、目標より手前の段階を飛ばします。",
+        "input": "巻き戻し先to、問題ブロックbad_block、段階と保存先を持つself。",
+        "output": "この抜粋では対象の段階を選びます。外側のunwind全体は成功かPipelineErrorを返します。",
+        "boundary": "進捗が目標より小さい段階はSkipped通知後にcontinueします。等しい場合の処理や実際の段階の巻き戻し・保存は後続の範囲です。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            317,
+            320,
+            335
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            317,
+            320,
+            335
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            342
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            335,
+            342
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "段階はL320のrev()によって同期時の逆順。進捗番号がtoより小さいとL335の条件に入り、L342のSkipped通知とcontinueにより、その段階を処理せず次へ進む。",
+      "evidenceLines": [
+        317,
+        320,
+        335,
+        342
+      ]
+    },
+    {
+      "id": "engine-timestamp",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/engine/primitives/src/lib.rs",
+        "start": 254,
+        "end": 264
+      },
+      "facts": {
+        "role": "候補を作るための属性の時刻を、現在のヘッダーの時刻と比べます。",
+        "input": "候補の属性attrと、比較するヘッダーheader。",
+        "output": "属性時刻が大きければOk(())、小さいか同じならInvalidTimestamp。",
+        "boundary": "この関数は時刻の条件だけを検査します。Okは候補の作成完了や、履歴の採用・確定を意味しません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            259
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            256,
+            259
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            260,
+            262
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            259,
+            262
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "属性時刻が同じならL259の<=に当たりL260でInvalidTimestampのErr。属性時刻のほうが大きいなら条件を通らずL262でOk(())。候補作成済みという意味ではない。",
+      "evidenceLines": [
+        256,
+        259,
+        260,
+        262
+      ]
+    },
+    {
+      "id": "execution-receipt",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/ethereum/evm/src/receipt.rs",
+        "start": 12,
+        "end": 27
+      },
+      "facts": {
+        "role": "実行結果から、種類・成功印・累積ガス・ログを持つレシートを組み立てます。",
+        "input": "tx_type、result、cumulative_gas_usedを含む実行の情報ctx。",
+        "output": "Receiptという実行結果の記録。戻り値はResultではありません。",
+        "boundary": "この関数は実行済みの結果を記録へ移します。実行失敗ならsuccessがfalseになり、レシートの作成自体をErrにする分岐はありません。保存や確定も別です。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            18,
+            22,
+            24
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            17
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            18
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            18,
+            22
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "失敗も記録される。L18からReceiptを作り、L22のis_success()をsuccess欄へ入れるのでfalseになる。Receiptを返す形で、失敗を理由に作成をErrへ変える分岐は見えない。",
+      "evidenceLines": [
+        17,
+        18,
+        22,
+        24
+      ]
+    },
+    {
+      "id": "payload-cancel",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/ethereum/payload/src/lib.rs",
+        "start": 265,
+        "end": 300
+      },
+      "facts": {
+        "role": "要求が残りのガス枠に収まるかを判定し、超過なら飛ばし、中止されていれば候補作成を終えます。",
+        "input": "選んだ要求pool_tx、ガス枠と使用量、適用ルール、中止状態cancel。",
+        "output": "超過なら次の要求へ進み、中止検査が真ならOk(BuildOutcome::Cancelled)を返します。",
+        "boundary": "無効の印は候補選択のイテレーターに付けます。プール全体から削除したとまでは言えません。continueすると、この回の中止検査へは進みません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            265,
+            287,
+            294,
+            299
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            265,
+            287,
+            299
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            294,
+            299
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            287,
+            294,
+            299
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "枠超過の要求は印を付けL294のcontinueで次の要求へ移る。同じ回の中止検査を通らない。中止検査まで進んで真ならL299のreturn Ok(BuildOutcome::Cancelled)で作成全体を終える。",
+      "evidenceLines": [
+        265,
+        287,
+        294,
+        299
+      ]
+    },
+    {
+      "id": "storage-account",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/storage/provider/src/providers/state/latest.rs",
+        "start": 69,
+        "end": 84
+      },
+      "facts": {
+        "role": "保存形式の設定を見て、アドレスそのものか、そのハッシュをキーに現在のアカウントを読みます。",
+        "input": "アドレスaddressと、保存形式・DB参照を持つself。",
+        "output": "ProviderResult<Option<Account>>。見つかった値、値なし、読取失敗を区別します。",
+        "boundary": "読取専用の入口で、残高を増減したり送信を実行する処理ではありません。Noneは値なしで、DBの読取失敗とは別です。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            74,
+            75,
+            77,
+            80
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            74,
+            75
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            77,
+            80
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            77,
+            80
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "ハッシュ形式ではL75のkeccak256(address)をキーにL77でHashedAccountsを読む。Noneは見つからなかった値なし。読取失敗はProviderResultのエラーで、map_errによる種類変換を経る。L80では通常のaddressを使う。",
+      "evidenceLines": [
+        74,
+        75,
+        77,
+        80
+      ]
+    },
+    {
+      "id": "extension-reorg",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/exex/types/src/notification.rs",
+        "start": 10,
+        "end": 48
+      },
+      "facts": {
+        "role": "通知の種類に応じて、新しく採用した履歴と、外した古い履歴を別々に取り出します。",
+        "input": "採用・差し替え・取り消しのいずれかの通知self。",
+        "output": "committed_chainは新しい履歴、reverted_chainは古い履歴を、それぞれSomeかNoneで返します。",
+        "boundary": "履歴を取り出す関数で、差し替え自体を実行する処理ではありません。採用通知と履歴の確定も別です。cloneはArcの共有参照を複製します。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            33,
+            42
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            33,
+            42
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            33,
+            36,
+            42,
+            45
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            33,
+            42
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "差替通知からはL33のcommitted_chainでnew、L42のreverted_chainでoldをそれぞれSomeで得る。取り消しだけの通知ではL36の分岐がNoneなので新しい履歴を得られず、旧履歴は得られる。",
+      "evidenceLines": [
+        33,
+        36,
+        42,
+        45
+      ]
+    },
+    {
+      "id": "foundation-fee",
+      "attempt": 1,
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "inPlaceHints": true,
+      "source": {
+        "path": "crates/chainspec/src/spec.rs",
+        "start": 538,
+        "end": 556
+      },
+      "facts": {
+        "role": "固定設定ならそのまま返し、可変設定なら指定された時刻で有効なルールの設定を選びます。",
+        "input": "呼び出し元が渡すtimestampと、ルール・手数料の設定を持つself。",
+        "output": "計算に使うBaseFeeParams。最終的な支払額ではありません。",
+        "boundary": "可変一覧を逆順に見て最初に有効なものを返します。該当なしなら一覧の先頭、空一覧ならEthereumの既定設定です。この関数は現在時刻の取得や手数料額の計算をしません。"
+      },
+      "factEvidence": {
+        "role": {
+          "lines": [
+            541,
+            546,
+            548,
+            552
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "input": {
+          "lines": [
+            546,
+            548
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "output": {
+          "lines": [
+            541,
+            548,
+            552
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        },
+        "boundary": {
+          "lines": [
+            552
+          ],
+          "basis": "今回UIで観察した原文・対応行。範囲の限界は同画面の解説による主張。"
+        }
+      },
+      "blockers": [],
+      "pass": true,
+      "helpClosed": true,
+      "prediction": "可変一覧で有効なものがないと、L552のfirst()から一覧先頭の設定を使う。一覧そのものが空ならunwrap_or_else(BaseFeeParams::ethereum)が代替となる。いずれも金額でなく計算用設定。",
+      "evidenceLines": [
+        541,
+        546,
+        548,
+        552
+      ]
+    }
+  ],
+  "observedTaskOrder": [
+    "node",
+    "rpc",
+    "pool",
+    "network",
+    "sync",
+    "engine",
+    "execution",
+    "payload",
+    "storage",
+    "extension",
+    "foundation",
+    "node-exit",
+    "rpc-recovery",
+    "pool-balance",
+    "network-reputation",
+    "sync-unwind",
+    "engine-timestamp",
+    "execution-receipt",
+    "payload-cancel",
+    "storage-account",
+    "extension-reorg",
+    "foundation-fee"
+  ],
+  "orderMatchesPolicy": true,
+  "retention": {
+    "url": true,
+    "line": true,
+    "hint": true,
+    "noteDraft": true
+  },
+  "rawEvidenceLocation": "outputs/expanded-loop/round-3/persona-a/",
+  "limits": [
+    "AI UI operation and source-supported answers; not human comprehension or independent first-time discovery.",
+    "First trials only; failures and unmeasured tasks are never replaced by retries."
+  ]
+}
