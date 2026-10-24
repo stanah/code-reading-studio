@@ -1,0 +1,16 @@
+{
+  "tlc": {
+    "Baseline": "PASS",
+    "Fault-AckedSurvives": "PASS",
+    "Fault-IdleMatchesDisk": "FAIL:IdleMatchesDisk",
+    "Fault-NoSkippedSave": "FAIL:NoSkippedSave",
+    "Broken-Unserialized": "FAIL:AckedSurvives",
+    "Broken-Unserialized-Delete": "FAIL:AckedDeleteSticks"
+  },
+  "replay": {
+    "AckedSurvives-slow-first-write": "PASS",
+    "AckedDeleteSticks-slow-add-write": "PASS",
+    "NoSkippedSave-after-one-failure": "FAIL",
+    "IdleMatchesDisk-after-one-failure": "FAIL"
+  }
+}

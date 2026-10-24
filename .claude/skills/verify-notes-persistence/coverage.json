@@ -1,0 +1,50 @@
+{
+  "syncCommit": "b61f976",
+  "files": [
+    {
+      "path": "local-app/server.mjs",
+      "lines": [
+        {
+          "model": "Init (disk -> mem at startup)",
+          "match": "let state={version:1,commit:index.commit,items:[]};",
+          "sha256": "bb663856b3900b7b62bdc0d6945c461be583e2f9e550af998f6c234b51e19d4b"
+        },
+        {
+          "model": "queue, broken, Write (the writes chain)",
+          "match": "const save=()=>",
+          "sha256": "4f185396b4a8dab0ce928ad5b48f7427a91d0a38b0a18be2fa14c4894a1e2fac"
+        },
+        {
+          "model": "Add (POST /api/item)",
+          "match": "if(url.pathname==='/api/item')",
+          "sha256": "686244d999884a9dd6f75034d16a4a0af0445d1750ef4a36bf109aaf970aa5c3"
+        },
+        {
+          "model": "Add (POST /api/item body)",
+          "match": "const item={id:digest(anchor.id+Date.now()",
+          "sha256": "75f7ac483048e9b58d745f0099ee96a45cede5e883ee1d1eea89c22bd49f8de0"
+        },
+        {
+          "model": "Add (POST /api/explain body)",
+          "match": "const item={id:randomBytes(12)",
+          "sha256": "20bcc27496b9ab8e444c932b2e95da50eda9059f825043f7d9fb026f4229fece"
+        },
+        {
+          "model": "Delete (POST /api/delete)",
+          "match": "if(url.pathname==='/api/delete')",
+          "sha256": "636a230b4cd959b10a939ce29196a2f0f06cf8162c216855a9afe4fd888f6490"
+        },
+        {
+          "model": "mem served by GET /api/state",
+          "match": "url.pathname==='/api/state')return json(state)",
+          "sha256": "78d313ab80b4d483afc477917cf0e6a6a23ebe51871607e025e2374e3227b81d"
+        },
+        {
+          "model": "failed / skipped become a 400 answer",
+          "match": "}catch(e){json({error:e.message},400);}",
+          "sha256": "e0a74b7c997344beb558f4e552b9f16b5ce26759ab7cacbd6006e5eda59909ed"
+        }
+      ]
+    }
+  ]
+}
