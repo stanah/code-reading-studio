@@ -27,7 +27,7 @@ mkdir -p "$out"
 for cfg in "$here"/model/*.cfg; do
   name="$(basename "$cfg" .cfg)"
   want="$(node -e "console.log(require('$here/expected.json').tlc['$name'] ?? 'UNLISTED')")"
-  (cd "$here/model" && java -XX:+UseParallelGC -cp "$jar" tlc2.TLC -workers auto -deadlock -cleanup \
+  (cd "$here/model" && java -XX:+UseParallelGC -cp "$jar" tlc2.TLC -workers auto -deadlock -cleanup -noGenerateSpecTE \
     -metadir "$out/states-$name" -config "$name.cfg" NotesPersistence.tla) > "$out/$name.log" 2>&1
   if grep -q "Model checking completed. No error has been found." "$out/$name.log"; then got=PASS
   elif grep -q "is violated" "$out/$name.log"; then

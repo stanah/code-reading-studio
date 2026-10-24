@@ -1,0 +1,2 @@
+# TLC trace files, in case a manual run writes them next to the spec
+NotesPersistence_TTrace_*
