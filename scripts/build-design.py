@@ -1,27 +1,33 @@
-"""Distribute shared assets and replace the navigation idempotently."""
+"""Distribute shared assets and generate the same task-based navigation on every page."""
 from pathlib import Path
 import hashlib,json,re,shutil
 root=Path(__file__).resolve().parent.parent
 reading_target=json.loads((root/'reading-target.json').read_text())
 css_revision=hashlib.sha256((root/'ui/studio.css').read_bytes()).hexdigest()[:12]
+# The learning entry is shared; existing deep links continue to resolve via learning.js.
+page=(root/'ui/learning-page.html').read_text()
+(root/'dist/index.html').write_text(page)
+(root/'local-app/public/index.html').write_text(page.replace('<body class="learning-page">','<body data-studio="local" class="learning-page">').replace('href="studio.css"','href="/studio.css"').replace('src="','src="/'))
 for target in (root/'dist',root/'local-app/public'):
- for name in ('studio.css','studio.js'):shutil.copyfile(root/'ui'/name,target/name)
-for folder,names in [('dist',['index.html','zoom.html','reader.html','lenses.html','implementation.html']),('local-app/public',['index.html','files.html','startup.html'])]:
+ for name in ('studio.css','studio.js','learning.js','learning-content.js'):shutil.copyfile(root/'ui'/name,target/name)
+for folder,names in [('dist',['index.html','explore.html','zoom.html','reader.html','lenses.html','implementation.html','startup.html']),('local-app/public',['index.html','reader.html','files.html','startup.html'])]:
  for name in names:
   p=root/folder/name
   if not p.exists():continue
   s=p.read_text();local=folder.startswith('local');prefix='/' if local else ''
   s=re.sub(r'<header class="studio-header"[\s\S]*?</header>','',s)
   s=re.sub(r'<nav class="studio-nav"[\s\S]*?</nav>','',s)
-  base='/' if local else 'lenses.html'
-  nav=[('startup','起動ガイド','/startup' if local else 'startup.html'),('structure','構造から読む',base+'#lens=structure'),('flow','送信経路を読む',base+'#lens=flow'),('rust','Rust・設計',base+'#lens=rust'),('files','ファイルから読む','/files' if local else 'index.html')]
-  links=''.join(f'<a data-view="{view}" href="{href}">{label}</a>' for view,label,href in nav)
-  if local:links+='<a data-view="guide" href="/guide">説明資料</a>'
-  header='<header class="studio-header"><a class="studio-brand" href="'+('/startup' if local else 'startup.html')+'"><span class="studio-mark">⌘</span>Code Reading Studio</a><span class="studio-project">paradigmxyz / reth · '+reading_target['version']+'</span><span class="studio-mode">'+('LOCAL WORKSPACE' if local else 'READING WORKSPACE')+'</span>'+('' if local else '<a class="studio-download" href="implementation.html">ローカル版</a>')+'</header><nav class="studio-nav" aria-label="読み方">'+links+'</nav>'
+  home='/' if local else 'index.html'
+  explore='/reader' if local else 'explore.html'
+  tools=(('<a href="/files">ファイル名から探す</a><a href="/guide">説明・印刷用の資料</a>') if local else '<a href="startup.html">起動の説明資料</a><a href="implementation.html">ローカル版の使い方</a>')
+  header='<header class="studio-header"><a class="studio-brand" href="'+home+'"><span class="studio-mark" aria-hidden="true">⌘</span>Code Reading Studio</a><span class="studio-project">Reth · '+reading_target['version']+'</span><label class="studio-learner">読み方<select aria-label="読み方" data-learning-profile><option value="foundation">基礎から学ぶ</option><option value="familiar">ブロックチェーンの基礎はわかる</option><option value="code">コードを中心に読む</option></select></label></header><nav class="studio-nav" aria-label="主な入口"><a data-view="learn" href="'+home+'">学ぶ</a><a data-view="explore" href="'+explore+'">コードを調べる</a><a data-learning-return href="'+home+'">学習の入口へ戻る</a><details class="studio-tools"><summary>資料・道具</summary><div class="studio-tools-menu">'+tools+'<p>参照版：Reth '+reading_target['version']+'</p></div></details></nav>'
   s=re.sub(r'(<body[^>]*>)',r'\1'+header,s,count=1)
   s=re.sub(r'(<a id="snapshot-link" href=")[^"]+("[^>]*>)[^<]+',lambda m:m[1]+'https://github.com/'+reading_target['repository']+'/commit/'+reading_target['commit']+m[2]+reading_target['commit'][:12]+' ↗',s)
   s=re.sub(r'(<span id="zoom-reference">参照：)[0-9a-f]+',lambda m:m[1]+reading_target['commit'][:12],s)
   if not re.search(r'href="/?studio\.css(?:\?[^"]*)?"',s):s=s.replace('</head>',f'<link rel="stylesheet" href="{prefix}studio.css"></head>')
   s=re.sub(r'href="(/?)studio\.css(?:\?[^"]*)?"',lambda m:'href="'+m[1]+'studio.css?v='+css_revision+'"',s)
-  if not re.search(r'src="/?studio.js"',s):s=s.replace('</head>',f'<script defer src="{prefix}studio.js"></script></head>')
+  # Defer in dependency order: content -> learner state -> shared navigation.
+  for asset in ('learning-content.js','learning.js','studio.js'):
+   s=re.sub(r'<script[^>]*src="/?'+re.escape(asset)+r'"[^>]*></script>','',s)
+  s=s.replace('</head>',''.join(f'<script defer src="{prefix}{asset}"></script>' for asset in ('learning-content.js','learning.js','studio.js'))+'</head>')
   p.write_text('\n'.join(line.rstrip() for line in s.splitlines())+'\n')

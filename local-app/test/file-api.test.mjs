@@ -48,7 +48,9 @@ test('tree, file and startup routes require auth and keep commit-specific explan
   const file=await (await fetch(base+'/api/file?path=README.md',{headers})).json();assert.equal(file.commit,tree.commit);assert.match(file.source,/committed document/);
   assert.equal((await fetch(base+'/api/file?path=..%2Fsecret',{headers})).status,400);
   assert.equal((await fetch(base+'/api/startup',{headers})).status,404);
-  for(const route of ['/files','/startup']){
+  const learning=await fetch(base+'/');assert.equal(learning.status,200);assert.match(await learning.text(),/id="learning-root"/);
+  for(const route of ['/learning.js','/learning-content.js'])assert.equal((await fetch(base+route)).status,200);
+  for(const route of ['/reader','/files','/startup']){
    const page=await fetch(base+route);assert.equal(page.status,200);
    const html=await page.text();assert.ok(html.includes(app.token));assert.ok(!html.includes('__TOKEN__'));
   }

@@ -10,3 +10,21 @@ test('lenses retain selected operation; flow expands before source; TS explanati
  render(root,{...data,steps:[]},{lens:'flow'});assert.match(root.innerHTML,/まだありません/);
  render(root,{...data,steps:[{...steps[0],title:'<script>bad</script>'}]},{lens:'flow',step:steps[0].id});assert.doesNotMatch(root.innerHTML,/<script>/);assert.match(root.innerHTML,/&lt;script&gt;/);
 });
+
+test('beginner explanations keep the same operation and evidence when switching to technical detail',async()=>{
+ let profile='foundation';const c={URLSearchParams,LearningStudio:{profile:()=>profile}};
+ vm.runInNewContext(await readFile(new URL('../public/lenses.js',import.meta.url),'utf8'),c);
+ const {steps,commit}=JSON.parse(await readFile(new URL('../annotations.json',import.meta.url),'utf8'));
+ const root={innerHTML:''},data={steps,commit,sourceUrl:s=>'#code='+s.id,structureUrl:s=>'#file='+s.id};
+ for(const step of steps){
+  profile='foundation';c.ReadingLenses.render(root,data,{lens:'flow',step:step.id});
+  assert.match(root.innerHTML,/<p class="guide-plain">/);
+  assert.match(root.innerHTML,/<details class="guide-technical">/);
+  assert.ok(root.innerHTML.includes(step.detail.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;')));
+  assert.ok(root.innerHTML.includes('href="#code='+step.id+'"'));
+  assert.ok(root.innerHTML.includes('href="#file='+step.id+'"'));
+  profile='code';c.ReadingLenses.render(root,data,{lens:'flow',step:step.id});
+  assert.doesNotMatch(root.innerHTML,/guide-technical|guide-plain/);
+  assert.ok(root.innerHTML.includes('href="#code='+step.id+'"'));
+ }
+});

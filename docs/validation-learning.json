@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-24",
+  "baseline": "b61f976500438b8b0449661025e357c6e4b67487",
+  "scope": "Learning-first navigation and beginner blockchain curriculum",
+  "readingTarget": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "checks": {
+    "localTestsPassed": 25,
+    "staticSuitesPassed": ["smoke", "atlas", "zoom"],
+    "readingDataConsistency": "PASS",
+    "transactionAnchors": 11,
+    "startupAnchors": 16,
+    "sourceSeedFiles": 49,
+    "sharedUiGeneratorIdempotent": true
+  },
+  "browser": {
+    "desktopContentWidth": 1094,
+    "mobileViewportRequested": 390,
+    "mobileContentWidth": 375,
+    "mobilePageWidth": 375,
+    "initialFoundationRecommendation": "blockchain",
+    "familiarRecommendation": "reth",
+    "codeRecommendation": "reading",
+    "sequentialSevenLessons": true,
+    "lessonToImplementationToSource": true,
+    "sourceToSameImplementation": true,
+    "sourceToLastLesson": true,
+    "localLegacyLensRedirect": true,
+    "staticLegacyFileRedirect": true,
+    "draftNoteSurvivesProfileChange": true,
+    "testReadMarksRemoved": true,
+    "localAndStaticConsoleWarningsErrors": 0,
+    "viewportOverrideReset": true
+  },
+  "limits": {
+    "learnerAcceptanceOrLearningEffectMeasured": false,
+    "rethBuiltOrRun": false,
+    "externalAiServiceUsed": false
+  }
+}

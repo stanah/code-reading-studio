@@ -1,12 +1,12 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ローカル実装 | Code Reading Studio</title><link rel="stylesheet" href="atlas.css"><link rel="stylesheet" href="studio.css?v=65456e303377"><script defer src="studio.js"></script></head><body><header class="studio-header"><a class="studio-brand" href="startup.html"><span class="studio-mark">⌘</span>Code Reading Studio</a><span class="studio-project">paradigmxyz / reth · v2.7.0</span><span class="studio-mode">READING WORKSPACE</span><a class="studio-download" href="implementation.html">ローカル版</a></header><nav class="studio-nav" aria-label="読み方"><a data-view="startup" href="startup.html">起動ガイド</a><a data-view="structure" href="lenses.html#lens=structure">構造から読む</a><a data-view="flow" href="lenses.html#lens=flow">送信経路を読む</a><a data-view="rust" href="lenses.html#lens=rust">Rust・設計</a><a data-view="files" href="index.html">ファイルから読む</a></nav><main class="studio-install">
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ローカル実装 | Code Reading Studio</title><link rel="stylesheet" href="atlas.css"><link rel="stylesheet" href="studio.css?v=f3a8b6fa8a20"><script defer src="learning-content.js"></script><script defer src="learning.js"></script><script defer src="studio.js"></script></head><body><header class="studio-header"><a class="studio-brand" href="index.html"><span class="studio-mark" aria-hidden="true">⌘</span>Code Reading Studio</a><span class="studio-project">Reth · v2.7.0</span><label class="studio-learner">読み方<select aria-label="読み方" data-learning-profile><option value="foundation">基礎から学ぶ</option><option value="familiar">ブロックチェーンの基礎はわかる</option><option value="code">コードを中心に読む</option></select></label></header><nav class="studio-nav" aria-label="主な入口"><a data-view="learn" href="index.html">学ぶ</a><a data-view="explore" href="explore.html">コードを調べる</a><a data-learning-return href="index.html">学習の入口へ戻る</a><details class="studio-tools"><summary>資料・道具</summary><div class="studio-tools-menu"><a href="startup.html">起動の説明資料</a><a href="implementation.html">ローカル版の使い方</a><p>参照版：Reth v2.7.0</p></div></details></nav><main class="studio-install">
 <p>LOCAL IMPLEMENTATION / v0.2</p>
 <h1>実リポジトリで、<br>一段ずつコードを読む。</h1>
 <p>Gitから実際の構成とソースを取得するローカルアプリです。責務領域 → Cargoクレート → モジュール → 関数と処理 → 実コードの順に進み、コード範囲に紐づくメモを保存できます。</p>
-<a class="download" href="https://github.com/stanah/code-reading-studio-public">GitHubでソースと起動手順を見る</a>
+<a class="download" href="https://github.com/stanah/code-reading-studio">GitHubでソースと起動手順を見る</a>
 <h2>取得と起動</h2>
 <p>Node.js 22以上とGitを用意してください。次のコマンドでアプリと読解対象のRethを取得し、ローカルサーバーを起動します。追加パッケージのインストールは不要です。</p>
-<pre>git clone --recurse-submodules https://github.com/stanah/code-reading-studio-public.git
-cd code-reading-studio-public
+<pre>git clone --recurse-submodules https://github.com/stanah/code-reading-studio.git
+cd code-reading-studio
 node local-app/server.mjs targets/reth 3d592ece6de8c4559987416a544fc215fd6d6921</pre>
 <p>起動後、<code>http://127.0.0.1:4317</code> を開いてください。サブモジュールを省略して取得した場合は、リポジトリのルートで <code>git submodule update --init --recursive</code> を実行します。Rethのビルドや実行は不要です。</p>
 <h2>3つの見方とTypeScriptからのRust入門</h2>

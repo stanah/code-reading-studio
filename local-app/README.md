@@ -3,8 +3,8 @@
 Node.js 22以上とGitがあれば、追加パッケージのインストールなしで動きます。
 
 ```sh
-git clone --recurse-submodules https://github.com/stanah/code-reading-studio-public.git
-cd code-reading-studio-public
+git clone --recurse-submodules https://github.com/stanah/code-reading-studio.git
+cd code-reading-studio
 node local-app/server.mjs targets/reth 3d592ece6de8c4559987416a544fc215fd6d6921
 ```
 
@@ -88,3 +88,13 @@ Reth実データで1,283 Rustファイル、146個のRustファイルを持つCa
 選択中の処理は3つの見方で引き継ぎます。動作はユースケース → 3段階 → 個別処理 → 実コードへ詳細化。
 Rust未経験・TypeScript経験ありを前提に、所有権と借用、Future、Result、trait、チャネルを説明します。TypeScriptの例は概念用であり等価な移植ではありません。
 AI解説の指示にも同じ学習前提を設定しました。動作・言語ガイドは固定コミットの送信経路に対する執筆済み解説で、自動解析の結果ではありません。
+
+## 学習の入口
+
+`/`から、ブロックチェーン・ノード・RPCの基礎を順に読みます。
+画面上部で読み方を選ぶと、おすすめの開始位置と説明の詳しさが変わります。
+`/reader`は実装解説と範囲付きのコード表示、`/files`はファイル名・パスからの探索です。
+従来の`/#lens=...`などのリンクも、対象を保って読解画面へ進みます。
+
+読み方・続き・「読んだ」の記録はブラウザーのlocalStorageに保存します。
+サーバーに保存する読解メモとは別です。学習記録から理解度を推定しません。
