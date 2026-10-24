@@ -4,7 +4,7 @@
   const data=()=>globalThis.READING_HELP_DATA;
   const prefs=()=>globalThis.LearningStudio?.preferences?.()||{chain:'new',code:'first'};
   const mounted=new WeakSet(),transient=new Map();
-  const syntax={'.await':'await','??':'double-question','?':'question','async':'async','fn':'function','let':'variable','Result':'result','RpcResult':'result','Ok':'result','Err':'result','&self':'borrow','&tx':'borrow','->':'return','Bytes':'bytes','B256':'hash','Self':'trait','move':'closure','oneshot':'channel','handle':'handle'};
+  const syntax={'.await':'await','.expect':'expect','if':'if','for':'for-context','match':'match','return':'early-return','??':'double-question','?':'question','async':'async','fn':'function','let':'variable','Result':'result','RpcResult':'result','Ok':'result','Err':'result','&self':'borrow','&tx':'borrow','->':'return','Bytes':'bytes','B256':'hash','Self':'trait','move':'closure','oneshot':'channel','handle':'handle'};
   function context(id,commit){return data()?.commit===commit?data().contexts[id]:undefined;}
   function forSource(path,line,commit){
     if(data()?.commit!==commit)return;
@@ -12,7 +12,7 @@
   }
   function tokenMarkup(line,lineNumber,c){
     // Strings/comments and tracing's ?field formatting are not Rust error propagation.
-    return line.split(/(\/\/.*$|"(?:[^"\\]|\\.)*"|\.await|\?\?|\?|&self\b|&tx\b|->|\b(?:async|fn|let|Result|RpcResult|Ok|Err|Bytes|B256|Self|move|oneshot|handle)\b)/g).map((part,index,parts)=>{
+    return line.split(/(\/\/.*$|"(?:[^"\\]|\\.)*"|\.await|\.expect|\?\?|\?|&self\b|&tx\b|->|\b(?:async|fn|let|Result|RpcResult|Ok|Err|Bytes|B256|Self|move|oneshot|handle|if|for|match|return)\b)/g).map((part,index,parts)=>{
       if(part.startsWith('//')||part.startsWith('"'))return esc(part);
       const override=c?.tokenHints?.[lineNumber]?.[part];
       if(override)return `<button type="button" class="rh-token" data-rh-term="${esc(override)}" aria-label="${esc(part)} の意味を表示">${esc(part)}</button>`;
@@ -61,8 +61,8 @@
       };
       host.addEventListener('click',event=>{
         const term=event.target.closest('[data-rh-term]');
-        if(term){host._hintTrigger=term;showTerm(term.dataset.rhTerm,!!term.closest('.rh-source'));return;}
-        if(event.target.closest('[data-rh-close]')){event.target.closest('.rh-symbol-answer,.rh-concept-answer').hidden=true;delete saved.term;host._hintTrigger?.focus();return;}
+        if(term){host._hintTrigger=term;const code=!!term.closest('.rh-source');showTerm(term.dataset.rhTerm,code);if(code&&Number.isInteger(saved.line))showLine(saved.line);return;}
+        if(event.target.closest('[data-rh-close]')){event.target.closest('.rh-symbol-answer,.rh-concept-answer').hidden=true;delete saved.term;host._hintTrigger?.focus({preventScroll:true});if(Number.isInteger(saved.line))showLine(saved.line);return;}
         const button=event.target.closest('[data-rh-line]');if(button)showLine(Number(button.dataset.rhLine));
       });
       host.querySelector('.rh-source').addEventListener('toggle',event=>{saved.openCode=event.currentTarget.open;if(saved.openCode&&Number.isInteger(saved.line))showLine(saved.line);});

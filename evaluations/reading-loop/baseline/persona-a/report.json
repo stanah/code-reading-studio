@@ -1,0 +1,256 @@
+{
+  "kind": "AI UI operation evaluation",
+  "persona": "a",
+  "tasks": [
+    {
+      "id": "node",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/cli/runner/src/lib.rs",
+        "start": 63,
+        "end": 102
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "ノードを動かす処理を進めながら終了指示や重大な失敗を監視する（解説文）",
+        "input": null,
+        "output": null,
+        "boundary": "正常な終了側で後片づけと実行環境を閉じるという行対応の選択肢はあるが、起動完了との区別は8クリックでは説明できない。"
+      },
+      "blockers": [
+        "node同名の構成→ファイルを選ぶまでに4クリック。起動完了そのものの解説に到達せず、終了監視経路に8クリックを使った。",
+        "詳細入出力と行ヒントを追加で開く余地なし。"
+      ],
+      "pass": false
+    },
+    {
+      "id": "rpc",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "アプリからの送信要求をRethの送信処理へ渡す入口（本文、L923に担当処理名）",
+        "input": "署名済みトランザクションのバイト列（受け取るもの、入力対応L921）",
+        "output": "成功なら識別用ハッシュ、失敗ならエラー（返すもの、成功失敗対応L923）",
+        "boundary": "この入口ではブロックへの取り込みを行わない（本文）。L922はログ、L923は結果受け渡しと注記。"
+      },
+      "blockers": [
+        "正しい入口まで7クリック、原文と補助展開で8。個別の記号ヒントを開く余地は残らない。"
+      ],
+      "pass": true
+    },
+    {
+      "id": "pool",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "start": 495,
+        "end": 528
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "要求されたトランザクションを検証し内部プールへ渡して追加の成否を返す（L500–502対応）",
+        "input": "未検証トランザクションとorigin（詳細文、宣言L495以降）",
+        "output": "単件の追加結果PoolResult<AddedTransactionOutcome>。説明では成功ハッシュ/失敗エラー（L502対応）",
+        "boundary": "レシート/ブロック取り込みを待たない。具体的検証条件はこの抜粋だけでは分からないとL500ヒントが明示。"
+      },
+      "blockers": [
+        "何を具体的に確かめるかの条件が未提示。追加の前に検証を呼ぶ位置までの確認にとどまる。"
+      ],
+      "pass": false
+    },
+    {
+      "id": "network",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "start": 1134,
+        "end": 1203
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "内部handle要求とswarm通信イベントをpollしてネットワークを進める（詳細文、L1176/L1187対応）",
+        "input": "NetworkHandle経由の要求、ピア接続や通信のswarmイベント（詳細文）",
+        "output": "ネットワーク状態更新と各要求・イベントの処理。直ちに進められなければPending（詳細、L1202）",
+        "boundary": "処理量上限ならwake予約後にPending、何も進めなければPending。今すぐの最終結果がないという説明で、CLI監視/Engineとは別タスク（詳細と行ヒント）。"
+      },
+      "blockers": [
+        "候補一覧に戻ってから説明を探す手掛かりが少ないが、日本語付きmanager候補から到達。"
+      ],
+      "pass": true
+    },
+    {
+      "id": "sync",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/engine/tree/src/backfill.rs",
+        "start": 123,
+        "end": 183
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "過去のブロックなどをまとめてそろえる必要時に段階的同期を始め結果を待つ（本文）",
+        "input": "同期の目標（行対応L143）",
+        "output": "結果を返すという対応L151はあるが具体的な結果の説明は未展開",
+        "boundary": "次に備えて待機状態に戻す（対応L174）。稼働中の一覧ではlive syncと排他的と説明。"
+      },
+      "blockers": [
+        "stagesを選ぶと26件の無説明ファイル一覧。lib.rsから起動解説に回復した時点で5クリック。",
+        "原文展開が8クリック目で詳細入力出力や同期結果のヒントを開く余地がない。"
+      ],
+      "pass": false
+    },
+    {
+      "id": "engine",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "start": 517,
+        "end": 606
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "専用OSスレッドで要求/永続化完了を処理し、次の出来事を待ち反復（詳細、L521）",
+        "input": "Engine要求チャネル、永続化完了、payload build完了通知（詳細）",
+        "output": "Engine結果・チェーンイベント・必要な永続化処理（詳細）",
+        "boundary": "保存が閾値まで遅れると新規要求を取り出さず保存を待つ。async awaitループではなく現在のOSスレッドで待つ（詳細、L564/L569対応）。"
+      },
+      "blockers": [
+        "これはイベント待ちのrun解説。届いたEngine要求を種類別にどう振り分けるかの具体的対応は8クリックの範囲で説明されない。",
+        "105件の宣言候補で、日本語の振分対象を選ぶ手掛かりがない。"
+      ],
+      "pass": false
+    },
+    {
+      "id": "execution",
+      "clicks": 4,
+      "reachedSource": false,
+      "source": {
+        "path": null,
+        "start": null,
+        "end": null
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "5構成のうち題材名に一致するethereum/evmを選択。7ファイルに日本語の役割差がなく、実行の語を含むtests/execute.rsを選んだ。",
+        "開いたのはExecution tests。16件の宣言もほぼ説明コメントなしで、ブロック実行の入口を見分ける足場がない。根拠のない候補の総当たりはせず4クリックで未到達として停止。"
+      ],
+      "pass": false
+    },
+    {
+      "id": "payload",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/payload/builder/src/service.rs",
+        "start": 123,
+        "end": 136
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": "与えられたpayloadの構築を始めるようserviceへメッセージを送る（関数の原文説明）",
+        "input": "given payload。BuildNewPayloadという宣言はあるが項目の意味は画面にない",
+        "output": "payload idを受け取るreceiver（原文説明）",
+        "boundary": "構築を依頼する入口まで。候補自体を作る処理と結果の関係は未到達。"
+      },
+      "blockers": [
+        "builderとethereum/payload等の役割差がない。serviceの原文に沿って進むと依頼処理に到達。",
+        "原文SOURCEは記号ヒント/行対応なし。起動解説も未対応。8クリック目の説明資料にも構築実装の案内なし。"
+      ],
+      "pass": false
+    },
+    {
+      "id": "storage",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/storage/provider/src/writer/mod.rs",
+        "start": 228,
+        "end": 348
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "22構成→39ファイルに役割説明なし。save_blocksは保存本体でなく範囲/取得候補だった。",
+        "writerのwrite_to_db_storageは説明コメントなし。8クリックで原文に到達したが#[test]を含むコードで、状態保存本体の入出力/境界の説明やその場補助がない。"
+      ],
+      "pass": false
+    },
+    {
+      "id": "extension",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "examples/exex-subscription/src/main.rs",
+        "start": 39,
+        "end": 52
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": "与えられたEthereum addressのstorage changesを購読する例（原文説明）",
+        "input": "Ethereum address（原文説明）",
+        "output": "StorageDiff updatesをstreamする（原文説明）",
+        "boundary": null
+      },
+      "blockers": [
+        "32構成でexex-subscriptionを選ぶとstorage change購読の例に到達。新しいブロック通知を外部機能へ渡す処理本体には到達していない。",
+        "原文は宣言と後続の型定義、記号/行補助なし。起動解説は未対応、稼働中一覧にも拡張通知の案内なし。"
+      ],
+      "pass": false
+    },
+    {
+      "id": "foundation",
+      "clicks": 7,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/chainspec/src/api.rs",
+        "start": 1,
+        "end": 100
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "chainspec/spec.rsは122宣言中100件を表示。日本語説明がなく設定の読み取り/失敗処理が分からない。read検索は0件。",
+        "api.rsの原文へ到達したがチェーン情報を返す操作の宣言等で、チェーン設定の読取と失敗時の扱いの解説やその場補助がない。"
+      ],
+      "pass": false
+    }
+  ],
+  "retention": {
+    "url": true,
+    "line": true,
+    "hint": true,
+    "noteDraft": null
+  },
+  "rawEvidenceLocation": "outputs/measured-loop/baseline/persona-a/",
+  "limits": [
+    "Same AI personas across rounds; not an independent human study.",
+    "Source excerpt and task completion only; not whole-repository understanding."
+  ]
+}

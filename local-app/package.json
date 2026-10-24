@@ -1,1 +1,16 @@
-{"name":"code-reading-studio-local","version":"0.2.0","private":true,"type":"module","engines":{"node":">=22"},"scripts":{"start":"node server.mjs","test":"node --test test/*.test.mjs"}}
+{
+  "name": "code-reading-studio-local",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "measure": "node ../scripts/measure-reading.mjs",
+    "measure:strict": "node ../scripts/measure-reading.mjs --require-complete",
+    "req:trace": "node ../scripts/measure-reading.mjs --reconcile --publish"
+  }
+}

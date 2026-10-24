@@ -1,0 +1,232 @@
+{
+  "kind": "AI UI operation evaluation",
+  "persona": "c",
+  "tasks": [
+    {
+      "id": "node",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "bin/reth/src/main.rs",
+        "start": 33,
+        "end": 48
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "文字のコマンドを読み、ノードを起動する処理を渡し、終了を待つ。",
+        "input": "コマンドラインで指定された起動方法や設定",
+        "output": "起動後のhandleで終了を待ち、CLI全体の実行結果を返す。",
+        "boundary": "L42は起動完了待ち、L44はノード終了待ち。起動完了でプロセス全体が終わるわけではない。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "rpc",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "アプリから届いた署名済みデータを送信の担当処理へ渡し結果を返す入口。",
+        "input": "署名済みトランザクションのバイト列tx: Bytes",
+        "output": "成功なら識別用のハッシュ、失敗ならRPCエラー",
+        "boundary": "返答のハッシュはブロック取り込みや確定完了を意味しない。ログの?txと失敗を返す.await?は別。"
+      },
+      "blockers": [
+        "評価者の学ぶの誤クリック1回を含めた6操作。製品の詰まりではない。"
+      ],
+      "pass": true
+    },
+    {
+      "id": "pool",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "start": 495,
+        "end": 528
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "トランザクションを検証してから内部プールへ渡して追加結果を返す。チェーンIDがある場合はノード側のIDと比べる。",
+        "input": "トランザクションと要求の由来を示すorigin",
+        "output": "1件分のプール追加結果。チェーンIDが違う例では検証エラー。",
+        "boundary": "追加入口だけでは検証全条件は分からない。条件例の抜粋も一条件だけで、ガス・手数料・残高等は範囲外。プール追加とブロック確定は別。"
+      },
+      "blockers": [
+        "評価者のRPC誤選択と戻りの2操作を含む。製品の問題ではない。"
+      ],
+      "pass": true
+    },
+    {
+      "id": "network",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "start": 1134,
+        "end": 1203
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "内部要求やネットワーク側の出来事を取り出して処理する。",
+        "input": "ノード内部からの要求とネットワーク側の出来事",
+        "output": "今すぐ返す最終結果がなければPoll::Pending",
+        "boundary": "仕事が残る場合も実行を譲り再び起こしてもらう通知をする。停止や同期完了を意味しない。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "sync",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/stages/api/src/pipeline/mod.rs",
+        "start": 213,
+        "end": 259
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "同期の仕事を段階ごとに進め進捗や巻き戻しを扱う。",
+        "input": "段階一覧、前段階の進捗、保存先を持つself",
+        "output": "続行・進捗なし・巻き戻しなど次の制御情報またはエラー",
+        "boundary": "段階の失敗は?で返る。巻き戻し指示なら巻き戻して戻る。各段階の詳細や全同期モードは範囲外。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "engine",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "start": 517,
+        "end": 606
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "専用スレッドでEngine要求と保存完了を扱い、matchで種類に応じた処理を選ぶ。",
+        "input": "Engine要求、保存完了の出来事、保存の進み具合",
+        "output": "出来事を処理し続け、run自体は値を返さない。Engine要求は担当処理へ、保存完了は結果と開始時刻を担当処理へ渡す。",
+        "boundary": "保存が追いつかない条件では保存側を待つ。Engine処理の終了指示や致命的エラーではループを終える。"
+      },
+      "blockers": [
+        "軽い迷い: Engine画面のmatchヒント末尾が同期の例（進捗なし/続行/巻き戻し）であり、この画面の出来事の例とは一致しない。行対応説明ではEngine/保存完了を明示。"
+      ],
+      "pass": true
+    },
+    {
+      "id": "execution",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/evm/evm/src/execute.rs",
+        "start": 596,
+        "end": 632
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "ブロック内トランザクションを順に実行し、前後の状態変更と結果をまとめる。",
+        "input": "送信者が復元されたトランザクションを含むブロックと、状態を扱うself",
+        "output": "レシートなどを含むブロック実行結果または実行エラー",
+        "boundary": "一件の実行失敗はL621の?で返る。成功返却は保存先commitや履歴の確定を示さない。個別命令や全検証ルールは範囲外。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "payload",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/ethereum/payload/src/lib.rs",
+        "start": 90,
+        "end": 102
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "候補作成の引数とノード部品を担当処理へ渡し、その結果を返す入口。",
+        "input": "args、EVM設定、状態参照、プール、作成設定。",
+        "output": "BuildOutcome、またはPayloadBuilderError。L101の最後の式のResultを返す。",
+        "boundary": "採用する取引の全条件や候補差し替え条件は抜粋の外。候補作成は履歴の採用・確定とは別。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "storage",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/storage/provider/src/providers/database/provider.rs",
+        "start": 3965,
+        "end": 3991
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "書き込み用の部品が持つ変更を保存先へ確定する。通常保存と巻き戻しを分ける。",
+        "input": "書き込み中のDB操作、静的ファイル、待機中のバッチを持つself。",
+        "output": "成功ならOk(())、失敗なら保存処理のエラー。",
+        "boundary": "?のある保存が失敗すれば、その後の成功処理へ進まずエラーを返す。変更データの作成や全保存先の原子性は示さない。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "extension",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/exex/exex/src/manager.rs",
+        "start": 609,
+        "end": 620
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "通知経路の空きを待ってから、通知の出所とデータを渡す。",
+        "input": "sourceという出所とnotificationという出来事の通知。",
+        "output": "通知経路への送信の成功、またはSendError。",
+        "boundary": "L618で受け付け可能になるまで待つ。L619の成功は拡張機能の処理完了やブロック確定を意味しない。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "foundation",
+      "clicks": 6,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/chainspec/src/spec.rs",
+        "start": 114,
+        "end": 143
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "組み込みmainnet用の設定を読み、ノードで使う設定値を組み立てる。",
+        "input": "組み込まれたmainnet.jsonの文字列とmainnet用のルール設定。",
+        "output": "共有用のChainSpecというチェーン設定。",
+        "boundary": "L117のexpectは読み取りに失敗したら指定メッセージでpanicを起こす。?でエラーを返す操作とは異なる。任意ファイルの解析や接続・同期完了の処理ではない。"
+      },
+      "blockers": [],
+      "pass": true
+    }
+  ],
+  "retention": {
+    "url": true,
+    "line": true,
+    "hint": true,
+    "noteDraft": true
+  },
+  "rawEvidenceLocation": "outputs/measured-loop/round-1/persona-c/",
+  "limits": [
+    "Same AI personas across rounds; not an independent human study.",
+    "Source excerpt and task completion only; not whole-repository understanding."
+  ]
+}

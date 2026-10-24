@@ -9,7 +9,7 @@ vm.runInNewContext(await read('../public/reading-help-data.js'),ctx);vm.runInNew
 const help=ctx.ReadingHelp,data=ctx.READING_HELP_DATA;
 
 test('every authored line hint is tied to the pinned excerpt, exact line and source hash',()=>{
- assert.equal(Object.keys(data.contexts).length,17);
+ assert.equal(Object.keys(data.contexts).length,24);
  for(const [id,c] of Object.entries(data.contexts)){
   assert.equal(createHash('sha256').update(c.source.code).digest('hex'),c.source.hash,id);
   for(const line of c.lines)assert.ok(c.source.code.split('\n')[line.line-c.source.start]?.includes(line.match),id+' L'+line.line);
@@ -57,4 +57,12 @@ test('the backfill Option question mark is explained as absence, not an error',(
  const line=help.codeHtml(c).split('data-code-line="143"')[1].split('data-code-line="144"')[0];
  assert.match(line,/data-rh-term="option-question"/);assert.doesNotMatch(line,/data-rh-term="question"/);
  assert.match(data.terms['option-question'].meaning,/None/);
+});
+
+test('[FR-READ-002] the for in a Future implementation is not described as an iteration',()=>{
+ const network=help.codeHtml(data.contexts['startup:network']).split('data-code-line="1135"')[0];
+ assert.match(network,/data-rh-term="for-implementation"/);assert.doesNotMatch(network,/data-rh-term="for-loop"/);
+ assert.match(help.codeHtml(data.contexts['area:execution']),/data-rh-term="for-loop"/);
+ assert.match(help.codeHtml({source:{start:1,code:'impl Future for OtherType {}'}}),/data-rh-term="for-context"/);
+ assert.doesNotMatch(help.codeHtml({source:{start:1,code:'impl Future for OtherType {}'}}),/data-rh-term="for-loop"/);
 });

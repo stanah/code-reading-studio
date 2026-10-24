@@ -1,0 +1,464 @@
+[
+  {
+    "persona": "a",
+    "task": "node",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "bin/reth/src/main.rs",
+      "start": 33,
+      "end": 48
+    }
+  },
+  {
+    "persona": "a",
+    "task": "rpc",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 920,
+      "end": 924
+    }
+  },
+  {
+    "persona": "a",
+    "task": "pool",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 495,
+      "end": 528
+    }
+  },
+  {
+    "persona": "a",
+    "task": "network",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/net/network/src/manager.rs",
+      "start": 1134,
+      "end": 1203
+    }
+  },
+  {
+    "persona": "a",
+    "task": "sync",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 213,
+      "end": 259
+    }
+  },
+  {
+    "persona": "a",
+    "task": "engine",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 517,
+      "end": 606
+    }
+  },
+  {
+    "persona": "a",
+    "task": "execution",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/evm/evm/src/execute.rs",
+      "start": 596,
+      "end": 632
+    }
+  },
+  {
+    "persona": "a",
+    "task": "payload",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/ethereum/payload/src/lib.rs",
+      "start": 90,
+      "end": 102
+    }
+  },
+  {
+    "persona": "a",
+    "task": "storage",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/storage/provider/src/providers/database/provider.rs",
+      "start": 3965,
+      "end": 3991
+    }
+  },
+  {
+    "persona": "a",
+    "task": "extension",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/exex/exex/src/manager.rs",
+      "start": 609,
+      "end": 620
+    }
+  },
+  {
+    "persona": "a",
+    "task": "foundation",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 114,
+      "end": 143
+    }
+  },
+  {
+    "persona": "b",
+    "task": "node",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "bin/reth/src/main.rs",
+      "start": 33,
+      "end": 48
+    }
+  },
+  {
+    "persona": "b",
+    "task": "rpc",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 920,
+      "end": 924
+    }
+  },
+  {
+    "persona": "b",
+    "task": "pool",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 495,
+      "end": 528
+    }
+  },
+  {
+    "persona": "b",
+    "task": "network",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/net/network/src/manager.rs",
+      "start": 1134,
+      "end": 1203
+    }
+  },
+  {
+    "persona": "b",
+    "task": "sync",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 213,
+      "end": 259
+    }
+  },
+  {
+    "persona": "b",
+    "task": "engine",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 517,
+      "end": 606
+    }
+  },
+  {
+    "persona": "b",
+    "task": "execution",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/evm/evm/src/execute.rs",
+      "start": 596,
+      "end": 632
+    }
+  },
+  {
+    "persona": "b",
+    "task": "payload",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/ethereum/payload/src/lib.rs",
+      "start": 90,
+      "end": 102
+    }
+  },
+  {
+    "persona": "b",
+    "task": "storage",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/storage/provider/src/providers/database/provider.rs",
+      "start": 3965,
+      "end": 3991
+    }
+  },
+  {
+    "persona": "b",
+    "task": "extension",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/exex/exex/src/manager.rs",
+      "start": 609,
+      "end": 620
+    }
+  },
+  {
+    "persona": "b",
+    "task": "foundation",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 114,
+      "end": 143
+    }
+  },
+  {
+    "persona": "c",
+    "task": "node",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "bin/reth/src/main.rs",
+      "start": 33,
+      "end": 48
+    }
+  },
+  {
+    "persona": "c",
+    "task": "rpc",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 920,
+      "end": 924
+    }
+  },
+  {
+    "persona": "c",
+    "task": "pool",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 495,
+      "end": 528
+    }
+  },
+  {
+    "persona": "c",
+    "task": "network",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/net/network/src/manager.rs",
+      "start": 1134,
+      "end": 1203
+    }
+  },
+  {
+    "persona": "c",
+    "task": "sync",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 213,
+      "end": 259
+    }
+  },
+  {
+    "persona": "c",
+    "task": "engine",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 517,
+      "end": 606
+    }
+  },
+  {
+    "persona": "c",
+    "task": "execution",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/evm/evm/src/execute.rs",
+      "start": 596,
+      "end": 632
+    }
+  },
+  {
+    "persona": "c",
+    "task": "payload",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/ethereum/payload/src/lib.rs",
+      "start": 90,
+      "end": 102
+    }
+  },
+  {
+    "persona": "c",
+    "task": "storage",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/storage/provider/src/providers/database/provider.rs",
+      "start": 3965,
+      "end": 3991
+    }
+  },
+  {
+    "persona": "c",
+    "task": "extension",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/exex/exex/src/manager.rs",
+      "start": 609,
+      "end": 620
+    }
+  },
+  {
+    "persona": "c",
+    "task": "foundation",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "remainingBlockers": 0,
+    "note": "画面で記録された4事実を当該固定ソースと照合。明示された抜粋の範囲内で支持される。回復済み誤操作や軽い迷いは観察として保持し、未解決の進行阻害と分ける。",
+    "source": {
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 114,
+      "end": 143
+    }
+  }
+]

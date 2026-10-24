@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "targetCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "baseline": "dfe7d50c94f33b9a49518198dcd0e49bcaf31058",
+  "frozenAt": "2026-10-25",
+  "areas": [
+    "COV",
+    "READ",
+    "EVAL"
+  ],
+  "scope": {
+    "trackedFiles": "all Git blobs, no silent exclusions",
+    "rustFiles": "all .rs including tests/examples",
+    "areas": [
+      "node",
+      "rpc",
+      "pool",
+      "network",
+      "sync",
+      "engine",
+      "execution",
+      "payload",
+      "storage",
+      "extension",
+      "foundation"
+    ]
+  },
+  "acceptance_criteria": [
+    {
+      "id": "FR-COV-001",
+      "description": "All pinned tracked files are accounted for with blob id, kind, area or explicit non-Rust classification, and evidence status",
+      "metric": "inventoryAccounted/totalTracked",
+      "target": 1,
+      "tests": [
+        "local-app/test/measurement.test.mjs"
+      ],
+      "status": "pass"
+    },
+    {
+      "id": "FR-COV-002",
+      "description": "Every Rust file has a source-anchored explanation; excerpt coverage is separate from full-file review",
+      "metric": "anchoredRustFiles/totalRust",
+      "target": 1,
+      "tests": [
+        "local-app/test/measurement.test.mjs"
+      ],
+      "status": "unmet"
+    },
+    {
+      "id": "FR-COV-003",
+      "description": "Every Rust file has a full-file review recording public operations and branches; an excerpt is not sufficient",
+      "metric": "fullyReviewedRustFiles/totalRust",
+      "target": 1,
+      "tests": [
+        "local-app/test/measurement.test.mjs"
+      ],
+      "status": "unmet"
+    },
+    {
+      "id": "FR-READ-001",
+      "description": "All 11 areas have an authored operation with plain role/input/output/boundary, source anchors, and contextual hints on the same page",
+      "metric": "guidedAreas/totalAreas",
+      "target": 1,
+      "tests": [
+        "local-app/test/measurement.test.mjs"
+      ],
+      "status": "pass"
+    },
+    {
+      "id": "FR-READ-002",
+      "description": "Every published source hint matches the pinned blob, line and hash; no invalid evidence or unknown terms",
+      "metric": "invalidEvidence",
+      "target": 0,
+      "tests": [
+        "local-app/test/measurement.test.mjs",
+        "local-app/test/reading-help.test.mjs"
+      ],
+      "status": "pass"
+    },
+    {
+      "id": "FR-EVAL-001",
+      "description": "Three personas complete all 11 fixed tasks within 8 clicks each with role/input/output/boundary supported by visible source, in-place hints and no blocker",
+      "metric": "passingPersonaTasks/33",
+      "target": 1,
+      "tests": [
+        "local-app/test/measurement.test.mjs"
+      ],
+      "status": "pass"
+    },
+    {
+      "id": "FR-EVAL-002",
+      "description": "All three personas retain URL, selected line and hint across assistance changes, and no saved or draft note is lost",
+      "metric": "retentionChecksPassed/3",
+      "target": 1,
+      "tests": [
+        "local-app/test/measurement.test.mjs"
+      ],
+      "status": "pass"
+    },
+    {
+      "id": "FR-EVAL-003",
+      "description": "Actual novice learners independently explain role/input/output/failure from source after closing help; AI roleplay does not satisfy this gate",
+      "metric": "humanStudy",
+      "target": "verified",
+      "tests": [
+        "local-app/test/measurement.test.mjs"
+      ],
+      "status": "not-verified"
+    }
+  ],
+  "evaluation": {
+    "personas": [
+      "a",
+      "b",
+      "c"
+    ],
+    "tasks": [
+      {
+        "id": "node",
+        "goal": "ノードの起動完了と終了待ちを区別する"
+      },
+      {
+        "id": "rpc",
+        "goal": "送信要求の入口で、受け取るものと返すものを確かめる"
+      },
+      {
+        "id": "pool",
+        "goal": "プール追加の前に何を確かめ、何を返すかを読む"
+      },
+      {
+        "id": "network",
+        "goal": "通信の処理が待っているときに何が起きるかを読む"
+      },
+      {
+        "id": "sync",
+        "goal": "過去のブロックをそろえる処理の進み方を読む"
+      },
+      {
+        "id": "engine",
+        "goal": "届いた要求をどう振り分けるかを読む"
+      },
+      {
+        "id": "execution",
+        "goal": "ブロック内の処理を実行する入口を読む"
+      },
+      {
+        "id": "payload",
+        "goal": "ブロック候補を作る処理と結果を読む"
+      },
+      {
+        "id": "storage",
+        "goal": "状態を保存する処理の入力と結果を読む"
+      },
+      {
+        "id": "extension",
+        "goal": "新しいブロックなどを外の機能へ伝える処理を読む"
+      },
+      {
+        "id": "foundation",
+        "goal": "チェーンの設定を読み取る処理と失敗時の扱いを読む"
+      }
+    ],
+    "maxClicks": 8,
+    "requiredFacts": [
+      "role",
+      "input",
+      "output",
+      "boundary"
+    ],
+    "roundPassesRequired": 2,
+    "stopPolicy": "Do not lower gates or replace unobserved tasks with passes. A round can finish with productComplete=false; retain unmet conditions."
+  }
+}

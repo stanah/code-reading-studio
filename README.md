@@ -36,6 +36,21 @@ TypeScriptの比較は、自分で開く詳しい補足にあります。
 行選択や記号ヒントの開閉は、同じページ内の表示切り替え中に保持します。再読み込み後の復元は行いません。
 [学習体験の設計](docs/learning-experience.md)と[操作評価・改善の記録](docs/adaptive-reading-review.md)に方針と検証範囲を記載しています。
 
+## 対応範囲と達成状況
+
+11領域それぞれに、まず一つの処理を同じページで読む入口があります。
+全Rustファイルを表示できますが、原文に結び付いた解説は一部です。
+[現在値と未達条件](docs/reading-status.md)、[全ファイルの台帳](docs/coverage-ledger.json)、
+[完了条件と計測方法](docs/measurement.md)を分けて記録しています。
+抜粋の解説をファイル全体のレビューとして数えず、人間の理解検証も別に扱います。
+
+```sh
+npm --prefix local-app run req:trace
+npm --prefix local-app run measure:strict
+```
+
+全体が未達の場合、厳格な判定は終了コード2になります。
+
 ## 対象バージョン
 
 Reth **v2.7.0**、コミット `3d592ece6de8c4559987416a544fc215fd6d6921` に固定しています。
@@ -77,3 +92,5 @@ node scripts/check-reading-data.mjs
 
 リポジトリはprivateで運用しています。pushによる自動公開は設定していません。
 Rethのソース抜粋には [`dist/reth-LICENSE-MIT.txt`](dist/reth-LICENSE-MIT.txt) が適用されます。
+
+固定した条件に基づく4回の評価・改善は[計測評価の記録](docs/measured-reading-review.md)を参照してください。

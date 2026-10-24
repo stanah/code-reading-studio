@@ -1,0 +1,72 @@
+{
+  "sync": {
+    "title": "同期の段階を順に進める",
+    "source": {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 213,
+      "end": 259,
+      "hash": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/api/src/pipeline/mod.rs#L213-L259"
+    }
+  },
+  "execution": {
+    "title": "ブロック内のトランザクションを実行する",
+    "source": {
+      "path": "crates/evm/evm/src/execute.rs",
+      "start": 596,
+      "end": 632,
+      "hash": "e2d250e6445fc04f2a8f22e4d5102947f67d11d71c631a31163d16e72854316f",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/evm/evm/src/execute.rs#L596-L632"
+    }
+  },
+  "payload": {
+    "title": "ブロック候補を作る処理へ渡す",
+    "source": {
+      "path": "crates/ethereum/payload/src/lib.rs",
+      "start": 90,
+      "end": 102,
+      "hash": "45364bcf43e4e47358bf9dd021f81c1f95141dcb934aa10ae75ccca4d39add33",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/payload/src/lib.rs#L90-L102"
+    }
+  },
+  "storage": {
+    "title": "保存の変更を確定する",
+    "source": {
+      "path": "crates/storage/provider/src/providers/database/provider.rs",
+      "start": 3965,
+      "end": 3991,
+      "hash": "8ed93abedc6226be38c12f9bcfe98931d303a7a686637031e668236af8b06d62",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/storage/provider/src/providers/database/provider.rs#L3965-L3991"
+    }
+  },
+  "extension": {
+    "title": "拡張機能へ通知を渡す",
+    "source": {
+      "path": "crates/exex/exex/src/manager.rs",
+      "start": 609,
+      "end": 620,
+      "hash": "21c3b8f32db8b3f1356204e9ec5726e9d601eaca036bfa3d2e663fd2475cd3de",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/exex/exex/src/manager.rs#L609-L620"
+    }
+  },
+  "foundation": {
+    "title": "組み込みのチェーン設定を読む",
+    "source": {
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 114,
+      "end": 143,
+      "hash": "c76ea04a3faac76d238f6f222c7e4fe703a378e17e12e60ed02368b840f27f58",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/chainspec/src/spec.rs#L114-L143"
+    }
+  },
+  "pool-validation": {
+    "title": "送信先のチェーンIDを比べる",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 592,
+      "end": 598,
+      "hash": "8e6b9d2e8ec6ae08600fc9e6bd1ed2f68d160aa36bbf0d5a582451d3c4f9c1ac",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L592-L598"
+    }
+  }
+}

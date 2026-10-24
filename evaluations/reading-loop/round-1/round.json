@@ -1,0 +1,8 @@
+{
+  "id": "round-1",
+  "policyHash": "60d660b58f7b6160647e7bcacb433a076b74a4f954271431c370ce76003f7ec3",
+  "buildHash": "3c7c7f6086d2effb91f333df3ab4e5f8c04454a41463582c8d5deb04c0c206c1",
+  "sourceCommit": "dfe7d50c94f33b9a49518198dcd0e49bcaf31058",
+  "kind": "AI UI operation evaluation",
+  "hashFormat": "runtime assets and API source v2"
+}

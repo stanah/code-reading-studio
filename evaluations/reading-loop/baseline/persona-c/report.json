@@ -1,0 +1,252 @@
+{
+  "kind": "AI UI operation evaluation",
+  "persona": "c",
+  "tasks": [
+    {
+      "id": "node",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/node/builder/src/handle.rs",
+        "start": 22,
+        "end": 32
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": "ノードの部品群と終了Futureを保持し、終了待機の入口を提供する。",
+        "input": "起動済みノードと終了Future",
+        "output": "node_exit_futureの結果",
+        "boundary": "mainが待つノードの終了とEngine/Networkが続ける処理を分ける説明は見たが、起動完了との区別を原文行付きでは確認できない。"
+      },
+      "blockers": [
+        "原文へは6クリックで到達したがその場ヒントなし",
+        "対応起動解説なしと表示され、8クリック目はCLI段階の一覧まで"
+      ],
+      "pass": false
+    },
+    {
+      "id": "rpc",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "アプリから届いた送信要求をRethの送信処理へ渡す入口。",
+        "input": "署名済みトランザクションのバイト列",
+        "output": "成功なら識別用ハッシュ、失敗ならエラー",
+        "boundary": "ここではまだブロックへの取り込みを行わない。?で失敗を早く返し、成功ならOkで返す。"
+      },
+      "blockers": [
+        "領域の次の選択ではCargo名が並び、役割の説明がないため名前から候補を選ぶ必要があった"
+      ],
+      "pass": true
+    },
+    {
+      "id": "pool",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "start": 495,
+        "end": 528
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "受け取ったトランザクションを検証し、内部プールへ渡して追加の成否を返す。",
+        "input": "追加を依頼されたトランザクション",
+        "output": "追加の結果。成功ならハッシュ、失敗ならエラー",
+        "boundary": "成功してもブロックへの取り込みや確定まで終わった意味ではない。具体的な検証条件までは画面から確認できていない。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "network",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "start": 1134,
+        "end": 1203
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "内部要求と通信イベントを処理してネットワーク状態を進める。",
+        "input": "NetworkHandle経由の要求、ピア接続や通信のswarmイベント",
+        "output": "ネットワーク状態の更新と各要求・通信イベントの処理",
+        "boundary": "すぐ進められなければ他の処理へ実行を譲る。CLI終了監視やEngine Treeとは別のタスク。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "sync",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/engine/tree/src/backfill.rs",
+        "start": 123,
+        "end": 183
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "過去のブロックなどをまとめてそろえる必要があるとき、段階的同期を始め結果を待つ。",
+        "input": null,
+        "output": null,
+        "boundary": "live syncと同時実行せず排他的同期モードとして使う。同期後は次に備えて待機状態へ戻すという行選択肢がある。"
+      },
+      "blockers": [
+        "stages構成から日本語解説へ直接進めず起動全体像経由で回復した",
+        "8クリック目で原文とヒント操作部は表示できたが、詳細の入出力と行ヒントの選択まで操作枠が足りず、4事実を確定できない"
+      ],
+      "pass": false
+    },
+    {
+      "id": "engine",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "start": 517,
+        "end": 606
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "専用スレッドでEngine要求や保存完了を処理し、永続化の進行を調整する。",
+        "input": "Engine要求チャネル、永続化完了通知、payload build完了通知",
+        "output": "Engine処理結果、チェーンイベント、必要な永続化処理",
+        "boundary": "永続化が遅れて閾値に達すると新規入力を取り出さず保存側を待つ。runはOSスレッドを同期的に待たせる。"
+      },
+      "blockers": [
+        "要求の個別種類の振り分けを読むより前のrun調整ループに到達。個別要求の処理先までは未確認"
+      ],
+      "pass": false
+    },
+    {
+      "id": "execution",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/evm/evm/src/execute.rs",
+        "start": 54,
+        "end": 70
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": "型を消費してブロックを実行する（原文コメント）。",
+        "input": null,
+        "output": "ブロック実行の出力（原文コメント）",
+        "boundary": "出力の検証を行わずに実行すると原文コメントにある。"
+      },
+      "blockers": [
+        "二つのevm構成に日本語の違いがなく、設定用構成から戻って2操作を消費",
+        "原文には到達したがその場のヒントや日本語の入力説明なし"
+      ],
+      "pass": false
+    },
+    {
+      "id": "payload",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/payload/builder/src/service.rs",
+        "start": 123,
+        "end": 136
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": "新しいpayloadの構築を始めるメッセージをサービスへ送る。",
+        "input": null,
+        "output": "payload idを受け取るreceiver（原文コメント）",
+        "boundary": "候補そのものを返す処理との区別は原文コメントの範囲では確認できない。"
+      },
+      "blockers": [
+        "構築サービスの入口原文には到達したが、その場のヒントなし",
+        "対応する起動解説なしと表示、8クリック目も準備段階一覧まで"
+      ],
+      "pass": false
+    },
+    {
+      "id": "storage",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/storage/storage-api/src/state_writer.rs",
+        "start": 90,
+        "end": 99
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": "状態と、任意でレシートをデータベースへ書く（原文コメント）。",
+        "input": null,
+        "output": null,
+        "boundary": "他の場所で書くデータ型はconfigで省略すると原文コメントにある。"
+      },
+      "blockers": [
+        "到達したのは宣言と原文コメントで、型から入出力を読む知識を要求する",
+        "その場ヒントなし、対応起動解説なし"
+      ],
+      "pass": false
+    },
+    {
+      "id": "extension",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/exex/exex/src/notifications.rs",
+        "start": 283,
+        "end": 301
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": "ExExはノードの状態変化を聞くタスク。選択箇所の原文は指定headからの通知を購読する。",
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "伝える側の処理ではなく購読用の入口へ進み、適切な処理を特定できない",
+        "日本語の役割や入出力案内、対応する起動解説とその場ヒントがない"
+      ],
+      "pass": false
+    },
+    {
+      "id": "foundation",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/chainspec/src/lib.rs",
+        "start": 97,
+        "end": 103
+      },
+      "inPlaceHints": false,
+      "facts": {
+        "role": null,
+        "input": null,
+        "output": null,
+        "boundary": null
+      },
+      "blockers": [
+        "チェーン仕様の関数一覧で設定を読み取る入口を特定できなかった",
+        "最後は失敗に近い名前のテスト関数の原文。課題の実処理へ到達したとは言えない",
+        "説明コメントなし、コードを読んで解説追加と促す画面で、コード経験なしの足場がない"
+      ],
+      "pass": false
+    }
+  ],
+  "retention": {
+    "url": true,
+    "line": true,
+    "hint": true,
+    "noteDraft": null
+  },
+  "rawEvidenceLocation": "outputs/measured-loop/baseline/persona-c/",
+  "limits": [
+    "Same AI personas across rounds; not an independent human study.",
+    "Source excerpt and task completion only; not whole-repository understanding."
+  ]
+}

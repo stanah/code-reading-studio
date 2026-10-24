@@ -1,0 +1,464 @@
+[
+  {
+    "persona": "a",
+    "task": "node",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/cli/runner/src/lib.rs",
+      "start": 63,
+      "end": 102
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "a",
+    "task": "rpc",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 920,
+      "end": 924
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "a",
+    "task": "pool",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "何を確かめるかについて具体条件を確認できていない。Cの成功時ハッシュのみという回答はAddedTransactionOutcomeという実際の戻り値に対し不十分。",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 495,
+      "end": 528
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "a",
+    "task": "network",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "crates/net/network/src/manager.rs",
+      "start": 1134,
+      "end": 1203
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "a",
+    "task": "sync",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/engine/tree/src/backfill.rs",
+      "start": 123,
+      "end": 183
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "a",
+    "task": "engine",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 517,
+      "end": 606
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "a",
+    "task": "execution",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": null,
+      "start": null,
+      "end": null
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "a",
+    "task": "payload",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/payload/builder/src/service.rs",
+      "start": 123,
+      "end": 136
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "a",
+    "task": "storage",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/storage/provider/src/writer/mod.rs",
+      "start": 228,
+      "end": 348
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "a",
+    "task": "extension",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "examples/exex-subscription/src/main.rs",
+      "start": 39,
+      "end": 52
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "a",
+    "task": "foundation",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/chainspec/src/api.rs",
+      "start": 1,
+      "end": 100
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "b",
+    "task": "node",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "bin/reth/src/main.rs",
+      "start": 33,
+      "end": 48
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "b",
+    "task": "rpc",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 920,
+      "end": 924
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "b",
+    "task": "pool",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "何を確かめるかについて具体条件を確認できていない。Cの成功時ハッシュのみという回答はAddedTransactionOutcomeという実際の戻り値に対し不十分。",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 495,
+      "end": 528
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "b",
+    "task": "network",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "crates/net/network/src/manager.rs",
+      "start": 1134,
+      "end": 1203
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "b",
+    "task": "sync",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "crates/engine/tree/src/backfill.rs",
+      "start": 123,
+      "end": 183
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "b",
+    "task": "engine",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 517,
+      "end": 606
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "b",
+    "task": "execution",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/evm/evm/src/execute.rs",
+      "start": 54,
+      "end": 70
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "b",
+    "task": "payload",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/payload/builder/src/service.rs",
+      "start": 123,
+      "end": 136
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "b",
+    "task": "storage",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/storage/storage-api/src/state_writer.rs",
+      "start": 90,
+      "end": 99
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "b",
+    "task": "extension",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "examples/exex-subscription/src/main.rs",
+      "start": 102,
+      "end": 169
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "b",
+    "task": "foundation",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 2649,
+      "end": 2660
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "node",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/node/builder/src/handle.rs",
+      "start": 22,
+      "end": 32
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "rpc",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 920,
+      "end": 924
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "c",
+    "task": "pool",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "何を確かめるかについて具体条件を確認できていない。Cの成功時ハッシュのみという回答はAddedTransactionOutcomeという実際の戻り値に対し不十分。",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 495,
+      "end": 528
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "network",
+    "reviewer": "primary-source-review",
+    "factsSupported": true,
+    "sourceMatchesTask": true,
+    "note": "役割・入力・結果・境界の4点を固定ソースの該当範囲と照合した。",
+    "source": {
+      "path": "crates/net/network/src/manager.rs",
+      "start": 1134,
+      "end": 1203
+    },
+    "remainingBlockers": 0
+  },
+  {
+    "persona": "c",
+    "task": "sync",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/engine/tree/src/backfill.rs",
+      "start": 123,
+      "end": 183
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "engine",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 517,
+      "end": 606
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "execution",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/evm/evm/src/execute.rs",
+      "start": 54,
+      "end": 70
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "payload",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/payload/builder/src/service.rs",
+      "start": 123,
+      "end": 136
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "storage",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/storage/storage-api/src/state_writer.rs",
+      "start": 90,
+      "end": 99
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "extension",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/exex/exex/src/notifications.rs",
+      "start": 283,
+      "end": 301
+    },
+    "remainingBlockers": 1
+  },
+  {
+    "persona": "c",
+    "task": "foundation",
+    "reviewer": "primary-source-review",
+    "factsSupported": false,
+    "sourceMatchesTask": false,
+    "note": "操作課題が未達、または4点の根拠が不足。未達を根拠確認済みの成功へ繰り上げない。",
+    "source": {
+      "path": "crates/chainspec/src/lib.rs",
+      "start": 97,
+      "end": 103
+    },
+    "remainingBlockers": 1
+  }
+]

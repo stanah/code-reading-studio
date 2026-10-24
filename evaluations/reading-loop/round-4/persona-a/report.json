@@ -1,0 +1,237 @@
+{
+  "kind": "AI UI operation evaluation",
+  "persona": "a",
+  "tasks": [
+    {
+      "id": "node",
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "source": {
+        "path": "bin/reth/src/main.rs",
+        "start": 33,
+        "end": 48
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "L40で文字コマンドを読み起動処理を渡し、L42で起動を待ちL44で終了を待つ。",
+        "input": "コマンドラインの起動方法/設定。本文とL40のCli parse。",
+        "output": "起動後handleを得てノード終了を待ち、CLI全体の結果を返す。L42/44と本文。",
+        "boundary": "起動完了はプロセス終了ではない。awaitは結果待ちで、結果待ち中に他へ実行を譲れると補助が説明。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "rpc",
+      "status": "pass",
+      "clicks": 7,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 920,
+        "end": 924
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "署名済みデータを担当処理に渡す入口。L923の呼び出しに対応。",
+        "input": "L921のtx: Bytes。補助はtxという名前のバイト列を受け取ると説明。",
+        "output": "成功時識別用ハッシュ、失敗時RPCエラー。L923の?で失敗を早く返し外側Okで成功を返す。",
+        "boundary": "返答ハッシュはブロック取り込みや確定完了ではない。L922のログとL923の結果は別。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "pool",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "start": 495,
+        "end": 528
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "トランザクションを検証し内部プールへ渡す。L500のvalidateからL501追加へ。",
+        "input": "transactionと要求の出所origin。検証例では要求chain IDがあればノード番号と比較。",
+        "output": "L502で1件分の追加結果を返す。検証例の不一致L596はChainIdMismatchエラーで終える。",
+        "boundary": "追加は取り込みやレシート待ちではない。chain IDは一条件で全検証条件や全体成功は範囲外。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "network",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/net/network/src/manager.rs",
+        "start": 1134,
+        "end": 1203
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "内部要求とネットワーク出来事を取り出して処理する。L1176/1187。",
+        "input": "ノード内部部品の要求とネットワークの出来事。本文とL1176の行補助。",
+        "output": "L1202 Poll::Pendingは今すぐ最終結果がないと伝える。個別補助も同じ役割。",
+        "boundary": "仕事が残っても再通知を予約して譲る場合がある。Pendingは停止/同期完了ではない。先頭forは型へのFuture実装で繰り返しとは区別された。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "sync",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/stages/api/src/pipeline/mod.rs",
+        "start": 213,
+        "end": 259
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "段階一覧を一つずつ選んで進め、進捗更新や巻き戻しを扱う（L227/243）。",
+        "input": "段階一覧、前段階進捗、保存先を持つself。L223 selfとL227 stages、previous_stageに対応。",
+        "output": "L258で進捗に対応する次の制御情報を成功として返す。巻き戻しはL243–245で別に返す。",
+        "boundary": "L232の?は段階失敗を返す。各段階の詳細や全同期モードは範囲外。Result補助で成否の形を確認。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "engine",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "start": 517,
+        "end": 606
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "出来事の形をmatchで調べ要求/保存完了等の担当を選び繰り返し処理する。L521/572。",
+        "input": "要求msgと保存完了のresult/start_time、保存進捗。L575/584で担当へ渡す説明。",
+        "output": "run自体は値を返さず出来事を処理し続ける形。L572以降の分岐と本文。",
+        "boundary": "保存遅延条件はL564で保存側待ち、通常L569で入力待ち。致命的エラーや切断で終了しうる。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "execution",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/evm/evm/src/execute.rs",
+        "start": 596,
+        "end": 632
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "ブロック内の要求をL620で一件ずつ取り出しL621で実行し、前後の変更をまとめる。",
+        "input": "送信者が復元された要求を含むblockと状態を扱うself。L596の入口補助。",
+        "output": "L631のOk(result)はレシート等を含む実行結果、または実行エラー。",
+        "boundary": "L621の?が一件の失敗を返す。L631はcommit/履歴確定を示さない。forのtx/inと繰り返し補助が一致。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "payload",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/ethereum/payload/src/lib.rs",
+        "start": 90,
+        "end": 102
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "候補作成のためargsと部品を担当へ渡す。L90入口とL94呼び出し。",
+        "input": "args、EVM設定、状態参照、プール、作成設定。L94–100の入力補助に対応。",
+        "output": "L101の最後の呼出式のResultを返す。候補作成結果BuildOutcomeかPayloadBuilderError。",
+        "boundary": "全取引採用条件/差し替えは抜粋外。候補作成は履歴採用/確定と別。Result補助は成功値か失敗情報の形と説明。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "storage",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/storage/provider/src/providers/database/provider.rs",
+        "start": 3965,
+        "end": 3991
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "書き込み部品が持つ変更を保存先へ確定するcommit。L3965から通常/巻き戻しを分ける。",
+        "input": "selfがDB操作/静的ファイル/待機バッチを持つ。L3965行補助と本文。",
+        "output": "L3990の追加データなしの成功Ok(())、または途中の保存エラー。",
+        "boundary": "?が失敗なら後の成功処理へ進まずエラーを返す。変更データ作成や全保存先の原子性は抜粋外。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "extension",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/exex/exex/src/manager.rs",
+        "start": 609,
+        "end": 620
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "通知経路の空きを待ち出所/データを渡すsend_async。L618/619。",
+        "input": "L613–616のsourceとnotification。入口補助の出所と通知データに対応。",
+        "output": "L619の経路への送信成功かSendError。Result補助で成否/追加データなしを確認。",
+        "boundary": "L618は受け付け可能になるまで待つ。L619成功は拡張の処理完了やブロック確定ではない。"
+      },
+      "blockers": [],
+      "pass": true
+    },
+    {
+      "id": "foundation",
+      "status": "pass",
+      "clicks": 8,
+      "reachedSource": true,
+      "source": {
+        "path": "crates/chainspec/src/spec.rs",
+        "start": 114,
+        "end": 143
+      },
+      "inPlaceHints": true,
+      "facts": {
+        "role": "組み込みmainnetのJSONを読みノードのチェーン設定を組み立てる。L116/119以降。",
+        "input": "L116のmainnet.json文字列とL118のmainnetルール。行補助はinclude_strの入力と説明。",
+        "output": "L142で組み立てた設定を共有の形へ変換し返す。本文の共有ChainSpecに対応。",
+        "boundary": "L117 expectは失敗を想定外としてpanicを起こす。?でエラーを返すことと区別。任意ファイル/接続/同期完了はこの範囲外。"
+      },
+      "blockers": [],
+      "pass": true
+    }
+  ],
+  "retention": {
+    "url": true,
+    "line": true,
+    "hint": true,
+    "noteDraft": true
+  },
+  "rawEvidenceLocation": "outputs/measured-loop/round-4/persona-a/",
+  "limits": [
+    "Same AI personas across rounds; not an independent human study.",
+    "Source excerpt and task completion only; not whole-repository understanding."
+  ]
+}

@@ -93,7 +93,7 @@
     "result": {
       "name": "Result・Ok・Err",
       "meaning": "成功の値か、失敗の情報のどちらかを返す形です。",
-      "example": "Ok(値)は成功、Err(エラー)は失敗を表します。この送信経路では成功時にハッシュなどが返ります。"
+      "example": "Ok(値)は成功、Err(エラー)は失敗を表します。Ok(())の()は、成功時に追加のデータを返さないという形です。"
     },
     "type": {
       "name": "型",
@@ -154,6 +154,91 @@
       "name": "?・値がなければここで戻る",
       "meaning": "この行の ? は Option に付いています。Someなら中身の値を取り出し、Noneなら現在の関数からNoneを返します。",
       "example": "同期の目標がなければ、ここでNoneを返して処理を終えます。この ? はエラーを返す説明ではありません。"
+    },
+    "block": {
+      "name": "ブロック",
+      "meaning": "複数の処理の要求と、それらをまとめる情報を持つ記録の単位です。",
+      "example": "この読解では、その中のトランザクションを順に実行する箇所も確認します。"
+    },
+    "state": {
+      "name": "状態",
+      "meaning": "ある時点の残高や、プログラムが保持するデータなどです。",
+      "example": "実行で変わる状態と、それを保存先へ確定する処理を分けて読みます。"
+    },
+    "receipt": {
+      "name": "レシート",
+      "meaning": "トランザクションを実行した結果を表す記録です。",
+      "example": "送信要求へのハッシュの返答とは別で、実行が成功したかや使用したガスなどを扱います。"
+    },
+    "stage": {
+      "name": "ステージ・パイプライン",
+      "meaning": "同期に必要な仕事を段階に分け、順に進める仕組みです。",
+      "example": "各段階の結果に応じ、進捗を更新したり、前の状態へ戻してやり直したりします。"
+    },
+    "unwind": {
+      "name": "巻き戻し",
+      "meaning": "問題がある箇所より前の状態へ戻して、やり直せるようにする処理です。",
+      "example": "この同期の入口では、巻き戻しの指示を受けた場合を通常の進捗更新と分けています。"
+    },
+    "payload": {
+      "name": "ペイロード・ブロック候補",
+      "meaning": "提案するブロックの実行側の中身です。トランザクションなどを選んで組み立てます。",
+      "example": "候補を作ったことだけで、ネットワークでの採用や履歴の確定を意味しません。"
+    },
+    "notification": {
+      "name": "通知・ExEx",
+      "meaning": "ノード内の出来事を拡張機能へ伝えるためのデータです。ExExは実行結果を利用する拡張機能です。",
+      "example": "通知経路へ渡すことと、受け手の拡張機能が処理を終えることは分けます。"
+    },
+    "json": {
+      "name": "JSON",
+      "meaning": "データの項目と値を、文字で表す形式です。",
+      "example": "ここではRethに組み込まれたmainnet用の最初の状態の設定を読み取ります。"
+    },
+    "chain-config": {
+      "name": "チェーンの設定",
+      "meaning": "どのネットワークのルールや最初の状態を使うかを定める情報です。",
+      "example": "mainnet、テスト用ネットワークなどでは、同じ設定を使うとは限りません。"
+    },
+    "chain-id": {
+      "name": "チェーンID",
+      "meaning": "どのネットワーク向けの要求かを区別する番号です。",
+      "example": "送信要求に番号がある場合、この検証ではノード側の番号と比較します。"
+    },
+    "expect": {
+      "name": "expect・値がなければ実行を止める",
+      "meaning": "Resultの失敗やOptionの値なしを、このプログラムの想定外としてpanicを起こす操作です。",
+      "example": "例えば、設定読み込みのResultに使うと、失敗時に指定メッセージでpanicを起こします。?で呼び出し元へエラーを返す操作とは区別します。"
+    },
+    "if": {
+      "name": "if・条件で分ける",
+      "meaning": "条件が成り立つときに、その後の処理のまとまりを実行します。",
+      "example": "elseがある場合は、条件が成り立たないときの処理を表します。"
+    },
+    "for-loop": {
+      "name": "for・順に処理する",
+      "meaning": "複数の値を一つずつ取り出し、同じ処理を繰り返します。",
+      "example": "for tx in ... なら、取り出した一つの値をtxという名前で使います。"
+    },
+    "match": {
+      "name": "match・結果の形で分ける",
+      "meaning": "得られた値がどの形かに応じ、実行する処理を選びます。",
+      "example": "結果の種類ごとに、続ける処理や戻る処理を分けられます。この箇所の具体的な分岐は、日本語と行の対応で確かめられます。"
+    },
+    "early-return": {
+      "name": "return・ここで戻る",
+      "meaning": "現在の関数やブロックから、その場で結果を返して処理を終えます。",
+      "example": "後ろに書かれた処理を実行せず、呼び出した側へ戻ります。"
+    },
+    "for-context": {
+      "name": "for・前後の書き方で役割を確かめる",
+      "meaning": "forは使う場所によって役割が変わります。for 値 in 一覧 は繰り返し、impl 操作の約束 for 型 は、その型へ操作を実装する指定です。",
+      "example": "ここでどちらの役割かは、前後のコードと、その行に対応する説明で確かめます。"
+    },
+    "for-implementation": {
+      "name": "for・操作の約束をこの型に実装する",
+      "meaning": "impl ... for ... は、ある型が操作の約束を実装する書き方です。この行は繰り返し処理ではありません。",
+      "example": "ここではNetworkManagerがFutureとして処理を進められるように、後ろでpollを実装します。"
     }
   },
   "contexts": {
@@ -329,7 +414,15 @@
           "explanation": "各トランザクションの出所を保ってまとめて依頼し、要求ごとの結果を返します。"
         }
       ],
-      "note": ""
+      "note": "",
+      "tokenHints": {
+        "92": {
+          "for": "for-loop"
+        },
+        "102": {
+          "for": "for-loop"
+        }
+      }
     },
     "tx:pool": {
       "intro": "受け取ったトランザクションを検証し、内部プールへ渡して追加の成否を返します。",
@@ -620,6 +713,30 @@
           "match": "wait_for_event",
           "label": "通常の入力を待つ場合",
           "explanation": "通常は、Engineの要求など次の出来事を待ちます。"
+        },
+        {
+          "line": 572,
+          "match": "match event",
+          "label": "出来事の種類で分ける",
+          "explanation": "届いた出来事の形をmatchで調べ、Engineの要求、保存完了などに応じた処理を選びます。"
+        },
+        {
+          "line": 575,
+          "match": "match self.on_engine_message(msg)",
+          "label": "Engineの要求を処理する",
+          "explanation": "Engineからの要求を担当処理へ渡します。終了の指示や致命的なエラーなら、このループを終えます。"
+        },
+        {
+          "line": 584,
+          "match": "LoopEvent::PersistenceComplete {",
+          "label": "保存完了を処理する",
+          "explanation": "保存が完了した出来事なら、保存側の結果と処理開始時刻を担当処理へ渡します。"
+        },
+        {
+          "line": 591,
+          "match": "LoopEvent::Disconnected =>",
+          "label": "経路の切断で終える",
+          "explanation": "入力経路が切断された場合はログを残し、この処理を終えます。"
         }
       ],
       "note": ""
@@ -632,6 +749,12 @@
         "thread"
       ],
       "lines": [
+        {
+          "line": 1134,
+          "match": "Future for NetworkManager",
+          "label": "通信の処理をFutureとして実装する",
+          "explanation": "impl ... for ... は型への操作の実装です。NetworkManagerをFutureとして進めるため、後ろでpollを定義しています。このforは繰り返しではありません。"
+        },
         {
           "line": 1137,
           "match": "fn poll",
@@ -657,7 +780,12 @@
           "explanation": "今すぐ返す最終結果はないと実行環境へ伝えます。"
         }
       ],
-      "note": ""
+      "note": "",
+      "tokenHints": {
+        "1134": {
+          "for": "for-implementation"
+        }
+      }
     },
     "startup:backfill": {
       "intro": "過去のブロックなどをまとめてそろえる必要があるとき、段階的な同期を始めて結果を待ちます。",
@@ -698,6 +826,289 @@
           "?": "option-question"
         }
       }
+    },
+    "area:sync": {
+      "intro": "不足する記録をそろえる仕事を段階ごとに進めます。結果に応じて進捗を更新し、問題があれば巻き戻します。",
+      "terms": [
+        "stage",
+        "unwind",
+        "block"
+      ],
+      "lines": [
+        {
+          "line": 223,
+          "match": "fn run_loop",
+          "label": "一巡の入口",
+          "explanation": "受け取るものは、段階の一覧や保存先、進捗を持つselfです。結果は次に進むための制御情報かエラーです。"
+        },
+        {
+          "line": 227,
+          "match": "for stage_index",
+          "label": "段階を順に選ぶ",
+          "explanation": "段階の一覧を、先頭から一つずつ選んで処理します。"
+        },
+        {
+          "line": 232,
+          "match": "execute_stage_to_completion",
+          "label": "その段階の完了を待つ",
+          "explanation": "前の段階の進捗を渡して完了を待ちます。?が付くため、失敗ならこの関数からエラーを返します。"
+        },
+        {
+          "line": 243,
+          "match": "ControlFlow::Unwind",
+          "label": "巻き戻しの指示を扱う",
+          "explanation": "巻き戻しを行い、その指示を呼び出し元へ返します。通常の進捗更新とは分けています。"
+        },
+        {
+          "line": 258,
+          "match": "Ok(self.progress.next_ctrl())",
+          "label": "一巡の結果を返す",
+          "explanation": "全段階を終えた場合は、進捗に対応する次の制御情報を成功として返します。"
+        }
+      ],
+      "note": "各段階の具体的な取得・実行条件は別の実装です。この範囲だけで全同期モードを説明したものではありません。",
+      "tokenHints": {
+        "227": {
+          "for": "for-loop"
+        }
+      }
+    },
+    "area:execution": {
+      "intro": "受け取ったブロックのトランザクションを順に実行し、実行結果を返します。前後に必要な状態変更も行います。",
+      "terms": [
+        "block",
+        "state",
+        "receipt"
+      ],
+      "lines": [
+        {
+          "line": 596,
+          "match": "fn execute_one",
+          "label": "ブロックを受け取る入口",
+          "explanation": "blockという引数で、送信者が復元されたトランザクションを含むブロックを受け取ります。成功時の結果か実行エラーを返します。"
+        },
+        {
+          "line": 614,
+          "match": "apply_pre_execution_changes",
+          "label": "実行前の変更を行う",
+          "explanation": "ブロック内の要求を処理する前に必要な変更を行います。失敗なら?でエラーを返します。"
+        },
+        {
+          "line": 620,
+          "match": "for tx",
+          "label": "要求を一つずつ取り出す",
+          "explanation": "ブロック内のトランザクションを、順に一つずつ取り出します。"
+        },
+        {
+          "line": 621,
+          "match": "execute_transaction(tx)?",
+          "label": "一件を実行する",
+          "explanation": "取り出した要求を実行します。失敗したときは後続へ進まず、エラーを返します。"
+        },
+        {
+          "line": 627,
+          "match": "apply_post_execution_changes",
+          "label": "実行後の変更と結果",
+          "explanation": "必要な実行後の変更を行い、resultに実行結果を持ちます。"
+        },
+        {
+          "line": 631,
+          "match": "Ok(result)",
+          "label": "実行結果を返す",
+          "explanation": "実行結果を成功として返します。保存先へのcommitをこの行で実行しているわけではありません。"
+        }
+      ],
+      "note": "BALがあるかどうかの分岐も含みますが、個別のEVM命令や検証ルールの全てをこの範囲で解説してはいません。",
+      "tokenHints": {
+        "620": {
+          "for": "for-loop"
+        }
+      }
+    },
+    "area:payload": {
+      "intro": "ブロック候補を作るための引数と、プール・状態参照などの部品を担当処理へ渡し、その結果を返します。",
+      "terms": [
+        "payload",
+        "pool",
+        "state"
+      ],
+      "lines": [
+        {
+          "line": 90,
+          "match": "fn try_build",
+          "label": "候補作成の入口",
+          "explanation": "argsとして候補作成のための引数を受け取ります。Resultは候補作成の結果かエラーを表します。"
+        },
+        {
+          "line": 94,
+          "match": "default_ethereum_payload",
+          "label": "候補を作る担当へ渡す",
+          "explanation": "EVMの設定、状態を読む部品、プール、作成設定と引数を渡します。"
+        },
+        {
+          "line": 100,
+          "match": "best_transactions_with_attributes",
+          "label": "プールから選ぶ操作を渡す",
+          "explanation": "条件に応じたトランザクションを選ぶ操作も、担当処理へ渡します。"
+        },
+        {
+          "line": 101,
+          "match": ")",
+          "label": "担当処理の結果を返す",
+          "explanation": "呼び出しが最後の式なので、そのResultをこの関数の結果として返します。"
+        }
+      ],
+      "note": "この入口だけでは、採用する取引の全条件や候補の差し替え条件は確認できません。候補作成は履歴の採用・確定とは別です。"
+    },
+    "area:storage": {
+      "intro": "書き込み用の部品が持つ変更を、保存先へ確定します。通常の保存と巻き戻しの場合で処理を分けます。",
+      "terms": [
+        "database",
+        "state",
+        "unwind"
+      ],
+      "lines": [
+        {
+          "line": 3965,
+          "match": "fn commit",
+          "label": "保存を確定する入口",
+          "explanation": "selfが、書き込み中のデータベース操作や保存先を保持しています。成功時は追加データなし、失敗時はエラーを返します。"
+        },
+        {
+          "line": 3966,
+          "match": "if self.static_file_provider",
+          "label": "保存方法を分ける",
+          "explanation": "巻き戻しが必要な場合はcommit_unwindへ進み、通常の場合はelse側へ進みます。"
+        },
+        {
+          "line": 3973,
+          "match": "finalize()?",
+          "label": "静的ファイルの処理を確定",
+          "explanation": "通常の場合は、先に静的ファイル側の処理を確定します。失敗なら?でエラーを返します。"
+        },
+        {
+          "line": 3979,
+          "match": "commit_batch(batch)?",
+          "label": "待機中のバッチを確定",
+          "explanation": "待機しているRocksDBの書き込みのまとまりを、一つずつ確定します。"
+        },
+        {
+          "line": 3984,
+          "match": "self.tx.commit()?",
+          "label": "DBの変更を確定",
+          "explanation": "データベースの書き込み操作を確定します。"
+        },
+        {
+          "line": 3990,
+          "match": "Ok(())",
+          "label": "保存の成功を返す",
+          "explanation": "ここまで成功したら、追加データを持たない成功結果を返します。"
+        }
+      ],
+      "note": "保存先への書き込みの確定を読む範囲です。変更データの作成や、複数保存先をまたぐ全体の原子性をこの抜粋だけで保証しません。",
+      "tokenHints": {
+        "3978": {
+          "for": "for-loop"
+        }
+      }
+    },
+    "area:extension": {
+      "intro": "通知を受け渡す経路に空きができるのを待ち、出来事の通知を送ります。",
+      "terms": [
+        "notification",
+        "channel",
+        "block"
+      ],
+      "lines": [
+        {
+          "line": 613,
+          "match": "fn send_async",
+          "label": "通知の入口",
+          "explanation": "通知の出所sourceと通知データnotificationを受け取ります。成功か送信エラーを返します。"
+        },
+        {
+          "line": 618,
+          "match": "self.ready().await",
+          "label": "経路の空きを待つ",
+          "explanation": "通知を受け付けられる状態になるまで待ちます。待っている間は、ほかの処理を進められます。"
+        },
+        {
+          "line": 619,
+          "match": "self.exex_tx.send",
+          "label": "通知を経路へ渡す",
+          "explanation": "出所と通知をまとめて渡し、その送信結果を返します。経路の受け手が利用できなければ送信エラーになり得ます。"
+        }
+      ],
+      "note": "この成功は通知経路への送信結果です。拡張機能の処理完了や、ブロックの確定完了を保証するものではありません。"
+    },
+    "area:foundation": {
+      "intro": "mainnet用に組み込まれた最初の状態のJSONを読み、チェーンの設定を組み立てます。",
+      "terms": [
+        "chain-config",
+        "genesis",
+        "json"
+      ],
+      "lines": [
+        {
+          "line": 115,
+          "match": "pub static MAINNET",
+          "label": "mainnet設定を用意する",
+          "explanation": "LazyLockは、この値が必要になったときに初期化するための仕組みです。組み込みのmainnet設定を用意します。"
+        },
+        {
+          "line": 116,
+          "match": "serde_json::from_str",
+          "label": "組み込まれたJSONを読む",
+          "explanation": "入力はinclude_str!で取り込むmainnet.jsonの文字列です。"
+        },
+        {
+          "line": 117,
+          "match": ".expect",
+          "label": "読み取れなければ停止する",
+          "explanation": "読み取りに失敗したときは、指定メッセージでpanicを起こします。RPCの呼び出し元へResultで返す処理とは異なります。"
+        },
+        {
+          "line": 119,
+          "match": "let mut spec = ChainSpec",
+          "label": "設定を組み立てる",
+          "explanation": "読み取ったgenesisや、どのルール変更を使うかなどをChainSpecへまとめます。"
+        },
+        {
+          "line": 142,
+          "match": "spec.into()",
+          "label": "共有する設定値へ変換",
+          "explanation": "組み立てた設定を、外側のMAINNETが保持する共有用の形へ変換して返します。"
+        }
+      ],
+      "note": "これは組み込みmainnet用の設定です。利用者が指定した任意ファイルを解析する処理や、接続・同期の完了を示すコードではありません。"
+    },
+    "area:pool-validation": {
+      "intro": "プールの検証条件の一例です。要求にチェーンIDがある場合は、ノード側のチェーンIDと比べます。",
+      "terms": [
+        "chain-id",
+        "pool"
+      ],
+      "lines": [
+        {
+          "line": 593,
+          "match": "if let Some(chain_id)",
+          "label": "番号がある場合を調べる",
+          "explanation": "要求にチェーンIDが含まれている場合、その値を取り出します。全ての要求にこの項目があると決め付けてはいません。"
+        },
+        {
+          "line": 594,
+          "match": "chain_id != self.chain_id()",
+          "label": "ノード側の番号と比較",
+          "explanation": "要求の番号と、設定されたノード側の番号が違うか調べます。"
+        },
+        {
+          "line": 596,
+          "match": "return Err",
+          "label": "違えば検証エラーを返す",
+          "explanation": "異なるネットワーク向けの要求なら、ChainIdMismatchというエラーを返して、この検証処理を終えます。"
+        }
+      ],
+      "note": "validate_stateless内の一条件だけの抜粋です。ガス・手数料・残高など他の検証条件や、検証全体の成功箇所はこの範囲の外です。"
     }
   }
 }

@@ -1,0 +1,442 @@
+{
+  "target": {
+    "repository": "paradigmxyz/reth",
+    "version": "v2.7.0",
+    "commit": "3d592ece6de8c4559987416a544fc215fd6d6921"
+  },
+  "measurementEngineHash": "2ce33cb676211d27187a1283b6b924ed3699a7b6faa6f4de1ce9facaf66493ba",
+  "policyHash": "60d660b58f7b6160647e7bcacb433a076b74a4f954271431c370ce76003f7ec3",
+  "metrics": {
+    "inventoryAccounted": 1872,
+    "totalTracked": 1872,
+    "totalRust": 1283,
+    "anchoredRustFiles": 23,
+    "fullyReviewedRustFiles": 0,
+    "guidedAreas": 11,
+    "totalAreas": 11,
+    "invalidEvidence": 0,
+    "passingPersonaTasks": 33,
+    "totalPersonaTasks": 33,
+    "retentionChecksPassed": 3,
+    "totalRetentionChecks": 3,
+    "humanStudy": "not-verified",
+    "verifiedHumanTasks": 0,
+    "humanParticipants": 0,
+    "totalHumanTasks": 33,
+    "functionAndBranchCoverage": "not-measured",
+    "consecutivePassingRounds": 2
+  },
+  "gates": [
+    {
+      "id": "FR-COV-001",
+      "description": "All pinned tracked files are accounted for with blob id, kind, area or explicit non-Rust classification, and evidence status",
+      "metric": "inventoryAccounted/totalTracked",
+      "target": 1,
+      "status": "pass"
+    },
+    {
+      "id": "FR-COV-002",
+      "description": "Every Rust file has a source-anchored explanation; excerpt coverage is separate from full-file review",
+      "metric": "anchoredRustFiles/totalRust",
+      "target": 1,
+      "status": "unmet"
+    },
+    {
+      "id": "FR-COV-003",
+      "description": "Every Rust file has a full-file review recording public operations and branches; an excerpt is not sufficient",
+      "metric": "fullyReviewedRustFiles/totalRust",
+      "target": 1,
+      "status": "unmet"
+    },
+    {
+      "id": "FR-READ-001",
+      "description": "All 11 areas have an authored operation with plain role/input/output/boundary, source anchors, and contextual hints on the same page",
+      "metric": "guidedAreas/totalAreas",
+      "target": 1,
+      "status": "pass"
+    },
+    {
+      "id": "FR-READ-002",
+      "description": "Every published source hint matches the pinned blob, line and hash; no invalid evidence or unknown terms",
+      "metric": "invalidEvidence",
+      "target": 0,
+      "status": "pass"
+    },
+    {
+      "id": "FR-EVAL-001",
+      "description": "Three personas complete all 11 fixed tasks within 8 clicks each with role/input/output/boundary supported by visible source, in-place hints and no blocker",
+      "metric": "passingPersonaTasks/33",
+      "target": 1,
+      "status": "pass"
+    },
+    {
+      "id": "FR-EVAL-002",
+      "description": "All three personas retain URL, selected line and hint across assistance changes, and no saved or draft note is lost",
+      "metric": "retentionChecksPassed/3",
+      "target": 1,
+      "status": "pass"
+    },
+    {
+      "id": "FR-EVAL-003",
+      "description": "Actual novice learners independently explain role/input/output/failure from source after closing help; AI roleplay does not satisfy this gate",
+      "metric": "humanStudy",
+      "target": "verified",
+      "status": "not-verified"
+    }
+  ],
+  "areas": [
+    {
+      "id": "node",
+      "name": "起動・組み立て",
+      "totalRust": 191,
+      "anchoredRustFiles": 6,
+      "guided": true
+    },
+    {
+      "id": "rpc",
+      "name": "外部 API",
+      "totalRust": 152,
+      "anchoredRustFiles": 4,
+      "guided": true
+    },
+    {
+      "id": "pool",
+      "name": "トランザクションプール",
+      "totalRust": 42,
+      "anchoredRustFiles": 4,
+      "guided": true
+    },
+    {
+      "id": "network",
+      "name": "P2P ネットワーク",
+      "totalRust": 193,
+      "anchoredRustFiles": 1,
+      "guided": true
+    },
+    {
+      "id": "sync",
+      "name": "履歴・状態の同期",
+      "totalRust": 122,
+      "anchoredRustFiles": 1,
+      "guided": true
+    },
+    {
+      "id": "engine",
+      "name": "チェーンの進行・検証",
+      "totalRust": 73,
+      "anchoredRustFiles": 2,
+      "guided": true
+    },
+    {
+      "id": "execution",
+      "name": "EVM・ブロック実行",
+      "totalRust": 28,
+      "anchoredRustFiles": 1,
+      "guided": true
+    },
+    {
+      "id": "payload",
+      "name": "ブロック候補の構築",
+      "totalRust": 27,
+      "anchoredRustFiles": 1,
+      "guided": true
+    },
+    {
+      "id": "storage",
+      "name": "永続化・状態・トライ",
+      "totalRust": 288,
+      "anchoredRustFiles": 1,
+      "guided": true
+    },
+    {
+      "id": "extension",
+      "name": "拡張・利用例",
+      "totalRust": 75,
+      "anchoredRustFiles": 1,
+      "guided": true
+    },
+    {
+      "id": "foundation",
+      "name": "共通部品・テストほか",
+      "totalRust": 92,
+      "anchoredRustFiles": 1,
+      "guided": true
+    }
+  ],
+  "taskResults": [
+    {
+      "persona": "a",
+      "task": "node",
+      "status": "pass",
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "rpc",
+      "status": "pass",
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "pool",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "network",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "sync",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "engine",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "execution",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "payload",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "storage",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "extension",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "a",
+      "task": "foundation",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "node",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "rpc",
+      "status": "pass",
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "pool",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "network",
+      "status": "pass",
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "sync",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "engine",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "execution",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "payload",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "storage",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "extension",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "b",
+      "task": "foundation",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "node",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "rpc",
+      "status": "pass",
+      "clicks": 5,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "pool",
+      "status": "pass",
+      "clicks": 7,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "network",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "sync",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "engine",
+      "status": "pass",
+      "clicks": 8,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "execution",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "payload",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "storage",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "extension",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    },
+    {
+      "persona": "c",
+      "task": "foundation",
+      "status": "pass",
+      "clicks": 6,
+      "sourceReviewed": true,
+      "remainingBlockers": 0
+    }
+  ],
+  "productComplete": false,
+  "evaluation": {
+    "id": "round-4",
+    "previousRound": "round-3",
+    "policyHash": "60d660b58f7b6160647e7bcacb433a076b74a4f954271431c370ce76003f7ec3",
+    "buildHash": "9331f748ea244f6aca1052f65771340b66063d88de4293c015054ff65e6328e8",
+    "sourceCommit": "dfe7d50c94f33b9a49518198dcd0e49bcaf31058",
+    "kind": "AI UI operation evaluation",
+    "hashFormat": "runtime assets and API source v2"
+  }
+}
