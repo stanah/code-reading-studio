@@ -41,7 +41,10 @@ function commandOf(pid) {
   try { return execFileSync('ps', ['-p', String(pid), '-o', 'command='], {encoding: 'utf8'}).trim(); } catch { return ''; }
 }
 const markers = run => [`--verify-run=${run.dir}`, `--user-data-dir=${join(run.dir, 'chromium-profile')}`];
-const owns = (pid, run) => !!pid && markers(run).some(m => commandOf(pid).includes(m));
+// A marker must be a whole argument: run `proof` must not claim run `proof2`, whose flag starts with the same text.
+const escape = text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const carries = (command, run) => markers(run).some(m => new RegExp(`(^|\\s)${escape(m)}(\\s|$)`).test(command));
+const owns = (pid, run) => !!pid && carries(commandOf(pid), run);
 
 function freePort() {
   return new Promise((ok, no) => { const s = createServer(); s.on('error', no); s.listen(0, '127.0.0.1', () => { const {port} = s.address(); s.close(() => ok(port)); }); });
@@ -208,7 +211,7 @@ const commands = {
     }
     // Chromium's helper processes exit after the main one; wait for every process that carries this run's flags.
     const leftovers = () => execFileSync('ps', ['-eo', 'pid=,command='], {encoding: 'utf8'}).split('\n')
-      .filter(line => markers(run).some(m => line.includes(m))).map(line => Number(line.trim().split(/\s+/)[0])).filter(pid => pid && pid !== process.pid);
+      .filter(line => carries(line, run)).map(line => Number(line.trim().split(/\s+/)[0])).filter(pid => pid && pid !== process.pid);
     await waitFor(() => leftovers().length === 0, 5000, 'Process stop').catch(() => {
       for (const pid of leftovers()) { try { process.kill(pid, 'SIGKILL'); } catch {} }
     });
