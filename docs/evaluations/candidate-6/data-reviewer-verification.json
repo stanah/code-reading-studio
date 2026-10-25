@@ -1,0 +1,4367 @@
+{
+  "candidate": 6,
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "observedUiRound": 1,
+  "round2": {
+    "status": "not-measured",
+    "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+  },
+  "counts": {
+    "ownerUnits": 30,
+    "staticCatalogueDestinations": 171,
+    "localCatalogueDestinations": 146,
+    "roleSurfaces": 38,
+    "rpcComponentSurfaces": 4,
+    "sourceWidgets": 351,
+    "uniqueSourceContexts": 93,
+    "adjacentHints": 1889,
+    "controlsCases": 42,
+    "controlsStates": 168,
+    "nonemptyDraftCases": 2,
+    "draftCheckboxStates": 16,
+    "draftProfileStates": 24
+  },
+  "catalogueRows": [
+    {
+      "area": "node",
+      "surface": "static",
+      "count": 22
+    },
+    {
+      "area": "rpc",
+      "surface": "static",
+      "count": 4
+    },
+    {
+      "area": "pool",
+      "surface": "static",
+      "count": 3
+    },
+    {
+      "area": "network",
+      "surface": "static",
+      "count": 19
+    },
+    {
+      "area": "engine",
+      "surface": "static",
+      "count": 12
+    },
+    {
+      "area": "sync",
+      "surface": "static",
+      "count": 15
+    },
+    {
+      "area": "execution",
+      "surface": "static",
+      "count": 6
+    },
+    {
+      "area": "payload",
+      "surface": "static",
+      "count": 7
+    },
+    {
+      "area": "storage",
+      "surface": "static",
+      "count": 27
+    },
+    {
+      "area": "extension",
+      "surface": "static",
+      "count": 33
+    },
+    {
+      "area": "foundation",
+      "surface": "static",
+      "count": 23
+    },
+    {
+      "area": "node",
+      "surface": "local",
+      "count": 16
+    },
+    {
+      "area": "rpc",
+      "surface": "local",
+      "count": 11
+    },
+    {
+      "area": "pool",
+      "surface": "local",
+      "count": 1
+    },
+    {
+      "area": "network",
+      "surface": "local",
+      "count": 14
+    },
+    {
+      "area": "engine",
+      "surface": "local",
+      "count": 11
+    },
+    {
+      "area": "sync",
+      "surface": "local",
+      "count": 8
+    },
+    {
+      "area": "execution",
+      "surface": "local",
+      "count": 5
+    },
+    {
+      "area": "payload",
+      "surface": "local",
+      "count": 7
+    },
+    {
+      "area": "storage",
+      "surface": "local",
+      "count": 22
+    },
+    {
+      "area": "extension",
+      "surface": "local",
+      "count": 32
+    },
+    {
+      "area": "foundation",
+      "surface": "local",
+      "count": 19
+    }
+  ],
+  "sourceObservations": [
+    {
+      "context": "tx:recover",
+      "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+      "surface": "static",
+      "sourceRange": [
+        81,
+        109
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:recovery-hook",
+      "hash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+      "surface": "static",
+      "sourceRange": [
+        1402,
+        1466
+      ],
+      "hints": 10
+    },
+    {
+      "context": "tx:submit",
+      "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+      "surface": "static",
+      "sourceRange": [
+        32,
+        114
+      ],
+      "hints": 8
+    },
+    {
+      "context": "tx:queue",
+      "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "surface": "static",
+      "sourceRange": [
+        489,
+        504
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "static",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "static",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "static",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:file-tx-get-entry",
+      "hash": "e93a9c7dd2a387fd25a0ed14ca8358f11aa0f01d29073e63e0e6193292aafb3b",
+      "surface": "static",
+      "sourceRange": [
+        187,
+        200
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:file-tx-get",
+      "hash": "d5d1d2a7767308c1888bbc86ee9d842016fa82dc38cd095221349289fe4fea86",
+      "surface": "static",
+      "sourceRange": [
+        777,
+        825
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:file-pool-get",
+      "hash": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+      "surface": "static",
+      "sourceRange": [
+        697,
+        703
+      ],
+      "hints": 3
+    },
+    {
+      "context": "tx:recover",
+      "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+      "surface": "local",
+      "sourceRange": [
+        81,
+        109
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:recovery-hook",
+      "hash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+      "surface": "local",
+      "sourceRange": [
+        1402,
+        1466
+      ],
+      "hints": 10
+    },
+    {
+      "context": "tx:submit",
+      "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+      "surface": "local",
+      "sourceRange": [
+        32,
+        114
+      ],
+      "hints": 8
+    },
+    {
+      "context": "tx:queue",
+      "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "surface": "local",
+      "sourceRange": [
+        489,
+        504
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "local",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "local",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "local",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:file-tx-get-entry",
+      "hash": "e93a9c7dd2a387fd25a0ed14ca8358f11aa0f01d29073e63e0e6193292aafb3b",
+      "surface": "local",
+      "sourceRange": [
+        187,
+        200
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:file-tx-get",
+      "hash": "d5d1d2a7767308c1888bbc86ee9d842016fa82dc38cd095221349289fe4fea86",
+      "surface": "local",
+      "sourceRange": [
+        777,
+        825
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:file-pool-get",
+      "hash": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+      "surface": "local",
+      "sourceRange": [
+        697,
+        703
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:component-rpc-namespace",
+      "hash": "e602da8a8ad8e88ae33b11dfe299e01c423ea3b6055498b7a55e326db5a8288c",
+      "surface": "static",
+      "sourceRange": [
+        55,
+        69
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:rpc-contract",
+      "hash": "0d5c59ce83e07e6461ea6fbdcf270c3df5b9f16155958cf47f2f483634574dd5",
+      "surface": "static",
+      "sourceRange": [
+        380,
+        392
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:rpc",
+      "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f",
+      "surface": "static",
+      "sourceRange": [
+        920,
+        924
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:recover",
+      "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+      "surface": "static",
+      "sourceRange": [
+        81,
+        109
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:recovery-hook",
+      "hash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+      "surface": "static",
+      "sourceRange": [
+        1402,
+        1466
+      ],
+      "hints": 10
+    },
+    {
+      "context": "area:rpc-balance-entry",
+      "hash": "f07bffb57ee40502842464c878b5fb536d8c762fc66196d235d8c931eebbdee7",
+      "surface": "static",
+      "sourceRange": [
+        695,
+        699
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:rpc-balance-read",
+      "hash": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012",
+      "surface": "static",
+      "sourceRange": [
+        78,
+        90
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:component-rpc-namespace",
+      "hash": "e602da8a8ad8e88ae33b11dfe299e01c423ea3b6055498b7a55e326db5a8288c",
+      "surface": "local",
+      "sourceRange": [
+        55,
+        69
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:rpc-contract",
+      "hash": "0d5c59ce83e07e6461ea6fbdcf270c3df5b9f16155958cf47f2f483634574dd5",
+      "surface": "local",
+      "sourceRange": [
+        380,
+        392
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:rpc",
+      "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f",
+      "surface": "local",
+      "sourceRange": [
+        920,
+        924
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:recover",
+      "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+      "surface": "local",
+      "sourceRange": [
+        81,
+        109
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:recovery-hook",
+      "hash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+      "surface": "local",
+      "sourceRange": [
+        1402,
+        1466
+      ],
+      "hints": 10
+    },
+    {
+      "context": "area:rpc-balance-entry",
+      "hash": "f07bffb57ee40502842464c878b5fb536d8c762fc66196d235d8c931eebbdee7",
+      "surface": "local",
+      "sourceRange": [
+        695,
+        699
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:rpc-balance-read",
+      "hash": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012",
+      "surface": "local",
+      "sourceRange": [
+        78,
+        90
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "static",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "static",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "static",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-validation-dispatch",
+      "hash": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+      "surface": "static",
+      "sourceRange": [
+        383,
+        391
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:send-validation-task",
+      "hash": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+      "surface": "static",
+      "sourceRange": [
+        233,
+        264
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-validation-worker",
+      "hash": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+      "surface": "static",
+      "sourceRange": [
+        56,
+        67
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:send-validation-entry",
+      "hash": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+      "surface": "static",
+      "sourceRange": [
+        1009,
+        1016
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:send-validation-order",
+      "hash": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+      "surface": "static",
+      "sourceRange": [
+        367,
+        435
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-stateless",
+      "hash": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+      "surface": "static",
+      "sourceRange": [
+        452,
+        655
+      ],
+      "hints": 15
+    },
+    {
+      "context": "area:send-stateful",
+      "hash": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+      "surface": "static",
+      "sourceRange": [
+        657,
+        727
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:send-nonce",
+      "hash": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+      "surface": "static",
+      "sourceRange": [
+        766,
+        782
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:pool-balance",
+      "hash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+      "surface": "static",
+      "sourceRange": [
+        783,
+        801
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-pool-limit",
+      "hash": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+      "surface": "static",
+      "sourceRange": [
+        661,
+        742
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:send-pool-add",
+      "hash": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b",
+      "surface": "static",
+      "sourceRange": [
+        578,
+        639
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "local",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "local",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "local",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-validation-dispatch",
+      "hash": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+      "surface": "local",
+      "sourceRange": [
+        383,
+        391
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:send-validation-task",
+      "hash": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+      "surface": "local",
+      "sourceRange": [
+        233,
+        264
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-validation-worker",
+      "hash": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+      "surface": "local",
+      "sourceRange": [
+        56,
+        67
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:send-validation-entry",
+      "hash": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+      "surface": "local",
+      "sourceRange": [
+        1009,
+        1016
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:send-validation-order",
+      "hash": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+      "surface": "local",
+      "sourceRange": [
+        367,
+        435
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-stateless",
+      "hash": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+      "surface": "local",
+      "sourceRange": [
+        452,
+        655
+      ],
+      "hints": 15
+    },
+    {
+      "context": "area:send-stateful",
+      "hash": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+      "surface": "local",
+      "sourceRange": [
+        657,
+        727
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:send-nonce",
+      "hash": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+      "surface": "local",
+      "sourceRange": [
+        766,
+        782
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:pool-balance",
+      "hash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+      "surface": "local",
+      "sourceRange": [
+        783,
+        801
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-pool-limit",
+      "hash": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+      "surface": "local",
+      "sourceRange": [
+        661,
+        742
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:send-pool-add",
+      "hash": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b",
+      "surface": "local",
+      "sourceRange": [
+        578,
+        639
+      ],
+      "hints": 6
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "static",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-validation-dispatch",
+      "hash": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+      "surface": "static",
+      "sourceRange": [
+        383,
+        391
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:send-validation-task",
+      "hash": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+      "surface": "static",
+      "sourceRange": [
+        233,
+        264
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-validation-worker",
+      "hash": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+      "surface": "static",
+      "sourceRange": [
+        56,
+        67
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:send-validation-entry",
+      "hash": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+      "surface": "static",
+      "sourceRange": [
+        1009,
+        1016
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:send-validation-order",
+      "hash": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+      "surface": "static",
+      "sourceRange": [
+        367,
+        435
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-stateless",
+      "hash": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+      "surface": "static",
+      "sourceRange": [
+        452,
+        655
+      ],
+      "hints": 15
+    },
+    {
+      "context": "area:send-stateful",
+      "hash": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+      "surface": "static",
+      "sourceRange": [
+        657,
+        727
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:send-nonce",
+      "hash": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+      "surface": "static",
+      "sourceRange": [
+        766,
+        782
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:pool-balance",
+      "hash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+      "surface": "static",
+      "sourceRange": [
+        783,
+        801
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-pool-limit",
+      "hash": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+      "surface": "static",
+      "sourceRange": [
+        661,
+        742
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:send-pool-add",
+      "hash": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b",
+      "surface": "static",
+      "sourceRange": [
+        578,
+        639
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:file-pool-get",
+      "hash": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+      "surface": "static",
+      "sourceRange": [
+        697,
+        703
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:file-pool-listeners",
+      "hash": "04adbae1169369a2c273c5a3e7d7df97625ef6d592456ed8ea730939355cf45f",
+      "surface": "static",
+      "sourceRange": [
+        530,
+        551
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "local",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-validation-dispatch",
+      "hash": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+      "surface": "local",
+      "sourceRange": [
+        383,
+        391
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:send-validation-task",
+      "hash": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+      "surface": "local",
+      "sourceRange": [
+        233,
+        264
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-validation-worker",
+      "hash": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+      "surface": "local",
+      "sourceRange": [
+        56,
+        67
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:send-validation-entry",
+      "hash": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+      "surface": "local",
+      "sourceRange": [
+        1009,
+        1016
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:send-validation-order",
+      "hash": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+      "surface": "local",
+      "sourceRange": [
+        367,
+        435
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:send-stateless",
+      "hash": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+      "surface": "local",
+      "sourceRange": [
+        452,
+        655
+      ],
+      "hints": 15
+    },
+    {
+      "context": "area:send-stateful",
+      "hash": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+      "surface": "local",
+      "sourceRange": [
+        657,
+        727
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:send-nonce",
+      "hash": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+      "surface": "local",
+      "sourceRange": [
+        766,
+        782
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:pool-balance",
+      "hash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+      "surface": "local",
+      "sourceRange": [
+        783,
+        801
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-pool-limit",
+      "hash": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+      "surface": "local",
+      "sourceRange": [
+        661,
+        742
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:send-pool-add",
+      "hash": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b",
+      "surface": "local",
+      "sourceRange": [
+        578,
+        639
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:file-pool-get",
+      "hash": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+      "surface": "local",
+      "sourceRange": [
+        697,
+        703
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:file-pool-listeners",
+      "hash": "04adbae1169369a2c273c5a3e7d7df97625ef6d592456ed8ea730939355cf45f",
+      "surface": "local",
+      "sourceRange": [
+        530,
+        551
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:submit",
+      "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+      "surface": "static",
+      "sourceRange": [
+        32,
+        114
+      ],
+      "hints": 8
+    },
+    {
+      "context": "tx:queue",
+      "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "surface": "static",
+      "sourceRange": [
+        489,
+        504
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "static",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "static",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "static",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "tx:submit",
+      "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+      "surface": "local",
+      "sourceRange": [
+        32,
+        114
+      ],
+      "hints": 8
+    },
+    {
+      "context": "tx:queue",
+      "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "surface": "local",
+      "sourceRange": [
+        489,
+        504
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "local",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "local",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "local",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:file-rpc-inner",
+      "hash": "101f6cc6e922e7e0e705de80bcdb6d914d3c2254a70e311000b21ea81ce6913c",
+      "surface": "static",
+      "sourceRange": [
+        230,
+        276
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:file-rpc-inner-build",
+      "hash": "521631bd3b17f79924116d28cf40c729e94474a44f02422a95d1629095cb9a8a",
+      "surface": "static",
+      "sourceRange": [
+        285,
+        338
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:file-batch-create",
+      "hash": "f2062606cc038c1446552ea0f1fdb28273772e867172c35c540573055daac19f",
+      "surface": "static",
+      "sourceRange": [
+        58,
+        67
+      ],
+      "hints": 3
+    },
+    {
+      "context": "tx:queue",
+      "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "surface": "static",
+      "sourceRange": [
+        489,
+        504
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "static",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "static",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:file-rpc-inner",
+      "hash": "101f6cc6e922e7e0e705de80bcdb6d914d3c2254a70e311000b21ea81ce6913c",
+      "surface": "local",
+      "sourceRange": [
+        230,
+        276
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:file-rpc-inner-build",
+      "hash": "521631bd3b17f79924116d28cf40c729e94474a44f02422a95d1629095cb9a8a",
+      "surface": "local",
+      "sourceRange": [
+        285,
+        338
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:file-batch-create",
+      "hash": "f2062606cc038c1446552ea0f1fdb28273772e867172c35c540573055daac19f",
+      "surface": "local",
+      "sourceRange": [
+        58,
+        67
+      ],
+      "hints": 3
+    },
+    {
+      "context": "tx:queue",
+      "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "surface": "local",
+      "sourceRange": [
+        489,
+        504
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "local",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "local",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "startup:entry",
+      "hash": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+      "surface": "static",
+      "sourceRange": [
+        20,
+        49
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-cli-entry",
+      "hash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "surface": "static",
+      "sourceRange": [
+        158,
+        166
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-cli-configure",
+      "hash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "surface": "static",
+      "sourceRange": [
+        112,
+        114
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:startup-cli-prepare",
+      "hash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "surface": "static",
+      "sourceRange": [
+        64,
+        157
+      ],
+      "hints": 13
+    },
+    {
+      "context": "startup:dispatch",
+      "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "surface": "static",
+      "sourceRange": [
+        159,
+        192
+      ],
+      "hints": 3
+    },
+    {
+      "context": "startup:supervisor",
+      "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "surface": "static",
+      "sourceRange": [
+        63,
+        102
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:database",
+      "hash": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+      "surface": "static",
+      "sourceRange": [
+        157,
+        226
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-launcher-entry",
+      "hash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "surface": "static",
+      "sourceRange": [
+        38,
+        91
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:startup-node-selection",
+      "hash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "surface": "static",
+      "sourceRange": [
+        414,
+        427
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-node-components",
+      "hash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "surface": "static",
+      "sourceRange": [
+        460,
+        483
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-builder-launch",
+      "hash": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+      "surface": "static",
+      "sourceRange": [
+        736,
+        757
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-builder-dispatch",
+      "hash": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+      "surface": "static",
+      "sourceRange": [
+        276,
+        288
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-debug-adapter",
+      "hash": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+      "surface": "static",
+      "sourceRange": [
+        354,
+        391
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-debug-inner",
+      "hash": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+      "surface": "static",
+      "sourceRange": [
+        211,
+        221
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-engine-dispatch",
+      "hash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "surface": "static",
+      "sourceRange": [
+        448,
+        468
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:context",
+      "hash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "surface": "static",
+      "sourceRange": [
+        69,
+        140
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:node-handle",
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "surface": "static",
+      "sourceRange": [
+        417,
+        445
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-debug-return",
+      "hash": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+      "surface": "static",
+      "sourceRange": [
+        350,
+        351
+      ],
+      "hints": 1
+    },
+    {
+      "context": "area:startup-node-wait",
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "surface": "static",
+      "sourceRange": [
+        8,
+        26
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:node-exit",
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "surface": "static",
+      "sourceRange": [
+        34,
+        51
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:entry",
+      "hash": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+      "surface": "local",
+      "sourceRange": [
+        20,
+        49
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-cli-entry",
+      "hash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "surface": "local",
+      "sourceRange": [
+        158,
+        166
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-cli-configure",
+      "hash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "surface": "local",
+      "sourceRange": [
+        112,
+        114
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:startup-cli-prepare",
+      "hash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "surface": "local",
+      "sourceRange": [
+        64,
+        157
+      ],
+      "hints": 13
+    },
+    {
+      "context": "startup:dispatch",
+      "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "surface": "local",
+      "sourceRange": [
+        159,
+        192
+      ],
+      "hints": 3
+    },
+    {
+      "context": "startup:supervisor",
+      "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "surface": "local",
+      "sourceRange": [
+        63,
+        102
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:database",
+      "hash": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+      "surface": "local",
+      "sourceRange": [
+        157,
+        226
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-launcher-entry",
+      "hash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "surface": "local",
+      "sourceRange": [
+        38,
+        91
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:startup-node-selection",
+      "hash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "surface": "local",
+      "sourceRange": [
+        414,
+        427
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-node-components",
+      "hash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "surface": "local",
+      "sourceRange": [
+        460,
+        483
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-builder-launch",
+      "hash": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+      "surface": "local",
+      "sourceRange": [
+        736,
+        757
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-builder-dispatch",
+      "hash": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+      "surface": "local",
+      "sourceRange": [
+        276,
+        288
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-debug-adapter",
+      "hash": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+      "surface": "local",
+      "sourceRange": [
+        354,
+        391
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-debug-inner",
+      "hash": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+      "surface": "local",
+      "sourceRange": [
+        211,
+        221
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-engine-dispatch",
+      "hash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "surface": "local",
+      "sourceRange": [
+        448,
+        468
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:context",
+      "hash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "surface": "local",
+      "sourceRange": [
+        69,
+        140
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:node-handle",
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "surface": "local",
+      "sourceRange": [
+        417,
+        445
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-debug-return",
+      "hash": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+      "surface": "local",
+      "sourceRange": [
+        350,
+        351
+      ],
+      "hints": 1
+    },
+    {
+      "context": "area:startup-node-wait",
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "surface": "local",
+      "sourceRange": [
+        8,
+        26
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:node-exit",
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "surface": "local",
+      "sourceRange": [
+        34,
+        51
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-cli-entry",
+      "hash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "surface": "static",
+      "sourceRange": [
+        158,
+        166
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-cli-configure",
+      "hash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "surface": "static",
+      "sourceRange": [
+        112,
+        114
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:startup-cli-prepare",
+      "hash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "surface": "static",
+      "sourceRange": [
+        64,
+        157
+      ],
+      "hints": 13
+    },
+    {
+      "context": "startup:dispatch",
+      "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "surface": "static",
+      "sourceRange": [
+        159,
+        192
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-launcher-entry",
+      "hash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "surface": "static",
+      "sourceRange": [
+        38,
+        91
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:supervisor",
+      "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "surface": "static",
+      "sourceRange": [
+        63,
+        102
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-cli-entry",
+      "hash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "surface": "local",
+      "sourceRange": [
+        158,
+        166
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-cli-configure",
+      "hash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "surface": "local",
+      "sourceRange": [
+        112,
+        114
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:startup-cli-prepare",
+      "hash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "surface": "local",
+      "sourceRange": [
+        64,
+        157
+      ],
+      "hints": 13
+    },
+    {
+      "context": "startup:dispatch",
+      "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "surface": "local",
+      "sourceRange": [
+        159,
+        192
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-launcher-entry",
+      "hash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "surface": "local",
+      "sourceRange": [
+        38,
+        91
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:supervisor",
+      "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "surface": "local",
+      "sourceRange": [
+        63,
+        102
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:supervisor",
+      "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "surface": "static",
+      "sourceRange": [
+        63,
+        102
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:loop-cli",
+      "hash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab",
+      "surface": "static",
+      "sourceRange": [
+        228,
+        294
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:supervisor",
+      "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "surface": "local",
+      "sourceRange": [
+        63,
+        102
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:loop-cli",
+      "hash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab",
+      "surface": "local",
+      "sourceRange": [
+        228,
+        294
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:database",
+      "hash": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+      "surface": "static",
+      "sourceRange": [
+        157,
+        226
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-launcher-entry",
+      "hash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "surface": "static",
+      "sourceRange": [
+        38,
+        91
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:entry",
+      "hash": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+      "surface": "static",
+      "sourceRange": [
+        20,
+        49
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-cli-entry",
+      "hash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "surface": "static",
+      "sourceRange": [
+        158,
+        166
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-cli-configure",
+      "hash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "surface": "static",
+      "sourceRange": [
+        112,
+        114
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:startup-cli-prepare",
+      "hash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "surface": "static",
+      "sourceRange": [
+        64,
+        157
+      ],
+      "hints": 13
+    },
+    {
+      "context": "startup:dispatch",
+      "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "surface": "static",
+      "sourceRange": [
+        159,
+        192
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-node-selection",
+      "hash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "surface": "static",
+      "sourceRange": [
+        414,
+        427
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-node-components",
+      "hash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "surface": "static",
+      "sourceRange": [
+        460,
+        483
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-builder-launch",
+      "hash": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+      "surface": "static",
+      "sourceRange": [
+        736,
+        757
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-builder-dispatch",
+      "hash": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+      "surface": "static",
+      "sourceRange": [
+        276,
+        288
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-debug-adapter",
+      "hash": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+      "surface": "static",
+      "sourceRange": [
+        354,
+        391
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-debug-inner",
+      "hash": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+      "surface": "static",
+      "sourceRange": [
+        211,
+        221
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-engine-dispatch",
+      "hash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "surface": "static",
+      "sourceRange": [
+        448,
+        468
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:context",
+      "hash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "surface": "static",
+      "sourceRange": [
+        69,
+        140
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:node-handle",
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "surface": "static",
+      "sourceRange": [
+        417,
+        445
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-debug-return",
+      "hash": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+      "surface": "static",
+      "sourceRange": [
+        350,
+        351
+      ],
+      "hints": 1
+    },
+    {
+      "context": "area:startup-node-wait",
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "surface": "static",
+      "sourceRange": [
+        8,
+        26
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:node-exit",
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "surface": "static",
+      "sourceRange": [
+        34,
+        51
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:database",
+      "hash": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+      "surface": "local",
+      "sourceRange": [
+        157,
+        226
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-launcher-entry",
+      "hash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "surface": "local",
+      "sourceRange": [
+        38,
+        91
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:entry",
+      "hash": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+      "surface": "local",
+      "sourceRange": [
+        20,
+        49
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-cli-entry",
+      "hash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "surface": "local",
+      "sourceRange": [
+        158,
+        166
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-cli-configure",
+      "hash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "surface": "local",
+      "sourceRange": [
+        112,
+        114
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:startup-cli-prepare",
+      "hash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "surface": "local",
+      "sourceRange": [
+        64,
+        157
+      ],
+      "hints": 13
+    },
+    {
+      "context": "startup:dispatch",
+      "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "surface": "local",
+      "sourceRange": [
+        159,
+        192
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-node-selection",
+      "hash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "surface": "local",
+      "sourceRange": [
+        414,
+        427
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-node-components",
+      "hash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "surface": "local",
+      "sourceRange": [
+        460,
+        483
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-builder-launch",
+      "hash": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+      "surface": "local",
+      "sourceRange": [
+        736,
+        757
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-builder-dispatch",
+      "hash": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+      "surface": "local",
+      "sourceRange": [
+        276,
+        288
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-debug-adapter",
+      "hash": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+      "surface": "local",
+      "sourceRange": [
+        354,
+        391
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-debug-inner",
+      "hash": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+      "surface": "local",
+      "sourceRange": [
+        211,
+        221
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-engine-dispatch",
+      "hash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "surface": "local",
+      "sourceRange": [
+        448,
+        468
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:context",
+      "hash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "surface": "local",
+      "sourceRange": [
+        69,
+        140
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:node-handle",
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "surface": "local",
+      "sourceRange": [
+        417,
+        445
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-debug-return",
+      "hash": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+      "surface": "local",
+      "sourceRange": [
+        350,
+        351
+      ],
+      "hints": 1
+    },
+    {
+      "context": "area:startup-node-wait",
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "surface": "local",
+      "sourceRange": [
+        8,
+        26
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:node-exit",
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "surface": "local",
+      "sourceRange": [
+        34,
+        51
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-engine-dispatch",
+      "hash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "surface": "static",
+      "sourceRange": [
+        448,
+        468
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:context",
+      "hash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "surface": "static",
+      "sourceRange": [
+        69,
+        140
+      ],
+      "hints": 8
+    },
+    {
+      "context": "startup:components",
+      "hash": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+      "surface": "static",
+      "sourceRange": [
+        353,
+        404
+      ],
+      "hints": 8
+    },
+    {
+      "context": "startup:services",
+      "hash": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d",
+      "surface": "static",
+      "sourceRange": [
+        145,
+        266
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-engine-build",
+      "hash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+      "surface": "static",
+      "sourceRange": [
+        109,
+        160
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:rpc-launch",
+      "hash": "1f587935df27b9e9b1695425728f7f2e4e6a9e44a136c5e8e18e80e4e140c8ab",
+      "surface": "static",
+      "sourceRange": [
+        288,
+        300
+      ],
+      "hints": 3
+    },
+    {
+      "context": "startup:orchestrator",
+      "hash": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692",
+      "surface": "static",
+      "sourceRange": [
+        317,
+        413
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:node-handle",
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "surface": "static",
+      "sourceRange": [
+        417,
+        445
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-node-wait",
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "surface": "static",
+      "sourceRange": [
+        8,
+        26
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-engine-dispatch",
+      "hash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "surface": "local",
+      "sourceRange": [
+        448,
+        468
+      ],
+      "hints": 4
+    },
+    {
+      "context": "startup:context",
+      "hash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "surface": "local",
+      "sourceRange": [
+        69,
+        140
+      ],
+      "hints": 8
+    },
+    {
+      "context": "startup:components",
+      "hash": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+      "surface": "local",
+      "sourceRange": [
+        353,
+        404
+      ],
+      "hints": 8
+    },
+    {
+      "context": "startup:services",
+      "hash": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d",
+      "surface": "local",
+      "sourceRange": [
+        145,
+        266
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-engine-build",
+      "hash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+      "surface": "local",
+      "sourceRange": [
+        109,
+        160
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:rpc-launch",
+      "hash": "1f587935df27b9e9b1695425728f7f2e4e6a9e44a136c5e8e18e80e4e140c8ab",
+      "surface": "local",
+      "sourceRange": [
+        288,
+        300
+      ],
+      "hints": 3
+    },
+    {
+      "context": "startup:orchestrator",
+      "hash": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692",
+      "surface": "local",
+      "sourceRange": [
+        317,
+        413
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:node-handle",
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "surface": "local",
+      "sourceRange": [
+        417,
+        445
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-node-wait",
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "surface": "local",
+      "sourceRange": [
+        8,
+        26
+      ],
+      "hints": 5
+    },
+    {
+      "context": "startup:components",
+      "hash": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+      "surface": "static",
+      "sourceRange": [
+        353,
+        404
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-node-selection",
+      "hash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "surface": "static",
+      "sourceRange": [
+        414,
+        427
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-node-components",
+      "hash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "surface": "static",
+      "sourceRange": [
+        460,
+        483
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-component-choice",
+      "hash": "375884d2b503f1246c58a6147123aeafd73ff58a8919dc41fc0946e533c75f0b",
+      "surface": "static",
+      "sourceRange": [
+        77,
+        104
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-network-builder",
+      "hash": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+      "surface": "static",
+      "sourceRange": [
+        770,
+        790
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-network-start",
+      "hash": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+      "surface": "static",
+      "sourceRange": [
+        863,
+        998
+      ],
+      "hints": 9
+    },
+    {
+      "context": "area:startup-payload-spawn",
+      "hash": "855d512d773954cfd06c403f540f77d6dc790ba55cd22b97134a362072680fdd",
+      "surface": "static",
+      "sourceRange": [
+        98,
+        144
+      ],
+      "hints": 7
+    },
+    {
+      "context": "startup:components",
+      "hash": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+      "surface": "local",
+      "sourceRange": [
+        353,
+        404
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-node-selection",
+      "hash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "surface": "local",
+      "sourceRange": [
+        414,
+        427
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-node-components",
+      "hash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "surface": "local",
+      "sourceRange": [
+        460,
+        483
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-component-choice",
+      "hash": "375884d2b503f1246c58a6147123aeafd73ff58a8919dc41fc0946e533c75f0b",
+      "surface": "local",
+      "sourceRange": [
+        77,
+        104
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-network-builder",
+      "hash": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+      "surface": "local",
+      "sourceRange": [
+        770,
+        790
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-network-start",
+      "hash": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+      "surface": "local",
+      "sourceRange": [
+        863,
+        998
+      ],
+      "hints": 9
+    },
+    {
+      "context": "area:startup-payload-spawn",
+      "hash": "855d512d773954cfd06c403f540f77d6dc790ba55cd22b97134a362072680fdd",
+      "surface": "local",
+      "sourceRange": [
+        98,
+        144
+      ],
+      "hints": 7
+    },
+    {
+      "context": "area:startup-tree-spawn",
+      "hash": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+      "surface": "static",
+      "sourceRange": [
+        421,
+        481
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:tree",
+      "hash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+      "surface": "static",
+      "sourceRange": [
+        517,
+        606
+      ],
+      "hints": 7
+    },
+    {
+      "context": "area:startup-tree-pressure",
+      "hash": "e538ae5ba22df639ddfab6f3f9c65f6f89b2961a77139d12ddfdac99d04d2588",
+      "surface": "static",
+      "sourceRange": [
+        496,
+        515
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-tree-wait",
+      "hash": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80",
+      "surface": "static",
+      "sourceRange": [
+        608,
+        678
+      ],
+      "hints": 7
+    },
+    {
+      "context": "area:journey-block-save-start",
+      "hash": "f8ee7a543ce985f60e68bb29bc78f0f9a1fe28c276b8bf34ad2cc1eb360a891a",
+      "surface": "static",
+      "sourceRange": [
+        1425,
+        1461
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-save-target",
+      "hash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+      "surface": "static",
+      "sourceRange": [
+        2209,
+        2304
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-save-complete",
+      "hash": "d5ca7e38795af67e413db2c488b16fe35f7762bb0680437f9cb0fedb09060f29",
+      "surface": "static",
+      "sourceRange": [
+        1531,
+        1575
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-backfill-gate",
+      "hash": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+      "surface": "static",
+      "sourceRange": [
+        2142,
+        2201
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-backfill-events",
+      "hash": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+      "surface": "static",
+      "sourceRange": [
+        1577,
+        1600
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-backfill-finished",
+      "hash": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+      "surface": "static",
+      "sourceRange": [
+        1834,
+        1988
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:journey-block-receive",
+      "hash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+      "surface": "static",
+      "sourceRange": [
+        735,
+        807
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-forkchoice-precheck",
+      "hash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+      "surface": "static",
+      "sourceRange": [
+        1189,
+        1212
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-dispatch",
+      "hash": "950be0ffff535603eabe63701940b633c87691f6b22483fc172389b5d4779401",
+      "surface": "static",
+      "sourceRange": [
+        1690,
+        1718
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:journey-block-canonical-state",
+      "hash": "a23b29f4a59fe4e21fdb6136db5a22488d6f8b82652489b08681a1f368302497",
+      "surface": "static",
+      "sourceRange": [
+        2876,
+        2914
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-tree-spawn",
+      "hash": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+      "surface": "local",
+      "sourceRange": [
+        421,
+        481
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:tree",
+      "hash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+      "surface": "local",
+      "sourceRange": [
+        517,
+        606
+      ],
+      "hints": 7
+    },
+    {
+      "context": "area:startup-tree-pressure",
+      "hash": "e538ae5ba22df639ddfab6f3f9c65f6f89b2961a77139d12ddfdac99d04d2588",
+      "surface": "local",
+      "sourceRange": [
+        496,
+        515
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-tree-wait",
+      "hash": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80",
+      "surface": "local",
+      "sourceRange": [
+        608,
+        678
+      ],
+      "hints": 7
+    },
+    {
+      "context": "area:journey-block-save-start",
+      "hash": "f8ee7a543ce985f60e68bb29bc78f0f9a1fe28c276b8bf34ad2cc1eb360a891a",
+      "surface": "local",
+      "sourceRange": [
+        1425,
+        1461
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-save-target",
+      "hash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+      "surface": "local",
+      "sourceRange": [
+        2209,
+        2304
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-save-complete",
+      "hash": "d5ca7e38795af67e413db2c488b16fe35f7762bb0680437f9cb0fedb09060f29",
+      "surface": "local",
+      "sourceRange": [
+        1531,
+        1575
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:startup-backfill-gate",
+      "hash": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+      "surface": "local",
+      "sourceRange": [
+        2142,
+        2201
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-backfill-events",
+      "hash": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+      "surface": "local",
+      "sourceRange": [
+        1577,
+        1600
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-backfill-finished",
+      "hash": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+      "surface": "local",
+      "sourceRange": [
+        1834,
+        1988
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:journey-block-receive",
+      "hash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+      "surface": "local",
+      "sourceRange": [
+        735,
+        807
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-forkchoice-precheck",
+      "hash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+      "surface": "local",
+      "sourceRange": [
+        1189,
+        1212
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-dispatch",
+      "hash": "950be0ffff535603eabe63701940b633c87691f6b22483fc172389b5d4779401",
+      "surface": "local",
+      "sourceRange": [
+        1690,
+        1718
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:journey-block-canonical-state",
+      "hash": "a23b29f4a59fe4e21fdb6136db5a22488d6f8b82652489b08681a1f368302497",
+      "surface": "local",
+      "sourceRange": [
+        2876,
+        2914
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-network-builder",
+      "hash": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+      "surface": "static",
+      "sourceRange": [
+        770,
+        790
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-network-start",
+      "hash": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+      "surface": "static",
+      "sourceRange": [
+        863,
+        998
+      ],
+      "hints": 9
+    },
+    {
+      "context": "startup:network",
+      "hash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+      "surface": "static",
+      "sourceRange": [
+        1134,
+        1203
+      ],
+      "hints": 10
+    },
+    {
+      "context": "area:network-budget",
+      "hash": "6b00b2871168e4155ae0cfe459333f604404e3935601ccaf2b9f2c13866be795",
+      "surface": "static",
+      "sourceRange": [
+        38,
+        62
+      ],
+      "hints": 7
+    },
+    {
+      "context": "area:startup-network-builder",
+      "hash": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+      "surface": "local",
+      "sourceRange": [
+        770,
+        790
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-network-start",
+      "hash": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+      "surface": "local",
+      "sourceRange": [
+        863,
+        998
+      ],
+      "hints": 9
+    },
+    {
+      "context": "startup:network",
+      "hash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+      "surface": "local",
+      "sourceRange": [
+        1134,
+        1203
+      ],
+      "hints": 10
+    },
+    {
+      "context": "area:network-budget",
+      "hash": "6b00b2871168e4155ae0cfe459333f604404e3935601ccaf2b9f2c13866be795",
+      "surface": "local",
+      "sourceRange": [
+        38,
+        62
+      ],
+      "hints": 7
+    },
+    {
+      "context": "startup:backfill",
+      "hash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "surface": "static",
+      "sourceRange": [
+        97,
+        209
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:journey-sync-run",
+      "hash": "5e25bdd2473abb8e9e0250b936f011c2ce94a7d0812884c6eea527e97b69f412",
+      "surface": "static",
+      "sourceRange": [
+        151,
+        178
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:journey-sync-default-order",
+      "hash": "7b79f1e1d7052ba7a95ebb5c0b69918a97c11b5ed70f2743dc4c20c6d493e810",
+      "surface": "static",
+      "sourceRange": [
+        138,
+        181
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:journey-sync-online-order",
+      "hash": "9db4181f2b4d7379521f8c3213e98c658a0adfec37b690cb28d1a270055e97be",
+      "surface": "static",
+      "sourceRange": [
+        272,
+        289
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:journey-sync-offline-order",
+      "hash": "4ea54dedb10faef1c27c0b9c0a41203ffc9ece9d19b0b0089043f0858c61fd28",
+      "surface": "static",
+      "sourceRange": [
+        325,
+        358
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:journey-sync-execution-order",
+      "hash": "59466b5adec500d4f4e762f36f68fea9de4e0527eefb05213589f1964ed71199",
+      "surface": "static",
+      "sourceRange": [
+        392,
+        405
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:sync",
+      "hash": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a",
+      "surface": "static",
+      "sourceRange": [
+        213,
+        259
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:sync-unwind",
+      "hash": "8c38b504093ea8e6b3e42301b29889f9f7be0d99191d86ae8deb2f710088b4d4",
+      "surface": "static",
+      "sourceRange": [
+        300,
+        429
+      ],
+      "hints": 12
+    },
+    {
+      "context": "area:startup-backfill-gate",
+      "hash": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+      "surface": "static",
+      "sourceRange": [
+        2142,
+        2201
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-backfill-events",
+      "hash": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+      "surface": "static",
+      "sourceRange": [
+        1577,
+        1600
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-backfill-finished",
+      "hash": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+      "surface": "static",
+      "sourceRange": [
+        1834,
+        1988
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:journey-block-receive",
+      "hash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+      "surface": "static",
+      "sourceRange": [
+        735,
+        807
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-forkchoice-precheck",
+      "hash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+      "surface": "static",
+      "sourceRange": [
+        1189,
+        1212
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-save-target",
+      "hash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+      "surface": "static",
+      "sourceRange": [
+        2209,
+        2304
+      ],
+      "hints": 5
+    },
+    {
+      "context": "startup:backfill",
+      "hash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "surface": "local",
+      "sourceRange": [
+        97,
+        209
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:journey-sync-run",
+      "hash": "5e25bdd2473abb8e9e0250b936f011c2ce94a7d0812884c6eea527e97b69f412",
+      "surface": "local",
+      "sourceRange": [
+        151,
+        178
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:journey-sync-default-order",
+      "hash": "7b79f1e1d7052ba7a95ebb5c0b69918a97c11b5ed70f2743dc4c20c6d493e810",
+      "surface": "local",
+      "sourceRange": [
+        138,
+        181
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:journey-sync-online-order",
+      "hash": "9db4181f2b4d7379521f8c3213e98c658a0adfec37b690cb28d1a270055e97be",
+      "surface": "local",
+      "sourceRange": [
+        272,
+        289
+      ],
+      "hints": 3
+    },
+    {
+      "context": "area:journey-sync-offline-order",
+      "hash": "4ea54dedb10faef1c27c0b9c0a41203ffc9ece9d19b0b0089043f0858c61fd28",
+      "surface": "local",
+      "sourceRange": [
+        325,
+        358
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:journey-sync-execution-order",
+      "hash": "59466b5adec500d4f4e762f36f68fea9de4e0527eefb05213589f1964ed71199",
+      "surface": "local",
+      "sourceRange": [
+        392,
+        405
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:sync",
+      "hash": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a",
+      "surface": "local",
+      "sourceRange": [
+        213,
+        259
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:sync-unwind",
+      "hash": "8c38b504093ea8e6b3e42301b29889f9f7be0d99191d86ae8deb2f710088b4d4",
+      "surface": "local",
+      "sourceRange": [
+        300,
+        429
+      ],
+      "hints": 12
+    },
+    {
+      "context": "area:startup-backfill-gate",
+      "hash": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+      "surface": "local",
+      "sourceRange": [
+        2142,
+        2201
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-backfill-events",
+      "hash": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+      "surface": "local",
+      "sourceRange": [
+        1577,
+        1600
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-backfill-finished",
+      "hash": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+      "surface": "local",
+      "sourceRange": [
+        1834,
+        1988
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:journey-block-receive",
+      "hash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+      "surface": "local",
+      "sourceRange": [
+        735,
+        807
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-forkchoice-precheck",
+      "hash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+      "surface": "local",
+      "sourceRange": [
+        1189,
+        1212
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:journey-block-save-target",
+      "hash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+      "surface": "local",
+      "sourceRange": [
+        2209,
+        2304
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:startup-engine-build",
+      "hash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+      "surface": "static",
+      "sourceRange": [
+        109,
+        160
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-tree-spawn",
+      "hash": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+      "surface": "static",
+      "sourceRange": [
+        421,
+        481
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:backfill",
+      "hash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "surface": "static",
+      "sourceRange": [
+        97,
+        209
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:startup-engine-build",
+      "hash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+      "surface": "local",
+      "sourceRange": [
+        109,
+        160
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-tree-spawn",
+      "hash": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+      "surface": "local",
+      "sourceRange": [
+        421,
+        481
+      ],
+      "hints": 6
+    },
+    {
+      "context": "startup:backfill",
+      "hash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "surface": "local",
+      "sourceRange": [
+        97,
+        209
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:startup-orchestrator-poll",
+      "hash": "4ae9eb17486289bd32ed5db4b016addcc4b5100b6548518908ac5af93d3d9d4f",
+      "surface": "static",
+      "sourceRange": [
+        75,
+        152
+      ],
+      "hints": 9
+    },
+    {
+      "context": "startup:backfill",
+      "hash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "surface": "static",
+      "sourceRange": [
+        97,
+        209
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:startup-engine-poll",
+      "hash": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+      "surface": "static",
+      "sourceRange": [
+        67,
+        127
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-orchestrator-poll",
+      "hash": "4ae9eb17486289bd32ed5db4b016addcc4b5100b6548518908ac5af93d3d9d4f",
+      "surface": "local",
+      "sourceRange": [
+        75,
+        152
+      ],
+      "hints": 9
+    },
+    {
+      "context": "startup:backfill",
+      "hash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "surface": "local",
+      "sourceRange": [
+        97,
+        209
+      ],
+      "hints": 11
+    },
+    {
+      "context": "area:startup-engine-poll",
+      "hash": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+      "surface": "local",
+      "sourceRange": [
+        67,
+        127
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-engine-poll",
+      "hash": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+      "surface": "static",
+      "sourceRange": [
+        67,
+        127
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-engine-channel",
+      "hash": "7b6266b0f75f515c7f4bd1dbd24d679aa590bb3943e1b69497395a42ed13f636",
+      "surface": "static",
+      "sourceRange": [
+        189,
+        218
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-engine-poll",
+      "hash": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+      "surface": "local",
+      "sourceRange": [
+        67,
+        127
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:startup-engine-channel",
+      "hash": "7b6266b0f75f515c7f4bd1dbd24d679aa590bb3943e1b69497395a42ed13f636",
+      "surface": "local",
+      "sourceRange": [
+        189,
+        218
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:node-handle",
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "surface": "static",
+      "sourceRange": [
+        417,
+        445
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-node-wait",
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "surface": "static",
+      "sourceRange": [
+        8,
+        26
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:node-exit",
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "surface": "static",
+      "sourceRange": [
+        34,
+        51
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:node-handle",
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "surface": "local",
+      "sourceRange": [
+        417,
+        445
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:startup-node-wait",
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "surface": "local",
+      "sourceRange": [
+        8,
+        26
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:node-exit",
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "surface": "local",
+      "sourceRange": [
+        34,
+        51
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:component-rpc-namespace",
+      "hash": "e602da8a8ad8e88ae33b11dfe299e01c423ea3b6055498b7a55e326db5a8288c",
+      "surface": "static-RPC",
+      "sourceRange": [
+        55,
+        69
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:rpc-contract",
+      "hash": "0d5c59ce83e07e6461ea6fbdcf270c3df5b9f16155958cf47f2f483634574dd5",
+      "surface": "static-RPC",
+      "sourceRange": [
+        380,
+        392
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:rpc",
+      "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f",
+      "surface": "static-RPC",
+      "sourceRange": [
+        920,
+        924
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:recover",
+      "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+      "surface": "static-RPC",
+      "sourceRange": [
+        81,
+        109
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:recovery-hook",
+      "hash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+      "surface": "static-RPC",
+      "sourceRange": [
+        1402,
+        1466
+      ],
+      "hints": 10
+    },
+    {
+      "context": "area:rpc-balance-entry",
+      "hash": "f07bffb57ee40502842464c878b5fb536d8c762fc66196d235d8c931eebbdee7",
+      "surface": "static-RPC",
+      "sourceRange": [
+        695,
+        699
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:rpc-balance-read",
+      "hash": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012",
+      "surface": "static-RPC",
+      "sourceRange": [
+        78,
+        90
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:component-block-read",
+      "hash": "e35e1e2f55459bfa1a3405158faf8d70ad42cf6f8577c6111ea086b3a554d079",
+      "surface": "static-RPC",
+      "sourceRange": [
+        34,
+        75
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:rpc-balance-read",
+      "hash": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012",
+      "surface": "static-RPC",
+      "sourceRange": [
+        78,
+        90
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:recover",
+      "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+      "surface": "static-RPC",
+      "sourceRange": [
+        81,
+        109
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:recovery-hook",
+      "hash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+      "surface": "static-RPC",
+      "sourceRange": [
+        1402,
+        1466
+      ],
+      "hints": 10
+    },
+    {
+      "context": "area:file-tx-get-entry",
+      "hash": "e93a9c7dd2a387fd25a0ed14ca8358f11aa0f01d29073e63e0e6193292aafb3b",
+      "surface": "static-RPC",
+      "sourceRange": [
+        187,
+        200
+      ],
+      "hints": 2
+    },
+    {
+      "context": "area:file-tx-get",
+      "hash": "d5d1d2a7767308c1888bbc86ee9d842016fa82dc38cd095221349289fe4fea86",
+      "surface": "static-RPC",
+      "sourceRange": [
+        777,
+        825
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:file-pool-get",
+      "hash": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+      "surface": "static-RPC",
+      "sourceRange": [
+        697,
+        703
+      ],
+      "hints": 3
+    },
+    {
+      "context": "tx:trait-implementation",
+      "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd",
+      "surface": "static-RPC",
+      "sourceRange": [
+        21,
+        31
+      ],
+      "hints": 3
+    },
+    {
+      "context": "tx:submit",
+      "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+      "surface": "static-RPC",
+      "sourceRange": [
+        32,
+        114
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:file-rpc-inner",
+      "hash": "101f6cc6e922e7e0e705de80bcdb6d914d3c2254a70e311000b21ea81ce6913c",
+      "surface": "static-RPC",
+      "sourceRange": [
+        230,
+        276
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:file-rpc-inner-build",
+      "hash": "521631bd3b17f79924116d28cf40c729e94474a44f02422a95d1629095cb9a8a",
+      "surface": "static-RPC",
+      "sourceRange": [
+        285,
+        338
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:file-batch-create",
+      "hash": "f2062606cc038c1446552ea0f1fdb28273772e867172c35c540573055daac19f",
+      "surface": "static-RPC",
+      "sourceRange": [
+        58,
+        67
+      ],
+      "hints": 3
+    },
+    {
+      "context": "tx:queue",
+      "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "surface": "static-RPC",
+      "sourceRange": [
+        489,
+        504
+      ],
+      "hints": 5
+    },
+    {
+      "context": "area:send-receive",
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "surface": "static-RPC",
+      "sourceRange": [
+        113,
+        137
+      ],
+      "hints": 4
+    },
+    {
+      "context": "tx:batch",
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "surface": "static-RPC",
+      "sourceRange": [
+        69,
+        105
+      ],
+      "hints": 5
+    },
+    {
+      "context": "tx:pool",
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "surface": "static-RPC",
+      "sourceRange": [
+        495,
+        528
+      ],
+      "hints": 6
+    },
+    {
+      "context": "area:component-rpc-launch",
+      "hash": "b2ba3277858df012eaaa2decc2b70878905bf4b611c14d6547c84552f3a03b95",
+      "surface": "static-RPC",
+      "sourceRange": [
+        1043,
+        1130
+      ],
+      "hints": 7
+    },
+    {
+      "context": "area:component-rpc-setup",
+      "hash": "15a59940184307f5f4f779ac5c80c33454fe1f2f77e252e42063b3b78093be42",
+      "surface": "static-RPC",
+      "sourceRange": [
+        1133,
+        1246
+      ],
+      "hints": 8
+    },
+    {
+      "context": "area:component-rpc-start",
+      "hash": "44e860aece3ab7526132dc3fdf0c1f6d1478ab04e96e6a15f81738ec9b022e07",
+      "surface": "static-RPC",
+      "sourceRange": [
+        1248,
+        1286
+      ],
+      "hints": 4
+    },
+    {
+      "context": "area:journey-block-rpc",
+      "hash": "a7ef2b6ff568497b6e94db00f11bd7d1ad11a1ea76c332d952eff479b104d582",
+      "surface": "static-RPC",
+      "sourceRange": [
+        236,
+        250
+      ],
+      "hints": 3
+    }
+  ],
+  "verificationErrors": [],
+  "status": "pass",
+  "globalCandidateStatus": "FAIL: registry outer-consumer omission confirmed by independent B/C; preserve all R1 observations; R2 not started and held",
+  "preservedInitialFailures": [
+    {
+      "unit": "component:foundation",
+      "round": 1,
+      "surface": "local",
+      "url": "http://localhost:4317/reader#area=foundation&crate=Cargo.toml",
+      "error": "Error: Error: Playwright selector deadline exceeded\nlocator.waitFor(attached) timed out for selector #crate-manifest >> internal:has-text=\"[package]\"i\nLocator diagnostics: {\"kind\":\"no_matches\",\"action\":\"waitFor\",\"locator\":\"#crate-manifest >> internal:has-text=\\\"[package]\\\"i\",\"matchCount\":0,\"matches\":[],\"visibleCount\":0,\"truncated\":false}"
+    }
+  ],
+  "instrumentationHistory": [
+    {
+      "kind": "evaluator package-only wait excluded valid workspace manifest",
+      "initialFailurePreserved": {
+        "unit": "component:foundation",
+        "round": 1,
+        "surface": "local",
+        "url": "http://localhost:4317/reader#area=foundation&crate=Cargo.toml",
+        "error": "Error: Error: Playwright selector deadline exceeded\nlocator.waitFor(attached) timed out for selector #crate-manifest >> internal:has-text=\"[package]\"i\nLocator diagnostics: {\"kind\":\"no_matches\",\"action\":\"waitFor\",\"locator\":\"#crate-manifest >> internal:has-text=\\\"[package]\\\"i\",\"matchCount\":0,\"matches\":[],\"visibleCount\":0,\"truncated\":false}"
+      },
+      "correction": "Cargo.toml root is a workspace, not package; required real manifest section [workspace] and newly observed same destination. No runtime/criteria change.",
+      "reobservation": {
+        "childLinks": [
+          {
+            "href": "http://localhost:4317/reader#area=foundation&crate=Cargo.toml&path=docs%2Fcli%2Fhelp.rs",
+            "text": "docs/cli/help.rs\ndocs/cli/help.rs\n\n原文のモジュール説明と宣言候補を確認\n\n次の段階へ →",
+            "visible": true
+          }
+        ],
+        "manifest": "[workspace.package]\nversion = \"2.7.0\"\nedition = \"2024\"\nrust-version = \"1.95\"\nlicense = \"MIT OR Apache-2.0\"\nhomepage = \"https://paradigmxyz.github.io/reth\"\nrepository = \"https://github.com/paradigmxyz/reth\"\nexclude = [\".github/\"]\n\n[workspace]\nmembers = [\n    \"bin/reth-bb/\",\n    \"bin/reth/\",\n    \"crates/storage/rpc-provider/\",\n    \"crates/chain-state/\",\n    \"crates/chainspec/\",\n    \"crates/cli/cli/\",\n    \"crates/cli/commands/\",\n    \"crates/cli/runner/\",\n    \"crates/cli/util/\",\n    \"crates/config/\",\n    \"crates/consensus/common/\",\n    \"crates/consensus/consensus/\",\n    \"crates/consensus/debug-client/\",\n    \"crates/e2e-test-utils/\",\n    \"crates/engine/invalid-block-hooks/\",\n    \"crates/engine/local\",\n    \"crates/engine/primitives/\",\n    \"crates/engine/execution-cache/\",\n    \"crates/engine/tree/\",\n    \"crates/engine/util/\",\n    \"crates/era\",\n    \"crates/era-downloader\",\n    \"crates/era-utils\",\n    \"crates/errors/\",\n    \"crates/ethereum/hardforks/\",\n    \"crates/ethereum/cli/\",\n    \"crates/ethereum/consensus/\",\n    \"crates/ethereum/engine-primitives/\",\n    \"crates/ethereum/evm\",\n    \"crates/ethereum/node\",\n    \"crates/ethereum/payload/\",\n    \"crates/ethereum/primitives/\",\n    \"crates/ethereum/reth/\",\n    \"crates/etl/\",\n    \"crates/evm/evm\",\n    \"crates/evm/execution-errors\",\n    \"crates/evm/execution-types\",\n    \"crates/exex/exex/\",\n    \"crates/exex/test-utils/\",\n    \"crates/exex/types/\",\n    \"crates/metrics/\",\n    \"crates/net/banlist/\",\n    \"crates/net/discv4/\",\n    \"crates/net/discv5/\",\n    \"crates/net/dns/\",\n    \"crates/net/downloaders/\",\n    \"crates/net/ecies/\",\n    \"crates/net/eth-wire-types\",\n    \"crates/net/eth-wire/\",\n    \"crates/net/nat/\",\n    \"crates/net/network-api/\",\n    \"crates/net/network-types/\",\n    \"crates/net/network/\",\n    \"crates/net/p2p/\",\n    \"crates/net/peers/\",\n    \"crates/node/api/\",\n    \"crates/node/builder/\",\n    \"crates/node/core/\",\n    \"crates/node/ethstats\",\n    \"crates/node/events/\",\n    \"crates/node/metrics\",\n    \"crates/node/types\",\n    \"crates/payload/basic/\",\n    \"crates/payload/builder/\",\n    \"crates/payload/builder-primitives/\",\n    \"crates/payload/primitives/\",\n    \"crates/payload/validator/\",\n    \"crates/payload/util/\",\n    \"crates/prune/prune\",\n    \"crates/prune/types\",\n    \"crates/revm/\",\n    \"crates/rpc/ipc/\",\n    \"crates/rpc/rpc-api/\",\n    \"crates/rpc/rpc-builder/\",\n    \"crates/rpc/rpc-engine-api/\",\n    \"crates/rpc/rpc-eth-api/\",\n    \"crates/rpc/rpc-eth-types/\",\n    \"crates/rpc/rpc-layer\",\n    \"crates/rpc/rpc-server-types/\",\n    \"crates/rpc/rpc-e2e-tests/\",\n    \"crates/rpc/rpc-convert/\",\n    \"crates/rpc/rpc/\",\n    \"crates/snap-sync/\",\n    \"crates/stages/api/\",\n    \"crates/stages/stages/\",\n    \"crates/stages/types/\",\n    \"crates/static-file/static-file\",\n    \"crates/static-file/types/\",\n    \"crates/storage/db-api/\",\n    \"crates/storage/db-common\",\n    \"crates/storage/db-models/\",\n    \"crates/storage/db/\",\n    \"crates/storage/errors/\",\n    \"crates/storage/libmdbx-rs/\",\n    \"crates/storage/libmdbx-rs/mdbx-sys/\",\n    \"crates/storage/nippy-jar/\",\n    \"crates/storage/provider/\",\n    \"crates/storage/storage-api/\",\n    \"crates/storage/storage-overlay/\",\n    \"crates/tasks/\",\n    \"crates/tokio-util/\",\n    \"crates/tracing/\",\n    \"crates/transaction-pool/\",\n    \"crates/trie/common\",\n    \"crates/trie/db\",\n    \"crates/trie/parallel/\",\n    \"crates/trie/sparse\",\n    \"crates/trie/trie\",\n    \"examples/beacon-api-sidecar-fetcher/\",\n    \"examples/beacon-api-sse/\",\n    \"examples/bsc-p2p\",\n    \"examples/custom-dev-node/\",\n    \"examples/custom-state-root/\",\n    \"examples/custom-engine-types/\",\n    \"examples/custom-evm/\",\n    \"examples/custom-hardforks/\",\n    \"examples/custom-inspector/\",\n    \"examples/custom-node-components/\",\n    \"examples/custom-payload-builder/\",\n    \"examples/custom-rlpx-subprotocol\",\n    \"examples/custom-auth-http-middleware\",\n    \"examples/custom-rpc-middleware\",\n    \"examples/db-access\",\n    \"examples/exex-subscription\",\n    \"examples/exex-test\",\n    \"examples/full-contract-state\",\n    \"examples/manual-p2p/\",\n    \"examples/network-txpool/\",\n    \"examples/network/\",\n    \"examples/network-proxy/\",\n    \"examples/node-builder-api/\",\n    \"examples/node-custom-rpc/\",\n    \"examples/node-event-hooks/\",\n    \"examples/polygon-p2p/\",\n    \"examples/rpc-db/\",\n    \"examples/txpool-tracing/\",\n    \"examples/custom-beacon-withdrawals\",\n    \"testing/ef-tests/\",\n    \"testing/testing-utils\",\n    \"testing/runner\",\n    \"crates/tracing-otlp\",\n]\ndefault-members = [\"bin/reth\"]\nexclude = [\"docs/cli\"]\n\n# Explicitly set the resolver to version 2, which is the default for packages with edition >= 2021\n# https://doc.rust-lang.org/edition-guide/rust-2021/default-cargo-resolver.html\nresolver = \"2\"\n\n[workspace.lints]\nrust.missing_debug_implementations = \"warn\"\nrust.missing_docs = \"warn\"\nrust.rust_2018_idioms = { level = \"deny\", priority = -1 }\nrust.unreachable_pub = \"warn\"\nrust.unused_must_use = \"deny\"\nrust.rust_2024_incompatible_pat = \"warn\"\nrust.unexpected_cfgs = { level = \"warn\", check-cfg = ['cfg(tokio_unstable)'] }\nrustdoc.all = \"warn\"\n# rust.unnameable-types = \"warn\"\n\n[workspace.lints.clippy]\n# These are some of clippy's nursery (i.e., experimental) lints that we like.\n# By default, nursery lints are allowed. Some of the lints below have made good\n# suggestions which we fixed. The others didn't have any findings, so we can\n# assume they don't have that many false positives. Let's enable them to\n# prevent future problems.\nborrow_as_ptr = \"warn\"\nbranches_sharing_code = \"warn\"\nclear_with_drain = \"warn\"\ncloned_instead_of_copied = \"warn\"\ncollection_is_never_read = \"warn\"\ndbg_macro = \"warn\"\nderive_partial_eq_without_eq = \"warn\"\ndoc_markdown = \"warn\"\nempty_line_after_doc_comments = \"warn\"\nempty_line_after_outer_attr = \"warn\"\nenum_glob_use = \"warn\"\nequatable_if_let = \"warn\"\nexplicit_into_iter_loop = \"warn\"\nexplicit_iter_loop = \"warn\"\nflat_map_option = \"warn\"\nif_not_else = \"warn\"\nif_then_some_else_none = \"warn\"\nimplicit_clone = \"warn\"\nimprecise_flops = \"warn\"\niter_on_empty_collections = \"warn\"\niter_on_single_items = \"warn\"\niter_with_drain = \"warn\"\niter_without_into_iter = \"warn\"\nlarge_stack_frames = \"warn\"\nmanual_assert = \"warn\"\nmanual_clamp = \"warn\"\nmanual_is_variant_and = \"warn\"\nmanual_string_new = \"warn\"\nmatch_same_arms = \"warn\"\nmissing_const_for_fn = \"warn\"\nmutex_integer = \"warn\"\nnaive_bytecount = \"warn\"\nneedless_bitwise_bool = \"warn\"\nneedless_continue = \"warn\"\nneedless_for_each = \"warn\"\nneedless_pass_by_ref_mut = \"warn\"\nnonstandard_macro_braces = \"warn\"\noption_as_ref_cloned = \"warn\"\nor_fun_call = \"warn\"\npath_buf_push_overwrite = \"warn\"\nread_zero_byte_vec = \"warn\"\nresult_large_err = \"allow\"\nredundant_clone = \"warn\"\nredundant_else = \"warn\"\n# TODO: Remove once https://github.com/rust-lang/rust-clippy/issues/17525 is resolved.\nredundant_field_names = \"allow\"\nsingle_char_pattern = \"warn\"\nstring_lit_as_bytes = \"warn\"\nstring_lit_chars_any = \"warn\"\nsuboptimal_flops = \"warn\"\nsuspicious_operation_groupings = \"warn\"\ntrailing_empty_array = \"warn\"\ntrait_duplication_in_bounds = \"warn\"\ntransmute_undefined_repr = \"warn\"\ntrivial_regex = \"warn\"\ntuple_array_conversions = \"warn\"\ntype_repetition_in_bounds = \"warn\"\nuninhabited_references = \"warn\"\nunnecessary_self_imports = \"warn\"\nunnecessary_struct_initialization = \"warn\"\nunnested_or_patterns = \"warn\"\nunused_peekable = \"warn\"\nunused_rounding = \"warn\"\nuse_self = \"warn\"\nuseless_let_if_seq = \"warn\"\nwhile_float = \"warn\"\nzero_sized_map_values = \"warn\"\n\n# These are nursery lints which have findings. Allow them for now. Some are not\n# quite mature enough for use in our codebase and some we don't really want.\n# Explicitly listing should make it easier to fix in the future.\nas_ptr_cast_mut = \"allow\"\ncognitive_complexity = \"allow\"\ndebug_assert_with_mut_call = \"allow\"\nfallible_impl_from = \"allow\"\nfuture_not_send = \"allow\"\nneedless_collect = \"allow\"\nnon_send_fields_in_send_ty = \"allow\"\nredundant_pub_crate = \"allow\"\nsignificant_drop_in_scrutinee = \"allow\"\nsignificant_drop_tightening = \"allow\"\ntoo_long_first_doc_paragraph = \"allow\"\n\n# Speed up compilation time for dev builds by reducing emitted debug info.\n# NOTE: Debuggers may provide less useful information with this setting.\n# Uncomment this section if you're using a debugger.\n[profile.dev]\n# https://davidlattimore.github.io/posts/2024/02/04/speeding-up-the-rust-edit-build-run-cycle.html\ndebug = \"line-tables-only\"\nsplit-debuginfo = \"unpacked\"\n\n# Speed up tests.\n[profile.dev.package]\nproptest.opt-level = 3\nrand_chacha.opt-level = 3\nrand_xorshift.opt-level = 3\nunarray.opt-level = 3\n\n# Meant for testing - all optimizations, but with debug assertions and overflow checks.\n[profile.hivetests]\ninherits = \"test\"\nopt-level = 3\nlto = \"thin\"\n\n[profile.release]\nopt-level = 3\nlto = \"thin\"\ndebug = \"none\"\nstrip = \"symbols\"\npanic = \"unwind\"\ncodegen-units = 16\n\n# Use the `--profile profiling` flag to show symbols in release mode.\n# e.g. `cargo build --profile profiling`\n[profile.profiling]\ninherits = \"release\"\ndebug = \"full\"\nstrip = \"none\"\n\n# Include debug info in benchmarks too.\n[profile.bench]\ninherits = \"profiling\"\n\n[profile.maxperf]\ninherits = \"release\"\nlto = \"fat\"\ncodegen-units = 1\n\n[profile.maxperf-symbols]\ninherits = \"maxperf\"\ndebug = \"full\"\nstrip = \"none\"\n\n[profile.reproducible]\ninherits = \"release\"\npanic = \"abort\"\ncodegen-units = 1\nincremental = false\n\n[workspace.dependencies]\n# reth\nreth-basic-payload-builder = { path = \"crates/payload/basic\" }\nreth-chain-state = { path = \"crates/chain-state\" }\nreth-chainspec = { path = \"crates/chainspec\", default-features = false }\nreth-cli = { path = \"crates/cli/cli\" }\nreth-cli-commands = { path = \"crates/cli/commands\" }\nreth-cli-runner = { path = \"crates/cli/runner\" }\nreth-cli-util = { path = \"crates/cli/util\" }\nreth-codecs = { version = \"0.8.1\", default-features = false }\nreth-codecs-derive = \"0.8.1\"\nreth-config = { path = \"crates/config\", default-features = false }\nreth-consensus = { path = \"crates/consensus/consensus\", default-features = false }\nreth-consensus-common = { path = \"crates/consensus/common\", default-features = false }\nreth-consensus-debug-client = { path = \"crates/consensus/debug-client\" }\nreth-db = { path = \"crates/storage/db\", default-features = false }\nreth-db-api = { path = \"crates/storage/db-api\" }\nreth-db-common = { path = \"crates/storage/db-common\" }\nreth-db-models = { path = \"crates/storage/db-models\", default-features = false }\nreth-discv4 = { path = \"crates/net/discv4\" }\nreth-discv5 = { path = \"crates/net/discv5\" }\nreth-dns-discovery = { path = \"crates/net/dns\" }\nreth-downloaders = { path = \"crates/net/downloaders\" }\nreth-e2e-test-utils = { path = \"crates/e2e-test-utils\" }\nreth-ecies = { path = \"crates/net/ecies\" }\nreth-engine-local = { path = \"crates/engine/local\" }\nreth-execution-cache = { path = \"crates/engine/execution-cache\" }\nreth-engine-primitives = { path = \"crates/engine/primitives\", default-features = false }\nreth-engine-tree = { path = \"crates/engine/tree\" }\nreth-engine-util = { path = \"crates/engine/util\" }\nreth-era = { path = \"crates/era\" }\nreth-era-downloader = { path = \"crates/era-downloader\" }\nreth-era-utils = { path = \"crates/era-utils\" }\nreth-errors = { path = \"crates/errors\" }\nreth-eth-wire = { path = \"crates/net/eth-wire\" }\nreth-eth-wire-types = { path = \"crates/net/eth-wire-types\" }\nreth-ethereum-payload-builder = { path = \"crates/ethereum/payload\" }\nreth-ethereum-cli = { path = \"crates/ethereum/cli\", default-features = false }\nreth-ethereum-consensus = { path = \"crates/ethereum/consensus\", default-features = false }\nreth-ethereum-engine-primitives = { path = \"crates/ethereum/engine-primitives\", default-features = false }\nreth-ethereum-forks = { path = \"crates/ethereum/hardforks\", default-features = false }\nreth-ethereum-primitives = { path = \"crates/ethereum/primitives\", default-features = false }\nreth-ethereum = { path = \"crates/ethereum/reth\" }\nreth-etl = { path = \"crates/etl\" }\nreth-evm = { path = \"crates/evm/evm\", default-features = false }\nreth-evm-ethereum = { path = \"crates/ethereum/evm\", default-features = false }\nreth-execution-errors = { path = \"crates/evm/execution-errors\", default-features = false }\nreth-execution-types = { path = \"crates/evm/execution-types\", default-features = false }\nreth-exex = { path = \"crates/exex/exex\" }\nreth-exex-types = { path = \"crates/exex/types\" }\nreth-fs-util = { path = \"crates/fs-util\" }\nreth-invalid-block-hooks = { path = \"crates/engine/invalid-block-hooks\" }\nreth-ipc = { path = \"crates/rpc/ipc\" }\nreth-libmdbx = { path = \"crates/storage/libmdbx-rs\" }\nreth-mdbx-sys = { path = \"crates/storage/libmdbx-rs/mdbx-sys\" }\nreth-metrics = { path = \"crates/metrics\" }\nreth-net-banlist = { path = \"crates/net/banlist\" }\nreth-net-nat = { path = \"crates/net/nat\" }\nreth-network = { path = \"crates/net/network\" }\nreth-network-api = { path = \"crates/net/network-api\" }\nreth-network-p2p = { path = \"crates/net/p2p\" }\nreth-network-peers = { path = \"crates/net/peers\", default-features = false }\nreth-network-types = { path = \"crates/net/network-types\" }\nreth-nippy-jar = { path = \"crates/storage/nippy-jar\" }\nreth-node-api = { path = \"crates/node/api\" }\nreth-node-builder = { path = \"crates/node/builder\" }\nreth-node-core = { path = \"crates/node/core\" }\nreth-node-ethereum = { path = \"crates/ethereum/node\" }\nreth-node-ethstats = { path = \"crates/node/ethstats\" }\nreth-node-events = { path = \"crates/node/events\" }\nreth-node-metrics = { path = \"crates/node/metrics\" }\nreth-node-types = { path = \"crates/node/types\" }\nreth-payload-builder = { path = \"crates/payload/builder\" }\nreth-payload-builder-primitives = { path = \"crates/payload/builder-primitives\" }\nreth-payload-primitives = { path = \"crates/payload/primitives\" }\nreth-payload-validator = { path = \"crates/payload/validator\" }\nreth-primitives-traits = { version = \"0.8.1\", default-features = false }\nreth-provider = { path = \"crates/storage/provider\" }\nreth-prune = { path = \"crates/prune/prune\" }\nreth-prune-types = { path = \"crates/prune/types\", default-features = false }\nreth-revm = { path = \"crates/revm\", default-features = false }\nreth-rpc = { path = \"crates/rpc/rpc\" }\nreth-rpc-api = { path = \"crates/rpc/rpc-api\" }\nreth-rpc-builder = { path = \"crates/rpc/rpc-builder\" }\nreth-rpc-engine-api = { path = \"crates/rpc/rpc-engine-api\" }\nreth-rpc-eth-api = { path = \"crates/rpc/rpc-eth-api\" }\nreth-rpc-eth-types = { path = \"crates/rpc/rpc-eth-types\", default-features = false }\nreth-rpc-layer = { path = \"crates/rpc/rpc-layer\" }\nreth-rpc-server-types = { path = \"crates/rpc/rpc-server-types\" }\nreth-rpc-convert = { path = \"crates/rpc/rpc-convert\" }\nreth-rpc-traits = { version = \"0.8.1\", default-features = false }\nreth-stages = { path = \"crates/stages/stages\" }\nreth-stages-api = { path = \"crates/stages/api\" }\nreth-stages-types = { path = \"crates/stages/types\", default-features = false }\nreth-static-file = { path = \"crates/static-file/static-file\" }\nreth-static-file-types = { path = \"crates/static-file/types\", default-features = false }\nreth-storage-api = { path = \"crates/storage/storage-api\", default-features = false }\nreth-storage-errors = { path = \"crates/storage/errors\", default-features = false }\nreth-storage-overlay = { path = \"crates/storage/storage-overlay\" }\nreth-tasks = { path = \"crates/tasks\" }\nreth-testing-utils = { path = \"testing/testing-utils\" }\nreth-tokio-util = { path = \"crates/tokio-util\" }\nreth-tracing = { path = \"crates/tracing\" }\nreth-tracing-otlp = { path = \"crates/tracing-otlp\" }\nreth-transaction-pool = { path = \"crates/transaction-pool\" }\nreth-trie = { path = \"crates/trie/trie\" }\nreth-trie-common = { path = \"crates/trie/common\", default-features = false }\nreth-trie-db = { path = \"crates/trie/db\" }\nreth-trie-parallel = { path = \"crates/trie/parallel\" }\nreth-trie-sparse = { path = \"crates/trie/sparse\", default-features = false }\nreth-zstd-compressors = { version = \"0.8.1\", default-features = false }\n\n# revm\nrevm = { version = \"43.0.3\", default-features = false }\nrevmc = { git = \"https://github.com/paradigmxyz/revmc\", branch = \"main\", default-features = false, features = [\"llvm-prefer-static\"] }\nrevm-inspectors = \"0.44.0\"\n\n# eth\nalloy-dyn-abi = \"1.6.1\"\nalloy-primitives = { version = \"1.6.1\", default-features = false, features = [\"map-foldhash\"] }\nalloy-sol-types = { version = \"1.6.1\", default-features = false }\n\nalloy-chains = { version = \"0.2.33\", default-features = false }\nalloy-eip2124 = { version = \"0.2.0\", default-features = false }\nalloy-eip7928 = { version = \"0.4.10\", default-features = false, features = [\"rlp\"] }\nalloy-evm = { version = \"0.39.0\", default-features = false }\nalloy-rlp = { version = \"0.3.16\", default-features = false, features = [\"core-net\"] }\nalloy-trie = { version = \"0.9.4\", default-features = false }\n\nalloy-hardforks = \"0.4.9\"\n\nalloy-consensus = { version = \"2.5.0\", default-features = false }\nalloy-contract = { version = \"2.5.0\", default-features = false }\nalloy-eips = { version = \"2.5.0\", default-features = false }\nalloy-genesis = { version = \"2.5.0\", default-features = false }\nalloy-json-rpc = { version = \"2.5.0\", default-features = false }\nalloy-network = { version = \"2.5.0\", default-features = false }\nalloy-node-bindings = \"2.5.0\"\nalloy-provider = { version = \"2.5.0\", features = [\"reqwest\", \"debug-api\"], default-features = false }\nalloy-rpc-client = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types = { version = \"2.5.0\", features = [\"eth\"], default-features = false }\nalloy-rpc-types-admin = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types-anvil = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types-beacon = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types-debug = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types-engine = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types-eth = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types-mev = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types-trace = { version = \"2.5.0\", default-features = false }\nalloy-rpc-types-txpool = { version = \"2.5.0\", default-features = false }\nalloy-serde = { version = \"2.5.0\", default-features = false }\nalloy-signer = { version = \"2.5.0\", default-features = false }\nalloy-signer-local = { version = \"2.5.0\", default-features = false }\nalloy-transport = { version = \"2.5.0\" }\n\n# misc\neither = { version = \"1.16.0\", default-features = false }\narrayvec = { version = \"0.7.6\", default-features = false }\naquamarine = \"0.6\"\nauto_impl = \"1\"\nbackon = { version = \"1.2\", default-features = false, features = [\"std-blocking-sleep\", \"tokio-sleep\"] }\nbincode = \"1.3\"\nbitflags = \"2.4\"\nboyer-moore-magiclen = \"0.2.16\"\nbytes = { version = \"1.11.1\", default-features = false }\nblake3 = \"1.8\"\nbrotli = \"8\"\ncfg-if = \"1.0\"\nclap = \"4\"\ndashmap = \"6.2\"\nderive_more = { version = \"2\", default-features = false, features = [\"full\"] }\ndirs-next = \"2.0.0\"\ndyn-clone = \"1.0.17\"\neyre = \"0.6\"\nfdlimit = \"0.3.0\"\nfixed-map = { version = \"0.9\", default-features = false }\nflate2 = \"1.0\"\nhumantime = \"2.1\"\nimbl = \"7\"\nhumantime-serde = \"1.1\"\nitertools = { version = \"0.14\", default-features = false }\nlinked_hash_set = \"0.1\"\nlibc = \"0.2\"\nlz4 = \"1.28.1\"\nmodular-bitfield = \"0.13.1\"\nnotify = { version = \"8.0.0\", default-features = false, features = [\"macos_fsevent\"] }\nnybbles = { version = \"0.4.8\", default-features = false }\nonce_cell = { version = \"1.19\", default-features = false, features = [\"critical-section\"] }\nparking_lot = \"0.12\"\npaste = \"1.0\"\nrand = \"0.9\"\nrayon = \"1.7\"\nthread-priority = \"3.0.0\"\nrustc-hash = { version = \"2.0\", default-features = false }\nschnellru = \"0.2\"\nserde = { version = \"1.0\", default-features = false }\nserde_json = { version = \"1.0\", default-features = false, features = [\"alloc\"] }\nserde_with = { version = \"3\", default-features = false, features = [\"macros\"] }\nsha2 = { version = \"0.10\", default-features = false }\nslotmap = \"1\"\nsmallvec = \"1\"\nstrum = { version = \"0.27\", default-features = false }\nthiserror = { version = \"2.0.0\", default-features = false }\ntar = \"0.4.46\"\ntracing = { version = \"0.1.0\", default-features = false, features = [\"attributes\"] }\ntracing-appender = \"0.2.5\"\nurl = { version = \"2.3\", default-features = false }\nzstd = \"0.13\"\nbyteorder = \"1\"\nfixed-cache = { version = \"0.1.10\", default-features = false, features = [\"alloc\"] }\nmoka = \"0.12\"\nchrono = \"0.4.41\"\n\n# metrics\nmetrics = \"0.24.0\"\nmetrics-derive = \"0.1.1\"\nmetrics-exporter-prometheus = { version = \"0.18.3\", default-features = false }\nmetrics-process = \"2.1.0\"\nmetrics-util = { default-features = false, version = \"0.20.3\" }\n\n# tokio\ntokio = { version = \"1.52.3\", default-features = false }\ntokio-stream = \"0.1.11\"\ntokio-tungstenite = \"0.29.0\"\ntokio-util = { version = \"0.7.11\", features = [\"codec\"] }\n\n# async\nasync-compression = { version = \"0.4\", default-features = false }\nasync-stream = \"0.3\"\nasync-trait = \"0.1.68\"\nfutures = \"0.3\"\nfutures-core = \"0.3\"\nfutures-util = { version = \"0.3\", default-features = false }\nhyper = \"1.9\"\nhyper-util = \"0.1.5\"\npin-project = \"1.1.12\"\nreqwest = { version = \"0.13\", default-features = false, features = [\"rustls\", \"stream\"] }\ntracing-futures = \"0.2\"\ntower = \"0.5\"\ntower-http = \"0.6\"\n\n# p2p\ndiscv5 = { git = \"https://github.com/sigp/discv5\", rev = \"7663c00\" }\nif-addrs = \"0.14\"\n\n# rpc\njsonrpsee = \"0.26.0\"\njsonrpsee-core = \"0.26.0\"\njsonrpsee-server = \"0.26.0\"\njsonrpsee-http-client = \"0.26.0\"\njsonrpsee-types = \"0.26.0\"\n\n# http\nhttp = \"1.0\"\nhttp-body-util = \"0.1.2\"\nproptest-arbitrary-interop = \"0.1.0\"\n\n# crypto\nenr = { version = \"0.13\", default-features = false }\nsecp256k1 = { version = \"0.30\", default-features = false, features = [\"global-context\", \"recovery\"] }\n# rand 8 for secp256k1\nrand_08 = { package = \"rand\", version = \"0.8\" }\n\n# config\ntoml = \"0.9\"\n\n# rocksdb\nrocksdb = { version = \"0.24\" }\n\n# otlp obs\nopentelemetry_sdk = \"0.32\"\nopentelemetry = \"0.32\"\nopentelemetry-otlp = \"0.32\"\nopentelemetry-semantic-conventions = \"0.32\"\nopentelemetry-appender-tracing = \"0.32\"\ntracing-opentelemetry = \"0.33\"\n\n# misc-testing\narbitrary = \"1.3\"\nassert_matches = \"1.5.0\"\ncriterion = { package = \"codspeed-criterion-compat\", version = \"4.3\" }\ninsta = \"1.47\"\nproptest = \"1.7\"\nsimilar-asserts = { version = \"1.5.0\", features = [\"serde\"] }\ntempfile = \"3.20\"\ntest-fuzz = \"7\"\ntest-case = \"3\"\n\n# ssz encoding\nethereum_ssz = \"0.10.4\"\nethereum_ssz_derive = \"0.10.4\"\n\n# allocators\njemalloc_pprof = { version = \"0.8\", default-features = false }\ntikv-jemalloc-ctl = \"0.6\"\ntikv-jemalloc-sys = \"0.6\"\ntikv-jemallocator = \"0.6\"\ntracy-client = { version = \"0.18.0\", features = [\"demangle\"] }\nsnmalloc-rs = { version = \"0.3.7\", features = [\"build_cc\"] }\n\naes = \"0.8.1\"\nanyhow = \"1.0\"\nbindgen = { version = \"0.72\", default-features = false }\ncc = \"1.2.62\"\ncipher = \"0.4.3\"\ncomfy-table = \"7.0\"\nconcat-kdf = \"0.1.0\"\ncrossbeam-channel = \"0.5.13\"\ncrossbeam-queue = \"0.3\"\ncrossbeam-utils = \"0.8\"\ncrossterm = \"0.29.0\"\nctr = \"0.9.2\"\ndata-encoding = \"2\"\ndigest = \"0.10.5\"\nhash-db = \"=0.15.2\"\nhickory-resolver = \"0.26.1\"\nhmac = \"0.12.1\"\nhuman_bytes = \"0.4.1\"\nindexmap = \"2\"\ninterprocess = \"2.4.2\"\nlz4_flex = { version = \"0.12\", default-features = false }\nmemmap2 = \"0.9.11\"\nnum-traits = \"0.2.15\"\npage_size = \"0.6.0\"\nplain_hasher = \"0.2\"\npretty_assertions = \"1.4\"\nratatui = { version = \"0.30\", default-features = false }\nringbuffer = \"0.16.0\"\nrmp-serde = \"1.3\"\nroaring = \"0.11.3\"\nrolling-file = \"0.2.0\"\nsnap = \"1.1.1\"\nsocket2 = { version = \"0.6\", default-features = false }\nsysinfo = { version = \"0.38\", default-features = false }\ntracing-journald = \"0.3\"\ntracing-logfmt = \"0.3.7\"\ntracing-samply = \"0.1\"\ntracing-chrome = \"0.7.2\"\ntracing-subscriber = { version = \"0.3\", default-features = false }\ntracing-tracy = \"0.11\"\ntriehash = \"0.8\"\nvergen = \"10.0.1\"\nwalkdir = \"2.3.3\"\nvergen-git2 = \"10.0.1\"\n\n# networking\nipnet = \"2.11\"\n",
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "title": "workspace",
+        "url": "http://localhost:4317/reader#area=foundation&crate=Cargo.toml"
+      }
+    },
+    {
+      "kind": "evaluator assumed generic source wrapper rewrites its context ID",
+      "expectedSelector": "[data-reading-help=\"tx:recover\"]",
+      "actualObservedWrapper": {
+        "id": "",
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "line": 81
+      },
+      "correction": "Use actual path/line wrapper and verify rendered source bytes against tx:recover. Initial wait failed before any draft was typed. No runtime edits."
+    }
+  ],
+  "semanticSourceFit": {
+    "status": "exact per-context carry plus C6 reviewed deltas; not a fresh all-148 semantic review",
+    "evidence": [
+      "source-review.json",
+      "source-review-macro-contract-delta.json",
+      "source-review-macro-optional-delta.json"
+    ],
+    "freshValidation": "DOM original byte/hash/lines/adjacent-hint rendering and unchanged role/stage text checked above; source presence is not semantic proof",
+    "metadataCarryAudit": [
+      {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "tx:recover",
+          "tx:recovery-hook",
+          "tx:submit",
+          "tx:queue",
+          "area:send-receive",
+          "tx:batch",
+          "area:file-tx-get-entry",
+          "area:file-tx-get",
+          "area:file-pool-get"
+        ],
+        "changedOrNewMetadata": [
+          "tx:pool"
+        ],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "tx:recover",
+          "tx:recovery-hook",
+          "tx:submit",
+          "tx:queue",
+          "area:send-receive",
+          "tx:batch",
+          "area:file-tx-get-entry",
+          "area:file-tx-get",
+          "area:file-pool-get"
+        ],
+        "changedOrNewMetadata": [
+          "tx:pool"
+        ],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:component-rpc-namespace",
+          "tx:rpc-contract",
+          "tx:rpc",
+          "tx:recover",
+          "tx:recovery-hook",
+          "area:rpc-balance-entry",
+          "area:rpc-balance-read"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:component-rpc-namespace",
+          "tx:rpc-contract",
+          "tx:rpc",
+          "tx:recover",
+          "tx:recovery-hook",
+          "area:rpc-balance-entry",
+          "area:rpc-balance-read"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/transaction-pool/src/batcher.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:send-receive",
+          "tx:batch",
+          "tx:pool",
+          "area:send-validation-dispatch",
+          "area:send-validation-task",
+          "area:send-validation-worker",
+          "area:send-validation-entry",
+          "area:send-validation-order",
+          "area:send-stateless",
+          "area:send-stateful",
+          "area:send-nonce",
+          "area:pool-balance",
+          "area:send-pool-limit",
+          "area:send-pool-add"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/transaction-pool/src/batcher.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:send-receive",
+          "tx:batch",
+          "tx:pool",
+          "area:send-validation-dispatch",
+          "area:send-validation-task",
+          "area:send-validation-worker",
+          "area:send-validation-entry",
+          "area:send-validation-order",
+          "area:send-stateless",
+          "area:send-stateful",
+          "area:send-nonce",
+          "area:pool-balance",
+          "area:send-pool-limit",
+          "area:send-pool-add"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "tx:pool",
+          "area:send-validation-dispatch",
+          "area:send-validation-task",
+          "area:send-validation-worker",
+          "area:send-validation-entry",
+          "area:send-validation-order",
+          "area:send-stateless",
+          "area:send-stateful",
+          "area:send-nonce",
+          "area:pool-balance",
+          "area:send-pool-limit",
+          "area:send-pool-add",
+          "area:file-pool-get",
+          "area:file-pool-listeners"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/transaction-pool/src/lib.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "tx:pool",
+          "area:send-validation-dispatch",
+          "area:send-validation-task",
+          "area:send-validation-worker",
+          "area:send-validation-entry",
+          "area:send-validation-order",
+          "area:send-stateless",
+          "area:send-stateful",
+          "area:send-nonce",
+          "area:pool-balance",
+          "area:send-pool-limit",
+          "area:send-pool-add",
+          "area:file-pool-get",
+          "area:file-pool-listeners"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "tx:submit",
+          "tx:queue",
+          "area:send-receive",
+          "tx:batch"
+        ],
+        "changedOrNewMetadata": [
+          "tx:pool"
+        ],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "tx:submit",
+          "tx:queue",
+          "area:send-receive",
+          "tx:batch"
+        ],
+        "changedOrNewMetadata": [
+          "tx:pool"
+        ],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/rpc/rpc/src/eth/core.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:file-rpc-inner",
+          "area:file-rpc-inner-build",
+          "area:file-batch-create",
+          "tx:queue",
+          "area:send-receive",
+          "tx:batch"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/rpc/rpc/src/eth/core.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:file-rpc-inner",
+          "area:file-rpc-inner-build",
+          "area:file-batch-create",
+          "tx:queue",
+          "area:send-receive",
+          "tx:batch"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "bin/reth/src/main.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "startup:entry",
+          "area:startup-cli-entry",
+          "area:startup-cli-configure",
+          "area:startup-cli-prepare",
+          "startup:dispatch",
+          "startup:supervisor",
+          "startup:database",
+          "area:startup-launcher-entry",
+          "area:startup-node-selection",
+          "area:startup-node-components",
+          "area:startup-builder-launch",
+          "area:startup-builder-dispatch",
+          "area:startup-debug-adapter",
+          "area:startup-debug-inner",
+          "area:startup-engine-dispatch",
+          "startup:context",
+          "area:node-handle",
+          "area:startup-debug-return",
+          "area:startup-node-wait",
+          "area:node-exit"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "bin/reth/src/main.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "startup:entry",
+          "area:startup-cli-entry",
+          "area:startup-cli-configure",
+          "area:startup-cli-prepare",
+          "startup:dispatch",
+          "startup:supervisor",
+          "startup:database",
+          "area:startup-launcher-entry",
+          "area:startup-node-selection",
+          "area:startup-node-components",
+          "area:startup-builder-launch",
+          "area:startup-builder-dispatch",
+          "area:startup-debug-adapter",
+          "area:startup-debug-inner",
+          "area:startup-engine-dispatch",
+          "startup:context",
+          "area:node-handle",
+          "area:startup-debug-return",
+          "area:startup-node-wait",
+          "area:node-exit"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/ethereum/cli/src/app.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:startup-cli-entry",
+          "area:startup-cli-configure",
+          "area:startup-cli-prepare",
+          "startup:dispatch",
+          "area:startup-launcher-entry",
+          "startup:supervisor"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/ethereum/cli/src/app.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:startup-cli-entry",
+          "area:startup-cli-configure",
+          "area:startup-cli-prepare",
+          "startup:dispatch",
+          "area:startup-launcher-entry",
+          "startup:supervisor"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/cli/runner/src/lib.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "startup:supervisor",
+          "area:loop-cli"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/cli/runner/src/lib.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "startup:supervisor",
+          "area:loop-cli"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/cli/commands/src/node.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "startup:database",
+          "area:startup-launcher-entry",
+          "startup:entry",
+          "area:startup-cli-entry",
+          "area:startup-cli-configure",
+          "area:startup-cli-prepare",
+          "startup:dispatch",
+          "area:startup-node-selection",
+          "area:startup-node-components",
+          "area:startup-builder-launch",
+          "area:startup-builder-dispatch",
+          "area:startup-debug-adapter",
+          "area:startup-debug-inner",
+          "area:startup-engine-dispatch",
+          "startup:context",
+          "area:node-handle",
+          "area:startup-debug-return",
+          "area:startup-node-wait",
+          "area:node-exit"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/cli/commands/src/node.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "startup:database",
+          "area:startup-launcher-entry",
+          "startup:entry",
+          "area:startup-cli-entry",
+          "area:startup-cli-configure",
+          "area:startup-cli-prepare",
+          "startup:dispatch",
+          "area:startup-node-selection",
+          "area:startup-node-components",
+          "area:startup-builder-launch",
+          "area:startup-builder-dispatch",
+          "area:startup-debug-adapter",
+          "area:startup-debug-inner",
+          "area:startup-engine-dispatch",
+          "startup:context",
+          "area:node-handle",
+          "area:startup-debug-return",
+          "area:startup-node-wait",
+          "area:node-exit"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/node/builder/src/launch/engine.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:startup-engine-dispatch",
+          "startup:context",
+          "startup:components",
+          "startup:services",
+          "area:startup-engine-build",
+          "area:rpc-launch",
+          "startup:orchestrator",
+          "area:node-handle",
+          "area:startup-node-wait"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/node/builder/src/launch/engine.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:startup-engine-dispatch",
+          "startup:context",
+          "startup:components",
+          "startup:services",
+          "area:startup-engine-build",
+          "area:rpc-launch",
+          "startup:orchestrator",
+          "area:node-handle",
+          "area:startup-node-wait"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/node/builder/src/components/builder.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "startup:components",
+          "area:startup-node-selection",
+          "area:startup-node-components",
+          "area:startup-component-choice",
+          "area:startup-network-builder",
+          "area:startup-network-start",
+          "area:startup-payload-spawn"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/node/builder/src/components/builder.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "startup:components",
+          "area:startup-node-selection",
+          "area:startup-node-components",
+          "area:startup-component-choice",
+          "area:startup-network-builder",
+          "area:startup-network-start",
+          "area:startup-payload-spawn"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:startup-tree-spawn",
+          "startup:tree",
+          "area:startup-tree-pressure",
+          "area:startup-tree-wait",
+          "area:journey-block-save-start",
+          "area:journey-block-save-target",
+          "area:journey-block-save-complete",
+          "area:startup-backfill-gate",
+          "area:startup-backfill-events",
+          "area:startup-backfill-finished",
+          "area:journey-block-receive",
+          "area:journey-block-forkchoice-precheck",
+          "area:journey-block-dispatch",
+          "area:journey-block-canonical-state"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/tree/mod.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:startup-tree-spawn",
+          "startup:tree",
+          "area:startup-tree-pressure",
+          "area:startup-tree-wait",
+          "area:journey-block-save-start",
+          "area:journey-block-save-target",
+          "area:journey-block-save-complete",
+          "area:startup-backfill-gate",
+          "area:startup-backfill-events",
+          "area:startup-backfill-finished",
+          "area:journey-block-receive",
+          "area:journey-block-forkchoice-precheck",
+          "area:journey-block-dispatch",
+          "area:journey-block-canonical-state"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/net/network/src/manager.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:startup-network-builder",
+          "area:startup-network-start",
+          "startup:network"
+        ],
+        "changedOrNewMetadata": [
+          "area:network-budget"
+        ],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/net/network/src/manager.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:startup-network-builder",
+          "area:startup-network-start",
+          "startup:network"
+        ],
+        "changedOrNewMetadata": [
+          "area:network-budget"
+        ],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/backfill.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "startup:backfill",
+          "area:journey-sync-run",
+          "area:journey-sync-default-order",
+          "area:journey-sync-online-order",
+          "area:journey-sync-offline-order",
+          "area:journey-sync-execution-order",
+          "area:sync",
+          "area:sync-unwind",
+          "area:startup-backfill-gate",
+          "area:startup-backfill-events",
+          "area:startup-backfill-finished",
+          "area:journey-block-receive",
+          "area:journey-block-forkchoice-precheck",
+          "area:journey-block-save-target"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/backfill.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "startup:backfill",
+          "area:journey-sync-run",
+          "area:journey-sync-default-order",
+          "area:journey-sync-online-order",
+          "area:journey-sync-offline-order",
+          "area:journey-sync-execution-order",
+          "area:sync",
+          "area:sync-unwind",
+          "area:startup-backfill-gate",
+          "area:startup-backfill-events",
+          "area:startup-backfill-finished",
+          "area:journey-block-receive",
+          "area:journey-block-forkchoice-precheck",
+          "area:journey-block-save-target"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/launch.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:startup-engine-build",
+          "area:startup-tree-spawn",
+          "startup:backfill"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/launch.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:startup-engine-build",
+          "area:startup-tree-spawn",
+          "startup:backfill"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/chain.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:startup-orchestrator-poll",
+          "startup:backfill",
+          "area:startup-engine-poll"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/chain.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:startup-orchestrator-poll",
+          "startup:backfill",
+          "area:startup-engine-poll"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/engine.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:startup-engine-poll",
+          "area:startup-engine-channel"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/engine/tree/src/engine.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:startup-engine-poll",
+          "area:startup-engine-channel"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/node/builder/src/handle.rs",
+        "surface": "static",
+        "exactUnchangedMetadata": [
+          "area:node-handle",
+          "area:startup-node-wait",
+          "area:node-exit"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      },
+      {
+        "path": "crates/node/builder/src/handle.rs",
+        "surface": "local",
+        "exactUnchangedMetadata": [
+          "area:node-handle",
+          "area:startup-node-wait",
+          "area:node-exit"
+        ],
+        "changedOrNewMetadata": [],
+        "basis": "C5 original review carried only exact unchanged context metadata plus source bytes; C6 source-review and macro deltas cover authored changes. New DOM R1 observed separately."
+      }
+    ]
+  },
+  "limits": [
+    "All observations new for frozen C6 round1; no previous UI success carried.",
+    "Long source DOM rows and controls visible after opening; this does not prove every row simultaneously within viewport.",
+    "Structure catalogue167 static cards and146 local crates assert file membership and navigation only, not uncreated process explanations; RPC4 actual processing claims evaluated separately.",
+    "G5 human understanding and full1283 source explanation coverage not measured or claimed.",
+    "R2 held by parent after independent C6 G6 failure; no two-round acceptance claimed."
+  ],
+  "measuredAt": "2026-10-25T16:58:50.173831+00:00",
+  "finalRuntimeCheck": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "sourceDataFileByteHash": "b7788427d75e8db45ed05d0c14a051806b72e970949a07d1ceef8cb4f7529247",
+  "frozenRuntimeMatches": true,
+  "verificationInstrumentationCorrection": {
+    "preserved": "data-reviewer-verification-initial-attempt.json",
+    "reason": "Initial verifier expected GitHub URLs in local footer. Actual local original-code and crate routes are intentional. Final verifier parses original path/start/end for local and pinned GitHub URL for static; same DOM evidence, no runtime or criteria mutation."
+  }
+}

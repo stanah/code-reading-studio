@@ -1,0 +1,3579 @@
+{
+  "candidate": 6,
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "initialError": "A incorrectly called six contexts unused after checking only 88 metadata-derived routes.",
+  "status": "FAIL outer consumer inventory incomplete; no P changes",
+  "generic": [
+    {
+      "context": "area:pool-validation",
+      "url": "http://localhost:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Fvalidate%2Feth.rs&code=1&start=592&end=598",
+      "observation": {
+        "h1": "crates/transaction-pool/src/validate/eth.rs",
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4317/",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/guide",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/reader#",
+            "text": "全体",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=pool",
+            "text": "pool",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=pool&crate=crates%2Ftransaction-pool%2FCargo.toml",
+            "text": "transaction-pool",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=pool&crate=crates%2Ftransaction-pool%2FCargo.toml&path=crates%2Ftransaction-pool%2Fsrc%2Fvalidate%2Feth.rs",
+            "text": "eth.rs",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files?path=crates%2Ftransaction-pool%2Fsrc%2Fvalidate%2Feth.rs&line=592&end=598",
+            "text": "ファイル全体・ツリー",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/startup?path=crates%2Ftransaction-pool%2Fsrc%2Fvalidate%2Feth.rs&line=592",
+            "text": "このファイルの起動解説",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "/lenses.js?v=8ddefc71dbc2",
+          "/app.js?v=d7cacdbe1e7b",
+          "/learning-content.js?v=3fc8778066c0",
+          "/learning.js?v=207f4f1e6733",
+          "/reading-help-data.js?v=b7788427d75e",
+          "/reading-help.js?v=a1c25ee6c488",
+          "/reading-coverage-data.js?v=76827db51bd9",
+          "/area-reading.js?v=7b55586b98bd",
+          "/studio.js?v=bd9d2c345539"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Local",
+        "url": "http://localhost:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Fvalidate%2Feth.rs&code=1&start=592&end=598",
+        "widgets": [
+          {
+            "code": "        // Checks for chainid\n        if let Some(chain_id) = transaction.chain_id() &&\n            chain_id != self.chain_id()\n        {\n            return Err(InvalidTransactionError::ChainIdMismatch.into())\n        }\n",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 593,
+                "text": "補助コメント · L593// 要求にチェーンIDが含まれている場合、その値を取り出します。全ての要求にこの項目があると決め付けてはいません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 594,
+                "text": "補助コメント · L594// 要求の番号と、設定されたノード側の番号が違うか調べます。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 596,
+                "text": "補助コメント · L596// 異なるネットワーク向けの要求なら、ChainIdMismatchというエラーを返して、この検証処理を終えます。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              592,
+              593,
+              594,
+              595,
+              596,
+              597,
+              598
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "context": "area:rpc-recovery",
+      "url": "http://localhost:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=750&end=760",
+      "observation": {
+        "h1": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4317/",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/guide",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/reader#",
+            "text": "全体",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc",
+            "text": "rpc",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc&crate=crates%2Frpc%2Frpc-eth-api%2FCargo.toml",
+            "text": "reth-rpc-eth-api",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc&crate=crates%2Frpc%2Frpc-eth-api%2FCargo.toml&path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs",
+            "text": "transaction.rs",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=750&end=760",
+            "text": "ファイル全体・ツリー",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/startup?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=750",
+            "text": "このファイルの起動解説",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#lens=flow&step=recover",
+            "text": "デコードして送信者を復元を動作で読む",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "/lenses.js?v=8ddefc71dbc2",
+          "/app.js?v=d7cacdbe1e7b",
+          "/learning-content.js?v=3fc8778066c0",
+          "/learning.js?v=207f4f1e6733",
+          "/reading-help-data.js?v=b7788427d75e",
+          "/reading-help.js?v=a1c25ee6c488",
+          "/reading-coverage-data.js?v=76827db51bd9",
+          "/area-reading.js?v=7b55586b98bd",
+          "/studio.js?v=bd9d2c345539"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Local",
+        "url": "http://localhost:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=750&end=760",
+        "widgets": [
+          {
+            "code": "    /// Decodes and recovers a raw transaction, sharing sender recovery when configured.\n    fn recover_raw_transaction<T: SignedTransaction>(&self, tx: &[u8]) -> EthResult<Recovered<T>> {\n        let transaction = decode_raw_transaction::<T>(tx)?;\n        let signer = match self.eth_api_settings().sender_recovery_cache.as_ref() {\n            Some(cache) => cache.recover(&transaction),\n            None => transaction.try_recover(),\n        }\n        .map_err(|_| EthApiError::InvalidTransactionSignature)?;\n        Ok(Recovered::new_unchecked(transaction, signer))\n    }\n",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 752,
+                "text": "補助コメント · L752// 読み取りが失敗した場合は?で現在の関数からエラーを返します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 754,
+                "text": "補助コメント · L754// キャッシュが設定されている場合はcache.recoverへ渡します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 755,
+                "text": "補助コメント · L755// キャッシュがないこと自体をエラーにせず、transaction.try_recover()を呼びます。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 757,
+                "text": "補助コメント · L757// 復元失敗をInvalidTransactionSignatureへ変換し、?で返します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 758,
+                "text": "補助コメント · L758// ここまで成功したデータと送信者を組にして返します。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              750,
+              751,
+              752,
+              753,
+              754,
+              755,
+              756,
+              757,
+              758,
+              759,
+              760
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "context": "tx:batch-runner",
+      "url": "http://localhost:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&code=1&start=114&end=135",
+      "observation": {
+        "h1": "crates/transaction-pool/src/batcher.rs",
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4317/",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/guide",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/reader#",
+            "text": "全体",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=pool",
+            "text": "pool",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=pool&crate=crates%2Ftransaction-pool%2FCargo.toml",
+            "text": "transaction-pool",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=pool&crate=crates%2Ftransaction-pool%2FCargo.toml&path=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs",
+            "text": "batcher.rs",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files?path=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&line=114&end=135",
+            "text": "ファイル全体・ツリー",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/startup?path=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&line=114",
+            "text": "このファイルの起動解説",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#lens=flow&step=batch",
+            "text": "バッチをプールへ引き渡すを動作で読む",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "/lenses.js?v=8ddefc71dbc2",
+          "/app.js?v=d7cacdbe1e7b",
+          "/learning-content.js?v=3fc8778066c0",
+          "/learning.js?v=207f4f1e6733",
+          "/reading-help-data.js?v=b7788427d75e",
+          "/reading-help.js?v=a1c25ee6c488",
+          "/reading-coverage-data.js?v=76827db51bd9",
+          "/area-reading.js?v=7b55586b98bd",
+          "/studio.js?v=bd9d2c345539"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Local",
+        "url": "http://localhost:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&code=1&start=114&end=135",
+        "widgets": [
+          {
+            "code": "    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {\n        let mut this = self.project();\n\n        loop {\n            // Drain all available requests from the receiver\n            ready!(this.request_rx.poll_recv_many(cx, this.buf, *this.max_batch_size));\n\n            if !this.buf.is_empty() {\n                let batch = std::mem::take(this.buf);\n                let pool = this.pool.clone();\n                tokio::spawn(async move {\n                    Self::process_batch(&pool, batch).await;\n                });\n                this.buf.reserve(1);\n\n                continue;\n            }\n\n            // No requests available, return Pending to wait for more\n            return Poll::Pending;\n        }\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 119,
+                "text": "補助コメント · L119// 追加依頼がなければ待ち、届いたらバッファへ取り出します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 122,
+                "text": "補助コメント · L122// この回で処理する依頼を、受信バッファから取り出します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 124,
+                "text": "補助コメント · L124// process_batchでプールへの追加結果を待つタスクを始めます。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 133,
+                "text": "補助コメント · L133// 今すぐ進める入力がなければPendingを返します。追加成功の通知ではありません。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              114,
+              115,
+              116,
+              117,
+              118,
+              119,
+              120,
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134,
+              135
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "context": "tx:forward",
+      "url": "http://localhost:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&code=1&start=88&end=105",
+      "observation": {
+        "h1": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4317/",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/guide",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/reader#",
+            "text": "全体",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc",
+            "text": "rpc",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc&crate=crates%2Frpc%2Frpc%2FCargo.toml",
+            "text": "rpc",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc&crate=crates%2Frpc%2Frpc%2FCargo.toml&path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs",
+            "text": "transaction.rs",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files?path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&line=88&end=105",
+            "text": "ファイル全体・ツリー",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/startup?path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&line=88",
+            "text": "このファイルの起動解説",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#lens=flow&step=submit",
+            "text": "通常の送信経路を追うを動作で読む",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "/lenses.js?v=8ddefc71dbc2",
+          "/app.js?v=d7cacdbe1e7b",
+          "/learning-content.js?v=3fc8778066c0",
+          "/learning.js?v=207f4f1e6733",
+          "/reading-help-data.js?v=b7788427d75e",
+          "/reading-help.js?v=a1c25ee6c488",
+          "/reading-coverage-data.js?v=76827db51bd9",
+          "/area-reading.js?v=7b55586b98bd",
+          "/studio.js?v=bd9d2c345539"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Local",
+        "url": "http://localhost:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&code=1&start=88&end=105",
+        "widgets": [
+          {
+            "code": "        // forward the transaction to the specific endpoint if configured.\n        if let Some(client) = self.raw_tx_forwarder() {\n            tracing::debug!(target: \"rpc::eth\", hash = %pool_transaction.hash(), \"forwarding raw transaction to forwarder\");\n            let rlp_hex = hex::encode_prefixed(&tx);\n\n            // broadcast raw transaction to subscribers if there is any.\n            self.broadcast_raw_transaction(tx);\n\n            let hash =\n                client.request(\"eth_sendRawTransaction\", (rlp_hex,)).await.inspect_err(|err| {\n                    tracing::debug!(target: \"rpc::eth\", %err, hash=% *pool_transaction.hash(), \"failed to forward raw transaction\");\n                }).map_err(EthApiError::other)?;\n\n            // Retain tx in local tx pool after forwarding, for local RPC usage.\n            let _ = self.inner.add_pool_transaction(origin, pool_transaction).await;\n\n            return Ok(hash);\n        }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 89,
+                "text": "補助コメント · L89// この分岐に入る場合は、後ろの通常のローカル追加経路とは異なる処理を行います。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 97,
+                "text": "補助コメント · L97// 元の取引を送信用の文字列にして転送し、先方が返したハッシュかエラーを受け取ります。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 102,
+                "text": "補助コメント · L102// 転送後にローカル追加も試みますが、この行の結果は_で受け取り、その成否を返答の条件にしていません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 104,
+                "text": "補助コメント · L104// ここで関数を終えます。下の通常経路へ続くわけではありません。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "context": "tx:pool-test",
+      "url": "http://localhost:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&code=1&start=349&end=381",
+      "observation": {
+        "h1": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4317/",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/guide",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/reader#",
+            "text": "全体",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc",
+            "text": "rpc",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc&crate=crates%2Frpc%2Frpc%2FCargo.toml",
+            "text": "rpc",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc&crate=crates%2Frpc%2Frpc%2FCargo.toml&path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs",
+            "text": "transaction.rs",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files?path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&line=349&end=381",
+            "text": "ファイル全体・ツリー",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/startup?path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&line=349",
+            "text": "このファイルの起動解説",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#lens=flow&step=submit",
+            "text": "通常の送信経路を追うを動作で読む",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "/lenses.js?v=8ddefc71dbc2",
+          "/app.js?v=d7cacdbe1e7b",
+          "/learning-content.js?v=3fc8778066c0",
+          "/learning.js?v=207f4f1e6733",
+          "/reading-help-data.js?v=b7788427d75e",
+          "/reading-help.js?v=a1c25ee6c488",
+          "/reading-coverage-data.js?v=76827db51bd9",
+          "/area-reading.js?v=7b55586b98bd",
+          "/studio.js?v=bd9d2c345539"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Local",
+        "url": "http://localhost:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&code=1&start=349&end=381",
+        "widgets": [
+          {
+            "code": "    #[tokio::test]\n    async fn send_raw_transaction() {\n        let eth_api = mock_eth_api(Default::default());\n        let pool = eth_api.pool();\n\n        let tx_1 = raw_transfer_tx();\n\n        let tx_1_result = eth_api.send_raw_transaction(tx_1).await.unwrap();\n        assert_eq!(\n            pool.len(),\n            1,\n            \"expect 1 transaction in the pool, but pool size is {}\",\n            pool.len()\n        );\n\n        // https://etherscan.io/tx/0x48816c2f32c29d152b0d86ff706f39869e6c1f01dc2fe59a3c1f9ecf39384694\n        let tx_2 = Bytes::from(hex!(\n            \"02f9043c018202b7843b9aca00850c807d37a08304d21d94ef1c6e67703c7bd7107eed8303fbe6ec2554bf6b881bc16d674ec80000b903c43593564c000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000063e2d99f00000000000000000000000000000000000000000000000000000000000000030b000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001e0000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000001bc16d674ec80000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000065717fe021ea67801d1088cc80099004b05b64600000000000000000000000000000000000000000000000001bc16d674ec80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002bc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20001f4a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009e95fd5965fd1f1a6f0d4600000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000428dca9537116148616a5a3e44035af17238fe9dc080a0c6ec1e41f5c0b9511c49b171ad4e04c6bb419c74d99fe9891d74126ec6e4e879a032069a753d7a2cfa158df95421724d24c0e9501593c09905abf3699b4a4405ce\"\n        ));\n\n        let tx_2_result = eth_api.send_raw_transaction(tx_2).await.unwrap();\n        assert_eq!(\n            pool.len(),\n            2,\n            \"expect 2 transactions in the pool, but pool size is {}\",\n            pool.len()\n        );\n\n        assert!(pool.get(&tx_1_result).is_some(), \"tx1 not found in the pool\");\n        assert!(pool.get(&tx_2_result).is_some(), \"tx2 not found in the pool\");\n        assert_eq!(pool.get(&tx_1_result).unwrap().origin, TransactionOrigin::Local);\n        assert_eq!(pool.get(&tx_2_result).unwrap().origin, TransactionOrigin::Local);\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 351,
+                "text": "補助コメント · L351// 実ネットワークへの送信ではなく、mock_eth_apiで作った環境を使います。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 354,
+                "text": "補助コメント · L354// 送金の署名済みデータを作るテスト用の関数です。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 356,
+                "text": "補助コメント · L356// 送信がエラーならunwrapでこのテストは失敗します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 357,
+                "text": "補助コメント · L357// 送信後のpool.len()が1であることを検証します。ブロック取り込みや実際の残高変化を確認するテストではありません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 365,
+                "text": "補助コメント · L365// この長いバイト列もテスト入力です。テストはネットワークへ新しい送金を発行するものではありません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 369,
+                "text": "補助コメント · L369// 同じmockのAPIで送信結果のハッシュを受け取ります。エラーならunwrapでテストは失敗します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 370,
+                "text": "補助コメント · L370// 二件目の送信後はpool.len()が2であることを確認します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 377,
+                "text": "補助コメント · L377// 二つの送信結果を識別子にして、プールで各取引を見つけられるか確認します。ブロック内の取引を探す検査とは別です。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 379,
+                "text": "補助コメント · L379// 取得した各取引のoriginがLocalか確認します。RPC側で指定した受付元が保持されることを期待するassertです。実ネットワーク全体で共有されたという意味ではありません。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              349,
+              350,
+              351,
+              352,
+              353,
+              354,
+              355,
+              356,
+              357,
+              358,
+              359,
+              360,
+              361,
+              362,
+              363,
+              364,
+              365,
+              366,
+              367,
+              368,
+              369,
+              370,
+              371,
+              372,
+              373,
+              374,
+              375,
+              376,
+              377,
+              378,
+              379,
+              380,
+              381
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "context": "tx:trait-contract",
+      "url": "http://localhost:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=65&end=79",
+      "observation": {
+        "h1": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4317/",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/guide",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4317/reader#",
+            "text": "全体",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc",
+            "text": "rpc",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc&crate=crates%2Frpc%2Frpc-eth-api%2FCargo.toml",
+            "text": "reth-rpc-eth-api",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#area=rpc&crate=crates%2Frpc%2Frpc-eth-api%2FCargo.toml&path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs",
+            "text": "transaction.rs",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/files?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=65&end=79",
+            "text": "ファイル全体・ツリー",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/startup?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=65",
+            "text": "このファイルの起動解説",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4317/reader#lens=flow&step=recover",
+            "text": "デコードして送信者を復元を動作で読む",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "/lenses.js?v=8ddefc71dbc2",
+          "/app.js?v=d7cacdbe1e7b",
+          "/learning-content.js?v=3fc8778066c0",
+          "/learning.js?v=207f4f1e6733",
+          "/reading-help-data.js?v=b7788427d75e",
+          "/reading-help.js?v=a1c25ee6c488",
+          "/reading-coverage-data.js?v=76827db51bd9",
+          "/area-reading.js?v=7b55586b98bd",
+          "/studio.js?v=bd9d2c345539"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Local",
+        "url": "http://localhost:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=65&end=79",
+        "widgets": [
+          {
+            "code": "pub trait EthTransactions: LoadTransaction<Provider: BlockReaderIdExt> {\n    /// Returns a handle for signing data.\n    ///\n    /// Signer access in default (L1) trait method implementations.\n    fn signers(&self) -> &SignersForRpc<Self::Provider, Self::NetworkTypes>;\n\n    /// Returns a list of addresses owned by provider.\n    fn accounts(&self) -> Vec<Address> {\n        self.signers().read().iter().flat_map(|s| s.accounts()).collect()\n    }\n\n    /// Returns the timeout duration for `send_raw_transaction_sync` RPC method.\n    fn send_raw_transaction_sync_timeout(&self) -> Duration {\n        self.eth_api_settings().send_raw_transaction_sync_timeout\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 65,
+                "text": "補助コメント · L65// EthTransactionsを実装する型には、LoadTransactionという別のtraitの条件も求めます。ここがsupertraitの関係です。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 69,
+                "text": "補助コメント · L69// 本体のない宣言なので、実装する型がsignersの処理を用意します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 72,
+                "text": "補助コメント · L72// このメソッドには本体があります。実装側のsignersを呼んで、アドレス一覧を集めます。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    }
+  ],
+  "atlas": [
+    {
+      "context": "area:rpc-recovery",
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "start": 750,
+        "end": 760,
+        "hash": "03aefeb423d3fff38a2750477cee38730e61c055dd8802693ef568cc2432cca8"
+      },
+      "observation": {
+        "availability": "3範囲に補助コメントがあります。関連する流れも、左の「この場で読む範囲」から切り替えられます。\n\nファイル全体を解説した数ではありません。",
+        "options": [
+          {
+            "text": "デコードして送信者を復元 · L81–109",
+            "value": "context|tx:recover"
+          },
+          {
+            "text": "ハッシュによる取得を共通の読取担当へ渡す · L187–200",
+            "value": "context|area:file-tx-get-entry"
+          },
+          {
+            "text": "キャッシュ・保存済み履歴・プールから取引を探す · L777–825",
+            "value": "context|area:file-tx-get"
+          },
+          {
+            "text": "学習：問い合わせと送信を、入口から担当処理まで比べる",
+            "value": "route|lesson:rpc"
+          },
+          {
+            "text": "学習：送信の受付から、検証・プール追加・返答まで追う",
+            "value": "route|lesson:send"
+          },
+          {
+            "text": "学習：入力・送信先・追加の依頼と返答を原文で読む",
+            "value": "route|lesson:reading"
+          },
+          {
+            "text": "送信の処理：送信要求の入口と、その呼び出し先",
+            "value": "route|operation:rpc"
+          },
+          {
+            "text": "送信の処理：受信データの読み取りと送信者の復元",
+            "value": "route|operation:recover"
+          },
+          {
+            "text": "ファイルの役割：共通の送信処理と取得処理で、何を受け取り、どこへ渡して結果を返すか確かめる。",
+            "value": "route|file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs"
+          },
+          {
+            "text": "ファイルの役割：公開する操作の名前・型と、共通helperへ渡すハンドラーの責務を確かめる。",
+            "value": "route|file-role:crates/rpc/rpc-eth-api/src/core.rs"
+          },
+          {
+            "text": "部品：公開名・型・ハンドラーと、共通処理へ渡す位置を確かめる。",
+            "value": "route|component:rpc:interface"
+          },
+          {
+            "text": "部品：ブロック・状態・取引の共通helperを、実際の入力と戻り値から比べる。",
+            "value": "route|component:rpc:helpers"
+          },
+          {
+            "text": "領域の処理：受信したデータから送信者を求めるには？",
+            "value": "route|area:rpc:followup"
+          }
+        ],
+        "stages": [
+          {
+            "id": "tx:recover",
+            "lines": [
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109
+            ],
+            "title": "1. デコードして送信者を復元"
+          },
+          {
+            "id": "tx:recovery-hook",
+            "lines": [
+              1402,
+              1403,
+              1404,
+              1405,
+              1406,
+              1407,
+              1408,
+              1409,
+              1410,
+              1411,
+              1412,
+              1413,
+              1414,
+              1415,
+              1416,
+              1417,
+              1418,
+              1419,
+              1420,
+              1421,
+              1422,
+              1423,
+              1424,
+              1425,
+              1426,
+              1427,
+              1428,
+              1429,
+              1430,
+              1431,
+              1432,
+              1433,
+              1434,
+              1435,
+              1436,
+              1437,
+              1438,
+              1439,
+              1440,
+              1441,
+              1442,
+              1443,
+              1444,
+              1445,
+              1446,
+              1447,
+              1448,
+              1449,
+              1450,
+              1451,
+              1452,
+              1453,
+              1454,
+              1455,
+              1456,
+              1457,
+              1458,
+              1459,
+              1460,
+              1461,
+              1462,
+              1463,
+              1464,
+              1465,
+              1466
+            ],
+            "title": "2. デフォルトの復元フック"
+          },
+          {
+            "id": "tx:submit",
+            "lines": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114
+            ],
+            "title": "3. 通常の送信経路を追う"
+          },
+          {
+            "id": "tx:queue",
+            "lines": [
+              489,
+              490,
+              491,
+              492,
+              493,
+              494,
+              495,
+              496,
+              497,
+              498,
+              499,
+              500,
+              501,
+              502,
+              503,
+              504
+            ],
+            "title": "4. 追加要求をチャネルへ送る"
+          },
+          {
+            "id": "area:send-receive",
+            "lines": [
+              113,
+              114,
+              115,
+              116,
+              117,
+              118,
+              119,
+              120,
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134,
+              135,
+              136,
+              137
+            ],
+            "title": "5. 内部キューから追加依頼を受け取る"
+          },
+          {
+            "id": "tx:batch",
+            "lines": [
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105
+            ],
+            "title": "6. バッチをプールへ引き渡す"
+          },
+          {
+            "id": "tx:pool",
+            "lines": [
+              495,
+              496,
+              497,
+              498,
+              499,
+              500,
+              501,
+              502,
+              503,
+              504,
+              505,
+              506,
+              507,
+              508,
+              509,
+              510,
+              511,
+              512,
+              513,
+              514,
+              515,
+              516,
+              517,
+              518,
+              519,
+              520,
+              521,
+              522,
+              523,
+              524,
+              525,
+              526,
+              527,
+              528
+            ],
+            "title": "7. 検証してプールに追加"
+          },
+          {
+            "id": "area:file-tx-get-entry",
+            "lines": [
+              187,
+              188,
+              189,
+              190,
+              191,
+              192,
+              193,
+              194,
+              195,
+              196,
+              197,
+              198,
+              199,
+              200
+            ],
+            "title": "8. ハッシュによる取得を共通の読取担当へ渡す"
+          },
+          {
+            "id": "area:file-tx-get",
+            "lines": [
+              777,
+              778,
+              779,
+              780,
+              781,
+              782,
+              783,
+              784,
+              785,
+              786,
+              787,
+              788,
+              789,
+              790,
+              791,
+              792,
+              793,
+              794,
+              795,
+              796,
+              797,
+              798,
+              799,
+              800,
+              801,
+              802,
+              803,
+              804,
+              805,
+              806,
+              807,
+              808,
+              809,
+              810,
+              811,
+              812,
+              813,
+              814,
+              815,
+              816,
+              817,
+              818,
+              819,
+              820,
+              821,
+              822,
+              823,
+              824,
+              825
+            ],
+            "title": "9. キャッシュ・保存済み履歴・プールから取引を探す"
+          },
+          {
+            "id": "area:file-pool-get",
+            "lines": [
+              697,
+              698,
+              699,
+              700,
+              701,
+              702,
+              703
+            ],
+            "title": "10. 公開の取引取得を内部プールにつなぐ"
+          }
+        ],
+        "url": "http://localhost:4398/explore.html?file=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=750"
+      },
+      "directContextPresent": false,
+      "status": "FAIL: specific authored context absent from Atlas options; route content is not equivalent to missing consumer"
+    },
+    {
+      "context": "tx:pool-test",
+      "source": {
+        "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "start": 349,
+        "end": 381,
+        "hash": "69cfe4e334cae1d378c4674ddbd8d62624fd27b1446b9789caaa78c3d827a755"
+      },
+      "observation": {
+        "availability": "2範囲に補助コメントがあります。関連する流れも、左の「この場で読む範囲」から切り替えられます。\n\nファイル全体を解説した数ではありません。",
+        "options": [
+          {
+            "text": "EthApiがtraitの操作を具体化する · L21–31",
+            "value": "context|tx:trait-implementation"
+          },
+          {
+            "text": "通常の送信経路を追う · L32–114",
+            "value": "context|tx:submit"
+          },
+          {
+            "text": "学習：送信の受付から、検証・プール追加・返答まで追う",
+            "value": "route|lesson:send"
+          },
+          {
+            "text": "学習：入力・送信先・追加の依頼と返答を原文で読む",
+            "value": "route|lesson:reading"
+          },
+          {
+            "text": "送信の処理：設定による転送・追加と、その返答",
+            "value": "route|operation:submit"
+          },
+          {
+            "text": "ファイルの役割：共通の送信処理と取得処理で、何を受け取り、どこへ渡して結果を返すか確かめる。",
+            "value": "route|file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs"
+          },
+          {
+            "text": "ファイルの役割：Ethereum向け送信で、転送・blob変換・通常追加の分岐と返答を確かめる。",
+            "value": "route|file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs"
+          },
+          {
+            "text": "部品：EthApiがtraitを実装し、ノード部品とプール追加の経路へつなぐことを確かめる。",
+            "value": "route|component:rpc:implementation"
+          }
+        ],
+        "stages": [
+          {
+            "id": "tx:submit",
+            "lines": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114
+            ],
+            "title": "1. 通常の送信経路を追う"
+          },
+          {
+            "id": "tx:queue",
+            "lines": [
+              489,
+              490,
+              491,
+              492,
+              493,
+              494,
+              495,
+              496,
+              497,
+              498,
+              499,
+              500,
+              501,
+              502,
+              503,
+              504
+            ],
+            "title": "2. 追加要求をチャネルへ送る"
+          },
+          {
+            "id": "area:send-receive",
+            "lines": [
+              113,
+              114,
+              115,
+              116,
+              117,
+              118,
+              119,
+              120,
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134,
+              135,
+              136,
+              137
+            ],
+            "title": "3. 内部キューから追加依頼を受け取る"
+          },
+          {
+            "id": "tx:batch",
+            "lines": [
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105
+            ],
+            "title": "4. バッチをプールへ引き渡す"
+          },
+          {
+            "id": "tx:pool",
+            "lines": [
+              495,
+              496,
+              497,
+              498,
+              499,
+              500,
+              501,
+              502,
+              503,
+              504,
+              505,
+              506,
+              507,
+              508,
+              509,
+              510,
+              511,
+              512,
+              513,
+              514,
+              515,
+              516,
+              517,
+              518,
+              519,
+              520,
+              521,
+              522,
+              523,
+              524,
+              525,
+              526,
+              527,
+              528
+            ],
+            "title": "5. 検証してプールに追加"
+          }
+        ],
+        "url": "http://localhost:4398/explore.html?file=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&line=349"
+      },
+      "directContextPresent": false,
+      "status": "FAIL: specific authored context absent from Atlas options; route content is not equivalent to missing consumer"
+    },
+    {
+      "context": "tx:trait-contract",
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "start": 65,
+        "end": 79,
+        "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+      },
+      "observation": {
+        "availability": "3範囲に補助コメントがあります。関連する流れも、左の「この場で読む範囲」から切り替えられます。\n\nファイル全体を解説した数ではありません。",
+        "options": [
+          {
+            "text": "デコードして送信者を復元 · L81–109",
+            "value": "context|tx:recover"
+          },
+          {
+            "text": "ハッシュによる取得を共通の読取担当へ渡す · L187–200",
+            "value": "context|area:file-tx-get-entry"
+          },
+          {
+            "text": "キャッシュ・保存済み履歴・プールから取引を探す · L777–825",
+            "value": "context|area:file-tx-get"
+          },
+          {
+            "text": "学習：問い合わせと送信を、入口から担当処理まで比べる",
+            "value": "route|lesson:rpc"
+          },
+          {
+            "text": "学習：送信の受付から、検証・プール追加・返答まで追う",
+            "value": "route|lesson:send"
+          },
+          {
+            "text": "学習：入力・送信先・追加の依頼と返答を原文で読む",
+            "value": "route|lesson:reading"
+          },
+          {
+            "text": "送信の処理：送信要求の入口と、その呼び出し先",
+            "value": "route|operation:rpc"
+          },
+          {
+            "text": "送信の処理：受信データの読み取りと送信者の復元",
+            "value": "route|operation:recover"
+          },
+          {
+            "text": "ファイルの役割：共通の送信処理と取得処理で、何を受け取り、どこへ渡して結果を返すか確かめる。",
+            "value": "route|file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs"
+          },
+          {
+            "text": "ファイルの役割：公開する操作の名前・型と、共通helperへ渡すハンドラーの責務を確かめる。",
+            "value": "route|file-role:crates/rpc/rpc-eth-api/src/core.rs"
+          },
+          {
+            "text": "部品：公開名・型・ハンドラーと、共通処理へ渡す位置を確かめる。",
+            "value": "route|component:rpc:interface"
+          },
+          {
+            "text": "部品：ブロック・状態・取引の共通helperを、実際の入力と戻り値から比べる。",
+            "value": "route|component:rpc:helpers"
+          },
+          {
+            "text": "領域の処理：受信したデータから送信者を求めるには？",
+            "value": "route|area:rpc:followup"
+          }
+        ],
+        "stages": [
+          {
+            "id": "tx:recover",
+            "lines": [
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109
+            ],
+            "title": "1. デコードして送信者を復元"
+          },
+          {
+            "id": "tx:recovery-hook",
+            "lines": [
+              1402,
+              1403,
+              1404,
+              1405,
+              1406,
+              1407,
+              1408,
+              1409,
+              1410,
+              1411,
+              1412,
+              1413,
+              1414,
+              1415,
+              1416,
+              1417,
+              1418,
+              1419,
+              1420,
+              1421,
+              1422,
+              1423,
+              1424,
+              1425,
+              1426,
+              1427,
+              1428,
+              1429,
+              1430,
+              1431,
+              1432,
+              1433,
+              1434,
+              1435,
+              1436,
+              1437,
+              1438,
+              1439,
+              1440,
+              1441,
+              1442,
+              1443,
+              1444,
+              1445,
+              1446,
+              1447,
+              1448,
+              1449,
+              1450,
+              1451,
+              1452,
+              1453,
+              1454,
+              1455,
+              1456,
+              1457,
+              1458,
+              1459,
+              1460,
+              1461,
+              1462,
+              1463,
+              1464,
+              1465,
+              1466
+            ],
+            "title": "2. デフォルトの復元フック"
+          },
+          {
+            "id": "tx:submit",
+            "lines": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114
+            ],
+            "title": "3. 通常の送信経路を追う"
+          },
+          {
+            "id": "tx:queue",
+            "lines": [
+              489,
+              490,
+              491,
+              492,
+              493,
+              494,
+              495,
+              496,
+              497,
+              498,
+              499,
+              500,
+              501,
+              502,
+              503,
+              504
+            ],
+            "title": "4. 追加要求をチャネルへ送る"
+          },
+          {
+            "id": "area:send-receive",
+            "lines": [
+              113,
+              114,
+              115,
+              116,
+              117,
+              118,
+              119,
+              120,
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134,
+              135,
+              136,
+              137
+            ],
+            "title": "5. 内部キューから追加依頼を受け取る"
+          },
+          {
+            "id": "tx:batch",
+            "lines": [
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105
+            ],
+            "title": "6. バッチをプールへ引き渡す"
+          },
+          {
+            "id": "tx:pool",
+            "lines": [
+              495,
+              496,
+              497,
+              498,
+              499,
+              500,
+              501,
+              502,
+              503,
+              504,
+              505,
+              506,
+              507,
+              508,
+              509,
+              510,
+              511,
+              512,
+              513,
+              514,
+              515,
+              516,
+              517,
+              518,
+              519,
+              520,
+              521,
+              522,
+              523,
+              524,
+              525,
+              526,
+              527,
+              528
+            ],
+            "title": "7. 検証してプールに追加"
+          },
+          {
+            "id": "area:file-tx-get-entry",
+            "lines": [
+              187,
+              188,
+              189,
+              190,
+              191,
+              192,
+              193,
+              194,
+              195,
+              196,
+              197,
+              198,
+              199,
+              200
+            ],
+            "title": "8. ハッシュによる取得を共通の読取担当へ渡す"
+          },
+          {
+            "id": "area:file-tx-get",
+            "lines": [
+              777,
+              778,
+              779,
+              780,
+              781,
+              782,
+              783,
+              784,
+              785,
+              786,
+              787,
+              788,
+              789,
+              790,
+              791,
+              792,
+              793,
+              794,
+              795,
+              796,
+              797,
+              798,
+              799,
+              800,
+              801,
+              802,
+              803,
+              804,
+              805,
+              806,
+              807,
+              808,
+              809,
+              810,
+              811,
+              812,
+              813,
+              814,
+              815,
+              816,
+              817,
+              818,
+              819,
+              820,
+              821,
+              822,
+              823,
+              824,
+              825
+            ],
+            "title": "9. キャッシュ・保存済み履歴・プールから取引を探す"
+          },
+          {
+            "id": "area:file-pool-get",
+            "lines": [
+              697,
+              698,
+              699,
+              700,
+              701,
+              702,
+              703
+            ],
+            "title": "10. 公開の取引取得を内部プールにつなぐ"
+          }
+        ],
+        "url": "http://localhost:4398/explore.html?file=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=65"
+      },
+      "directContextPresent": false,
+      "status": "FAIL: specific authored context absent from Atlas options; route content is not equivalent to missing consumer"
+    }
+  ],
+  "explicit": [
+    {
+      "context": "tx:batch-runner",
+      "url": "http://localhost:4398/reader.html?step=batch-runner",
+      "observation": {
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4398/index.html",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/index.html",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/explore.html",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/index.html#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/startup.html",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/implementation.html",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/",
+            "text": "⌘ Code Reading Studio",
+            "visible": false
+          },
+          {
+            "href": "https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921",
+            "text": "3d592ece6de8 ↗",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=flow",
+            "text": "元の説明へ戻る",
+            "visible": true
+          },
+          {
+            "href": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/batcher.rs#L114-L135",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/reth-LICENSE-MIT.txt",
+            "text": "MIT License",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "learning-content.js?v=3fc8778066c0",
+          "learning.js?v=207f4f1e6733",
+          "reading-help-data.js?v=b7788427d75e",
+          "reading-help.js?v=a1c25ee6c488",
+          "reading-coverage-data.js?v=76827db51bd9",
+          "area-reading.js?v=7b55586b98bd",
+          "studio.js?v=bd9d2c345539",
+          "reth-data.js?v=42bed01c4dcf",
+          "app.js?v=82ca031f8d8f"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Reth",
+        "url": "http://localhost:4398/reader.html?step=batch-runner",
+        "widgets": [
+          {
+            "code": "    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {\n        let mut this = self.project();\n\n        loop {\n            // Drain all available requests from the receiver\n            ready!(this.request_rx.poll_recv_many(cx, this.buf, *this.max_batch_size));\n\n            if !this.buf.is_empty() {\n                let batch = std::mem::take(this.buf);\n                let pool = this.pool.clone();\n                tokio::spawn(async move {\n                    Self::process_batch(&pool, batch).await;\n                });\n                this.buf.reserve(1);\n\n                continue;\n            }\n\n            // No requests available, return Pending to wait for more\n            return Poll::Pending;\n        }\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 119,
+                "text": "補助コメント · L119// 追加依頼がなければ待ち、届いたらバッファへ取り出します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 122,
+                "text": "補助コメント · L122// この回で処理する依頼を、受信バッファから取り出します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 124,
+                "text": "補助コメント · L124// process_batchでプールへの追加結果を待つタスクを始めます。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 133,
+                "text": "補助コメント · L133// 今すぐ進める入力がなければPendingを返します。追加成功の通知ではありません。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              114,
+              115,
+              116,
+              117,
+              118,
+              119,
+              120,
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134,
+              135
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "context": "tx:forward",
+      "url": "http://localhost:4398/reader.html?step=forward",
+      "observation": {
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4398/index.html",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/index.html",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/explore.html",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/index.html#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/startup.html",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/implementation.html",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/",
+            "text": "⌘ Code Reading Studio",
+            "visible": false
+          },
+          {
+            "href": "https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921",
+            "text": "3d592ece6de8 ↗",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=flow",
+            "text": "元の説明へ戻る",
+            "visible": true
+          },
+          {
+            "href": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/helpers/transaction.rs#L88-L105",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/reth-LICENSE-MIT.txt",
+            "text": "MIT License",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "learning-content.js?v=3fc8778066c0",
+          "learning.js?v=207f4f1e6733",
+          "reading-help-data.js?v=b7788427d75e",
+          "reading-help.js?v=a1c25ee6c488",
+          "reading-coverage-data.js?v=76827db51bd9",
+          "area-reading.js?v=7b55586b98bd",
+          "studio.js?v=bd9d2c345539",
+          "reth-data.js?v=42bed01c4dcf",
+          "app.js?v=82ca031f8d8f"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Reth",
+        "url": "http://localhost:4398/reader.html?step=forward",
+        "widgets": [
+          {
+            "code": "        // forward the transaction to the specific endpoint if configured.\n        if let Some(client) = self.raw_tx_forwarder() {\n            tracing::debug!(target: \"rpc::eth\", hash = %pool_transaction.hash(), \"forwarding raw transaction to forwarder\");\n            let rlp_hex = hex::encode_prefixed(&tx);\n\n            // broadcast raw transaction to subscribers if there is any.\n            self.broadcast_raw_transaction(tx);\n\n            let hash =\n                client.request(\"eth_sendRawTransaction\", (rlp_hex,)).await.inspect_err(|err| {\n                    tracing::debug!(target: \"rpc::eth\", %err, hash=% *pool_transaction.hash(), \"failed to forward raw transaction\");\n                }).map_err(EthApiError::other)?;\n\n            // Retain tx in local tx pool after forwarding, for local RPC usage.\n            let _ = self.inner.add_pool_transaction(origin, pool_transaction).await;\n\n            return Ok(hash);\n        }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 89,
+                "text": "補助コメント · L89// この分岐に入る場合は、後ろの通常のローカル追加経路とは異なる処理を行います。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 97,
+                "text": "補助コメント · L97// 元の取引を送信用の文字列にして転送し、先方が返したハッシュかエラーを受け取ります。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 102,
+                "text": "補助コメント · L102// 転送後にローカル追加も試みますが、この行の結果は_で受け取り、その成否を返答の条件にしていません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 104,
+                "text": "補助コメント · L104// ここで関数を終えます。下の通常経路へ続くわけではありません。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "context": "tx:pool-test",
+      "url": "http://localhost:4398/reader.html?step=pool-test",
+      "observation": {
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4398/index.html",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/index.html",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/explore.html",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/index.html#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/startup.html",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/implementation.html",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/",
+            "text": "⌘ Code Reading Studio",
+            "visible": false
+          },
+          {
+            "href": "https://github.com/paradigmxyz/reth/commit/3d592ece6de8c4559987416a544fc215fd6d6921",
+            "text": "3d592ece6de8 ↗",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=flow",
+            "text": "元の説明へ戻る",
+            "visible": true
+          },
+          {
+            "href": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/helpers/transaction.rs#L349-L381",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/reth-LICENSE-MIT.txt",
+            "text": "MIT License",
+            "visible": true
+          }
+        ],
+        "manual": [
+          {
+            "open": false
+          }
+        ],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "learning-content.js?v=3fc8778066c0",
+          "learning.js?v=207f4f1e6733",
+          "reading-help-data.js?v=b7788427d75e",
+          "reading-help.js?v=a1c25ee6c488",
+          "reading-coverage-data.js?v=76827db51bd9",
+          "area-reading.js?v=7b55586b98bd",
+          "studio.js?v=bd9d2c345539",
+          "reth-data.js?v=42bed01c4dcf",
+          "app.js?v=82ca031f8d8f"
+        ],
+        "stageClaims": [],
+        "title": "Code Reading Studio · Reth",
+        "url": "http://localhost:4398/reader.html?step=pool-test",
+        "widgets": [
+          {
+            "code": "    #[tokio::test]\n    async fn send_raw_transaction() {\n        let eth_api = mock_eth_api(Default::default());\n        let pool = eth_api.pool();\n\n        let tx_1 = raw_transfer_tx();\n\n        let tx_1_result = eth_api.send_raw_transaction(tx_1).await.unwrap();\n        assert_eq!(\n            pool.len(),\n            1,\n            \"expect 1 transaction in the pool, but pool size is {}\",\n            pool.len()\n        );\n\n        // https://etherscan.io/tx/0x48816c2f32c29d152b0d86ff706f39869e6c1f01dc2fe59a3c1f9ecf39384694\n        let tx_2 = Bytes::from(hex!(\n            \"02f9043c018202b7843b9aca00850c807d37a08304d21d94ef1c6e67703c7bd7107eed8303fbe6ec2554bf6b881bc16d674ec80000b903c43593564c000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000063e2d99f00000000000000000000000000000000000000000000000000000000000000030b000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001e0000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000001bc16d674ec80000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000065717fe021ea67801d1088cc80099004b05b64600000000000000000000000000000000000000000000000001bc16d674ec80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002bc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20001f4a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009e95fd5965fd1f1a6f0d4600000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000428dca9537116148616a5a3e44035af17238fe9dc080a0c6ec1e41f5c0b9511c49b171ad4e04c6bb419c74d99fe9891d74126ec6e4e879a032069a753d7a2cfa158df95421724d24c0e9501593c09905abf3699b4a4405ce\"\n        ));\n\n        let tx_2_result = eth_api.send_raw_transaction(tx_2).await.unwrap();\n        assert_eq!(\n            pool.len(),\n            2,\n            \"expect 2 transactions in the pool, but pool size is {}\",\n            pool.len()\n        );\n\n        assert!(pool.get(&tx_1_result).is_some(), \"tx1 not found in the pool\");\n        assert!(pool.get(&tx_2_result).is_some(), \"tx2 not found in the pool\");\n        assert_eq!(pool.get(&tx_1_result).unwrap().origin, TransactionOrigin::Local);\n        assert_eq!(pool.get(&tx_2_result).unwrap().origin, TransactionOrigin::Local);\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 351,
+                "text": "補助コメント · L351// 実ネットワークへの送信ではなく、mock_eth_apiで作った環境を使います。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 354,
+                "text": "補助コメント · L354// 送金の署名済みデータを作るテスト用の関数です。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 356,
+                "text": "補助コメント · L356// 送信がエラーならunwrapでこのテストは失敗します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 357,
+                "text": "補助コメント · L357// 送信後のpool.len()が1であることを検証します。ブロック取り込みや実際の残高変化を確認するテストではありません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 365,
+                "text": "補助コメント · L365// この長いバイト列もテスト入力です。テストはネットワークへ新しい送金を発行するものではありません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 369,
+                "text": "補助コメント · L369// 同じmockのAPIで送信結果のハッシュを受け取ります。エラーならunwrapでテストは失敗します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 370,
+                "text": "補助コメント · L370// 二件目の送信後はpool.len()が2であることを確認します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 377,
+                "text": "補助コメント · L377// 二つの送信結果を識別子にして、プールで各取引を見つけられるか確認します。ブロック内の取引を探す検査とは別です。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 379,
+                "text": "補助コメント · L379// 取得した各取引のoriginがLocalか確認します。RPC側で指定した受付元が保持されることを期待するassertです。実ネットワーク全体で共有されたという意味ではありません。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "",
+            "numbers": [
+              349,
+              350,
+              351,
+              352,
+              353,
+              354,
+              355,
+              356,
+              357,
+              358,
+              359,
+              360,
+              361,
+              362,
+              363,
+              364,
+              365,
+              366,
+              367,
+              368,
+              369,
+              370,
+              371,
+              372,
+              373,
+              374,
+              375,
+              376,
+              377,
+              378,
+              379,
+              380,
+              381
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "context": "tx:trait-contract",
+      "url": "http://localhost:4398/lenses.html#lens=rust&topic=trait",
+      "observation": {
+        "io": "",
+        "links": [
+          {
+            "href": "http://localhost:4398/index.html",
+            "text": "⌘\nCode Reading Studio",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/index.html",
+            "text": "学ぶ",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/explore.html",
+            "text": "コードを調べる",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/index.html#lesson=reading",
+            "text": "読んでいた学習へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/startup.html",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/implementation.html",
+            "text": "",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=structure",
+            "text": "構造から読む",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=flow",
+            "text": "動作から読む",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=rust",
+            "text": "Rust・設計から読む",
+            "visible": false
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=rust&topic=borrow",
+            "text": "値を貸す・渡す",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=rust&topic=future",
+            "text": "後で結果を受け取る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=rust&topic=result",
+            "text": "失敗を戻り値で表す",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=rust&topic=trait",
+            "text": "共通処理と実装を分ける",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=rust&topic=channel",
+            "text": "要求と返答を分離する",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=flow&step=rpc",
+            "text": "処理の説明へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/reader.html?step=rpc&from=lenses.html%23lens%3Drust%26topic%3Dtrait",
+            "text": "根拠の実コードへ →",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/zoom.html?area=rpc&c=interface&f=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fcore.rs",
+            "text": "モジュールを探索 →",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=flow&step=recover",
+            "text": "処理の説明へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/reader.html?step=recover&from=lenses.html%23lens%3Drust%26topic%3Dtrait",
+            "text": "根拠の実コードへ →",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/zoom.html?area=rpc&c=helpers&f=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs",
+            "text": "モジュールを探索 →",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=flow&step=submit",
+            "text": "処理の説明へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/reader.html?step=submit&from=lenses.html%23lens%3Drust%26topic%3Dtrait",
+            "text": "根拠の実コードへ →",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/zoom.html?area=rpc&c=implementation&f=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs",
+            "text": "モジュールを探索 →",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/lenses.html#lens=flow&step=pool",
+            "text": "処理の説明へ戻る",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/reader.html?step=pool&from=lenses.html%23lens%3Drust%26topic%3Dtrait",
+            "text": "根拠の実コードへ →",
+            "visible": true
+          },
+          {
+            "href": "http://localhost:4398/zoom.html?area=pool&c=1&f=crates%2Ftransaction-pool%2Fsrc%2Flib.rs",
+            "text": "モジュールを探索 →",
+            "visible": true
+          }
+        ],
+        "manual": [],
+        "prefs": [
+          {
+            "axis": "chain",
+            "value": "new"
+          },
+          {
+            "axis": "code",
+            "value": "first"
+          }
+        ],
+        "role": "",
+        "scripts": [
+          "lenses-pack.js?v=f54fff8c73bb",
+          "lenses.js?v=8ddefc71dbc2",
+          "lenses-page.js?v=cc3e8c2e3a1a",
+          "learning-content.js?v=3fc8778066c0",
+          "learning.js?v=207f4f1e6733",
+          "reading-help-data.js?v=b7788427d75e",
+          "reading-help.js?v=a1c25ee6c488",
+          "reading-coverage-data.js?v=76827db51bd9",
+          "area-reading.js?v=7b55586b98bd",
+          "studio.js?v=bd9d2c345539"
+        ],
+        "stageClaims": [],
+        "title": "3つの見方でRethを読む | Code Reading Studio",
+        "url": "http://localhost:4398/lenses.html#lens=rust&topic=trait",
+        "widgets": [
+          {
+            "code": "    /// Handler for: `eth_sendRawTransaction`\n    async fn send_raw_transaction(&self, tx: Bytes) -> RpcResult<B256> {\n        trace!(target: \"rpc::eth\", ?tx, \"Serving eth_sendRawTransaction\");\n        Ok(EthTransactions::send_raw_transaction(self, tx).await?)\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 921,
+                "text": "補助コメント · L921// send_raw_transactionという関数が、txという名前でバイト列を受け取ります。&selfはこの処理の対象です。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 922,
+                "text": "補助コメント · L922// trace!は調査用のログを記録します。?txはログにtxを表示する指定で、失敗を返す演算子ではありません。この行自体はプール追加やブロック取り込みを行いません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 923,
+                "text": "補助コメント · L923// L923 は EthTransactions の共通ヘルパーへ渡す箇所です。trait の約束は同ページの「約束と既定実装」、EthApi の impl は「具体実装」の節で確かめます。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "tx:rpc",
+            "numbers": [
+              920,
+              921,
+              922,
+              923,
+              924
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          },
+          {
+            "code": "    /// Decodes and recovers the transaction and submits it to the pool.\n    ///\n    /// Returns the hash of the transaction.\n    fn send_raw_transaction(\n        &self,\n        tx: Bytes,\n    ) -> impl Future<Output = Result<B256, Self::Error>> + Send {\n        async move {\n            let pool_transaction = self.recover_raw_pool_transaction(&tx)?;\n            self.send_pool_transaction(\n                TransactionOrigin::Local,\n                WithEncoded::new(tx, pool_transaction),\n            )\n            .await\n        }\n    }\n\n    /// Decodes and recovers a raw pool transaction, sharing sender recovery when configured.\n    fn recover_raw_pool_transaction(&self, tx: &[u8]) -> Result<PoolTx<Self::Pool>, Self::Error> {\n        match self.eth_api_settings().sender_recovery_cache.as_ref() {\n            Some(cache) => {\n                <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction_with_cache(\n                    tx, cache,\n                )\n            }\n            None => <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction(tx),\n        }\n        .map_err(Self::Error::from_eth_err)\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 84,
+                "text": "補助コメント · L84// 元のバイト列txを受け取ります。これはFutureを返す関数で、その非同期処理が完了すると後続の送信処理のハッシュまたはSelf::Errorが得られます。途中の復元済み取引だけを返す関数ではありません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 86,
+                "text": "補助コメント · L86// txは元のバイト列です。この関数全体は後続の送信処理まで待ち、ハッシュまたはエラーを返します。通常はローカル追加結果、転送設定がある場合は転送先RPCの結果に従います。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 87,
+                "text": "補助コメント · L87// Self::Error は現在の実装が使うエラー型です。L90 の self.send_pool_transaction は具体実装へ渡す境界で、同ページの「具体実装：EthApi が EthTransactions を実装する」に対応します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 89,
+                "text": "補助コメント · L89// 元のデータを借りて読み、プールで扱うトランザクションを得ます。失敗したら?でこのasyncブロックから返ります。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 92,
+                "text": "補助コメント · L92// 元のバイト列txと、復元したpool_transactionを組にします。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 94,
+                "text": "補助コメント · L94// 次の送信処理が終わるのを待ち、その結果をこの関数の結果にします。後続の通常経路と転送経路では、成功として返す条件が異なります。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 99,
+                "text": "補助コメント · L99// Self::Pool は実装が提供するプール型で、継承する trait から得る関連型も含みます。Self は常に EthTransactions という trait 自体の型、という意味ではありません。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "tx:recover",
+            "numbers": [
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          },
+          {
+            "code": "    async fn send_pool_transaction(\n        &self,\n        origin: reth_transaction_pool::TransactionOrigin,\n        tx: WithEncoded<PoolTx<Self::Pool>>,\n    ) -> Result<B256, Self::Error> {\n        let (tx, mut pool_transaction) = tx.split();\n\n        // Optionally convert legacy blob sidecars to EIP-7594 format when Osaka is active\n        // This is opt-in via --rpc.force-blob-sidecar-upcasting\n        if self.inner.force_blob_sidecar_upcasting() && pool_transaction.is_eip4844() {\n            let EthBlobTransactionSidecar::Present(sidecar) = pool_transaction.take_blob() else {\n                return Err(EthApiError::PoolError(RpcPoolError::Eip4844(\n                    Eip4844PoolTransactionError::MissingEip4844BlobSidecar,\n                )));\n            };\n            let sidecar = sidecar.into_sidecar();\n\n            let sidecar = match sidecar {\n                BlobTransactionSidecarVariant::Eip4844(sidecar) => {\n                    let latest = self\n                        .provider()\n                        .latest_header()?\n                        .ok_or(EthApiError::HeaderNotFound(BlockId::latest()))?;\n                    // Convert to EIP-7594 if next block is Osaka\n                    if self\n                        .provider()\n                        .chain_spec()\n                        .is_osaka_active_at_timestamp(latest.timestamp().saturating_add(12))\n                    {\n                        BlobTransactionSidecarVariant::Eip7594(\n                            self.blob_sidecar_converter().convert(sidecar).await.ok_or_else(\n                                || {\n                                    RpcPoolError::Eip4844(\n                                        Eip4844PoolTransactionError::InvalidEip4844Blob(\n                                            BlobTransactionValidationError::InvalidProof,\n                                        ),\n                                    )\n                                },\n                            )?,\n                        )\n                    } else {\n                        BlobTransactionSidecarVariant::Eip4844(sidecar)\n                    }\n                }\n                sidecar => sidecar,\n            };\n\n            pool_transaction =\n                EthPoolTransaction::try_from_eip4844(pool_transaction.into_consensus(), sidecar)\n                    .ok_or_else(|| {\n                        RpcPoolError::Eip4844(\n                            Eip4844PoolTransactionError::MissingEip4844BlobSidecar,\n                        )\n                    })?;\n        }\n\n        // forward the transaction to the specific endpoint if configured.\n        if let Some(client) = self.raw_tx_forwarder() {\n            tracing::debug!(target: \"rpc::eth\", hash = %pool_transaction.hash(), \"forwarding raw transaction to forwarder\");\n            let rlp_hex = hex::encode_prefixed(&tx);\n\n            // broadcast raw transaction to subscribers if there is any.\n            self.broadcast_raw_transaction(tx);\n\n            let hash =\n                client.request(\"eth_sendRawTransaction\", (rlp_hex,)).await.inspect_err(|err| {\n                    tracing::debug!(target: \"rpc::eth\", %err, hash=% *pool_transaction.hash(), \"failed to forward raw transaction\");\n                }).map_err(EthApiError::other)?;\n\n            // Retain tx in local tx pool after forwarding, for local RPC usage.\n            let _ = self.inner.add_pool_transaction(origin, pool_transaction).await;\n\n            return Ok(hash);\n        }\n\n        // broadcast raw transaction to subscribers if there is any.\n        self.broadcast_raw_transaction(tx);\n\n        let AddedTransactionOutcome { hash, .. } =\n            self.inner.add_pool_transaction(origin, pool_transaction).await?;\n\n        Ok(hash)\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 32,
+                "text": "補助コメント · L32// 取引の出所originと、元のバイト列を添えたプール用取引を受け取る非同期処理です。完了時の結果はハッシュまたはSelf::Errorです。通常の追加と転送設定時の返答の出所は、この中の分岐で分かれます。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 35,
+                "text": "補助コメント · L35// この send_pool_transaction は、同ページの「具体実装」にある impl EthTransactions for EthApi の内側です。Self::Pool / Self::Error は EthApi に結び付く型です。共通処理から、この Ethereum 向け実装へ制御が移ります。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 37,
+                "text": "補助コメント · L37// 元のバイト列と、プールで扱うトランザクションを取り出します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 89,
+                "text": "補助コメント · L89// 転送先がある場合は、別のRPCから結果を受け取る経路へ進みます。その前には設定に応じたblob sidecarの変換があります。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 97,
+                "text": "補助コメント · L97// 元の取引を転送先へ送り、そのRPCのハッシュまたはエラーを受け取ります。転送に失敗した場合は、この処理もエラーを返します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 102,
+                "text": "補助コメント · L102// 転送成功後、ローカルへの追加も試みて待ちます。ただし結果をlet _で捨てるため、ローカル追加が失敗しても、ここで転送先の成功を失敗へ変えません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 104,
+                "text": "補助コメント · L104// 転送先RPCから得たhashを返して関数を終えます。下の通常経路へ続くわけではなく、ローカルのプール追加成功を保証する返答でもありません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 111,
+                "text": "補助コメント · L111// 転送先がない通常経路で、プールへの追加を依頼して結果を待ちます。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 113,
+                "text": "補助コメント · L113// この通常経路では、ローカル追加の成功結果から取り出したhashを返します。ブロックへの取り込みや確定の通知ではありません。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "tx:submit",
+            "numbers": [
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              92,
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          },
+          {
+            "code": "    async fn add_transaction(\n        &self,\n        origin: TransactionOrigin,\n        transaction: Self::Transaction,\n    ) -> PoolResult<AddedTransactionOutcome> {\n        let tx = self.validate(origin, transaction).await;\n        let mut results = self.pool.add_transactions(origin, std::iter::once(tx));\n        results.pop().expect(\"result length is the same as the input\")\n    }\n\n    async fn add_transactions(\n        &self,\n        origin: TransactionOrigin,\n        transactions: Vec<Self::Transaction>,\n    ) -> Vec<PoolResult<AddedTransactionOutcome>> {\n        if transactions.is_empty() {\n            return Vec::new()\n        }\n        let validated =\n            self.pool.validator().validate_transactions_with_origin(origin, transactions).await;\n        self.pool.add_transactions(origin, validated)\n    }\n\n    async fn add_transactions_with_origins(\n        &self,\n        transactions: Vec<(TransactionOrigin, Self::Transaction)>,\n    ) -> Vec<PoolResult<AddedTransactionOutcome>> {\n        if transactions.is_empty() {\n            return Vec::new()\n        }\n        let origins: Vec<_> = transactions.iter().map(|(origin, _)| *origin).collect();\n        let validated = self.pool.validator().validate_transactions(transactions).await;\n        self.pool.add_transactions_with_origins(origins.into_iter().zip(validated))\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 495,
+                "text": "補助コメント · L495// 出所originと一件の取引を受け取り、検証と追加を待つ非同期処理です。完了値は、その取引の追加結果AddedTransactionOutcomeまたはPoolErrorです。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 498,
+                "text": "補助コメント · L498// L498 の Self::Transaction はこのプール実装が扱う関連型です。EthApi 側の Self と、ここでの Self は別の実装を指します。型名が Self というだけで同じ型とは限りません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 500,
+                "text": "補助コメント · L500// この要求のトランザクションを検証します。具体的な検証条件は、この抜粋だけでは分かりません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 501,
+                "text": "補助コメント · L501// 検証結果を内部プールへ渡します。検証の結果だけでなく、追加の成否も次に返します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 502,
+                "text": "補助コメント · L502// 1件分の結果を取り出して返します。ブロック取り込みやレシートを待つ処理ではありません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 505,
+                "text": "補助コメント · L505// 同じ出所originを持つ複数取引を受け取る非同期処理です。完了すると、各取引の追加結果またはエラーを並べたVecを返します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 518,
+                "text": "補助コメント · L518// 出所と取引を組にした複数件を受け取る非同期処理です。完了すると、それぞれの追加結果またはエラーを並べたVecを返します。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "tx:pool",
+            "numbers": [
+              495,
+              496,
+              497,
+              498,
+              499,
+              500,
+              501,
+              502,
+              503,
+              504,
+              505,
+              506,
+              507,
+              508,
+              509,
+              510,
+              511,
+              512,
+              513,
+              514,
+              515,
+              516,
+              517,
+              518,
+              519,
+              520,
+              521,
+              522,
+              523,
+              524,
+              525,
+              526,
+              527,
+              528
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          },
+          {
+            "code": "pub trait EthTransactions: LoadTransaction<Provider: BlockReaderIdExt> {\n    /// Returns a handle for signing data.\n    ///\n    /// Signer access in default (L1) trait method implementations.\n    fn signers(&self) -> &SignersForRpc<Self::Provider, Self::NetworkTypes>;\n\n    /// Returns a list of addresses owned by provider.\n    fn accounts(&self) -> Vec<Address> {\n        self.signers().read().iter().flat_map(|s| s.accounts()).collect()\n    }\n\n    /// Returns the timeout duration for `send_raw_transaction_sync` RPC method.\n    fn send_raw_transaction_sync_timeout(&self) -> Duration {\n        self.eth_api_settings().send_raw_transaction_sync_timeout\n    }",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 65,
+                "text": "補助コメント · L65// L65 が trait の宣言、L69 の signers は実装が提供する操作です。L72 の accounts には本体があり、共通の既定処理として使えます。同ページの「デコードして送信者を復元」に send_raw_transaction の既定処理があります。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 69,
+                "text": "補助コメント · L69// 本体のない宣言なので、実装する型がsignersの処理を用意します。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 72,
+                "text": "補助コメント · L72// このメソッドには本体があります。実装側のsignersを呼んで、アドレス一覧を集めます。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "tx:trait-contract",
+            "numbers": [
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          },
+          {
+            "code": "impl<N, Rpc> EthTransactions for EthApi<N, Rpc>\nwhere\n    N: RpcNodeCore,\n    EthApiError: FromEvmError<N::Evm>,\n    Rpc: RpcConvert<Primitives = N::Primitives, Error = EthApiError>,\n{\n    #[inline]\n    fn signers(&self) -> &SignersForRpc<Self::Provider, Self::NetworkTypes> {\n        self.inner.signers()\n    }\n",
+            "comments": [
+              {
+                "adjacent": true,
+                "line": 21,
+                "text": "補助コメント · L21// L21 の impl が具体型と trait を結び付け、L23–25 が利用する型の条件を示します。L28 の signers は EthApi 向けの処理です。同ページの「通常の送信経路を追う」に send_pool_transaction の実装があります。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 23,
+                "text": "補助コメント · L23// where以下はNやRpcに必要な条件です。あらゆる型の組み合わせに使えるという意味ではありません。",
+                "visible": true
+              },
+              {
+                "adjacent": true,
+                "line": 29,
+                "text": "補助コメント · L29// trait側で本体のなかったsignersを、内部の値を返す処理として実装します。",
+                "visible": true
+              }
+            ],
+            "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+            "controls": [
+              {
+                "checked": true,
+                "name": "basics",
+                "visible": true
+              },
+              {
+                "checked": true,
+                "name": "trace",
+                "visible": true
+              }
+            ],
+            "id": "tx:trait-implementation",
+            "numbers": [
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "sourceOpen": true,
+            "sourceVisible": true
+          }
+        ]
+      }
+    }
+  ],
+  "observedAt": "2026-10-25T16:56:47.255Z",
+  "outerValidationProposal": {
+    "generic": "Enumerate actual generic forSource selection rules over all 148 contexts, not metadata-only 88 routes.",
+    "explicit": "Enumerate pack.steps plus pack.details and five Rust topics with full topic-specific claims and support contexts; retain source-versus-related example distinction.",
+    "closure": "Cross-check producer invocation sites against inventory plus rendered routes; each consumer must resolve its original source and original teaching claims.",
+    "negative": "Contained source bytes are not claim equivalence. Zero consumers must be demonstrated against actual adapters, never inferred from missing metadata records.",
+    "gates": "Require UI route reachability, source-fit and fallback on raw fetch failure; metadata flag alone cannot pass."
+  },
+  "conclusion": "All six excluded contexts are actively consumed by generic source viewer; four also have explicit legacy/Rust consumers. Three unique ranges have no Atlas direct option or containing indexed source. A previous globally-unused assertion was false.",
+  "genericSourceVerification": [
+    {
+      "context": "area:pool-validation",
+      "codeMatch": true,
+      "lineMatch": true,
+      "hintsMatch": true,
+      "hintsCountMatch": true
+    },
+    {
+      "context": "area:rpc-recovery",
+      "codeMatch": true,
+      "lineMatch": true,
+      "hintsMatch": true,
+      "hintsCountMatch": true
+    },
+    {
+      "context": "tx:batch-runner",
+      "codeMatch": true,
+      "lineMatch": true,
+      "hintsMatch": true,
+      "hintsCountMatch": true
+    },
+    {
+      "context": "tx:forward",
+      "codeMatch": true,
+      "lineMatch": true,
+      "hintsMatch": true,
+      "hintsCountMatch": true
+    },
+    {
+      "context": "tx:pool-test",
+      "codeMatch": true,
+      "lineMatch": true,
+      "hintsMatch": true,
+      "hintsCountMatch": true
+    },
+    {
+      "context": "tx:trait-contract",
+      "codeMatch": true,
+      "lineMatch": true,
+      "hintsMatch": true,
+      "hintsCountMatch": true
+    }
+  ],
+  "rootFailureMaintained": true,
+  "semanticsLimits": "This diagnosis proves actual consumers and missing discoverability, not a fresh semantic approval of all six contexts or equivalence between generic and topic claims."
+}

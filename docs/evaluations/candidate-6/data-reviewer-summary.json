@@ -1,0 +1,697 @@
+{
+  "candidate": 6,
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "technicalStatus": "R1 diagnostic complete; no R2 acceptance",
+  "candidateOverallStatus": "FAIL: Atlas registry excludes six active generic consumers and four legacy/Rust consumers; independent B/C failure preserved",
+  "summary": {
+    "ownerUnits": 30,
+    "staticCatalogueDestinations": 171,
+    "localCatalogueDestinations": 146,
+    "roleSurfaces": 38,
+    "rpcComponentSurfaces": 4,
+    "sourceWidgets": 351,
+    "uniqueSourceContexts": 93,
+    "adjacentHints": 1889,
+    "controlsCases": 42,
+    "controlsStates": 168,
+    "nonemptyDraftCases": 2,
+    "draftCheckboxStates": 16,
+    "draftProfileStates": 24
+  },
+  "units": [
+    {
+      "id": "component:node",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:rpc",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Four authored RPC processing cards were visited as separate static surfaces with same-page source, stage claims and four controls combinations; base area is catalogue plus area explanation owned by C.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:pool",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:network",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:sync",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:engine",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:execution",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:payload",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:storage",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:extension",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "component:foundation",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "not-applicable",
+          "G2": "not-applicable",
+          "G3": "not-applicable",
+          "G4": "not-applicable",
+          "G5": "pass",
+          "G6": "pass-R1-only"
+        },
+        "applicability": "Structure catalogue explicitly states responsibility and input/output unconfirmed. Applicable evidence is pinned membership and source/file navigation; no process explanation is silently counted.",
+        "evidence": "data-reviewer-ui.json static/localCatalogues; componentControls for RPC; data-reviewer-verification.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/transaction-pool/src/batcher.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/transaction-pool/src/lib.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/rpc/rpc/src/eth/core.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:bin/reth/src/main.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/ethereum/cli/src/app.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/cli/runner/src/lib.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/cli/commands/src/node.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/node/builder/src/launch/engine.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/node/builder/src/components/builder.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/tree/mod.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/net/network/src/manager.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/backfill.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/launch.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/chain.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/engine.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    },
+    {
+      "id": "file-role:crates/node/builder/src/handle.rs",
+      "round1": {
+        "status": "observed-applicable-technical-gates",
+        "gates": {
+          "G1": "pass-R1-only",
+          "G2": "pass-R1-only",
+          "G3": "pass-R1-only",
+          "G4": "pass-R1-only",
+          "G5": "pass-R1-only",
+          "G6": "pass-R1-only"
+        },
+        "g1g3Basis": "Exact unchanged semantic source/claim carry + C6 independently reviewed delta; new static/local rendered full claim text, source path and original code verified. No claim source byte presence alone proves meaning.",
+        "g4Basis": "Both role views four combinations and selected line/URL preserved. No editor in role card itself; actual local explicit-save editor and static new-question draft measured separately in same frozen version.",
+        "g5Basis": "No repeated source lines across concurrently expanded role stages; actual optional catalog and selected function/source reference observed.",
+        "evidence": "data-reviewer-ui.json fileRoles; data-reviewer-verification.json; source-review*.json"
+      },
+      "round2": {
+        "status": "not-measured",
+        "reason": "Parent stopped R2 after candidate6 G6 FAIL; R1 diagnosis continues without runtime edits"
+      }
+    }
+  ],
+  "round1Errors": [],
+  "preservedEvaluatorAttempts": [
+    "data-reviewer-ui.json failures/instrumentationHistory",
+    "data-reviewer-verification-initial-attempt.json",
+    "draftCases setup-interrupted-before-measurement (no notes saved)"
+  ],
+  "sourceFitEvidence": [
+    "source-review.json",
+    "source-review-macro-contract-delta.json",
+    "source-review-macro-optional-delta.json"
+  ],
+  "globalFailureEvidence": [
+    "registry-exclusion-findings.json",
+    "a-registry-exclusion-diagnosis.json"
+  ],
+  "notMeasured": [
+    "All30 owner R2 held by parent; no R2 started.",
+    "No fresh semantic re-review of all148 contexts.",
+    "Human learning and complete1283 Rust-file explanation coverage remain unmeasured/unmet."
+  ],
+  "scopeLimits": [
+    "All observations new for frozen C6 round1; no previous UI success carried.",
+    "Long source DOM rows and controls visible after opening; this does not prove every row simultaneously within viewport.",
+    "Structure catalogue167 static cards and146 local crates assert file membership and navigation only, not uncreated process explanations; RPC4 actual processing claims evaluated separately.",
+    "G5 human understanding and full1283 source explanation coverage not measured or claimed.",
+    "R2 held by parent after independent C6 G6 failure; no two-round acceptance claimed."
+  ],
+  "safety": {
+    "runtimeEdits": 0,
+    "userNotesSavedOrDeleted": 0,
+    "readmarksExplicitlyChanged": 0,
+    "profileRestored": "localhost local/static new/first",
+    "temporaryDraftRestored": true
+  },
+  "recordedAt": "2026-10-25T16:59:58.345314+00:00"
+}

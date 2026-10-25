@@ -1,0 +1,47 @@
+{
+  "candidate": 6,
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "findings": [
+    {
+      "id": "B6-EVAL-001",
+      "kind": "evaluator-error",
+      "status": "retained",
+      "where": "round1/reth action1",
+      "finding": "Selector data-learning-flow did not exist; action produced no UI transition. Fresh DOM showed data-reading-phase and next action succeeded.",
+      "rawAttempts": 1,
+      "scoredConservatively": 1,
+      "productFailure": false
+    },
+    {
+      "id": "B6-G5-001",
+      "kind": "remaining-reading-load",
+      "status": "concern-not-human-measured",
+      "where": "reth phases3/4",
+      "finding": "One phase choice opens 15 source contexts/965 original rows; next opens16/735. Phase selection solves access count, but a reader must still move across substantial original code and per-source inner scrolling.",
+      "doesNotDeclareFailFromCountAlone": true
+    },
+    {
+      "id": "B6-G5-002",
+      "kind": "remaining-reading-load",
+      "status": "concern-not-human-measured",
+      "where": "startup phase2;send/reading phase4",
+      "finding": "Startup handoff phase has11 contexts/367 rows; data/state inspection phase has4/311. No time-to-understand or unaided retention was measured."
+    },
+    {
+      "id": "B6-PROOF-001",
+      "kind": "improved-proof-access",
+      "status": "observed",
+      "where": "reading both rounds",
+      "finding": "RPC L923 implementation jump reaches recover, back returns RPC selected L923; phase choices expose queue/batch/validation/internal-add source so acceptance secondary question no longer rests on2 snippets alone."
+    },
+    {
+      "id": "B6-PROOF-002",
+      "kind": "improved-condition-aid",
+      "status": "observed",
+      "where": "blockchain/startup network",
+      "finding": "Manager1194–1197/1202 and budget49–58 distinguish limit reached/maybe work/wake/Pending. Macro header selected at40 has a contract hint; optional syntax term shown in DOM is macro-optional rather than generic error propagation.",
+      "g4DictionaryInteractionNotMeasuredInTheseLearningTasks": true
+    }
+  ],
+  "priorCandidateFailuresPreserved": true
+}

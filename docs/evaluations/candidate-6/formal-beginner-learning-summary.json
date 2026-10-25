@@ -1,0 +1,312 @@
+{
+  "candidate": 6,
+  "kind": "formal cold-document 7-learning-task x2 warm-AI simulation",
+  "protocol": "learning-protocol.json v3",
+  "freezeRuntimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "sourceDataHash": "b7788427d75e8db45ed05d0c14a051806b72e970949a07d1ceef8cb4f7529247",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "roundsComplete": 2,
+  "tasksComplete": 14,
+  "persona": {
+    "chain": "new",
+    "code": "other",
+    "softwareExperience": true,
+    "origin": "http://localhost:4317"
+  },
+  "rawAttemptCounts": {
+    "1": [
+      3,
+      2,
+      4,
+      4,
+      4,
+      4,
+      6
+    ],
+    "2": [
+      3,
+      2,
+      4,
+      3,
+      4,
+      4,
+      6
+    ]
+  },
+  "scoredConservativeCounts": {
+    "1": [
+      3,
+      2,
+      4,
+      4,
+      4,
+      4,
+      6
+    ],
+    "2": [
+      3,
+      2,
+      4,
+      3,
+      4,
+      4,
+      6
+    ]
+  },
+  "actualUIActionTotal": 52,
+  "rawAttemptTotal": 53,
+  "maxScoredLearningActions": 6,
+  "taskActionLimit": 10,
+  "allPagesColdReloaded": true,
+  "allInitialProfilesCorrect": true,
+  "allIndependentAssetDigestsStableWithinAndAcrossTasks": true,
+  "observedAssetDigest": "01c7d764b3d21b2908dbabba63d8a00414dd332d9106810d0a17d37d48dddaaf",
+  "observedLessonDigest": "5b318fab5cd854db6bea1795294969d87112879ed36a76ec9d7342fcfcedb039",
+  "digestMethodCaveat": "B independent map digest is a different asset inventory and algorithm from root freeze runtimeHash; both recorded, not asserted equal. Browser loaded source-data URL version and full captured file SHA match freeze sourceDataHash.",
+  "allObservedSourceDataHashesMatchFreeze": true,
+  "allCitedRowsAvailableInOpenedCapturedDOM": true,
+  "selfRatings": {
+    "centralConceptWithSourceEvidence": 14,
+    "selectedMajorConditionsAndReplyEvidence": 14,
+    "fullyReadAllOriginals": 0,
+    "global108Acceptance": "not-assessed-by-this-artifact",
+    "humanComprehension": "not-verified"
+  },
+  "records": [
+    {
+      "path": "formal-r1-blockchain.json",
+      "round": 1,
+      "lesson": "blockchain",
+      "scoredActions": 3,
+      "openedContexts": 4,
+      "totalStageContexts": 4,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-for-page-claims",
+        "unresolved": [],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r1-ethereum.json",
+      "round": 1,
+      "lesson": "ethereum",
+      "scoredActions": 2,
+      "openedContexts": 3,
+      "totalStageContexts": 3,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-for-page-claims",
+        "unresolved": [],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r1-rpc.json",
+      "round": 1,
+      "lesson": "rpc",
+      "scoredActions": 4,
+      "openedContexts": 5,
+      "totalStageContexts": 5,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-for-page-claims",
+        "unresolved": [
+          "送信成功の分岐詳細は次の送信ページで必要。ネットワーク参加自体をこの5範囲で実証したとはしない。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r1-reth.json",
+      "round": 1,
+      "lesson": "reth",
+      "scoredActions": 4,
+      "openedContexts": 49,
+      "totalStageContexts": 55,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-with-selected-major-condition-evidence",
+        "unresolved": [
+          "phase3は15範囲965原文行、phase4は16範囲735行あり、選択回数が減っても初学者の読解負荷は残る。",
+          "1回目のセレクタ誤りは評価器エラーとして失敗操作を計上。画面上ボタン自体の不具合ではない。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r1-send.json",
+      "round": 1,
+      "lesson": "send",
+      "scoredActions": 4,
+      "openedContexts": 19,
+      "totalStageContexts": 19,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-with-major-condition-and-reply-evidence",
+        "unresolved": [
+          "phase4だけで311原文行、全19を初見の人間が理解できる時間は測定していない。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r1-startup.json",
+      "round": 1,
+      "lesson": "startup",
+      "scoredActions": 4,
+      "openedContexts": 37,
+      "totalStageContexts": 37,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-with-major-startup-and-wait-evidence",
+        "unresolved": [
+          "設定引渡しだけで11範囲367行。構成を追うことと全runtimeの理解は別。",
+          "treeの全待機/保存圧制御、pipelineの全stageはこの回答の実読範囲外。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r1-reading.json",
+      "round": 1,
+      "lesson": "reading",
+      "scoredActions": 6,
+      "openedContexts": 19,
+      "totalStageContexts": 19,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-with-major-condition-and-reply-evidence",
+        "unresolved": [
+          "読む手順の中心質問に対して19範囲の送信経路を読むため、全体量の負担は残る。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r2-blockchain.json",
+      "round": 2,
+      "lesson": "blockchain",
+      "scoredActions": 3,
+      "openedContexts": 4,
+      "totalStageContexts": 4,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-for-page-claims",
+        "unresolved": [],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r2-ethereum.json",
+      "round": 2,
+      "lesson": "ethereum",
+      "scoredActions": 2,
+      "openedContexts": 3,
+      "totalStageContexts": 3,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-for-page-claims",
+        "unresolved": [],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r2-rpc.json",
+      "round": 2,
+      "lesson": "rpc",
+      "scoredActions": 4,
+      "openedContexts": 5,
+      "totalStageContexts": 5,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-for-page-claims",
+        "unresolved": [
+          "通常/転送の成功条件の全内部は送信ページの原文を要する。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r2-reth.json",
+      "round": 2,
+      "lesson": "reth",
+      "scoredActions": 3,
+      "openedContexts": 49,
+      "totalStageContexts": 55,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-with-selected-major-condition-evidence",
+        "unresolved": [
+          "phase3/4の原文量は大きい。単一操作の到達と初見の全体理解は別。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r2-send.json",
+      "round": 2,
+      "lesson": "send",
+      "scoredActions": 4,
+      "openedContexts": 19,
+      "totalStageContexts": 19,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-with-major-condition-and-reply-evidence",
+        "unresolved": [
+          "19範囲の全行を精読した成績ではない。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r2-startup.json",
+      "round": 2,
+      "lesson": "startup",
+      "scoredActions": 4,
+      "openedContexts": 37,
+      "totalStageContexts": 37,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-with-major-startup-and-wait-evidence",
+        "unresolved": [
+          "起動先の接続を読むphaseは11範囲あり、初心者の時間や記憶の負担は未測定。"
+        ],
+        "fullyReadAllCode": false
+      }
+    },
+    {
+      "path": "formal-r2-reading.json",
+      "round": 2,
+      "lesson": "reading",
+      "scoredActions": 6,
+      "openedContexts": 19,
+      "totalStageContexts": 19,
+      "assessment": {
+        "centralConcept": "pass-with-source-evidence",
+        "majorCodePath": "pass-with-major-condition-and-reply-evidence",
+        "unresolved": [
+          "送信の問いの全経路を表示する量は大きい。初心者の実時間/自力理解は未測定。"
+        ],
+        "fullyReadAllCode": false
+      }
+    }
+  ],
+  "findings": "formal-beginner-findings.json",
+  "setup": "formal-setup.json",
+  "cleanup": "formal-prefs-restored.json",
+  "interruptedEarlierRecord": "cold-blockchain-pre-macro-optional-fix.json",
+  "limitations": [
+    "Warm evaluator had implemented metadata/proposed source aids and reviewed pinned code across previous candidates; no fresh human comprehension claim.",
+    "This is evidence-grounded AI answering, not time/retention/usability research with human participants.",
+    "All originals were not fully read. DOM-open evidence may be below the viewport and inside an internally scrolling source panel.",
+    "Cold reload resets transient open/selection state but cannot erase evaluator knowledge.",
+    "C5 warm round2 and older G4-combined trials are not strictly comparable; failures remain preserved.",
+    "No all-Reth-code coverage claim: freeze has148 excerpt contexts across61 Rust files,1283 Rust files total,2 fully-reviewed Rust files.",
+    "No explicit notes/readmarks were changed; last-lesson persistence can update automatically.",
+    "Remaining source amount concerns are not cleared by short click count."
+  ],
+  "productComplete": false,
+  "humanParticipants": 0
+}

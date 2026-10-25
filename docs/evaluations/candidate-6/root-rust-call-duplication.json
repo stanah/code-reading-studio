@@ -1,0 +1,15 @@
+{
+  "contexts": [
+    "tx:recover",
+    "tx:submit",
+    "tx:submit"
+  ],
+  "scopes": [
+    {
+      "class": "rust-source-example",
+      "id": ""
+    }
+  ],
+  "submitCopies": 2,
+  "url": "http://127.0.0.1:4317/reader#lens=rust&topic=borrow"
+}

@@ -1,23 +1,59 @@
 {
   "candidate": 6,
-  "result": "formal evaluation pending",
+  "result": "FAIL",
   "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
   "files": [
     {
+      "file": "a-registry-exclusion-diagnosis.json",
+      "sha256": "2deb5601f1a0abb655e1c96863433450499e23c7d6c0a30dd1a64af861c35520"
+    },
+    {
       "file": "atlas-implementation-check.json",
       "sha256": "4f2605487ba32afcb459ce806ab499f0cc033d46995129b8beaf70ca024a726f"
+    },
+    {
+      "file": "consumer-inverse-diagnostic.json",
+      "sha256": "5ff38c1e34a7cd862695ed59f68cf91283212dacced6bc06605ded1c437fe6f6"
+    },
+    {
+      "file": "data-reviewer-summary.json",
+      "sha256": "67de4fc07773693544657a7fbf8bf49006a940ac11ffa4e745a837ee2d4f80a5"
+    },
+    {
+      "file": "data-reviewer-verification.json",
+      "sha256": "162a21376010e7fdfec4d2794d4ca6a71b18515343fb833fdfc0ff2a709f7ae0"
     },
     {
       "file": "design-and-evaluation.md",
       "sha256": "517af1d3213fca3daaa432fe99fb678a8e21119ad800f0f935eba932ca56b85c"
     },
     {
+      "file": "formal-beginner-findings.json",
+      "sha256": "5c701aca91bc11da82da4831d8182f73d0a8563675bd5dbfd3bccba7fcab076a"
+    },
+    {
+      "file": "formal-beginner-learning-summary.json",
+      "sha256": "8c17d96a7252b0b40e92d2b63930c45d1c1f1e844b94957bbe81831bcbd9c4ae"
+    },
+    {
       "file": "freeze.json",
       "sha256": "964efac88282be0bb2e47f3b1b8b02fb5b02f060cb02475a93617e26c0972c40"
     },
     {
+      "file": "fresh-novice-review.json",
+      "sha256": "f7da8f88327ed13934e03c4c2711be987a665262da263bd21fd5046ee6e5ed40"
+    },
+    {
       "file": "generation-idempotence.json",
       "sha256": "0bf88bcaa225b6fa2ff50eafbb242b5613232b99fcc2efaca46d870ab662aafc"
+    },
+    {
+      "file": "global-r1-verification.json",
+      "sha256": "cff9b39940eb50b01195af7df2970e8f3c0e2ce2f46b34b554940f6d3d1c99f5"
+    },
+    {
+      "file": "global-review-summary.json",
+      "sha256": "dafe842c469241f77ce9c74fbc121b72d3ec9b74f87ed0ce781b71f6c82f5667"
     },
     {
       "file": "learning-protocol.json",
@@ -26,6 +62,14 @@
     {
       "file": "macro-optional-token-inventory.json",
       "sha256": "a93461dcdc339105c958236c8f3f45a5e7c8e7a48900a6a27145a838d17ee37e"
+    },
+    {
+      "file": "root-rust-call-duplication.json",
+      "sha256": "41475a0371fc37f621e968d58c9372bec5947fbc4c619df7645c79bfc00cceeb"
+    },
+    {
+      "file": "root-rust-summary.json",
+      "sha256": "d4348e0fd0340f00a860f4803c4aaeeb18deffdb8864d601b9bc09240aef6c21"
     },
     {
       "file": "source-review-macro-contract-delta.json",
@@ -53,5 +97,8 @@
     }
   ],
   "humanParticipants": 0,
-  "productComplete": false
+  "productComplete": false,
+  "firstDiagnosticUnits": 108,
+  "twoConsecutivePasses": false,
+  "evidenceLimits": "Source/control technical passes, AI answers and first owner visits do not establish whole-candidate acceptance. Initial failures and not-measured planned cases are retained; human participants0, full-file reviewed2/1283."
 }

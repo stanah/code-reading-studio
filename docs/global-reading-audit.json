@@ -1699,6 +1699,17 @@
         "Record raw failure and explicit adjudication; do not overwrite it with a retry."
       ],
       "evidence": "outputs/global-reading-loop/candidate-5/measurement-adjudication.json"
+    },
+    {
+      "id": "candidate6-registry-closed-world",
+      "cause": "Completeness was derived from the same registry builder whitelist rather than inverse-reading real renderer consumers. Generic forSource implicitly consumes all matching contexts, legacy detail and Rust overlays remain independent, and host/byte/G4 checks did not exercise cross-source actual-call navigation. This also invalidates previous global-unused wording for unlisted generic contexts.",
+      "prevention": [
+        "Derive consumer inventory independently from actual renderer entry points, including dynamic path/range and topic overrides.",
+        "For every context/owner explain exclusion or bind actual consumer; same source bytes do not prove equivalent teaching purpose.",
+        "Test an actual call to a source already present, then back, without duplication; source presence and toggles are separate gates.",
+        "Retain exact old snapshots/failures, mark unperformed Atlas/R2 cases not-measured instead of deleting them."
+      ],
+      "evidence": "outputs/global-reading-loop/candidate-6/consumer-inverse-diagnostic.json; root-rust-call-duplication.json"
     }
   ],
   "candidateRounds": [
@@ -2057,6 +2068,33 @@
       "humanParticipants": 0,
       "allRethCodeCoverage": "not achieved;1283 browseable files !=147 authored contexts",
       "twoConsecutiveWholeRoundPass": false
+    },
+    {
+      "id": "candidate-6",
+      "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+      "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+      "result": "fail",
+      "observationScope": "All108 owner units initial diagnosis complete: C73owner/136base display cases+draft/phase/macro supplements; A30R1; rootRust5 has84technical cases. New Atlas88route/61file exhaustive cases and C/A R2 suspended, remain not-measured.",
+      "findings": [
+        "Registry whitelist excluded actual generic/legacy/Rust consumers and consumer-specific topic claims",
+        "Atlas unmatched selected line can hide raw original while choosing unrelated role excerpt",
+        "Rust actualcall to already-present submit duplicates source despite source/4state technical passes",
+        "Generic trait peer-reading notes lack named same-page peers",
+        "G1 failure: batch-runner missing Future/Output type108–112; Rust future support omits ready!119 early Pending and incorrectly routes absence explanation to133"
+      ],
+      "evidence": "outputs/global-reading-loop/candidate-6/global-review-summary.json",
+      "humanParticipants": 0,
+      "twoConsecutiveWholeRoundPass": false,
+      "allRethCodeCoverage": "not achieved;61excerpt files/1283 Rust files, whole-file review2",
+      "sourceSemanticCounterexamples": {
+        "units": [
+          "flow-detail:batch-runner",
+          "rust-topic:future"
+        ],
+        "gate": "G1",
+        "evidence": "outputs/global-reading-loop/candidate-7/self-output-context-audit.json",
+        "sourceFidelityStillPass": true
+      }
     }
   ],
   "humanStudy": {
@@ -2190,8 +2228,8 @@
       "pass": 88,
       "fail": 0
     },
-    "functionalAudit": "108 units; same-build two rounds pending",
-    "details": "docs/evaluations/candidate-6/design-and-evaluation.md",
+    "functionalAudit": "FAIL; all108 owner initial diagnoses saved; two consecutive whole-candidate passes not achieved",
+    "details": "docs/evaluations/candidate-6/global-review-summary.json",
     "sourceCoverage": "61/1283 excerpt-only source files, 2 full-file reviews; not full repository completion",
     "humanParticipants": 0
   }

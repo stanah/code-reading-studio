@@ -1,0 +1,20 @@
+{
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "ownerUnits": 5,
+  "casesPerRound": 42,
+  "rounds": 2,
+  "records": 84,
+  "sourcePanelObservations": 360,
+  "representativeStateChecks": 336,
+  "issues": [],
+  "functionalSourceAndControls": "pass",
+  "sourceSemantics": "Subsequent independent review found the missing Future/Output declaration and early ready! wait path in the future support. Previous source-semantic carry does not accept G1.",
+  "g4Applicability": "No memo editor on these Rust surfaces; nonempty unsaved draft is a separate editor test. Each case tests one actual representative source, and all other sources/control presence are observed.",
+  "visibilityLimit": "DOM nonhidden and code open; not a claim of viewport clipping quality or novice comprehension.",
+  "observationMethod": "Fresh candidate6 audit binding; every real UI record saved independently. No candidate5 UI success is reused.",
+  "candidateOverall": "FAIL; original-character/control subset pass does not accept G1/G5/G6 or learner comprehension",
+  "humanParticipants": 0,
+  "sourceSemanticsStatus": "not-accepted: see candidate7/source-review.json LEGACY-TYPE-3 and RUST-WAIT-5",
+  "navigationStatus": "FAIL: borrow recover90->existing submit duplicates source; root-rust-call-duplication.json"
+}

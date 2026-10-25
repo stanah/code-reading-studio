@@ -1,0 +1,631 @@
+{
+  "evaluation": "candidate-6 / fresh-persona3",
+  "evaluator": {
+    "kind": "AI simulated novice",
+    "humanLearner": false,
+    "assumedKnowledge": {
+      "blockchain": "new",
+      "codeReading": "first"
+    },
+    "limitation": "AIによる画面読解評価。実際の未経験者の理解度・学習時間・記憶保持を示すものではない。既存のモデル知識を消去した測定ではなく、下記の答案は今回表示された原文と日本語補助に根拠を限定した。"
+  },
+  "environment": {
+    "origin": "http://localhost:4398",
+    "browser": "専用Chromeタブ 193325935",
+    "existingUserTabsTouched": false,
+    "profileVerified": {
+      "blockchainVocabulary": {
+        "value": "new",
+        "label": "用語の意味も補いたい"
+      },
+      "codeExperience": {
+        "value": "first",
+        "label": "コードを読むのは初めて"
+      },
+      "method": "『読むときの補助』を開き、表示されたselectの選択値と選択肢をreadonly DOMで確認"
+    },
+    "version": {
+      "runtimeHashProvidedByRoot": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+      "independentHashVerification": false,
+      "sourceRevisionShownInUI": "3d592ece6de8"
+    },
+    "freshDocumentMethod": "課題ごとに異なるqueryを持つindex.htmlへトップレベルgoto。hashだけの同一document遷移は使わなかった。初期画面で前課題の選択行がないことを確認。最初の課題は専用タブの新規作成。",
+    "tabClosed": true
+  },
+  "constraints": {
+    "uiOnly": true,
+    "readonlyDOMAllowedAndUsed": true,
+    "implementationFilesRead": false,
+    "appInternalStateRead": false,
+    "sourceOrSettingsChanged": false,
+    "notesOrReadMarksSavedInApp": false,
+    "commitsCreated": false,
+    "考え方を見る": "全課題で開かなかった",
+    "JapaneseComments": "初期表示で有効。補助コメントを主に使った。",
+    "symbolList": "初期表示で有効。readingでは.awaitと?の用語補助も開いた。"
+  },
+  "counting": {
+    "learningOperationDefinition": "原文/用語を開く、流れ選択、呼び出し先へ進む、戻る、補助を開く。失敗した操作の試行も数えた。初期表示で開いている原文とreadonly観察は学習操作に加えない。",
+    "rawInteractionDefinition": "学習操作試行に加えて、タブ作成・新documentへのURL setup・タブ終了を数えた。readonly AX/DOM取得は操作と分離。",
+    "learningOperationAttempts": 25,
+    "learningOperationSuccessful": 24,
+    "setupNavigationsIncludingTabCreation": 7,
+    "closeOperations": 1,
+    "scrollingOperations": 0,
+    "rawInteractionAttempts": 33,
+    "successfulRawInteractions": 32,
+    "browserToolInvocations": 51,
+    "observationOnlyBrowserToolInvocations": 18,
+    "maximumLearningOperationsInOneLesson": 6,
+    "allWithin10": true
+  },
+  "overall": {
+    "completedLessons": 7,
+    "sourceReachedLessons": 7,
+    "understandingAssessment": "基礎3課題と送信・読解の中心的な問いには行番号付きで説明できた。Reth全体と起動全体は多数の実装のうち代表的な境界を説明できた部分達成。原文が開くことと全範囲の理解を同一視しない。",
+    "firstDesignDifficulty": "第1課題から30行、28行、70行、25行という複数の原文があり、初学者としてすべての記号を理解するより日本語補助のある条件行を探して読む形になった。",
+    "mainObservedDifficulty": "Reth 55箇所・startup 37箇所・send/reading 19箇所は、1回の流れ選択で多数の原文が開く。操作数の少なさは読む量の少なさを意味しない。多数の型・trait・hook・BAL・blobの内部は未解明のまま。",
+    "firstToolFailureRetained": {
+      "lesson": "reth",
+      "learningOperation": 3,
+      "action": "Playwright role=checkbox, exact name『2. 取引の検証と保持』でclick",
+      "result": "locatorが一致せずタイムアウト。UIのAXではcheckboxとして表示されていたが、このlocatorでは取得できなかった。",
+      "recovery": "fresh AXで実際の要素番号を読み直し、次の操作で当該checkboxをclick。失敗1回を除外せず記録。",
+      "category": "ブラウザ操作方式の失敗。教材の理解失敗とは分離。"
+    },
+    "unverified": [
+      "人間学習者による独立理解",
+      "補助を消した後の原文読解",
+      "数日後の保持",
+      "全掲載関数の説明",
+      "今回開かなかった流れの理解"
+    ]
+  },
+  "lessons": [
+    {
+      "lesson": "blockchain",
+      "title": "ブロックチェーンとは？",
+      "setupURL": "http://localhost:4398/?profile=new#lesson=blockchain",
+      "result": {
+        "sourceReach": "到達",
+        "coreQuestion": "説明可能",
+        "fullCodeUnderstanding": "部分的"
+      },
+      "question": "ブロックとノードは、同じもの？",
+      "answer": "違う。ブロックは要求の記録をまとめ、前のブロックを指す情報で履歴につながる単位。ノードは記録を受け取り共通ルールで確かめる参加コンピューター。原文では親ハッシュと番号を検査する処理と、通信を繰り返し進める処理が別にある。受信しただけ、つながりの検査に通っただけで履歴採用や確定とは言えない。",
+      "explanation": {
+        "input": "組み込み設定はmainnet.jsonの文字列(spec.rs L116)。つながり検査はheaderとparent(validation.rs L290–293)。通信pollは内部要求とネットワークの出来事(manager.rs L1172–1189)。",
+        "processingAndConditions": "mainnet.jsonを読みChainSpecを組み立てる。読めなければexpectでpanic(L117)。親ハッシュ不一致はParentHashMismatch(L294–297)、親番号+1が作れない場合や子の番号と合わない場合は番号エラー(L300–314)。通信は2つの流れを件数上限付きで処理し、どちらかが上限に達せばwake_by_refしてPending(L1194–1197)。",
+        "result": "組み立てた共有用設定を返す(spec.rs L142)。つながり検査はOk(())を返す(validation.rs L316)。通信pollは上限到達の分岐でも通常末尾でもPendingであり、処理全体の完了ではない(manager.rs L1197/L1202)。",
+        "nextActorAndReply": "通信macroは呼出元のmaybe_more_*へboolを返す。budgetを1件ごとに減らし、0でtrue、入力の終了やPendingならfalse(budget.rs L46–58)。trueのときmanagerは実行器へ再pollを求める。ネットワーク相手への送信通知ではない。",
+        "boundary": "組み込みmainnet設定は任意ファイル解析・接続完了・同期完了を示さない。親との一部検査は全検証でも履歴選択でもない。macroのtrueは次の項目を確認する前に上限で止まった印なので、残件の存在を確定しない。合意アルゴリズム自体はこの原文にない。"
+      },
+      "sourceRangesActuallyRead": [
+        {
+          "file": "crates/chainspec/src/spec.rs",
+          "range": "L114–143",
+          "focus": "L116–119, L142"
+        },
+        {
+          "file": "crates/consensus/common/src/validation.rs",
+          "range": "L290–317",
+          "focus": "L294–316"
+        },
+        {
+          "file": "crates/net/network/src/manager.rs",
+          "range": "L1134–1203",
+          "focus": "L1172–1202"
+        },
+        {
+          "file": "crates/net/network/src/budget.rs",
+          "range": "L38–62",
+          "focus": "L42–58"
+        }
+      ],
+      "learningOperationAttempts": 4,
+      "rawInteractionAttempts": 5,
+      "actions": [
+        {
+          "n": 1,
+          "action": "読むときの補助を開きnew/first確認",
+          "result": "確認"
+        },
+        {
+          "n": 2,
+          "action": "親とのつながり検査の原文を開く",
+          "result": "L290–317"
+        },
+        {
+          "n": 3,
+          "action": "ネットワークpollの原文を開く",
+          "result": "L1134–1203"
+        },
+        {
+          "n": 4,
+          "action": "poll_nested_stream_with_budget!の呼出し先へ進む",
+          "result": "L38–62、L40選択"
+        }
+      ],
+      "firstDifficulty": {
+        "when": "初期原文読解",
+        "detail": "LazyLock・Arc・ChainSpecの型の意味までは初見の画面だけで説明できなかった。入力/失敗/返却の日本語補助から主な役割を読んだ。後の到達成功でこの未理解を置き換えていない。"
+      },
+      "remainingQuestions": [
+        "LazyLockとArcが共有を成立させる詳細",
+        "実行器が再pollする具体的な仕組み",
+        "外部の合意側が履歴を選択する規則"
+      ]
+    },
+    {
+      "lesson": "ethereum",
+      "title": "Ethereumでは何を記録する？",
+      "setupURL": "http://localhost:4398/index.html?fresh=persona3-ethereum#lesson=ethereum",
+      "result": {
+        "sourceReach": "到達",
+        "coreQuestion": "説明可能",
+        "fullCodeUnderstanding": "部分的"
+      },
+      "question": "要求を送ると、すぐに共有の残高が変わる？",
+      "answer": "すぐに変わるとは言えない。要求を送ることと、ブロックの取引を実行して次の状態を得ること、その結果を保存・採用・確定することは別。口座読取は状態を変更しない。実行の入口では前処理、取引を順番に実行、後処理、結果返却がある。",
+      "explanation": {
+        "input": "口座読取はaddress(latest.rs L73)。実行は送信者を復元済みの取引を含むblock(execute.rs L596–599)。レシートはctxのtx_type/result/cumulative_gas_used(receipt.rs L16–17)。",
+        "processingAndConditions": "ハッシュ形式設定が有効ならアドレスをkeccak256してHashedAccounts、それ以外なら元のaddressでPlainAccountStateを読む(latest.rs L74–80)。実行はBAL有無で追加記録とindex更新を分けるが、取引ループ自体はどちらも実行する(execute.rs L606–623)。各?でRustのErrならブロック処理を中断する。Revertは正常に得られた実行結果の中の失敗で、同じErrとは違う。",
+        "result": "読取は口座値あり/なしまたは読取エラーを返す。実行は後処理結果をOk(result)として返す(execute.rs L627–631)。レシートは取引種類、success、累積ガス、logsを含む(receipt.rs L18–24)。Revertならsuccess=falseのReceiptにもなる。",
+        "nextActorAndReply": "共通実行入口はexecutor_for_blockで担当を作ってexecute_transactionへ一件ずつ渡す(L601–604, L620–621)。得られた実行結果からEthereumのReceiptBuilderがレシートを作る別の実装例。口座読取関数が実行関数を直接呼ぶ直列経路ではない。",
+        "boundary": "NoneはDB読取失敗ではない。レシート構築は保存完了や確定ではない。Ok(result)の行は保存先へのcommitではない。EVM命令内部・BAL全形式・共有履歴への反映は今回の抜粋だけでは説明できない。"
+      },
+      "sourceRangesActuallyRead": [
+        {
+          "file": "crates/storage/provider/src/providers/state/latest.rs",
+          "range": "L69–84",
+          "focus": "L73–80"
+        },
+        {
+          "file": "crates/evm/evm/src/execute.rs",
+          "range": "L596–632",
+          "focus": "L606–631"
+        },
+        {
+          "file": "crates/ethereum/evm/src/receipt.rs",
+          "range": "L12–27",
+          "focus": "L16–24"
+        }
+      ],
+      "learningOperationAttempts": 2,
+      "rawInteractionAttempts": 3,
+      "actions": [
+        {
+          "n": 1,
+          "action": "次に読む：ブロック内の取引を順に実行する",
+          "result": "L596–632"
+        },
+        {
+          "n": 2,
+          "action": "次に読む：実行結果からレシートを作る",
+          "result": "L12–27"
+        }
+      ],
+      "firstDifficulty": {
+        "when": "実行入口L606付近",
+        "detail": "BALという追加概念が出て、その全形式やindexの用途は分からなかった。補助でBALの有無が取引ループの実行条件ではないことは分かったが、細部の理解は未達。"
+      },
+      "remainingQuestions": [
+        "BALの全形式とindexの内部用途",
+        "状態変更をどこで永続保存するか",
+        "ExecutionResultを作るEVM内部の命令処理"
+      ]
+    },
+    {
+      "lesson": "rpc",
+      "title": "ノードとRPCの役割",
+      "setupURL": "http://localhost:4398/index.html?fresh=persona3-rpc#lesson=rpc",
+      "result": {
+        "sourceReach": "到達",
+        "coreQuestion": "説明可能",
+        "fullCodeUnderstanding": "部分的"
+      },
+      "question": "RPCが返すトランザクションハッシュは、送金の完了通知？",
+      "answer": "完了通知ではない。RPCはアプリが名前を指定して問い合わせや送信を頼む窓口。残高問い合わせは状態を読み、送信は署名済みバイト列を読んで送信者を復元し後続に渡す。送信ハッシュだけではブロックへの取り込み・実行成功・確定は分からない。",
+      "explanation": {
+        "input": "eth_getBalance入口はaddressとOption<BlockId>(core.rs L696)。eth_sendRawTransaction入口はtx:Bytes(core.rs L921)。",
+        "processingAndConditions": "balanceはEthState::balanceをawaitし、口座値がなければ0、読取失敗ならエラー(helpers/state.rs L84–88)。送信はrecover_raw_pool_transactionで取引を得て、元Bytesと組にしLocalの出所でsend_pool_transactionへ渡す(helpers/transaction.rs L89–94)。設定cacheの有無で別の復元hookを選ぶ(L100–106)。既定hookは空データを拒否(traits.rs L1460–1461)、余りを許さずデコードして形式エラーを分ける(L1464–1465)。署名復元失敗はInvalidTransactionSignature(L1437–1438)。",
+        "result": "残高問い合わせはU256かエラー。送信処理のFuture完了値はハッシュかSelf::Errorであり、途中で復元した取引だけを返す関数ではない。RPC入口は.await?で失敗を返し、成功をOkへ包む(core.rs L698/L923)。",
+        "nextActorAndReply": "残高はEthState::balanceからstate.account_balanceへ進む。送信は復元hookの結果を受けてsend_pool_transactionへ渡し、その結果を待ってRPC要求元へ戻す。このページでは追加担当内部まで独立に検証していない。",
+        "boundary": "P2Pはノード同士の通信で、RPCの読取/送信窓口とは役割が違う。送信者復元は秘密鍵を取得する処理ではない。traitsの原文は既定実装でoverride可能。cache hit/missや格納、署名の暗号計算内部は読んでいない。"
+      },
+      "sourceRangesActuallyRead": [
+        {
+          "file": "crates/rpc/rpc-eth-api/src/core.rs",
+          "range": "L695–699, L920–924"
+        },
+        {
+          "file": "crates/rpc/rpc-eth-api/src/helpers/state.rs",
+          "range": "L78–90"
+        },
+        {
+          "file": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "range": "L81–109"
+        },
+        {
+          "file": "crates/transaction-pool/src/traits.rs",
+          "range": "L1402–1466",
+          "focus": "L1436–1438, L1459–1466"
+        }
+      ],
+      "learningOperationAttempts": 4,
+      "rawInteractionAttempts": 5,
+      "actions": [
+        {
+          "n": 1,
+          "action": "balanceの呼出し先へ進む",
+          "result": "L78–90、L79選択"
+        },
+        {
+          "n": 2,
+          "action": "送信RPC入口の原文を開く",
+          "result": "L920–924"
+        },
+        {
+          "n": 3,
+          "action": "send_raw_transactionの呼出し先へ進む",
+          "result": "L81–109、L84選択"
+        },
+        {
+          "n": 4,
+          "action": "recover_raw_transactionの呼出し先へ進む",
+          "result": "L1402–1466、L1436選択"
+        }
+      ],
+      "firstDifficulty": {
+        "when": "復元hook原文",
+        "detail": "複数のSelf・関連型・try_recover/cache_opt/raw hookがまとまって出て、名前だけでは同じ処理を何回するのか混乱した。日本語補助の『RPCが別々に選ぶraw hook』『既定実装』で役割を絞った。型の全関係の自力説明は未達。"
+      },
+      "remainingQuestions": [
+        "RPCメソッド名が実際に登録される仕組み",
+        "具体的な実装型が既定hookをoverrideするか",
+        "今回の送信の後続でローカル追加結果を返す具体的な箇所"
+      ]
+    },
+    {
+      "lesson": "reth",
+      "title": "Rethは何を担当する？",
+      "setupURL": "http://localhost:4398/index.html?fresh=persona3-reth#lesson=reth",
+      "result": {
+        "sourceReach": "代表範囲に到達",
+        "coreQuestion": "説明可能",
+        "fullCodeUnderstanding": "部分達成。55箇所の全理解ではない"
+      },
+      "question": "Rethが正しいブロックだと検証したら、そのブロックが必ず採用される？",
+      "answer": "必ずではない。Rethの実行側の検証と、外部合意側が履歴の先端を選び確定を追うことは別。NewPayloadの検証応答とForkchoiceUpdatedの履歴指示も別。プールへの受入・実行検証・履歴反映・保存を同じ成功として扱えない。",
+      "explanation": {
+        "input": "部品組立はBuilderContextを受ける(builder.rs L375–378)。NewPayloadはpayloadと返答口tx(tree/mod.rs L1690)。Forkchoiceはstateと任意のpayload_attrs(message.rs L378–382, L399–402)。",
+        "processingAndConditions": "各builderへ依存値を渡してEVM、pool、network、payload、consensusを組む(builder.rs L388–394)。残高検査は有効設定かつcost>balanceなら不足エラー、無効設定ではこの不足分岐へ入らない(validate/eth.rs L790–799)。内部追加はValidだけを試し、追加のErrも返す(pool/mod.rs L585–627)。状態root不一致ならエラー(payload_validator.rs L889–906)。Forkchoice事前検査はゼロhead/既知の不正祖先と、backfill稼働中のSYNCINGを区別(tree/mod.rs L1193–1211)。",
+        "result": "NewPayloadのon_new_payload結果をtx.sendで返す(tree/mod.rs L1694, L1707)。状態検証は検証済みブロックと状態変更をValidationOutputとして返す(payload_validator.rs L934)。事前検査のNoneは採用成功ではなく早期返答理由なし。保存はprovider_rw.save_blocksとcommitの失敗を?で返し、成功時にPersistenceResultを返す(persistence.rs L198, L213, L224)。",
+        "nextActorAndReply": "合意側のstateをForkchoiceUpdatedと返答口にまとめてEngineへ送り、呼出元はrxで返答を待つ(message.rs L398–404)。実行側はこの指示を検査して採用反映へ進む。保存担当のPersistenceResultはtree側へ戻り、保存位置のfinishやメモリー整理を行う(tree/mod.rs L1538–1545, L1570)。",
+        "boundary": "consensusという部品名は外部合意クライアント本体ではない。NewPayloadのVALIDは採用や保存完了ではない。save_finalized_block_numberは受けた値の保存で、投票を集めて確定を決める処理ではない(persistence.rs L201)。外部合意の選択アルゴリズムは今回の原文にない。"
+      },
+      "sourceRangesActuallyRead": [
+        {
+          "file": "crates/node/builder/src/components/builder.rs",
+          "range": "L353–404",
+          "focus": "L375–402"
+        },
+        {
+          "file": "crates/engine/primitives/src/message.rs",
+          "range": "L378–405"
+        },
+        {
+          "file": "crates/engine/tree/src/tree/mod.rs",
+          "range": "L1150–1178, L1189–1212, L1690–1718, L1531–1575",
+          "focus": "L1161–1177, L1193–1211, L1694/L1707, L1538–1545/L1570"
+        },
+        {
+          "file": "crates/engine/tree/src/tree/payload_validator.rs",
+          "range": "L818–935",
+          "focus": "L836–839, L876–906, L934"
+        },
+        {
+          "file": "crates/transaction-pool/src/validate/eth.rs",
+          "range": "L783–801",
+          "focus": "L790–799"
+        },
+        {
+          "file": "crates/transaction-pool/src/pool/mod.rs",
+          "range": "L578–639",
+          "focus": "L585–635"
+        },
+        {
+          "file": "crates/engine/tree/src/persistence.rs",
+          "range": "L163–225",
+          "focus": "L198–224"
+        }
+      ],
+      "learningOperationAttempts": 4,
+      "successfulLearningOperations": 3,
+      "rawInteractionAttempts": 5,
+      "actions": [
+        {
+          "n": 1,
+          "action": "流れ4.履歴の指示・採用反映・保存を選ぶ",
+          "result": "16箇所が開く。全箇所を理解したとは数えない"
+        },
+        {
+          "n": 2,
+          "action": "流れ3.ブロックの実行と状態の検査を選ぶ",
+          "result": "15箇所が開く。25/39番を重点読解"
+        },
+        {
+          "n": 3,
+          "action": "Playwrightで流れ2のcheckboxをclick試行",
+          "result": "一致せずタイムアウト。失敗を保持"
+        },
+        {
+          "n": 4,
+          "action": "fresh AXの要素61で流れ2をclick",
+          "result": "12箇所が開く。22/24番を重点読解"
+        }
+      ],
+      "firstDifficulty": {
+        "when": "初期画面の55箇所表示",
+        "detail": "問いは実行側と合意側の分担だが、最初に多数のbuilder型が現れた。55箇所のうち何が必須なのか初学者として判断しづらく、履歴/実行/プールの流れから代表的な境界へ絞った。原文の自動openは成功したが全体理解は部分的。"
+      },
+      "remainingQuestions": [
+        "safe/finalized/headの詳しい相互条件",
+        "保存を開始する閾値と非同期返答の全経路",
+        "NewPayloadから全実行検証の内部を自分で辿ること",
+        "多数の関連型をどこまで理解すれば最初の問いに十分か"
+      ]
+    },
+    {
+      "lesson": "send",
+      "title": "送信された要求を追う",
+      "setupURL": "http://localhost:4398/index.html?fresh=persona3-send#lesson=send",
+      "result": {
+        "sourceReach": "中心経路と内部追加に到達",
+        "coreQuestion": "説明可能",
+        "fullCodeUnderstanding": "部分的。検証条件の全列挙は未実施"
+      },
+      "question": "キューに追加依頼を渡せたら、プールへの追加も成功？ 受付担当は何の返事を待つ？",
+      "answer": "キューへ渡せただけでは追加成功ではない。受付担当はresponse_rxで追加担当の結果を待つ。追加担当はプールに検証と追加を依頼し、その結果を要求ごとのresponse_txへ返す。通常経路は成功した追加結果のhashを返す。転送設定があれば転送先RPCの結果を返し、その後のローカル追加結果は捨てられる。",
+      "explanation": {
+        "input": "RPCは署名済みBytesを受ける(core.rs L921)。復元後はoriginと元Bytesを添えたプール取引を送信処理へ渡す(helpers/transaction.rs L89–94; rpc/src/eth/helpers/transaction.rs L32–37)。",
+        "processingAndConditions": "転送先Someなら外部RPC要求を待ち、エラーは返す(L89–99)。転送成功後のローカル追加はlet _で結果を捨てhashを返す(L102–104)。通常はadd_pool_transactionをawait?(L111)。追加依頼はoneshotの返答口を添えて内部キューへsendし、そのsend失敗と返答の受信/追加失敗を別に扱う(core.rs L496–503)。",
+        "result": "内部追加はValid/Invalid/Errorを分ける(pool/mod.rs L585–635)。Validでも内部追加に失敗できる(L618–620)。追加成功後でも容量超過ですぐ除外された新規取引はDiscardedOnInsertへ変更する(L702, L732–736)。通常RPCは最終的なローカル追加結果のhashかエラー。転送設定時は転送先のhashかエラー。",
+        "nextActorAndReply": "batcherのpollがrequest_rxから依頼を取り出しprocess_batchをspawn(batcher.rs L119–125)。1件/同一origin複数/異なるorigin複数でプールAPIを使い分け、response_tx.send(pool_result)で要求ごとに結果を返す(L69–105)。受付側response_rx.await??へ戻り、通常経路のhash、RPC入口のOk(await?)へ戻る。",
+        "boundary": "キューとプールは違う。検証に通ったことと追加成功は違う。hashはブロック取り込み・EVM実行成功・確定ではない。転送先のhashはローカル受入成功も保証しない。blob変換全条件、全validatorの条件、他ノードへの伝播成功は今回説明しきれていない。"
+      },
+      "sourceRangesActuallyRead": [
+        {
+          "file": "crates/rpc/rpc-eth-api/src/core.rs",
+          "range": "L920–924"
+        },
+        {
+          "file": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "range": "L81–109",
+          "focus": "L84–94"
+        },
+        {
+          "file": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "range": "L32–114",
+          "focus": "L89–113"
+        },
+        {
+          "file": "crates/rpc/rpc/src/eth/core.rs",
+          "range": "L489–504"
+        },
+        {
+          "file": "crates/transaction-pool/src/batcher.rs",
+          "range": "L69–105, L113–137"
+        },
+        {
+          "file": "crates/transaction-pool/src/lib.rs",
+          "range": "L495–528"
+        },
+        {
+          "file": "crates/transaction-pool/src/pool/mod.rs",
+          "range": "L661–742, L578–639"
+        }
+      ],
+      "learningOperationAttempts": 2,
+      "rawInteractionAttempts": 3,
+      "actions": [
+        {
+          "n": 1,
+          "action": "send_pool_transactionの呼出し先へ進む",
+          "result": "流れ2へ切り替わりL32–114等の5箇所が開く"
+        },
+        {
+          "n": 2,
+          "action": "流れ5.内部追加・容量制限と結果を選ぶ",
+          "result": "L661–742/L578–639"
+        }
+      ],
+      "firstDifficulty": {
+        "when": "send_pool_transactionの冒頭",
+        "detail": "通常経路を知りたいのに先に多数のblob/EIP/Osaka変換行(L39–85)が出たため、どこから中心経路か一度迷った。『通常経路はL108・111・113』の日本語で焦点を戻した。変換部分の細部は未理解として残した。"
+      },
+      "remainingQuestions": [
+        "validatorへ仕事を渡すタスクの全経路",
+        "blob sidecar変換の必要性と全条件",
+        "受け付けた取引が後でプールから消えた場合の調べ方"
+      ]
+    },
+    {
+      "lesson": "startup",
+      "title": "ノードはどう動き始める？",
+      "setupURL": "http://localhost:4398/index.html?fresh=persona3-startup#lesson=startup",
+      "result": {
+        "sourceReach": "main・部品・RPC・稼働・終了待ちの代表範囲に到達",
+        "coreQuestion": "説明可能",
+        "fullCodeUnderstanding": "部分達成。37箇所の全理解ではない"
+      },
+      "question": "mainが終了を待つ場所が、すべてのイベントを処理する場所？",
+      "answer": "違う。mainはCLIから起動処理を渡し、起動したNodeHandleを得た後、その終了を待つ。Engineのイベント処理は別の非同期タスクのloop/selectで進み、通信なども別の担当で続く。起動完了、イベント処理、終了完了は分けて読む必要がある。",
+      "explanation": {
+        "input": "mainの引数リストは空だが、プロセスのコマンドはCli::parseで読む(main.rs L20/L40)。runへbuilderを使う起動closureを渡す。部品組立はBuilderContext、networkはcontextとpool、payloadサービスはcontext/pool/evm_configを受ける。",
+        "processingAndConditions": "mainはEthereumNodeを選んでlaunchをawait?(L42)、次にhandle.wait_for_node_exit().await(L44)。runがErrなら表示してexit(1)(L46–47)。build_componentsはEVM→pool→network→payload→内部consensusを作り、失敗は?で返す(builder.rs L388–394)。network builderは準備をawaitした後、同期のstart_networkを呼んでhandleを受け取る(node.rs L785–788)。payloadはサービスをOSスレッドで起動しhandleを返す(payload.rs L130–142)。",
+        "result": "組立はComponentsをOkで返す(builder.rs L396–402)。RPC起動はadd_ons.launch_add_ons(...).await?からRpcHandleの値を受け取る(engine.rs L288–294)。NodeHandleはFullNodeとnode_exit_futureを別々に保持し、wait_for_node_exitは後者をawait(handle.rs L10–24)。",
+        "nextActorAndReply": "Engine非同期タスクはorchestrator.next、候補payload、終了要求、graceful shutdownをselectで扱い、終了時exit.send(res)する(engine.rs L332–410)。orchestratorはbackfillとhandlerをpollして上位へChainEventを返す(chain.rs L84–138)。NodeExitFutureは内側がPendingならPending、OkならReady(Ok)、ErrならReady(Err)を返し(exit.rs L39–48)、CLI/mainへ終了結果が戻る。",
+        "boundary": "asyncだけでOSスレッドができるわけではない。ネットワークhandle返却は全通信の完了ではない。wait_for_node_exitは各取引の成功やチェーン確定を待つ処理ではない。起動する全タスク・全設定/DB準備・shutdownの全分岐の追跡は今回未完。"
+      },
+      "sourceRangesActuallyRead": [
+        {
+          "file": "bin/reth/src/main.rs",
+          "range": "L20–49",
+          "focus": "L40–47"
+        },
+        {
+          "file": "crates/ethereum/cli/src/interface.rs",
+          "range": "L158–166, L112–114"
+        },
+        {
+          "file": "crates/node/builder/src/components/builder.rs",
+          "range": "L353–404",
+          "focus": "L375–402"
+        },
+        {
+          "file": "crates/ethereum/node/src/node.rs",
+          "range": "L770–790"
+        },
+        {
+          "file": "crates/node/builder/src/components/payload.rs",
+          "range": "L98–144"
+        },
+        {
+          "file": "crates/node/builder/src/launch/engine.rs",
+          "range": "L288–300, L317–413"
+        },
+        {
+          "file": "crates/engine/tree/src/chain.rs",
+          "range": "L75–152"
+        },
+        {
+          "file": "crates/node/builder/src/handle.rs",
+          "range": "L8–26"
+        },
+        {
+          "file": "crates/node/core/src/exit.rs",
+          "range": "L34–51"
+        }
+      ],
+      "learningOperationAttempts": 3,
+      "rawInteractionAttempts": 4,
+      "actions": [
+        {
+          "n": 1,
+          "action": "流れ5.稼働中の進行と終了を選ぶ",
+          "result": "10箇所が開く。Engine/orchestrator/handle/exitを重点読解"
+        },
+        {
+          "n": 2,
+          "action": "流れ3.実行・プール・通信の組み立てを選ぶ",
+          "result": "4箇所が開く。共通組立/network/payloadを重点読解"
+        },
+        {
+          "n": 3,
+          "action": "流れ4.EngineとRPCの接続を選ぶ",
+          "result": "5箇所が開く。RPC起動L288–300を読解"
+        }
+      ],
+      "firstDifficulty": {
+        "when": "初期CLI原文",
+        "detail": "Cli::run、CliApp::run、configure、FnLauncherなど似た役割の名前と多い型が連続した。mainのL40/42/44は分かっても、全adapterの呼出順を初見で再現する理解には至らなかった。日本語補助で同名runの受け手が違うことを確認した。"
+      },
+      "remainingQuestions": [
+        "CLIから設定/DBを準備してlaunchへ渡す全経路",
+        "起動時のOSスレッドと非同期タスクの配置全体",
+        "終了要求の各経路がどの条件で全タスク停止を保証するか"
+      ]
+    },
+    {
+      "lesson": "reading",
+      "title": "疑問を持ってコードを読む",
+      "setupURL": "http://localhost:4398/index.html?fresh=persona3-reading#lesson=reading",
+      "result": {
+        "sourceReach": "到達・呼出し先/戻り先を実操作で確認",
+        "coreQuestion": "説明可能",
+        "fullCodeUnderstanding": "一つの問いに限定した理解。全19箇所の理解ではない"
+      },
+      "question": "最初の読解で、何を説明できればよい？",
+      "answer": "選んだ一つの問いについて、何を受け取り、どの条件でどの担当へ渡し、どの結果やエラーが戻るか、どこまでは言えないかを原文行で説明できればよい。今回なら『受け付けた』をキュー投入・通常のプール追加結果・転送先RPCの返事に分け、実行/取り込み/確定まで成功したと広げないこと。",
+      "explanation": {
+        "input": "RPC入口のtx:BytesとRpcResult<B256>(core.rs L921)。次のsend_raw_transactionもBytesを受け取り、Futureの完了値はhashかSelf::Error(helpers/transaction.rs L84–87)。",
+        "processingAndConditions": "RPC入口のtrace!(?tx)はログで、L923の.await?は後続結果を待ち失敗を返す。.awaitの用語補助は『結果が用意できない間はほかへ実行を譲る』『asyncだけで別スレッドを作らない』、?補助は『成功なら中身、失敗なら現在の関数/asyncから返る』と説明した。復元成功後send_pool_transactionへ進み、転送先の有無で結果の出所を分ける(L89–113)。",
+        "result": "通常はローカル追加結果を待ってhashを返す(L111–113)。転送設定時は外部RPCのhashを返し、ローカル追加の失敗は反映しない(L97–104)。追加依頼のsendは成功でも、response_rx.await??で返答と追加結果の失敗を扱う(core.rs L500–503)。",
+        "nextActorAndReply": "batcherがpool.add_transaction等をawaitし、response_tx.sendで要求ごとの結果を返す(batcher.rs L71–103)。内部プールはValidでも追加失敗可能で、成功はhash/state、Invalid/Errorはエラー(pool/mod.rs L618–635)。呼出先へ進み、戻る操作でrecoverのL90へ戻れたことを確認した。",
+        "boundary": "関数名send_raw_transactionやOkだけから送金完了を推測しない。復元は秘密鍵の取得ではない。全EVM実行・保存・確定・cache/暗号の内部までは今回の問いから説明できない。原文と日本語補助の対応を読むことと、補助なしでRustを書いたり読めることは別。"
+      },
+      "sourceRangesActuallyRead": [
+        {
+          "file": "crates/rpc/rpc-eth-api/src/core.rs",
+          "range": "L920–924"
+        },
+        {
+          "file": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "range": "L81–109",
+          "focus": "L84–94"
+        },
+        {
+          "file": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "range": "L32–114",
+          "focus": "L89–113"
+        },
+        {
+          "file": "crates/rpc/rpc/src/eth/core.rs",
+          "range": "L489–504"
+        },
+        {
+          "file": "crates/transaction-pool/src/batcher.rs",
+          "range": "L69–105"
+        },
+        {
+          "file": "crates/transaction-pool/src/pool/mod.rs",
+          "range": "L578–639"
+        }
+      ],
+      "learningOperationAttempts": 6,
+      "rawInteractionAttempts": 7,
+      "actions": [
+        {
+          "n": 1,
+          "action": "L923の.awaitの意味を開く",
+          "result": "Future/実行を譲る説明"
+        },
+        {
+          "n": 2,
+          "action": "L923の?の意味を開く",
+          "result": "Resultの成功/失敗説明"
+        },
+        {
+          "n": 3,
+          "action": "send_raw_transactionの呼出し先へ進む",
+          "result": "recoverのL84選択"
+        },
+        {
+          "n": 4,
+          "action": "send_pool_transactionの呼出し先へ進む",
+          "result": "流れ2、L32選択"
+        },
+        {
+          "n": 5,
+          "action": "前に見ていたコードへ戻る",
+          "result": "流れ1へ戻りrecoverのL90選択をreadonly DOMで確認"
+        },
+        {
+          "n": 6,
+          "action": "流れ5.内部追加・容量制限と結果を選ぶ",
+          "result": "内部追加L578–639を再読"
+        }
+      ],
+      "firstDifficulty": {
+        "when": "最初の短いRPC原文",
+        "detail": "補助を使わずに.awaitと?の役割を確実に言う自信はなかったため、語の説明を実際に開いた。後続まで1回で理解した扱いにはせず、呼出し先と返答経路を再読した。"
+      },
+      "remainingQuestions": [
+        "補助なしでも同じ境界を説明できるか",
+        "別の未見RPC関数に読解方法を移せるか",
+        "今回はsendと重複する教材なので、新規の問いにも効果があるか"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "candidate": 6,
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "result": "FAIL",
+  "sourceDataHash": "b7788427d75e8db45ed05d0c14a051806b72e970949a07d1ceef8cb4f7529247",
+  "CFirstDiagnostic": {
+    "ownerUnits": 73,
+    "plannedBaseCases": 136,
+    "observedBaseCases": 136,
+    "baseMissing": [],
+    "rawRecords": 137,
+    "roundsCompleted": 1,
+    "technicalVerification": "global-r1-verification.json",
+    "originalSourceAppearances": 1200,
+    "representativeFourStateCases": 120,
+    "extraRecords": 11,
+    "nonemptyDraft": "global-extra-round-1.json: entered marker,4states, restored, no save/AI",
+    "firstObservedDoesNotMeanAllGatesPassed": true
+  },
+  "preservedPlan": {
+    "casesPerRound": 285,
+    "base": 136,
+    "newAtlasRoutes": 88,
+    "newAtlasFiles": 61,
+    "newAtlas149": "not-measured by C; suspended after independent confirmed G6 failure",
+    "baseRound2": "not-measured; suspended, denominator unchanged"
+  },
+  "peerEvidence": {
+    "A30": "data-reviewer-summary.json / data-reviewer-verification.json:30owners R1 complete; R2 suspended",
+    "rootRust5": "root-rust-summary.json:84cases/2round technical subset",
+    "Bconsumer": "consumer-inverse-diagnostic.json; actual generic6/legacy5/Rust5 comparisons",
+    "warmAI": "formal-beginner-learning-summary.json",
+    "coldAI": "fresh-persona3/result.json"
+  },
+  "confirmedFailures": [
+    {
+      "gate": "G6",
+      "units": [
+        "atlas-overview:main",
+        "legacy-details and Rust producer replicas"
+      ],
+      "evidence": "consumer-inverse-diagnostic.json",
+      "finding": "Registry builder whitelist omitted real generic/legacy/Rust consumers. All6excluded contexts are actually used by generic viewer; same source bytes are not Rust-topic claim equivalence."
+    },
+    {
+      "gates": [
+        "G5",
+        "G6"
+      ],
+      "units": [
+        "atlas-overview:main"
+      ],
+      "evidence": "consumer-inverse-diagnostic.json / consumer-inverse-additional-ui.json",
+      "finding": "pool-test349–381, trait-contract65–79, distinct RPC recovery750–760 lack Atlas range/containing alternative; explicit selected365 or unannotated200 falls to unrelated role and closes requested raw original."
+    },
+    {
+      "gates": [
+        "G5",
+        "G6"
+      ],
+      "units": [
+        "rust-topic:borrow"
+      ],
+      "evidence": "root-rust-call-duplication.json",
+      "finding": "recoverL90 actual call to already-present submit produces a second submit source, total3hosts; source/controller84case technical passes did not cover call-navigation root scope."
+    },
+    {
+      "gate": "G5",
+      "units": [
+        "generic trait contract/implementation replicas"
+      ],
+      "evidence": "consumer-inverse-diagnostic.json: INV-CONSUMER-FIT-001",
+      "finding": "Generic single-source page repeats same-page peer-reading direction without mounted peer source or a link/jump."
+    },
+    {
+      "gates": [
+        "G1"
+      ],
+      "units": [
+        "flow-detail:batch-runner",
+        "rust-topic:future"
+      ],
+      "evidence": "../candidate-7/self-output-context-audit.json; independent A/B pinned source review",
+      "finding": "Legacy batch-runner114–135 claims Poll<()> /Future without actual impl/type Output=()108–112. Rust future support points request absence to L133Pending but omits ready! L119 earlyPending. Literal source/controller passes do not establish this type/wait-path contract.",
+      "acceptance": "not acceptable forG1; prior source-fit carry superseded by explicit counterexample, raw source/control observations retained"
+    }
+  ],
+  "sourceReview": {
+    "oldBodies": "Old147 source hashes retained; use C5 independent semantic evidence, not fresh reread claims",
+    "delta": [
+      "source-review.json",
+      "source-review-macro-contract-delta.json",
+      "source-review-macro-optional-delta.json",
+      "startup-budget-source-delta-independent.json"
+    ],
+    "newMacro": "budget38–62 pinned and source-specificoptional? meaning reviewed separately from Result?",
+    "notCompleteRepo": "61files have excerpts /1283Rustfiles; full-file reviewed2 only",
+    "C5TerminologyCorrection": "C5 report called area:pool-validation/area:rpc-recovery dormant on explicit metadata scan. C6 inverse audit proves generic forSource consumes them. Old C5 145UI observation count stays valid, but global-unused assertion is withdrawn; no old success promoted.",
+    "supersedingCounterexamples": [
+      {
+        "gates": [
+          "G1"
+        ],
+        "units": [
+          "flow-detail:batch-runner",
+          "rust-topic:future"
+        ],
+        "evidence": "../candidate-7/self-output-context-audit.json; independent A/B pinned source review",
+        "finding": "Legacy batch-runner114–135 claims Poll<()> /Future without actual impl/type Output=()108–112. Rust future support points request absence to L133Pending but omits ready! L119 earlyPending. Literal source/controller passes do not establish this type/wait-path contract.",
+        "acceptance": "not acceptable forG1; prior source-fit carry superseded by explicit counterexample, raw source/control observations retained"
+      }
+    ]
+  },
+  "limits": [
+    "Data148, Atlas registered142, registry-excluded6 and allactual consumers are separate sets.",
+    "C5 dormant/unused wording was too strong: generic forSource can consume even nonexplicit references. Old observations are retained and not retroactively promoted.",
+    "CSS nonhidden/source visits do not demonstrate novice comprehension or viewport legibility everywhere.",
+    "Representative4states do not claim every source individually toggled.",
+    "No human participants; warm/new-first AI evidence separate from functional gates.",
+    "Two consecutive whole-candidate pass not achieved; no full repository explanation coverage."
+  ],
+  "cleanup": {
+    "CtabClosed": true,
+    "globalPrefsChanged": 0,
+    "notesSavedDeletedOrSent": 0
+  },
+  "measurementErrors": "measurement-events.json: exclusive phase old harness assumption and captured runner binding, plus dispatch-before-interaction interruptions; no product failure inferred or success fabricated",
+  "releaseReadiness": "All108 initial owner diagnoses saved. C capture complete; frozen C6 inputs retained for source/claim adjudication, candidate7 may start after root release.",
+  "aggregateFirstDiagnostic": {
+    "units": 108,
+    "C": 73,
+    "A": 30,
+    "rootRust": 5,
+    "allOwnersVisited": true,
+    "allApplicableGatesPassed": false,
+    "rootRustHasTwoTechnicalRoundsButCallNavigationFailureRemains": true
+  }
+}

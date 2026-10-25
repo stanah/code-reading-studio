@@ -1,5 +1,5 @@
 {
-  "kind": "implementation checkpoint; formal evaluation in progress",
+  "kind": "implementation checkpoint with completed first diagnostic; known FAIL",
   "candidate": 6,
   "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
   "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
@@ -12,7 +12,9 @@
   "functionalAudit": {
     "units": 108,
     "requiredRounds": 2,
-    "status": "in progress; not accepted"
+    "status": "FAIL; all108 owners initially diagnosed; full two-round pass not achieved",
+    "firstDiagnosticUnits": 108,
+    "secondRound": "C/A not measured after confirmed failure; rootRust technical subset only"
   },
   "sourceEvidence": {
     "contexts": 148,
@@ -35,5 +37,12 @@
     "status": "not-verified"
   },
   "productComplete": false,
-  "publication": "Git checkpoint only; no site deployment or product acceptance"
+  "publication": "Git checkpoint only; no site deployment or product acceptance",
+  "knownFailures": [
+    "Atlas index omits actual generic/legacy/Rust consumers and purpose-specific claims",
+    "Explicit source selection can be concealed by unrelated preview",
+    "Rust call navigation duplicates an existing callee",
+    "Generic trait notes promise absent same-page peers",
+    "Future type declaration and early ready! wait path are outside/incomplete in the explanation"
+  ]
 }

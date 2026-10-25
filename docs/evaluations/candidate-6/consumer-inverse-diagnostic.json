@@ -1,0 +1,305 @@
+{
+  "candidate": 6,
+  "kind": "independent consumer-to-registry diagnosis, not A formal30-unit result",
+  "implementationCommit": "08627ea3736835ea7184275cba6b38c5ab9748e6",
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "sourceAndUIBothUsed": true,
+  "canonicalMutations": 0,
+  "observations": {
+    "registryOwners": 88,
+    "registeredContexts": 142,
+    "allContexts": 148,
+    "excludedContexts": 6,
+    "all6ActuallyUsedByGenericViewer": true,
+    "legacyUI5of5": 5,
+    "RustBaseTopicUI5of5": 5,
+    "RustSelectedVariantUI": "not-measured-in-this-diagnostic; source rendering changes order only, not claim definitions",
+    "AtlasAffectedFilePickersObserved": 4,
+    "consumerSourceFilesExamined": [
+      "local-app/public/learning.js",
+      "local-app/public/app.js",
+      "local-app/public/lenses.js",
+      "local-app/public/files.js",
+      "local-app/public/startup.js",
+      "local-app/public/area-reading.js",
+      "local-app/public/studio.js",
+      "dist/app.js",
+      "dist/lenses.js",
+      "dist/atlas.js",
+      "dist/zoom.js",
+      "scripts/build-guide.py",
+      "scripts/build-help.cjs",
+      "scripts/build-atlas.py",
+      "scripts/reading-route-registry.cjs",
+      "ui/lenses-page.js",
+      "ui/reading-help.js"
+    ],
+    "sourceInspectionScope": "Production consumer dispatch/mount/source-lookup/claim-override sites were read; no assertion entire files or every generated URL was semantically reviewed.",
+    "staticHTMLProducerScan": {
+      "pages": 7,
+      "startupSourceRefs": 57,
+      "otherPagesUseScriptMounts": true,
+      "evidence": "consumer-inverse-html-sites.json"
+    },
+    "additionalUIRecords": 9,
+    "querySpaceCaveat": "98 concrete authored owners (88 registry+5legacy+5Rust base) is a newly derived minimum inventory, not a closed-world bound on dynamic source/selected-function surfaces.16Rust variants and generic/viewer/zoom modes remain distinct applicability rows."
+  },
+  "adjudications": [
+    {
+      "id": "INV-G6-001",
+      "gate": "G6",
+      "status": "FAIL",
+      "finding": "buildRouteRegistry receives only fixed11 registered kinds; its comment excludes legacy tour as a basis. Active dist/app.js details5 and ReadingLenses Rust5 topics/16 variants are not owner rows. Checking only registry-generated entries against registry generates a closed-world false completeness proof."
+    },
+    {
+      "id": "INV-G5-001",
+      "gate": "G5",
+      "status": "FAIL",
+      "finding": "Atlas 4-file picker lacks pool-test349–381, trait-contract65–79 and RPC recovery750–760 despite actual generic/legacy/Rust help. These existing aided tasks cannot be selected on this page. Raw file navigation is still available; no code-loss claim."
+    },
+    {
+      "id": "INV-G6-002",
+      "gate": "G6",
+      "status": "FAIL",
+      "finding": "Rust uses topicContext(topic,context), replacing same-line generic hints with31 topic claims over20 topic/context appearances. Atlas route/contextBridge has no rustTopic and lenses.js is not an Atlas dependency. Same source bytes cannot establish purpose/claim equivalence."
+    },
+    {
+      "id": "INV-FILE-001",
+      "gate": "file-availability",
+      "status": "PASS",
+      "finding": "All excluded6 lie in already counted Atlas files; this audit does not invalidate61 file count or1,283 file index. The false part is exhaustive helped-range/owner inference."
+    },
+    {
+      "id": "INV-READ-001",
+      "gate": "G1-publishing-remedy",
+      "status": "needsReview",
+      "finding": "This diagnostic verified6 pinned bodies, existing visible basic meanings,31 Rust claim anchors and distinct context contracts. It did not freshly certify every legacy summary/input/output/branch field or16 step-selected UI variants. Do not automatically make all old fragments reviewed modern routes."
+    },
+    {
+      "id": "INV-G5-003",
+      "gate": "G5",
+      "status": "FAIL",
+      "finding": "Atlas explicit initial line365 (existing omitted pool-test) and line200 (no authored range) retain requested selection label/input, but fall back to unrelated role preview tx:submit32–114 and automatically collapse raw original. The requested line is not visible in opened aided source or raw source.",
+      "evidence": "consumer-inverse-additional-ui.json labels atlas-explicit-line365 / atlas-explicit-line200-no-help; consumer-inverse-line365.png",
+      "sourceMechanism": "dist/atlas.js renderExplanation: when no near context uses role fallback, then source-original.open=false whenever rawManual is false. File-level help availability is incorrectly used to collapse any selected raw range."
+    },
+    {
+      "id": "INV-G4-001",
+      "gate": "G4",
+      "status": "PASS-subset / needsReview-full-G4",
+      "finding": "After manually opening raw original at line200, all four basics/trace combinations preserve rawOpen=true, rawLine200 and URL. This is a passing switch subset, not evidence initial fallback preserves visibility. Unsaved note input was not modified/measured.",
+      "evidence": "consumer-inverse-additional-ui.json labels atlas-line200-G4:*"
+    },
+    {
+      "id": "INV-CONSUMER-FIT-001",
+      "gate": "consumer-fit/G5",
+      "status": "FAIL",
+      "finding": "Generic reader at trait-contract65–79 and trait-implementation21–31 displays authored same-page peer-reading notes, but mounts neither named peer (recover/submit), heading nor jump/ref. Pinned trait source and local line hints may be correct while page-local direction is false.",
+      "sourceFit": "not a contradiction in upstream Rust; a consumer-specific navigation assertion"
+    },
+    {
+      "id": "INV-CONSUMER-FIT-002",
+      "gate": "consumer-fit/G5",
+      "status": "needsReview",
+      "finding": "Atlas context-only trait-implementation preview contains same-page submit note without mounted submit section. Picker does offer submit on this page, so strict unreachable FAIL is not justified here. Explicit guided connection/retention should be tested if revised. Trait-contract itself is currently absent from picker.",
+      "evidence": "samepage-note-atlas-trait-implementation"
+    }
+  ],
+  "excludedContextAdjudications": [
+    {
+      "context": "area:pool-validation",
+      "fixedBodyExact": true,
+      "source": {
+        "path": "crates/transaction-pool/src/validate/eth.rs",
+        "start": 592,
+        "end": 598,
+        "hash": "8e6b9d2e8ec6ae08600fc9e6bd1ed2f68d160aa36bbf0d5a582451d3c4f9c1ac"
+      },
+      "genericViewerUsed": true,
+      "containingRegisteredSources": [
+        "area:send-stateless"
+      ],
+      "sameOriginalAvailableInAtlas": true,
+      "teachingEquivalence": "Common predicate fits in area:send-stateless L593–596: Some(chain_id) differing from configured chain returns ChainIdMismatch. Narrow help adds explicit optional-ID explanation; not byte-identical hints.",
+      "G5": "PASS for reading this common condition through existing larger excerpt; narrow-hint equivalence needsReview",
+      "G6": "FAIL: actual generic consumer omitted from inventory/exclusion account"
+    },
+    {
+      "context": "area:rpc-recovery",
+      "fixedBodyExact": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "start": 750,
+        "end": 760,
+        "hash": "03aefeb423d3fff38a2750477cee38730e61c055dd8802693ef568cc2432cca8"
+      },
+      "genericViewerUsed": true,
+      "containingRegisteredSources": [],
+      "sameOriginalAvailableInAtlas": false,
+      "teachingEquivalence": "L750–760 is a distinct generic signed-transaction helper returning Recovered<T>, not the PoolTx helper at81–109. Mapping to recover would change receiver/return contract.",
+      "G5": "FAIL for same-page selection of the existing authored source/help: no destination in picker, raw source availability alone does not supply existing comments; broader usability burden remains needsReview",
+      "G6": "FAIL: real consumer/context excluded"
+    },
+    {
+      "context": "tx:forward",
+      "fixedBodyExact": true,
+      "source": {
+        "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "start": 88,
+        "end": 105,
+        "hash": "17d1ea7cc58e3ebd06e114620b397fb1cccc2fe0c1620fc0d7acca0ae7f862ff"
+      },
+      "genericViewerUsed": true,
+      "containingRegisteredSources": [
+        "tx:submit"
+      ],
+      "sameOriginalAvailableInAtlas": true,
+      "teachingEquivalence": "tx:submit includes exact L88–105 and stronger explicit RPC-forward success/local failure distinction at97/102/104. No need to duplicate source as a second body merely to add a branch entry.",
+      "G5": "PASS for basic forward branch access through existing submit; legacy question/field equivalence needsReview",
+      "G6": "FAIL: legacy owner omitted despite actual reader URL"
+    },
+    {
+      "context": "tx:batch-runner",
+      "fixedBodyExact": true,
+      "source": {
+        "path": "crates/transaction-pool/src/batcher.rs",
+        "start": 114,
+        "end": 135,
+        "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+      },
+      "genericViewerUsed": true,
+      "containingRegisteredSources": [
+        "area:send-receive"
+      ],
+      "sameOriginalAvailableInAtlas": true,
+      "teachingEquivalence": "area:send-receive113–137 contains114–135 exactly and explains119 receive,124 task spawn,133 Pending. Rust future/channel overlays add distinct114/119 purpose and cross-source reply relation; these do not survive generic Atlas choice.",
+      "G5": "PASS for basic receive/spawn/Pending path; FAIL for same-page Rust-purpose choice",
+      "G6": "FAIL: legacy and Rust owner references omitted"
+    },
+    {
+      "context": "tx:pool-test",
+      "fixedBodyExact": true,
+      "source": {
+        "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "start": 349,
+        "end": 381,
+        "hash": "69cfe4e334cae1d378c4674ddbd8d62624fd27b1446b9789caaa78c3d827a755"
+      },
+      "genericViewerUsed": true,
+      "containingRegisteredSources": [],
+      "sameOriginalAvailableInAtlas": false,
+      "teachingEquivalence": "Mock/API test349–381 verifies two sends, lengths1/2, get, Local. No registered source contains this test; production submit32–114 cannot replace test assertions.",
+      "G5": "FAIL for same-page selection of the existing authored source/help: no destination in picker, raw source availability alone does not supply existing comments; broader usability burden remains needsReview",
+      "G6": "FAIL: real consumer/context excluded"
+    },
+    {
+      "context": "tx:trait-contract",
+      "fixedBodyExact": true,
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "start": 65,
+        "end": 79,
+        "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+      },
+      "genericViewerUsed": true,
+      "containingRegisteredSources": [],
+      "sameOriginalAvailableInAtlas": false,
+      "teachingEquivalence": "Trait declaration65–79, required signers69 and default accounts72 are absent from Atlas selected ranges81–109/187–200/777–825. An impl at another file21–31 does not replace declaration/default-method evidence.",
+      "G5": "FAIL for same-page selection of the existing authored source/help: no destination in picker, raw source availability alone does not supply existing comments; broader usability burden remains needsReview",
+      "G6": "FAIL: real consumer/context excluded"
+    }
+  ],
+  "rootCause": {
+    "name": "closed-world inventory",
+    "mechanism": [
+      "Start from a hand-selected set of producers accepted by registry builder.",
+      "Compute availableContexts only from resulting rows; discard every other context by definition.",
+      "Compare Atlas to that derived registry, so absent consumers cannot create a failing expected row.",
+      "Conflate same-file availability, containing-original coverage and purpose-specific teaching claims.",
+      "Inverse scan of actual generic path/line renderers and Rust topic overlays was omitted."
+    ],
+    "thisAuditOwnLimits": "Not a whole repository semantic review, human usability study, or all108 acceptance."
+  },
+  "proposedOutsideValidation": [
+    {
+      "condition": "Renderer-origin inventory",
+      "measurable": "Enumerate production mounts from app/files/lenses/startup/area/static app/zoom/atlas and generator outputs before registry generation; each actual owner maps to a registry row, a reviewed equivalent alias, or explicit unsupported record with reason and reviewer."
+    },
+    {
+      "condition": "Context inverse difference",
+      "measurable": "Build union of literal contexts, templated tx IDs, metadata references, dynamic call targets, path/line forSource candidates, Rust evidence/support. Expected minus registered/equivalent/explained unsupported must be empty; unused requires no references in this independent union."
+    },
+    {
+      "condition": "Teaching contract identity",
+      "measurable": "Compare sourceCommit/path/start/end/code hash AND topic/purpose/claims(line,match,text)/required-source closure. Equal bytes with different claims produces needsReview; never auto-pass."
+    },
+    {
+      "condition": "Generic lookup parity",
+      "measurable": "For every forSource-selectable authored range, test Atlas selection at start and a hinted interior line; existing help is either accessible in same page or explicitly marked unsupported, preserving raw original."
+    },
+    {
+      "condition": "Rust variants",
+      "measurable": "All5 topics and16 contextual starts preserve exact topic claim override, source order/boundaries and return origin. Merely inserting a rust route without carrying topicContext is a regression."
+    },
+    {
+      "condition": "Avoid duplicate remediation",
+      "measurable": "Represent forward/batch-runner/pool-validation as reviewed aliases/jumps when full source and essential claims are equivalent; ensure shared row ID/source selection/back route and no simultaneous duplicate original."
+    },
+    {
+      "condition": "Mutation-test inventory",
+      "measurable": "Add a fixture producer consuming a previously unregistered context and a second fixture with a new Rust claim on existing context. Completeness check must fail even when registry itself is unchanged."
+    },
+    {
+      "condition": "UI gate",
+      "measurable": "From Atlas choose known test/trait/decode/Rust task and show matching original plus purpose-specific comments on same page; back preserves source and draft. Count prep actions separately from actual reading actions."
+    },
+    {
+      "condition": "Requested-line visibility invariant",
+      "measurable": "For each registered file, sample covered, omitted-authored and truly uncovered line. Initial open must show that selected line in an open matching aided source or open raw original. Unrelated role fallback must not collapse raw selection. Repeat cold load and after helper data arrival."
+    },
+    {
+      "condition": "Page-local claim closure",
+      "measurable": "Every authored same-page reference declares peer context ID. For each renderer, peer must be mounted or have an explicit same-page jump/picker target; otherwise use consumer-specific external guidance or mark unsupported. Text mention without target fails."
+    }
+  ],
+  "evidence": {
+    "sourceInventory": "consumer-inverse-source-inventory.json",
+    "inverseSource": "consumer-inverse-source-audit.json",
+    "actualUI": "consumer-inverse-ui.json",
+    "screenshot": "consumer-inverse-atlas-submit.png",
+    "additionalUI": "consumer-inverse-additional-ui.json",
+    "explicitLineScreenshot": "consumer-inverse-line365.png",
+    "HTMLsites": "consumer-inverse-html-sites.json"
+  },
+  "retainedErrors": [
+    "Initial diagnostic atlas.html404 was an evaluator wrong entry URL, corrected using actual dist/explore.html file listing; not product route failure.",
+    "Three evidence-helper binding/import errors occurred after UI observation; no product action failed and captured observations were later saved.",
+    "Additional capture initially referenced a previously closed helper tab; saved new observation using a helper bound explicitly to the new tab. No attempted product mutation."
+  ],
+  "cleanup": {
+    "dedicatedTabClosed": true,
+    "globalPreferenceChanges": 0,
+    "notesOrQueueWrites": 0,
+    "caveat": "Atlas opened-file list/search and legacy last position are automatic diagnostic-origin navigation state; not exact raw storage restoration.",
+    "localAssistance": "Four local helper combinations restored true/true before leaving; global axes never changed. Both diagnostic-created tabs closed."
+  },
+  "sourceFitVsConsumerFit": {
+    "pinnedBody": {
+      "sixExcluded": "6/6 exact pinned bytes",
+      "fiveLegacy": "5/5 exact pinned bytes",
+      "rustTopicClaims": "31/31 match named token at fixed line over20 topic-context appearances; old unchanged semantic reviews are not automatically fresh all-field approval"
+    },
+    "specificSemanticBoundaries": [
+      "LoadTransaction helper750–760 returns Recovered<T> and chooses cache/try_recover after decode. It is not the PoolTx-returning helper81–109; do not treat similar recovery verbs as equivalent contexts.",
+      "Forward89–104 returns remote hash; local add await result is discarded. Containing submit includes this exact branch and precise aid.",
+      "Test349–381 uses mock API and asserts two local additions/lookup/origin; it is not a test execution report.",
+      "Trait declaration65–79 requires signers and supplies default accounts. Its body and the impl21–31 are different evidence roles."
+    ],
+    "consumerFit": [
+      "Standalone notes referencing absent peer sections are false at these consumers even when Rust claims fit.",
+      "Generic Atlas contexts suppress topicContext claim override, so topic-specific reading purpose is lost.",
+      "Selected line outside registered ranges must not be hidden merely because the file has some other helped range."
+    ]
+  }
+}
