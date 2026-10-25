@@ -1,0 +1,1603 @@
+{
+  "candidate": "candidate-5",
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "technicalStatus": "pass",
+  "candidateOverallStatus": "FAIL: separate beginner discovery findings retained, no overall pass claimed",
+  "summary": {
+    "units": 30,
+    "rounds": 2,
+    "staticCardDestinations": 342,
+    "localCargoDestinations": 292,
+    "roleSurfaceCases": 76,
+    "roleCheckboxStates": 304,
+    "rpcVariantCases": 8,
+    "rpcCheckboxStates": 32,
+    "localDraftStates": 16,
+    "staticDraftStates": 8,
+    "adaptiveProfileStates": 48,
+    "sourceWidgetObservations": 752,
+    "actualRenderedStageClaimBindings": 349,
+    "verificationIssues": 0,
+    "userNotesSavedOrDeleted": 0,
+    "readmarksExplicitlyChanged": 0,
+    "runtimeEdits": 0,
+    "overallCandidatePass": false
+  },
+  "units": [
+    {
+      "id": "component:node",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 22,
+          "localCrateDestinationsVisited": 16,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 22,
+          "localCrateDestinationsVisited": 16,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:rpc",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "Four authored responsibility/input/output cards and their purpose/connection/source paths match the unchanged independently reviewed data; actual DOM claims and all inline originals were compared.",
+        "G2": "All4 variants expose pinned inline originals; original bytes, numbers and adjacent helper comment blocks match.",
+        "G3": "Unchanged distinctions between common helper, concrete implementation, async channels and related Engine example are preserved in the actual stage text.",
+        "G4": "All4 variants were selected and exercised with4 combinations in both rounds, preserving original, selected line, URL and controls. They contain no draft editor; actual local/static draft editors were separately tested.",
+        "G5": "No overlapping repeated original ranges; first original is available without preparation, later sources open through disclosure or picker. Beginner discovery is not asserted by this scripted mechanics review.",
+        "G6": "Both rounds cover4 static detail variants plus all11 actual local Cargo navigation cards."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 4,
+          "localCrateDestinationsVisited": 11,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 4,
+          "localCrateDestinationsVisited": 11,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ],
+      "sourceFitCarry": {
+        "kind": "Identical reviewed claim/context/source tuple only; no new full147 semantic pass",
+        "sourceDataSha256": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+        "independentEvidence": [
+          "beginner-role-source-delta-review.json",
+          "../candidate3-preflight-review-4.json"
+        ],
+        "componentVariants": [
+          "interface",
+          "helpers",
+          "implementation",
+          "integration"
+        ]
+      }
+    },
+    {
+      "id": "component:pool",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 3,
+          "localCrateDestinationsVisited": 1,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 3,
+          "localCrateDestinationsVisited": 1,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:network",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 19,
+          "localCrateDestinationsVisited": 14,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 19,
+          "localCrateDestinationsVisited": 14,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:sync",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 15,
+          "localCrateDestinationsVisited": 8,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 15,
+          "localCrateDestinationsVisited": 8,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:engine",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 12,
+          "localCrateDestinationsVisited": 11,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 12,
+          "localCrateDestinationsVisited": 11,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:execution",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 6,
+          "localCrateDestinationsVisited": 5,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 6,
+          "localCrateDestinationsVisited": 5,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:payload",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 7,
+          "localCrateDestinationsVisited": 7,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 7,
+          "localCrateDestinationsVisited": 7,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:storage",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 27,
+          "localCrateDestinationsVisited": 22,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 27,
+          "localCrateDestinationsVisited": 22,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:extension",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 33,
+          "localCrateDestinationsVisited": 32,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 33,
+          "localCrateDestinationsVisited": 32,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "component:foundation",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "not-applicable",
+        "G2": "not-applicable",
+        "G3": "not-applicable",
+        "G4": "not-applicable",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "gateReasons": {
+        "G1": "These directory catalogue cards explicitly mark responsibility and input/output as unconfirmed; the measured purpose is source membership and navigation, not a processing explanation. Every model file exists in pinned Git.",
+        "G2": "No code-reading claim is authored in these167 structural cards. The separate area reading is a different unit assigned to C.",
+        "G3": "Directory membership is not represented as a call/return graph.",
+        "G4": "No source/helper controls or editor inside these catalogue cards. Controls and real drafts were exercised on the common renderer separately.",
+        "G5": "One explicit structure disclosure, then actual card navigation; no duplicate processing definitions are displayed by the cards.",
+        "G6": "All static and local crate destinations were newly visited in each round, with all displayed file memberships compared to pinned Git."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "staticCardsVisited": 23,
+          "localCrateDestinationsVisited": 19,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "staticCardsVisited": 23,
+          "localCrateDestinationsVisited": 19,
+          "allFileMembershipVerified": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "237400ce4039f8e82562f9281491cd44742ed443c8c114f94ca0f1e0d07c9d26",
+        "pinnedFullFileSha256": "c72844295fa265203bc39e3e82dc726999c84f5a27a315f6b5125b7c5febb9c7",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "tx:recover": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+          "tx:recovery-hook": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+          "tx:submit": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+          "tx:queue": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+          "area:send-receive": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+          "tx:batch": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+          "tx:pool": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+          "area:file-tx-get-entry": "e93a9c7dd2a387fd25a0ed14ca8358f11aa0f01d29073e63e0e6193292aafb3b",
+          "area:file-tx-get": "d5d1d2a7767308c1888bbc86ee9d842016fa82dc38cd095221349289fe4fea86",
+          "area:file-pool-get": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 10,
+          "staticSources": 10,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 10,
+          "staticSources": 10,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "cc5a64d8cd33c8136cc664ffdc3e7156288f7c6b34bfc63d2b573d070c6d20db",
+        "pinnedFullFileSha256": "a0b7f244813d7a9f0d1ebc393c6b26d38061142ae2261d7bcbf6f8284536f68f",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:component-rpc-namespace": "e602da8a8ad8e88ae33b11dfe299e01c423ea3b6055498b7a55e326db5a8288c",
+          "tx:rpc-contract": "0d5c59ce83e07e6461ea6fbdcf270c3df5b9f16155958cf47f2f483634574dd5",
+          "tx:rpc": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f",
+          "tx:recover": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+          "tx:recovery-hook": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+          "area:rpc-balance-entry": "f07bffb57ee40502842464c878b5fb536d8c762fc66196d235d8c931eebbdee7",
+          "area:rpc-balance-read": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 7,
+          "staticSources": 7,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 7,
+          "staticSources": 7,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/transaction-pool/src/batcher.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "ad0f75ff4f060a16029025fa7b33f189bd359c6fa3b205da6d9aa7e8058450b7",
+        "pinnedFullFileSha256": "c159689d85de95bfdaa2faaef4e3428128606de6c4bfa23cbdae1ef8ab06ae7d",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:send-receive": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+          "tx:batch": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+          "tx:pool": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+          "area:send-validation-dispatch": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+          "area:send-validation-task": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+          "area:send-validation-worker": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+          "area:send-validation-entry": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+          "area:send-validation-order": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+          "area:send-stateless": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+          "area:send-stateful": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+          "area:send-nonce": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+          "area:pool-balance": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+          "area:send-pool-limit": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+          "area:send-pool-add": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 14,
+          "staticSources": 14,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 14,
+          "staticSources": 14,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/transaction-pool/src/lib.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "c5e14376f974ffd5f478c65e602628c4c1c1543fc58ac38584762c58339385d8",
+        "pinnedFullFileSha256": "2bc87384913bbbbdc681c283ec28b35cba371c267d2f54e3d1bf1f807780abf9",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "tx:pool": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+          "area:send-validation-dispatch": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+          "area:send-validation-task": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+          "area:send-validation-worker": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+          "area:send-validation-entry": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+          "area:send-validation-order": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+          "area:send-stateless": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+          "area:send-stateful": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+          "area:send-nonce": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+          "area:pool-balance": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+          "area:send-pool-limit": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+          "area:send-pool-add": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b",
+          "area:file-pool-get": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+          "area:file-pool-listeners": "04adbae1169369a2c273c5a3e7d7df97625ef6d592456ed8ea730939355cf45f"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 14,
+          "staticSources": 14,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 14,
+          "staticSources": 14,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "e16d795a51679891dd565bb765bf8cbeff28eb47172bc8b72888df9a0db0d629",
+        "pinnedFullFileSha256": "d477f796a2417467b8cb80f22495bcfc2e6387811fcd5ce0a9216729b8f01389",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "tx:submit": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+          "tx:queue": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+          "area:send-receive": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+          "tx:batch": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+          "tx:pool": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 5,
+          "staticSources": 5,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 5,
+          "staticSources": 5,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/rpc/rpc/src/eth/core.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "e0cf07b15840d6b5ace5376f2d8d32f04253aaeba020877fc1b08a6e9de07d5c",
+        "pinnedFullFileSha256": "b9b435484e0f7e25b751a503396cf314ad9064d2d701b50e93b184c6c5b3a748",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:file-rpc-inner": "101f6cc6e922e7e0e705de80bcdb6d914d3c2254a70e311000b21ea81ce6913c",
+          "area:file-rpc-inner-build": "521631bd3b17f79924116d28cf40c729e94474a44f02422a95d1629095cb9a8a",
+          "area:file-batch-create": "f2062606cc038c1446552ea0f1fdb28273772e867172c35c540573055daac19f",
+          "tx:queue": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+          "area:send-receive": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+          "tx:batch": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 6,
+          "staticSources": 6,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 6,
+          "staticSources": 6,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:bin/reth/src/main.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "4e975f205b8a391c51412acecf1da4c0c3f8152adb52343688b43461607cd108",
+        "pinnedFullFileSha256": "3257c910e63026b43e0b95efdd9f9eaa0ece74a87aa0015f0a5826f5696180e0",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "startup:entry": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+          "area:startup-cli-entry": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+          "area:startup-cli-configure": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+          "area:startup-cli-prepare": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+          "startup:dispatch": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+          "startup:supervisor": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+          "startup:database": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+          "area:startup-launcher-entry": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+          "area:startup-node-selection": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+          "area:startup-node-components": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+          "area:startup-builder-launch": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+          "area:startup-builder-dispatch": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+          "area:startup-debug-adapter": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+          "area:startup-debug-inner": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+          "area:startup-engine-dispatch": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+          "startup:context": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+          "area:node-handle": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+          "area:startup-debug-return": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+          "area:startup-node-wait": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+          "area:node-exit": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 20,
+          "staticSources": 20,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 20,
+          "staticSources": 20,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/ethereum/cli/src/app.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "1d8dde12924a2aaed702fca9f45981415645db980ef07c26708479b23745c26f",
+        "pinnedFullFileSha256": "68d14b7bae77b5fbd3e90131000cec113b3f8b5270683dc9244e515d344ac701",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:startup-cli-entry": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+          "area:startup-cli-configure": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+          "area:startup-cli-prepare": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+          "startup:dispatch": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+          "area:startup-launcher-entry": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+          "startup:supervisor": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 6,
+          "staticSources": 6,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 6,
+          "staticSources": 6,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/cli/runner/src/lib.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "1fc4d5333ab36532f281b6e80c2a4f89014afcdb89e1f83b8aa9703336d91a8c",
+        "pinnedFullFileSha256": "3a492e44cf087dfe9b578641a90d0aeaa93733be6c84298b9d25391a02f9b08e",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "startup:supervisor": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+          "area:loop-cli": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 2,
+          "staticSources": 2,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 2,
+          "staticSources": 2,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/cli/commands/src/node.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "cb5f1ba7dfeda494021f43357a5005d6f59c774cc2a0895a5ce2e3eaf4f3e557",
+        "pinnedFullFileSha256": "b9c44e591441210993cc4a6967c189c50e33fb3604e8df62e1fb24c4a22278e3",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "startup:database": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+          "area:startup-launcher-entry": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+          "startup:entry": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+          "area:startup-cli-entry": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+          "area:startup-cli-configure": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+          "area:startup-cli-prepare": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+          "startup:dispatch": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+          "area:startup-node-selection": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+          "area:startup-node-components": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+          "area:startup-builder-launch": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+          "area:startup-builder-dispatch": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+          "area:startup-debug-adapter": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+          "area:startup-debug-inner": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+          "area:startup-engine-dispatch": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+          "startup:context": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+          "area:node-handle": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+          "area:startup-debug-return": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+          "area:startup-node-wait": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+          "area:node-exit": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 19,
+          "staticSources": 19,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 19,
+          "staticSources": 19,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/node/builder/src/launch/engine.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "fa8738948adbeb48d6a22b076e956efbdbf3f0aa4f90838be88d20da76e88a72",
+        "pinnedFullFileSha256": "8ab65f8a729766c30687a617c8847a391bd8fc673694c78187661a6cd880731a",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:startup-engine-dispatch": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+          "startup:context": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+          "startup:components": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+          "startup:services": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d",
+          "area:startup-engine-build": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+          "area:rpc-launch": "1f587935df27b9e9b1695425728f7f2e4e6a9e44a136c5e8e18e80e4e140c8ab",
+          "startup:orchestrator": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692",
+          "area:node-handle": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+          "area:startup-node-wait": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 9,
+          "staticSources": 9,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 9,
+          "staticSources": 9,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/node/builder/src/components/builder.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "4f1531643794e5a754aefcc6834ee52f7a0e384dddefd754c2b2e9356fa02bf4",
+        "pinnedFullFileSha256": "4315a9476e5f11f76337b889d07f2d2d0f270682e9acad385a165bb65335b7f8",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "startup:components": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+          "area:startup-node-selection": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+          "area:startup-node-components": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+          "area:startup-component-choice": "375884d2b503f1246c58a6147123aeafd73ff58a8919dc41fc0946e533c75f0b",
+          "area:startup-network-builder": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+          "area:startup-network-start": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+          "area:startup-payload-spawn": "855d512d773954cfd06c403f540f77d6dc790ba55cd22b97134a362072680fdd"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 7,
+          "staticSources": 7,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 7,
+          "staticSources": 7,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/tree/mod.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "e87629dde694087b2b32e18b6cf00249c484ae7b6cbee8856f67345c64dae59b",
+        "pinnedFullFileSha256": "11a9fdf55806f9bd16bf38974987fc77e8bd4500efc055e2a19e277845df5945",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:startup-tree-spawn": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+          "startup:tree": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+          "area:startup-tree-pressure": "e538ae5ba22df639ddfab6f3f9c65f6f89b2961a77139d12ddfdac99d04d2588",
+          "area:startup-tree-wait": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80",
+          "area:journey-block-save-start": "f8ee7a543ce985f60e68bb29bc78f0f9a1fe28c276b8bf34ad2cc1eb360a891a",
+          "area:journey-block-save-target": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+          "area:journey-block-save-complete": "d5ca7e38795af67e413db2c488b16fe35f7762bb0680437f9cb0fedb09060f29",
+          "area:startup-backfill-gate": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+          "area:startup-backfill-events": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+          "area:startup-backfill-finished": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+          "area:journey-block-receive": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+          "area:journey-block-forkchoice-precheck": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+          "area:journey-block-dispatch": "950be0ffff535603eabe63701940b633c87691f6b22483fc172389b5d4779401",
+          "area:journey-block-canonical-state": "a23b29f4a59fe4e21fdb6136db5a22488d6f8b82652489b08681a1f368302497"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 14,
+          "staticSources": 14,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 14,
+          "staticSources": 14,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/net/network/src/manager.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "e789d9290187e8971955426e5c6d23112bef3f7eebcf6a9fc1600715d8368233",
+        "pinnedFullFileSha256": "c54ce719aeacb6f2af27521dbdb52bdbae374196873f60eb91ce8ac22ccbe79e",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:startup-network-builder": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+          "area:startup-network-start": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+          "startup:network": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 3,
+          "staticSources": 3,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 3,
+          "staticSources": 3,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/backfill.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "69cbb2b3e3c63afaeff1c140c58b4398a0cb03e2da596d0d0bd0747ed4b6f063",
+        "pinnedFullFileSha256": "ee33668e9a772a701bb8e3f1f4fa996c2fa4b2f5c4392c607931a53337b256e1",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "startup:backfill": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+          "area:journey-sync-run": "5e25bdd2473abb8e9e0250b936f011c2ce94a7d0812884c6eea527e97b69f412",
+          "area:journey-sync-default-order": "7b79f1e1d7052ba7a95ebb5c0b69918a97c11b5ed70f2743dc4c20c6d493e810",
+          "area:journey-sync-online-order": "9db4181f2b4d7379521f8c3213e98c658a0adfec37b690cb28d1a270055e97be",
+          "area:journey-sync-offline-order": "4ea54dedb10faef1c27c0b9c0a41203ffc9ece9d19b0b0089043f0858c61fd28",
+          "area:journey-sync-execution-order": "59466b5adec500d4f4e762f36f68fea9de4e0527eefb05213589f1964ed71199",
+          "area:sync": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a",
+          "area:sync-unwind": "8c38b504093ea8e6b3e42301b29889f9f7be0d99191d86ae8deb2f710088b4d4",
+          "area:startup-backfill-gate": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+          "area:startup-backfill-events": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+          "area:startup-backfill-finished": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+          "area:journey-block-receive": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+          "area:journey-block-forkchoice-precheck": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+          "area:journey-block-save-target": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 14,
+          "staticSources": 14,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 14,
+          "staticSources": 14,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/launch.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "f160015bccc536aafbc35de2e956688ddd519a8af1e7b5de7fd4ee8dfded7088",
+        "pinnedFullFileSha256": "ebb3287b23d8bdfc1750f92200e41c06a51e515510f3c7c2ad1737c5577cd563",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:startup-engine-build": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+          "area:startup-tree-spawn": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+          "startup:backfill": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 3,
+          "staticSources": 3,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 3,
+          "staticSources": 3,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/chain.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "b0f8643c4b2d20a20e52d612e66ef32277491b4127a595ee783b30453198879e",
+        "pinnedFullFileSha256": "b0f41a4a83b3b495fb3ce67172de50c7f0caa15dd75a2c8d7d3405606eb77988",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:startup-orchestrator-poll": "4ae9eb17486289bd32ed5db4b016addcc4b5100b6548518908ac5af93d3d9d4f",
+          "startup:backfill": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+          "area:startup-engine-poll": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 3,
+          "staticSources": 3,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 3,
+          "staticSources": 3,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/engine/tree/src/engine.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "edbb810423c4fe6d2889b7dddfd400b00d657df019bc823192cc57dae8a53541",
+        "pinnedFullFileSha256": "1f025a3e20bbd0929f60adc1096a476b04fbb80cb5d505cd4475a91d2f8e30bf",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:startup-engine-poll": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+          "area:startup-engine-channel": "7b6266b0f75f515c7f4bd1dbd24d679aa590bb3943e1b69497395a42ed13f636"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 2,
+          "staticSources": 2,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 2,
+          "staticSources": 2,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    },
+    {
+      "id": "file-role:crates/node/builder/src/handle.rs",
+      "technicalStatus": "pass",
+      "gates": {
+        "G1": "pass",
+        "G2": "pass",
+        "G3": "pass",
+        "G4": "pass",
+        "G5": "pass",
+        "G6": "pass"
+      },
+      "sourceFitCarry": {
+        "claimSha256": "f1274314340a06b7eada789e819cd430fac41d4e5a4d59f709b89984992f2360",
+        "pinnedFullFileSha256": "728c9a4c8047e6283157e418cc2a1ed926e9dca7a714d98aee16deed6383097e",
+        "checks": {
+          "drillEqualsExpectedMerge": true,
+          "annotationsEqualsExpectedMerge": true,
+          "previousReviewedRoleClaimExact": true,
+          "offlineFullSourceEqualsPinned": true
+        },
+        "independentEvidence": "beginner-role-source-delta-review.json",
+        "explanationSourceHashes": {
+          "area:node-handle": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+          "area:startup-node-wait": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+          "area:node-exit": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc"
+        },
+        "limit": "Same claims and source hashes carried, not a new independent full-file or all147 semantic review."
+      },
+      "gateReasons": {
+        "G1": "Role/input/output text, every stage purpose/connection and source-context order match unchanged previously reviewed claims.",
+        "G2": "All inline source hashes/line numbers and adjacent comments matched in both local/static rounds.",
+        "G3": "Rendered purpose and connection clauses exactly match the reviewed call/return/related-example distinctions.",
+        "G4": "Both local/static surfaces, both rounds,4 combinations after selecting the final source line; real nonempty local/static drafts and full profile matrix were separately exercised.",
+        "G5": "One source range per context without overlapping repeats; optional declaration catalogue opens without replacing evidence. The picker/disclosure mechanics pass does not supersede beginner discovery failures.",
+        "G6": "Four new observations for this role: local/static ×2rounds, plus an actual DOM claim/reference binding comparison."
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "localSources": 3,
+          "staticSources": 3,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        },
+        {
+          "round": 2,
+          "localSources": 3,
+          "staticSources": 3,
+          "combinationsPerSurface": 4,
+          "optionalCataloguePreserved": true,
+          "actualProfile": "new/first"
+        }
+      ]
+    }
+  ],
+  "scopeLimits": [
+    "This measures actual technical UI behavior by an agent, not human comprehension or unprompted discovery.",
+    "Known C5 novice discovery failure is preserved in beginner-findings.json and is not replaced by these explicit scripted actions.",
+    "Defensive fetch failure was covered by separate actual-zoom VM tests, not forced in these positive offline-seeded browser paths.",
+    "Full1283 Rust-file explanatory coverage remains unachieved;60 files have anchors and2 whole-file reviews in the separate coverage model.",
+    "Cross-origin profile matrices use the same server/JS at localhost with isolated storage, not127-state migration.",
+    "Manual checkbox selections were made through visible UI and restored to starting values; hidden manual flags were never reset to manufacture default behavior.",
+    "Static autosave note was not typed into; only the actual unsaved new-question field was used."
+  ],
+  "notMeasured": [
+    "Human comprehension: no human participants",
+    "Defensive catalog-fetch failure was tested in separate actual-zoom VM fault injection, not simulated in these positive browser routes",
+    "No new semantic completeness review of all147 source contexts; G1 carries only identical previously reviewed claims and source hashes",
+    "Global profile matrix used localhost storage isolated from127, so it does not prove cross-origin preference migration"
+  ]
+}

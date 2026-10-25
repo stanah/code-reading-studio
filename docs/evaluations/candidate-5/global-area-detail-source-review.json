@@ -1,0 +1,782 @@
+{
+  "candidate": 5,
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "helpDataSha256": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+  "reviewer": "C (not source author A)",
+  "records": [
+    {
+      "unit": "area:node",
+      "currentClaim": {
+        "question": "ノードは、いつ起動を終えて何を待つ？",
+        "role": "文字のコマンドを読み、ノードを起動する処理を渡し、終了を待ちます。",
+        "input": "コマンドラインで指定された起動方法や設定。",
+        "output": "起動後のhandleでノード終了を待ちます。main自体はResultを返さず、runが正常なら末尾へ進み、Errなら表示してexit(1)で終了します。",
+        "boundary": "L42は起動の完了待ち、L44は終了待ちです。起動完了でプロセス全体が終了するわけではありません。"
+      },
+      "sources": [
+        {
+          "context": "startup:entry",
+          "path": "bin/reth/src/main.rs",
+          "range": [
+            20,
+            49
+          ],
+          "sha256": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "main20–49: no Result signature. parse().run receives async node launcher, builder launch awaited42, handle.wait_for_node_exit awaited44; outer Err45–48 printed then exit1, normal reaches end49. CLI args read through parse, not main parameters."
+    },
+    {
+      "unit": "followup:node",
+      "currentClaim": {
+        "question": "終了を待つ間、成功と失敗をどう返す？",
+        "role": "終了を表す内部処理を進め、結果がまだなければ待機し、用意できた成功・エラーを返します。",
+        "input": "内部処理を保持するselfと、再び実行してもらうための通知先cx。",
+        "output": "Poll::Readyの成功かエラー、またはPoll::Pending。",
+        "boundary": "終了の要求を送る処理ではありません。内部処理がない場合もPendingで、起動成功や同期完了とは区別します。"
+      },
+      "sources": [
+        {
+          "context": "area:node-exit",
+          "path": "crates/node/core/src/exit.rs",
+          "range": [
+            34,
+            51
+          ],
+          "sha256": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "exit34–51: Future Output eyre::Result<()>; Some consensus future polled through ready!, Ok removes future then Ready Ok, Err returns Ready Err, absent future Pending. This is observing completion, not sending termination."
+    },
+    {
+      "unit": "area:rpc",
+      "currentClaim": {
+        "question": "送信要求の入口は何を受け取り、何を返す？",
+        "role": "アプリから届いた署名済みデータを担当処理へ渡します。",
+        "input": "署名済みトランザクションのバイト列tx: Bytes。",
+        "output": "成功なら識別用のハッシュ、失敗ならRPCのエラー。",
+        "boundary": "返答のハッシュはブロックへの取り込みや確定の完了を意味しません。ログの?txと、失敗を返す.await?を分けて読みます。"
+      },
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "range": [
+            920,
+            924
+          ],
+          "sha256": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "core920–924: signed tx:Bytes, trace logging ?tx, await delegated EthTransactions call then ? error conversion and outer Ok hash. No pool persistence/inclusion/finality conclusion."
+    },
+    {
+      "unit": "followup:rpc",
+      "currentClaim": {
+        "question": "受信したデータから送信者を求めるには？",
+        "role": "外側のsend_raw_transactionが受け取ったデータを、内側の復元helperへ借りて渡します。helperはデータを読み解いて署名から送信者を求め、外側は復元済み取引を元のバイト列と組にして送信担当へ渡します。",
+        "input": "外側は所有するtx: Bytesを受け、内側のrecover_raw_pool_transactionへ&txとして借用します。復元キャッシュの設定はself.eth_api_settings()から読みます。",
+        "output": "内側の復元helperはPoolTx<Self::Pool>またはSelf::Errorを返します。外側はsend_pool_transactionの結果を待ち、ハッシュB256またはSelf::Errorを返すFutureを返します。",
+        "boundary": "復元helper自体はプールへ追加しません。外側は復元後にプール追加を担当する処理へ渡し、その結果を待ちます。秘密鍵の取出しやブロック取り込みの確認とは別です。キャッシュなしでは直接の復元hookを試し、復元エラーはSelf::Errorへ変換します。"
+      },
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "range": [
+            81,
+            109
+          ],
+          "sha256": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:recovery-hook",
+          "path": "crates/transaction-pool/src/traits.rs",
+          "range": [
+            1402,
+            1466
+          ],
+          "sha256": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "helper81–109: outer owned Bytes yields Future<Result<B256,Error>>, recovery helper borrowed slice and cache Some/None hook selection, map_err converts; recovered pooltx and original bytes passed with Local to send_pool_transaction. Default trait body1402–1466 reviewed separately."
+    },
+    {
+      "unit": "area:pool",
+      "currentClaim": {
+        "question": "プールに追加する前に、何を確かめる？",
+        "role": "トランザクションを検証してから、内部プールへ渡して追加結果を返します。",
+        "input": "トランザクションと、その要求がどこから来たかを示すorigin。",
+        "output": "1件分のプール追加結果。検証や追加に失敗する場合もあります。",
+        "boundary": "公開追加APIから検証担当、Ethereumのstateless/stateful条件、内部プールへの追加とサイズ制限までを続けて読みます。特定条件の通過・プール追加・ブロックへの取り込み・確定は別です。"
+      },
+      "sources": [
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "range": [
+            495,
+            528
+          ],
+          "sha256": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "area:send-validation-dispatch",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "range": [
+            383,
+            391
+          ],
+          "sha256": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263"
+        },
+        {
+          "context": "area:send-validation-task",
+          "path": "crates/transaction-pool/src/validate/task.rs",
+          "range": [
+            233,
+            264
+          ],
+          "sha256": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd"
+        },
+        {
+          "context": "area:send-validation-worker",
+          "path": "crates/transaction-pool/src/validate/task.rs",
+          "range": [
+            56,
+            67
+          ],
+          "sha256": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023"
+        },
+        {
+          "context": "area:send-validation-entry",
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "range": [
+            1009,
+            1016
+          ],
+          "sha256": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9"
+        },
+        {
+          "context": "area:send-validation-order",
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "range": [
+            367,
+            435
+          ],
+          "sha256": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5"
+        },
+        {
+          "context": "area:send-stateless",
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "range": [
+            452,
+            655
+          ],
+          "sha256": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e"
+        },
+        {
+          "context": "area:send-stateful",
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "range": [
+            657,
+            727
+          ],
+          "sha256": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc"
+        },
+        {
+          "context": "area:send-nonce",
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "range": [
+            766,
+            782
+          ],
+          "sha256": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87"
+        },
+        {
+          "context": "area:pool-balance",
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "range": [
+            783,
+            801
+          ],
+          "sha256": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d"
+        },
+        {
+          "context": "area:send-pool-limit",
+          "path": "crates/transaction-pool/src/pool/mod.rs",
+          "range": [
+            661,
+            742
+          ],
+          "sha256": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9"
+        },
+        {
+          "context": "area:send-pool-add",
+          "path": "crates/transaction-pool/src/pool/mod.rs",
+          "range": [
+            578,
+            639
+          ],
+          "sha256": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "prior independent semantic evidence carried only with identical exact claim/source",
+      "basis": "Node/engine/RPC recovery changes independently reviewed in candidate3-additional-prefreeze-review-3.json; canonical pool/rpc send operations and balance in prior reviewed source bindings, same current source/claim metadata, C2 missing-callee failure retained.",
+      "evidence": [
+        "../candidate3-additional-prefreeze-review-3.json",
+        "/Users/stanah/Documents/Codex/2026-10-18/code-reading-studio/outputs/global-reading-loop/candidate-5/frozen-evaluation-inputs/docs/source-claim-ledger.json",
+        "beginner-role-source-delta-review.json"
+      ]
+    },
+    {
+      "unit": "followup:pool",
+      "currentClaim": {
+        "question": "残高が足りない要求は、いつ失敗になる？",
+        "role": "必要額と送信者の残高を比べ、検査が有効で残高が不足していればエラーを返します。",
+        "input": "トランザクション、送信者の状態、残高検査を無効にする設定。",
+        "output": "検査に通ればOk(())、不足ならInsufficientFunds。",
+        "boundary": "Okはこの残高検査を通ったことだけです。無効設定の場合もOkとなり、他の検査・実行・確定の成功は示しません。"
+      },
+      "sources": [
+        {
+          "context": "area:pool-balance",
+          "path": "crates/transaction-pool/src/validate/eth.rs",
+          "range": [
+            783,
+            801
+          ],
+          "sha256": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "eth783–801: cost comparison guarded by !disable_balance_check; insufficient only strictly greater sends InsufficientFunds with got/expected; disabled or enough balance Ok. This is one condition, not all validation."
+    },
+    {
+      "unit": "area:network",
+      "currentClaim": {
+        "question": "通信の出来事がない間は、どう待つ？",
+        "role": "内部の要求やネットワークの出来事を取り出して処理します。",
+        "input": "ノード内部からの要求と、ネットワーク側の出来事。",
+        "output": "今すぐ返す最終結果がなければPoll::Pending。",
+        "boundary": "仕事が残る場合も実行を譲り、再び起こしてもらうよう通知します。停止や同期待ちの完了を意味しません。"
+      },
+      "sources": [
+        {
+          "context": "startup:network",
+          "path": "crates/net/network/src/manager.rs",
+          "range": [
+            1134,
+            1203
+          ],
+          "sha256": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "L1172–1179 handles internal requests; L1183–1189 handles swarm events. L1194–1197 wake and Pending when helper flags true; L1202 returns Pending otherwise. Poll Output is (). Macro helper internal budget policy is not proved by this single body."
+    },
+    {
+      "unit": "followup:network",
+      "currentClaim": {
+        "question": "通信相手の評価変更を、いつ省略する？",
+        "role": "相手と評価変更の種類を見て、変更の不要・免除・上限調整を経て評価を更新する入口です。",
+        "input": "相手の識別子peer_idと変更の種類rep、登録済みの相手一覧。",
+        "output": "変更なしで戻る場合か、相手の評価更新・リセットの結果outcome。",
+        "boundary": "この抜粋はoutcomeを得るまでです。結果に応じた遮断など後続の処理全体は含みません。信頼済みでも全ての変更が免除されるわけではありません。"
+      },
+      "sources": [
+        {
+          "context": "area:network-reputation",
+          "path": "crates/net/network/src/peers.rs",
+          "range": [
+            546,
+            585
+          ],
+          "sha256": "328b551bd002f7d8f169b7f7c409fcc5e30501d2f81530381de17c5488dd3944"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "peers546–585: reset→None, zero change early return, registered peer gate, trusted/static exemptions limited to four variants, negative-change cap, apply/reset produces outcome; unknown peer returns. No disconnection claimed."
+    },
+    {
+      "unit": "area:sync",
+      "currentClaim": {
+        "question": "過去のブロックをそろえる仕事を、どう進める？",
+        "role": "同期の仕事を段階ごとに進め、進捗や巻き戻しを扱います。",
+        "input": "段階の一覧、前段階の進捗、保存先を持つself。",
+        "output": "続行・進捗なし・巻き戻しなど次の制御情報、またはエラー。",
+        "boundary": "L232の?は段階の失敗を返します。巻き戻し指示ならL244で巻き戻し、L245で戻ります。各段階の詳細は別実装です。"
+      },
+      "sources": [
+        {
+          "context": "area:sync",
+          "path": "crates/stages/api/src/pipeline/mod.rs",
+          "range": [
+            213,
+            259
+          ],
+          "sha256": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "pipeline223–259: static files may error; each stage executes with previous checkpoint; NoProgress/Continue update progress; Unwind calls unwind and returns; provider/checkpoint errors propagate; final next_ctrl."
+    },
+    {
+      "unit": "followup:sync",
+      "currentClaim": {
+        "question": "巻き戻す段階は、どの順に選ぶ？",
+        "role": "保存済み進捗と目標を確認し、同期した順と逆に段階を見て、目標より手前の段階を飛ばします。",
+        "input": "巻き戻し先to、問題ブロックbad_block、段階と保存先を持つself。",
+        "output": "各段階を必要な位置まで戻し、進捗を書き込みます。完了ならOk(())、対象の検査・段階の処理・保存などに失敗すればPipelineErrorを返します。",
+        "boundary": "進捗が目標より小さい段階は飛ばし、等しい段階はwhileに入りません。進んでいる段階だけを逆順に戻します。safe/finalizedの保存番号の調整は、合意側の投票で新しい確定を決める処理ではありません。"
+      },
+      "sources": [
+        {
+          "context": "area:sync-unwind",
+          "path": "crates/stages/api/src/pipeline/mod.rs",
+          "range": [
+            300,
+            429
+          ],
+          "sha256": "8c38b504093ea8e6b3e42301b29889f9f7be0d99191d86ae8deb2f710088b4d4"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "pipeline300–429: pruning validation; reverse stages; checkpoint<to skip, ==to no while, >to unwind loop. Success checkpoint writes/notifications/safe-finalized number adjustment/commit/post hook; error returns fatal. Stored finalized number is not new consensus finality."
+    },
+    {
+      "unit": "area:engine",
+      "currentClaim": {
+        "question": "届いた要求と、保存の完了をどう扱う？",
+        "role": "Engineの要求や、保存側の完了を専用スレッドで扱います。",
+        "input": "Engineの要求、保存完了の出来事、保存の進み具合。",
+        "output": "出来事を処理し続けます。このrun自体は値を返さない形です。",
+        "boundary": "保存中で、メモリー内の保持数から設定バッファを引いた差が閾値以上なら、保存の返答だけを待ちます。ただし保存の受信口がなければ通常の待機へ戻ります。通常は保存完了・payload作成完了・Engine要求を待ち分けます。チャネル切断や処理のエラーではループを終える場合があります。"
+      },
+      "sources": [
+        {
+          "context": "area:startup-tree-spawn",
+          "path": "crates/engine/tree/src/tree/mod.rs",
+          "range": [
+            421,
+            481
+          ],
+          "sha256": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7"
+        },
+        {
+          "context": "startup:tree",
+          "path": "crates/engine/tree/src/tree/mod.rs",
+          "range": [
+            517,
+            606
+          ],
+          "sha256": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94"
+        },
+        {
+          "context": "area:startup-tree-pressure",
+          "path": "crates/engine/tree/src/tree/mod.rs",
+          "range": [
+            496,
+            515
+          ],
+          "sha256": "e538ae5ba22df639ddfab6f3f9c65f6f89b2961a77139d12ddfdac99d04d2588"
+        },
+        {
+          "context": "area:startup-tree-wait",
+          "path": "crates/engine/tree/src/tree/mod.rs",
+          "range": [
+            608,
+            678
+          ],
+          "sha256": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "prior independent semantic evidence carried only with identical exact claim/source",
+      "basis": "Node/engine/RPC recovery changes independently reviewed in candidate3-additional-prefreeze-review-3.json; canonical pool/rpc send operations and balance in prior reviewed source bindings, same current source/claim metadata, C2 missing-callee failure retained.",
+      "evidence": [
+        "../candidate3-additional-prefreeze-review-3.json",
+        "/Users/stanah/Documents/Codex/2026-10-18/code-reading-studio/outputs/global-reading-loop/candidate-5/frozen-evaluation-inputs/docs/source-claim-ledger.json",
+        "beginner-role-source-delta-review.json"
+      ]
+    },
+    {
+      "unit": "followup:engine",
+      "currentClaim": {
+        "question": "次の候補の時刻が同じだったら、どうなる？",
+        "role": "候補を作るための属性の時刻を、現在のヘッダーの時刻と比べます。",
+        "input": "候補の属性attrと、比較するヘッダーheader。",
+        "output": "属性時刻が大きければOk(())、小さいか同じならInvalidTimestamp。",
+        "boundary": "この関数は時刻の条件だけを検査します。Okは候補の作成完了や、履歴の採用・確定を意味しません。"
+      },
+      "sources": [
+        {
+          "context": "area:engine-timestamp",
+          "path": "crates/engine/primitives/src/lib.rs",
+          "range": [
+            254,
+            264
+          ],
+          "sha256": "e654d1df933b4ad9d99d53578439a26297eb6cee35755981561bce6971bf190d"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "primitives254–264: attr.timestamp <= header.timestamp returns InvalidTimestamp; only strictly newer gives Ok(()); candidate build/finality not implied."
+    },
+    {
+      "unit": "area:execution",
+      "currentClaim": {
+        "question": "ブロック内の要求を、どの順に実行する？",
+        "role": "ブロック内のトランザクションを順に実行し、前後の状態変更と結果をまとめます。",
+        "input": "送信者が復元されたトランザクションを含むブロックと、状態を扱うself。",
+        "output": "レシートなどを含むブロック実行結果、または実行エラー。",
+        "boundary": "L621の?は、取引を処理する呼び出しがRustのErrを返したとき、ブロックの処理を中断してエラーを返します。コントラクトのRevertは、処理結果として受け取り失敗のレシートを作る場合で、ここでのErrとは区別します。L631の成功返却は保存や履歴の確定を意味しません。"
+      },
+      "sources": [
+        {
+          "context": "area:execution",
+          "path": "crates/evm/evm/src/execute.rs",
+          "range": [
+            596,
+            632
+          ],
+          "sha256": "e2d250e6445fc04f2a8f22e4d5102947f67d11d71c631a31163d16e72854316f"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "execute596–632: recovered block input, executor construction, BAL presence branch, pre changes, transactions_recovered sequential execution, post changes, merge and Ok. Err through ? differs from receipt status."
+    },
+    {
+      "unit": "followup:execution",
+      "currentClaim": {
+        "question": "コントラクトがRevertした場合も、レシートは作られる？",
+        "role": "コントラクトの実行から得た結果を、種類・成功印・累積ガス・ログを持つレシートへ移します。",
+        "input": "tx_type、result、cumulative_gas_usedを含む実行の情報ctx。",
+        "output": "Receiptという実行結果の記録。戻り値はResultではありません。",
+        "boundary": "実行結果がRevertなどならsuccessはfalseですが、レシートは作られます。取引の処理自体がRustのErrを返して中断する場合とは別です。この関数は保存や確定を行いません。"
+      },
+      "sources": [
+        {
+          "context": "area:execution-receipt",
+          "path": "crates/ethereum/evm/src/receipt.rs",
+          "range": [
+            12,
+            27
+          ],
+          "sha256": "299af6fbea744e4558ceb00f1a1941518efdfaf3849e3cccb595440e7820844e"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "receipt12–27: ReceiptBuilderCtx unpack, receipt returned directly, success from is_success, gas and logs copied. Does not return Result or persist. Revert→false does not itself prevent receipt construction."
+    },
+    {
+      "unit": "area:payload",
+      "currentClaim": {
+        "question": "ブロック候補を作る処理へ、何を渡す？",
+        "role": "候補作成の引数とノード部品を、担当処理へ渡します。",
+        "input": "候補作成の引数args、EVM設定、状態参照、プール、作成設定。",
+        "output": "候補作成の結果BuildOutcome、またはPayloadBuilderError。",
+        "boundary": "この入口は担当処理のResultをそのまま返します。取引の全採用条件は抜粋の外で、候補作成は履歴の採用・確定とは別です。"
+      },
+      "sources": [
+        {
+          "context": "area:payload",
+          "path": "crates/ethereum/payload/src/lib.rs",
+          "range": [
+            90,
+            102
+          ],
+          "sha256": "45364bcf43e4e47358bf9dd021f81c1f95141dcb934aa10ae75ccca4d39add33"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "payload90–102: BuildArguments and cloned evm/client/pool/config plus transaction selector closure delegated to default_ethereum_payload. Exact Result returned; no inclusion/finality claim."
+    },
+    {
+      "unit": "followup:payload",
+      "currentClaim": {
+        "question": "候補に入れない要求と、候補作成の中止は同じ？",
+        "role": "要求が残りのガス枠に収まるかを判定し、超過なら飛ばし、中止されていれば候補作成を終えます。",
+        "input": "選んだ要求pool_tx、ガス枠と使用量、適用ルール、中止状態cancel。",
+        "output": "超過なら次の要求へ進み、中止検査が真ならOk(BuildOutcome::Cancelled)を返します。",
+        "boundary": "無効の印は候補選択のイテレーターに付けます。プール全体から削除したとまでは言えません。continueすると、この回の中止検査へは進みません。"
+      },
+      "sources": [
+        {
+          "context": "area:payload-cancel",
+          "path": "crates/ethereum/payload/src/lib.rs",
+          "range": [
+            265,
+            300
+          ],
+          "sha256": "51ff71fac90e873f0fa0f32e9c58e5d9e70e970a9952dbb2e9a6f934241cab7c"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "payload265–300: Amsterdam separate regular/state gas availability and cap; legacy gas branch; exceed marks iterator item invalid then continue (skips cancel check for that tx); cancellation returns Cancelled. No whole-pool deletion claim."
+    },
+    {
+      "unit": "area:storage",
+      "currentClaim": {
+        "question": "状態の変更は、どう保存先へ確定する？",
+        "role": "書き込み用の部品が持つ変更を、保存先へ確定します。",
+        "input": "書き込み中のDB操作、静的ファイル、待機中のバッチを持つself。",
+        "output": "成功ならOk(())、失敗なら保存処理のエラー。",
+        "boundary": "通常の保存と巻き戻しを分けます。?の付いた保存が失敗すればエラーを返します。変更データの作成や、全保存先の原子性はこの範囲では示しません。"
+      },
+      "sources": [
+        {
+          "context": "area:storage",
+          "path": "crates/storage/provider/src/providers/database/provider.rs",
+          "range": [
+            3965,
+            3991
+          ],
+          "sha256": "8ed93abedc6226be38c12f9bcfe98931d303a7a686637031e668236af8b06d62"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "provider3965–3991: unwind queued/order branches to commit_unwind; normal finalize, take pending batches and commit each, tx.commit and metrics; ? propagates, Ok(()). No atomicity across all providers asserted."
+    },
+    {
+      "unit": "followup:storage",
+      "currentClaim": {
+        "question": "アドレスから読むとき、値なしとエラーをどう分ける？",
+        "role": "保存形式の設定を見て、アドレスそのものか、そのハッシュをキーに現在のアカウントを読みます。",
+        "input": "アドレスaddressと、保存形式・DB参照を持つself。",
+        "output": "ProviderResult<Option<Account>>。見つかった値、値なし、読取失敗を区別します。",
+        "boundary": "読取専用の入口で、残高を増減したり送信を実行する処理ではありません。Noneは値なしで、DBの読取失敗とは別です。"
+      },
+      "sources": [
+        {
+          "context": "area:storage-account",
+          "path": "crates/storage/provider/src/providers/state/latest.rs",
+          "range": [
+            69,
+            84
+          ],
+          "sha256": "6ef8fd3d3c9f1d215d3ad00ad86b0bf602aa20098b5031c67818b6642c8f5327"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "latest69–84: hashed-state flag controls keccak key/HashedAccounts vs plain address/PlainAccountState; map_err converts provider failures; outer ProviderResult and Option account absence distinguished."
+    },
+    {
+      "unit": "area:extension",
+      "currentClaim": {
+        "question": "新しい出来事を、拡張機能へどう伝える？",
+        "role": "通知経路の空きを待ってから、通知の出所とデータを渡します。",
+        "input": "sourceという出所と、notificationという出来事の通知。",
+        "output": "通知経路への送信が成功したか、SendErrorか。",
+        "boundary": "L618は受け付け可能になるまで待つ箇所です。L619の送信成功は拡張機能の処理完了やブロック確定を意味しません。"
+      },
+      "sources": [
+        {
+          "context": "area:extension",
+          "path": "crates/exex/exex/src/manager.rs",
+          "range": [
+            609,
+            620
+          ],
+          "sha256": "21c3b8f32db8b3f1356204e9ec5726e9d601eaca036bfa3d2e663fd2475cd3de"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "manager609–620: ready().await then exex_tx.send((source,notification)), returns send Result; task completion/finality not implied."
+    },
+    {
+      "unit": "followup:extension",
+      "currentClaim": {
+        "question": "履歴の差し替え通知から、新旧どちらを取れる？",
+        "role": "通知の種類に応じて、新しく採用した履歴と、外した古い履歴を別々に取り出します。",
+        "input": "採用・差し替え・取り消しのいずれかの通知self。",
+        "output": "committed_chainは新しい履歴、reverted_chainは古い履歴を、それぞれSomeかNoneで返します。",
+        "boundary": "履歴を取り出す関数で、差し替え自体を実行する処理ではありません。採用通知と履歴の確定も別です。cloneはArcの共有参照を複製します。"
+      },
+      "sources": [
+        {
+          "context": "area:extension-reorg",
+          "path": "crates/exex/types/src/notification.rs",
+          "range": [
+            10,
+            48
+          ],
+          "sha256": "bcde49e579c27ab3c716d4ab713353ff9fb679aa5e9b642ab9296badff728e2f"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "notification10–48: enum has new/old Arc fields. committed returns new for committed/reorg and None reverted; reverted returns old for reorg/revert and None committed; shared reference clone, no reorg execution."
+    },
+    {
+      "unit": "area:foundation",
+      "currentClaim": {
+        "question": "チェーンの設定をどう読み、失敗したらどうなる？",
+        "role": "組み込みmainnet用の設定を読み、ノードで使う設定値を組み立てます。",
+        "input": "Rethに組み込まれたmainnet.jsonの文字列と、mainnet用のルール設定。",
+        "output": "共有用のChainSpecというチェーン設定。",
+        "boundary": "L117のexpectは読み取り失敗時にpanicを起こします。利用者の任意ファイルの解析や、接続・同期完了を示す処理ではありません。"
+      },
+      "sources": [
+        {
+          "context": "area:foundation",
+          "path": "crates/chainspec/src/spec.rs",
+          "range": [
+            114,
+            143
+          ],
+          "sha256": "c76ea04a3faac76d238f6f222c7e4fe703a378e17e12e60ed02368b840f27f58"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "spec114–143: embedded mainnet JSON decoded with expect panic, known chain rules populate ChainSpec, DAO flag, spec.into shared result. No arbitrary-user config or sync result claim."
+    },
+    {
+      "unit": "followup:foundation",
+      "currentClaim": {
+        "question": "時刻で使う手数料の設定を、どう選ぶ？",
+        "role": "固定設定ならそのまま返し、可変設定なら指定された時刻で有効なルールの設定を選びます。",
+        "input": "呼び出し元が渡すtimestampと、ルール・手数料の設定を持つself。",
+        "output": "計算に使うBaseFeeParams。最終的な支払額ではありません。",
+        "boundary": "可変一覧を逆順に見て最初に有効なものを返します。該当なしなら一覧の先頭、空一覧ならEthereumの既定設定です。この関数は現在時刻の取得や手数料額の計算をしません。"
+      },
+      "sources": [
+        {
+          "context": "area:foundation-fee",
+          "path": "crates/chainspec/src/spec.rs",
+          "range": [
+            538,
+            556
+          ],
+          "sha256": "5a8bb53a0f98e277a334ff58744a183276518fcc3dda2409205db13d2a645a00"
+        }
+      ],
+      "status": "pass",
+      "reviewMode": "C direct frozen current claim and original-body comparison",
+      "basis": "spec538–556: constant direct; variable reverse order with first active timestamp rule; none active falls back first; empty uses Ethereum default. No current time retrieval/payment calculation."
+    },
+    {
+      "unit": "flow-detail:rpc-contract",
+      "status": "pass",
+      "reviewMode": "C direct frozen context intro/note/original comparison",
+      "claim": {
+        "intro": "公開するRPCの名前と返す結果を宣言しています。通常版とレシート待ちのSync版を区別します。",
+        "note": ""
+      },
+      "source": {
+        "path": "crates/rpc/rpc-eth-api/src/core.rs",
+        "start": 380,
+        "end": 392,
+        "hash": "0d5c59ce83e07e6461ea6fbdcf270c3df5b9f16155958cf47f2f483634574dd5",
+        "code": "    /// Sends signed transaction, returning its hash.\n    #[method(name = \"sendRawTransaction\")]\n    async fn send_raw_transaction(&self, bytes: Bytes) -> RpcResult<B256>;\n\n    /// Sends a signed transaction and awaits the transaction receipt.\n    ///\n    /// This will return a timeout error if the transaction isn't included within some time period.\n    #[method(name = \"sendRawTransactionSync\")]\n    async fn send_raw_transaction_sync(\n        &self,\n        bytes: Bytes,\n        timeout_ms: Option<u64>,\n    ) -> RpcResult<R>;",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/core.rs#L380-L392"
+      },
+      "basis": "core380–392 distinguishes ordinary signed bytes→hash RpcResult and sync signed bytes/optional timeout→receipt RpcResult; declaration is not executing implementation."
+    },
+    {
+      "unit": "flow-detail:recovery-hook",
+      "status": "pass",
+      "reviewMode": "C direct frozen context intro/note/original comparison",
+      "claim": {
+        "intro": "送信用の形式を読み、署名から送信者を求めるtraitの既定実装です。",
+        "note": "PoolTransaction traitの既定実装です。実装型によってoverrideできます。キャッシュ設定の有無で選ぶhook、空データ/形式/署名の失敗をここで確認します。キャッシュ内部のhit/missや格納、署名復元の暗号計算の内部は別の実装です。"
+      },
+      "source": {
+        "path": "crates/transaction-pool/src/traits.rs",
+        "start": 1402,
+        "end": 1466,
+        "hash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+        "code": "    fn try_recover(pooled: Self::Pooled) -> Result<Self, Self::Pooled> {\n        pooled.try_into_recovered().map(Self::from_pooled)\n    }\n\n    /// Recovers and converts a pooled transaction using the provided sender recovery cache.\n    fn try_recover_with_cache(\n        pooled: Self::Pooled,\n        cache: &reth_evm::SenderRecoveryCache,\n    ) -> Result<Self, Self::Pooled> {\n        match cache.recover(&pooled) {\n            Ok(signer) => Ok(Self::from_pooled(Recovered::new_unchecked(pooled, signer))),\n            Err(_) => Err(pooled),\n        }\n    }\n\n    /// Recovers and converts a pooled transaction, using the sender recovery cache if provided.\n    ///\n    /// Delegates to [`Self::try_recover`] when no cache is configured.\n    fn try_recover_with_cache_opt(\n        pooled: Self::Pooled,\n        cache: Option<&reth_evm::SenderRecoveryCache>,\n    ) -> Result<Self, Self::Pooled> {\n        match cache {\n            Some(cache) => Self::try_recover_with_cache(pooled, cache),\n            None => Self::try_recover(pooled),\n        }\n    }\n\n    /// Decodes and recovers a raw transaction into this pool transaction type.\n    ///\n    /// Implementations can override this to avoid constructing the pooled transaction as an\n    /// intermediate value when the raw representation can be converted directly into `Self`.\n    /// RPC uses this hook when no sender recovery cache is configured. Override\n    /// [`Self::recover_raw_transaction_with_cache`] to specialize the cached path as well.\n    fn recover_raw_transaction(data: &[u8]) -> Result<Self, RawPoolTransactionError> {\n        Self::try_recover(Self::decode_raw_transaction(data)?)\n            .map_err(|_| RawPoolTransactionError::InvalidTransactionSignature)\n    }\n\n    /// Decodes and recovers a raw pool transaction using the provided sender recovery cache.\n    ///\n    /// RPC uses this hook when a sender recovery cache is configured. Implementations can override\n    /// it to reuse the raw bytes or encoded length during recovery and construction. The default\n    /// implementation decodes and recovers separately; it does not call\n    /// [`Self::recover_raw_transaction`].\n    fn recover_raw_transaction_with_cache(\n        data: &[u8],\n        cache: &reth_evm::SenderRecoveryCache,\n    ) -> Result<Self, RawPoolTransactionError> {\n        Self::try_recover_with_cache(Self::decode_raw_transaction(data)?, cache)\n            .map_err(|_| RawPoolTransactionError::InvalidTransactionSignature)\n    }\n\n    /// Decodes a raw pooled transaction without recovering its sender.\n    ///\n    /// The entire input must be consumed; trailing bytes are rejected. Implementations can override\n    /// this to customize raw decoding independently of sender recovery.\n    fn decode_raw_transaction(data: &[u8]) -> Result<Self::Pooled, RawPoolTransactionError> {\n        if data.is_empty() {\n            return Err(RawPoolTransactionError::EmptyRawTransactionData)\n        }\n\n        Self::Pooled::decode_2718_exact(data)\n            .map_err(|_| RawPoolTransactionError::FailedToDecodeSignedTransaction)\n    }",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/traits.rs#L1402-L1466"
+      },
+      "basis": "traits1402–1466: default trait decode empty/error/whole-input, cached/noncached branches and signer recovery mapping. Override allowed; cached default does not call noncached hook. Cryptographic/cache internals not inferred."
+    },
+    {
+      "unit": "flow-detail:forward",
+      "status": "pass",
+      "reviewMode": "C direct frozen context intro/note/original comparison",
+      "claim": {
+        "intro": "転送先が設定された場合は、別のRPCへ送信してその結果を返します。",
+        "note": ""
+      },
+      "source": {
+        "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "start": 88,
+        "end": 105,
+        "hash": "17d1ea7cc58e3ebd06e114620b397fb1cccc2fe0c1620fc0d7acca0ae7f862ff",
+        "code": "        // forward the transaction to the specific endpoint if configured.\n        if let Some(client) = self.raw_tx_forwarder() {\n            tracing::debug!(target: \"rpc::eth\", hash = %pool_transaction.hash(), \"forwarding raw transaction to forwarder\");\n            let rlp_hex = hex::encode_prefixed(&tx);\n\n            // broadcast raw transaction to subscribers if there is any.\n            self.broadcast_raw_transaction(tx);\n\n            let hash =\n                client.request(\"eth_sendRawTransaction\", (rlp_hex,)).await.inspect_err(|err| {\n                    tracing::debug!(target: \"rpc::eth\", %err, hash=% *pool_transaction.hash(), \"failed to forward raw transaction\");\n                }).map_err(EthApiError::other)?;\n\n            // Retain tx in local tx pool after forwarding, for local RPC usage.\n            let _ = self.inner.add_pool_transaction(origin, pool_transaction).await;\n\n            return Ok(hash);\n        }",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/helpers/transaction.rs#L88-L105"
+      },
+      "basis": "helper88–105: configured remote sends hex raw data, broadcasts, awaits remote hash with error mapping; local pool retain attempt awaits but result ignored; returns remote hash. Remote success is not local pool success."
+    },
+    {
+      "unit": "flow-detail:batch-runner",
+      "status": "pass",
+      "reviewMode": "C direct frozen context intro/note/original comparison",
+      "claim": {
+        "intro": "キューから受け取った追加依頼をまとめ、追加処理のタスクへ渡します。",
+        "note": ""
+      },
+      "source": {
+        "path": "crates/transaction-pool/src/batcher.rs",
+        "start": 114,
+        "end": 135,
+        "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041",
+        "code": "    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {\n        let mut this = self.project();\n\n        loop {\n            // Drain all available requests from the receiver\n            ready!(this.request_rx.poll_recv_many(cx, this.buf, *this.max_batch_size));\n\n            if !this.buf.is_empty() {\n                let batch = std::mem::take(this.buf);\n                let pool = this.pool.clone();\n                tokio::spawn(async move {\n                    Self::process_batch(&pool, batch).await;\n                });\n                this.buf.reserve(1);\n\n                continue;\n            }\n\n            // No requests available, return Pending to wait for more\n            return Poll::Pending;\n        }\n    }",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/batcher.rs#L114-L135"
+      },
+      "basis": "batcher114–135: poll_recv_many ready gate, nonempty buffer moved to spawned process_batch, loop continues; empty result Pending. Spawned child completion is distinct from poll return."
+    },
+    {
+      "unit": "flow-detail:pool-test",
+      "status": "pass",
+      "reviewMode": "C direct frozen context intro/note/original comparison",
+      "claim": {
+        "intro": "既存テストの送信、二件の保持確認、ハッシュによる取得とLocal originの確認を、関数全体で読みます。",
+        "note": "このアプリで上流Rustテストを実行した結果ではなく、固定コミットに存在するテストの期待値を読んでいます。"
+      },
+      "source": {
+        "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "start": 349,
+        "end": 381,
+        "hash": "69cfe4e334cae1d378c4674ddbd8d62624fd27b1446b9789caaa78c3d827a755",
+        "code": "    #[tokio::test]\n    async fn send_raw_transaction() {\n        let eth_api = mock_eth_api(Default::default());\n        let pool = eth_api.pool();\n\n        let tx_1 = raw_transfer_tx();\n\n        let tx_1_result = eth_api.send_raw_transaction(tx_1).await.unwrap();\n        assert_eq!(\n            pool.len(),\n            1,\n            \"expect 1 transaction in the pool, but pool size is {}\",\n            pool.len()\n        );\n\n        // https://etherscan.io/tx/0x48816c2f32c29d152b0d86ff706f39869e6c1f01dc2fe59a3c1f9ecf39384694\n        let tx_2 = Bytes::from(hex!(\n            \"02f9043c018202b7843b9aca00850c807d37a08304d21d94ef1c6e67703c7bd7107eed8303fbe6ec2554bf6b881bc16d674ec80000b903c43593564c000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000063e2d99f00000000000000000000000000000000000000000000000000000000000000030b000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000001e0000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000001bc16d674ec80000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000065717fe021ea67801d1088cc80099004b05b64600000000000000000000000000000000000000000000000001bc16d674ec80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002bc02aaa39b223fe8d0a0e5c4f27ead9083c756cc20001f4a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000180000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009e95fd5965fd1f1a6f0d4600000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48000000000000000000000000428dca9537116148616a5a3e44035af17238fe9dc080a0c6ec1e41f5c0b9511c49b171ad4e04c6bb419c74d99fe9891d74126ec6e4e879a032069a753d7a2cfa158df95421724d24c0e9501593c09905abf3699b4a4405ce\"\n        ));\n\n        let tx_2_result = eth_api.send_raw_transaction(tx_2).await.unwrap();\n        assert_eq!(\n            pool.len(),\n            2,\n            \"expect 2 transactions in the pool, but pool size is {}\",\n            pool.len()\n        );\n\n        assert!(pool.get(&tx_1_result).is_some(), \"tx1 not found in the pool\");\n        assert!(pool.get(&tx_2_result).is_some(), \"tx2 not found in the pool\");\n        assert_eq!(pool.get(&tx_1_result).unwrap().origin, TransactionOrigin::Local);\n        assert_eq!(pool.get(&tx_2_result).unwrap().origin, TransactionOrigin::Local);\n    }",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/helpers/transaction.rs#L349-L381"
+      },
+      "basis": "helper349–381 full test: send twice, assert size1 then2, get both hashes and Local origin. Reading expected assertions only; upstream Rust test not executed."
+    },
+    {
+      "unit": "area-extra:pool",
+      "status": "pass",
+      "reviewMode": "same-page chainId comparison source already independently reviewed canonical pool operation",
+      "basis": "extra summary asks one condition example, same-page reference selects stateless593. Original checks chain id where Some, mismatch invalid; no all-validation claim attached to the extra card. Main area pool uses complete operation12."
+    }
+  ],
+  "limits": [
+    "This is authored claim-to-source fit, not all147 fresh reread or human understanding.",
+    "Network budget macro internals are not supplied by this area body. Current code directly shows helper invocation and wake/Pending branching; finer budget rationale is a separately proposed C6 improvement.",
+    "Literal source fidelity is independently checked in global-dom-verification.json; it is not the reason for semantic pass."
+  ]
+}

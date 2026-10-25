@@ -1,0 +1,618 @@
+{
+  "evaluationType": "AIによる初心者役の独立cold-entry模擬評価。実人間の評価ではない",
+  "candidate": 5,
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "knowledgeConstraint": "ブロックチェーン知識0・コード経験0。CUA可視原文と日本語補助のみ。repo実装・既存評価・外部知識は不使用",
+  "profileOriginal": {
+    "chain": "用語の意味も補いたい (new)",
+    "code": "コードを読むのは初めて (first)"
+  },
+  "profileMutations": [],
+  "pages": [
+    {
+      "lesson": "blockchain",
+      "status": "partial",
+      "initial": "reload後、ページ用語展開、3コード全体展開、最初のL114–143展開、後二箇所閉。記号・日本語コメントON",
+      "operations": [
+        {
+          "action": "次に読む：前のブロックとのつながりを検査する",
+          "counted": true
+        },
+        {
+          "action": "次に読む：ノードが通信の出来事を扱う",
+          "counted": true
+        },
+        {
+          "action": "通信の読む範囲・用語を確かめる展開",
+          "counted": true
+        },
+        {
+          "action": "poll・Pending補助を開く",
+          "counted": true
+        }
+      ],
+      "regulatedOperations": 4,
+      "excludedOperations": [
+        {
+          "action": "専用タブ作成・指定URL移動",
+          "n": 1
+        },
+        {
+          "action": "補助設定展開（元値確認）",
+          "n": 1
+        },
+        {
+          "action": "reload",
+          "n": 1
+        }
+      ],
+      "totalActions": 7,
+      "answers": {
+        "input": "組み込みmainnet.jsonを取り込む（L116）。接続検査はheaderとparent（L290–293）。通信は内部要求とネットワーク出来事（L1176–1188）",
+        "processing": "設定をChainSpecにまとめる。親ハッシュ不一致、親番号+1の上限、一致しない子番号でエラー（L294–314）",
+        "resultNext": "設定spec.into()（L142）。接続条件を満たすとOk(())（L316）。通信はon_handle_message/on_swarm_eventへ渡しPending（L1177/1188/1202）",
+        "limits": "共有履歴の採用・確定・全検証はこの原文の範囲外。通信の呼び出し先内部は未確認"
+      },
+      "understanding": {
+        "input": "answerableWithJapaneseAid",
+        "processing": "partial",
+        "resultNext": "partial",
+        "limits": "answerable"
+      },
+      "gaps": [
+        "最初の設定コードにparis、deposit_contract、base_fee、blob等が連続して現れるが、その意味はこの導線では未解決。主要な設定構築は補助で追えるが原文自力読解はできない",
+        "NetworkManagerで70行が一度に開く。長い英語コメントを挟むため入力とPendingの距離が長い",
+        "pollの日本語は役立つが、予算・wake_by_ref・metricsとon_handle_message/on_swarm_eventの中身は未確認。ノードがどの通信にどう応答するかまでは答えられない"
+      ],
+      "noReadRecordOrMemoWritten": true,
+      "centralQuestion": {
+        "question": "ブロックとノードは同じものか／記録の出発点・つながり・通信の役割",
+        "answer": "ブロックは要求の記録をまとめる単位で、ノードはそれを検査し通信するコンピューター。組み込み設定を作るコード、親との接続を検査するコード、要求や出来事を担当処理へ渡して待つコードは別の役割",
+        "achieved": true,
+        "basis": "本文とspec L116/119/142、validation L294/300/309/316、network L1176–1188/1202"
+      },
+      "partialReason": "概念中心問いには回答できたが、原文の主要な通信制御であるL1194条件とwake_by_refからPendingへ進む理由を、自分の言葉で説明できない。予算が尽きた場合に譲るという長い英語コメントと条件変数の接続を日本語で十分に追えない。これは全70行の完読要求ではなく主要条件の未理解として残す。",
+      "ununderstoodSource": [
+        "network L1194–1197: maybe_more_*条件、wake_by_ref、Pendingの接続",
+        "spec L127–139: 各設定の意味（中心問い外の詳細）",
+        "network L1177/1188: 呼出先内部は未確認（この範囲外）"
+      ]
+    },
+    {
+      "lesson": "ethereum",
+      "status": "partial",
+      "initial": "指定URL移動+reload。用語/全コード枠/口座L69–84展開。実行・レシート閉。補助2種ON",
+      "operations": [
+        {
+          "action": "次に読む：ブロック内の取引を順に実行する",
+          "counted": true
+        },
+        {
+          "action": "次に読む：実行結果からレシートを作る",
+          "counted": true
+        },
+        {
+          "action": "口座の読む範囲・用語展開",
+          "counted": true
+        },
+        {
+          "action": "Option・Some・None補助を開く",
+          "counted": true
+        }
+      ],
+      "regulatedOperations": 4,
+      "excludedOperations": [
+        {
+          "action": "指定URL移動",
+          "n": 1
+        },
+        {
+          "action": "reload",
+          "n": 1
+        }
+      ],
+      "totalActions": 6,
+      "answers": {
+        "input": "口座はaddress（L73）。実行は送信者を復元した取引を含むblock（L596–599）。レシートはctx（L16–17）",
+        "processing": "保存設定によりaddressハッシュか元のaddressで口座検索（L74–80）。実行前の変更、取引を順番にexecute_transaction、実行後変更（L614/620–627）。Result::Errで中断、コントラクトRevertは失敗印の結果として扱う",
+        "resultNext": "口座はSome/Noneと読取エラーを分ける。実行はOk(result)（L631）。レシートは種類、success、累積ガス、ログ（L18–24）",
+        "limits": "読取は残高変更ではない。実行結果の返却・レシート構築は保存commitや確定ではない。EVM命令内部と呼出し間の実接続は未確認"
+      },
+      "understanding": {
+        "input": "answerableWithJapaneseAid",
+        "processing": "partial",
+        "resultNext": "answerableWithJapaneseAid",
+        "limits": "answerable"
+      },
+      "gaps": [
+        "BALの分岐とbump_bal_index（L606–623）の意味は未確認。主要順序は追えるが全条件は説明できない",
+        "口座のAccountに残高の項目が含まれる原文はこの断片にないため、状態の具体的構造までは説明本文頼み",
+        "?での失敗とsuccess=falseの違いは補助が明示し理解できたが、長い型やResultとExecutionResultの似た名前は補助なしでは混同しやすい"
+      ],
+      "noReadRecordOrMemoWritten": true,
+      "centralQuestion": {
+        "question": "要求を送るとすぐに共有の残高が変わるか／状態・取引・実行の関係",
+        "answer": "送信しただけでは共有の残高更新とは言えない。状態を読む処理と、ブロック中の取引を実行する処理と、実行結果をレシートへ写す処理は別。実行結果の返却も保存・確定の完了ではない",
+        "achieved": true,
+        "basis": "本文、latest L73–80、execute L614/620–631、receipt L18–24と範囲注記"
+      },
+      "partialReason": "中心問いと主要処理順序は回答できた。原文のBAL有無の分岐の意味が未理解で、全主要条件の読解達成とはしない。",
+      "ununderstoodSource": [
+        "execute L606–623: has_balとbal_builder/bump_bal_index。これは原文内の実行条件だが中心問いの状態・取引・レシートの関係の説明を妨げなかった",
+        "latest L73のAccount型内部の項目はこの断片では未確認"
+      ]
+    },
+    {
+      "lesson": "rpc",
+      "status": "achievedWithAid",
+      "initial": "指定URL+reload。用語/5コード枠/残高RPC入口展開。他4コード閉。補助2種ON",
+      "operations": [
+        {
+          "action": "balance呼出先jump",
+          "counted": true
+        },
+        {
+          "action": "次に読む：署名済み取引の送信を受け付ける",
+          "counted": true
+        },
+        {
+          "action": "send_raw_transaction呼出先jump",
+          "counted": true
+        },
+        {
+          "action": "recover_raw_transaction呼出先jump",
+          "counted": true
+        }
+      ],
+      "regulatedOperations": 4,
+      "excludedOperations": [
+        {
+          "action": "指定URL移動",
+          "n": 1
+        },
+        {
+          "action": "reload",
+          "n": 1
+        },
+        {
+          "action": "復元hookコード内を上へ2pageスクロール",
+          "n": 1
+        },
+        {
+          "action": "同コード内下へ3pageスクロール",
+          "n": 1
+        }
+      ],
+      "totalActions": 8,
+      "answers": {
+        "input": "残高RPCはaddressと参照ブロック指定（L696）。送信RPCはtxバイト列（L921）",
+        "processing": "残高は指定状態を使いaccount_balanceを読む（state L84–88）、値なし0と失敗を分ける。送信は復元キャッシュ有無でhook選択（transaction L100–106）、空入力/形式/署名の失敗を分ける（traits L1437–1465）",
+        "resultNext": "残高またはRPCエラーを返す。送信は元バイト列と復元取引を組みsend_pool_transactionへ渡して結果を待ち、そのハッシュかエラーをRPC入口へ返す（transaction L90–94、core L923）",
+        "limits": "送信ハッシュは取り込み・確定ではない。復元hookは既定でoverride可能。キャッシュhit/miss・暗号計算内部は未確認"
+      },
+      "centralQuestion": {
+        "question": "RPCハッシュは送金完了通知か／問い合わせと送信の違い",
+        "answer": "完了通知とは言えない。問い合わせは指定状態の残高を読む。送信は取引バイト列を読める形にして送信者を求め、後続の追加処理の結果としてハッシュかエラーを返す。ブロック取り込み・共有履歴の確定は別",
+        "achieved": true,
+        "basis": "core L696/698/921/923、state L84–88、transaction L89–94、traits L1460–1465と範囲注記"
+      },
+      "understanding": {
+        "input": "answerableWithJapaneseAid",
+        "processing": "answerableWithJapaneseAid",
+        "resultNext": "answerableWithJapaneseAid",
+        "limits": "answerable"
+      },
+      "ununderstoodSource": [
+        "traits L1403: try_into_recoveredの暗号計算内部は範囲外",
+        "traits L1411: cacheのhit/miss内部は範囲外",
+        "core L696/state L82: ブロック指定の具体的なデータ表記は未確認。既定の時点の具体値もこの画面では説明できない"
+      ],
+      "gaps": [
+        "呼出先jumpは対象関数の宣言行を選び「この行の解説はありません」と出る。直下に詳しい補助があるため続けて読めるが、初めは補助がない箇所へ飛んだと思う",
+        "65行の復元hookは内部スクロールが必要。長い英語コメントが横切れし横スクロールバーがある。日本語補助は折り返され主要な条件は読めた",
+        "RPCページの中心は二つのRPC比較だが、後半の復元hookはキャッシュ/opt/overrideなど一度に多くの新語が現れ負荷が高い"
+      ],
+      "noReadRecordOrMemoWritten": true
+    },
+    {
+      "lesson": "reth",
+      "status": "partialAtOperationLimit",
+      "initial": "指定URL+reload。54箇所selector、部品構築group展開、L353–404のみ原文展開。他3group閉。補助ON",
+      "operations": [
+        {
+          "action": "selector 24 NewPayload",
+          "counted": true
+        },
+        {
+          "action": "この箇所を開く",
+          "counted": true
+        },
+        {
+          "action": "次に読む25 on_new_payload分岐",
+          "counted": true
+        },
+        {
+          "action": "selector 40 forkchoice",
+          "counted": true
+        },
+        {
+          "action": "この箇所を開く",
+          "counted": true
+        },
+        {
+          "action": "53 保存とcommit原文を展開",
+          "counted": true
+        },
+        {
+          "action": "selector 12 プール追加",
+          "counted": true
+        },
+        {
+          "action": "この箇所を開く",
+          "counted": true
+        },
+        {
+          "action": "23 検証結果別内部追加原文を展開",
+          "counted": true
+        },
+        {
+          "action": "41 forkchoice事前条件原文を展開",
+          "counted": true
+        }
+      ],
+      "regulatedOperations": 10,
+      "excludedOperations": [
+        {
+          "action": "指定URL移動",
+          "n": 1
+        },
+        {
+          "action": "reload",
+          "n": 1
+        }
+      ],
+      "totalActions": 12,
+      "answers": {
+        "input": "部品構築はBuilderContext（L377）。NewPayloadはpayloadとtx返答口（tree L1690）。forkchoiceはstateとattrs（L1152–1153）。プール追加はoriginとtransaction（lib L495–499）。保存はSaveBlocksInput（persistence L165）",
+        "processing": "部品を構築しComponentsへ。プールは検証後Valid/Invalid/Errorを分け、Validでも追加失敗あり（pool L585/618–633）。NewPayloadは不正祖先/同期中buffer/通常insertを分け、有効かつ同期先head時だけ採用イベント（tree L779–799）。forkchoiceはゼロhead/不正祖先/SYNCINGを区別（L1193–1211）。保存はproviderで書込、finalized等を保存、commit（persistence L184/198/201/213）",
+        "resultNext": "NewPayloadはPayloadStatusかエラーをtx.sendで要求元へ返す（L1707）。プールはhash/stateかエラー（L627–635）。保存はPersistenceResultを返す（L224）。forkchoiceは事前チェック通過後、既存head/履歴更新/不足ブロック処理に進む（L1161–1177）",
+        "limits": "外部の合意側の選択・確定アルゴリズムはReth外。Rethのconsensusという名は内部検証。VALIDやプール追加は採用/保存/確定と同じでない"
+      },
+      "centralQuestion": {
+        "question": "Rethで検証できたブロックは必ず採用されるか／Rethと合意側の分担",
+        "answer": "必ずとは言えない。Rethは要求の検証保持、ブロックの実行検証、状態管理保存を担当する。合意側の履歴指示はNewPayloadとは別に受け、Rethが整合性・同期状態を検査して反映する。外部の合意側が履歴を選び確定を追う",
+        "achieved": true,
+        "basis": "本文、builder L394、tree L1690/1707、779–799、1150–1177、1193–1211、persistence L201注記"
+      },
+      "partialReason": "中心問いの役割分担と、検証しただけで必ず採用されない理由は回答可能。ページが主張するブロック実行→状態検証の具体処理と保存依頼→返答の経路は10操作内に辿れず未達として保持。54箇所全完読を要件にした判定ではない。",
+      "ununderstoodSource": [
+        "未展開26–38: ブロック実行・状態検証・結果照合の主要経路（try_insert_payload以降）",
+        "未展開42–45: 採用先とsafe/finalized整合性の具体条件",
+        "未展開49–52/54: 保存開始条件・対象選択・依頼/返答・完了反映",
+        "persistence L185–196: state/trie frontierと既存ブロックを読む条件は未理解",
+        "persistence L215: BAL flushの失敗と主保存成功の関係は未理解"
+      ],
+      "gaps": [
+        "54候補のselectorで主要責務をどこまで選べば中心問いの根拠になるか判断が難しい。選択後の開くが別操作で、10操作では責務間の往復に予算を使う",
+        "groupを開くたび11–16個の見出し・未展開原文が増える。起動、検証、採用、保存の区切り説明はあるが、ページ全体の量が大きい",
+        "主要実行検証と保存の依頼返答は未確認であり、入口だけの確認で達成とはしない"
+      ],
+      "noReadRecordOrMemoWritten": true,
+      "understanding": {
+        "input": "answerableWithJapaneseAid",
+        "processing": "partial",
+        "resultNext": "partial",
+        "limits": "answerable"
+      }
+    },
+    {
+      "lesson": "send",
+      "status": "partialAtOperationLimit",
+      "initial": "URL移動+reload。19箇所一覧全見出し表示、RPC入口のみ原文展開。補助ON",
+      "operations": [
+        {
+          "action": "4 通常経路原文展開",
+          "counted": true
+        },
+        {
+          "action": "add_pool_transaction jump（5）",
+          "counted": true
+        },
+        {
+          "action": "次に読む6 受信担当",
+          "counted": true
+        },
+        {
+          "action": "process_batch jump（7）",
+          "counted": true
+        },
+        {
+          "action": "add_transaction jump（8）",
+          "counted": true
+        },
+        {
+          "action": "13 検査順序原文展開",
+          "counted": true
+        },
+        {
+          "action": "validate_stateless jump（14）",
+          "counted": true
+        },
+        {
+          "action": "15 stateful原文展開",
+          "counted": true
+        },
+        {
+          "action": "18 容量制限原文展開",
+          "counted": true
+        },
+        {
+          "action": "self.add_transaction jump（19）",
+          "counted": true
+        }
+      ],
+      "regulatedOperations": 10,
+      "excludedOperations": [
+        {
+          "action": "指定URL移動",
+          "n": 1
+        },
+        {
+          "action": "reload",
+          "n": 1
+        }
+      ],
+      "totalActions": 12,
+      "answers": {
+        "input": "RPCはtxバイト列（core L921）。追加依頼はorigin/transaction/response_tx（core L497）。受信側はrequest_rxで依頼を取り出す（batcher L119）",
+        "processing": "標準経路は転送先なしでローカル追加を待つ（submit L89/111）。依頼送信と返答受信/追加結果失敗は別（core L500/503）。受信バッファがあれば別タスクでprocess_batch、なければPending（batcher L119–133）。一件/同一origin複数/異なるorigin複数を分けpoolへ渡す（L77/85–103）。検査は状態なしを通った後に状態を取得（eth L411–433）。Validのみ内部追加し、容量で直ちに除外されるとDiscardedOnInsertへ変更（pool L618–635/702/736）",
+        "resultNext": "response_tx.send(pool_result)（batcher L72/93/103）からresponse_rx.await??（core L503）、submit Ok(hash)（L113）、RPC Okまたはエラー（core L923）。キュー受付はプール追加成功ではない",
+        "limits": "ブロック取り込み、コントラクト実行の成功、履歴確定は応答の範囲外。転送設定の場合は別経路。具体的暗号復元内部は未確認"
+      },
+      "centralQuestion": {
+        "question": "キューに渡せたらプール追加成功か。受付は何を待つか",
+        "answer": "成功ではない。返答口を添えた依頼を内部キューへ送り、追加担当が検証・プール追加した結果を待つ。送信失敗、返答受信失敗、追加結果の失敗を分ける。追加に成功したハッシュが返ってもブロック取り込みや送金完了とは言えない",
+        "achieved": true,
+        "basis": "core L496–503、batcher L69–103、submit L111–113と本文"
+      },
+      "partialReason": "中心問いとキュー→追加→返答の主要経路を説明可能。ページの主要検証条件の具体本体（nonce/残高）、検証タスクへの実接続は10操作で未確認のまま。全19箇所の完読を基準としたものではなく、実際の接続を辿れない箇所を保持。",
+      "ununderstoodSource": [
+        "未展開2–3: 現ページでは復元hookまで辿らず（rpc頁で同原文を見たが再試行として上書きしない）",
+        "未展開9–12: validateが設定validator/検証キュー/worker/Ethereumへ接続する実経路",
+        "eth L687/693は呼出先を見ておらず、nonceと残高検査の設定条件・不等号を具体的に説明できない（16–17未展開）",
+        "submit L41–86 blob sidecar変換条件は補助少なく未理解。標準の単純送信中心問い外の分岐として残す",
+        "eth L603周辺のauthorization、L698 blob検証、L711 recover_authoritiesの内部は未理解"
+      ],
+      "gaps": [
+        "19箇所の長い一本道に見えるが、検証タスク等の別の待ち/返答が入る。mainキューと検証キューが別だと本文見出しでは気づけるが10操作では接続を埋めきれなかった",
+        "203行のstateless原文は形式名・fork名・blobが大量に登場する。日本語コメントで大分類を把握できるが、初心者として各形式/ルール発効条件を意味まで説明できない",
+        "oneshotと??の補助コメントは送信成功と追加成功の違いを具体化していて役立つ"
+      ],
+      "noReadRecordOrMemoWritten": true,
+      "understanding": {
+        "input": "answerableWithJapaneseAid",
+        "processing": "partial",
+        "resultNext": "partial",
+        "limits": "answerable"
+      }
+    },
+    {
+      "lesson": "startup",
+      "status": "partialAtOperationLimit",
+      "initial": "URL移動+reload。36候補selector、CLI監視7見出し表示、main L20–49のみ原文展開。他4group閉。補助ON",
+      "operations": [
+        {
+          "action": "7 CLI監視原文展開",
+          "counted": true
+        },
+        {
+          "action": "次に読む8 設定/DB",
+          "counted": true
+        },
+        {
+          "action": "次に読む19 部品組立",
+          "counted": true
+        },
+        {
+          "action": "selector27 RPC起動",
+          "counted": true
+        },
+        {
+          "action": "この箇所を開く",
+          "counted": true
+        },
+        {
+          "action": "次に読む28 Engineイベント待機",
+          "counted": true
+        },
+        {
+          "action": "35 NodeHandle原文展開",
+          "counted": true
+        },
+        {
+          "action": "次に読む36 終了Future",
+          "counted": true
+        },
+        {
+          "action": "18 Engine起動本体の準備原文展開",
+          "counted": true
+        },
+        {
+          "action": "33 FullNode/NodeHandle返却原文展開",
+          "counted": true
+        }
+      ],
+      "regulatedOperations": 10,
+      "excludedOperations": [
+        {
+          "action": "指定URL移動",
+          "n": 1
+        },
+        {
+          "action": "reload",
+          "n": 1
+        }
+      ],
+      "totalActions": 12,
+      "answers": {
+        "input": "mainは空引数で、Cli::parseが指示を読みrunに起動処理を渡す（main L20/40）。NodeCommandはself設定とctx/launcher（node L157）。Engine起動は部品builderと設定を持つtarget（engine L69–91）",
+        "processing": "設定をNodeConfig化、DB open、builder/実行器をlauncherへ（node L189/214/221/225）。Engineでtoml/DB/genesisを準備、with_components（engine L69–140）。EVM→pool→network→payload→内部consensusを作る（builder L388–394）。RPC add_ons起動結果をawait?（engine L294）。Engineタスクはselectでイベント/候補/終了要求を待つ（L332–413）、CLI監視は処理完了・panic・停止シグナルを区別（runner L240–293）",
+        "resultNext": "FullNodeに部品をまとめNodeHandleへ終了Futureとともに返す（engine L417–444）。mainは起動後にhandle.wait_for_node_exitを待つ（L42/44）。NodeExitFutureは内部待機、成功Ready(Ok)、失敗Ready(Err)、対象なしPending（exit L39–50）。run Errはmainで表示しexit(1)（L46–47）",
+        "limits": "起動成功、稼働中イベント、ノード終了、同期完了、取引完了/確定は同じでない。main終了待ちが全イベントを処理する場所とは言えない"
+      },
+      "centralQuestion": {
+        "question": "mainが終了を待つ場所は全イベントの処理場所か／起動準備と稼働の違い",
+        "answer": "違う。設定/DB/部品/RPCを準備した結果としてhandleを返す。Engineイベント等は別の起動されたタスクで繰り返し待ち、mainはhandleの終了Futureを待つ。CLI側は処理の完了・異常・停止指示も監視する",
+        "achieved": true,
+        "basis": "main L40–47、engine L294/332–413/417–444、handle L23–24、exit L39–50、runner L240–293"
+      },
+      "partialReason": "中心問いと主要な準備/稼働/終了の区別は回答可能。CLIからEngine起動本体へのclosure/launcherの接続と、P2P起動・Engine/tree内部進行は10操作内に辿れず、頁が主張する原文経路全体は未達。",
+      "ununderstoodSource": [
+        "未展開2–6/9–17: mainのclosureがNodeCommand/Engine launchへ接続する具体操作・型。本文の接続説明以上の原文確認なし",
+        "未展開20–26: P2Pタスク/候補作成/tree専用threadの起動条件と接続",
+        "未展開29–32: orchestrator/handler/tree/networkの内部進行。28のイベント待ちだけではこれら主要処理は説明できない",
+        "engine L317–413: 終了要求とgraceful shutdownの両方の分岐、Terminateに添えるdone_tx、done_rx.awaitの関係は部分理解。L413の登録は理解できるが各待ち先の終了条件まで自力説明できない",
+        "builder L353–373: 長いtrait型条件の関係は日本語の概略を超えて未理解"
+      ],
+      "gaps": [
+        "36候補のうち起動先受渡だけ11箇所。mainの数行から実際のEngineまでの距離が長く、初心者はclosure/adapter/trait/inherent/IntoFuture等の新語で経路を見失う",
+        "main引数が空、Resultを返さずErr時exit(1)という日本語補助は誤読防止に役立つ",
+        "NodeExitFutureのNoneもPendingだと明記され、待機=成功としない説明を確認できる"
+      ],
+      "noReadRecordOrMemoWritten": true,
+      "understanding": {
+        "input": "answerableWithJapaneseAid",
+        "processing": "partial",
+        "resultNext": "partial",
+        "limits": "answerable"
+      }
+    },
+    {
+      "lesson": "reading",
+      "status": "achievedWithAidForStatedShortExercise",
+      "initial": "URL移動+reload。2箇所、RPC L920–924のみ展開、後続L81–109閉。補助ON。以前頁の一時展開/選択を持ち越していない",
+      "operations": [
+        {
+          "action": "Bytes語補助",
+          "counted": true
+        },
+        {
+          "action": "B256語補助",
+          "counted": true
+        },
+        {
+          "action": "await語補助",
+          "counted": true
+        },
+        {
+          "action": "send_raw_transaction呼出先jump",
+          "counted": true
+        },
+        {
+          "action": "match語補助",
+          "counted": true
+        },
+        {
+          "action": "前に見ていたコードへ戻る",
+          "counted": true
+        }
+      ],
+      "regulatedOperations": 6,
+      "excludedOperations": [
+        {
+          "action": "指定URL移動",
+          "n": 1
+        },
+        {
+          "action": "reload",
+          "n": 1
+        }
+      ],
+      "totalActions": 8,
+      "answers": {
+        "input": "tx: Bytesという送信形式の数の並び（core L921）。呼出先もtx Bytesを受け取る（helpers L86）",
+        "processing": "ログは調査記録（core L922）。EthTransactionsへ渡し結果を.await、?で失敗を早く返す（L923）。helpersで復元を試し失敗なら?、元txと復元取引を組にしてLocalとしてsend_pool_transactionへ渡す（L89–94）。復元はキャッシュSome/Noneで別hook（L100–108）",
+        "resultNext": "後続send_pool_transactionの結果をhelpersから戻し、RPC側は成功中身をOkに包み返す。ハッシュかエラーである（helpers L87/94、core L921/923）",
+        "limits": "短い経路からブロック取り込み/確定や送金成功は言えない。復元内部と追加先の検証・キュー・保持条件はこの2断片では未確認"
+      },
+      "centralQuestion": {
+        "question": "最初の読解で何を説明できればよいか",
+        "answer": "疑問を一つ決め、入力、次の担当へ渡す値、失敗時に返る場所、得られる結果を原文行で説明する。この範囲で確かめられない取り込みや確定まで成功したとは言わない。実際にRPCと呼出先を開き、元のL923へ戻って結果の受け渡しを確認できた",
+        "achieved": true,
+        "basis": "本文、core L921–923、helpers L86–94と各語補助"
+      },
+      "secondaryQuestion": {
+        "question": "送信要求はどの時点で受け付けられたと言えるか",
+        "answer": "この短い練習では後続追加結果まで待つことは日本語補助で分かるが、キュー/プール追加の具体境界はこの2断片のみでは検証できない。送信頁へ続く必要がある",
+        "fullyEstablishedByThisPageAlone": false
+      },
+      "understanding": {
+        "input": "answerableWithJapaneseAid",
+        "processing": "answerableWithJapaneseAid",
+        "resultNext": "answerableWithJapaneseAid",
+        "limits": "answerable"
+      },
+      "ununderstoodSource": [
+        "helpers L100–108: キャッシュがある/ないで呼出名が違うのは追えるが、hookの具体動作はこの頁では未確認",
+        "helpers L90: send_pool_transactionの中身はこの頁の2箇所から開けず、送信頁へ進む必要がある",
+        "helpers L99のPoolTx<Self::Pool>の型関係やL108のエラー変換の具体内容は未理解（短い入力/出力練習の中心外詳細）"
+      ],
+      "gaps": [
+        "本文が「根拠の実コードへ」というリンク名を説明する一方、現在の頁内操作名は「実コードをこの場で確かめる」「次に読む」。初めて探す語が一致しない",
+        "「最初の問い」は受付時点だが、2断片だけではキュー受付とプール受付の具体違いを原文で検証しきれない。短い読解練習としては成功し、完全な受付境界の解答は送信頁へ依存",
+        "jump先は宣言L84で「この行の解説はありません」。戻るボタンは元のL923選択まで戻り往復できた"
+      ],
+      "noReadRecordOrMemoWritten": true
+    }
+  ],
+  "cleanup": {
+    "completed": true,
+    "profileOriginalStillPresent": "最終reading頁の可視UIスクリーンショットで「用語の意味も補いたい」「コードを読むのは初めて」を再確認。global選択は一度も変更していないため復元操作は不要",
+    "actions": [
+      {
+        "action": "読むときの補助を展開して元値を可視確認",
+        "n": 1
+      },
+      {
+        "action": "専用Chromeタブclose成功",
+        "n": 1
+      }
+    ],
+    "dedicatedTabClosed": true,
+    "readRecordsOrMemosWritten": false,
+    "existingUserTabsTouched": false
+  },
+  "method": {
+    "evidence": "専用Chrome tabのCUA accessibility UI text、設定と復元hookのスクリーンショット。repo実装・既存評価結果・外部情報を読まず。AXには展開したスクロール領域内の原文全体が提示されるため、全行を同一画面で見たという主張はしない",
+    "countRule": "規定操作=原文/用語展開、selector選択、source jump/戻り、学習補助変更。観測getAXState/screenshotは操作数から除外。移動/reload/profile確認/純scrollは除外欄に別記。selectorsの選択と開くは各1。複数pageのscroll一回API呼出は総操作1",
+    "runtimeHashProvenance": "親から固定候補として指定された値。可視UIでruntimeHash自体は表示確認していない",
+    "comparison": "独立した現候補cold-entry診断。旧候補との因果比較なし",
+    "successInterpretation": "中心概念への回答と、ページが主張する主要経路/条件/結果を原文で追えた範囲を別評価。未展開は未確認。完全な全行暗記は基準にしない。AI模擬評価のため実人間での学習達成を保証しない"
+  },
+  "summary": {
+    "visited": 7,
+    "unvisited": [],
+    "centralConceptQuestionsAnsweredWithAid": 7,
+    "sourcePathStatus": {
+      "achievedWithAid": [
+        "rpc",
+        "reading（短い練習として）"
+      ],
+      "partial": [
+        "blockchain",
+        "ethereum",
+        "reth",
+        "send",
+        "startup"
+      ]
+    },
+    "regulatedOperations": 48,
+    "pageActionsIncludingExcluded": 65,
+    "crossCuttingGaps": [
+      "日本語コメントで入力/返答/境界は説明しやすいが、長い原文中の日本語なしの分岐・型・暗号/特別形式が残る",
+      "54/19/36候補の頁では10操作内で主要処理の実接続を辿り切れない。未確認を成功に数えない",
+      "source jumpの宣言行に解説なしと出ること、旧ラベルと現UI名の不一致が初心者を迷わせる",
+      "長いコード欄には独立スクロールと横切れがある。日本語補助は読みやすいが原文全体の見通しは難しい"
+    ]
+  }
+}

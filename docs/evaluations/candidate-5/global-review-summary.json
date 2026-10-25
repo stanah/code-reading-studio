@@ -1,0 +1,105 @@
+{
+  "candidate": 5,
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "result": "FAIL",
+  "loopComplete": false,
+  "diagnosticTwoRoundObservationComplete": true,
+  "units": 108,
+  "ownership": {
+    "C": 73,
+    "rootRust": 5,
+    "A": 30
+  },
+  "CObservedCasesPerRound": 136,
+  "rootRustCasesPerRound": 42,
+  "CObservedRounds": 2,
+  "AObserverDelegation": {
+    "owner": "C",
+    "round": 2,
+    "staticCases": 30,
+    "file": "a-c-static-round-2-dom.json"
+  },
+  "sourceFunctionalVerification": "global-dom-verification.json",
+  "gateMatrix": "global-gate-matrix.json",
+  "caseCoverage": "global-case-coverage.json",
+  "sourceMeaningReferences": [
+    "global-area-detail-source-review.json",
+    "../candidate-3/beginner-source-fit-final.json",
+    "../candidate3-startup-preflight-review-3.json",
+    "beginner-role-source-delta-review.json",
+    "rust-ui-delegation-manifest.json"
+  ],
+  "learning": {
+    "warmAI": {
+      "profile": "new/other",
+      "round1Pass": 5,
+      "round1Fail": 2,
+      "round2Pass": 7,
+      "round2Fail": 0,
+      "twoConsecutiveWholeRoundPass": false,
+      "file": "beginner-learning-summary.json"
+    },
+    "coldAI": {
+      "profile": "new/first",
+      "originalCodePathAchievedWithAid": [
+        "rpc",
+        "reading (short exercise)"
+      ],
+      "partial": [
+        "blockchain",
+        "ethereum",
+        "reth",
+        "send",
+        "startup"
+      ],
+      "file": "fresh-cold-entry-review.json"
+    },
+    "humanParticipants": 0,
+    "controlledComparisonWithOldCandidates": false
+  },
+  "confirmedFailures": [
+    {
+      "units": [
+        "learning:reth",
+        "learning:startup"
+      ],
+      "gate": "G5",
+      "failure": "Separate selection/open and large unbundled paths prevented major actual code evidence within10 first-round actions. Warm round2 familiarity did not erase first-use failure."
+    },
+    {
+      "units": [
+        "learning:blockchain",
+        "learning:ethereum",
+        "learning:reth",
+        "learning:send",
+        "learning:startup"
+      ],
+      "gate": "G5",
+      "failure": "Cold novice AI could describe central concepts with Japanese aid but code-path achievement remained partial; missing branch/declaration aids and source-jump boundaries remain."
+    },
+    {
+      "units": [
+        "atlas-overview:main"
+      ],
+      "gates": [
+        "G5",
+        "G6"
+      ],
+      "failure": "Availability list indexed legacy11 only, falsely says validate/eth.rs has no send explanation despite canonical pool source; startup fallback is unrelated. Confirmed by root separately."
+    }
+  ],
+  "measurementErrorsPreserved": "measurement-adjudication.json; generic selected-comment selector and undefined equality invalidated, exact finite code-row retries separately saved",
+  "unachieved": [
+    "All applicable gates two consecutive PASS at same frozen build",
+    "All Reth1283 Rust files explained/reviewed",
+    "Human learning/comprehension validation"
+  ],
+  "scopeLimits": [
+    "Same-page original availability is functional evidence, not reading/understanding.",
+    "All authored108 units observed does not mean every module catalogue has taught processing semantics.",
+    "Four-state tests sample one representative host per unit×display case.",
+    "145 active contexts observed; two dormant legacy contexts are not passed by declaration.",
+    "AI simulation is not human testing."
+  ]
+}

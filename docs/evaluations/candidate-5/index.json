@@ -1,0 +1,72 @@
+{
+  "candidate": 5,
+  "applicationCommit": "12bbab8b35215911f2e0aadb6f1ae5544b9b472d",
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "result": "FAIL",
+  "diagnosticTwoRoundObservationComplete": true,
+  "files": [
+    {
+      "file": "freeze.json",
+      "sha256": "dacea60afb45c3212458c62735e2ccea2a709ca0d5fd44ead95fb4e8f08de19c"
+    },
+    {
+      "file": "global-review-summary.json",
+      "sha256": "8ba34b719b445f7c01ecb7b20d48d8cffc627d19c6ee34216f110ee0a6ee870d"
+    },
+    {
+      "file": "global-gate-matrix.json",
+      "sha256": "17e68b9449e43ee591318523c032f3b3babaf33fcc4740b759827e729ba3ee7f"
+    },
+    {
+      "file": "global-case-coverage.json",
+      "sha256": "b276feadb213d7373317e8aec902de8f7b1e8184481add17e469e7af0767cf33"
+    },
+    {
+      "file": "global-dom-verification.json",
+      "sha256": "c31a83f29844de681e38a28754eb14e9f600b9d798b0c7fbe381a86503914dad"
+    },
+    {
+      "file": "global-area-detail-source-review.json",
+      "sha256": "118307a3839ec4e3a604f1b442d6add9550ec856f0c3898a8ddbbd3fef14efad"
+    },
+    {
+      "file": "beginner-learning-summary.json",
+      "sha256": "213fb2a67ca7d5bf20aa78c708031443f9791f7a0355aaea12389ca1ea31cd8d"
+    },
+    {
+      "file": "beginner-findings.json",
+      "sha256": "22ecf6546d85ea99ceb37fc95e466a82727ebc6bafd78353a554018b65f64be8"
+    },
+    {
+      "file": "fresh-cold-entry-review.json",
+      "sha256": "ce901b4bc38501b940d3f2fac71066e55407196a6c43535cbbbcc12850394416"
+    },
+    {
+      "file": "data-reviewer-summary.json",
+      "sha256": "e476ba15921054382d45e7fcf29f9ae4ae7fdcd7e955fb5de42cf8ab636d4e87"
+    },
+    {
+      "file": "data-reviewer-verification.json",
+      "sha256": "8154492c7cc8e0192b440065a88b8df45c71f87655e84a32b9c00eb96605781c"
+    },
+    {
+      "file": "root-rust-summary.json",
+      "sha256": "3656e8c366d0adc5ccdd7be0839d4b601fe72d0badee5c30af00ae2e347cd3e5"
+    },
+    {
+      "file": "beginner-role-source-delta-review.json",
+      "sha256": "15f437b98c0004952c2bab9f0d69b377b93f9c204e4475057f640e66dc7f95c6"
+    },
+    {
+      "file": "rust-ui-delegation-manifest.json",
+      "sha256": "a59f04088a6ff03c5eea99b5d3f31939987ad95f6ac41223df2cf21e8acf57b5"
+    },
+    {
+      "file": "tests.tap",
+      "sha256": "e6c8e513ce4e928d38be29a72675140e90b1de581528d2f0bb50dfe277f68104"
+    }
+  ],
+  "evidenceLimits": "These published summaries retain references to detailed local-only DOM/interaction logs. Matching original source, displayed controls and successful retries do not prove human comprehension. The initial failed tasks remain failures.",
+  "humanParticipants": 0,
+  "productComplete": false
+}

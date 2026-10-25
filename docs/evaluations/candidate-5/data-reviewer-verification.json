@@ -1,0 +1,12 @@
+{
+  "kind": "Current frozen UI observations compared with pinned inventory and previously independently reviewed identical claims; fidelity is not new semantic coverage or human comprehension",
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "actualRuntimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "sourceDataSha256": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+  "sourceDataIdentityCarriedFrom": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+  "sourceWidgetObservations": 752,
+  "roleClaimHashCarry": 19,
+  "claimDomStageObservations": 349,
+  "issues": [],
+  "result": "PASS"
+}

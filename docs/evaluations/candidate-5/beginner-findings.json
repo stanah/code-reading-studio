@@ -1,0 +1,52 @@
+{
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "findings": [
+    {
+      "id": "B5-G5-001",
+      "kind": "product-navigation",
+      "status": "fail",
+      "lesson": "reth",
+      "round": 1,
+      "observed": "pickerを3回選択したが原文は開かず、別「この箇所を開く」buttonが必要と気づいた。選択/開くが別操作になり、10内で実行/状態rootの原文へ届かず。",
+      "consequence": "主要な実行/状態検証を原文根拠で答え切れない。",
+      "hypothesis": "処理の選択1操作で該当原文と分類を開く。現在版には適用していない。"
+    },
+    {
+      "id": "B5-G5-002",
+      "kind": "product-navigation-content-scale",
+      "status": "fail",
+      "lesson": "startup",
+      "round": 1,
+      "observed": "4閉分類を開いて6原文を選ぶと10操作。設定/部品/監視/終了の例を読んだがRPC起動原文と起動の中核adapter接続に未到達。",
+      "consequence": "RPC準備の場所/時期という主要問いの直接根拠が足りず。",
+      "hypothesis": "分類の総開きではなく問いから適切なコードまで1操作で到達し、呼出先/返信をその場で辿る。原文範囲は削らない。"
+    },
+    {
+      "id": "B5-EVAL-001",
+      "kind": "evaluator-selector-error",
+      "lesson": "rpc",
+      "round": 1,
+      "status": "preserved-not-product-failure",
+      "observed": "data-reading-jumpだけのselectorが原文呼出名と次へbuttonの2件に一致し2操作失敗。限定selectorで到達。2件とも6の操作数に含む。"
+    },
+    {
+      "id": "B5-EVAL-002",
+      "kind": "evaluator-capture-correction",
+      "status": "corrected-with-caveat",
+      "observed": "初期captureがrh-evidence段落をsource detailsと誤って数えた。汎用子孫可視判定もclosed descendantsを含んだため、source/groupの実open属性でfilter。答案は実際に開いた原文に限り、最終全14で引用行availability不足0を確認。",
+      "limitation": "DOM露出は読了/理解ではない。openedとcitedを別記録。"
+    },
+    {
+      "id": "B5-LIMIT-001",
+      "kind": "comparison-learning-effect",
+      "status": "limitation",
+      "observed": "同評価者の事前source知識、前ページで開いたcontextの保持、2round間の操作学習あり。2round目の少操作は初見理解改善/厳密比較とは扱えない。"
+    },
+    {
+      "id": "B5-LIMIT-002",
+      "kind": "settings-restoration",
+      "status": "limitation",
+      "observed": "localhostの元可視global prefs new/firstをUIで復元し専用tabclose。contextごとの原文open選択はlocalhostに残る。raw storage全体は未読/未復元で、完全storage復元とは申告しない。127設定/notes/progress操作0。"
+    }
+  ]
+}

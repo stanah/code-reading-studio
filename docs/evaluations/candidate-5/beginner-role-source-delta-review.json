@@ -1,0 +1,410 @@
+{
+  "candidate": 5,
+  "phase": "prefreeze independent data/source delta review; no UI interaction",
+  "reviewer": "beginner_eval",
+  "result": "PASS",
+  "scope": "D.roles19 text/commit/exact merge, annotations19, previous reviewed role claims, full pinned offline file bytes, complete reading-help data identity to candidate4",
+  "commits": {
+    "drill": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "annotations": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "guide": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "help": "3d592ece6de8c4559987416a544fc215fd6d6921"
+  },
+  "counts": {
+    "transactionBase": 6,
+    "startupGuide": 13,
+    "baseGuideOverlap": 0,
+    "mergedRoles": 19,
+    "contexts": 147,
+    "lineHints": 714,
+    "lessonLinkUnits": 7
+  },
+  "candidate4HelpDataSha256": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+  "sourceDataCopies": [
+    {
+      "path": "dist/reading-help-data.js",
+      "sha256": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+      "equalsCandidate4": true
+    },
+    {
+      "path": "docs/reading-help-data.js",
+      "sha256": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+      "equalsCandidate4": true
+    },
+    {
+      "path": "local-app/public/reading-help-data.js",
+      "sha256": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+      "equalsCandidate4": true
+    }
+  ],
+  "roles": [
+    {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "origin": "transaction6",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "237400ce4039f8e82562f9281491cd44742ed443c8c114f94ca0f1e0d07c9d26",
+      "pinnedFullFileSha256": "c72844295fa265203bc39e3e82dc726999c84f5a27a315f6b5125b7c5febb9c7",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "origin": "transaction6",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "cc5a64d8cd33c8136cc664ffdc3e7156288f7c6b34bfc63d2b573d070c6d20db",
+      "pinnedFullFileSha256": "a0b7f244813d7a9f0d1ebc393c6b26d38061142ae2261d7bcbf6f8284536f68f",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "origin": "transaction6",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "ad0f75ff4f060a16029025fa7b33f189bd359c6fa3b205da6d9aa7e8058450b7",
+      "pinnedFullFileSha256": "c159689d85de95bfdaa2faaef4e3428128606de6c4bfa23cbdae1ef8ab06ae7d",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "origin": "transaction6",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "c5e14376f974ffd5f478c65e602628c4c1c1543fc58ac38584762c58339385d8",
+      "pinnedFullFileSha256": "2bc87384913bbbbdc681c283ec28b35cba371c267d2f54e3d1bf1f807780abf9",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "origin": "transaction6",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "e16d795a51679891dd565bb765bf8cbeff28eb47172bc8b72888df9a0db0d629",
+      "pinnedFullFileSha256": "d477f796a2417467b8cb80f22495bcfc2e6387811fcd5ce0a9216729b8f01389",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/rpc/rpc/src/eth/core.rs",
+      "origin": "transaction6",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "e0cf07b15840d6b5ace5376f2d8d32f04253aaeba020877fc1b08a6e9de07d5c",
+      "pinnedFullFileSha256": "b9b435484e0f7e25b751a503396cf314ad9064d2d701b50e93b184c6c5b3a748",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "bin/reth/src/main.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "4e975f205b8a391c51412acecf1da4c0c3f8152adb52343688b43461607cd108",
+      "pinnedFullFileSha256": "3257c910e63026b43e0b95efdd9f9eaa0ece74a87aa0015f0a5826f5696180e0",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/ethereum/cli/src/app.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "1d8dde12924a2aaed702fca9f45981415645db980ef07c26708479b23745c26f",
+      "pinnedFullFileSha256": "68d14b7bae77b5fbd3e90131000cec113b3f8b5270683dc9244e515d344ac701",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/cli/runner/src/lib.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "1fc4d5333ab36532f281b6e80c2a4f89014afcdb89e1f83b8aa9703336d91a8c",
+      "pinnedFullFileSha256": "3a492e44cf087dfe9b578641a90d0aeaa93733be6c84298b9d25391a02f9b08e",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/cli/commands/src/node.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "cb5f1ba7dfeda494021f43357a5005d6f59c774cc2a0895a5ce2e3eaf4f3e557",
+      "pinnedFullFileSha256": "b9c44e591441210993cc4a6967c189c50e33fb3604e8df62e1fb24c4a22278e3",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "fa8738948adbeb48d6a22b076e956efbdbf3f0aa4f90838be88d20da76e88a72",
+      "pinnedFullFileSha256": "8ab65f8a729766c30687a617c8847a391bd8fc673694c78187661a6cd880731a",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/node/builder/src/components/builder.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "4f1531643794e5a754aefcc6834ee52f7a0e384dddefd754c2b2e9356fa02bf4",
+      "pinnedFullFileSha256": "4315a9476e5f11f76337b889d07f2d2d0f270682e9acad385a165bb65335b7f8",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "e87629dde694087b2b32e18b6cf00249c484ae7b6cbee8856f67345c64dae59b",
+      "pinnedFullFileSha256": "11a9fdf55806f9bd16bf38974987fc77e8bd4500efc055e2a19e277845df5945",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/net/network/src/manager.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "e789d9290187e8971955426e5c6d23112bef3f7eebcf6a9fc1600715d8368233",
+      "pinnedFullFileSha256": "c54ce719aeacb6f2af27521dbdb52bdbae374196873f60eb91ce8ac22ccbe79e",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/backfill.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "69cbb2b3e3c63afaeff1c140c58b4398a0cb03e2da596d0d0bd0747ed4b6f063",
+      "pinnedFullFileSha256": "ee33668e9a772a701bb8e3f1f4fa996c2fa4b2f5c4392c607931a53337b256e1",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/launch.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "f160015bccc536aafbc35de2e956688ddd519a8af1e7b5de7fd4ee8dfded7088",
+      "pinnedFullFileSha256": "ebb3287b23d8bdfc1750f92200e41c06a51e515510f3c7c2ad1737c5577cd563",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/chain.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "b0f8643c4b2d20a20e52d612e66ef32277491b4127a595ee783b30453198879e",
+      "pinnedFullFileSha256": "b0f41a4a83b3b495fb3ce67172de50c7f0caa15dd75a2c8d7d3405606eb77988",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/engine/tree/src/engine.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "edbb810423c4fe6d2889b7dddfd400b00d657df019bc823192cc57dae8a53541",
+      "pinnedFullFileSha256": "1f025a3e20bbd0929f60adc1096a476b04fbb80cb5d505cd4475a91d2f8e30bf",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    },
+    {
+      "path": "crates/node/builder/src/handle.rs",
+      "origin": "startup-guide",
+      "textFields": [
+        "name",
+        "role",
+        "input",
+        "output"
+      ],
+      "claimSha256": "f1274314340a06b7eada789e819cd430fac41d4e5a4d59f709b89984992f2360",
+      "pinnedFullFileSha256": "728c9a4c8047e6283157e418cc2a1ed926e9dca7a714d98aee16deed6383097e",
+      "checks": {
+        "drillEqualsExpectedMerge": true,
+        "annotationsEqualsExpectedMerge": true,
+        "previousReviewedRoleClaimExact": true,
+        "offlineFullSourceEqualsPinned": true
+      }
+    }
+  ],
+  "issues": [],
+  "carryRule": {
+    "sourceClaimCarry": "All19 role claim objects equal canonical JSON of independently reviewed candidate3 snapshot6. All147 context and714 hint data, including other help-data claim fields, have unchanged complete file SHA256 vs candidate4 and prior final source review. Existing source-semantic review may carry only within its previously declared scope.",
+    "newClaims": "No new authored role/source/hint claims detected in this delta. Full original files added to offline seed are source availability, not newly explained code.",
+    "notInferred": [
+      "UI reachability or controls retention",
+      "catalog timeout/failure resilience in actual browser",
+      "all1283 files explained",
+      "whole147 contexts newly independently read by this check",
+      "human understanding"
+    ]
+  },
+  "evidence": {
+    "priorRoleReviewSnapshot": {
+      "path": "candidate3-preflight-ledger-snapshot-6.json",
+      "sha256": "f67988d3c292fc3836943fd63b5ee93333d1383767d029835bf24b864ec2e9d2"
+    },
+    "priorFinalSourceReview": {
+      "path": "candidate-3/beginner-source-fit-final.json",
+      "publishedHelpDataSha256": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0"
+    },
+    "candidate4AssetRecordSha256": "575396b6a9ebec97df045f9d41cd48b5b2f97606a5090a9bff2b63b2fceddc03",
+    "currentDrillDataSha256": "d9a0c26a82a5c522b1ccc1611185ba85b99c658c1bbe237ab31defb272771f04",
+    "currentAnnotationsSha256": "86c6fb720da9c4558dbb82a1e21f9ccad7c40d0c8dd8d64e8c9fe4d83d0eb0ce",
+    "currentGuideSha256": "99c98be9eb8083353459f9366829d46a71b916f751a192d32010581f911d32b4"
+  }
+}

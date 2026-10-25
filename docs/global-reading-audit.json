@@ -1689,6 +1689,16 @@
       "prevention": "authoring→各生成データ→renderer条件→source bridgeの全経路をunitごとに照合し、各公開役割をlocal/static両方で実遷移する。data件数・host生成関数・localの成功をstatic成功へ一般化しない。prefreeze回帰も実際のDRILL.roles unionを検査する。",
       "evidence": "outputs/global-reading-loop/candidate-4/data-reviewer-ui.json#A-C4-STATIC-ROLE-MAIN-001",
       "status": "candidate4 FAIL; new candidate must rerun all108×2round"
+    },
+    {
+      "id": "candidate5-evaluator-selected-comment",
+      "cause": "Generic .is-reading selector matched an adjacent highlighted Japanese comment before the original row. Missing selected line caused false failures, and undefined===undefined created a pseudo-pass. Initial records were retained and invalidated before aggregate; exact .rh-code-line.is-reading417→417 observed both variants.",
+      "prevention": [
+        "Require finite/nonempty observations before equality checks.",
+        "Scope selectors to original source row, not shared visual class.",
+        "Record raw failure and explicit adjudication; do not overwrite it with a retry."
+      ],
+      "evidence": "outputs/global-reading-loop/candidate-5/measurement-adjudication.json"
     }
   ],
   "candidateRounds": [
@@ -2030,6 +2040,23 @@
         "static zoom main role excluded by DRILL.roles6 gate"
       ],
       "evidence": "outputs/global-reading-loop/candidate-4/global-review-partial.json"
+    },
+    {
+      "id": "candidate-5",
+      "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+      "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+      "result": "fail",
+      "observationScope": "All108 authored owner units and their planned local/static implementations observed under this build in two rounds; C136case/round + rootRust42case/round + A30owner all explicit routes/catalogue destinations. Semantic provenance and catalogue limits remain separate.",
+      "findings": [
+        "new/other first round reth and startup fail within10 actions, second-round warm pass does not erase first-use failure",
+        "new/first cold source-path partial on blockchain/ethereum/reth/send/startup",
+        "Atlas availability legacy11 index misses canonical pool validation explanation; source fetch succeeded but navigation/availability wrong"
+      ],
+      "evidence": "outputs/global-reading-loop/candidate-5/global-review-summary.json",
+      "gateMatrix": "outputs/global-reading-loop/candidate-5/global-gate-matrix.json",
+      "humanParticipants": 0,
+      "allRethCodeCoverage": "not achieved;1283 browseable files !=147 authored contexts",
+      "twoConsecutiveWholeRoundPass": false
     }
   ],
   "humanStudy": {

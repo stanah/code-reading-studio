@@ -1,0 +1,2302 @@
+{
+  "kind": "delegated candidate5 formal UI cases; runtime hash to be supplied by root freeze",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "ownerUnits": 5,
+  "defaultCases": 10,
+  "contextualCases": 32,
+  "totalCases": 42,
+  "rounds": 2,
+  "caseData": {
+    "rustEvidenceHash": "b31f67eda1cad5acc92e04e393774f3d8855251a26644bdccaf6e44747bc7610",
+    "rustSupportHash": "0dc0ba0041be55e66c2dd8af155436c7bfd092552a8e1fced11ce71169136c08"
+  },
+  "harness": {
+    "module": "/Users/stanah/Documents/Codex/2026-10-18/code-reading-studio/outputs/global-reading-loop/candidate-5/cua-audit-harness.mjs",
+    "entry": "const module = await import(file URL); const audit = await module.createAudit(dedicatedTab, candidate5-output-path, frozen-runtime-hash); await audit.observe(case.owner,case.url,case.selector,case.opens,round); then annotate last audit.rows entry with caseId; await audit.save();",
+    "safety": "Documented CUA APIs only, DOM-read-only evaluate, real locators for actions. Capture and controls each checkpoint. Use one heavy case per call to stay below60s.",
+    "runtimeEditing": "none"
+  },
+  "cases": [
+    {
+      "caseId": "rust-local-borrow-default",
+      "owner": "rust-topic:borrow",
+      "surface": "local",
+      "topic": "borrow",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=borrow",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:submit"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "borrow",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-borrow-default",
+      "owner": "rust-topic:borrow",
+      "surface": "static",
+      "topic": "borrow",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=borrow",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:submit"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "borrow",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-borrow-recover",
+      "owner": "rust-topic:borrow",
+      "surface": "local",
+      "topic": "borrow",
+      "selectedStep": "recover",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=borrow&step=recover",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:submit"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "borrow",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-borrow-recover",
+      "owner": "rust-topic:borrow",
+      "surface": "static",
+      "topic": "borrow",
+      "selectedStep": "recover",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=borrow&step=recover",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:submit"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "borrow",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-borrow-submit",
+      "owner": "rust-topic:borrow",
+      "surface": "local",
+      "topic": "borrow",
+      "selectedStep": "submit",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=borrow&step=submit",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:submit",
+        "tx:recover"
+      ],
+      "expectedFirstContext": "tx:submit",
+      "expectedTopicAttribute": "borrow",
+      "sources": [
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-borrow-submit",
+      "owner": "rust-topic:borrow",
+      "surface": "static",
+      "topic": "borrow",
+      "selectedStep": "submit",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=borrow&step=submit",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:submit",
+        "tx:recover"
+      ],
+      "expectedFirstContext": "tx:submit",
+      "expectedTopicAttribute": "borrow",
+      "sources": [
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-future-default",
+      "owner": "rust-topic:future",
+      "surface": "local",
+      "topic": "future",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=future",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-future-default",
+      "owner": "rust-topic:future",
+      "surface": "static",
+      "topic": "future",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=future",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-future-rpc",
+      "owner": "rust-topic:future",
+      "surface": "local",
+      "topic": "future",
+      "selectedStep": "rpc",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=future&step=rpc",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-future-rpc",
+      "owner": "rust-topic:future",
+      "surface": "static",
+      "topic": "future",
+      "selectedStep": "rpc",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=future&step=rpc",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-future-recover",
+      "owner": "rust-topic:future",
+      "surface": "local",
+      "topic": "future",
+      "selectedStep": "recover",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=future&step=recover",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-future-recover",
+      "owner": "rust-topic:future",
+      "surface": "static",
+      "topic": "future",
+      "selectedStep": "recover",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=future&step=recover",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-future-queue",
+      "owner": "rust-topic:future",
+      "surface": "local",
+      "topic": "future",
+      "selectedStep": "queue",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=future&step=queue",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:queue",
+        "tx:rpc",
+        "tx:recover",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:queue",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-future-queue",
+      "owner": "rust-topic:future",
+      "surface": "static",
+      "topic": "future",
+      "selectedStep": "queue",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=future&step=queue",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:queue",
+        "tx:rpc",
+        "tx:recover",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:queue",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-future-batch",
+      "owner": "rust-topic:future",
+      "surface": "local",
+      "topic": "future",
+      "selectedStep": "batch",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=future&step=batch",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:batch",
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:batch",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-future-batch",
+      "owner": "rust-topic:future",
+      "surface": "static",
+      "topic": "future",
+      "selectedStep": "batch",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=future&step=batch",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:batch",
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:batch",
+      "expectedTopicAttribute": "future",
+      "sources": [
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-result-default",
+      "owner": "rust-topic:result",
+      "surface": "local",
+      "topic": "result",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=result",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-result-default",
+      "owner": "rust-topic:result",
+      "surface": "static",
+      "topic": "result",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=result",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-result-rpc",
+      "owner": "rust-topic:result",
+      "surface": "local",
+      "topic": "result",
+      "selectedStep": "rpc",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=result&step=rpc",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-result-rpc",
+      "owner": "rust-topic:result",
+      "surface": "static",
+      "topic": "result",
+      "selectedStep": "rpc",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=result&step=rpc",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-result-recover",
+      "owner": "rust-topic:result",
+      "surface": "local",
+      "topic": "result",
+      "selectedStep": "recover",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=result&step=recover",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-result-recover",
+      "owner": "rust-topic:result",
+      "surface": "static",
+      "topic": "result",
+      "selectedStep": "recover",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=result&step=recover",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-result-queue",
+      "owner": "rust-topic:result",
+      "surface": "local",
+      "topic": "result",
+      "selectedStep": "queue",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=result&step=queue",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:queue",
+        "tx:rpc",
+        "tx:recover",
+        "tx:pool"
+      ],
+      "expectedFirstContext": "tx:queue",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-result-queue",
+      "owner": "rust-topic:result",
+      "surface": "static",
+      "topic": "result",
+      "selectedStep": "queue",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=result&step=queue",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:queue",
+        "tx:rpc",
+        "tx:recover",
+        "tx:pool"
+      ],
+      "expectedFirstContext": "tx:queue",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-result-pool",
+      "owner": "rust-topic:result",
+      "surface": "local",
+      "topic": "result",
+      "selectedStep": "pool",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=result&step=pool",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:pool",
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue"
+      ],
+      "expectedFirstContext": "tx:pool",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-result-pool",
+      "owner": "rust-topic:result",
+      "surface": "static",
+      "topic": "result",
+      "selectedStep": "pool",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=result&step=pool",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:pool",
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue"
+      ],
+      "expectedFirstContext": "tx:pool",
+      "expectedTopicAttribute": "result",
+      "sources": [
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-trait-default",
+      "owner": "rust-topic:trait",
+      "surface": "local",
+      "topic": "trait",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=trait",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-trait-default",
+      "owner": "rust-topic:trait",
+      "surface": "static",
+      "topic": "trait",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=trait",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-trait-rpc",
+      "owner": "rust-topic:trait",
+      "surface": "local",
+      "topic": "trait",
+      "selectedStep": "rpc",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=trait&step=rpc",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-trait-rpc",
+      "owner": "rust-topic:trait",
+      "surface": "static",
+      "topic": "trait",
+      "selectedStep": "rpc",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=trait&step=rpc",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:rpc",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-trait-recover",
+      "owner": "rust-topic:trait",
+      "surface": "local",
+      "topic": "trait",
+      "selectedStep": "recover",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=trait&step=recover",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-trait-recover",
+      "owner": "rust-topic:trait",
+      "surface": "static",
+      "topic": "trait",
+      "selectedStep": "recover",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=trait&step=recover",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:recover",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-trait-submit",
+      "owner": "rust-topic:trait",
+      "surface": "local",
+      "topic": "trait",
+      "selectedStep": "submit",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=trait&step=submit",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:submit",
+        "tx:rpc",
+        "tx:recover",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:submit",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-trait-submit",
+      "owner": "rust-topic:trait",
+      "surface": "static",
+      "topic": "trait",
+      "selectedStep": "submit",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=trait&step=submit",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:submit",
+        "tx:rpc",
+        "tx:recover",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:submit",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-trait-pool",
+      "owner": "rust-topic:trait",
+      "surface": "local",
+      "topic": "trait",
+      "selectedStep": "pool",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=trait&step=pool",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:pool",
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:pool",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-trait-pool",
+      "owner": "rust-topic:trait",
+      "surface": "static",
+      "topic": "trait",
+      "selectedStep": "pool",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=trait&step=pool",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:pool",
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "expectedFirstContext": "tx:pool",
+      "expectedTopicAttribute": "trait",
+      "sources": [
+        {
+          "context": "tx:pool",
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528,
+          "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+        },
+        {
+          "context": "tx:rpc",
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924,
+          "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+        },
+        {
+          "context": "tx:recover",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109,
+          "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+        },
+        {
+          "context": "tx:submit",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114,
+          "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+        },
+        {
+          "context": "tx:trait-contract",
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 65,
+          "end": 79,
+          "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+        },
+        {
+          "context": "tx:trait-implementation",
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 21,
+          "end": 31,
+          "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-channel-default",
+      "owner": "rust-topic:channel",
+      "surface": "local",
+      "topic": "channel",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=channel",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:queue",
+      "expectedTopicAttribute": "channel",
+      "sources": [
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-channel-default",
+      "owner": "rust-topic:channel",
+      "surface": "static",
+      "topic": "channel",
+      "selectedStep": null,
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=channel",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:queue",
+      "expectedTopicAttribute": "channel",
+      "sources": [
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-channel-queue",
+      "owner": "rust-topic:channel",
+      "surface": "local",
+      "topic": "channel",
+      "selectedStep": "queue",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=channel&step=queue",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:queue",
+      "expectedTopicAttribute": "channel",
+      "sources": [
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-channel-queue",
+      "owner": "rust-topic:channel",
+      "surface": "static",
+      "topic": "channel",
+      "selectedStep": "queue",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=channel&step=queue",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:queue",
+      "expectedTopicAttribute": "channel",
+      "sources": [
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-local-channel-batch",
+      "owner": "rust-topic:channel",
+      "surface": "local",
+      "topic": "channel",
+      "selectedStep": "batch",
+      "url": "http://127.0.0.1:4317/reader#lens=rust&topic=channel&step=batch",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:batch",
+        "tx:queue",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:batch",
+      "expectedTopicAttribute": "channel",
+      "sources": [
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    },
+    {
+      "caseId": "rust-static-channel-batch",
+      "owner": "rust-topic:channel",
+      "surface": "static",
+      "topic": "channel",
+      "selectedStep": "batch",
+      "url": "http://127.0.0.1:4398/lenses.html#lens=rust&topic=channel&step=batch",
+      "selector": ".rh-code-line",
+      "opens": [
+        ".rh-ts-comparison > summary",
+        ".rh-source > summary"
+      ],
+      "expectedContexts": [
+        "tx:batch",
+        "tx:queue",
+        "tx:batch-runner"
+      ],
+      "expectedFirstContext": "tx:batch",
+      "expectedTopicAttribute": "channel",
+      "sources": [
+        {
+          "context": "tx:batch",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105,
+          "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+        },
+        {
+          "context": "tx:queue",
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504,
+          "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+        },
+        {
+          "context": "tx:batch-runner",
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135,
+          "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+        }
+      ],
+      "fourCombinations": "representative first selected source; all source/control presence separately recorded; no unsaved-note field on this surface"
+    }
+  ],
+  "humanStudyParticipants": 0
+}

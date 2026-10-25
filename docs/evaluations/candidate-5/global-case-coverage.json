@@ -1,0 +1,4771 @@
+{
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "ownerUnits": 73,
+  "cases": [
+    {
+      "owner": "learning:blockchain",
+      "caseId": "learning:blockchain",
+      "expectedUrl": "http://127.0.0.1:4317/#lesson=blockchain",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 0,
+              "url": "http://127.0.0.1:4317/#lesson=blockchain",
+              "observedAt": "2026-10-25T14:09:52.640Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 128
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 0,
+              "url": "http://127.0.0.1:4317/#lesson=blockchain",
+              "observedAt": "2026-10-25T15:21:48.926Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 128
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:ethereum",
+      "caseId": "learning:ethereum",
+      "expectedUrl": "http://127.0.0.1:4317/#lesson=ethereum",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 1,
+              "url": "http://127.0.0.1:4317/#lesson=ethereum",
+              "observedAt": "2026-10-25T14:09:56.298Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 69
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 1,
+              "url": "http://127.0.0.1:4317/#lesson=ethereum",
+              "observedAt": "2026-10-25T15:21:51.688Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 69
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:rpc",
+      "caseId": "learning:rpc",
+      "expectedUrl": "http://127.0.0.1:4317/#lesson=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 2,
+              "url": "http://127.0.0.1:4317/#lesson=rpc",
+              "observedAt": "2026-10-25T14:10:57.146Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 117
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 2,
+              "url": "http://127.0.0.1:4317/#lesson=rpc",
+              "observedAt": "2026-10-25T15:21:55.052Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 117
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:reth",
+      "caseId": "learning:reth",
+      "expectedUrl": "http://127.0.0.1:4317/#lesson=reth",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 3,
+              "url": "http://127.0.0.1:4317/#lesson=reth",
+              "observedAt": "2026-10-25T14:11:14.485Z",
+              "controls": "pass",
+              "contexts": 54,
+              "sourceRows": 2904
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 3,
+              "url": "http://127.0.0.1:4317/#lesson=reth",
+              "observedAt": "2026-10-25T15:22:17.524Z",
+              "controls": "pass",
+              "contexts": 54,
+              "sourceRows": 2904
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:send",
+      "caseId": "learning:send",
+      "expectedUrl": "http://127.0.0.1:4317/#lesson=send",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 4,
+              "url": "http://127.0.0.1:4317/#lesson=send",
+              "observedAt": "2026-10-25T14:11:32.014Z",
+              "controls": "pass",
+              "contexts": 19,
+              "sourceRows": 879
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 4,
+              "url": "http://127.0.0.1:4317/#lesson=send",
+              "observedAt": "2026-10-25T15:22:27.013Z",
+              "controls": "pass",
+              "contexts": 19,
+              "sourceRows": 879
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:startup",
+      "caseId": "learning:startup",
+      "expectedUrl": "http://127.0.0.1:4317/#lesson=startup",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 5,
+              "url": "http://127.0.0.1:4317/#lesson=startup",
+              "observedAt": "2026-10-25T14:11:45.310Z",
+              "controls": "pass",
+              "contexts": 36,
+              "sourceRows": 1665
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 5,
+              "url": "http://127.0.0.1:4317/#lesson=startup",
+              "observedAt": "2026-10-25T15:22:44.553Z",
+              "controls": "pass",
+              "contexts": 36,
+              "sourceRows": 1665
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:reading",
+      "caseId": "learning:reading",
+      "expectedUrl": "http://127.0.0.1:4317/#lesson=reading",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 6,
+              "url": "http://127.0.0.1:4317/#lesson=reading",
+              "observedAt": "2026-10-25T14:11:49.507Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 34
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 6,
+              "url": "http://127.0.0.1:4317/#lesson=reading",
+              "observedAt": "2026-10-25T15:22:48.127Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:node",
+      "caseId": "area:node",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=node",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 7,
+              "url": "http://127.0.0.1:4317/reader#area=node",
+              "observedAt": "2026-10-25T14:12:43.945Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 48
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 7,
+              "url": "http://127.0.0.1:4317/reader#area=node",
+              "observedAt": "2026-10-25T15:22:57.650Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 48
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:rpc",
+      "caseId": "area:rpc",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 9,
+              "url": "http://127.0.0.1:4317/reader#area=rpc",
+              "observedAt": "2026-10-25T14:12:48.747Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 8,
+              "url": "http://127.0.0.1:4317/reader#area=rpc",
+              "observedAt": "2026-10-25T15:23:00.561Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:pool",
+      "caseId": "area:pool",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 11,
+              "url": "http://127.0.0.1:4317/reader#area=pool",
+              "observedAt": "2026-10-25T14:12:56.938Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 9,
+              "url": "http://127.0.0.1:4317/reader#area=pool",
+              "observedAt": "2026-10-25T15:23:06.334Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:network",
+      "caseId": "area:network",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=network",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 14,
+              "url": "http://127.0.0.1:4317/reader#area=network",
+              "observedAt": "2026-10-25T14:13:06.021Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 110
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 10,
+              "url": "http://127.0.0.1:4317/reader#area=network",
+              "observedAt": "2026-10-25T15:23:09.344Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:sync",
+      "caseId": "area:sync",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=sync",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 16,
+              "url": "http://127.0.0.1:4317/reader#area=sync",
+              "observedAt": "2026-10-25T14:13:37.029Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 177
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 11,
+              "url": "http://127.0.0.1:4317/reader#area=sync",
+              "observedAt": "2026-10-25T15:23:16.734Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 177
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:engine",
+      "caseId": "area:engine",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=engine",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 18,
+              "url": "http://127.0.0.1:4317/reader#area=engine",
+              "observedAt": "2026-10-25T14:13:42.452Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 253
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 12,
+              "url": "http://127.0.0.1:4317/reader#area=engine",
+              "observedAt": "2026-10-25T15:23:20.113Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 253
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:execution",
+      "caseId": "area:execution",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=execution",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 20,
+              "url": "http://127.0.0.1:4317/reader#area=execution",
+              "observedAt": "2026-10-25T14:13:46.949Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 53
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 13,
+              "url": "http://127.0.0.1:4317/reader#area=execution",
+              "observedAt": "2026-10-25T15:23:22.770Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 53
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:payload",
+      "caseId": "area:payload",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=payload",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 22,
+              "url": "http://127.0.0.1:4317/reader#area=payload",
+              "observedAt": "2026-10-25T14:13:51.312Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 14,
+              "url": "http://127.0.0.1:4317/reader#area=payload",
+              "observedAt": "2026-10-25T15:23:25.313Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:storage",
+      "caseId": "area:storage",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=storage",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 24,
+              "url": "http://127.0.0.1:4317/reader#area=storage",
+              "observedAt": "2026-10-25T14:14:49.569Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 43
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 15,
+              "url": "http://127.0.0.1:4317/reader#area=storage",
+              "observedAt": "2026-10-25T15:23:32.002Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 43
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:extension",
+      "caseId": "area:extension",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=extension",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 26,
+              "url": "http://127.0.0.1:4317/reader#area=extension",
+              "observedAt": "2026-10-25T14:14:56.273Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 51
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 16,
+              "url": "http://127.0.0.1:4317/reader#area=extension",
+              "observedAt": "2026-10-25T15:23:34.602Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:foundation",
+      "caseId": "area:foundation",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=foundation",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 28,
+              "url": "http://127.0.0.1:4317/reader#area=foundation",
+              "observedAt": "2026-10-25T14:15:00.919Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 17,
+              "url": "http://127.0.0.1:4317/reader#area=foundation",
+              "observedAt": "2026-10-25T15:23:37.240Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:entry",
+      "caseId": "startup-step:entry",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=entry",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 30,
+              "url": "http://127.0.0.1:4317/startup?step=entry",
+              "observedAt": "2026-10-25T14:15:43.745Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 79
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 18,
+              "url": "http://127.0.0.1:4317/startup?step=entry",
+              "observedAt": "2026-10-25T15:23:41.322Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 79
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:dispatch",
+      "caseId": "startup-step:dispatch",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=dispatch",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 31,
+              "url": "http://127.0.0.1:4317/startup?step=dispatch",
+              "observedAt": "2026-10-25T14:15:48.361Z",
+              "controls": "pass",
+              "contexts": 6,
+              "sourceRows": 234
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 19,
+              "url": "http://127.0.0.1:4317/startup?step=dispatch",
+              "observedAt": "2026-10-25T15:23:54.450Z",
+              "controls": "pass",
+              "contexts": 6,
+              "sourceRows": 234
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:supervisor",
+      "caseId": "startup-step:supervisor",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=supervisor",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 32,
+              "url": "http://127.0.0.1:4317/startup?step=supervisor",
+              "observedAt": "2026-10-25T14:15:52.655Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 334
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 20,
+              "url": "http://127.0.0.1:4317/startup?step=supervisor",
+              "observedAt": "2026-10-25T15:23:58.754Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 334
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:database",
+      "caseId": "startup-step:database",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=database",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 33,
+              "url": "http://127.0.0.1:4317/startup?step=database",
+              "observedAt": "2026-10-25T14:16:06.977Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 381
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 21,
+              "url": "http://127.0.0.1:4317/startup?step=database",
+              "observedAt": "2026-10-25T15:24:04.950Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 381
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:context",
+      "caseId": "startup-step:context",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=context",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 34,
+              "url": "http://127.0.0.1:4317/startup?step=context",
+              "observedAt": "2026-10-25T14:16:10.783Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 124
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 22,
+              "url": "http://127.0.0.1:4317/startup?step=context",
+              "observedAt": "2026-10-25T15:24:08.524Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 124
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:components",
+      "caseId": "startup-step:components",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=components",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 35,
+              "url": "http://127.0.0.1:4317/startup?step=components",
+              "observedAt": "2026-10-25T14:16:15.942Z",
+              "controls": "pass",
+              "contexts": 7,
+              "sourceRows": 322
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 23,
+              "url": "http://127.0.0.1:4317/startup?step=components",
+              "observedAt": "2026-10-25T15:24:17.101Z",
+              "controls": "pass",
+              "contexts": 7,
+              "sourceRows": 322
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:services",
+      "caseId": "startup-step:services",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=services",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 36,
+              "url": "http://127.0.0.1:4317/startup?step=services",
+              "observedAt": "2026-10-25T14:18:04.697Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 361
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 24,
+              "url": "http://127.0.0.1:4317/startup?step=services",
+              "observedAt": "2026-10-25T15:24:21.445Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 361
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:orchestrator",
+      "caseId": "startup-step:orchestrator",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=orchestrator",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 37,
+              "url": "http://127.0.0.1:4317/startup?step=orchestrator",
+              "observedAt": "2026-10-25T14:18:10.703Z",
+              "controls": "pass",
+              "contexts": 9,
+              "sourceRows": 549
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 25,
+              "url": "http://127.0.0.1:4317/startup?step=orchestrator",
+              "observedAt": "2026-10-25T15:24:26.821Z",
+              "controls": "pass",
+              "contexts": 9,
+              "sourceRows": 549
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:tree",
+      "caseId": "startup-step:tree",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=tree",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 38,
+              "url": "http://127.0.0.1:4317/startup?step=tree",
+              "observedAt": "2026-10-25T14:18:23.097Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 824
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 26,
+              "url": "http://127.0.0.1:4317/startup?step=tree",
+              "observedAt": "2026-10-25T15:24:39.145Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 824
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:network",
+      "caseId": "startup-step:network",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=network",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 39,
+              "url": "http://127.0.0.1:4317/startup?step=network",
+              "observedAt": "2026-10-25T14:18:28.204Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 227
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 27,
+              "url": "http://127.0.0.1:4317/startup?step=network",
+              "observedAt": "2026-10-25T15:24:43.288Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 227
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-step:backfill",
+      "caseId": "startup-step:backfill",
+      "expectedUrl": "http://127.0.0.1:4317/startup?step=backfill",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 40,
+              "url": "http://127.0.0.1:4317/startup?step=backfill",
+              "observedAt": "2026-10-25T14:18:45.171Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 860
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 28,
+              "url": "http://127.0.0.1:4317/startup?step=backfill",
+              "observedAt": "2026-10-25T15:24:50.038Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 860
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-stage:cli",
+      "caseId": "startup-stage:cli",
+      "expectedUrl": "http://127.0.0.1:4317/startup?stage=cli",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 42,
+              "url": "http://127.0.0.1:4317/startup?stage=cli",
+              "observedAt": "2026-10-25T14:21:10.924Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 29,
+              "url": "http://127.0.0.1:4317/startup?stage=cli",
+              "observedAt": "2026-10-25T15:25:00.025Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-stage:prepare",
+      "caseId": "startup-stage:prepare",
+      "expectedUrl": "http://127.0.0.1:4317/startup?stage=prepare",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 43,
+              "url": "http://127.0.0.1:4317/startup?stage=prepare",
+              "observedAt": "2026-10-25T14:21:11.145Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 30,
+              "url": "http://127.0.0.1:4317/startup?stage=prepare",
+              "observedAt": "2026-10-25T15:25:10.199Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-stage:run",
+      "caseId": "startup-stage:run",
+      "expectedUrl": "http://127.0.0.1:4317/startup?stage=run",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 44,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T14:22:02.253Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 31,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T15:25:26.830Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-overview:main",
+      "caseId": "startup-overview:main",
+      "expectedUrl": "http://127.0.0.1:4317/startup",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 41,
+              "url": "http://127.0.0.1:4317/startup",
+              "observedAt": "2026-10-25T14:21:10.694Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 32,
+              "url": "http://127.0.0.1:4317/startup",
+              "observedAt": "2026-10-25T15:25:30.389Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:rpc",
+      "caseId": "flow-step:rpc",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&step=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 50,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=rpc",
+              "observedAt": "2026-10-25T14:28:03.053Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 33,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=rpc",
+              "observedAt": "2026-10-25T15:25:40.668Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:recover",
+      "caseId": "flow-step:recover",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&step=recover",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 51,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=recover",
+              "observedAt": "2026-10-25T14:28:06.014Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 94
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 34,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=recover",
+              "observedAt": "2026-10-25T15:25:43.464Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 94
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:submit",
+      "caseId": "flow-step:submit",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&step=submit",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 52,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=submit",
+              "observedAt": "2026-10-25T14:28:09.447Z",
+              "controls": "pass",
+              "contexts": 4,
+              "sourceRows": 161
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 35,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=submit",
+              "observedAt": "2026-10-25T15:25:46.749Z",
+              "controls": "pass",
+              "contexts": 4,
+              "sourceRows": 161
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:queue",
+      "caseId": "flow-step:queue",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&step=queue",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 53,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=queue",
+              "observedAt": "2026-10-25T14:28:26.883Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 78
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 36,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=queue",
+              "observedAt": "2026-10-25T15:25:53.709Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 78
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:batch",
+      "caseId": "flow-step:batch",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&step=batch",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 54,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=batch",
+              "observedAt": "2026-10-25T14:28:32.918Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 37,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=batch",
+              "observedAt": "2026-10-25T15:25:59.719Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:pool",
+      "caseId": "flow-step:pool",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&step=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 55,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=pool",
+              "observedAt": "2026-10-25T14:28:38.916Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 38,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&step=pool",
+              "observedAt": "2026-10-25T15:26:05.628Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-group:receive",
+      "caseId": "flow-group:receive",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&group=receive",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 57,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&group=receive",
+              "observedAt": "2026-10-25T14:28:49.012Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 39,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&group=receive",
+              "observedAt": "2026-10-25T15:26:12.377Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-group:dispatch",
+      "caseId": "flow-group:dispatch",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&group=dispatch",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 58,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&group=dispatch",
+              "observedAt": "2026-10-25T14:28:49.248Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 40,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&group=dispatch",
+              "observedAt": "2026-10-25T15:26:12.647Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-group:validate",
+      "caseId": "flow-group:validate",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow&group=validate",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 59,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&group=validate",
+              "observedAt": "2026-10-25T14:28:49.514Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 41,
+              "url": "http://127.0.0.1:4317/reader#lens=flow&group=validate",
+              "observedAt": "2026-10-25T15:26:12.957Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-overview:main",
+      "caseId": "flow-overview:main",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=flow",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 56,
+              "url": "http://127.0.0.1:4317/reader#lens=flow",
+              "observedAt": "2026-10-25T14:28:48.724Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 42,
+              "url": "http://127.0.0.1:4317/reader#lens=flow",
+              "observedAt": "2026-10-25T15:26:13.218Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "structure-overview:main",
+      "caseId": "structure-overview:main",
+      "expectedUrl": "http://127.0.0.1:4317/reader#lens=structure",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 60,
+              "url": "http://127.0.0.1:4317/reader#lens=structure",
+              "observedAt": "2026-10-25T14:28:49.768Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 43,
+              "url": "http://127.0.0.1:4317/reader#lens=structure",
+              "observedAt": "2026-10-25T15:26:13.489Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-detail:rpc-contract",
+      "caseId": "flow-detail:rpc-contract",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=rpc-contract",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 61,
+              "url": "http://127.0.0.1:4398/reader.html?step=rpc-contract",
+              "observedAt": "2026-10-25T14:29:43.333Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 13
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 44,
+              "url": "http://127.0.0.1:4398/reader.html?step=rpc-contract",
+              "observedAt": "2026-10-25T15:26:19.816Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-detail:recovery-hook",
+      "caseId": "flow-detail:recovery-hook",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=recovery-hook",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 62,
+              "url": "http://127.0.0.1:4398/reader.html?step=recovery-hook",
+              "observedAt": "2026-10-25T14:29:46.005Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 65
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 45,
+              "url": "http://127.0.0.1:4398/reader.html?step=recovery-hook",
+              "observedAt": "2026-10-25T15:26:22.394Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-detail:forward",
+      "caseId": "flow-detail:forward",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=forward",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 63,
+              "url": "http://127.0.0.1:4398/reader.html?step=forward",
+              "observedAt": "2026-10-25T14:29:48.449Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 18
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 46,
+              "url": "http://127.0.0.1:4398/reader.html?step=forward",
+              "observedAt": "2026-10-25T15:26:24.653Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 18
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-detail:batch-runner",
+      "caseId": "flow-detail:batch-runner",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=batch-runner",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 64,
+              "url": "http://127.0.0.1:4398/reader.html?step=batch-runner",
+              "observedAt": "2026-10-25T14:30:01.556Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 22
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 47,
+              "url": "http://127.0.0.1:4398/reader.html?step=batch-runner",
+              "observedAt": "2026-10-25T15:26:27.132Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-detail:pool-test",
+      "caseId": "flow-detail:pool-test",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=pool-test",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 65,
+              "url": "http://127.0.0.1:4398/reader.html?step=pool-test",
+              "observedAt": "2026-10-25T14:30:03.845Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 33
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 48,
+              "url": "http://127.0.0.1:4398/reader.html?step=pool-test",
+              "observedAt": "2026-10-25T15:26:29.586Z",
+              "controls": "pass",
+              "contexts": 1,
+              "sourceRows": 33
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:blockchain",
+      "caseId": "static-learning:blockchain",
+      "expectedUrl": "http://127.0.0.1:4398/index.html#lesson=blockchain",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 73,
+              "url": "http://127.0.0.1:4398/index.html#lesson=blockchain",
+              "observedAt": "2026-10-25T14:43:16.644Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 128
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 108,
+              "url": "http://127.0.0.1:4398/index.html#lesson=blockchain",
+              "observedAt": "2026-10-25T15:06:30.810Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 128
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:ethereum",
+      "caseId": "static-learning:ethereum",
+      "expectedUrl": "http://127.0.0.1:4398/index.html#lesson=ethereum",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 74,
+              "url": "http://127.0.0.1:4398/index.html#lesson=ethereum",
+              "observedAt": "2026-10-25T14:43:19.732Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 69
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 109,
+              "url": "http://127.0.0.1:4398/index.html#lesson=ethereum",
+              "observedAt": "2026-10-25T15:06:50.629Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 69
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:rpc",
+      "caseId": "static-learning:rpc",
+      "expectedUrl": "http://127.0.0.1:4398/index.html#lesson=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 75,
+              "url": "http://127.0.0.1:4398/index.html#lesson=rpc",
+              "observedAt": "2026-10-25T14:43:23.463Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 117
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 110,
+              "url": "http://127.0.0.1:4398/index.html#lesson=rpc",
+              "observedAt": "2026-10-25T15:07:16.580Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 117
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:reth",
+      "caseId": "static-learning:reth",
+      "expectedUrl": "http://127.0.0.1:4398/index.html#lesson=reth",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 76,
+              "url": "http://127.0.0.1:4398/index.html#lesson=reth",
+              "observedAt": "2026-10-25T14:43:48.988Z",
+              "controls": "pass",
+              "contexts": 54,
+              "sourceRows": 2904
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 111,
+              "url": "http://127.0.0.1:4398/index.html#lesson=reth",
+              "observedAt": "2026-10-25T15:07:43.694Z",
+              "controls": "pass",
+              "contexts": 54,
+              "sourceRows": 2904
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:send",
+      "caseId": "static-learning:send",
+      "expectedUrl": "http://127.0.0.1:4398/index.html#lesson=send",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 77,
+              "url": "http://127.0.0.1:4398/index.html#lesson=send",
+              "observedAt": "2026-10-25T14:44:05.686Z",
+              "controls": "pass",
+              "contexts": 19,
+              "sourceRows": 879
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 112,
+              "url": "http://127.0.0.1:4398/index.html#lesson=send",
+              "observedAt": "2026-10-25T15:08:17.883Z",
+              "controls": "pass",
+              "contexts": 19,
+              "sourceRows": 879
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:startup",
+      "caseId": "static-learning:startup",
+      "expectedUrl": "http://127.0.0.1:4398/index.html#lesson=startup",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 78,
+              "url": "http://127.0.0.1:4398/index.html#lesson=startup",
+              "observedAt": "2026-10-25T14:44:19.280Z",
+              "controls": "pass",
+              "contexts": 36,
+              "sourceRows": 1665
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 113,
+              "url": "http://127.0.0.1:4398/index.html#lesson=startup",
+              "observedAt": "2026-10-25T15:08:37.602Z",
+              "controls": "pass",
+              "contexts": 36,
+              "sourceRows": 1665
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning:reading",
+      "caseId": "static-learning:reading",
+      "expectedUrl": "http://127.0.0.1:4398/index.html#lesson=reading",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 79,
+              "url": "http://127.0.0.1:4398/index.html#lesson=reading",
+              "observedAt": "2026-10-25T14:44:22.880Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 34
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 114,
+              "url": "http://127.0.0.1:4398/index.html#lesson=reading",
+              "observedAt": "2026-10-25T15:08:49.564Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 34
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:node",
+      "caseId": "static-area:node",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=node",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 80,
+              "url": "http://127.0.0.1:4398/zoom.html?area=node",
+              "observedAt": "2026-10-25T14:45:03.295Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 48
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 115,
+              "url": "http://127.0.0.1:4398/zoom.html?area=node",
+              "observedAt": "2026-10-25T15:09:24.298Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 48
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:rpc",
+      "caseId": "static-area:rpc",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 82,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc",
+              "observedAt": "2026-10-25T14:45:08.223Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 116,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc",
+              "observedAt": "2026-10-25T15:09:33.234Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:pool",
+      "caseId": "static-area:pool",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 84,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool",
+              "observedAt": "2026-10-25T14:45:16.049Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 117,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool",
+              "observedAt": "2026-10-25T15:09:46.255Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:network",
+      "caseId": "static-area:network",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=network",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 87,
+              "url": "http://127.0.0.1:4398/zoom.html?area=network",
+              "observedAt": "2026-10-25T14:45:24.591Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 110
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 118,
+              "url": "http://127.0.0.1:4398/zoom.html?area=network",
+              "observedAt": "2026-10-25T15:09:54.943Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:sync",
+      "caseId": "static-area:sync",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=sync",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 89,
+              "url": "http://127.0.0.1:4398/zoom.html?area=sync",
+              "observedAt": "2026-10-25T14:48:32.778Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 177
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 119,
+              "url": "http://127.0.0.1:4398/zoom.html?area=sync",
+              "observedAt": "2026-10-25T15:10:02.585Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 177
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:engine",
+      "caseId": "static-area:engine",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=engine",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 91,
+              "url": "http://127.0.0.1:4398/zoom.html?area=engine",
+              "observedAt": "2026-10-25T14:48:38.565Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 253
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 120,
+              "url": "http://127.0.0.1:4398/zoom.html?area=engine",
+              "observedAt": "2026-10-25T15:10:11.603Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 253
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:execution",
+      "caseId": "static-area:execution",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=execution",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 93,
+              "url": "http://127.0.0.1:4398/zoom.html?area=execution",
+              "observedAt": "2026-10-25T14:48:43.315Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 53
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 121,
+              "url": "http://127.0.0.1:4398/zoom.html?area=execution",
+              "observedAt": "2026-10-25T15:10:41.474Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 53
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:payload",
+      "caseId": "static-area:payload",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=payload",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 95,
+              "url": "http://127.0.0.1:4398/zoom.html?area=payload",
+              "observedAt": "2026-10-25T14:48:47.811Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 122,
+              "url": "http://127.0.0.1:4398/zoom.html?area=payload",
+              "observedAt": "2026-10-25T15:10:49.331Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:storage",
+      "caseId": "static-area:storage",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=storage",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 97,
+              "url": "http://127.0.0.1:4398/zoom.html?area=storage",
+              "observedAt": "2026-10-25T14:48:59.450Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 43
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 123,
+              "url": "http://127.0.0.1:4398/zoom.html?area=storage",
+              "observedAt": "2026-10-25T15:10:57.783Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 43
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:extension",
+      "caseId": "static-area:extension",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=extension",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 99,
+              "url": "http://127.0.0.1:4398/zoom.html?area=extension",
+              "observedAt": "2026-10-25T14:49:03.956Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 51
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 124,
+              "url": "http://127.0.0.1:4398/zoom.html?area=extension",
+              "observedAt": "2026-10-25T15:11:06.609Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area:foundation",
+      "caseId": "static-area:foundation",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=foundation",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 101,
+              "url": "http://127.0.0.1:4398/zoom.html?area=foundation",
+              "observedAt": "2026-10-25T14:49:08.446Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 125,
+              "url": "http://127.0.0.1:4398/zoom.html?area=foundation",
+              "observedAt": "2026-10-25T15:11:26.440Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:rpc",
+      "caseId": "static-flow:rpc",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 103,
+              "url": "http://127.0.0.1:4398/reader.html?step=rpc",
+              "observedAt": "2026-10-25T14:50:46.394Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 49,
+              "url": "http://127.0.0.1:4398/reader.html?step=rpc",
+              "observedAt": "2026-10-25T15:26:37.204Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:recover",
+      "caseId": "static-flow:recover",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=recover",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 104,
+              "url": "http://127.0.0.1:4398/reader.html?step=recover",
+              "observedAt": "2026-10-25T14:50:49.083Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 94
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 50,
+              "url": "http://127.0.0.1:4398/reader.html?step=recover",
+              "observedAt": "2026-10-25T15:26:39.829Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 94
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:submit",
+      "caseId": "static-flow:submit",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=submit",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 105,
+              "url": "http://127.0.0.1:4398/reader.html?step=submit",
+              "observedAt": "2026-10-25T14:50:52.699Z",
+              "controls": "pass",
+              "contexts": 4,
+              "sourceRows": 161
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 51,
+              "url": "http://127.0.0.1:4398/reader.html?step=submit",
+              "observedAt": "2026-10-25T15:26:43.009Z",
+              "controls": "pass",
+              "contexts": 4,
+              "sourceRows": 161
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:queue",
+      "caseId": "static-flow:queue",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=queue",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 106,
+              "url": "http://127.0.0.1:4398/reader.html?step=queue",
+              "observedAt": "2026-10-25T14:51:05.649Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 78
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 52,
+              "url": "http://127.0.0.1:4398/reader.html?step=queue",
+              "observedAt": "2026-10-25T15:26:54.568Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 78
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:batch",
+      "caseId": "static-flow:batch",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=batch",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 107,
+              "url": "http://127.0.0.1:4398/reader.html?step=batch",
+              "observedAt": "2026-10-25T14:51:12.638Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 53,
+              "url": "http://127.0.0.1:4398/reader.html?step=batch",
+              "observedAt": "2026-10-25T15:27:00.632Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:pool",
+      "caseId": "static-flow:pool",
+      "expectedUrl": "http://127.0.0.1:4398/reader.html?step=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 108,
+              "url": "http://127.0.0.1:4398/reader.html?step=pool",
+              "observedAt": "2026-10-25T14:51:19.239Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 54,
+              "url": "http://127.0.0.1:4398/reader.html?step=pool",
+              "observedAt": "2026-10-25T15:27:06.939Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-overview:main",
+      "caseId": "static-startup-replica",
+      "expectedUrl": "http://127.0.0.1:4317/guide",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 133,
+              "url": "http://127.0.0.1:4317/guide",
+              "observedAt": "2026-10-25T15:01:12.538Z",
+              "controls": "pass",
+              "contexts": 56,
+              "sourceRows": 2743
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 55,
+              "url": "http://127.0.0.1:4317/guide",
+              "observedAt": "2026-10-25T15:27:29.597Z",
+              "controls": "pass",
+              "contexts": 56,
+              "sourceRows": 2743
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:rpc",
+      "caseId": "local-function:rpc",
+      "expectedUrl": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fcore.rs&fn=921",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 115,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fcore.rs&fn=921",
+              "observedAt": "2026-10-25T14:54:23.398Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 56,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fcore.rs&fn=921",
+              "observedAt": "2026-10-25T15:27:34.551Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:rpc",
+      "caseId": "static-function:rpc",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=rpc&c=interface&f=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fcore.rs&fn=921",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 121,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=interface&f=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fcore.rs&fn=921",
+              "observedAt": "2026-10-25T14:55:07.637Z",
+              "controls": "pass",
+              "contexts": 7,
+              "sourceRows": 145
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 57,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=interface&f=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fcore.rs&fn=921",
+              "observedAt": "2026-10-25T15:27:38.528Z",
+              "controls": "pass",
+              "contexts": 7,
+              "sourceRows": 145
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:recover",
+      "caseId": "local-function:recover",
+      "expectedUrl": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&fn=84",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 116,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&fn=84",
+              "observedAt": "2026-10-25T14:54:26.325Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 94
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 58,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&fn=84",
+              "observedAt": "2026-10-25T15:27:45.349Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 94
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:recover",
+      "caseId": "static-function:recover",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=rpc&c=helpers&f=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&fn=84",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 122,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=helpers&f=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&fn=84",
+              "observedAt": "2026-10-25T14:55:12.747Z",
+              "controls": "pass",
+              "contexts": 10,
+              "sourceRows": 359
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 59,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=helpers&f=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&fn=84",
+              "observedAt": "2026-10-25T15:27:50.151Z",
+              "controls": "pass",
+              "contexts": 10,
+              "sourceRows": 359
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:submit",
+      "caseId": "local-function:submit",
+      "expectedUrl": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&fn=32",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 117,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&fn=32",
+              "observedAt": "2026-10-25T14:54:29.778Z",
+              "controls": "pass",
+              "contexts": 4,
+              "sourceRows": 161
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 60,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&fn=32",
+              "observedAt": "2026-10-25T15:27:53.468Z",
+              "controls": "pass",
+              "contexts": 4,
+              "sourceRows": 161
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:submit",
+      "caseId": "static-function:submit",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=rpc&c=implementation&f=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&fn=32",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 123,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=implementation&f=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&fn=32",
+              "observedAt": "2026-10-25T14:55:16.930Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 195
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 61,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=implementation&f=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs&fn=32",
+              "observedAt": "2026-10-25T15:27:57.027Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 195
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:queue",
+      "caseId": "local-function:queue",
+      "expectedUrl": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fcore.rs&fn=491",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 118,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fcore.rs&fn=491",
+              "observedAt": "2026-10-25T14:54:40.741Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 78
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 62,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fcore.rs&fn=491",
+              "observedAt": "2026-10-25T15:28:10.734Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 78
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:queue",
+      "caseId": "static-function:queue",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=rpc&c=implementation&f=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fcore.rs&fn=491",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 124,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=implementation&f=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fcore.rs&fn=491",
+              "observedAt": "2026-10-25T14:55:30.436Z",
+              "controls": "pass",
+              "contexts": 6,
+              "sourceRows": 189
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 63,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=implementation&f=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fcore.rs&fn=491",
+              "observedAt": "2026-10-25T15:28:14.540Z",
+              "controls": "pass",
+              "contexts": 6,
+              "sourceRows": 189
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:batch",
+      "caseId": "local-function:batch",
+      "expectedUrl": "http://127.0.0.1:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&fn=76",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 119,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&fn=76",
+              "observedAt": "2026-10-25T14:54:46.927Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 64,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&fn=76",
+              "observedAt": "2026-10-25T15:28:20.644Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:batch",
+      "caseId": "static-function:batch",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=pool&c=1&f=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&fn=76",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 125,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool&c=1&f=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&fn=76",
+              "observedAt": "2026-10-25T14:55:36.683Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 65,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool&c=1&f=crates%2Ftransaction-pool%2Fsrc%2Fbatcher.rs&fn=76",
+              "observedAt": "2026-10-25T15:28:27.080Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:pool",
+      "caseId": "local-function:pool",
+      "expectedUrl": "http://127.0.0.1:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Flib.rs&fn=495",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 120,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Flib.rs&fn=495",
+              "observedAt": "2026-10-25T14:54:53.523Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 66,
+              "url": "http://127.0.0.1:4317/reader#path=crates%2Ftransaction-pool%2Fsrc%2Flib.rs&fn=495",
+              "observedAt": "2026-10-25T15:28:41.571Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:pool",
+      "caseId": "static-function:pool",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=pool&c=1&f=crates%2Ftransaction-pool%2Fsrc%2Flib.rs&fn=495",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 126,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool&c=1&f=crates%2Ftransaction-pool%2Fsrc%2Flib.rs&fn=495",
+              "observedAt": "2026-10-25T14:55:43.332Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 648
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 67,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool&c=1&f=crates%2Ftransaction-pool%2Fsrc%2Flib.rs&fn=495",
+              "observedAt": "2026-10-25T15:28:47.835Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 648
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "atlas-topic:transaction",
+      "caseId": "atlas-selection:transaction",
+      "expectedUrl": "http://127.0.0.1:4398/explore.html",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 69,
+              "url": "http://127.0.0.1:4398/index.html#lesson=send",
+              "observedAt": "2026-10-25T14:37:59.932Z",
+              "controls": "pass",
+              "contexts": 19,
+              "sourceRows": 879
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 68,
+              "url": "http://127.0.0.1:4398/index.html#lesson=send",
+              "observedAt": "2026-10-25T15:29:09.311Z",
+              "controls": "pass",
+              "contexts": 19,
+              "sourceRows": 879
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "atlas-topic:block",
+      "caseId": "atlas-selection:block",
+      "expectedUrl": "http://127.0.0.1:4398/explore.html",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 70,
+              "url": "http://127.0.0.1:4398/zoom.html?area=engine&journey=block",
+              "observedAt": "2026-10-25T14:38:13.862Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 1651
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 69,
+              "url": "http://127.0.0.1:4398/zoom.html?area=engine&journey=block",
+              "observedAt": "2026-10-25T15:29:21.845Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 1651
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "atlas-topic:sync",
+      "caseId": "atlas-selection:sync",
+      "expectedUrl": "http://127.0.0.1:4398/explore.html",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 71,
+              "url": "http://127.0.0.1:4398/zoom.html?area=sync&journey=sync",
+              "observedAt": "2026-10-25T14:38:30.209Z",
+              "controls": "pass",
+              "contexts": 22,
+              "sourceRows": 1302
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 70,
+              "url": "http://127.0.0.1:4398/zoom.html?area=sync&journey=sync",
+              "observedAt": "2026-10-25T15:29:38.545Z",
+              "controls": "pass",
+              "contexts": 22,
+              "sourceRows": 1302
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "atlas-topic:boot",
+      "caseId": "atlas-selection:boot",
+      "expectedUrl": "http://127.0.0.1:4398/explore.html",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 72,
+              "url": "http://127.0.0.1:4398/startup.html",
+              "observedAt": "2026-10-25T14:39:05.244Z",
+              "controls": "pass",
+              "contexts": 56,
+              "sourceRows": 2743
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 71,
+              "url": "http://127.0.0.1:4398/startup.html",
+              "observedAt": "2026-10-25T15:29:57.442Z",
+              "controls": "pass",
+              "contexts": 56,
+              "sourceRows": 2743
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning-home:main",
+      "caseId": "local-learning-home",
+      "expectedUrl": "http://127.0.0.1:4317/",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 67,
+              "url": "http://127.0.0.1:4317/",
+              "observedAt": "2026-10-25T14:36:11.893Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 72,
+              "url": "http://127.0.0.1:4317/",
+              "observedAt": "2026-10-25T15:30:09.697Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "learning-home:main",
+      "caseId": "static-learning-home",
+      "expectedUrl": "http://127.0.0.1:4398/index.html",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 132,
+              "url": "http://127.0.0.1:4398/index.html",
+              "observedAt": "2026-10-25T14:57:32.580Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 73,
+              "url": "http://127.0.0.1:4398/index.html",
+              "observedAt": "2026-10-25T15:30:09.935Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "atlas-overview:main",
+      "caseId": "static-atlas-overview",
+      "expectedUrl": "http://127.0.0.1:4398/explore.html",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 66,
+              "url": "http://127.0.0.1:4398/explore.html",
+              "observedAt": "2026-10-25T14:36:08.575Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 74,
+              "url": "http://127.0.0.1:4398/explore.html",
+              "observedAt": "2026-10-25T15:30:10.276Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "product-help:local-installation",
+      "caseId": "static-product-help",
+      "expectedUrl": "http://127.0.0.1:4398/implementation.html",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 68,
+              "url": "http://127.0.0.1:4398/implementation.html",
+              "observedAt": "2026-10-25T14:36:12.199Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 75,
+              "url": "http://127.0.0.1:4398/implementation.html",
+              "observedAt": "2026-10-25T15:30:10.557Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-group:receive",
+      "caseId": "static-lenses-group:receive",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&group=receive",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 128,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&group=receive",
+              "observedAt": "2026-10-25T14:57:30.977Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 76,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&group=receive",
+              "observedAt": "2026-10-25T15:30:10.856Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-group:dispatch",
+      "caseId": "static-lenses-group:dispatch",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&group=dispatch",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 129,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&group=dispatch",
+              "observedAt": "2026-10-25T14:57:31.423Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 77,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&group=dispatch",
+              "observedAt": "2026-10-25T15:30:11.112Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-group:validate",
+      "caseId": "static-lenses-group:validate",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&group=validate",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 130,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&group=validate",
+              "observedAt": "2026-10-25T14:57:31.811Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 78,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&group=validate",
+              "observedAt": "2026-10-25T15:30:11.483Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-overview:main",
+      "caseId": "static-lenses-overview:flow",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 127,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow",
+              "observedAt": "2026-10-25T14:57:30.081Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 79,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow",
+              "observedAt": "2026-10-25T15:30:11.672Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "structure-overview:main",
+      "caseId": "static-lenses-overview:structure",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=structure",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 131,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=structure",
+              "observedAt": "2026-10-25T14:57:32.251Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 80,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=structure",
+              "observedAt": "2026-10-25T15:30:11.928Z",
+              "controls": "no-source-widget",
+              "contexts": 0,
+              "sourceRows": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:rpc",
+      "caseId": "static-lenses-step:rpc",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&step=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 109,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=rpc",
+              "observedAt": "2026-10-25T14:51:45.960Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 81,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=rpc",
+              "observedAt": "2026-10-25T15:30:23.340Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:recover",
+      "caseId": "static-lenses-step:recover",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&step=recover",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 110,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=recover",
+              "observedAt": "2026-10-25T14:51:49.027Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 94
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 82,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=recover",
+              "observedAt": "2026-10-25T15:30:26.215Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 94
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:submit",
+      "caseId": "static-lenses-step:submit",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&step=submit",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 111,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=submit",
+              "observedAt": "2026-10-25T14:51:52.402Z",
+              "controls": "pass",
+              "contexts": 4,
+              "sourceRows": 161
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 83,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=submit",
+              "observedAt": "2026-10-25T15:30:29.556Z",
+              "controls": "pass",
+              "contexts": 4,
+              "sourceRows": 161
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:queue",
+      "caseId": "static-lenses-step:queue",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&step=queue",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 112,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=queue",
+              "observedAt": "2026-10-25T14:52:00.661Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 78
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 84,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=queue",
+              "observedAt": "2026-10-25T15:30:37.121Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 78
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:batch",
+      "caseId": "static-lenses-step:batch",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&step=batch",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 113,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=batch",
+              "observedAt": "2026-10-25T14:52:06.706Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 85,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=batch",
+              "observedAt": "2026-10-25T15:30:43.100Z",
+              "controls": "pass",
+              "contexts": 14,
+              "sourceRows": 681
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "flow-step:pool",
+      "caseId": "static-lenses-step:pool",
+      "expectedUrl": "http://127.0.0.1:4398/lenses.html#lens=flow&step=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 114,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=pool",
+              "observedAt": "2026-10-25T14:52:12.825Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 86,
+              "url": "http://127.0.0.1:4398/lenses.html#lens=flow&step=pool",
+              "observedAt": "2026-10-25T15:30:49.119Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "atlas-topic:block",
+      "caseId": "local-journey:block",
+      "expectedUrl": "http://127.0.0.1:4317/reader#journey=block",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 134,
+              "url": "http://127.0.0.1:4317/reader#journey=block",
+              "observedAt": "2026-10-25T15:01:40.655Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 1651
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 87,
+              "url": "http://127.0.0.1:4317/reader#journey=block",
+              "observedAt": "2026-10-25T15:31:07.778Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 1651
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "atlas-topic:sync",
+      "caseId": "local-journey:sync",
+      "expectedUrl": "http://127.0.0.1:4317/reader#journey=sync",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 135,
+              "url": "http://127.0.0.1:4317/reader#journey=sync",
+              "observedAt": "2026-10-25T15:01:52.390Z",
+              "controls": "pass",
+              "contexts": 22,
+              "sourceRows": 1302
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 88,
+              "url": "http://127.0.0.1:4317/reader#journey=sync",
+              "observedAt": "2026-10-25T15:31:17.128Z",
+              "controls": "pass",
+              "contexts": 22,
+              "sourceRows": 1302
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:node",
+      "caseId": "local-followup:node",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=node",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 8,
+              "url": "http://127.0.0.1:4317/reader#area=node",
+              "observedAt": "2026-10-25T14:12:48.068Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 48
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 89,
+              "url": "http://127.0.0.1:4317/reader#area=node",
+              "observedAt": "2026-10-25T15:31:26.679Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 48
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:node",
+      "caseId": "static-followup:node",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=node",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 81,
+              "url": "http://127.0.0.1:4398/zoom.html?area=node",
+              "observedAt": "2026-10-25T14:45:07.455Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 48
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 126,
+              "url": "http://127.0.0.1:4398/zoom.html?area=node",
+              "observedAt": "2026-10-25T15:11:37.393Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 48
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:rpc",
+      "caseId": "local-followup:rpc",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 10,
+              "url": "http://127.0.0.1:4317/reader#area=rpc",
+              "observedAt": "2026-10-25T14:12:53.006Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 90,
+              "url": "http://127.0.0.1:4317/reader#area=rpc",
+              "observedAt": "2026-10-25T15:31:29.746Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:rpc",
+      "caseId": "static-followup:rpc",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=rpc",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 83,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc",
+              "observedAt": "2026-10-25T14:45:12.325Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 127,
+              "url": "http://127.0.0.1:4398/zoom.html?area=rpc",
+              "observedAt": "2026-10-25T15:11:45.459Z",
+              "controls": "pass",
+              "contexts": 3,
+              "sourceRows": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:pool",
+      "caseId": "local-followup:pool",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 12,
+              "url": "http://127.0.0.1:4317/reader#area=pool",
+              "observedAt": "2026-10-25T14:13:02.624Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 91,
+              "url": "http://127.0.0.1:4317/reader#area=pool",
+              "observedAt": "2026-10-25T15:31:35.821Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:pool",
+      "caseId": "static-followup:pool",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 85,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool",
+              "observedAt": "2026-10-25T14:45:21.295Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 128,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool",
+              "observedAt": "2026-10-25T15:11:57.312Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:network",
+      "caseId": "local-followup:network",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=network",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 15,
+              "url": "http://127.0.0.1:4317/reader#area=network",
+              "observedAt": "2026-10-25T14:13:10.042Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 110
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 92,
+              "url": "http://127.0.0.1:4317/reader#area=network",
+              "observedAt": "2026-10-25T15:31:39.054Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:network",
+      "caseId": "static-followup:network",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=network",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 88,
+              "url": "http://127.0.0.1:4398/zoom.html?area=network",
+              "observedAt": "2026-10-25T14:45:28.688Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 110
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 129,
+              "url": "http://127.0.0.1:4398/zoom.html?area=network",
+              "observedAt": "2026-10-25T15:13:46.718Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:sync",
+      "caseId": "local-followup:sync",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=sync",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 17,
+              "url": "http://127.0.0.1:4317/reader#area=sync",
+              "observedAt": "2026-10-25T14:13:41.286Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 177
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 93,
+              "url": "http://127.0.0.1:4317/reader#area=sync",
+              "observedAt": "2026-10-25T15:31:46.126Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 177
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:sync",
+      "caseId": "static-followup:sync",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=sync",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 90,
+              "url": "http://127.0.0.1:4398/zoom.html?area=sync",
+              "observedAt": "2026-10-25T14:48:37.302Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 177
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 130,
+              "url": "http://127.0.0.1:4398/zoom.html?area=sync",
+              "observedAt": "2026-10-25T15:13:54.970Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 177
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:engine",
+      "caseId": "local-followup:engine",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=engine",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 19,
+              "url": "http://127.0.0.1:4317/reader#area=engine",
+              "observedAt": "2026-10-25T14:13:46.538Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 253
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 94,
+              "url": "http://127.0.0.1:4317/reader#area=engine",
+              "observedAt": "2026-10-25T15:31:49.757Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 253
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:engine",
+      "caseId": "static-followup:engine",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=engine",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 92,
+              "url": "http://127.0.0.1:4398/zoom.html?area=engine",
+              "observedAt": "2026-10-25T14:48:42.773Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 253
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 131,
+              "url": "http://127.0.0.1:4398/zoom.html?area=engine",
+              "observedAt": "2026-10-25T15:14:04.605Z",
+              "controls": "pass",
+              "contexts": 5,
+              "sourceRows": 253
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:execution",
+      "caseId": "local-followup:execution",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=execution",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 21,
+              "url": "http://127.0.0.1:4317/reader#area=execution",
+              "observedAt": "2026-10-25T14:13:50.929Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 53
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 95,
+              "url": "http://127.0.0.1:4317/reader#area=execution",
+              "observedAt": "2026-10-25T15:31:52.687Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 53
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:execution",
+      "caseId": "static-followup:execution",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=execution",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 94,
+              "url": "http://127.0.0.1:4398/zoom.html?area=execution",
+              "observedAt": "2026-10-25T14:48:47.303Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 53
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 132,
+              "url": "http://127.0.0.1:4398/zoom.html?area=execution",
+              "observedAt": "2026-10-25T15:14:13.506Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 53
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:payload",
+      "caseId": "local-followup:payload",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=payload",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 23,
+              "url": "http://127.0.0.1:4317/reader#area=payload",
+              "observedAt": "2026-10-25T14:13:55.321Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 96,
+              "url": "http://127.0.0.1:4317/reader#area=payload",
+              "observedAt": "2026-10-25T15:31:55.266Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:payload",
+      "caseId": "static-followup:payload",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=payload",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 96,
+              "url": "http://127.0.0.1:4398/zoom.html?area=payload",
+              "observedAt": "2026-10-25T14:48:51.766Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 133,
+              "url": "http://127.0.0.1:4398/zoom.html?area=payload",
+              "observedAt": "2026-10-25T15:14:21.162Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:storage",
+      "caseId": "local-followup:storage",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=storage",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 25,
+              "url": "http://127.0.0.1:4317/reader#area=storage",
+              "observedAt": "2026-10-25T14:14:55.842Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 43
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 97,
+              "url": "http://127.0.0.1:4317/reader#area=storage",
+              "observedAt": "2026-10-25T15:32:02.668Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 43
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:storage",
+      "caseId": "static-followup:storage",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=storage",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 98,
+              "url": "http://127.0.0.1:4398/zoom.html?area=storage",
+              "observedAt": "2026-10-25T14:49:03.478Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 43
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 134,
+              "url": "http://127.0.0.1:4398/zoom.html?area=storage",
+              "observedAt": "2026-10-25T15:14:34.361Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 43
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:extension",
+      "caseId": "local-followup:extension",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=extension",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 27,
+              "url": "http://127.0.0.1:4317/reader#area=extension",
+              "observedAt": "2026-10-25T14:15:00.377Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 51
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 98,
+              "url": "http://127.0.0.1:4317/reader#area=extension",
+              "observedAt": "2026-10-25T15:32:05.457Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:extension",
+      "caseId": "static-followup:extension",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=extension",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 100,
+              "url": "http://127.0.0.1:4398/zoom.html?area=extension",
+              "observedAt": "2026-10-25T14:49:08.022Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 51
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 135,
+              "url": "http://127.0.0.1:4398/zoom.html?area=extension",
+              "observedAt": "2026-10-25T15:14:43.881Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:foundation",
+      "caseId": "local-followup:foundation",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=foundation",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 29,
+              "url": "http://127.0.0.1:4317/reader#area=foundation",
+              "observedAt": "2026-10-25T14:15:04.976Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 99,
+              "url": "http://127.0.0.1:4317/reader#area=foundation",
+              "observedAt": "2026-10-25T15:32:08.105Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "followup:foundation",
+      "caseId": "static-followup:foundation",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=foundation",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 102,
+              "url": "http://127.0.0.1:4398/zoom.html?area=foundation",
+              "observedAt": "2026-10-25T14:49:12.461Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 136,
+              "url": "http://127.0.0.1:4398/zoom.html?area=foundation",
+              "observedAt": "2026-10-25T15:14:51.514Z",
+              "controls": "pass",
+              "contexts": 2,
+              "sourceRows": 49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area-extra:pool",
+      "caseId": "local-pool-extra",
+      "expectedUrl": "http://127.0.0.1:4317/reader#area=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 13,
+              "url": "http://127.0.0.1:4317/reader#area=pool",
+              "observedAt": "2026-10-25T14:13:05.571Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 100,
+              "url": "http://127.0.0.1:4317/reader#area=pool",
+              "observedAt": "2026-10-25T15:32:14.037Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "area-extra:pool",
+      "caseId": "static-pool-extra",
+      "expectedUrl": "http://127.0.0.1:4398/zoom.html?area=pool",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 86,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool",
+              "observedAt": "2026-10-25T14:45:24.100Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 137,
+              "url": "http://127.0.0.1:4398/zoom.html?area=pool",
+              "observedAt": "2026-10-25T15:15:03.857Z",
+              "controls": "pass",
+              "contexts": 12,
+              "sourceRows": 619
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-loop:1",
+      "caseId": "local-startup-loop:1",
+      "expectedUrl": "http://127.0.0.1:4317/startup?stage=run",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 45,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T14:22:07.796Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 101,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T15:32:38.227Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-loop:2",
+      "caseId": "local-startup-loop:2",
+      "expectedUrl": "http://127.0.0.1:4317/startup?stage=run",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 46,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T14:22:10.078Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 102,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T15:32:43.693Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-loop:3",
+      "caseId": "local-startup-loop:3",
+      "expectedUrl": "http://127.0.0.1:4317/startup?stage=run",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 47,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T14:22:12.554Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 103,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T15:32:45.738Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-loop:4",
+      "caseId": "local-startup-loop:4",
+      "expectedUrl": "http://127.0.0.1:4317/startup?stage=run",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 48,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T14:22:14.578Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 104,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T15:32:47.762Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "owner": "startup-loop:5",
+      "caseId": "local-startup-loop:5",
+      "expectedUrl": "http://127.0.0.1:4317/startup?stage=run",
+      "rounds": [
+        {
+          "round": 1,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 49,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T14:22:16.583Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "status": "observed",
+          "observations": [
+            {
+              "index": 105,
+              "url": "http://127.0.0.1:4317/startup?stage=run",
+              "observedAt": "2026-10-25T15:32:49.760Z",
+              "controls": "pass",
+              "contexts": 33,
+              "sourceRows": 2014
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "caseCount": 136,
+  "missing": [],
+  "rustDelegated": "root-rust-ui.json: 42 cases each2 rounds; no C defaults counted again",
+  "AOwnerUnits": "data-reviewer-summary.json: 30 owners, local/static and all catalogue destinations each2 rounds"
+}

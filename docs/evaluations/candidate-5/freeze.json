@@ -1,0 +1,37 @@
+{
+  "candidate": 5,
+  "frozenAt": "2026-10-25T14:08:14.155Z",
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "totalUnits": 108,
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "localUrl": "http://127.0.0.1:4317",
+  "staticUrl": "http://127.0.0.1:4398",
+  "isolatedWarmReviewerOrigin": "http://localhost:4317",
+  "sourceDataHash": "0eb80ecd0e3dacc0f50571f4e9f837040e4f0064388312c8effbb728168a34f0",
+  "tests": {
+    "total": 73,
+    "pass": 73,
+    "fail": 0
+  },
+  "generationIdempotent": true,
+  "httpAssetsMatched": 13,
+  "independentDataReview": "beginner-role-source-delta-review.json",
+  "staticRolePreflight": {
+    "roles": 19,
+    "sourceWidgets": 161,
+    "actualNavigation": true,
+    "formalRounds": false
+  },
+  "ownership": {
+    "global_review": 73,
+    "curriculum_sources": 30,
+    "rootRust": 5
+  },
+  "learningProtocol": "learning-protocol.json",
+  "rounds": "pending two formal full rounds",
+  "humanParticipants": 0,
+  "humanComprehension": "not-verified",
+  "productComplete": false,
+  "serverSession": 33907
+}
