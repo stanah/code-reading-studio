@@ -1,0 +1,10 @@
+{
+  "stage": "canonical integration guard before baseline-only correction",
+  "result": "blocked by fileDigests; not an application source failure",
+  "actualDifferences": [
+    "/fileDigests/ui/learning-page.html"
+  ],
+  "canonicalTemplateSHA256": "a10cb35a875827f58685770949ef2fe8ef65a789204cc72980413f0a9c13c7a0",
+  "reason": "Isolated asset revision helper stamped a non-served authoring template outside18 union. Canonical template is unchanged. Guard was not bypassed.",
+  "pending": "independent review before applying proposed one-key baseline correction"
+}

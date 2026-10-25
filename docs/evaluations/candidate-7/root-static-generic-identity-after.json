@@ -1,0 +1,53 @@
+{
+  "before": {
+    "code": "impl<Pool> Future for BatchTxProcessor<Pool>\nwhere\n    Pool: TransactionPool + 'static,\n{\n    type Output = ();\n\n    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {\n        let mut this = self.project();\n\n        loop {\n            // Drain all available requests from the receiver\n            ready!(this.request_rx.poll_recv_many(cx, this.buf, *this.max_batch_size));\n\n            if !this.buf.is_empty() {\n                let batch = std::mem::take(this.buf);\n                let pool = this.pool.clone();\n                tokio::spawn(async move {\n                    Self::process_batch(&pool, batch).await;\n                });\n                this.buf.reserve(1);\n\n                continue;\n            }\n\n            // No requests available, return Pending to wait for more\n            return Poll::Pending;\n        }\n    }\n}",
+    "id": "tx:batch-runner",
+    "lines": [
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136
+    ],
+    "url": "http://127.0.0.1:4398/reader.html?step=batch-runner"
+  },
+  "hidden": {
+    "code": "impl<Pool> Future for BatchTxProcessor<Pool>\nwhere\n    Pool: TransactionPool + 'static,\n{\n    type Output = ();\n\n    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {\n        let mut this = self.project();\n\n        loop {\n            // Drain all available requests from the receiver\n            ready!(this.request_rx.poll_recv_many(cx, this.buf, *this.max_batch_size));\n\n            if !this.buf.is_empty() {\n                let batch = std::mem::take(this.buf);\n                let pool = this.pool.clone();\n                tokio::spawn(async move {\n                    Self::process_batch(&pool, batch).await;\n                });\n                this.buf.reserve(1);\n\n                continue;\n            }\n\n            // No requests available, return Pending to wait for more\n            return Poll::Pending;\n        }\n    }\n}",
+    "controls": [
+      {
+        "checked": false,
+        "visible": true
+      },
+      {
+        "checked": false,
+        "visible": true
+      }
+    ],
+    "id": "tx:batch-runner",
+    "selected": "119"
+  }
+}

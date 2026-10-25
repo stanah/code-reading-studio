@@ -1,7 +1,11 @@
-// Public availability is derived from authored consumers, never from the legacy tour.
+// Public availability includes direct, legacy, Rust-purpose and generic source consumers.
+// File/range availability does not certify semantic or human understanding.
+const {validateSource}=require('./reading-consumer-inventory.cjs');
 // A file entry means that selected ranges have help; it is not a whole-file review.
-function buildRouteRegistry({commit,contexts,lessonLinks,journeyLinks,operationLinks,fileRoleLinks,componentLinks,areaReadings,guide}){
+function buildRouteRegistry({commit,contexts,lessonLinks,journeyLinks,operationLinks,fileRoleLinks,componentLinks,areaReadings,guide,legacyDetails,rustTopics}){
  if(guide.commit!==commit)throw Error('Guide/public reading registry commit differs');
+ if(!Array.isArray(legacyDetails)||!legacyDetails.length||!rustTopics||!Object.keys(rustTopics).length)throw Error('Actual legacy/Rust consumer inputs are required');
+ for(const [id,c]of Object.entries(contexts))validateSource(c,id);
  const routes=[],files={},send=lessonLinks.find(r=>r.lesson==='send');
  const stages=rows=>rows.map(row=>{
   const c=contexts[row.context];if(!c)throw Error('Registry source missing: '+row.context);
@@ -44,11 +48,16 @@ function buildRouteRegistry({commit,contexts,lessonLinks,journeyLinks,operationL
   const local=s.localSteps.map(id=>steps.get(id));
   add('guide:'+name+':'+(i+1),kind,String(i+1),local.map(s=>s.title).join(' / '),s.readings,{goal:local.map(s=>s.question).join(' '),scope:local.map(s=>s.boundary).join(' '),origin:{guideSection:name,section:String(i+1)}});
  });
- const availableContexts=new Set(routes.flatMap(r=>r.readings.map(s=>s.context)));
+ // Preserve complete legacy fields. A one-source detail is not silently upgraded
+ // to a complete modern operation path by this mechanical derivation.
+ for(const detail of legacyDetails)add('legacy-detail:'+detail.id,'legacy-detail',detail.id,detail.title,[{context:detail.context,purpose:detail.explanation.question||contexts[detail.context].intro}],{goal:detail.explanation.question,scope:contexts[detail.context].note||'',legacy:{title:detail.title,...detail.explanation},explanationHash:detail.explanationHash,reviewStatus:detail.reviewStatus,origin:{legacyDetail:detail.id}});
+ for(const [topic,t]of Object.entries(rustTopics))for(const selectedStep of t.variants){
+  const readings=[...t.readings];if(selectedStep)readings.sort((a,b)=>(b.context==='tx:'+selectedStep)-(a.context==='tx:'+selectedStep));
+  add('rust:'+topic+(selectedStep?':'+selectedStep:''),'rust-topic',topic,t.lesson.name,readings,{topic,selectedStep,goal:t.lesson.problem,scope:t.lesson.benefit,lesson:t.lesson,claimHash:t.claimHash,reviewStatus:t.reviewStatus,origin:{lens:'rust',topic,...(selectedStep?{step:selectedStep}:{})}});
+ }
+ // forSource() consumes the full context table. Its smallest-containing choice
+ // must be represented even when no hand-curated learning route mentions it.
  for(const [id,c] of Object.entries(contexts)){
-  // Kept legacy fragments may serve other old views. Merely existing in the data
-  // must not introduce them as newly reviewed Atlas choices.
-  if(!availableContexts.has(id))continue;
   if(!c.source?.path)throw Error('Registry source path missing: '+id);
   (files[c.source.path]??={contexts:[],routes:[]}).contexts.push(id);
  }
@@ -56,6 +65,6 @@ function buildRouteRegistry({commit,contexts,lessonLinks,journeyLinks,operationL
   const f=files[contexts[reading.context].source.path];if(!f.routes.includes(route.id))f.routes.push(route.id);
  }
  for(const f of Object.values(files))f.contexts.sort((a,b)=>contexts[a].source.start-contexts[b].source.start||contexts[a].source.end-contexts[b].source.end||a.localeCompare(b));
- return {version:1,commit,routes,files};
+ return {version:2,commit,routes,files,generic:{strategy:'forSource-smallest-containing',contexts:Object.keys(contexts).sort(),reviewStatus:{pinnedSource:'checked-by-build-help',semantic:'separate-review-records',consumerFit:'pending',displayEquivalence:'not-measured'}}};
 }
 module.exports={buildRouteRegistry};

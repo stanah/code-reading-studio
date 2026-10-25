@@ -128,3 +128,5 @@ button.next-code,button.next-code:hover{background:#26765e;color:#fff!important}
 #source-original{padding:0 18px 18px}#source-original>summary{cursor:pointer;padding:12px 0;font-size:13px}
 #source-original #source-lines{max-height:55vh;min-height:200px;overflow:auto}
 @media(max-width:700px){.learn-code-phases{position:static}.rh-source{scroll-margin-top:90px}.learn-code-phases button{flex:1 1 130px}}
+
+.rh-related-sources{margin-top:16px;padding:14px;border:1px solid #cbdcd1;border-radius:6px}.rh-related-sources>p:first-child{font-size:13px;font-weight:600;margin:0 0 10px}.rh-related-sources button{font-size:12px;padding:7px 10px;margin:0 8px 8px 0}.rh-reading-goal{margin:0 0 22px;line-height:1.9}.rh-reading-goal h2{font-size:21px}.rh-reading-goal p,.rh-reading-goal dl{font-size:14px}.rh-reading-goal dd{margin:0 0 12px}.rh-reading-goal dt{font-weight:600}.rh-reading-goal .rh-ts-comparison pre{white-space:pre-wrap;font-size:13px;overflow-wrap:anywhere}

@@ -41,7 +41,7 @@ const rustEvidence={
 };
 const rustSupport={
  borrow:[],
- future:[{id:'batch-runner',purpose:'Future が進む側：要求を受信し、処理タスクを起動する',claims:[{line:114,match:'fn poll',text:'L114 の poll は実行器から呼ばれる進行処理です。L119 で要求を読み、L124–125 で非同期タスクを起動します。要求がなければ L133 の Pending で待ちます。'}]}],
+ future:[{id:'batch-runner',purpose:'Future が進む側：要求を受信し、処理タスクを起動する',claims:[{line:114,match:'fn poll',text:'L108–112 は Future の実装と Output=() の宣言です。L114 の poll が L119 の受信を進め、Pending なら ready! がその場で Pending を返します。Ready を得た後、buf が空なら L133 でも Pending を返します。buf に依頼があれば L124–125 で追加のタスクを起動します。'}]}],
  result:[],
  trait:[{id:'trait-contract',purpose:'約束と既定実装：EthTransactions の宣言',claims:[{line:65,match:'pub trait EthTransactions',text:'L65 が trait の宣言、L69 の signers は実装が提供する操作です。L72 の accounts には本体があり、共通の既定処理として使えます。同ページの「デコードして送信者を復元」に send_raw_transaction の既定処理があります。'}]},{id:'trait-implementation',purpose:'具体実装：EthApi が EthTransactions を実装する',claims:[{line:21,match:'EthTransactions for EthApi',text:'L21 の impl が具体型と trait を結び付け、L23–25 が利用する型の条件を示します。L28 の signers は EthApi 向けの処理です。同ページの「通常の送信経路を追う」に send_pool_transaction の実装があります。'}]}],
  channel:[{id:'batch-runner',purpose:'要求キューを読む側：poll から batch 処理へ',claims:[{line:119,match:'poll_recv_many',text:'L119 が要求をまとめて受信し、L124–125 で process_batch を動かします。queue の send → この受信 → batch の追加 → response_tx.send → queue の await が要求と返答の往復です。'}]}]
@@ -66,6 +66,7 @@ function lessonArticle(key,l,step,withEvidence=true){
  return `<article class="card"><span class="tag">${e(marker)}</span><h2>${e(l.name)}</h2><h3>解決したいこと</h3><p>${e(l.problem)}</p><h3>まず日本語で</h3><p>${e(l.plain)}</p><details class="rh-ts-comparison"><summary>TypeScriptの例と比べる</summary><h3>TypeScriptで考えると</h3><p class="meta">理解のための簡略例 · 等価な移植コードではありません</p><pre>${e(l.ts)}</pre><h3>ここはTypeScriptと違う</h3><div class="note">${e(l.difference)}</div></details>${withEvidence?`<h3>いま読んでいる実装で確かめる点</h3><p>${e(benefit)}</p>`:''}</article>`;
 }
 function render(root,{steps=[],commit='',sourceUrl,structureUrl},p={}){
+ if(root.dataset)root.dataset.readingNavigationScope='true';root._readingTrail=[];
  const lens=['structure','flow','rust'].includes(p.lens)?p.lens:'flow',step=steps.find(s=>s.id===p.step),group=groups.find(g=>g.id===p.group);
  const guided=globalThis.LearningStudio?.codeExperience?globalThis.LearningStudio.codeExperience()==='first':globalThis.LearningStudio?.profile?.()==='foundation';
   const tabs=`<nav class="lens-tabs" aria-label="この処理の別の見方">${[['structure','構造から読む'],['flow','動作から読む'],['rust','Rust・設計から読む']].map(([id,name])=>`<a ${id===lens?'aria-current="page"':''} href="${e(route({lens:id,...(step?{step:step.id}:{})}))}">${name}</a>`).join('')}</nav>`;

@@ -1,0 +1,16 @@
+{
+  "forward": {
+    "back": true,
+    "ids": [
+      "tx:trait-contract",
+      "tx:recover"
+    ],
+    "url": "http://127.0.0.1:4317/files?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=65&end=79"
+  },
+  "returned": {
+    "backHidden": true,
+    "focus": "実コードをこの場で確かめる：traitが求める操作と既定の処理を読む L65–79",
+    "selected": "72",
+    "url": "http://127.0.0.1:4317/files?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=65&end=79"
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "candidate": 7,
+  "revision": 4,
+  "canonicalEditedByReviewer": false,
+  "unionManifestSHA256": "252eabc6a647a1dac73f1a4f7c89a668a56986f73d5914f6f05f23f0c61acfbe",
+  "baselineSHA256": "3edd48bde195890087fe8ca0174f4de70edbf9a22523fd2b57f35aa38ace5519",
+  "boundaryFields": [
+    "sites",
+    "fileDigests"
+  ],
+  "authoredFiles": [
+    {
+      "target": "ui/reading-help.js",
+      "old": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "new": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+      "matches": true,
+      "changed": true
+    },
+    {
+      "target": "ui/studio.css",
+      "old": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "new": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "dist/atlas.js",
+      "old": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "new": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "dist/explore.html",
+      "old": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "new": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/public/lenses.js",
+      "old": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "new": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/public/startup.js",
+      "old": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "new": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/public/guide-reading.js",
+      "old": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "new": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/test/explanation-surfaces.test.mjs",
+      "old": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "new": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/test/guide-g4.test.mjs",
+      "old": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "new": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "scripts/reading-route-registry.cjs",
+      "old": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "new": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "scripts/build-help.cjs",
+      "old": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "new": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "scripts/reading-consumer-inventory.cjs",
+      "old": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "new": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "ui/reading-help-content.json",
+      "old": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "new": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "ui/reading-consumer-sites.json",
+      "old": "28d84a2a188549740f4a70d7c60c2729a432b1d1920cd56ae033faa17ce460d9",
+      "new": "3edd48bde195890087fe8ca0174f4de70edbf9a22523fd2b57f35aa38ace5519",
+      "matches": true,
+      "changed": true
+    },
+    {
+      "target": "ui/area-source-excerpts.json",
+      "old": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "new": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "dist/reth-data.js",
+      "old": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "new": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/test/reading-consumer-inventory.test.mjs",
+      "old": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "new": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/test/atlas-reading-routes.test.mjs",
+      "old": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "new": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "matches": true,
+      "changed": false
+    }
+  ],
+  "programAndHtmlChanges": [
+    {
+      "file": "dist/explore.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "5e6e0bfd3054c0fba6b9a4ee7d6a95c9a7d32593140f7a61defaa791c268c7fb",
+      "newSHA256": "a96c8b85460f4cec2b366360b6bb359fa944e2ea3a5e4b93eaed6ec261552ed8",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "dist/implementation.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "2323ff432407996d82948cfed6b78d97e530cb1e26f73b1133998deae3a19def",
+      "newSHA256": "2d3bd7562c5194a0535c99d1a0c19f8f221a402e05eca9083b8772f0d7987cbe",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "dist/index.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "c43b65d41fb11dc9e39e38f655827cbcb10f8aceef97e2754e5ac7685d4044c2",
+      "newSHA256": "096b91ecf7009dadfb729de68fb26e972b4c0273f3ea8713761de4333a765af5",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "dist/lenses.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "e6052fbf1799db0c4f995168c25350f46b1a312eba0584024dd5e5b034429cd3",
+      "newSHA256": "9bd7ca594868fe8ec71598395bdf5ee33cb240e1ebd46ea6b9e8b1a51ff82bcb",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "dist/reader.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "7963fe80812f4d51a27b56cd05b91031f699e5505264da0f1fa976eb86699302",
+      "newSHA256": "9b914dfeaa5ad064600cc2f629230fad1fba73bff4c71a9cfef41542a73e7218",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "dist/reading-help.js",
+      "kind": "shared-helper",
+      "oldSHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "newSHA256": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "dist/startup.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "df39621ab890a55387fffaf9608d5d24745c615bcb67f3bb61187a910fbed147",
+      "newSHA256": "d5b43672792f12c9a8c533115a3aa6f76c8bf75e4461e4cab6a2174d47556f04",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "dist/zoom.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "693b45fb3b36af67316bb4511c53aa716b9d123d3ab5e5e633c4a1e797d72ae4",
+      "newSHA256": "137351af476c87c64e18bd3cf86e499cf055ed33befaa02ae091682badfd8cbb",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "docs/reading-guide.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "df39621ab890a55387fffaf9608d5d24745c615bcb67f3bb61187a910fbed147",
+      "newSHA256": "d5b43672792f12c9a8c533115a3aa6f76c8bf75e4461e4cab6a2174d47556f04",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "docs/reading-help.js",
+      "kind": "shared-helper",
+      "oldSHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "newSHA256": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "local-app/public/files.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "301fe4bf1f4fa00c5f282f520f0a9939e8dfb046de978abccaf4c7f1e1f98dcf",
+      "newSHA256": "b0bd63b9128124a098616a6be0b45682b4a855f0e29d241e89ba05df92cb6867",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "local-app/public/index.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "08ae34fdfce8e73a23074b58c834508f333de8cb587b5c40fb7e37179adad847",
+      "newSHA256": "1dd3965552339f77549a25d583f55bcc4e273f44c7d1edade999990c1d2f6d11",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "local-app/public/reader.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "12f93869e225f7f9e3cc649783813c129b78352ea89f5eaf7a80bda24caf12b7",
+      "newSHA256": "6072fe3479b2e878a4da828f260f808cc64a5207ef4e26db821c5210e0a42d2b",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "kind": "shared-helper",
+      "oldSHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "newSHA256": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "local-app/public/startup.html",
+      "kind": "served-html-cache-revision",
+      "oldSHA256": "7ff74621c086e4da00809dd619fdf0ad25101871bd1cd4febe95c9c8dd96c0d2",
+      "newSHA256": "d14e83ced27efc7468c282a78725372ce41e4fe177c9faa853922f153c612e6f",
+      "actualMatches": true,
+      "permittedOnly": true
+    },
+    {
+      "file": "ui/reading-help.js",
+      "kind": "shared-helper",
+      "oldSHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "newSHA256": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+      "actualMatches": true,
+      "permittedOnly": true
+    }
+  ],
+  "siteChanges": [
+    {
+      "before": {
+        "file": "dist/reading-help.js",
+        "type": "dataset",
+        "value": "readingHelp",
+        "count": 3
+      },
+      "after": {
+        "file": "dist/reading-help.js",
+        "type": "dataset",
+        "value": "readingHelp",
+        "count": 4
+      }
+    },
+    {
+      "before": {
+        "file": "docs/reading-help.js",
+        "type": "dataset",
+        "value": "readingHelp",
+        "count": 3
+      },
+      "after": {
+        "file": "docs/reading-help.js",
+        "type": "dataset",
+        "value": "readingHelp",
+        "count": 4
+      }
+    },
+    {
+      "before": {
+        "file": "local-app/public/reading-help.js",
+        "type": "dataset",
+        "value": "readingHelp",
+        "count": 3
+      },
+      "after": {
+        "file": "local-app/public/reading-help.js",
+        "type": "dataset",
+        "value": "readingHelp",
+        "count": 4
+      }
+    },
+    {
+      "before": {
+        "file": "ui/reading-help.js",
+        "type": "dataset",
+        "value": "readingHelp",
+        "count": 3
+      },
+      "after": {
+        "file": "ui/reading-help.js",
+        "type": "dataset",
+        "value": "readingHelp",
+        "count": 4
+      }
+    }
+  ],
+  "sourceClaimsTermsRoutesAndReviewInputsUnchanged": true,
+  "canonicalTemplateFingerprintUnchanged": true,
+  "errors": [],
+  "applicationNote": "The16 changed program/HTML files are four shared-help JS files total (one ui authoring plus dist/local/docs copies) and12 served HTML asset revisions. Distribute reviewed copies/revisions before strict build-help with the updated fingerprint; do not relax guard for stale copies."
+}

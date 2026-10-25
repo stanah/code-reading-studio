@@ -164,7 +164,8 @@ test('network budget source reaches every startup claim producer and each unique
   const step=renderStep(guide,resolveView(guide,'?step=network'));
   assert.ok(step.includes('data-startup-context="'+budget+'" data-reading-stage="'+budget+'"'));
   assert.ok(step.includes('data-startup-sequence="step-network" data-reading-navigation-scope="true"'),'whole step sequence is shared call-navigation scope');
-  assert.ok(step.includes('data-reading-back hidden>呼び出した原文へ戻る'),'shared actual-call return is distinct from reference return');
+  assert.doesNotMatch(step,/data-reading-back/,'the shared source renderer owns actual-call return; outer startup does not duplicate it');
+  assert.ok(step.includes('data-startup-back hidden>直前の参照元へ戻る'),'startup reference return remains separate');
   const loops=renderLoops(guide);
   const sources=[...loops.matchAll(/data-startup-context="([^"]+)" data-reading-stage="([^"]+)"/g)];
   assert.equal(sources.length,new Set(sources.map(m=>m[1])).size,'one focusable owner per original');

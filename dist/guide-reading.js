@@ -38,9 +38,7 @@
       const heading = doc.createElement('h3'); heading.textContent = panel.querySelector('summary').textContent;
       const host = doc.createElement('div'); host.dataset.readingHelp = context; host.dataset.helpCommit = commit; host.dataset.helpOpen = String(panel.open);
       const sourceLink = panel.querySelector('a[href]')?.cloneNode(true);
-      const navigation = doc.createElement('nav'); navigation.className = 'learn-code-navigation';
-      const back = doc.createElement('button'); back.type = 'button'; back.dataset.readingBack = ''; back.hidden = true; back.textContent = '呼び出した原文へ戻る';
-      navigation.append(back); shell.append(heading, host, navigation); if (sourceLink) shell.append(sourceLink);
+      shell.append(heading, host); if (sourceLink) shell.append(sourceLink);
       try { help.mount(host); } catch { failed(panel, 'renderer-error', doc); continue; }
       const pre = host.querySelector('.rh-code');
       if (!pre) { failed(panel, 'missing-renderer', doc); continue; }

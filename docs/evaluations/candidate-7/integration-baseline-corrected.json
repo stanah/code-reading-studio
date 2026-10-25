@@ -1,0 +1,8 @@
+{
+  "sourceReview": "source-review.json revision3 independent check",
+  "onlyChangedKey": "fileDigests/ui/learning-page.html",
+  "before": "cd893e718cb37ec2e7130aaa9b584e7c789fda4fa0f938bb5e1c3fef6f95efe5",
+  "after": "a10cb35a875827f58685770949ef2fe8ef65a789204cc72980413f0a9c13c7a0",
+  "canonicalTemplateEdited": false,
+  "guardBypass": false
+}

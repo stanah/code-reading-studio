@@ -1,0 +1,3604 @@
+{
+  "version": 3,
+  "kind": "proposed-review-boundary-not-approval",
+  "sites": [
+    {
+      "file": "dist/app.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "dataset",
+      "value": "helpContext",
+      "count": 2
+    },
+    {
+      "file": "dist/app.js",
+      "type": "dataset",
+      "value": "helpLine",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "dataset",
+      "value": "helpPath",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "dataset",
+      "value": "readingOperation",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "dataset",
+      "value": "readingStep",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 1
+    },
+    {
+      "file": "dist/app.js",
+      "type": "lookup",
+      "value": "pack.details",
+      "count": 1
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "attribute",
+      "value": "data-area-reading-part",
+      "count": 2
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "attribute",
+      "value": "data-area-reading-path",
+      "count": 2
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 3
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 2
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 3
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 2
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 3
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "help-api",
+      "value": "journeyBridge",
+      "count": 1
+    },
+    {
+      "file": "dist/area-reading.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 2
+    },
+    {
+      "file": "dist/atlas.js",
+      "type": "attribute",
+      "value": "data-area",
+      "count": 4
+    },
+    {
+      "file": "dist/atlas.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 2
+    },
+    {
+      "file": "dist/atlas.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 3
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-context",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-error-message",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-reading-context",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 2
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "guideBound",
+      "count": 2
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "guideCommit",
+      "count": 2
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "guideContext",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "guideError",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "guideErrorMessage",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "guideReadingContext",
+      "count": 2
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "guideReady",
+      "count": 2
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "helpOpen",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "readingHelp",
+      "count": 1
+    },
+    {
+      "file": "dist/guide-reading.js",
+      "type": "dataset",
+      "value": "readingStage",
+      "count": 1
+    },
+    {
+      "file": "dist/learning.js",
+      "type": "attribute",
+      "value": "data-lesson-code",
+      "count": 1
+    },
+    {
+      "file": "dist/learning.js",
+      "type": "attribute",
+      "value": "data-lesson-local",
+      "count": 1
+    },
+    {
+      "file": "dist/learning.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "dist/learning.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses-page.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses-page.js",
+      "type": "rust-api",
+      "value": "render",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "attribute",
+      "value": "data-help-rust-topic",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "dataset",
+      "value": "readingNavigationScope",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 1
+    },
+    {
+      "file": "dist/lenses.js",
+      "type": "lookup",
+      "value": "rust-authoring-or-overlay",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-area-reading-path",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-component-reading",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-file-role-reading",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-area-part",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-area",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 4
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-component",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-file-role",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-journey",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-lesson",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-operation",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-rust-topic",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-lesson-code",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-advanced",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-back",
+      "count": 6
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-destination",
+      "count": 5
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-essential",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-group",
+      "count": 5
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 13
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-jump",
+      "count": 4
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-kind",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-navigation-scope",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-phase",
+      "count": 3
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-reference",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-select-jump",
+      "count": 3
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-stage",
+      "count": 10
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "areaReadingPart",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "areaReadingPath",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "componentArea",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "componentReading",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "fileRoleReading",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpArea",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpAreaPart",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 4
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpCompact",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpComponent",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpFileRole",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpJourney",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpLesson",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpLine",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpOpen",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpOperation",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpPath",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "helpRustTopic",
+      "count": 3
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "lessonCode",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "lessonLocal",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingEssential",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingGroup",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingHelp",
+      "count": 4
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingJump",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingKind",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingNavigationScope",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingOperation",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingPhase",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingRef",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingReference",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingStage",
+      "count": 7
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "readingTargetLine",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "dataset",
+      "value": "referenceOperation",
+      "count": 2
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "lookup",
+      "value": "forSource",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "lookup",
+      "value": "rust-authoring-or-overlay",
+      "count": 1
+    },
+    {
+      "file": "dist/reading-help.js",
+      "type": "rust-api",
+      "value": "rustContextClaims",
+      "count": 1
+    },
+    {
+      "file": "dist/startup.html",
+      "type": "attribute",
+      "value": "data-guide-commit",
+      "count": 57
+    },
+    {
+      "file": "dist/startup.html",
+      "type": "attribute",
+      "value": "data-guide-context-ref",
+      "count": 22
+    },
+    {
+      "file": "dist/startup.html",
+      "type": "attribute",
+      "value": "data-guide-context",
+      "count": 57
+    },
+    {
+      "file": "dist/startup.html",
+      "type": "attribute",
+      "value": "data-guide-reading-context",
+      "count": 57
+    },
+    {
+      "file": "dist/startup.html",
+      "type": "attribute",
+      "value": "data-guide-ref-source",
+      "count": 22
+    },
+    {
+      "file": "dist/startup.html",
+      "type": "attribute",
+      "value": "data-reading-navigation-scope",
+      "count": 1
+    },
+    {
+      "file": "dist/startup.html",
+      "type": "attribute",
+      "value": "data-reading-stage",
+      "count": 57
+    },
+    {
+      "file": "dist/studio.js",
+      "type": "dataset",
+      "value": "readingStep",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "attribute",
+      "value": "data-component-area",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "attribute",
+      "value": "data-component-reading",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "attribute",
+      "value": "data-file-role-reading",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 3
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "dataset",
+      "value": "readingReference",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "dataset",
+      "value": "referenceOperation",
+      "count": 1
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 3
+    },
+    {
+      "file": "dist/zoom.js",
+      "type": "lookup",
+      "value": "pack.details",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-context",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-error-message",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-reading-context",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 2
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "guideBound",
+      "count": 2
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "guideCommit",
+      "count": 2
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "guideContext",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "guideError",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "guideErrorMessage",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "guideReadingContext",
+      "count": 2
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "guideReady",
+      "count": 2
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "helpOpen",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "readingHelp",
+      "count": 1
+    },
+    {
+      "file": "docs/guide-reading.js",
+      "type": "dataset",
+      "value": "readingStage",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-guide.html",
+      "type": "attribute",
+      "value": "data-guide-commit",
+      "count": 57
+    },
+    {
+      "file": "docs/reading-guide.html",
+      "type": "attribute",
+      "value": "data-guide-context-ref",
+      "count": 22
+    },
+    {
+      "file": "docs/reading-guide.html",
+      "type": "attribute",
+      "value": "data-guide-context",
+      "count": 57
+    },
+    {
+      "file": "docs/reading-guide.html",
+      "type": "attribute",
+      "value": "data-guide-reading-context",
+      "count": 57
+    },
+    {
+      "file": "docs/reading-guide.html",
+      "type": "attribute",
+      "value": "data-guide-ref-source",
+      "count": 22
+    },
+    {
+      "file": "docs/reading-guide.html",
+      "type": "attribute",
+      "value": "data-reading-navigation-scope",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-guide.html",
+      "type": "attribute",
+      "value": "data-reading-stage",
+      "count": 57
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-area-reading-path",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-component-reading",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-file-role-reading",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-area-part",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-area",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 4
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-component",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-file-role",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-journey",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-lesson",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-operation",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-rust-topic",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-lesson-code",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-advanced",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-back",
+      "count": 6
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-destination",
+      "count": 5
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-essential",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-group",
+      "count": 5
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 13
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-jump",
+      "count": 4
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-kind",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-navigation-scope",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-phase",
+      "count": 3
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-reference",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-select-jump",
+      "count": 3
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-stage",
+      "count": 10
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "areaReadingPart",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "areaReadingPath",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "componentArea",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "componentReading",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "fileRoleReading",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpArea",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpAreaPart",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 4
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpCompact",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpComponent",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpFileRole",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpJourney",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpLesson",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpLine",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpOpen",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpOperation",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpPath",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "helpRustTopic",
+      "count": 3
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "lessonCode",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "lessonLocal",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingEssential",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingGroup",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingHelp",
+      "count": 4
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingJump",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingKind",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingNavigationScope",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingOperation",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingPhase",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingRef",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingReference",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingStage",
+      "count": 7
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "readingTargetLine",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "dataset",
+      "value": "referenceOperation",
+      "count": 2
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "lookup",
+      "value": "forSource",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "lookup",
+      "value": "rust-authoring-or-overlay",
+      "count": 1
+    },
+    {
+      "file": "docs/reading-help.js",
+      "type": "rust-api",
+      "value": "rustContextClaims",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "attribute",
+      "value": "data-help-line",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "attribute",
+      "value": "data-help-path",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 10
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "help-api",
+      "value": "fileRoleBridge",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "help-api",
+      "value": "forSource",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "help-api",
+      "value": "journeyBridge",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 6
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "lookup",
+      "value": "forSource",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/app.js",
+      "type": "rust-api",
+      "value": "render",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "attribute",
+      "value": "data-area-reading-part",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "attribute",
+      "value": "data-area-reading-path",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 3
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 3
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 3
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "help-api",
+      "value": "journeyBridge",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/area-reading.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/files.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/files.js",
+      "type": "attribute",
+      "value": "data-help-line",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/files.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/files.js",
+      "type": "attribute",
+      "value": "data-help-path",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/files.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/files.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/files.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-context",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-error-message",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "attribute",
+      "value": "data-guide-reading-context",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "guideBound",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "guideCommit",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "guideContext",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "guideError",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "guideErrorMessage",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "guideReadingContext",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "guideReady",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "helpOpen",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "readingHelp",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/guide-reading.js",
+      "type": "dataset",
+      "value": "readingStage",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/learning.js",
+      "type": "attribute",
+      "value": "data-lesson-code",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/learning.js",
+      "type": "attribute",
+      "value": "data-lesson-local",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/learning.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/learning.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "attribute",
+      "value": "data-help-rust-topic",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "dataset",
+      "value": "readingNavigationScope",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/lenses.js",
+      "type": "lookup",
+      "value": "rust-authoring-or-overlay",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-area-reading-path",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-component-reading",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-file-role-reading",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-area-part",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-area",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 4
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-component",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-file-role",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-journey",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-lesson",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-operation",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-rust-topic",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-lesson-code",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-advanced",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-back",
+      "count": 6
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-destination",
+      "count": 5
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-essential",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-group",
+      "count": 5
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 13
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-jump",
+      "count": 4
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-kind",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-navigation-scope",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-phase",
+      "count": 3
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-reference",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-select-jump",
+      "count": 3
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-stage",
+      "count": 10
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "areaReadingPart",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "areaReadingPath",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "componentArea",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "componentReading",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "fileRoleReading",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpArea",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpAreaPart",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 4
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpCompact",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpComponent",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpFileRole",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpJourney",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpLesson",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpLine",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpOpen",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpOperation",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpPath",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "helpRustTopic",
+      "count": 3
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "lessonCode",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "lessonLocal",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingEssential",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingGroup",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingHelp",
+      "count": 4
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingJump",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingKind",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingNavigationScope",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingOperation",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingPhase",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingRef",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingReference",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingStage",
+      "count": 7
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "readingTargetLine",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "dataset",
+      "value": "referenceOperation",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "lookup",
+      "value": "forSource",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "lookup",
+      "value": "rust-authoring-or-overlay",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/reading-help.js",
+      "type": "rust-api",
+      "value": "rustContextClaims",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/startup.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/startup.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/startup.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/startup.js",
+      "type": "attribute",
+      "value": "data-reading-navigation-scope",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/startup.js",
+      "type": "attribute",
+      "value": "data-reading-stage",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/startup.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 2
+    },
+    {
+      "file": "local-app/public/startup.js",
+      "type": "help-api",
+      "value": "context",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/startup.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 1
+    },
+    {
+      "file": "local-app/public/studio.js",
+      "type": "dataset",
+      "value": "readingStep",
+      "count": 1
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "attribute",
+      "value": "data-area-reading-part",
+      "count": 2
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "attribute",
+      "value": "data-area-reading-path",
+      "count": 2
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 3
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 2
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 3
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 2
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 3
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "help-api",
+      "value": "journeyBridge",
+      "count": 1
+    },
+    {
+      "file": "ui/area-reading.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 2
+    },
+    {
+      "file": "ui/learning.js",
+      "type": "attribute",
+      "value": "data-lesson-code",
+      "count": 1
+    },
+    {
+      "file": "ui/learning.js",
+      "type": "attribute",
+      "value": "data-lesson-local",
+      "count": 1
+    },
+    {
+      "file": "ui/learning.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "ui/learning.js",
+      "type": "help-api",
+      "value": "mount",
+      "count": 1
+    },
+    {
+      "file": "ui/lenses-page.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "ui/lenses-page.js",
+      "type": "rust-api",
+      "value": "render",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-area-reading-path",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-component-reading",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-file-role-reading",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-area-part",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-area",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-commit",
+      "count": 4
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-component",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-file-role",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-journey",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-lesson",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-open",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-operation",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-help-rust-topic",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-lesson-code",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-advanced",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-back",
+      "count": 6
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-destination",
+      "count": 5
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-essential",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-group",
+      "count": 5
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-help",
+      "count": 13
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-jump",
+      "count": 4
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-kind",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-navigation-scope",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-operation",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-phase",
+      "count": 3
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-ref",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-reference",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-select-jump",
+      "count": 3
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-stage",
+      "count": 10
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "attribute",
+      "value": "data-reading-target-line",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "consumer-symbol",
+      "value": "ReadingHelp",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "consumer-symbol",
+      "value": "ReadingLenses",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "areaReadingPart",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "areaReadingPath",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "componentArea",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "componentReading",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "fileRoleReading",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpArea",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpAreaPart",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpCommit",
+      "count": 4
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpCompact",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpComponent",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpFileRole",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpJourney",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpLesson",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpLine",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpOpen",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpOperation",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpPath",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "helpRustTopic",
+      "count": 3
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "lessonCode",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "lessonLocal",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingEssential",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingGroup",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingHelp",
+      "count": 4
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingJump",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingKind",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingNavigationScope",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingOperation",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingPhase",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingRef",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingReference",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingStage",
+      "count": 7
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "readingTargetLine",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "dataset",
+      "value": "referenceOperation",
+      "count": 2
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "lookup",
+      "value": "forSource",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "lookup",
+      "value": "rust-authoring-or-overlay",
+      "count": 1
+    },
+    {
+      "file": "ui/reading-help.js",
+      "type": "rust-api",
+      "value": "rustContextClaims",
+      "count": 1
+    },
+    {
+      "file": "ui/studio.js",
+      "type": "dataset",
+      "value": "readingStep",
+      "count": 1
+    }
+  ],
+  "fileDigests": {
+    "dist/app.js": "82ca031f8d8f680e43e2730262d953b2f51de1897051bb8681a6c4d41b433668",
+    "dist/area-reading.js": "7b55586b98bd06d92985e32bf901459cf81ca42ba286166cdc0802b6f18add68",
+    "dist/atlas.js": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+    "dist/explore.html": "a96c8b85460f4cec2b366360b6bb359fa944e2ea3a5e4b93eaed6ec261552ed8",
+    "dist/guide-reading.js": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+    "dist/implementation.html": "2d3bd7562c5194a0535c99d1a0c19f8f221a402e05eca9083b8772f0d7987cbe",
+    "dist/index.html": "096b91ecf7009dadfb729de68fb26e972b4c0273f3ea8713761de4333a765af5",
+    "dist/learning-content.js": "3fc8778066c0b439f76884c623f65e5e1b33a49b60f2f1810b40d2972dff1c1b",
+    "dist/learning.js": "207f4f1e673368fa06215305f229a0fe92364351dac32e168478684cae0886ec",
+    "dist/lenses-page.js": "cc3e8c2e3a1aa4c70a89fea2cf3dd12864e5e49237b533b1374c98adc7fcd852",
+    "dist/lenses.html": "9bd7ca594868fe8ec71598395bdf5ee33cb240e1ebd46ea6b9e8b1a51ff82bcb",
+    "dist/lenses.js": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+    "dist/reader.html": "9b914dfeaa5ad064600cc2f629230fad1fba73bff4c71a9cfef41542a73e7218",
+    "dist/reading-help.js": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+    "dist/startup.html": "d5b43672792f12c9a8c533115a3aa6f76c8bf75e4461e4cab6a2174d47556f04",
+    "dist/studio.js": "bd9d2c3455390910722cb1939c4f37cdf4cba182801dcabaa1211d3e22a9543f",
+    "dist/zoom.html": "137351af476c87c64e18bd3cf86e499cf055ed33befaa02ae091682badfd8cbb",
+    "dist/zoom.js": "dae0f921b76d8f01487c5c612040fe029837b58a457067317664b76a5386b5c4",
+    "docs/guide-reading.js": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+    "docs/reading-guide.html": "d5b43672792f12c9a8c533115a3aa6f76c8bf75e4461e4cab6a2174d47556f04",
+    "docs/reading-help.js": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+    "local-app/core.mjs": "0a1024f2568cf9db183209b74bfb382ffa7ce8f55091c69e9d3de42cc4037614",
+    "local-app/public/app.js": "d7cacdbe1e7b370a0c981e5f806f41903bf6017d4b5828ac953dbb24a2b09e20",
+    "local-app/public/area-reading.js": "7b55586b98bd06d92985e32bf901459cf81ca42ba286166cdc0802b6f18add68",
+    "local-app/public/files.html": "b0bd63b9128124a098616a6be0b45682b4a855f0e29d241e89ba05df92cb6867",
+    "local-app/public/files.js": "e1fe65e71e39241df20c04f4f0aafcff2b178a4d8939b0dbc180e8b5280eca2b",
+    "local-app/public/guide-reading.js": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+    "local-app/public/index.html": "1dd3965552339f77549a25d583f55bcc4e273f44c7d1edade999990c1d2f6d11",
+    "local-app/public/learning-content.js": "3fc8778066c0b439f76884c623f65e5e1b33a49b60f2f1810b40d2972dff1c1b",
+    "local-app/public/learning.js": "207f4f1e673368fa06215305f229a0fe92364351dac32e168478684cae0886ec",
+    "local-app/public/lenses.js": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+    "local-app/public/reader.html": "6072fe3479b2e878a4da828f260f808cc64a5207ef4e26db821c5210e0a42d2b",
+    "local-app/public/reading-help.js": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+    "local-app/public/startup.html": "d14e83ced27efc7468c282a78725372ce41e4fe177c9faa853922f153c612e6f",
+    "local-app/public/startup.js": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+    "local-app/public/studio.js": "bd9d2c3455390910722cb1939c4f37cdf4cba182801dcabaa1211d3e22a9543f",
+    "local-app/server.mjs": "0ed0e236d026af52a642b6b234d9024ad1a91598a2767086608b63c7ac3282dc",
+    "ui/area-reading.js": "7b55586b98bd06d92985e32bf901459cf81ca42ba286166cdc0802b6f18add68",
+    "ui/learning-content.js": "3fc8778066c0b439f76884c623f65e5e1b33a49b60f2f1810b40d2972dff1c1b",
+    "ui/learning-page.html": "a10cb35a875827f58685770949ef2fe8ef65a789204cc72980413f0a9c13c7a0",
+    "ui/learning.js": "207f4f1e673368fa06215305f229a0fe92364351dac32e168478684cae0886ec",
+    "ui/lenses-page.js": "cc3e8c2e3a1aa4c70a89fea2cf3dd12864e5e49237b533b1374c98adc7fcd852",
+    "ui/reading-help.js": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+    "ui/studio.js": "bd9d2c3455390910722cb1939c4f37cdf4cba182801dcabaa1211d3e22a9543f"
+  },
+  "metadataFiles": [
+    {
+      "file": "dist/atlas-data.js",
+      "global": "RETH_ATLAS",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "b5ab75ccaa75b1c71ebd6c3ef9932fff040fd0ebba4e2e85e2c299dd81872b85",
+      "semantic": "validated-separately-not-approved-here"
+    },
+    {
+      "file": "dist/drill-data.js",
+      "global": "RETH_DRILL",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "2c7f80322541630366c042fbaa85c6cb3ce9d0980941fe7dfcfd7fa08c63833d",
+      "semantic": "validated-separately-not-approved-here"
+    },
+    {
+      "file": "dist/lenses-pack.js",
+      "global": "LENSES_PACK",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "9d18d0de59878ff1c44cafc955bc492acb6f0f2e8dc5a15b3cfb44458c3f2b48",
+      "semantic": "validated-separately-not-approved-here"
+    },
+    {
+      "file": "dist/reading-coverage-data.js",
+      "global": "READING_COVERAGE_DATA",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "a5cc71cf1dfdc18a1f3c2d839f0ff1ffeeebf3e0eead25c709ebb95de9e5a42e",
+      "semantic": "validated-separately-not-approved-here"
+    },
+    {
+      "file": "dist/reading-help-data.js",
+      "global": "READING_HELP_DATA",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "self-generated-help:checked-via-authored-inputs-contexts-and-routes",
+      "semantic": "validated-separately-not-approved-here"
+    },
+    {
+      "file": "dist/reth-data.js",
+      "global": "RETH_PACK",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "8fc3218f0bb6ca8f63f26f52a15318bb5077ce4cec6d4074daf6e9072419f94e",
+      "semantic": "validated-separately-not-approved-here"
+    },
+    {
+      "file": "docs/reading-help-data.js",
+      "global": "READING_HELP_DATA",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "self-generated-help:checked-via-authored-inputs-contexts-and-routes",
+      "semantic": "validated-separately-not-approved-here"
+    },
+    {
+      "file": "local-app/public/reading-coverage-data.js",
+      "global": "READING_COVERAGE_DATA",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "a5cc71cf1dfdc18a1f3c2d839f0ff1ffeeebf3e0eead25c709ebb95de9e5a42e",
+      "semantic": "validated-separately-not-approved-here"
+    },
+    {
+      "file": "local-app/public/reading-help-data.js",
+      "global": "READING_HELP_DATA",
+      "classification": "strict-json-assignment-only",
+      "payloadHash": "self-generated-help:checked-via-authored-inputs-contexts-and-routes",
+      "semantic": "validated-separately-not-approved-here"
+    }
+  ],
+  "reviewInputs": {
+    "reading-target.json": "d64c15e4c5776b8e089ccf715e1868622c02fdb513a04e90e1812c6994d933bd",
+    "ui/reading-help-content.json": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+    "ui/area-source-excerpts.json": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+    "ui/lesson-code-links.json": "66132c8032686c1630a8c0611f13601959c648235c6d7c70beefed52c64affd3",
+    "ui/journey-code-links.json": "ec25df99272eb64dea9c372a91c5f8a80ec5df7e74163ae63166ec77b2185de6",
+    "ui/operation-code-links.json": "78feeef7ef4b7a5c81d82492e32bd3fb4796bf3ca8be3368c311f0f33fc061e0",
+    "ui/file-role-code-links.json": "832571aa9400b4326158be9c5b9e25eb6fd43a28553bc5c21adb8eabdfb43b54",
+    "ui/component-code-links.json": "432f9e8887d9dbba0be49b5fcf73eb183eb6ac8bcc63842d0eaa02b72af322b0",
+    "ui/area-readings.json": "b575253ab62ca5c34a59fec24febf6a9e1125b7fa988f188efa88828e93afb56",
+    "local-app/startup-guide.json": "ca7411b0e0d3c22919b4b09e5bbf0f457e936f765c31b00ab41503f9cb4c6161",
+    "local-app/annotations.json": "a97d55b83b917601a645fef06dc9a21c9cca9633d8c7b0096f7af58e0f5f50f2"
+  },
+  "routePayloads": {
+    "area:engine:followup": "7890a78f18208c4dbc294714a3fc6ec544205c7d1697fc28ee04768c2c7cae08",
+    "area:engine:main": "16b04cccc052afc8a37b53a98d7aa1c4286e62ec978faca154ab2c5b30534671",
+    "area:execution:followup": "99c6d1a74ed6be7a528a47490a54a4b87351df6041c8051122fc7e425658df4e",
+    "area:execution:main": "4313edab97d4ec27bbdb013c32ad2eeef6eb03e8c97b66fdbb5de73b08f8db9d",
+    "area:extension:followup": "170543fd22632d004d84f667d462417ac4663f45af5fada26f75c9911eae631b",
+    "area:extension:main": "f10cf3eaff52873cc217f4fa7f585b646fce7192b38f04714b2e543c767b9020",
+    "area:foundation:followup": "e0e947c6db6d91b861ebc31159c7bc1f7296eca245027c38d61d8fcfae629fa1",
+    "area:foundation:main": "2ac1d1e9e3c44ae39631f0351aee269410fbd7586006be88be83ba806af7fdc5",
+    "area:network:followup": "968f02474e54713c8cd8ab6b26ab992b5a785989a1f2353e4553ff34adbfbcdc",
+    "area:network:main": "fd280d56151605b2e9221746be3c055c6d4af2fde68ba0135014018c19f0d41a",
+    "area:node:followup": "93d161493c005dbb1643df6b27d697c200c09d95c4fc58f8ec84543a82378de4",
+    "area:node:main": "0b9a9b080cd02242f1addd592dd276c211712a7df27a3880cda5536e6b6ceff4",
+    "area:payload:followup": "79a4851976834e1096215df127e156ae7a98742af819b21a0d3efde185626342",
+    "area:payload:main": "697c95a21ab165efa30a67a6641d6c5a411a9c82191c1f9147e22243e05935bb",
+    "area:pool:extra": "6baa9bdaa10a8cea864d6199b79087be65d92357eedae558406152ce55d16eda",
+    "area:pool:followup": "d118b672bb028657a13467610fc7af8d8d3c5db89ba523ca00ac9c93c50f3d24",
+    "area:pool:main": "1106616beabd4a16b5d53973baef8251f63cd17c91fdc8d11efd62e8c68c0af0",
+    "area:rpc:followup": "ae85a78a57cb45027433da35bd478d528c78773970fa4403045967567104729c",
+    "area:rpc:main": "68993e7ad8c5fd3aabd2c365c8d5f72ebed7d2a5bba8d5b7543c9325294c5245",
+    "area:storage:followup": "4752a5c72d6922e7626eec3e4ab69428189ad3d4e58a14431db85d37bc795cb7",
+    "area:storage:main": "acdaf72ae773f6ffdfe6b7cef3bd041c6f6eb71a1fed4f1e84a5576b2033b12c",
+    "area:sync:followup": "a6eace0c576319832051c12a40ce3c55665c7f8630ff48019c96b2be036aaafd",
+    "area:sync:main": "67644571a83c719135d232322682be48f2de7b012d7f2f5ff59ff7bb434d07f1",
+    "component:rpc:helpers": "4c6cae6ee78ee8419e4b2d92fe6ccaef410f54f84261db41666a02c350404bda",
+    "component:rpc:implementation": "b1803e3ff25bca41610b2860561e38b3a539c4a9c5e271ddaf6720db0b14ebdc",
+    "component:rpc:integration": "e107fc9355815002c8af571175cb9f648a01e97528d9c28a230e23a55bc2927a",
+    "component:rpc:interface": "fe45a5bae35065724669b71d332bcfa88d63b066981b260f2c29b9e59b550ac2",
+    "file-role:bin/reth/src/main.rs": "c54aea01b8f24c79b19948bce0d5f1980229466e4ff9a3d4a8aaa29fc4bfc95b",
+    "file-role:crates/cli/commands/src/node.rs": "cea5d57ff52441208799b3ca722c2d9e04fd6c9b73cff264a50bc41f07e0b2b5",
+    "file-role:crates/cli/runner/src/lib.rs": "a57e6c201cf04e0a7358f1e44f186d1c7247558d9b09a9cd53b7cb30fedd6e06",
+    "file-role:crates/engine/tree/src/backfill.rs": "5423e5450519a449c29be37a8de62af74b1faa2452fea6e84ef1888979df9cb1",
+    "file-role:crates/engine/tree/src/chain.rs": "eb4a5502da030febff50953aa4b6f86ad3d17cdf92812b86703b9ad8a33cc8f6",
+    "file-role:crates/engine/tree/src/engine.rs": "85c1b628b1bdd46ef69d00c65cb9cffb2a021612a8503fbd32deea71cc431167",
+    "file-role:crates/engine/tree/src/launch.rs": "cb197d5f83722841123081fe3973ba28ae878f25f8144ec88af70ca07b05c9cf",
+    "file-role:crates/engine/tree/src/tree/mod.rs": "5d186346ae020d4e8b70f3edcdfc59d3cfbee7ac7514d2f7458854400a19a29e",
+    "file-role:crates/ethereum/cli/src/app.rs": "469d15752a246b5449a2addf6f10867c8b1ed9f6f8d09c80ea59ef0a9999846c",
+    "file-role:crates/net/network/src/manager.rs": "5dab587674eb5fe5e09c838d692c72062c04d8d06ca3f96dfe6c110560a6cce8",
+    "file-role:crates/node/builder/src/components/builder.rs": "a69e02df63dbc0faa55442f812d0220b4e77c406bb9ee5d310b9c0367463b827",
+    "file-role:crates/node/builder/src/handle.rs": "a5c3891c489e158126c05febb8a7cb02e4d6e4e353e16f17c63d811f2eae8564",
+    "file-role:crates/node/builder/src/launch/engine.rs": "76853c50fd160a1c6800bc87d8a740d78028a696ff5c6601e7644dc82dc59df1",
+    "file-role:crates/rpc/rpc-eth-api/src/core.rs": "c8807e2f67a7e01fcd7d453a77e09234b96db2d471b4bc27c97bafb91f5f7995",
+    "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs": "bcb95c929df7fac8ebd7a3ddef2d55b9724c7d614582c04f9cc4bce4b3c08fda",
+    "file-role:crates/rpc/rpc/src/eth/core.rs": "0ac6a7a1d9589d12897349a26887fd88679eda67a72c4d54f4ad30064672e7e3",
+    "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs": "8248828b9e51743e7ce49d5259ae70063661694265047dd3dc366487af0a572c",
+    "file-role:crates/transaction-pool/src/batcher.rs": "55e675141e7761995c7c85f8ca15f5bd3ef720a3ce98c0e4914f81c4f264af20",
+    "file-role:crates/transaction-pool/src/lib.rs": "69030878256c8e79d24bcde95848b8be6710814428c1ad0c3769b955fcb26513",
+    "guide:loop:1": "b33e14dff55bfc52def7793fb09326b567e4a420be63a7d994e8ac8522fd5bdb",
+    "guide:loop:2": "5bcf598887884891a05d5a5a7f384a8604fddbcd4e0123d2d9a1c2e0f8457c07",
+    "guide:loop:3": "ca91f99cb39fd937c135567653fbd5b660d92acefae45d428d8b38db4fb2b1b3",
+    "guide:loop:4": "b7c001dadf1c23c1f1feac6e9f15f38c2da92d92e1d763fbe40c71312d49d8ea",
+    "guide:loop:5": "c25c52c36fcdee9b934a4c4b758292494ef339efccbf90da4af9df9328a18620",
+    "guide:staticRuntime:1": "f154fc15c36b06a890bec708f056d463ac64712c35df41d0806db2e46d977e71",
+    "guide:staticRuntime:2": "9cefe48ccd9b119d08bdbe7a40e20560c2af2b606115183cf868dde38f2aaa51",
+    "guide:staticRuntime:3": "c40235392a86828eed5d59f4dad2802d9d7835bfcaea1a2c6920f98691c3c952",
+    "guide:staticRuntime:4": "0bb2266e5eb84e7040077cf962193566b2d3a2ca07482d05e2ff1d81dd16a36b",
+    "guide:staticStartup:1": "9f1fd5baa9ae15d036ba7eb8ac93ef79e7e34104008ad4d30531b5433e2e0224",
+    "guide:staticStartup:2": "581a59e054b76dc60ed4a22cb8118a49950776e86b2667ab7a307b4800ecb44b",
+    "guide:staticStartup:3": "898d038f6f844bef5ba986872d3264f45b86378e9dd49bf3390bb32a8138e032",
+    "guide:staticStartup:4": "939c02def38f31fffe12d96c92549b4d27a4edda2b3dc2726d70c83a126b0683",
+    "guide:staticStartup:5": "77d8dcc64ae45130bb2d7884c11d009a5199e0cdf6523c40863e2150d6a4dd6f",
+    "guide:staticStartup:6": "70bd60bf4a9eca96f6fd10403eeb7feaed06858dca3023d77e8388fe4f57ca12",
+    "guide:staticStartup:7": "20e81b35bdfb461c59c90df12c914d41d78dae2a100ab5293127e2ee9cd1788c",
+    "guide:step:backfill": "ed754b738e1910479cdc2f76457adebd2ae1a8479471184b2ded308d0b2d376b",
+    "guide:step:components": "dec3c49e89020197c563754b66a1204ee86653c9f54ceea2148139684156f2df",
+    "guide:step:context": "850c7ba077613a1101eb1ba04e0e3dd27edd698417ffbb2d79c4d4b124db7e2b",
+    "guide:step:database": "49617ea5c5c65f0d57ef1df7006e5fe5ac6c61ec6071438e7d640e90f1ecb994",
+    "guide:step:dispatch": "b590467782b0753dbad9c7644d9b63aeb1e68e3f4ef4506dd84e88e3245ec430",
+    "guide:step:entry": "2f1190fb066473cd229a568aa1402a4ded70a05eeb963d1e919c7a6b3a342886",
+    "guide:step:network": "53cc809036909ef6500a7aea0271fb5e93fbf34e02cbf0371fe9fbb490f8d52e",
+    "guide:step:orchestrator": "e14dd945519b5d5031e65efb1f4dfb0b28d0d1c2c6b649c5270bd6d8d27cfca4",
+    "guide:step:services": "3a83387c0e5fa0fa94e9117bd7a4b9d57a4cd2a7f739216cc385140ea7ada114",
+    "guide:step:supervisor": "4712594c4d56920486ebd9040c89546b93a4344bda8765488750a0dbc41e835d",
+    "guide:step:tree": "88a1f1fc30d9613284895b920b541ca0b8d8ac32cfd0ec2a16a289ee07359beb",
+    "journey:block": "8bbb5432e8ac9450502f9d3475883df00f99d31ec3b1cfce8cb22eb66832faea",
+    "journey:sync": "76c4aa2bc02ed9d11653fb7598ab687092e7bbbef15ec2fa426f456c331a2eb6",
+    "legacy-detail:batch-runner": "b31232cb74f70490d256877a66b3de55060365bd9408e0806d075223e7468f1b",
+    "legacy-detail:forward": "c3c222ed5b50e12b17c07cb0dbe172f70849ca95eae40f71dd1444abc9b93e12",
+    "legacy-detail:pool-test": "b26ac2fb94ea1bc0047521676e2b2d80a788c8ba0e2812f1faab6f41c57ddd47",
+    "legacy-detail:recovery-hook": "af56b67b5c41f3665a04ec99b78f7c84e3cf7400816461fd91cb49ed6b92e64c",
+    "legacy-detail:rpc-contract": "cb95f30223cabdf9c923cb920f3c0007cae533da411271b5ef89d66fd7fcf6fc",
+    "lesson:blockchain": "2b666591d84d5b1a3e53c4a8de7061516f68515972c46b8be10a17afa08be881",
+    "lesson:ethereum": "29344f75c5cf5ca0a59f8fddabb069c11d4bb18da5aed0a76129ec0e24d23a7e",
+    "lesson:reading": "e2317b839f712da778380018eea12a4f0cd1a7684fb74d97a8bd61e5ca33e583",
+    "lesson:reth": "ea35af986b0f78025cfce17b06bac39625e3b9897a83efda4b5f318a082b0a21",
+    "lesson:rpc": "76cb32b3ebf73edc9c98cce05d3b047f4692d9e2e4eb9781cd20313c01fd59bf",
+    "lesson:send": "71590af68b375e5092e0b5b3b677a61dbf52d57d40e86f9103c2ced3b3800c54",
+    "lesson:startup": "f328a50ca504a64553e982d26b4272e4d6111bada1dc9928bf818f01af5dcb52",
+    "operation:batch": "f059814f432fc63112b9496f4a1e81163a7747e529a53cf2b8b7f84a5ba7e03a",
+    "operation:pool": "c68a90d98dcfbdbf7fa42eb9c4ce605700bd615cbb463badb5c1877b6ee180f6",
+    "operation:queue": "aed61df497b85ea9c9d15634e8b36a7fcd6c1d5f5251692a4b2c2f4bfbad0fef",
+    "operation:recover": "edfe8009542d8ff79dcc3ac6f0415c702a96660bb5329463307b91ad68c08545",
+    "operation:rpc": "d13deff296485f12223230bc57694618b52dca54c92d3b3291c2e8688217ce33",
+    "operation:submit": "52d374d3e4cb56652c9d34f24fb63af9af55762d0705a67128d177d9bd96a1c1",
+    "rust:borrow": "d62c13d41ad72e02006e8fdc90a0b2e7a56084786638d4ad90f0f51c99d69387",
+    "rust:borrow:recover": "d48bfd4a7febdb004b307804014e1bed44fe48b08d835007400ab8f59908dfe2",
+    "rust:borrow:submit": "7539fb6b709cc1d1ac664d087876d3a7b5ab03e0e7c2aae745700352c5fe6f00",
+    "rust:channel": "1a67491b98ba4d479178cc5bc8d69ac48f721c4e01133234bfaf631c15351fc8",
+    "rust:channel:batch": "1f57fd327d3f8e7be078d0dd06bca7ce2c9a09f633f782efb4decb3aa92388bd",
+    "rust:channel:queue": "f5eea3e603ed7970ef45f22f5071bf56c625337eeb265cdd8d8dd5cbbb8a6b26",
+    "rust:future": "f68376512ddb04dd64ffcdfa9f459f45ce9ad4223fe4d975a6684132a8dc9be0",
+    "rust:future:batch": "3e25b40e4fc1840fca26526043628d4e19a3659d9f44dba02ff098d090109d58",
+    "rust:future:queue": "141e36759cc0ec77ac3001deb1771a5aca4ecd0a3c0e55db82ae02951a74e159",
+    "rust:future:recover": "7d6ba3d5c75648d125e77f1cba868f0cdcd43fab748b49975060facfb6ac55fb",
+    "rust:future:rpc": "fa59a3f05ec822b6df5bd3591b7b5e5cd506c75084f03285da9b098fbe677ade",
+    "rust:result": "43fb9c53a0d4c09928fd4dcc63f0d3fad84625f77125d82c713d2eae87d07b6a",
+    "rust:result:pool": "bfbcbab62ceb41bcc565ad673dd7cbd22e0d8d5f96ec9fab94d2fa416905fba9",
+    "rust:result:queue": "83b9133f8c43104d6eed76894050c543916b00892470212509ae8fd3647243c1",
+    "rust:result:recover": "433414eea95826775dfc1defc413bedfa9935b8e72bd6aed97837d87aa4fb435",
+    "rust:result:rpc": "e9a97e57ab0ea94fe4fd0ac872bb860ef83480843783981ff5b1937187bd4e0b",
+    "rust:trait": "210d3f057273ce3d6adc0d58b264d5560a679d8aefd6f4fbaba24f6f9530835a",
+    "rust:trait:pool": "119510cfebf5e693659379fa917abe59c76d31e22c286f59de467e8260d45581",
+    "rust:trait:recover": "b9ebe866116ce2a480c3356bcfd9e67a2a44746fe0144d95fd2319f84fef58ee",
+    "rust:trait:rpc": "5ed6e17ae46a2bca03e85732ff2b6d30a62e8e6e03f12ae1232d04ae62dc5b77",
+    "rust:trait:submit": "dd12f6bbeb003a5c95bd60d0b8d46390f99e6f084ddffbe9a898d408d1abd4b9"
+  },
+  "contexts": {
+    "area:block-link": {
+      "sourceHash": "d95e4fad6597ea43c131a28d05884247cff4680aa1bbdf374a849bb4f34322f1",
+      "authoredHelpHash": "a6823b72a9d281ad9392cc28b833fc71b7e1b01e08054587eba36bce52f63762"
+    },
+    "area:component-block-read": {
+      "sourceHash": "e35e1e2f55459bfa1a3405158faf8d70ad42cf6f8577c6111ea086b3a554d079",
+      "authoredHelpHash": "98cb88edb988f98d69b11c6783d61ca15f51815684f2b1f0376b185db1f6bc9f"
+    },
+    "area:component-rpc-launch": {
+      "sourceHash": "b2ba3277858df012eaaa2decc2b70878905bf4b611c14d6547c84552f3a03b95",
+      "authoredHelpHash": "469dc103feef3c64562b27f5b2394ae1714a182fb03f394e1a6b3a9ebd6a9dae"
+    },
+    "area:component-rpc-namespace": {
+      "sourceHash": "e602da8a8ad8e88ae33b11dfe299e01c423ea3b6055498b7a55e326db5a8288c",
+      "authoredHelpHash": "517ddc3f8e4bbdd4a1a30448d836e91f22f40f3b204f6a9fc55542940dc79614"
+    },
+    "area:component-rpc-setup": {
+      "sourceHash": "15a59940184307f5f4f779ac5c80c33454fe1f2f77e252e42063b3b78093be42",
+      "authoredHelpHash": "15e6f388d87655de1216c95ca03edd5b6424a350277eeebe8bd1bd57cf06ec62"
+    },
+    "area:component-rpc-start": {
+      "sourceHash": "44e860aece3ab7526132dc3fdf0c1f6d1478ab04e96e6a15f81738ec9b022e07",
+      "authoredHelpHash": "6b97aeb00234b44cc3c706d1a55f857a7608967bab410a679823e31b487f5439"
+    },
+    "area:engine-timestamp": {
+      "sourceHash": "e654d1df933b4ad9d99d53578439a26297eb6cee35755981561bce6971bf190d",
+      "authoredHelpHash": "aa7339bfe8e93bf80d8b018f70b5bd56d88e4081899d0fae9042faa3c831f1cb"
+    },
+    "area:execution": {
+      "sourceHash": "e2d250e6445fc04f2a8f22e4d5102947f67d11d71c631a31163d16e72854316f",
+      "authoredHelpHash": "50c1686daaa65474480da6200c08b227ac3db2586162dda0b849b32671ac580b"
+    },
+    "area:execution-receipt": {
+      "sourceHash": "299af6fbea744e4558ceb00f1a1941518efdfaf3849e3cccb595440e7820844e",
+      "authoredHelpHash": "49dd8d80ce869866f5e32c40d9a730afaf5a67347eaf4f51561342cb642b15c8"
+    },
+    "area:extension": {
+      "sourceHash": "21c3b8f32db8b3f1356204e9ec5726e9d601eaca036bfa3d2e663fd2475cd3de",
+      "authoredHelpHash": "22db4d3ab235cc8af93f44655b7f3613d01dd4b9629738c7d4129456db920d4a"
+    },
+    "area:extension-reorg": {
+      "sourceHash": "bcde49e579c27ab3c716d4ab713353ff9fb679aa5e9b642ab9296badff728e2f",
+      "authoredHelpHash": "edcdf36297153e43b63834c8d2b5c3df648c2d2eb14b0be745d6fafbfe920e6b"
+    },
+    "area:file-batch-create": {
+      "sourceHash": "f2062606cc038c1446552ea0f1fdb28273772e867172c35c540573055daac19f",
+      "authoredHelpHash": "8d805020db60c41a39e7e6a9fd16079bc27a6eeabb938c6f68923858a9a18717"
+    },
+    "area:file-pool-get": {
+      "sourceHash": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+      "authoredHelpHash": "21bc73431d143838c42dd98a36e0822d3573afdd83e13c7c0d975d75b72c414b"
+    },
+    "area:file-pool-listeners": {
+      "sourceHash": "04adbae1169369a2c273c5a3e7d7df97625ef6d592456ed8ea730939355cf45f",
+      "authoredHelpHash": "d3685935654de8d16193f9b43a5bfea95f918a402c3c77b39dce5889c005fc7a"
+    },
+    "area:file-rpc-inner": {
+      "sourceHash": "101f6cc6e922e7e0e705de80bcdb6d914d3c2254a70e311000b21ea81ce6913c",
+      "authoredHelpHash": "0d9456a18348daea85a4f38f9569ee9f2d259b2972006b5346b47436cfc84d8b"
+    },
+    "area:file-rpc-inner-build": {
+      "sourceHash": "521631bd3b17f79924116d28cf40c729e94474a44f02422a95d1629095cb9a8a",
+      "authoredHelpHash": "3b585c16f021ba2f8f6030cf8c1776ddb8582a7d5b7ea9844981e586dc592dbd"
+    },
+    "area:file-tx-get": {
+      "sourceHash": "d5d1d2a7767308c1888bbc86ee9d842016fa82dc38cd095221349289fe4fea86",
+      "authoredHelpHash": "79f3f958d998d4dc0bc1523e3e07c94e6e450ac833f613504025a87c42d22a30"
+    },
+    "area:file-tx-get-entry": {
+      "sourceHash": "e93a9c7dd2a387fd25a0ed14ca8358f11aa0f01d29073e63e0e6193292aafb3b",
+      "authoredHelpHash": "d532ec5ebc10a7f1d295b0061db4eb193e1f33439af35abe47557a6cb8e97282"
+    },
+    "area:foundation": {
+      "sourceHash": "c76ea04a3faac76d238f6f222c7e4fe703a378e17e12e60ed02368b840f27f58",
+      "authoredHelpHash": "9140adc9b003605b04da1bec518a87cb77b88f37477ab6a5ee2b8242bca4a25e"
+    },
+    "area:foundation-fee": {
+      "sourceHash": "5a8bb53a0f98e277a334ff58744a183276518fcc3dda2409205db13d2a645a00",
+      "authoredHelpHash": "e867f65db0c71f42e27a3fa891e7a3acf02a1d7eab1441fa3d8a77c4adf6c54e"
+    },
+    "area:journey-block-after-execute": {
+      "sourceHash": "2dcda1d08ddeef5a29bbb7e22d507cc13ec7c3afd1e69a4f9a507cd9ce5cf7e2",
+      "authoredHelpHash": "1fed46a19253aea439c6649353a0df7904838e3d0eb157b5f1fed58578cadd8b"
+    },
+    "area:journey-block-canonical": {
+      "sourceHash": "d6cc524eb2d8a9914ee5e01768a1448c2f84e30d116759c3775c4ea6711dab8f",
+      "authoredHelpHash": "0ed2dd08b275c50676feb71912ffcb75c941063950e4b00d6ff84077dd23f332"
+    },
+    "area:journey-block-canonical-state": {
+      "sourceHash": "a23b29f4a59fe4e21fdb6136db5a22488d6f8b82652489b08681a1f368302497",
+      "authoredHelpHash": "e2f624e7712008b3d1e20c7bd27d8c7dc8072ac5abccd3247244cd9d2df588d3"
+    },
+    "area:journey-block-consensus-check": {
+      "sourceHash": "1ef318820e38ce2d30473948cb91d7cf5e2b5e27e08464718e51f7f5822adb29",
+      "authoredHelpHash": "ec9a42c57bf27f29c7a2e0e8c0964ad91a1630178ef082419a01dd8d059c9f47"
+    },
+    "area:journey-block-dispatch": {
+      "sourceHash": "950be0ffff535603eabe63701940b633c87691f6b22483fc172389b5d4779401",
+      "authoredHelpHash": "3b2c59385854245eec788ba86a84bc72a063ee032f86d547cfce6de6a18110f9"
+    },
+    "area:journey-block-execute": {
+      "sourceHash": "a21f66d8e989c663b0a78bb0533662e34108574c72f3938b4e8353a6854fac93",
+      "authoredHelpHash": "c2053c37847e78d2957896618574bc53de4de569ffd442d87928ccc6d1810997"
+    },
+    "area:journey-block-execute-choice": {
+      "sourceHash": "c4e189e665f1d08917262e0c64586729aa4f465241385f456a536f7547d140cf",
+      "authoredHelpHash": "24dbe5aca25caf3a5b3c311bbcbbda3247ce7b03aecdfa9037fb8c657c059be8"
+    },
+    "area:journey-block-executor": {
+      "sourceHash": "92421e55b428911f9cd556a922e468b964bd273ba1b9920aaf90e91ce75bc416",
+      "authoredHelpHash": "315b1b992ae132d0fdebd790f1042336755a29465ba3073f2192ae02908cd58f"
+    },
+    "area:journey-block-forkchoice": {
+      "sourceHash": "23f95db945554ba018f60281c74367fc353104f230b91a1cdb04ac0b45f25cb2",
+      "authoredHelpHash": "cd90b98041a4a59af8561809443bc6e7bf26884190b70b8997ae92082f8fe413"
+    },
+    "area:journey-block-forkchoice-consistency": {
+      "sourceHash": "14041726f3e843af0fb69a53889dbfd0c162e71faf07890cacfa19f41789982f",
+      "authoredHelpHash": "75e23ffd2b38a303b803459de050a914bc4d61251a73d5e2a0ce4be060ece835"
+    },
+    "area:journey-block-forkchoice-markers": {
+      "sourceHash": "f7852679866e245de7b67ee32fa2323fedf77e9d9fca29ea3f85642f2a488c8a",
+      "authoredHelpHash": "69c3d97ae5a6f3c05e268849acd6edcffed302dfd9593fa16c8ed3de9313e591"
+    },
+    "area:journey-block-forkchoice-message": {
+      "sourceHash": "b5cff2af722715415155185b38d8d2d55128ba155836eb83d1decd11cd72695e",
+      "authoredHelpHash": "9d8b59804fd942a3c84d569abe5f13dda6872f2cbdd375a3ed4661b86f23b97f"
+    },
+    "area:journey-block-forkchoice-precheck": {
+      "sourceHash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+      "authoredHelpHash": "207c9b20d6d35844fb8dd5a79653b916cdf80f327d5fea463754a781fb311dba"
+    },
+    "area:journey-block-insert": {
+      "sourceHash": "de517d1a66a3881446dc99919e629594e468d33b31781fea2bfb02d19937a7bd",
+      "authoredHelpHash": "3e7fc0b10ba368de065cbb2b4f8396e80053919c2704a89f799713abdb8ede56"
+    },
+    "area:journey-block-insert-state": {
+      "sourceHash": "87271310ed6572c4f81d3908d7b202104a5018821e2adc50d87108586aed3f45",
+      "authoredHelpHash": "01c1224b69033f5367b1a20efa9f79bc36724e524320ffc42f9d453666e1cde7"
+    },
+    "area:journey-block-message": {
+      "sourceHash": "124986a7b675c2f2090ac9cb52a17631b76c97c2e048da4f85c36adba496547c",
+      "authoredHelpHash": "dc85898c9866ac6d195592aac3d3d1df4cd7aad8a4d1aa4d66b23c48b27660d8"
+    },
+    "area:journey-block-parent": {
+      "sourceHash": "eb38e94d428fa755c9ca712de5117dcba6c73df32c9e34351c93ec47b21551d6",
+      "authoredHelpHash": "deb76d3fcbc36324e9df21a08124cf787b0b955799388637dbecca518b1f8abe"
+    },
+    "area:journey-block-postcheck": {
+      "sourceHash": "f47fe2bd0c2b4ad8a8111a88d37a97a887014c46e30763a5af50d10827fc16ec",
+      "authoredHelpHash": "ed115e6823d8144913966089fe4eb3812e36434508cc9bfcfb4d3ee154287598"
+    },
+    "area:journey-block-postconditions": {
+      "sourceHash": "beae261b839a2e9318b7b12c0f9918b12ca12aba197738018cdc701e2009e43e",
+      "authoredHelpHash": "e1f18094053e4c99fc8d6cbf71cfb171e6252fa08c83e94dfc2fb32a62b5f597"
+    },
+    "area:journey-block-receive": {
+      "sourceHash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+      "authoredHelpHash": "80605b15644272f604a677449f1a838d02b5c6eb94dcbe581bbe2885db0a0972"
+    },
+    "area:journey-block-root": {
+      "sourceHash": "637397d644226d2d753fc423127447ad27a676d3d2b78b8f9e76607c2aed379c",
+      "authoredHelpHash": "45c6586ccda043cdfde1427b116c66826982f630935ec7b9d49d863f4185ea3c"
+    },
+    "area:journey-block-route": {
+      "sourceHash": "c859b35c87b8157d2f2b5e7d0c8af8929482ac8e4e997fa888a3a919111b81f7",
+      "authoredHelpHash": "d7138eb3c4be0142e21834895ff815451b15ca0f34b6a59189d76b87ea703944"
+    },
+    "area:journey-block-rpc": {
+      "sourceHash": "a7ef2b6ff568497b6e94db00f11bd7d1ad11a1ea76c332d952eff479b104d582",
+      "authoredHelpHash": "ccfda8104a15801add993892b050e127f238037d0796f5df893b59dbb6fd9053"
+    },
+    "area:journey-block-save-complete": {
+      "sourceHash": "d5ca7e38795af67e413db2c488b16fe35f7762bb0680437f9cb0fedb09060f29",
+      "authoredHelpHash": "9605a8b872f4744a9bc2e473312da9cb9ec9464635fbb9740b67daf64709b041"
+    },
+    "area:journey-block-save-queue": {
+      "sourceHash": "99a9c2c1502502b9e83ab396f0b67f757a4880b2cd0883eaa236014f09e1bc27",
+      "authoredHelpHash": "691236486a2470cb81d3fea12a9b7ba54fa7ad5462ce6d7bed05836e0999b3dd"
+    },
+    "area:journey-block-save-start": {
+      "sourceHash": "f8ee7a543ce985f60e68bb29bc78f0f9a1fe28c276b8bf34ad2cc1eb360a891a",
+      "authoredHelpHash": "29d6d99cfebbc0a6eea046067fc195d157321bbeb23264696f7d5b7b105a8b00"
+    },
+    "area:journey-block-save-target": {
+      "sourceHash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+      "authoredHelpHash": "2d3eb0d482780f5ac91659ca6388692a2a2a24d11b5e654483a22d8014302937"
+    },
+    "area:journey-block-save-worker": {
+      "sourceHash": "46681faf273c80398f48b38494338111ad75438d410e94ca813a24636216e0e2",
+      "authoredHelpHash": "854b09a0366d5a214cf027f37b54942197e071a4b3cf4e9cfc445f8bea627220"
+    },
+    "area:journey-block-save-write": {
+      "sourceHash": "c54d03d224fc07e8244fc4bb773efa2cdbac38567fa55b7682800b3b69f16d07",
+      "authoredHelpHash": "ccf525520bc8c5a6d24c78150e4e964c3e7006c73fec3f0d9a02f4c78c711527"
+    },
+    "area:journey-block-tree-send": {
+      "sourceHash": "4625e0cc28c2f748672eee3561f74b3bc199aa1e47778bba9edf60ce16831fbe",
+      "authoredHelpHash": "43e3a3c672eea0792fd09fea27a0c84182269d4121c2dcbc9167100a5ec40acb"
+    },
+    "area:journey-block-validate-call": {
+      "sourceHash": "9b4536d1d9dc551b21815e2ecc2ec4965784c1f85bc1730943ee40bf01bd72f7",
+      "authoredHelpHash": "d993e3323d8209c34fe855b08f8b09246c6f63ba49d1c38382c352121c4cba7c"
+    },
+    "area:journey-block-validator-entry": {
+      "sourceHash": "c66538723c75d22023c83ae37c961c7b6274b911073853cc78cb4829908e2c56",
+      "authoredHelpHash": "04f0ae4dc21d981205bb7cd73a1e3977bd2090124be90a3bd30be31a463869d5"
+    },
+    "area:journey-sync-bodies": {
+      "sourceHash": "223919ebb835cc668b562b44b2f3dcadec06acf49ec96a9ace1226fae67cc356",
+      "authoredHelpHash": "535c05fdf3100d4811322a8fe753e35ce7f0df6cd271edb7b4f946cadc5fb8d1"
+    },
+    "area:journey-sync-body-request": {
+      "sourceHash": "247dec957dd6d09393418992e3d693b43fbe597daf29850fb1657371283d41c6",
+      "authoredHelpHash": "29dc234287d1763912cfdb3659c6397eced9a6c37e8939a8e038645920d83790"
+    },
+    "area:journey-sync-body-validate": {
+      "sourceHash": "bb709532dfc6f7177e54aee7da4e40fdd8aa4d2cd1736358748ee9763f5f27eb",
+      "authoredHelpHash": "d652993e1ddb836e71b6fdeef0e15f5ffb3b73d62d5a7d3c10e70640a648c89c"
+    },
+    "area:journey-sync-checkpoint": {
+      "sourceHash": "f66bc5cf3ea83354392694574bbdddbe557a2b203ba2430cedffcd343773b7d5",
+      "authoredHelpHash": "c251e9a380778f2905c320b0e05e0445dbf4236da36f959de342d5fcfd6bcb9f"
+    },
+    "area:journey-sync-default-order": {
+      "sourceHash": "7b79f1e1d7052ba7a95ebb5c0b69918a97c11b5ed70f2743dc4c20c6d493e810",
+      "authoredHelpHash": "e8bfe83ca2984c5c4a924a9663e04f42c0472ab055d18a20b7fd5bfdac14352a"
+    },
+    "area:journey-sync-execution": {
+      "sourceHash": "0a9537a41a4779bffe29f2d868125d4f3705ef707e4c54e86a41bbd81f1c09fc",
+      "authoredHelpHash": "5525091931fc8e32058481faa61e733d24890343b625c02900c9c8a1c925ca54"
+    },
+    "area:journey-sync-execution-order": {
+      "sourceHash": "59466b5adec500d4f4e762f36f68fea9de4e0527eefb05213589f1964ed71199",
+      "authoredHelpHash": "edcf305a7bfa911b1bed51c8c08ea367941dd836fc5fed3fc28b433cb5a95865"
+    },
+    "area:journey-sync-fetch-client": {
+      "sourceHash": "8b0d2dc92abe5e63a916e94eb6f8d0bdb24da60dd2103626f64087c1088a24bc",
+      "authoredHelpHash": "61af2d841dca27428ab09c0ce71eccc42f63dee7062792821496d4ddba31e3f9"
+    },
+    "area:journey-sync-headers": {
+      "sourceHash": "12c88f97483d54648c86613da2a4e45209d124365ee96ed23cda8da808a3570e",
+      "authoredHelpHash": "1acfedb5f5e108173b621f44c7f17f478ba8e50a035648edd698b565faf0d787"
+    },
+    "area:journey-sync-offline-order": {
+      "sourceHash": "4ea54dedb10faef1c27c0b9c0a41203ffc9ece9d19b0b0089043f0858c61fd28",
+      "authoredHelpHash": "d767576715f12aa943d94cfbe4f782bfb82a87781efc7578be093d1849068b0a"
+    },
+    "area:journey-sync-online-order": {
+      "sourceHash": "9db4181f2b4d7379521f8c3213e98c658a0adfec37b690cb28d1a270055e97be",
+      "authoredHelpHash": "49ab977277cc185414236fa14b8df3ea63d5ef7fd24a14aefb8bdb39311f9fa8"
+    },
+    "area:journey-sync-peer-select": {
+      "sourceHash": "03f7f9eb5ea9d712f0de1d80a3226370ceec9631670934b89437bf833dbf31c9",
+      "authoredHelpHash": "1a25d268c95b96d313ce20f50781e8027ed940b050e81b99f8d1a32e7405cca2"
+    },
+    "area:journey-sync-peer-send": {
+      "sourceHash": "5f74f6b33f5903b06834fb0938eee53b20cee0fb1d69cd527ed00ce25bdb0d3c",
+      "authoredHelpHash": "9a0b0f4d62bd0f15c9b36fd104954c869a5a881778296481e722592b983a0450"
+    },
+    "area:journey-sync-response": {
+      "sourceHash": "3b401845cab12cda055d021e0d682b860d00022267db112d82461ab368195fd7",
+      "authoredHelpHash": "9ac6632e422a29d6073c925ec1b508ae29a6853e2a1b2ecd7fd2a5b19b639957"
+    },
+    "area:journey-sync-run": {
+      "sourceHash": "5e25bdd2473abb8e9e0250b936f011c2ce94a7d0812884c6eea527e97b69f412",
+      "authoredHelpHash": "d8122be8727a94f8f38929bf4ce35daa6af41901ff6093530584439d489a087c"
+    },
+    "area:loop-backfill": {
+      "sourceHash": "a2c3ad029f4949d95f1a82897280e67e0649c9b8df7b011ebe1b9e11ededfa6d",
+      "authoredHelpHash": "0785afe238370525af2f558b5a11e05c26e436100d48e38061e22daea9e9a0f6"
+    },
+    "area:loop-cli": {
+      "sourceHash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab",
+      "authoredHelpHash": "64a34324f1a8bfaf67b492533a050936ea26c54ece99ddddca4aa2259f086edd"
+    },
+    "area:loop-engine": {
+      "sourceHash": "4df33038adafbba10133d79fc403ff5cc60b8273d3a1a71192da21ed9916ebe1",
+      "authoredHelpHash": "3716fc2803f0d15a024c604be66d4090f104f8d0e58ed9663565e5772b9de6fe"
+    },
+    "area:network-budget": {
+      "sourceHash": "6b00b2871168e4155ae0cfe459333f604404e3935601ccaf2b9f2c13866be795",
+      "authoredHelpHash": "cade0d3ee119f7bd5cb949116eb72a42cd288cbbd99bf5479b82d91d09c83eb5"
+    },
+    "area:network-reputation": {
+      "sourceHash": "328b551bd002f7d8f169b7f7c409fcc5e30501d2f81530381de17c5488dd3944",
+      "authoredHelpHash": "bd4ac0b79ac85a91a7eb6c9175b83ac1953e130aa97d12ac2436aaae1f0deb34"
+    },
+    "area:node-exit": {
+      "sourceHash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "authoredHelpHash": "b59a1c21743adef1842f00cf0bf3d673f5f13eb6340734d7e016aa3fcb2b3716"
+    },
+    "area:node-handle": {
+      "sourceHash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "authoredHelpHash": "7f7a299a78d83f21fef9d39b04f7291426f8a0e906d67bb65e64b38bd6b064f3"
+    },
+    "area:payload": {
+      "sourceHash": "45364bcf43e4e47358bf9dd021f81c1f95141dcb934aa10ae75ccca4d39add33",
+      "authoredHelpHash": "5f9398a60258e29541e5d0c407c5ed823cae80bb77f34e034f49a79ef74c6703"
+    },
+    "area:payload-cancel": {
+      "sourceHash": "51ff71fac90e873f0fa0f32e9c58e5d9e70e970a9952dbb2e9a6f934241cab7c",
+      "authoredHelpHash": "40ee7eca203e7b5ecab261f6e0508f2db48b1012953b84a900738a759697b5ff"
+    },
+    "area:pool-balance": {
+      "sourceHash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+      "authoredHelpHash": "d4cdee209fd462afbd625c7e01911831d9ce15ec6433af2539fcce0b970d7a41"
+    },
+    "area:pool-validation": {
+      "sourceHash": "8e6b9d2e8ec6ae08600fc9e6bd1ed2f68d160aa36bbf0d5a582451d3c4f9c1ac",
+      "authoredHelpHash": "ef0ac0cdf9ef55b3558132bbd5fc6dace14cf8f9b03de627595f2ae071cb5026"
+    },
+    "area:rpc-balance-entry": {
+      "sourceHash": "f07bffb57ee40502842464c878b5fb536d8c762fc66196d235d8c931eebbdee7",
+      "authoredHelpHash": "ab8b88dbc0228ea75805d79d2bba765219380c7bc80615fde19cdb2d7ddc465c"
+    },
+    "area:rpc-balance-read": {
+      "sourceHash": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012",
+      "authoredHelpHash": "578a5b6dbcd692dd8afdeecd18289982ce45fcb24d76fef3d223168277ae9cfd"
+    },
+    "area:rpc-launch": {
+      "sourceHash": "1f587935df27b9e9b1695425728f7f2e4e6a9e44a136c5e8e18e80e4e140c8ab",
+      "authoredHelpHash": "b4f71d5ee8e3aa542c5cebf5e9da9bff19e172a9af367676593efe83fbedf979"
+    },
+    "area:rpc-recovery": {
+      "sourceHash": "03aefeb423d3fff38a2750477cee38730e61c055dd8802693ef568cc2432cca8",
+      "authoredHelpHash": "7817b223aef25cf78d68ef6a2bff976fe697e80cf32b37682e717ac36391a3ec"
+    },
+    "area:send-nonce": {
+      "sourceHash": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+      "authoredHelpHash": "be98fe5391f1e10527863a74652698f8f223485b7f06b769d50046ac9d2e9590"
+    },
+    "area:send-pool-add": {
+      "sourceHash": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b",
+      "authoredHelpHash": "638bbd7f95a917b3b9cbc2bb8c94e396bb5a7a6711bd9abb66ffb9d2ef50981f"
+    },
+    "area:send-pool-limit": {
+      "sourceHash": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+      "authoredHelpHash": "eb6f735a4fc78f8efbca5c5ca718d5159b4dc6910ecc909b94844374a071d201"
+    },
+    "area:send-receive": {
+      "sourceHash": "f9f435a35e90fa74ec30605228d75d9a7e67135a49c6eec50c3c4f1e3710fef5",
+      "authoredHelpHash": "9c8e8093feae08cdaa7e3d10a73ddb1802d7025cc1dfef8237b8d9820cea8762"
+    },
+    "area:send-stateful": {
+      "sourceHash": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+      "authoredHelpHash": "3faf1d21078a7ed415f359d6dfc0dae92408fa61981bf34d8d079aaf1a1c0dba"
+    },
+    "area:send-stateless": {
+      "sourceHash": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+      "authoredHelpHash": "e4c5b85dec2a37db93fda8f998e448400ee6c8481e40a32feaf7087965e705d6"
+    },
+    "area:send-validation-dispatch": {
+      "sourceHash": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+      "authoredHelpHash": "401789a1de0aef7f7403613fc617e7965116a5ded2ce2f2dcbf46a34b658900e"
+    },
+    "area:send-validation-entry": {
+      "sourceHash": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+      "authoredHelpHash": "32e5243d53dde1b81e2657f0f51d84fbd21bbb6a2b86fd710bfa60225a3740c5"
+    },
+    "area:send-validation-order": {
+      "sourceHash": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+      "authoredHelpHash": "1370b92b5d8ae6d462db8b28ce26636c756d150a6977e7fdc69b90bd693989b3"
+    },
+    "area:send-validation-task": {
+      "sourceHash": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+      "authoredHelpHash": "e333d8494f44f37d4b4810b7028786135a4f86d11616fa5d1f06a7f3a52fc1ad"
+    },
+    "area:send-validation-worker": {
+      "sourceHash": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+      "authoredHelpHash": "5f12b3bf5a31b163c20d26193f130a9329917a6c3b282fbe8d86050485a81b4e"
+    },
+    "area:startup-backfill-events": {
+      "sourceHash": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+      "authoredHelpHash": "bfe436690887822d3ff429b39ce67ae41c6b8ac2ef05a19ea5c9fad9c0a2b49a"
+    },
+    "area:startup-backfill-finished": {
+      "sourceHash": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+      "authoredHelpHash": "bf3fed91d8c87abd5fcdc1e6dc146985289c894233cbc5294d16ce1024123f86"
+    },
+    "area:startup-backfill-gate": {
+      "sourceHash": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+      "authoredHelpHash": "58f37bbec7c4b10302fb437f573d3a70f373e7c57dab4d522e56ec921ca1d7cd"
+    },
+    "area:startup-builder-dispatch": {
+      "sourceHash": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+      "authoredHelpHash": "776c9bfbb3bb3f8a76256187e8f1f2541ad199b928f303bab6e5e3cd55951daa"
+    },
+    "area:startup-builder-launch": {
+      "sourceHash": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+      "authoredHelpHash": "b295de272c766c0d910c311d9463a0e2e0f55f09090cfa992064cd13b2f5a083"
+    },
+    "area:startup-cli-configure": {
+      "sourceHash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "authoredHelpHash": "1b1291f6749a703e96cd22a3419cba5afa8e352f0c8926d20e93f4cd6901545c"
+    },
+    "area:startup-cli-entry": {
+      "sourceHash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "authoredHelpHash": "6048a86e04e75adf904c0cd1861c705d39b0a70f6f34dbe39f1893dc0ec84890"
+    },
+    "area:startup-cli-prepare": {
+      "sourceHash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "authoredHelpHash": "550cf225c3f0cf03dece3b4956796076015c4107e7d5067d9dbace95560ee480"
+    },
+    "area:startup-component-choice": {
+      "sourceHash": "375884d2b503f1246c58a6147123aeafd73ff58a8919dc41fc0946e533c75f0b",
+      "authoredHelpHash": "985739584f79a86e9df1b83f64db989ab077427fcaa962a2f76f8420350f0674"
+    },
+    "area:startup-debug-adapter": {
+      "sourceHash": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+      "authoredHelpHash": "6698fb114fb16af3bb841cc2ff268a832c962e2daa60d0b301b1dcc2a320ea44"
+    },
+    "area:startup-debug-inner": {
+      "sourceHash": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+      "authoredHelpHash": "7426e674a2fdc62c631a4ae8cfe93a2623a070ab941856bc4970c7ed893cd96f"
+    },
+    "area:startup-debug-return": {
+      "sourceHash": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+      "authoredHelpHash": "5e13df4dd0bed0f83497da37d03f0a61dd9b930bba3d251718a8999e4a913665"
+    },
+    "area:startup-engine-build": {
+      "sourceHash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+      "authoredHelpHash": "d01048d1d660be3feee82847edbe94f90938925bd8d39f8dbeda64282518286a"
+    },
+    "area:startup-engine-channel": {
+      "sourceHash": "7b6266b0f75f515c7f4bd1dbd24d679aa590bb3943e1b69497395a42ed13f636",
+      "authoredHelpHash": "e516605fc6a43a919b82e6bcb4461b3e3c8f506fa4d883c94ce71cc049cb8bb1"
+    },
+    "area:startup-engine-dispatch": {
+      "sourceHash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "authoredHelpHash": "e881db9760afe842d3cc784bdcb4610b383c1999e73f5056e42ef998af7f13d8"
+    },
+    "area:startup-engine-poll": {
+      "sourceHash": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+      "authoredHelpHash": "76fd746e6b4c94f0b68c8400de76fa412fa419b23b1862e14bec7043328ae00f"
+    },
+    "area:startup-launcher-entry": {
+      "sourceHash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "authoredHelpHash": "cd8dfb033d78ebab00b3f3aef126ccdee3532c1ce7f57bf36b8fda85afbc979c"
+    },
+    "area:startup-network-builder": {
+      "sourceHash": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+      "authoredHelpHash": "52bf6077aae38df6f7df3c6311a88481a394ae142cd67b1b8b394838e2bedc2c"
+    },
+    "area:startup-network-start": {
+      "sourceHash": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+      "authoredHelpHash": "0aa30856875efd7cd73f3aab0fc429f9623acc270dbf6f851f715ea2dcdca82e"
+    },
+    "area:startup-node-components": {
+      "sourceHash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "authoredHelpHash": "f5551759b4bb7cbd2ff19bc67e8c7babd536e05d5c23d0959daacd00e282a6ba"
+    },
+    "area:startup-node-selection": {
+      "sourceHash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "authoredHelpHash": "c9812894b4df19238bbdeb968aad15845f179721a62e298308987e57dba36260"
+    },
+    "area:startup-node-wait": {
+      "sourceHash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "authoredHelpHash": "4fdf9df6af25d874c348c26b119d45d7aa60b64725a3bcef2c76e54d3c443b4c"
+    },
+    "area:startup-orchestrator-poll": {
+      "sourceHash": "4ae9eb17486289bd32ed5db4b016addcc4b5100b6548518908ac5af93d3d9d4f",
+      "authoredHelpHash": "e5c4a47bfb5355f41d2dca6b810ec27b38a6360066b601d3b08fbe61151d6889"
+    },
+    "area:startup-payload-spawn": {
+      "sourceHash": "855d512d773954cfd06c403f540f77d6dc790ba55cd22b97134a362072680fdd",
+      "authoredHelpHash": "c0062b3ecebd2c7d53d0530aea0891bd89c7bef23a4bdbd0203b27b42fa3b731"
+    },
+    "area:startup-tree-pressure": {
+      "sourceHash": "e538ae5ba22df639ddfab6f3f9c65f6f89b2961a77139d12ddfdac99d04d2588",
+      "authoredHelpHash": "085948e7819bd6d86f8800d69f05baade626040dec16497f99746882564b1ea1"
+    },
+    "area:startup-tree-spawn": {
+      "sourceHash": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+      "authoredHelpHash": "a7a68cffb30cc644c3a9c3510d9f9c7911c9cb74ea19f64f9b758cc99f83edfb"
+    },
+    "area:startup-tree-wait": {
+      "sourceHash": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80",
+      "authoredHelpHash": "83aa7ded1e39abc54781c8178fb3c162a1c2d871ae377f7a593540eb41d618c2"
+    },
+    "area:storage": {
+      "sourceHash": "8ed93abedc6226be38c12f9bcfe98931d303a7a686637031e668236af8b06d62",
+      "authoredHelpHash": "f818640027271c8059b4cd1e73bbe86670ff06b01677e32362aa0373191db4d6"
+    },
+    "area:storage-account": {
+      "sourceHash": "6ef8fd3d3c9f1d215d3ad00ad86b0bf602aa20098b5031c67818b6642c8f5327",
+      "authoredHelpHash": "65ad0551aae15d65de1e22508a3e0619e49ad22743d01700b31644c8a18e1b9a"
+    },
+    "area:sync": {
+      "sourceHash": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a",
+      "authoredHelpHash": "3c4887a410b4d4a2e12ea1821184e2a3d72420a7eb08234c489742d358a89e45"
+    },
+    "area:sync-unwind": {
+      "sourceHash": "8c38b504093ea8e6b3e42301b29889f9f7be0d99191d86ae8deb2f710088b4d4",
+      "authoredHelpHash": "f6d2b100549a54f30e5adb6b198c34aa3f86ee5a59ca8e388165f28b8c0c74b7"
+    },
+    "startup:backfill": {
+      "sourceHash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "authoredHelpHash": "28d4331cb4a0b998aa6e6b2a80be27df9b4df5b23a563dee2b2d9a59321bda8c"
+    },
+    "startup:components": {
+      "sourceHash": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+      "authoredHelpHash": "951e8bb2cd86469932e38d2032f1c875f0766332995c52cddf29f947a07a762c"
+    },
+    "startup:context": {
+      "sourceHash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "authoredHelpHash": "2f8f52884e16796ba49a0e9bf5d891f283a8c93a1702694df9bc273969a3f044"
+    },
+    "startup:database": {
+      "sourceHash": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+      "authoredHelpHash": "8d73f260178d696e1f47a83b77c4d195789f7779e24aa2075f28a32f7bfc9771"
+    },
+    "startup:dispatch": {
+      "sourceHash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "authoredHelpHash": "8d0212f941d6051da84e4b167dcd2ef8d6e8b91592ea72d3869c416b103cd864"
+    },
+    "startup:entry": {
+      "sourceHash": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+      "authoredHelpHash": "6e0a432cf931a1b9ee19953deb02444abf147c87c480526610ba15196436af22"
+    },
+    "startup:network": {
+      "sourceHash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+      "authoredHelpHash": "2e2585dc99029b63338f6dfc706004c8e3ead157a5b2802033e5265669144906"
+    },
+    "startup:orchestrator": {
+      "sourceHash": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692",
+      "authoredHelpHash": "a9bb30b457aa04814f39412cdde83e63b8b7cec0fd102f2497acdf777dab53cb"
+    },
+    "startup:services": {
+      "sourceHash": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d",
+      "authoredHelpHash": "27175a98ba04c5312b88f1eeb7f2683623dfc9d92ec4c8b668cffc4630835600"
+    },
+    "startup:supervisor": {
+      "sourceHash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "authoredHelpHash": "48f8ee208b085b8c6557dea56b421505c20ce302cf951ed24253efb5d6d986e5"
+    },
+    "startup:tree": {
+      "sourceHash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+      "authoredHelpHash": "6591f08a2439fd65b6458b2c7cd7f3ba86f87459f503c83912ab608150b4e6c8"
+    },
+    "tx:batch": {
+      "sourceHash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "authoredHelpHash": "70931eedb2ce90aa024ec86312759911c3122422790a6fdcc4b320557846b04a"
+    },
+    "tx:batch-runner": {
+      "sourceHash": "6119bd9e97d7e63e3e48b49ed38468cf0648fb3c8b45e8c906e2f764380291f7",
+      "authoredHelpHash": "1626fbfa3d4b006a0111a3afe279204c6ab9e0cb12bdc0bea299df749ce20b2f"
+    },
+    "tx:forward": {
+      "sourceHash": "17d1ea7cc58e3ebd06e114620b397fb1cccc2fe0c1620fc0d7acca0ae7f862ff",
+      "authoredHelpHash": "8cd41f974e785947764aaa9bf3b7d6c9c4c0f39428e7e471a66ca78349cf5f69"
+    },
+    "tx:pool": {
+      "sourceHash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "authoredHelpHash": "cbe82eb409e399b77e8f1f3c4a93b7156a89a112f07335979e289c993284b7e2"
+    },
+    "tx:pool-test": {
+      "sourceHash": "69cfe4e334cae1d378c4674ddbd8d62624fd27b1446b9789caaa78c3d827a755",
+      "authoredHelpHash": "59dae3df775620c961e2d04ec0bc4679669a9920688e28092a75cd4950165266"
+    },
+    "tx:queue": {
+      "sourceHash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "authoredHelpHash": "eb61a93040103738c70717fd48af0968145e9802239e1a2cb3da4ce78221babd"
+    },
+    "tx:recover": {
+      "sourceHash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+      "authoredHelpHash": "8953bccc57ed61f15a587bb2a54ebef62c7d019268c245f867b81fac6a75467a"
+    },
+    "tx:recovery-hook": {
+      "sourceHash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+      "authoredHelpHash": "531fe403d5101090ad9caef58f58b93c2fd6127f39b102ed081c57939d8a947f"
+    },
+    "tx:rpc": {
+      "sourceHash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f",
+      "authoredHelpHash": "57eb03aa0d7c6c567f7456102eb4406b7383d66ed525ffa79f1f506b69d0c454"
+    },
+    "tx:rpc-contract": {
+      "sourceHash": "0d5c59ce83e07e6461ea6fbdcf270c3df5b9f16155958cf47f2f483634574dd5",
+      "authoredHelpHash": "567932bc3d09fa035c03ddb6e8250288f574a2578491562e7d0ec6b7068c279a"
+    },
+    "tx:submit": {
+      "sourceHash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+      "authoredHelpHash": "bf6ebf47da991c9d0fa9b3e04a06ea75c451ce520fcf60a9eac4415ad96a52c4"
+    },
+    "tx:trait-contract": {
+      "sourceHash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a",
+      "authoredHelpHash": "cf1f9b6aabba70d75dbb4e8220ec1be60366065c6f16f027c8557f879f37d1c6"
+    },
+    "tx:trait-implementation": {
+      "sourceHash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd",
+      "authoredHelpHash": "ce0180e9746dd66ec9f2c3176f72132ead816dfb167d357fd905aaa9eb8bedd0"
+    }
+  },
+  "rustTopics": {
+    "borrow": "b96b6763ec6f06a7c600058f413b5d0bae179471aa80f0b342b774e64f0dbdc7",
+    "future": "15e1ef621e3a3d32645b76a63c32dbf1c1bade54aedc9cbc836284ba8ef1d106",
+    "result": "a31db187587bb0bb1fdad2709b7f19ed4aa4b8d2345f8061a8d10a7d2335891e",
+    "trait": "9032b6029d2201066b53b0b950c3638cee204a069781184fe5e9c32db62c48ab",
+    "channel": "96f83e7fda6c8c4789ca9e0204d335d65504584bfd397805576908cdc7766a3e"
+  },
+  "legacyDetails": {
+    "rpc-contract": "2a3f8c172f401326d0025d9cbdccb62e75309350fc820038637d7dd4bc33f72e",
+    "recovery-hook": "fb2cb9030cd179277e41e8a6c6381a538c7eb7abf60b8f0b6197b45b828a0660",
+    "forward": "6207119fb295629b3bef38fe8a4034b8bc631d0bd55fdf96f15e09b667c98002",
+    "batch-runner": "daa346c8af7c7178fbe2fff1e0b5525a019a9d3b6348c61b19e3475664addb7e",
+    "pool-test": "274f32313b66652824a198c699a4c0171afbf15cb980a824f995bf5ae83bdba4"
+  },
+  "reviewStatus": "PROPOSED combined source/data + root/C UI content boundary; independent review required",
+  "sourceReviewProvenance": "Pinned bytes and purpose-specific authoring are checked mechanically; no source-meaning, consumer-fit or display approval is inferred"
+}

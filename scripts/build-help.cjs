@@ -1,6 +1,7 @@
 // Build source-backed hints from the same pinned Git objects as the reading guides.
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto');
 const {buildRouteRegistry}=require('./reading-route-registry.cjs');
+const {deriveRustTopics,deriveLegacyDetails,productionFiles,discoverConsumerSites,readReviewInputs,verifyConsumerInventory}=require('./reading-consumer-inventory.cjs');
 const root=path.resolve(__dirname,'..');const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const target=JSON.parse(read('reading-target.json')),authored=JSON.parse(read('ui/reading-help-content.json')),guide=JSON.parse(read('local-app/startup-guide.json')),ctx={window:{}};
 vm.runInNewContext(read('dist/reth-data.js'),ctx);
@@ -87,7 +88,16 @@ for(const [i,rows] of startupSequences.entries()){
 }
 const areaReadings=JSON.parse(read('ui/area-readings.json'));
 for(const row of areaReadings)for(const [part,label] of [[row,row.area],[row.followup,row.area+':followup']])if(part?.readings)validatePath({goal:part.question,scope:part.boundary,readings:part.readings},'area:'+label);
-const routeRegistry=buildRouteRegistry({commit:target.commit,contexts,lessonLinks,journeyLinks,fileRoleLinks,componentLinks,operationLinks,areaReadings,guide});
-const output='window.READING_HELP_DATA = '+JSON.stringify({commit:target.commit,version:target.version,terms:authored.terms,contexts,sourceOwners,lessonLinks,journeyLinks,fileRoleLinks,componentLinks,operationLinks,areaReadings,routeRegistry})+';\n';
+// A non-call relation must be anchored at both fixed sources and must not
+// promise that the peer is already mounted by every possible consumer.
+for(const [id,c]of Object.entries(contexts))for(const relation of c.relatedReadings||[]){
+ const targetContext=contexts[relation.context];if(!targetContext||relation.relationship!=='related-source'||!relation.title?.trim()||!relation.purpose?.trim())throw Error('Invalid related reading: '+id);
+ for(const [side,context]of [['from',c],['to',targetContext]]){const anchor=relation.evidence?.[side];if(!anchor||anchor.line<context.source.start||anchor.line>context.source.end||!context.source.code.split('\n')[anchor.line-context.source.start].includes(anchor.match))throw Error('Related reading anchor differs: '+id+'/'+side);}
+}
+const rustTopics=deriveRustTopics({script:read('local-app/public/lenses.js'),contexts,commit:target.commit});
+const legacyDetails=deriveLegacyDetails({pack:ctx.window.RETH_PACK,contexts,commit:target.commit});
+const routeRegistry=buildRouteRegistry({commit:target.commit,contexts,lessonLinks,journeyLinks,fileRoleLinks,componentLinks,operationLinks,areaReadings,guide,rustTopics,legacyDetails});
+const sites=discoverConsumerSites(productionFiles(root)),consumerInventory=verifyConsumerInventory({contexts,rustTopics,legacyDetails,sites,baseline:JSON.parse(read('ui/reading-consumer-sites.json')),registry:routeRegistry,reviewInputs:readReviewInputs(root)});
+const output='window.READING_HELP_DATA = '+JSON.stringify({commit:target.commit,version:target.version,terms:authored.terms,contexts,sourceOwners,lessonLinks,journeyLinks,fileRoleLinks,componentLinks,operationLinks,areaReadings,routeRegistry,rustTopics,legacyDetails,consumerInventory})+';\n';
 for(const dir of ['dist','local-app/public'])fs.writeFileSync(path.join(root,dir,'reading-help-data.js'),output);
 console.log(`Built ${Object.keys(contexts).length} contexts with ${Object.values(contexts).reduce((n,c)=>n+c.lines.length,0)} source-checked line hints; ${lessonLinks.reduce((n,l)=>n+l.readings.length,0)} lesson reading stages; ${journeyLinks.reduce((n,j)=>n+j.readings.length,0)} journey stages`);

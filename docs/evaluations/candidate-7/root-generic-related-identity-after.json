@@ -1,0 +1,18 @@
+{
+  "focus": "<summary>実コードをこの場で確かめる：traitが求める操作と既定の処理を読む <span>L65–79</span></summary>",
+  "hosts": [
+    {
+      "backHidden": true,
+      "id": "tx:trait-contract",
+      "selected": [
+        65
+      ]
+    },
+    {
+      "backHidden": true,
+      "id": "tx:recover",
+      "selected": []
+    }
+  ],
+  "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=65&end=79"
+}

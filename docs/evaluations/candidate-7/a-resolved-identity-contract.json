@@ -1,0 +1,52 @@
+{
+  "candidate": 7,
+  "kind": "Actual shared mount function contract with minimal DOM boundary; not real browser back regression",
+  "oldHelperSHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+  "proposedHelperSHA256": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+  "canonicalEditedByReviewer": false,
+  "rows": [
+    {
+      "id": "only-validated-identity-publication-added",
+      "status": "pass"
+    },
+    {
+      "id": "path-line-resolves-and-publishes-only-validated-id",
+      "status": "pass"
+    },
+    {
+      "id": "same-original-markup-and-hints-as-before",
+      "status": "pass",
+      "beforeIdentity": "",
+      "afterIdentity": "tx:trait-contract",
+      "markupHash": "bb10a59de7e17a4304e6f99e9deaf65c1cc0d972f8baf570bd3dea5ca22c78b9"
+    },
+    {
+      "id": "explicit-id-keeps-precedence-over-conflicting-path",
+      "status": "pass"
+    },
+    {
+      "id": "wrong-commit-path-host-hidden-without-guessed-id",
+      "status": "pass"
+    },
+    {
+      "id": "wrong-commit-explicit-host-not-reinterpreted",
+      "status": "pass"
+    },
+    {
+      "id": "unknown-explicit-id-is-not-replaced-by-path-fallback",
+      "status": "pass"
+    },
+    {
+      "id": "unresolved-path-stays-hidden-and-empty",
+      "status": "pass"
+    },
+    {
+      "id": "mounted-node-is-not-reinterpreted-on-later-mount",
+      "status": "pass"
+    }
+  ],
+  "fail": 0,
+  "scope": "Resolved explicit/path-line identity is published only after correct-commit context validation; mounted WeakSet early exit retains preexisting mount-once semantics. File/range navigation adapters must replace source host nodes, as app.js41/files.js169 currently do.",
+  "sourceOrClaimsChanged": false,
+  "backMechanism": "Shared click handler gets origin id from stage or host.dataset.readingHelp, then records trail in nearest navigation scope or parent. This fix supplies the already-validated id; it neither invents a call edge nor changes scope. Actual generic back remains parent browser verification."
+}

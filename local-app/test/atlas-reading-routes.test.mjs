@@ -39,7 +39,7 @@ test('public availability covers every actual consumer, including scalar areas a
  assert.equal(budgetOwners.length,7);for(const r of budgetOwners)assert.equal(ids(r.readings).filter(id=>id==='area:network-budget').length,1,r.id);
 });
 
-test('file availability means exact source ranges, not the legacy tour or whole-file explanation',()=>{
+test('file availability includes generic contexts but never implies whole-file explanation',()=>{
  const consumerIds=new Set(registry.routes.flatMap(r=>ids(r.readings)));
  assert.deepEqual(Object.keys(registry.files).sort(),[...new Set([...consumerIds].map(id=>help.contexts[id].source.path))].sort());
  for(const [path,file] of Object.entries(registry.files)){
@@ -49,9 +49,8 @@ test('file availability means exact source ranges, not the legacy tour or whole-
  }
  assert.ok(registry.files['crates/net/network/src/budget.rs'],'new non-tour support must be discoverable');
  assert.ok(registry.files['bin/reth/src/main.rs'],'startup must be discoverable');
- for(const id of ['area:pool-validation','area:rpc-recovery'])assert.ok(!Object.values(registry.files).some(f=>f.contexts.includes(id)),id+' is not an authored current route and must not become an Atlas choice');
- const unused=buildRouteRegistry({...help,guide,contexts:{...help.contexts,'area:unbound':{source:{path:'crates/unreviewed/src/fragment.rs',start:1,end:5},title:'kept old fragment'}}});
- assert.ok(!unused.files['crates/unreviewed/src/fragment.rs'],'an unbound old fragment cannot make a new file look explained');
+ for(const [id,c]of Object.entries(help.contexts))assert.ok(registry.files[c.source.path].contexts.includes(id),'generic source consumer '+id);
+ assert.throws(()=>buildRouteRegistry({...help,guide,contexts:{...help.contexts,'area:invalid':{source:{path:'crates/unreviewed/src/fragment.rs',start:1,end:5},title:'invalid descriptor'}}}),/Invalid source descriptor/);
  assert.doesNotMatch(atlasScript,/const explained=new Set\(annotations/);
  assert.doesNotMatch(atlasScript,/送信経路の抜粋あり|送信経路の抜粋解説なし/);
  assert.match(atlasScript,/全ファイル・全関数の解説数ではありません/);
@@ -70,13 +69,19 @@ function app({late=false,fetcher=()=>new Promise(()=>{}),path='bin/reth/src/main
   const listeners=new Map(),el={id,innerHTML:'',textContent:'',value:'',hidden:false,open:false,disabled:false,checked:false,dataset:{},style:{},classList:{toggle(){},add(){},remove(){}},
    addEventListener(type,fn){listeners.set(type,[...(listeners.get(type)||[]),fn]);},
    emit(type,event={}){for(const fn of listeners.get(type)||[])fn({target:el,...event});},
-   showModal(){el.open=true;},close(){el.open=false;el.emit('close');},focus(){},scrollIntoView(){},querySelectorAll(){return [];},querySelector(selector){return selector==='summary'?node(id+'-summary'):null;}
+   showModal(){el.open=true;},close(){el.open=false;el.emit('close');},scrollTop:0,focused:false,focus(options){el.focused=true;el.focusOptions=options;},scrollIntoView(){el.scrolledIntoView=true;},getBoundingClientRect(){return {top:Number(el.dataset.sourceLine||0)*18,height:18};},querySelectorAll(selector){
+    if(selector!=='[data-reading-help]')return [];
+    // Parse actual shared-renderer markup at the DOM boundary. Do not mock
+    // source-range coverage or the Atlas selection decision itself.
+    return [...el.innerHTML.matchAll(/data-reading-help="([^"]*)"/g)].map(match=>({getAttribute(name){return name==='data-reading-help'?match[1]:null;},dataset:{readingHelp:match[1]}}));
+   },querySelector(selector){if(selector==='summary')return node(id+'-summary');const n=selector.match(/^\[data-source-line="(\d+)"\]$/)?.[1];return n?sourceRows().find(row=>row.dataset.sourceLine===n)||null:null;}
   };elements.set(id,el);return el;
  };
+ const sourceRows=()=>[...node('source-lines').innerHTML.matchAll(/data-source-line="(\d+)"/g)].map(match=>{const row=node('raw-row-'+match[1]);row.dataset.sourceLine=match[1];return row;});
  const api={...realApi,mount(el){mounts.push(el.innerHTML);},focusContext(id,line){mounts.push({focus:id,line});}};
  Object.assign(context,{URLSearchParams,AbortController,location:{search:'',pathname:'/explore.html'},setTimeout:()=>1,clearTimeout(){},fetch:fetcher,
   localStorage:{getItem(){return null;},setItem(k,v){writes.push([k,v]);}},
-  document:{getElementById:node,querySelectorAll(){return [];},addEventListener(type,fn){events.set(type,[...(events.get(type)||[]),fn]);}},
+  document:{getElementById:node,querySelectorAll(selector){return selector==='[data-source-line]'?sourceRows():[];},addEventListener(type,fn){events.set(type,[...(events.get(type)||[]),fn]);}},
   addEventListener(type,fn){windowEvents.set(type,[...(windowEvents.get(type)||[]),fn]);}
  });
  if(!late)context.ReadingHelp=api;
@@ -156,4 +161,70 @@ test('file changes and closing preserve per-file drafts; unrelated files are not
  assert.equal(a.node('reading-question').value,'元ファイルの未保存');
  assert.deepEqual(normal(a.read('source.selection')),[42,42]);
  assert.equal(a.context.location.search,'');
+});
+
+// Append to the real Atlas adapter suite after improving only the fixture's DOM host lookup.
+test('an explicitly requested existing explanation range opens its own original, not the previous role',()=>{
+ const path='crates/rpc/rpc/src/eth/helpers/transaction.rs',a=app({path});
+ a.open([365,365]);
+ assert.equal(a.read('source.choice'),'context|tx:pool-test');
+ assert.match(a.node('atlas-explanation-preview').innerHTML,/data-reading-help="tx:pool-test"/);
+ assert.equal(a.node('source-original').open,false);
+ assert.ok(a.mounts.some(m=>m?.focus==='tx:pool-test'&&m.line===365));
+ a.node('atlas-explanation-picker').value='route|operation:submit';
+ a.node('atlas-explanation-picker').onchange({target:a.node('atlas-explanation-picker')});
+ assert.equal(a.node('source-original').open,true,'a different preview cannot hide the requested test line');
+ a.open([365,365]);
+ assert.equal(a.read('source.choice'),'context|tx:pool-test','an explicit new request overrides a remembered unrelated preview');
+});
+
+test('uncovered points and partially covered ranges keep the original open and explain why',()=>{
+ const path='crates/rpc/rpc/src/eth/helpers/transaction.rs';
+ for(const interval of [[200,200],[110,120]]){
+  const a=app({path});a.open(interval);
+  assert.equal(a.node('source-original').open,true,JSON.stringify(interval));
+  assert.equal(a.node('atlas-selection-status').hidden,false);
+  assert.ok(a.node('atlas-selection-status').textContent.includes('L'+interval[0]+'–L'+interval[1]));
+  assert.deepEqual(normal(a.read('source.selection')),interval);
+ }
+});
+
+test('route focus uses a displayed containing context instead of a smaller unrelated global excerpt',()=>{
+ const path='crates/transaction-pool/src/validate/eth.rs',a=app({path});
+ a.open([592,598]);
+ const picker=a.node('atlas-explanation-picker');picker.value='route|operation:pool';picker.onchange({target:picker});
+ assert.equal(a.node('source-original').open,false);
+ assert.equal(a.node('atlas-selection-status').hidden,true);
+ assert.ok(a.mounts.some(m=>m?.focus==='area:send-stateless'&&m.line===592));
+});
+
+// DOM geometry and row identity are fixture boundaries; coverage and selection
+// transitions remain the real Atlas code.
+test('uncovered initial lines get raw row focus after fetch, and raw clicks refresh coverage without closing it',async()=>{
+ const path='crates/rpc/rpc/src/eth/helpers/transaction.rs',fetcher=()=>Promise.resolve({ok:true,headers:{get(){return null;}},text:async()=>Array.from({length:500},(_,i)=>'line '+(i+1)).join('\n')});
+ const a=app({path,fetcher});await a.open([200,200]);
+ assert.equal(a.node('source-original').open,true);assert.equal(a.node('atlas-selection-status').hidden,false);
+ assert.equal(a.node('raw-row-200').focused,true);assert.ok(a.node('source-lines').scrollTop>0);
+ await a.open([42,42]);assert.equal(a.node('atlas-selection-status').hidden,true);
+ a.node('source-original').emit('click',{target:{closest:()=>a.node('source-original-summary')}});a.node('source-original').open=true;
+ a.node('raw-row-10').onclick({shiftKey:false});assert.deepEqual(normal(a.read('source.selection')),[10,10]);assert.equal(a.node('atlas-selection-status').hidden,false);assert.equal(a.node('source-original').open,true);
+ a.node('raw-row-42').onclick({shiftKey:false});assert.equal(a.node('atlas-selection-status').hidden,true);assert.equal(a.node('source-original').open,true,'actively used raw code remains open after selecting a covered row');
+});
+
+// Real Atlas adapter regression; consume the registry and shared HTML, not a label stub.
+test('Rust topic/start variants have distinct labels and show the selected starting original',()=>{
+ for(const topic of Object.keys(help.rustTopics)){
+  const variants=registry.routes.filter(r=>r.kind==='rust-topic'&&r.topic===topic);
+  const first=help.contexts[variants[0].readings[0].context].source,a=app({path:first.path});a.open([first.start,first.start]);
+  const picker=a.node('atlas-explanation-picker');
+  const labels=variants.map(r=>{const option=picker.innerHTML.split('value="route|'+r.id+'"')[1];assert.ok(option,r.id);return option.split('>')[1].split('</option')[0];});
+  assert.equal(new Set(labels).size,variants.length,topic+' options must identify different starting points');
+  assert.ok(labels.some(label=>label.includes('テーマ全体')));
+  const variant=variants.find(r=>r.selectedStep&&r.readings[0].context!==variants[0].readings[0].context);
+  assert.ok(variant,topic+' has a non-default starting point');
+  picker.value='route|'+variant.id;picker.onchange({target:picker});
+  assert.match(a.node('atlas-explanation-preview').innerHTML,/最初に読む原文/);
+  assert.equal(a.mounts.at(-1).focus,variant.readings[0].context,variant.id+' manual choice starts at the chosen original');
+  assert.deepEqual(normal(a.read('source.selection')),[first.start,first.start],variant.id+' preserves the original raw selection');
+ }
 });

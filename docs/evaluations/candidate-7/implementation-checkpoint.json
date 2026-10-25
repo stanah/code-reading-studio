@@ -1,0 +1,31 @@
+{
+  "candidate": 7,
+  "status": "implementation-checkpoint-before-full-evaluation",
+  "tests": {
+    "total": 111,
+    "pass": 111,
+    "fail": 0
+  },
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "contexts": 148,
+  "lineHints": 762,
+  "atlasRoutes": 114,
+  "filesWithExcerpts": 61,
+  "totalRustFiles": 1283,
+  "fullyReviewedRustFiles": 2,
+  "all108TwoConsecutivePasses": false,
+  "humanParticipants": 0,
+  "productComplete": false,
+  "pastFailures": "Candidate6 full first diagnostic retained as FAIL; candidate7 preflight and integration failures retained here and local outputs.",
+  "changes": [
+    "Reuse existing Rust source instead of appending a duplicate; source-adjacent return action",
+    "Index generic, legacy and Rust-specific producers, including all topic start variants",
+    "Open uncovered requested line range as original source and preserve unsaved Atlas question",
+    "Include Future Output and early-Pending branch source, precision comments independently checked",
+    "Normalize generic path/line host identity after commit/source validation so return navigation works"
+  ],
+  "limits": [
+    "Source excerpts for61/1283 Rust files do not establish whole-code comprehension",
+    "Unit checks and preflight do not establish full two-round UI gates or human comprehension"
+  ]
+}

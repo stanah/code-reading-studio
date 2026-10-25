@@ -1,0 +1,931 @@
+{
+  "candidate": 7,
+  "revision": 3,
+  "status": "ready-for-corrected-baseline-application-and-integration-ui-evaluation",
+  "statusJapanese": "補正baselineの適用・統合UI評価へ進める",
+  "scope": "Independent source/data/consumer-contract and pure-renderer/actual-adapter VM review of the combined18-file proposal. No canonical application or whole-product UI/human acceptance.",
+  "unionManifestSHA256": "6d72bd67032568ce67c859deed2349a24538e8c6dfb553b3e6d1a579ae6502ae",
+  "pinnedSourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "counts": {
+    "sourceContexts": 148,
+    "pinnedSourceFiles": 61,
+    "lineHints": 762,
+    "unchangedOldLineHints": 746,
+    "editedOldLineHints": 5,
+    "addedLineHints": 11,
+    "registryRoutes": 114,
+    "oldRoutesPreserved": 88,
+    "genericWinningContextWitnesses": 148,
+    "legacyOwners": 5,
+    "legacyPreservedFields": 60,
+    "rustTopics": 5,
+    "rustBaseAndStartVariants": 21,
+    "rustClaims": 31,
+    "unchangedRustClaims": 30,
+    "precisionCorrectedRustClaims": 1,
+    "meaningJsonInputs": 11,
+    "executableFilesReviewedByDigest": 44
+  },
+  "sourceDeltas": [
+    {
+      "context": "area:send-receive",
+      "oldRange": [
+        113,
+        137
+      ],
+      "newRange": [
+        108,
+        137
+      ],
+      "newHash": "f9f435a35e90fa74ec30605228d75d9a7e67135a49c6eec50c3c4f1e3710fef5",
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "oldBodyRetained": true
+    },
+    {
+      "context": "tx:batch-runner",
+      "oldRange": [
+        114,
+        135
+      ],
+      "newRange": [
+        108,
+        136
+      ],
+      "newHash": "6119bd9e97d7e63e3e48b49ed38468cf0648fb3c8b45e8c906e2f764380291f7",
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "oldBodyRetained": true
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "oldRange": [
+        108,
+        124
+      ],
+      "newRange": [
+        78,
+        125
+      ],
+      "newHash": "8b0d2dc92abe5e63a916e94eb6f8d0bdb24da60dd2103626f64087c1088a24bc",
+      "path": "crates/net/network/src/fetch/client.rs",
+      "oldBodyRetained": true
+    }
+  ],
+  "addedHints": [
+    {
+      "context": "area:send-receive",
+      "line": 108,
+      "match": "Future for BatchTxProcessor",
+      "label": "Futureとしての受信担当",
+      "explanation": "BatchTxProcessorにFutureを実装する宣言です。要求の受信と、追加の仕事を動かすタスクの起動をpollで進めます。"
+    },
+    {
+      "context": "area:send-receive",
+      "line": 112,
+      "match": "type Output = ();",
+      "label": "Futureの完了値の型",
+      "explanation": "このFutureのOutputは()です。そのため次のpollの戻り値はPoll<()>です。型の宣言と、実際に完了を通知することは別で、この範囲の返却箇所はPendingです。"
+    },
+    {
+      "context": "area:send-receive",
+      "line": 114,
+      "match": "fn poll",
+      "label": "受信担当を一回進める",
+      "explanation": "実行器から渡されたcxを使って受信をpollします。要求キューを読むことと、その先の追加結果が返ることを分けて追います。"
+    },
+    {
+      "context": "tx:batch-runner",
+      "line": 108,
+      "match": "Future for BatchTxProcessor",
+      "label": "Futureとしての受信担当",
+      "explanation": "BatchTxProcessorにFutureを実装する宣言です。要求の受信と、追加の仕事を動かすタスクの起動をpollで進めます。"
+    },
+    {
+      "context": "tx:batch-runner",
+      "line": 112,
+      "match": "type Output = ();",
+      "label": "Futureの完了値の型",
+      "explanation": "このFutureのOutputは()です。そのため次のpollの戻り値はPoll<()>です。型の宣言と、実際に完了を通知することは別で、この範囲の返却箇所はPendingです。"
+    },
+    {
+      "context": "tx:batch-runner",
+      "line": 114,
+      "match": "fn poll",
+      "label": "受信担当を一回進める",
+      "explanation": "実行器から渡されたcxを使って受信をpollします。要求キューを読むことと、その先の追加結果が返ることを分けて追います。"
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "line": 78,
+      "match": "type FetchClientFuture<T>",
+      "label": "二つの形を取る取得結果待ちの型",
+      "explanation": "FetchClientFuture<T>は、FlattenedResponse<T>かfuture::Ready<T>のどちらかを持つEitherの別名です。下の実装はこの型の値を返し、その場でネットワークの本文列を返すわけではありません。"
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "line": 80,
+      "match": "HeadersClient for FetchClient",
+      "label": "ヘッダー取得との比較",
+      "explanation": "ここからL101まではHeadersClientの実装です。型と返答の形を比較するために掲載しています。今回の本文取得は、後のBodiesClientの別実装で読みます。"
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "line": 103,
+      "match": "BodiesClient for FetchClient",
+      "label": "本文取得の実装を選ぶ",
+      "explanation": "ここが今回の本文取得を実装する範囲です。前のHeadersClientの関数から、この関数へ順に実行が続くという関係ではありません。"
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "line": 105,
+      "match": "type Output = FetchClientFuture",
+      "label": "本文取得の返り値の型",
+      "explanation": "この実装のOutputは、本文列の取得結果を運ぶFetchClientFutureです。L108の関数は、同じページのL78で定義したFutureのどちらかの形を返します。"
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "line": 108,
+      "match": "fn get_block_bodies_with_priority_and_range_hint",
+      "label": "取得要求を出してFutureを返す",
+      "explanation": "ハッシュの列、優先度、任意の範囲ヒントを受け取り、Self::Outputを返します。この関数はasyncではなく、返したFutureを進めて結果を受け取るのは呼び出し元です。"
+    }
+  ],
+  "editedHints": [
+    {
+      "context": "area:send-receive",
+      "before": {
+        "line": 119,
+        "match": "request_rx.poll_recv_many",
+        "label": "キューから届いた依頼を取り出す",
+        "explanation": "送信側のtx_batch_senderが送った依頼を、受信側のrequest_rxで取り出します。まだ届かない場合はready!で実行を譲ります。"
+      },
+      "after": {
+        "line": 119,
+        "match": "request_rx.poll_recv_many",
+        "label": "キューから届いた依頼を取り出す",
+        "explanation": "受信をpollし、結果がPendingならstd::task::ready!がこの行でpoll全体からPendingを返します。その場合は下のL121やL133へ進みません。Readyなら取得した件数を取り出し、bufを調べる処理へ続きます。"
+      }
+    },
+    {
+      "context": "area:send-receive",
+      "before": {
+        "line": 133,
+        "match": "return Poll::Pending",
+        "label": "次の入力まで待つ",
+        "explanation": "今すぐ進める依頼がなければPendingを返します。プール追加の成功を返す行ではありません。"
+      },
+      "after": {
+        "line": 133,
+        "match": "return Poll::Pending",
+        "label": "次の入力まで待つ",
+        "explanation": "L119の受信操作がReadyだったあと、bufが空でL121の分岐に入らなかった場合のPendingです。L119のready!による早期返却とは別の場所であり、プール追加の成功通知でもありません。"
+      }
+    },
+    {
+      "context": "tx:batch-runner",
+      "before": {
+        "line": 119,
+        "match": "ready!(this.request_rx.poll_recv_many",
+        "label": "依頼をキューから受け取る",
+        "explanation": "追加依頼がなければ待ち、届いたらバッファへ取り出します。"
+      },
+      "after": {
+        "line": 119,
+        "match": "ready!(this.request_rx.poll_recv_many",
+        "label": "依頼をキューから受け取る",
+        "explanation": "受信をpollし、結果がPendingならstd::task::ready!がこの行でpoll全体からPendingを返します。その場合は下のL121やL133へ進みません。Readyなら取得した件数を取り出し、bufを調べる処理へ続きます。"
+      }
+    },
+    {
+      "context": "tx:batch-runner",
+      "before": {
+        "line": 133,
+        "match": "return Poll::Pending",
+        "label": "次の入力まで実行を譲る",
+        "explanation": "今すぐ進める入力がなければPendingを返します。追加成功の通知ではありません。"
+      },
+      "after": {
+        "line": 133,
+        "match": "return Poll::Pending",
+        "label": "次の入力まで実行を譲る",
+        "explanation": "L119の受信操作がReadyだったあと、bufが空でL121の分岐に入らなかった場合のPendingです。L119のready!による早期返却とは別の場所であり、プール追加の成功通知でもありません。"
+      }
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "before": {
+        "line": 122,
+        "match": "Either::Right",
+        "label": "要求を送れない場合はエラーにする",
+        "explanation": "内部経路が閉じている場合はChannelClosedを返します。"
+      },
+      "after": {
+        "line": 122,
+        "match": "Either::Right",
+        "label": "送信失敗を運ぶFutureを返す",
+        "explanation": "要求を内部キューへ送れなかった場合は、ChannelClosedのErrを結果に持つfuture::ReadyをEither::Rightへ入れて返します。この行が返すものもSelf::OutputというFutureであり、取得結果のErrそのものを直接返す関数ではありません。"
+      }
+    }
+  ],
+  "authoredFieldChanges": [
+    {
+      "context": "area:send-receive",
+      "fields": [
+        "lines"
+      ]
+    },
+    {
+      "context": "tx:batch-runner",
+      "fields": [
+        "lines"
+      ]
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "fields": [
+        "intro",
+        "lines",
+        "note"
+      ]
+    },
+    {
+      "context": "tx:trait-contract",
+      "fields": [
+        "relatedReadings",
+        "note"
+      ]
+    },
+    {
+      "context": "tx:trait-implementation",
+      "fields": [
+        "relatedReadings",
+        "note"
+      ]
+    }
+  ],
+  "termsUnchanged": true,
+  "resolutions": [
+    {
+      "id": "A-C7-OUTER-ALIAS-1",
+      "result": "resolved",
+      "evidence": "Whole executable-file digest catches same-file alias mount add/remove; original sites alone remain non-exhaustive."
+    },
+    {
+      "id": "A-C7-ATLAS-SELECTION-2",
+      "result": "resolved-at-pure-VM-boundary",
+      "evidence": "Actual raw row callbacks refresh coverage warning; manual raw remains open, selection/draft persists; raw scroll/focus API called after uncovered fetch."
+    },
+    {
+      "id": "A-C7-LEGACY-TYPE-3",
+      "result": "resolved",
+      "evidence": "batch-runner108–136 now includes impl Future, type Output=(), whole poll and impl closing brace; original legacy Poll<()> field remains exact. Related canonical receiver108–137 likewise closed."
+    },
+    {
+      "id": "A-C7-OUTER-SUFFIX-4",
+      "result": "resolved",
+      "evidence": "No filename suffix exemption; unknown executable course-data.js is discovered and requires review. Pure strict JSON payload still hashed except self-generated help decomposition."
+    },
+    {
+      "id": "A-C7-RUST-WAIT-5",
+      "result": "resolved",
+      "evidence": "Generic comments and one Future support claim distinguish L119 ready! Pending early return from L133 Pending after Ready and empty buffer.",
+      "officialContract": "https://doc.rust-lang.org/std/task/macro.ready.html"
+    },
+    {
+      "id": "A-C7-PURPOSE-DATA-6",
+      "result": "resolved",
+      "evidence": "All114 route payloads,11 meaningful authoring JSON hashes and non-self pure metadata payload hashes bind purpose/body changes; mutation negative rejects same-source goal/purpose rewrite."
+    },
+    {
+      "id": "A-C7-RUST-LABEL-7",
+      "result": "resolved-at-pure-VM-boundary",
+      "evidence": "Five topics/21 route options distinguish theme-wide versus actual starting source; all16 contextual starts focus their first original when covered, explicit uncovered raw interval remains primary."
+    }
+  ],
+  "remainingCounterexamplesInReviewedScope": [],
+  "independentVerification": {
+    "unionHashAndPatchReplay": {
+      "files": 18,
+      "errors": 0,
+      "evidence": "a-union-fidelity-review.json",
+      "scope": "Historical revision2 all18 replay; current revision3 other17 SHA identical and the changed baseline independently replayed to28d84a… (see revision3Correction)."
+    },
+    "freshPinnedSourceBytesAndGenericWitness": {
+      "errors": 0,
+      "evidence": "a-source-consumer-review-2.json"
+    },
+    "combinedPreparedTests": {
+      "pass": 46,
+      "fail": 0,
+      "evidence": "a-review2-combined-tests.log"
+    },
+    "actualAtlasAdapterPlusIndependentCases": {
+      "pass": 17,
+      "fail": 0,
+      "evidence": "a-review2-atlas-independent.log",
+      "limits": "13 shared adapter cases are repeated from combined46; four A additions test all21 starts and raw priority. Do not add duplicated cases as unique total."
+    },
+    "independentOuterNegatives": {
+      "cases": 8,
+      "errors": 0,
+      "evidence": "a-review2-negative-checks.json"
+    },
+    "guideBack": "a-guide-back-review.json"
+  },
+  "semanticBasis": {
+    "newSourceDeclarations": "Independently read pinned batcher108–137 and fetch/client78–125; Output type, Pending paths, Future return versus eventual result and Headers/Bodies related comparison distinguishable.",
+    "legacy": "Compared every original12 field on all5 details against C6 pack: exact unchanged60 fields, typed renderer emits all including language/TS/doc. Expanded source closes Future output type.",
+    "rust": "All5 Japanese/TS lessons retained; original30 purpose-specific line claims unchanged. One Future support claim precisely corrects119/133, not generic substitution. Typed markup carries topic and emits correct per-line claims.",
+    "related": "trait-contract→recover and concrete impl→submit are same enclosing trait/impl members, explicitly related-source, not runtime call edges. Pinned ranges65–109/21–114 reread.",
+    "originals": "All148 compiled source descriptors fresh verified against fixed Git; three expansions include every old byte and add only pinned surrounding declarations. Other145 sources and other fields retain exact source data.",
+    "consumer": "All148 have concrete winning forSource witness line and index entry; old88 routes remain, explicit legacy5/Rust21 are retained as typed purposes. Original C6 unused6 assertion is corrected, not repeated."
+  },
+  "priorFailuresRetained": [
+    "source-review-initial.json",
+    "a-before-review-findings.json",
+    "a-atlas-selection-attempt-1.log",
+    "proposal/history/review-1/owned-proposal-manifest.json",
+    "../candidate-6/a-registry-exclusion-diagnosis.json"
+  ],
+  "limits": [
+    "No C7 frozen browser/full-surface evaluation performed by this review. VM focus calls do not prove actual viewport position.",
+    "No new human understanding evidence; no claim of fully explaining1283 Rust files.",
+    "No fresh semantic recertification of all148 old contexts. Exact preserved old evidence is carried; changed source3/related2/Rust wait1 and new consumer payloads reviewed explicitly.",
+    "Conservative textual discovery plus full content hash is change detection, not whole-program semantic analysis or automatic approval.",
+    "After applying, regenerate all derived copies/asset revisions/CSP, verify reproducibility and served bytes, then evaluate all114routes/61files and108units in one fixed version for two rounds.",
+    "C6 FAIL/R2 not-measured remain separate; this status does not overwrite earlier failures or grant whole-product acceptance."
+  ],
+  "recordedAt": "2026-10-25T17:46:20.266980+00:00",
+  "instrumentationNote": "Hint diff keys use(line,match), because tx:rpc has two distinct comments onL923. The line-only initial count artifact is preserved separately and is not a product change.",
+  "removedHints": [],
+  "all18ProposedSHA256": {
+    "ui/reading-help.js": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+    "ui/studio.css": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+    "dist/atlas.js": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+    "dist/explore.html": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+    "local-app/public/lenses.js": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+    "local-app/public/startup.js": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+    "local-app/public/guide-reading.js": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+    "local-app/test/explanation-surfaces.test.mjs": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+    "local-app/test/guide-g4.test.mjs": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+    "scripts/reading-route-registry.cjs": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+    "scripts/build-help.cjs": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+    "scripts/reading-consumer-inventory.cjs": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+    "ui/reading-help-content.json": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+    "ui/reading-consumer-sites.json": "28d84a2a188549740f4a70d7c60c2729a432b1d1920cd56ae033faa17ce460d9",
+    "ui/area-source-excerpts.json": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+    "dist/reth-data.js": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+    "local-app/test/reading-consumer-inventory.test.mjs": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+    "local-app/test/atlas-reading-routes.test.mjs": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a"
+  },
+  "canonicalRuntimeEditedByReviewer": false,
+  "canonicalState": "Parent applied reviewed18 files; stopped at guard rejection of old isolated template fingerprint. Reviewer reads only; new baseline pending parent application.",
+  "previousUnionManifestSHA256": "1167ebbd2ba8a9112070f482659a5301eed1a75196e2c53770091b533e12de81",
+  "revision3All18Comparison": [
+    {
+      "path": "ui/reading-help.js",
+      "review2SHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "review3SHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "ui/studio.css",
+      "review2SHA256": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "review3SHA256": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "dist/atlas.js",
+      "review2SHA256": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "review3SHA256": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "dist/explore.html",
+      "review2SHA256": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "review3SHA256": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/public/lenses.js",
+      "review2SHA256": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "review3SHA256": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/public/startup.js",
+      "review2SHA256": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "review3SHA256": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/public/guide-reading.js",
+      "review2SHA256": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "review3SHA256": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/test/explanation-surfaces.test.mjs",
+      "review2SHA256": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "review3SHA256": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/test/guide-g4.test.mjs",
+      "review2SHA256": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "review3SHA256": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "scripts/reading-route-registry.cjs",
+      "review2SHA256": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "review3SHA256": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "scripts/build-help.cjs",
+      "review2SHA256": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "review3SHA256": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "scripts/reading-consumer-inventory.cjs",
+      "review2SHA256": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "review3SHA256": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "ui/reading-help-content.json",
+      "review2SHA256": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "review3SHA256": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "ui/reading-consumer-sites.json",
+      "review2SHA256": "2b58d246449f776e4f6eba5f9e430045565eaa5221c5bec8baae33e77572fedb",
+      "review3SHA256": "28d84a2a188549740f4a70d7c60c2729a432b1d1920cd56ae033faa17ce460d9",
+      "manifestMatches": true,
+      "changed": true
+    },
+    {
+      "path": "ui/area-source-excerpts.json",
+      "review2SHA256": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "review3SHA256": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "dist/reth-data.js",
+      "review2SHA256": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "review3SHA256": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/test/reading-consumer-inventory.test.mjs",
+      "review2SHA256": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "review3SHA256": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/test/atlas-reading-routes.test.mjs",
+      "review2SHA256": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "review3SHA256": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "manifestMatches": true,
+      "changed": false
+    }
+  ],
+  "revision3Correction": {
+    "changedPayload": "ui/reading-consumer-sites.json",
+    "oldSHA256": "2b58d246449f776e4f6eba5f9e430045565eaa5221c5bec8baae33e77572fedb",
+    "newSHA256": "28d84a2a188549740f4a70d7c60c2729a432b1d1920cd56ae033faa17ce460d9",
+    "boundaryChanges": [
+      {
+        "field": "fileDigests",
+        "keys": [
+          "ui/learning-page.html"
+        ]
+      }
+    ],
+    "canonicalTemplateSHA256": "a10cb35a875827f58685770949ef2fe8ef65a789204cc72980413f0a9c13c7a0",
+    "templateMatchesOriginalGitBlob": true,
+    "guardReadOnlyResult": {
+      "kind": "mechanical-consumer-closure-only",
+      "sites": 458,
+      "genericContexts": 148,
+      "legacyOwners": 5,
+      "rustTopics": 5,
+      "rustVariants": 16,
+      "reviewInputs": 11,
+      "semantic": "not-approved-by-this-check",
+      "displayEquivalence": "not-measured"
+    },
+    "baselinePatchReplaySHA256": "28d84a2a188549740f4a70d7c60c2729a432b1d1920cd56ae033faa17ce460d9",
+    "other17PayloadsUnchanged": true,
+    "normalFullGeneration": {
+      "all4CommandsExit0": true,
+      "htmlJsByteChanges": [],
+      "secondFullTreeFiles": 76,
+      "secondFullTreeByteChanges": [],
+      "sourceTemplateUntouched": true,
+      "testsPass": 46
+    },
+    "actualAssetRewriterFunctionFixture": {
+      "cases": 5,
+      "errors": 0,
+      "scope": "Actual finalize function versions served dist/local-app/public/docs HTML only; preserves ui and unknown template tree"
+    },
+    "evidence": [
+      "a-template-boundary-review.json",
+      "a-normal-generation-review.json",
+      "a-full-artifact-fixedpoint-review.json",
+      "a-asset-boundary-review.json",
+      "a-revision3-tests.log"
+    ]
+  },
+  "integrationGuardFailure": {
+    "status": "preserved-and-corrected",
+    "history": "proposal/history/hidden-template-mutation",
+    "reviewMiss": "A verified declared18-file payloads and isolated self-consistency, but did not initially compare all acknowledged executable-file digests to canonical/template provenance. Finalizer mutated an unlisted authoring HTML; V tests were self-consistent with that invalid input.",
+    "guardBehavior": "Canonical build-help rejected the mismatched template digest, parent stopped without bypassing guard or mutating the canonical template.",
+    "prevention": "Independently compare all boundary fingerprints against canonical plus declared derived outputs, not just declared payloads; run ordinary whole-generation from unchanged source templates and prove production/authoring byte equality. No blanket asset rewrite of authoring input trees."
+  },
+  "previousVerificationScopeNote": "Revision2 source/semantics/17 unchanged payloads carry exact hashes; current baseline is a one-key provenance correction, not a source/claim waiver. Revision3 independent normal-generation and read-only canonical guard newly measured.",
+  "revision2HistoricalAll18Files": [
+    {
+      "path": "ui/reading-help.js",
+      "base": "a1c25ee6c4885547703cefd0b8536b6be085d19a588d2817d10034887df954fe",
+      "baseMatches": true,
+      "proposal": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "root"
+    },
+    {
+      "path": "ui/studio.css",
+      "base": "47f6965bf3b0745b20144f0619597a2c7573e306e33a4044bf2577631406638f",
+      "baseMatches": true,
+      "proposal": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "root"
+    },
+    {
+      "path": "dist/atlas.js",
+      "base": "db49356381654f0e2ddc68cc9e9638131bf30c57e5d28f4e57bf466910647371",
+      "baseMatches": true,
+      "proposal": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "root"
+    },
+    {
+      "path": "dist/explore.html",
+      "base": "2210d3928914597f229c50753bdd118d5f6d0e7c5ed1ca789e5732dc38ebdb60",
+      "baseMatches": true,
+      "proposal": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "5e6e0bfd3054c0fba6b9a4ee7d6a95c9a7d32593140f7a61defaa791c268c7fb",
+      "isolatedMatches": true,
+      "assetRevisionOnly": true,
+      "owner": "root"
+    },
+    {
+      "path": "local-app/public/lenses.js",
+      "base": "8ddefc71dbc2a1d9ce91eaf31abcf08ceaa73c988cdf76d92654657a19a70e52",
+      "baseMatches": true,
+      "proposal": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval (merged root UI for lenses.js)"
+    },
+    {
+      "path": "local-app/public/startup.js",
+      "base": "74a66757e462b15d11634e88b7406eaae16e235007097b7c79992dd774beaeb4",
+      "baseMatches": true,
+      "proposal": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "global_review"
+    },
+    {
+      "path": "local-app/public/guide-reading.js",
+      "base": "c4e71c79efd0ef78ab4bd78f4ced32bc6da423844e918749172c108f6ac13f3c",
+      "baseMatches": true,
+      "proposal": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "global_review"
+    },
+    {
+      "path": "local-app/test/explanation-surfaces.test.mjs",
+      "base": "74809ce50a18a812b71f37dd2eddf67bf69becf192b68c8af083c727354bd33e",
+      "baseMatches": true,
+      "proposal": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "global_review"
+    },
+    {
+      "path": "local-app/test/guide-g4.test.mjs",
+      "base": "a1ced4148ee7a69eaabc4d576e18c10ceb7226042d07f62f349a23ff61194fd3",
+      "baseMatches": true,
+      "proposal": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "global_review"
+    },
+    {
+      "path": "scripts/reading-route-registry.cjs",
+      "base": "2ddc1dd7a1973d64c975a063e42e805432bd1e675d0b3033570e8964993123e2",
+      "baseMatches": true,
+      "proposal": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    },
+    {
+      "path": "scripts/build-help.cjs",
+      "base": "27f750b0570ceabb58ac17e9bc49fc1e28b67f84ad17c3414a322c776f7ea761",
+      "baseMatches": true,
+      "proposal": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    },
+    {
+      "path": "scripts/reading-consumer-inventory.cjs",
+      "base": null,
+      "baseMatches": true,
+      "proposal": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    },
+    {
+      "path": "ui/reading-help-content.json",
+      "base": "f181448ca9dfa83c95d92585af7793fe027499fa56851935e00da0da31a92a8d",
+      "baseMatches": true,
+      "proposal": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    },
+    {
+      "path": "ui/reading-consumer-sites.json",
+      "base": null,
+      "baseMatches": true,
+      "proposal": "2b58d246449f776e4f6eba5f9e430045565eaa5221c5bec8baae33e77572fedb",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "2b58d246449f776e4f6eba5f9e430045565eaa5221c5bec8baae33e77572fedb",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    },
+    {
+      "path": "ui/area-source-excerpts.json",
+      "base": "09a058b4e7e031f84c27d789f3c985077f027a7e84c8a54983f203cc6fba47de",
+      "baseMatches": true,
+      "proposal": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    },
+    {
+      "path": "dist/reth-data.js",
+      "base": "42bed01c4dcf9adcd75da8b3d52185493bbb29dbf2f77e2f9a1db292b341e321",
+      "baseMatches": true,
+      "proposal": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    },
+    {
+      "path": "local-app/test/reading-consumer-inventory.test.mjs",
+      "base": null,
+      "baseMatches": true,
+      "proposal": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    },
+    {
+      "path": "local-app/test/atlas-reading-routes.test.mjs",
+      "base": "a1fc8d0d7ebae4950adc6875fe9429fe0f305fc6c0b9c126ca57cbb5a5305fd0",
+      "baseMatches": true,
+      "proposal": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "proposalMatches": true,
+      "patchExit": 0,
+      "patchMatches": true,
+      "isolatedGenerated": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "isolatedMatches": true,
+      "assetRevisionOnly": null,
+      "owner": "beginner_eval"
+    }
+  ],
+  "all18Files": [
+    {
+      "path": "ui/reading-help.js",
+      "review2SHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "review3SHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "ui/studio.css",
+      "review2SHA256": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "review3SHA256": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "dist/atlas.js",
+      "review2SHA256": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "review3SHA256": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "dist/explore.html",
+      "review2SHA256": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "review3SHA256": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/public/lenses.js",
+      "review2SHA256": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "review3SHA256": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/public/startup.js",
+      "review2SHA256": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "review3SHA256": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/public/guide-reading.js",
+      "review2SHA256": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "review3SHA256": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/test/explanation-surfaces.test.mjs",
+      "review2SHA256": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "review3SHA256": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/test/guide-g4.test.mjs",
+      "review2SHA256": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "review3SHA256": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "scripts/reading-route-registry.cjs",
+      "review2SHA256": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "review3SHA256": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "scripts/build-help.cjs",
+      "review2SHA256": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "review3SHA256": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "scripts/reading-consumer-inventory.cjs",
+      "review2SHA256": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "review3SHA256": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "ui/reading-help-content.json",
+      "review2SHA256": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "review3SHA256": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "ui/reading-consumer-sites.json",
+      "review2SHA256": "2b58d246449f776e4f6eba5f9e430045565eaa5221c5bec8baae33e77572fedb",
+      "review3SHA256": "28d84a2a188549740f4a70d7c60c2729a432b1d1920cd56ae033faa17ce460d9",
+      "manifestMatches": true,
+      "changed": true
+    },
+    {
+      "path": "ui/area-source-excerpts.json",
+      "review2SHA256": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "review3SHA256": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "dist/reth-data.js",
+      "review2SHA256": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "review3SHA256": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/test/reading-consumer-inventory.test.mjs",
+      "review2SHA256": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "review3SHA256": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "manifestMatches": true,
+      "changed": false
+    },
+    {
+      "path": "local-app/test/atlas-reading-routes.test.mjs",
+      "review2SHA256": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "review3SHA256": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "manifestMatches": true,
+      "changed": false
+    }
+  ]
+}

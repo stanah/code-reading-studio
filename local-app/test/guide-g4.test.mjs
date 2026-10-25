@@ -42,7 +42,8 @@ test('guide budget original is portable, shared-focusable, and retains its revie
   assert.ok(html.includes('<article id="guide-content" data-reading-navigation-scope="true">'),'all existing guide originals form one call-navigation scope');
   const adapter=await read('../public/guide-reading.js');
   assert.ok(adapter.includes('shell.dataset.readingStage = context'),'adapted shell preserves shared focus');
-  assert.ok(adapter.includes("back.dataset.readingBack = ''"),'existing-source calls have an actual return control');
+  assert.ok(!adapter.includes("back.dataset.readingBack = ''"),'guide shell does not duplicate common source back');
+  assert.match(scope.ReadingHelp.render(id,commit,{openCode:true}),/data-reading-back hidden/,'common source has return before code');
   assert.equal((html.match(/data-guide-context="area:network-budget"/g)||[]).length,1,'one copy after all static producers are rendered');
   const report=inspectGuideG4(html,scope.ReadingHelp,commit);
   assert.equal(report.status,'pass',JSON.stringify(report.issues));

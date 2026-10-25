@@ -19,11 +19,37 @@ const cache=new Map(),drafts=new Map();
 let previewState={choice:null,registry:null,api:null};
 const readingRegistry=()=>window.READING_HELP_DATA?.commit===atlas.commit&&window.READING_HELP_DATA.routeRegistry?.commit===atlas.commit?window.READING_HELP_DATA.routeRegistry:null;
 function rememberDraft(){if(!source.path)return;drafts.set(source.path,{question:$('reading-question').value,selection:source.selection?[...source.selection]:null,anchor:source.anchor,offset:source.offset,choice:source.choice,rawOpen:$('source-original').open,rawManual:source.rawManual});}
-const kindLabel={lesson:'学習',journey:'要求から結果',operation:'送信の処理', 'file-role':'ファイルの役割',component:'部品',area:'領域の処理','area-extra':'追加の条件','guide-step':'起動の段階','guide-loop':'稼働中の担当','guide-startup':'起動資料','guide-runtime':'稼働資料'};
-function renderExplanation(){
+const kindLabel={lesson:'学習',journey:'要求から結果',operation:'送信の処理', 'file-role':'ファイルの役割',component:'部品',area:'領域の処理','area-extra':'追加の条件','guide-step':'起動の段階','guide-loop':'稼働中の担当','guide-startup':'起動資料','guide-runtime':'稼働資料','legacy-detail':'補足の処理','rust-topic':'Rustの読み方'};
+function explanationLabel(route){
+ const name=(kindLabel[route.kind]||'読解の流れ')+'：'+route.title;
+ return route.kind==='rust-topic'?name+'（'+(route.selectedStep?'最初に読む：'+route.readings[0].title:'テーマ全体')+'）':name;
+}
+function focusRawSelection(){
+ if(!source.selection||!$('source-original').open||!$('source-dialog').open)return;
+ const rows=$('source-lines'),line=rows.querySelector(`[data-source-line="${source.selection[0]}"]`);if(!line)return;
+ $('source-original').scrollIntoView({block:'start',behavior:'instant'});
+ rows.scrollTop+=line.getBoundingClientRect().top-rows.getBoundingClientRect().top-12;
+ line.focus({preventScroll:true});
+}
+function syncPreviewSelection(api,host,focus=false){
+ const interval=source.selection,help=window.READING_HELP_DATA;
+ const contexts=[...new Set(Array.from(host.querySelectorAll('[data-reading-help]')).map(h=>h.getAttribute('data-reading-help')))].map(id=>({id,source:help?.contexts[id]?.source})).filter(c=>c.source?.path===source.path);
+ const ranges=contexts.map(c=>c.source).sort((a,b)=>a.start-b.start||a.end-b.end);
+ let cursor=interval?.[0];
+ if(interval)for(const range of ranges){if(range.end<cursor)continue;if(range.start>cursor)break;cursor=Math.max(cursor,range.end+1);if(cursor>interval[1])break;}
+ const covered=!interval||cursor>interval[1],notice=$('atlas-selection-status');
+ notice.hidden=covered;notice.textContent=covered?'':`指定したL${interval[0]}–L${interval[1]}の全体は、下の「ファイル全体の原文」で確認できます。補助付きの範囲は別に表示しています。`;
+ if(!source.rawManual)$('source-original').open=!covered;
+ if(focus&&interval){
+  const target=contexts.filter(c=>c.source.start<=interval[0]&&interval[0]<=c.source.end).sort((a,b)=>(a.source.end-a.source.start)-(b.source.end-b.source.start))[0];
+  if(covered&&target)api.focusContext?.(target.id,interval[0],host);else if(!covered)focusRawSelection();
+ }
+ return covered;
+}
+function renderExplanation({routeChoice=false}={}){
  const registry=readingRegistry(),entry=registry?.files[source.path],host=$('atlas-explanation-preview'),picker=$('atlas-explanation-picker');
  if(!entry){
-  picker.hidden=true;host.innerHTML=registry?'<p class="reading-uncovered">このファイルの範囲に対応する補助はまだありません。下の原文を開き、問いと行範囲を残せます。</p>':'<p role="status">'+(window.READING_HELP_DATA?.commit&&window.READING_HELP_DATA.commit!==atlas.commit?'解説の参照版が異なるため、補助を表示できません。':'解説の対応を確認しています…')+'</p>';
+  picker.hidden=true;$('atlas-selection-status').hidden=true;host.innerHTML=registry?'<p class="reading-uncovered">このファイルの範囲に対応する補助はまだありません。下の原文を開き、問いと行範囲を残せます。</p>':'<p role="status">'+(window.READING_HELP_DATA?.commit&&window.READING_HELP_DATA.commit!==atlas.commit?'解説の参照版が異なるため、補助を表示できません。':'解説の対応を確認しています…')+'</p>';
   $('available-explanations').textContent=registry?'このファイルの抜粋補助は未作成です。':'解説の対応を確認中です。';
   if(!source.rawManual)$('source-original').open=true;previewState={choice:null,registry:null,api:null};return;
  }
@@ -33,17 +59,18 @@ function renderExplanation(){
   const role=related.find(r=>r.kind==='file-role'&&r.key===source.path);
   source.choice=near?'context|'+near:role?'route|'+role.id:'context|'+entry.contexts[0];
  }
- picker.hidden=false;picker.innerHTML='<optgroup label="このファイルの原文範囲">'+entry.contexts.map(id=>{const c=window.READING_HELP_DATA.contexts[id];return '<option value="'+esc('context|'+id)+'">'+esc(c.title)+' · L'+c.source.start+'–'+c.source.end+'</option>';}).join('')+'</optgroup><optgroup label="このファイルを含む読解の流れ">'+related.map(r=>'<option value="'+esc('route|'+r.id)+'">'+esc(kindLabel[r.kind]||r.kind)+'：'+esc(r.title)+'</option>').join('')+'</optgroup>';picker.value=source.choice;
+ picker.hidden=false;picker.innerHTML='<optgroup label="このファイルの原文範囲">'+entry.contexts.map(id=>{const c=window.READING_HELP_DATA.contexts[id];return '<option value="'+esc('context|'+id)+'">'+esc(c.title)+' · L'+c.source.start+'–'+c.source.end+'</option>';}).join('')+'</optgroup><optgroup label="このファイルを含む読解の流れ">'+related.map(r=>'<option value="'+esc('route|'+r.id)+'">'+esc(explanationLabel(r))+'</option>').join('')+'</optgroup>';picker.value=source.choice;
  $('available-explanations').innerHTML='<p>'+entry.contexts.length+'範囲に補助コメントがあります。関連する流れも、左の「この場で読む範囲」から切り替えられます。</p><p>ファイル全体を解説した数ではありません。</p>';
- if(!source.rawManual)$('source-original').open=false;
  const api=window.ReadingHelp;
  if(!api?.routeBridge||!api?.contextBridge){host.innerHTML='<p role="status">同じページに解説を準備しています…</p>';return;}
- if(previewState.choice===source.choice&&previewState.registry===registry&&previewState.api===api)return;
+ if(previewState.choice===source.choice&&previewState.registry===registry&&previewState.api===api){syncPreviewSelection(api,host);return;}
  const [type,...parts]=source.choice.split('|'),id=parts.join('|'),origin={file:source.path,from:location.pathname+location.search};
- const html=type==='route'?api.routeBridge(registry.routes.find(r=>r.id===id),false,origin):api.contextBridge(id,false,origin);
+ const selectedRoute=type==='route'?registry.routes.find(r=>r.id===id):null;
+ const html=selectedRoute?api.routeBridge(selectedRoute,false,origin):api.contextBridge(id,false,origin);
  if(!html){host.innerHTML='<p class="reading-uncovered">この範囲の解説を表示できません。下の原文から確認できます。</p>';return;}
  host.innerHTML=html;api.mount(host);previewState={choice:source.choice,registry,api};
- if(source.selection&&type==='context')api.focusContext?.(id,source.selection[0],host);
+ const covered=syncPreviewSelection(api,host,true);
+ if(routeChoice&&covered&&selectedRoute?.kind==='rust-topic'&&selectedRoute.selectedStep)api.focusContext?.(selectedRoute.readings[0].context,undefined,host);
 }
 function refreshAvailability(){
  const registry=readingRegistry();explained=new Set(Object.keys(registry?.files||{}).filter(path=>fileIndex.has(path)&&registry.files[path].contexts.length));
@@ -78,14 +105,14 @@ $('folders').innerHTML=[...dirs].sort((a,b)=>b[1]-a[1]).map(([dir,count])=>`<but
 $('file-results').innerHTML=files.slice(state.page*50,state.page*50+50).map(f=>`<button class="file-row" data-open="${f.path}"><span><b>◧ &nbsp;${esc(f.path.split('/').pop())}</b><small>${esc(f.path)}</small></span><span class="row-area">${areas[f.area].name}</span><span class="status-tag ${explained.has(f.path)?'explained':''}">${explained.has(f.path)?'● 一部に補助コメントあり':state.queue.some(q=>q.path===f.path)?'◷ キューあり':state.opened.includes(f.path)?'◌ 開いた':'○ 未閲覧'}${state.opened.includes(f.path)&&explained.has(f.path)?'<br>開いたファイル':''}</span></button>`).join('')||'<div class="empty">この条件に一致するファイルはありません。検索語や絞り込みを変えてください。</div>';
 $('page-label').textContent=`${state.page+1} / ${pages} ページ · 50件ずつ表示`;$('page-prev').disabled=state.page===0;$('page-next').disabled=state.page>=pages-1;document.querySelectorAll('[data-folder]').forEach(b=>b.onclick=()=>{state.folder=b.dataset.folder;state.page=0;renderFiles();save()});document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openFile(b.dataset.open));}
 function renderQueue(){$('queue-list').innerHTML=state.queue.map((q,i)=>`<article class="queue-card"><span class="status-tag">未生成 · 読解対象を保存済み</span><h3>${esc(q.question)}</h3><p>${esc(q.path)} ${q.lines?`· L${q.lines[0]}–L${q.lines[1]}`:'· ファイル全体'} · ${atlas.commit.slice(0,12)}</p><button data-queue-open="${i}">コードを開く ↗</button><button data-queue-delete="${i}">キューから削除</button></article>`).join('')||'<div class="empty">キューはまだ空です。コードを開き、知りたいことを入力して追加できます。</div>';document.querySelectorAll('[data-queue-open]').forEach(b=>b.onclick=()=>{const q=state.queue[+b.dataset.queueOpen];openFile(q.path,q.lines)});document.querySelectorAll('[data-queue-delete]').forEach(b=>b.onclick=()=>{state.queue.splice(+b.dataset.queueDelete,1);render();save()});}
-async function openFile(path,selection=null){
+async function openFile(path,selection=null,{restoreView=false}={}){
  if(!fileIndex.has(path))return;rememberDraft();controller?.abort();controller=new AbortController();const ownController=controller,previous=drafts.get(path)||{};
- const selected=selection||previous.selection||null;
- source={path,text:null,offset:selection?Math.floor((selection[0]-1)/100)*100:previous.offset||0,selection:selected,anchor:selection?.[0]||previous.anchor||selected?.[0]||null,choice:previous.choice||null,rawManual:previous.rawManual||false};
+ const selected=selection||previous.selection||null,focusSelection=!!selection&&!restoreView;
+ source={path,text:null,offset:selection?Math.floor((selection[0]-1)/100)*100:previous.offset||0,selection:selected,anchor:selection?.[0]||previous.anchor||selected?.[0]||null,choice:focusSelection?null:previous.choice||null,rawManual:focusSelection?false:previous.rawManual||false};
  previewState={choice:null,registry:null,api:null};
  const a=areas[fileIndex.get(path).area];$('source-area').textContent=`原文を根拠に読む / ${a.name}`;$('source-name').textContent=path.split('/').pop();$('source-path').textContent=path;$('github-file').href=sourceURL(path);$('source-role').textContent=a.question;$('source-description').textContent=a.description;
  $('source-status').textContent='ファイル全体の原文を読み込み中…';$('source-lines').innerHTML='<div class="empty">固定コミットの原文を取得しています…</div>';$('reading-question').value=previous.question||'';$('goto-line').value=selected?.[0]||1;$('source-window').textContent='';$('lines-prev').disabled=true;$('lines-next').disabled=true;$('go-line').disabled=true;
- $('source-original').open=typeof previous.rawOpen==='boolean'?previous.rawOpen:false;updateSelection();renderExplanation();
+ $('source-original').open=focusSelection?true:typeof previous.rawOpen==='boolean'?previous.rawOpen:false;updateSelection();renderExplanation();
  if(!$('source-dialog').open)$('source-dialog').showModal();
  const timeout=setTimeout(()=>ownController.abort(),20000);
  try{
@@ -93,16 +120,16 @@ async function openFile(path,selection=null){
   if(text===undefined){const response=await fetch('https://raw.githubusercontent.com/paradigmxyz/reth/'+atlas.commit+'/'+path.split('/').map(encodeURIComponent).join('/'),{signal:ownController.signal,credentials:'omit'});if(!response.ok)throw Error('HTTP '+response.status);if(Number(response.headers.get('content-length'))>2_000_000)throw Error('2MBを超えるファイル');text=await response.text();if(text.length>2_000_000)throw Error('2MBを超えるファイル');cache.set(path,text);while(cache.size>12)cache.delete(cache.keys().next().value);}
   if(source.path!==path||controller!==ownController)return;source.text=text;
   if(!state.opened.includes(path)){state.opened.push(path);save();render();}
-  $('source-status').textContent=`ファイル全体の原文 · ${atlas.commit.slice(0,12)} · ${atlas.seed[path]!==undefined?'同梱スナップショット':'必要時に取得'}`;$('go-line').disabled=false;renderSource();
+  $('source-status').textContent=`ファイル全体の原文 · ${atlas.commit.slice(0,12)} · ${atlas.seed[path]!==undefined?'同梱スナップショット':'必要時に取得'}`;$('go-line').disabled=false;renderSource();if(focusSelection)focusRawSelection();
  }catch(error){
-  if(source.path!==path||controller!==ownController)return;$('source-status').textContent='ファイル全体の原文の取得に失敗';$('source-lines').innerHTML=`<div class="source-failure">${esc(error.name==='AbortError'?'取得がタイムアウト、またはキャンセルされました。':error.message)}<br>${readingRegistry()?.files[path]?'上の補助付き原文は、この取得結果とは別に読めます。':'問いは入力したまま残せます。'}<br><a href="${sourceURL(path)}" target="_blank" rel="noopener">GitHubで原文を開く ↗</a><p><button id="retry-source">原文の取得を再試行</button></p></div>`;$('retry-source').onclick=()=>openFile(path,source.selection);
+  if(source.path!==path||controller!==ownController)return;$('source-status').textContent='ファイル全体の原文の取得に失敗';$('source-lines').innerHTML=`<div class="source-failure">${esc(error.name==='AbortError'?'取得がタイムアウト、またはキャンセルされました。':error.message)}<br>${readingRegistry()?.files[path]?'上の補助付き原文は、この取得結果とは別に読めます。':'問いは入力したまま残せます。'}<br><a href="${sourceURL(path)}" target="_blank" rel="noopener">GitHubで原文を開く ↗</a><p><button id="retry-source">原文の取得を再試行</button></p></div>`;$('retry-source').onclick=()=>openFile(path,source.selection,{restoreView:true});if(focusSelection&&$('source-original').open)$('source-original').scrollIntoView({block:'start',behavior:'instant'});
  }finally{clearTimeout(timeout);}
 }
 function updateSelection(){$('selected-scope').textContent=source.selection?`対象：L${source.selection[0]}–L${source.selection[1]}（Shift+クリックで範囲選択）`:'対象：ファイル全体 · 行を選ぶと範囲を限定できます';}
-function renderSource(){if(source.text===null)return;const lines=source.text.split('\n');if(lines.at(-1)==='')lines.pop();source.offset=Math.max(0,Math.min(source.offset,Math.max(0,Math.floor((lines.length-1)/100)*100)));const end=Math.min(lines.length,source.offset+100);$('source-window').textContent=`L${source.offset+1}–L${end} / ${format(lines.length)} 行`;$('source-lines').innerHTML=lines.slice(source.offset,end).map((line,i)=>{const n=source.offset+i+1;return `<button class="atlas-code-row ${source.selection&&n>=source.selection[0]&&n<=source.selection[1]?'selected':''}" data-source-line="${n}"><span>${n}</span><code>${esc(line)||' '}</code></button>`}).join('');$('lines-prev').disabled=source.offset===0;$('lines-next').disabled=end>=lines.length;document.querySelectorAll('[data-source-line]').forEach(b=>b.onclick=e=>{const n=+b.dataset.sourceLine;if(e.shiftKey&&source.anchor){source.selection=[Math.min(source.anchor,n),Math.max(source.anchor,n)]}else{source.anchor=n;source.selection=[n,n]}renderSource();updateSelection()});}
+function renderSource(){if(source.text===null)return;const lines=source.text.split('\n');if(lines.at(-1)==='')lines.pop();source.offset=Math.max(0,Math.min(source.offset,Math.max(0,Math.floor((lines.length-1)/100)*100)));const end=Math.min(lines.length,source.offset+100);$('source-window').textContent=`L${source.offset+1}–L${end} / ${format(lines.length)} 行`;$('source-lines').innerHTML=lines.slice(source.offset,end).map((line,i)=>{const n=source.offset+i+1;return `<button class="atlas-code-row ${source.selection&&n>=source.selection[0]&&n<=source.selection[1]?'selected':''}" data-source-line="${n}"><span>${n}</span><code>${esc(line)||' '}</code></button>`}).join('');$('lines-prev').disabled=source.offset===0;$('lines-next').disabled=end>=lines.length;document.querySelectorAll('[data-source-line]').forEach(b=>b.onclick=e=>{const n=+b.dataset.sourceLine;if(e.shiftKey&&source.anchor){source.selection=[Math.min(source.anchor,n),Math.max(source.anchor,n)]}else{source.anchor=n;source.selection=[n,n]}source.rawManual=true;renderSource();updateSelection();if(readingRegistry()&&window.ReadingHelp?.routeBridge)syncPreviewSelection(window.ReadingHelp,$('atlas-explanation-preview'));rememberDraft()});}
 function addQueue(){const question=$('reading-question').value.trim();if(!question){$('reading-question').focus();return}state.queue.push({path:source.path,lines:source.selection?[...source.selection]:null,question,commit:atlas.commit,createdAt:new Date().toISOString()});save();render();$('reading-question').value='';$('queue-add').textContent='✓ キューに追加しました';setTimeout(()=>$('queue-add').textContent='＋ 読解キューに追加',1800)}
 $('commit-link').href='https://github.com/paradigmxyz/reth/commit/'+atlas.commit;$('commit-link').textContent=atlas.commit.slice(0,12)+' ↗';$('rust-count').textContent=format(atlas.totalRust);$('index-status').textContent=`Git tree: ${format(atlas.totalTracked)} tracked files / ${format(atlas.totalCargo)} Cargo.toml · ${atlas.commit.slice(0,12)}`;
-document.querySelectorAll('.atlas-nav [data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$('reset').onclick=()=>{state.view='map';state.query='';state.status='all';clearScope()};$('clear-scope').onclick=clearScope;$('path-search').oninput=e=>{state.query=e.target.value;state.page=0;renderFiles();save()};$('status-filter').onchange=e=>{state.status=e.target.value;state.page=0;renderFiles();save()};$('hide-tests').onchange=e=>{state.hideTests=e.target.checked;state.page=0;renderFiles();save()};$('page-prev').onclick=()=>{state.page--;renderFiles();save()};$('page-next').onclick=()=>{state.page++;renderFiles();save()};$('close-source').onclick=()=>$('source-dialog').close();$('source-dialog').addEventListener('close',()=>{rememberDraft();controller?.abort();});$('source-original').addEventListener('click',event=>{if(event.target.closest('summary')=== $('source-original').querySelector('summary'))source.rawManual=true;});$('atlas-explanation-picker').onchange=event=>{source.choice=event.target.value;renderExplanation();rememberDraft();};$('go-line').onclick=()=>{const n=Math.max(1,Number($('goto-line').value)||1);source.offset=Math.floor((n-1)/100)*100;renderSource()};$('lines-prev').onclick=()=>{source.offset-=100;renderSource();$('source-lines').scrollTop=0};$('lines-next').onclick=()=>{source.offset+=100;renderSource();$('source-lines').scrollTop=0};$('queue-add').onclick=addQueue;
+document.querySelectorAll('.atlas-nav [data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$('reset').onclick=()=>{state.view='map';state.query='';state.status='all';clearScope()};$('clear-scope').onclick=clearScope;$('path-search').oninput=e=>{state.query=e.target.value;state.page=0;renderFiles();save()};$('status-filter').onchange=e=>{state.status=e.target.value;state.page=0;renderFiles();save()};$('hide-tests').onchange=e=>{state.hideTests=e.target.checked;state.page=0;renderFiles();save()};$('page-prev').onclick=()=>{state.page--;renderFiles();save()};$('page-next').onclick=()=>{state.page++;renderFiles();save()};$('close-source').onclick=()=>$('source-dialog').close();$('source-dialog').addEventListener('close',()=>{rememberDraft();controller?.abort();});$('source-original').addEventListener('toggle',()=>{if($('source-original').open)focusRawSelection();});$('source-original').addEventListener('click',event=>{if(event.target.closest('summary')=== $('source-original').querySelector('summary'))source.rawManual=true;});$('atlas-explanation-picker').onchange=event=>{source.choice=event.target.value;renderExplanation({routeChoice:true});rememberDraft();};$('go-line').onclick=()=>{const n=Math.max(1,Number($('goto-line').value)||1);source.offset=Math.floor((n-1)/100)*100;renderSource()};$('lines-prev').onclick=()=>{source.offset-=100;renderSource();$('source-lines').scrollTop=0};$('lines-next').onclick=()=>{source.offset+=100;renderSource();$('source-lines').scrollTop=0};$('queue-add').onclick=addQueue;
 $('export-queue').onclick=()=>{const blob=new Blob([JSON.stringify({schemaVersion:1,repository:'paradigmxyz/reth',commit:atlas.commit,aiStatus:'not-connected',queue:state.queue},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='reth-reading-queue.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
 const params=new URLSearchParams(location.search);if(areas[params.get('area')]){state.area=params.get('area');state.view='map';state.topic=null;state.folder=''}
 document.addEventListener('DOMContentLoaded',refreshAvailability);document.addEventListener('reading-help-ready',refreshAvailability);window.addEventListener('reading-help-ready',refreshAvailability);document.addEventListener('load',event=>{if(event.target?.tagName==='SCRIPT'&&/reading-help(?:-data)?\.js(?:[?#]|$)/.test(event.target.src||''))refreshAvailability();},true);

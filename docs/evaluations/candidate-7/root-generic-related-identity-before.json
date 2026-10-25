@@ -1,0 +1,23 @@
+{
+  "back": [
+    {
+      "hidden": true,
+      "visible": false
+    },
+    {
+      "hidden": true,
+      "visible": false
+    }
+  ],
+  "hosts": [
+    {
+      "id": "",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs"
+    },
+    {
+      "id": "tx:recover"
+    }
+  ],
+  "sourceCount": 2,
+  "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=65&end=79"
+}

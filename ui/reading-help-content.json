@@ -2018,10 +2018,28 @@
       ],
       "lines": [
         {
+          "line": 108,
+          "match": "Future for BatchTxProcessor",
+          "label": "Futureとしての受信担当",
+          "explanation": "BatchTxProcessorにFutureを実装する宣言です。要求の受信と、追加の仕事を動かすタスクの起動をpollで進めます。"
+        },
+        {
+          "line": 112,
+          "match": "type Output = ();",
+          "label": "Futureの完了値の型",
+          "explanation": "このFutureのOutputは()です。そのため次のpollの戻り値はPoll<()>です。型の宣言と、実際に完了を通知することは別で、この範囲の返却箇所はPendingです。"
+        },
+        {
+          "line": 114,
+          "match": "fn poll",
+          "label": "受信担当を一回進める",
+          "explanation": "実行器から渡されたcxを使って受信をpollします。要求キューを読むことと、その先の追加結果が返ることを分けて追います。"
+        },
+        {
           "line": 119,
           "match": "request_rx.poll_recv_many",
           "label": "キューから届いた依頼を取り出す",
-          "explanation": "送信側のtx_batch_senderが送った依頼を、受信側のrequest_rxで取り出します。まだ届かない場合はready!で実行を譲ります。"
+          "explanation": "受信をpollし、結果がPendingならstd::task::ready!がこの行でpoll全体からPendingを返します。その場合は下のL121やL133へ進みません。Readyなら取得した件数を取り出し、bufを調べる処理へ続きます。"
         },
         {
           "line": 122,
@@ -2039,7 +2057,7 @@
           "line": 133,
           "match": "return Poll::Pending",
           "label": "次の入力まで待つ",
-          "explanation": "今すぐ進める依頼がなければPendingを返します。プール追加の成功を返す行ではありません。"
+          "explanation": "L119の受信操作がReadyだったあと、bufが空でL121の分岐に入らなかった場合のPendingです。L119のready!による早期返却とは別の場所であり、プール追加の成功通知でもありません。"
         }
       ],
       "note": ""
@@ -2873,10 +2891,28 @@
       ],
       "lines": [
         {
+          "line": 108,
+          "match": "Future for BatchTxProcessor",
+          "label": "Futureとしての受信担当",
+          "explanation": "BatchTxProcessorにFutureを実装する宣言です。要求の受信と、追加の仕事を動かすタスクの起動をpollで進めます。"
+        },
+        {
+          "line": 112,
+          "match": "type Output = ();",
+          "label": "Futureの完了値の型",
+          "explanation": "このFutureのOutputは()です。そのため次のpollの戻り値はPoll<()>です。型の宣言と、実際に完了を通知することは別で、この範囲の返却箇所はPendingです。"
+        },
+        {
+          "line": 114,
+          "match": "fn poll",
+          "label": "受信担当を一回進める",
+          "explanation": "実行器から渡されたcxを使って受信をpollします。要求キューを読むことと、その先の追加結果が返ることを分けて追います。"
+        },
+        {
           "line": 119,
           "match": "ready!(this.request_rx.poll_recv_many",
           "label": "依頼をキューから受け取る",
-          "explanation": "追加依頼がなければ待ち、届いたらバッファへ取り出します。"
+          "explanation": "受信をpollし、結果がPendingならstd::task::ready!がこの行でpoll全体からPendingを返します。その場合は下のL121やL133へ進みません。Readyなら取得した件数を取り出し、bufを調べる処理へ続きます。"
         },
         {
           "line": 122,
@@ -2894,7 +2930,7 @@
           "line": 133,
           "match": "return Poll::Pending",
           "label": "次の入力まで実行を譲る",
-          "explanation": "今すぐ進める入力がなければPendingを返します。追加成功の通知ではありません。"
+          "explanation": "L119の受信操作がReadyだったあと、bufが空でL121の分岐に入らなかった場合のPendingです。L119のready!による早期返却とは別の場所であり、プール追加の成功通知でもありません。"
         }
       ],
       "note": ""
@@ -3853,13 +3889,43 @@
       "note": ""
     },
     "area:journey-sync-fetch-client": {
-      "intro": "ネットワーク取得のキューへ渡すの実装を読みます。",
+      "intro": "本文取得の要求を内部キューへ渡し、結果を待つFutureを返します。冒頭の型別名とヘッダー取得は比較用で、今回追う本文取得はL103以降です。",
       "terms": [
         "node",
         "channel",
         "block"
       ],
       "lines": [
+        {
+          "line": 78,
+          "match": "type FetchClientFuture<T>",
+          "label": "二つの形を取る取得結果待ちの型",
+          "explanation": "FetchClientFuture<T>は、FlattenedResponse<T>かfuture::Ready<T>のどちらかを持つEitherの別名です。下の実装はこの型の値を返し、その場でネットワークの本文列を返すわけではありません。"
+        },
+        {
+          "line": 80,
+          "match": "HeadersClient for FetchClient",
+          "label": "ヘッダー取得との比較",
+          "explanation": "ここからL101まではHeadersClientの実装です。型と返答の形を比較するために掲載しています。今回の本文取得は、後のBodiesClientの別実装で読みます。"
+        },
+        {
+          "line": 103,
+          "match": "BodiesClient for FetchClient",
+          "label": "本文取得の実装を選ぶ",
+          "explanation": "ここが今回の本文取得を実装する範囲です。前のHeadersClientの関数から、この関数へ順に実行が続くという関係ではありません。"
+        },
+        {
+          "line": 105,
+          "match": "type Output = FetchClientFuture",
+          "label": "本文取得の返り値の型",
+          "explanation": "この実装のOutputは、本文列の取得結果を運ぶFetchClientFutureです。L108の関数は、同じページのL78で定義したFutureのどちらかの形を返します。"
+        },
+        {
+          "line": 108,
+          "match": "fn get_block_bodies_with_priority_and_range_hint",
+          "label": "取得要求を出してFutureを返す",
+          "explanation": "ハッシュの列、優先度、任意の範囲ヒントを受け取り、Self::Outputを返します。この関数はasyncではなく、返したFutureを進めて結果を受け取るのは呼び出し元です。"
+        },
         {
           "line": 114,
           "match": "oneshot::channel()",
@@ -3881,11 +3947,11 @@
         {
           "line": 122,
           "match": "Either::Right",
-          "label": "要求を送れない場合はエラーにする",
-          "explanation": "内部経路が閉じている場合はChannelClosedを返します。"
+          "label": "送信失敗を運ぶFutureを返す",
+          "explanation": "要求を内部キューへ送れなかった場合は、ChannelClosedのErrを結果に持つfuture::ReadyをEither::Rightへ入れて返します。この行が返すものもSelf::OutputというFutureであり、取得結果のErrそのものを直接返す関数ではありません。"
         }
       ],
-      "note": ""
+      "note": "FetchClientFutureの型別名と、HeadersClient・BodiesClientそれぞれの実装を比較する範囲です。上からヘッダー取得のあと本文取得を順番に呼ぶコードではありません。本文取得の入力・条件・返答はL103以降で追います。"
     },
     "area:journey-sync-peer-select": {
       "intro": "取得する相手を選び要求へ変換するの実装を読みます。",
@@ -4353,7 +4419,25 @@
           "explanation": "このメソッドには本体があります。実装側のsignersを呼んで、アドレス一覧を集めます。"
         }
       ],
-      "note": "送信の既定処理の本体は、同じページの「デコードして送信者を復元」で続けて読みます。Selfの関連型は、その型が実装するtraitや前提traitの定義に基づいて決まります。"
+      "note": "この範囲はEthTransactionsの宣言と一部の既定処理です。送信の既定処理の本体は、関連する原文「デコードして送信者を復元」で確かめられます。Selfの関連型は、その型が実装するtraitや前提traitの定義に基づいて決まります。",
+      "relatedReadings": [
+        {
+          "context": "tx:recover",
+          "title": "デコードして送信者を復元",
+          "purpose": "同じEthTransactions traitにある送信の既定処理を比べる。",
+          "relationship": "related-source",
+          "evidence": {
+            "from": {
+              "line": 65,
+              "match": "pub trait EthTransactions"
+            },
+            "to": {
+              "line": 84,
+              "match": "fn send_raw_transaction"
+            }
+          }
+        }
+      ]
     },
     "tx:trait-implementation": {
       "intro": "EthApiという型に対して、EthTransactionsの操作を実装しています。",
@@ -4383,7 +4467,25 @@
           "explanation": "trait側で本体のなかったsignersを、内部の値を返す処理として実装します。"
         }
       ],
-      "note": "send_pool_transactionの本体は、同じページの「通常の送信経路を追う」で読みます。Self::PoolやSelf::Errorは、実装型と前提traitの取り決めに対応する型です。"
+      "note": "この範囲はEthApiによるtraitの実装宣言とsignersの処理です。send_pool_transactionの本体は、関連する原文「通常の送信経路を追う」で確かめられます。Self::PoolやSelf::Errorは、実装型と前提traitの取り決めに対応する型です。",
+      "relatedReadings": [
+        {
+          "context": "tx:submit",
+          "title": "通常の送信経路を追う",
+          "purpose": "同じEthApiのEthTransactions実装にある送信処理を比べる。",
+          "relationship": "related-source",
+          "evidence": {
+            "from": {
+              "line": 21,
+              "match": "EthTransactions for EthApi"
+            },
+            "to": {
+              "line": 32,
+              "match": "async fn send_pool_transaction"
+            }
+          }
+        }
+      ]
     },
     "area:startup-engine-build": {
       "intro": "EngineOrchestratorBuilderのbuild本体です。保存、tree、入力、同期の処理担当を組み合わせます。",
