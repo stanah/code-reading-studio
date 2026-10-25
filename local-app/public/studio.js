@@ -14,8 +14,8 @@
     });
     if(globalThis.LearningStudio){
       document.querySelectorAll('[data-learning-axis]').forEach(s=>s.value=LearningStudio.preferences()[s.dataset.learningAxis]);
-      const last=LearningStudio.readState().last;
-      document.querySelectorAll('[data-learning-return]').forEach(a=>{a.hidden=!!learning;if(last){a.href=LearningStudio.lessonUrl(last);a.textContent='読んでいた学習へ戻る';}else{a.href=document.body.dataset.studio==='local'?'/':'index.html';a.textContent='学習の入口へ戻る';}});
+      const origin=hash.get('lesson')||query.get('lesson'),explicit=globalThis.READING_COURSE?.lessons.find(l=>l.id===origin),last=explicit?.id||LearningStudio.readState().last;
+      document.querySelectorAll('[data-learning-return]').forEach(a=>{a.hidden=!!learning;if(last){a.href=LearningStudio.lessonUrl(last);a.textContent=explicit?'「'+explicit.title+'」の解説へ戻る':'読んでいた学習へ戻る';}else{a.href=document.body.dataset.studio==='local'?'/':'index.html';a.textContent='学習の入口へ戻る';}});
     }
   }
   document.querySelectorAll('[data-learning-axis]').forEach(select=>{select.addEventListener?.('change',()=>{globalThis.LearningStudio?.setPreference(select.dataset.learningAxis,select.value);update();});});

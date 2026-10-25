@@ -9,7 +9,7 @@ vm.runInNewContext(await read('../public/reading-help-data.js'),ctx);vm.runInNew
 const help=ctx.ReadingHelp,data=ctx.READING_HELP_DATA;
 
 test('every authored line hint is tied to the pinned excerpt, exact line and source hash',()=>{
- assert.equal(Object.keys(data.contexts).length,35);
+ assert.equal(Object.keys(data.contexts).length,36);
  for(const [id,c] of Object.entries(data.contexts)){
   assert.equal(createHash('sha256').update(c.source.code).digest('hex'),c.source.hash,id);
   for(const line of c.lines)assert.ok(c.source.code.split('\n')[line.line-c.source.start]?.includes(line.match),id+' L'+line.line);
@@ -65,4 +65,18 @@ test('[FR-READ-002] the for in a Future implementation is not described as an it
  assert.match(help.codeHtml(data.contexts['area:execution']),/data-rh-term="for-loop"/);
  assert.match(help.codeHtml({source:{start:1,code:'impl Future for OtherType {}'}}),/data-rh-term="for-context"/);
  assert.doesNotMatch(help.codeHtml({source:{start:1,code:'impl Future for OtherType {}'}}),/data-rh-term="for-loop"/);
+});
+
+test('[FR-READ-002] each lesson links one pinned core snippet and its actual Cargo package, with its origin',()=>{
+ ctx.URLSearchParams=URLSearchParams;
+ assert.equal(data.lessonLinks.length,7);
+ for(const r of data.lessonLinks){
+  const c=data.contexts[r.context],html=help.lessonBridge(r.lesson,true),links=[...html.matchAll(/href="([^"]+)"/g)].map(m=>m[1].replaceAll('&amp;','&'));
+  assert.equal(links.length,2);const source=new URL(links[0],'http://localhost'),crate=new URL(links[1],'http://localhost'),s=new URLSearchParams(source.hash.slice(1)),p=new URLSearchParams(crate.hash.slice(1));
+  assert.equal(source.pathname,'/reader');assert.equal(s.get('path'),c.source.path);assert.equal(Number(s.get('start')),c.source.start);assert.equal(Number(s.get('end')),c.source.end);assert.equal(s.get('lesson'),r.lesson);
+  assert.equal(p.get('crate'),r.crate.id);assert.equal(p.get('lesson'),r.lesson);assert.ok(c.source.path.startsWith(r.crate.id.replace('Cargo.toml','')));
+  assert.match(html,/<details class="learn-core-code">/);assert.ok(html.includes(r.scope));assert.ok(html.includes('data-reading-help="'+r.context+'"'));
+  const stat=help.lessonBridge(r.lesson,false);assert.ok(stat.includes(c.source.url));assert.ok(stat.includes(r.crate.url));assert.equal((stat.match(/target="_blank"/g)||[]).length,2);
+ }
+ assert.equal(help.lessonBridge('missing',true),'');
 });

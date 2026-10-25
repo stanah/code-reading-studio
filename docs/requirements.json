@@ -85,7 +85,7 @@
       "tests": [
         "local-app/test/measurement.test.mjs"
       ],
-      "status": "pass"
+      "status": "unmet"
     },
     {
       "id": "FR-EVAL-002",
@@ -95,7 +95,7 @@
       "tests": [
         "local-app/test/measurement.test.mjs"
       ],
-      "status": "pass"
+      "status": "unmet"
     },
     {
       "id": "FR-EVAL-003",

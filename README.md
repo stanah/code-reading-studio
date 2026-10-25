@@ -97,3 +97,5 @@ Rethのソース抜粋には [`dist/reth-LICENSE-MIT.txt`](dist/reth-LICENSE-MIT
 固定した条件に基づく4回の評価・改善は[計測評価の記録](docs/measured-reading-review.md)を参照してください。
 
 課題を1人22件へ広げた評価は[追加課題の評価記録](docs/expanded-reading-review.md)に記録しています。
+
+7つの解説に、中核コードを同じページで読む入口と、原文・担当クレートへのリンクがあります。選定理由は[解説と実装の対応](docs/lesson-code-links.md)を参照してください。

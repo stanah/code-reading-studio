@@ -4,30 +4,30 @@
     "version": "v2.7.0",
     "commit": "3d592ece6de8c4559987416a544fc215fd6d6921"
   },
-  "measurementEngineHash": "94dd85a9e0410e9c9a7713811b7892cfbf6ee11e2e261cad6501f65248f08a54",
+  "measurementEngineHash": "30ef8ac13d29cf5da8c964c71057fa77993a62ff51974c7b1835a17b12218ba2",
   "policyHash": "96218e2a2f4036e3f7e49e59816f2a393f9b5c0a3fa70c5acca32fc308df7922",
   "metrics": {
     "inventoryAccounted": 1872,
     "totalTracked": 1872,
     "totalRust": 1283,
-    "anchoredRustFiles": 29,
+    "anchoredRustFiles": 30,
     "fullyReviewedRustFiles": 2,
     "guidedAreas": 11,
     "totalAreas": 11,
     "invalidEvidence": 0,
-    "passingPersonaTasks": 66,
+    "passingPersonaTasks": 0,
     "totalPersonaTasks": 66,
-    "retentionChecksPassed": 3,
+    "retentionChecksPassed": 0,
     "totalRetentionChecks": 3,
     "humanStudy": "not-verified",
     "verifiedHumanTasks": 0,
     "humanParticipants": 0,
     "totalHumanTasks": 66,
     "functionAndBranchCoverage": "not-measured",
-    "consecutivePassingRounds": 2,
+    "consecutivePassingRounds": 0,
     "totalTransferTasks": 33,
-    "passingTransferTasks": 33,
-    "passingOriginalTasks": 33,
+    "passingTransferTasks": 0,
+    "passingOriginalTasks": 0,
     "invalidProtocolTasks": 0
   },
   "gates": [
@@ -71,14 +71,14 @@
       "description": "Three personas complete 22 fixed tasks each within 8 clicks, with source-supported role/input/output/boundary; 11 transfer tasks also require closed-help predictions and evidence lines; two consecutive rounds on the same build",
       "metric": "passingPersonaTasks/66",
       "target": 1,
-      "status": "pass"
+      "status": "unmet"
     },
     {
       "id": "FR-EVAL-002",
       "description": "All three personas retain URL, selected line and hint across assistance changes, and no saved or draft note is lost",
       "metric": "retentionChecksPassed/3",
       "target": 1,
-      "status": "pass"
+      "status": "unmet"
     },
     {
       "id": "FR-EVAL-003",
@@ -128,7 +128,7 @@
       "id": "engine",
       "name": "チェーンの進行・検証",
       "totalRust": 73,
-      "anchoredRustFiles": 3,
+      "anchoredRustFiles": 4,
       "guided": true
     },
     {
@@ -171,606 +171,598 @@
     {
       "persona": "a",
       "task": "node",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "rpc",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "pool",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "network",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "sync",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "engine",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "execution",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "payload",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "storage",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "extension",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "foundation",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "node-exit",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "rpc-recovery",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "pool-balance",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "network-reputation",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "sync-unwind",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "engine-timestamp",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "execution-receipt",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "payload-cancel",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "storage-account",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "extension-reorg",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "a",
       "task": "foundation-fee",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "node",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "rpc",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "pool",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "network",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "sync",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "engine",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "execution",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "payload",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "storage",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "extension",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "foundation",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "node-exit",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "rpc-recovery",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "pool-balance",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "network-reputation",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "sync-unwind",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "engine-timestamp",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "execution-receipt",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "payload-cancel",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "storage-account",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "extension-reorg",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "b",
       "task": "foundation-fee",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "node",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "rpc",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 4,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "pool",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 6,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "network",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "sync",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 6,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "engine",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "execution",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 6,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "payload",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 6,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "storage",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 6,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "extension",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 6,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "foundation",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "node-exit",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 5,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "rpc-recovery",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 6,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "pool-balance",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 6,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "network-reputation",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "sync-unwind",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "engine-timestamp",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "execution-receipt",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "payload-cancel",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "storage-account",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "extension-reorg",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 8,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     },
     {
       "persona": "c",
       "task": "foundation-fee",
-      "status": "pass",
-      "protocolValid": true,
-      "clicks": 7,
-      "sourceReviewed": true,
-      "remainingBlockers": 0
+      "status": "not-measured",
+      "protocolValid": null,
+      "clicks": null,
+      "sourceReviewed": false,
+      "remainingBlockers": null
     }
   ],
   "productComplete": false,
-  "evaluation": {
-    "id": "round-4",
-    "previousRound": "round-3",
-    "policyHash": "96218e2a2f4036e3f7e49e59816f2a393f9b5c0a3fa70c5acca32fc308df7922",
-    "buildHash": "82fb6cfc3d69acad3a7c82d1d19855049958129a9e2eab84550548f608e920dd",
-    "sourceCommit": "4ab82ae8f44d5614084202c005cb76c0afb4a236",
-    "kind": "AI UI operation evaluation",
-    "hashFormat": "runtime assets and API source v2"
-  }
+  "evaluation": null
 }

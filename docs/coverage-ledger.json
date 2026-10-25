@@ -2633,8 +2633,13 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 290,
+          "end": 317
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/consensus/consensus/Cargo.toml",

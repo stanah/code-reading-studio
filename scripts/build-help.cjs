@@ -16,6 +16,20 @@ for(const [id,hints] of Object.entries(authored.contexts)){
  for(const [line,tokens] of Object.entries(hints.tokenHints||{}))for(const [token,term] of Object.entries(tokens)){if(Number(line)<source.start||Number(line)>source.end||!full.split('\n')[Number(line)-1].includes(token)||!authored.terms[term])throw Error('Invalid token hint: '+id+' L'+line);}
  contexts[id]={...hints,title:item.title,source:{path:source.path,start:source.start,end:source.end,hash,code,url:source.sourceUrl||source.url}};
 }
-const output='window.READING_HELP_DATA = '+JSON.stringify({commit:target.commit,version:target.version,terms:authored.terms,contexts,areaReadings:JSON.parse(read('ui/area-readings.json'))})+';\n';
+// Resolve every lesson's representative code to its actual owning Cargo package.
+const lessonConfig=JSON.parse(read('ui/lesson-code-links.json')),courseContext={window:{}};
+vm.runInNewContext(read('ui/learning-content.js'),courseContext);
+const lessons=courseContext.window.READING_COURSE.lessons,tracked=new Set(cp.execFileSync('git',['-C',path.join(root,'targets/reth'),'ls-tree','-r','--name-only',target.commit],{encoding:'utf8'}).trim().split('\n'));
+if(lessonConfig.length!==lessons.length||new Set(lessonConfig.map(r=>r.lesson)).size!==lessons.length||!lessons.every(l=>lessonConfig.some(r=>r.lesson===l.id)))throw Error('Every lesson needs exactly one representative code reference');
+const annotations=JSON.parse(read('local-app/annotations.json'));if(annotations.commit!==target.commit)throw Error('Stale source area map');
+const lessonLinks=lessonConfig.map(r=>{
+ const c=contexts[r.context];if(!c||!r.title||!r.why||!r.scope)throw Error('Invalid lesson code reference '+r.lesson);
+ let dir=path.posix.dirname(c.source.path);while(dir!=='.'&&!tracked.has(dir+'/Cargo.toml'))dir=path.posix.dirname(dir);
+ const manifest=dir+'/Cargo.toml';if(!tracked.has(manifest))throw Error('Owning crate missing: '+c.source.path);
+ const text=cp.execFileSync('git',['-C',path.join(root,'targets/reth'),'show',target.commit+':'+manifest],{encoding:'utf8'}),packageSection=text.split('[package]')[1]?.split(/\n\[/)[0],name=packageSection?.match(/^name\s*=\s*"([^"]+)"/m)?.[1];
+ if(!name)throw Error('Cargo package name missing: '+manifest);
+ return {...r,area:annotations.pathAreas[c.source.path],crate:{id:manifest,name,hash:crypto.createHash('sha256').update(text).digest('hex'),url:'https://github.com/'+target.repository+'/tree/'+target.commit+'/'+dir}};
+});
+const output='window.READING_HELP_DATA = '+JSON.stringify({commit:target.commit,version:target.version,terms:authored.terms,contexts,lessonLinks,areaReadings:JSON.parse(read('ui/area-readings.json'))})+';\n';
 for(const dir of ['dist','local-app/public'])fs.writeFileSync(path.join(root,dir,'reading-help-data.js'),output);
 console.log(`Built ${Object.keys(contexts).length} contexts with ${Object.values(contexts).reduce((n,c)=>n+c.lines.length,0)} source-checked line hints`);

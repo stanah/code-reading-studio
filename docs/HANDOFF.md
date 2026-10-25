@@ -47,13 +47,15 @@ Rustファイルは1,283個、Rustファイルを持つCargo配下グループ�
 | `local-app/server.mjs` | localhost API、トークン・Host・Originの確認、ノート永続化 |
 | `ui/studio.js`, `ui/studio.css` | 共通ナビゲーションとスタイルの生成元 |
 | `ui/learning-content.js`, `ui/learning.js`, `ui/learning-page.html` | 共通の学習内容、読み方・記録・表示、入口HTMLの生成元 |
-| `ui/reading-help-content.json`, `ui/reading-help.js` | 35箇所の用語・処理と行の対応・記号のヒント。コードは固定Gitオブジェクトから取得 |
+| `ui/reading-help-content.json`, `ui/reading-help.js` | 36箇所の用語・処理と行の対応・記号のヒント。コードは固定Gitオブジェクトから取得 |
 | `docs/reth-startup-guide.md`, `docs/reading-guide.html` | 資料のMarkdown版とHTML版 |
 
 `/api/tree`は追跡済みblobの一覧を返します。`/api/file`はそのblobを読み、
 作業ツリーの変更や追跡されていないファイルを返しません。シンボリックリンクも辿りません。
 2 MiBを超えるファイルとバイナリは本文を表示せず、理由を返します。
 APIにはセッションのトークンが必要です。サーバーは127.0.0.1にのみバインドします。
+
+中核コードとの対応は`ui/lesson-code-links.json`で定義します。`build-help.cjs`が対象ソースの所属Cargo設定、パッケージ名、ハッシュを解決します。生成した`lessonLinks`は`check-reading-data.mjs`と計測器で照合します。
 
 ## データ生成
 
@@ -71,7 +73,7 @@ node scripts/check-reading-data.mjs
 索引と本文は、いずれも固定コミットから読みます。
 `build-annotations.cjs`は送信経路・領域・モジュールの説明をローカル版へ同期します。
 `build-help.cjs`は原文ハッシュ、処理と行の照合、文脈固有の記号注釈を検査し、ローカル版と静的版へ同じヒントを配布します。
-`check-reading-data.mjs`は説明のコピー間の一致と35箇所の抜粋も確認します。
+`check-reading-data.mjs`は説明のコピー間の一致と36箇所の抜粋も確認します。
 `build-guide.py`は資料のMarkdownとCSSから、`docs/reading-guide.html`と`dist/startup.html`を更新します。
 `build-design.py`は既存の共通ヘッダーも更新します。配布コピーだけを個別に直さないでください。
 静的版の`dist/startup.html`は説明資料のコピーです。ローカル版のAPIやファイルツリーは使いません。

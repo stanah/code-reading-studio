@@ -48,6 +48,17 @@ for(const c of Object.values(help.contexts)){
  await anchor(c.source,c.source.hash,c.source.url,c.source.code);
  for(const line of c.lines)assert.ok(c.source.code.split('\n')[line.line-c.source.start]?.includes(line.match),'Stale inline hint');
 }
+const lessonConfig=JSON.parse(await read('ui/lesson-code-links.json'));
+vm.runInNewContext(await read('ui/learning-content.js'),context);
+assert.equal(help.lessonLinks.length,context.window.READING_COURSE.lessons.length);
+assert.deepEqual(plain(help.lessonLinks.map(({area,crate,...r})=>r)),lessonConfig);
+for(const ref of help.lessonLinks){
+ const c=help.contexts[ref.context],crate=index.crates.find(k=>k.id===ref.crate.id);
+ assert.ok(crate?.files.includes(c.source.path),'Lesson must link to the crate that owns the source');
+ assert.equal(ref.crate.name,(await source(ref.crate.id)).split('[package]')[1]?.split(/\n\[/)[0]?.match(/^name\s*=\s*"([^"]+)"/m)?.[1]);assert.equal(ref.area,annotations.pathAreas[c.source.path]);
+ assert.equal(ref.crate.hash,digest(await source(ref.crate.id)),'Crate manifest hash');
+ assert.equal(ref.crate.url,`https://github.com/${target.repository}/tree/${target.commit}/${ref.crate.id.replace(/\/Cargo\.toml$/,'')}`);
+}
 const ids=new Set(startup.steps.map(s=>s.id));assert.equal(ids.size,startup.steps.length);
 for(const stage of startup.stages)for(const id of stage.steps)assert.ok(ids.has(id),'Unknown stage step: '+id);
 for(const s of [...startup.steps,...startup.loops]){
@@ -55,4 +66,4 @@ for(const s of [...startup.steps,...startup.loops]){
  for(const id of s.next||[])assert.ok(ids.has(id),'Unknown next step: '+id);
 }
 for(const data of [atlas,drill])for(const [path,text] of Object.entries(data.seed))assert.equal(text,await source(path),'Stale seed '+path);
-console.log(JSON.stringify({result:'PASS',version:target.version,commit:target.commit,rustFiles:index.rust.length,crateGroups:index.crates.length,transactionAnchors:pack.steps.length+pack.details.length,helpContexts:Object.keys(help.contexts).length,lineHints:Object.values(help.contexts).reduce((n,c)=>n+c.lines.length,0),startupSteps:startup.steps.length,loopAnchors:startup.loops.length,seedFiles:cache.size}));
+console.log(JSON.stringify({result:'PASS',version:target.version,commit:target.commit,rustFiles:index.rust.length,crateGroups:index.crates.length,transactionAnchors:pack.steps.length+pack.details.length,helpContexts:Object.keys(help.contexts).length,lessonCodeLinks:help.lessonLinks.length,lineHints:Object.values(help.contexts).reduce((n,c)=>n+c.lines.length,0),startupSteps:startup.steps.length,loopAnchors:startup.loops.length,seedFiles:cache.size}));

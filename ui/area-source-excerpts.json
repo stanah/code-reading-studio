@@ -178,5 +178,15 @@
       "hash": "5a8bb53a0f98e277a334ff58744a183276518fcc3dda2409205db13d2a645a00",
       "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/chainspec/src/spec.rs#L538-L556"
     }
+  },
+  "block-link": {
+    "title": "前のブロックとのつながりを検証する",
+    "source": {
+      "path": "crates/consensus/common/src/validation.rs",
+      "start": 290,
+      "end": 317,
+      "hash": "d95e4fad6597ea43c131a28d05884247cff4680aa1bbdf374a849bb4f34322f1",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/consensus/common/src/validation.rs#L290-L317"
+    }
   }
 }

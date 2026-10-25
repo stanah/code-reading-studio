@@ -44,7 +44,7 @@ test('legacy settings migrate conservatively and unavailable or malformed storag
  const a=app({href:'http://localhost/#lesson=reth',blocked:true});
  assert.match(a.root.innerHTML,/<details class="learn-terms"[^>]* open>/);
  const html=a.root.innerHTML;a.api.setPreference('code','rust');assert.equal(a.root.innerHTML,html);
- a.controls.get('reth').click();a.follow('send');assert.match(a.root.innerHTML,/要求を渡すこと/);
+ a.controls.get('reth').click();a.follow('send');assert.match(a.root.innerHTML,/<h1 tabindex="-1">送信された要求を追う<\/h1>/);
  const known=app({saved:{profile:'familiar',last:'send',read:['rpc']}});assert.equal(known.api.preferences().chain,'known');assert.equal(known.api.preferences().code,'first');assert.equal(known.api.readState().last,'send');
  const b=app({saved:{profile:'constructor',last:'missing',read:['missing','reth']}});assert.equal(b.api.preferences().code,'first');assert.equal(b.api.readState().read.length,1);
  b.location.hash='#lesson=missing';b.api.render();assert.match(b.root.innerHTML,/読みどころが見つかりません/);
@@ -61,4 +61,13 @@ test('legacy entry links retain source context, and static and local learning re
   assert.equal(await read('../../dist/'+name),await read('../../ui/'+name));
   assert.equal(await read('../public/'+name),await read('../../ui/'+name));
  }
+});
+
+test('code and crate pages return to the originating lesson even when a different lesson was read later',async()=>{
+ const link={hidden:false},handlers={};
+ const location={pathname:'/reader',hash:'#path=example.rs&lesson=blockchain',search:'',href:'http://localhost/reader#lesson=blockchain'};
+ const context={location,URL,URLSearchParams,READING_COURSE:{lessons:[{id:'blockchain',title:'ブロックチェーンとは？'},{id:'send',title:'送信'}]},LearningStudio:{preferences:()=>({chain:'new',code:'first'}),readState:()=>({last:'send'}),lessonUrl:id=>'/#lesson='+id},document:{body:{dataset:{studio:'local'},classList:{contains:()=>false}},querySelectorAll:s=>s==='[data-learning-return]'?[link]:[],addEventListener(){}},addEventListener:(name,cb)=>{handlers[name]=cb;}};
+ vm.runInNewContext(await read('../../ui/studio.js'),context);
+ assert.equal(link.href,'/#lesson=blockchain');assert.match(link.textContent,/ブロックチェーン/);
+ location.hash='#lesson=unknown';handlers.hashchange();assert.equal(link.href,'/#lesson=send');
 });

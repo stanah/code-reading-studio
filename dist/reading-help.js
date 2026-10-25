@@ -27,6 +27,14 @@
     const options=prefs();
     return `<section class="rh-panel" aria-label="この箇所の読解ヒント"><p class="rh-intro">${esc(c.intro)}</p><div class="rh-vocabulary" data-concept-hints><span>この言葉は？</span>${c.terms.map(id=>`<button type="button" data-rh-term="${esc(id)}">${esc(data().terms[id].name)}</button>`).join('')}</div><div class="rh-concept-answer" role="status" aria-live="polite" hidden></div><details class="rh-source"${openCode?' open':''}><summary>実コードをこの場で確かめる <span>L${c.source.start}–${c.source.end}</span></summary><div class="rh-source-body"><div class="rh-reading-mode"><button type="button" data-rh-code-only aria-pressed="false">ヒントを閉じて原文だけ読む</button></div><div class="rh-code-controls"><label><input type="checkbox" data-rh-basics${options.code==='first'?' checked':''}> コードの読み方を補う</label><label><input type="checkbox" data-rh-trace${options.code!=='rust'?' checked':''}> 日本語の処理と対応づける</label></div><div class="rh-basics"${options.code==='first'?'':' hidden'}><p>関数は処理のまとまり、引数は渡すデータ、戻り値は返る結果です。コード中の下線の付いた記号から、その意味を開けます。</p><div class="rh-basic-links">${['function','argument','return','type'].map(t=>`<button type="button" data-rh-term="${t}">${esc(data().terms[t].name)}</button>`).join('')}</div></div><div class="rh-trace"${options.code==='rust'?' hidden':''}><p>確かめたい処理を選ぶと、対応する行と説明を示します。</p><div class="rh-line-steps">${c.lines.map((line,i)=>`<button type="button" data-rh-line="${i}" aria-pressed="false">${esc(line.label)} <small>L${line.line}</small></button>`).join('')}</div><div class="rh-line-answer" role="status" aria-live="polite"><p>処理を選ぶか、下のコードの記号を選んでください。</p></div></div><div class="rh-symbol-answer" role="status" aria-live="polite" hidden></div><pre class="rh-code" tabindex="0" aria-label="${esc(c.title)}の実コード。記号の意味をその場で開けます">${codeHtml(c)}</pre>${c.note?`<p class="rh-source-note">${esc(c.note)}</p>`:''}<p class="rh-evidence">原文：${esc(c.source.path)} · ${esc(commit.slice(0,12))}。行番号・コードは原文のまま、ヒントは解説者による読解です。</p></div></details></section>`;
   }
+  function lessonBridge(id,isLocal){
+    const r=data()?.lessonLinks?.find(r=>r.lesson===id),c=r&&context(r.context,data().commit);if(!c)return '';
+    const source=c.source,crate=r.crate,origin={lesson:id};
+    const codeUrl=isLocal?'/reader#'+new URLSearchParams({path:source.path,code:1,start:source.start,end:source.end,...origin}):source.url;
+    const crateUrl=isLocal?'/reader#'+new URLSearchParams({area:r.area,crate:crate.id,...origin}):crate.url;
+    const external=isLocal?'':' target="_blank" rel="noreferrer"';
+    return `<span>説明をコードで確かめる</span><h2>${esc(r.title)}</h2><p>${esc(r.why)}</p><details class="learn-core-code"><summary>中核のコードをこの場で読む</summary><p class="learn-code-scope">${esc(r.scope)}</p><div data-reading-help="${esc(r.context)}" data-help-commit="${esc(data().commit)}" data-help-open="true"></div><div class="learn-implementation-links"><a href="${esc(codeUrl)}"${external}>原文のファイルと行範囲へ${isLocal?'':' ↗'}</a><a href="${esc(crateUrl)}"${external}>担当クレート：${esc(crate.name)}${isLocal?'':' ↗'}</a></div><p class="learn-small">クレートは、Rustのコードを機能ごとにまとめてビルドする単位です。担当クレートから、周辺のファイルや他の部品との関係を調べられます。</p><p class="rh-evidence">Reth ${esc(data().version)} · ${esc(data().commit.slice(0,12))} · ${esc(source.path)} L${source.start}–${source.end}</p></details>`;
+  }
   function termHtml(id){const t=data()?.terms[id];if(!t)return '';return `<div class="rh-answer-heading"><strong>${esc(t.name)}</strong><button type="button" data-rh-close aria-label="ヒントを閉じる">閉じる</button></div><p>${esc(t.meaning)}</p><p class="rh-example">${esc(t.example)}</p>`;}
   function applyPreferences(){
     if(typeof document==='undefined')return;
@@ -40,6 +48,7 @@
     });
   }
   function mount(scope=document){
+    for(const bridge of scope.querySelectorAll('[data-lesson-code]'))if(!bridge.dataset.ready){const html=lessonBridge(bridge.dataset.lessonCode,bridge.dataset.lessonLocal==='true');if(html){bridge.innerHTML=html;bridge.dataset.ready='true';}}
     const hosts=[...(scope.matches?.('[data-reading-help]')?[scope]:[]),...scope.querySelectorAll('[data-reading-help]')];
     for(const host of hosts){
       if(mounted.has(host))continue;
@@ -81,7 +90,7 @@
     }
     applyPreferences();
   }
-  globalThis.ReadingHelp={context,forSource,render,codeHtml,termHtml,mount,applyPreferences};
+  globalThis.ReadingHelp={context,forSource,render,codeHtml,termHtml,lessonBridge,mount,applyPreferences};
   if(typeof document!=='undefined'){
     mount();document.addEventListener('reading-context-change',()=>mount());document.addEventListener('reading-preferences-change',applyPreferences);
   }
