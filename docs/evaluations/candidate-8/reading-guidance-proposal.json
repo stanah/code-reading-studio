@@ -1,0 +1,44 @@
+{
+  "candidate": 8,
+  "status": "design-proposal-not-implemented",
+  "definedAt": "2026-10-25T18:13:43.970072+00:00",
+  "problemEvidence": "candidate-7/fresh-persona4/round1.json rethLoad; input from independent first-use AI, not human validation",
+  "cause": [
+    "Source availability and small action count were used as proxies for reading guidance",
+    "A phase was treated as a manageable chunk even when it contained16 full excerpts",
+    "Tests checked preserved source and controls, without a default-visible-source budget"
+  ],
+  "keep": [
+    "Fixed upstream commit and all148 context source ranges/hashes/line hints",
+    "All108 named explanation units and all producers/replicas in C7 inventory",
+    "Source-adjacent Japanese annotations and local/static navigation/return/draft invariants",
+    "Original v2 G1-G6 criteria; no removal or retroactive candidate7 pass"
+  ],
+  "proposedAdditionalAcceptance": [
+    {
+      "id": "R1-default-breadth",
+      "persona": "chain=new/code=first",
+      "measure": "Newly entered long reading scope/phase automatically opens one primary original. At most3 originals are automatically visible after following related code; explicit user overview mode is recorded separately.",
+      "sourceScope": "Full original function/condition/reply ranges remain unchanged; no snippet trimming to meet threshold."
+    },
+    {
+      "id": "R2-next-place",
+      "measure": "Every focused source identifies its role in the current question and offers same-page next/previous/destination controls. Target source can be opened within1 action; return restores focused origin/selected line/URL/draft."
+    },
+    {
+      "id": "R3-adaptation",
+      "measure": "Within same page, first/other/rust readers can choose focused or multiple-source reading. Changing this mode or hiding comments preserves source/selection/URL/draft and does not require a page switch."
+    },
+    {
+      "id": "R4-evaluation",
+      "measure": "Same frozen new candidate, cold7lesson tasks and all affected108/Atlas/Rust producers checked in2consecutive full rounds; fixed10 action protocol is not replaced by source-budget measurement."
+    }
+  ],
+  "decisionPending": [
+    "Confirm UI control labels and common source-scope boundary before authoring",
+    "Determine default/selected-source persistence and intentionally opened originals behavior",
+    "Use C7 complete findings before applying changes"
+  ],
+  "humanParticipants": 0,
+  "canonicalEdits": false
+}

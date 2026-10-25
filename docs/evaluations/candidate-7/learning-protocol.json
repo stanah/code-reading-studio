@@ -1,0 +1,62 @@
+{
+  "version": 3,
+  "candidate": 7,
+  "definedBeforeEvaluation": true,
+  "tasks": [
+    "blockchain",
+    "ethereum",
+    "rpc",
+    "reth",
+    "send",
+    "startup",
+    "reading"
+  ],
+  "maxLearningActionsPerPage": 10,
+  "countedActions": [
+    "open source or term",
+    "choose flow",
+    "choose destination",
+    "open selected destination",
+    "follow implementation",
+    "return",
+    "change assistance for answer"
+  ],
+  "excludedSetup": [
+    "specified URL",
+    "profile setup before task",
+    "simple page/source scroll"
+  ],
+  "coldStartingState": "reload document for every lesson and round; no transient original-open/selected-line map from prior lesson successes",
+  "reviewers": [
+    {
+      "id": "beginner_eval",
+      "kind": "warm AI simulation; implementation/source reviewer; not an independent human",
+      "chain": "new",
+      "code": "other",
+      "origin": "http://localhost:4317",
+      "rounds": 2,
+      "restore": "first after evaluation"
+    },
+    {
+      "id": "fresh_persona4",
+      "kind": "new AI simulation without implementation history; not a human",
+      "chain": "new",
+      "code": "first",
+      "origin": "http://localhost:4398",
+      "rounds": 2
+    }
+  ],
+  "g4Separate": true,
+  "comparisonLimit": "Do not treat candidate5 warm state-preserving second-round result as a strict same-start comparison. Previous failures retained.",
+  "humanParticipants": 0,
+  "note": "C6 task names/action counting/max10/starting axes preserved. Fresh tasks made explicit before formal evaluation; prompt-bound transfer is separately recorded from warm baseline comparisons.",
+  "freshTasks": {
+    "blockchain": "なぜ届いたブロックをそのまま記録せず確かめるか。原文で一つの確認を示す。",
+    "ethereum": "状態とは何か。取引を実行する処理と記録する処理の根拠を示す。",
+    "rpc": "RPCで取引を送ると何を受け取り、成功時に何が終わっているか。",
+    "reth": "Rethの主な担当を、受信・検証/実行・保存・応答のつながりとしてコードで追う。",
+    "send": "受信した署名済み取引がプールへ入る通常経路の入力・主要分岐・結果と返答元を追う。",
+    "startup": "起動入口から動き続ける処理へつながる担当を追い、待つ箇所と止まる条件を説明する。",
+    "reading": "実コードの受け取る値、主要な処理、返す結果を見つけ、関連実装を読んで元へ戻る。"
+  }
+}

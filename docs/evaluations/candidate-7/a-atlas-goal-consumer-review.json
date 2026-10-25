@@ -1,0 +1,1675 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "kind": "Read-only consumer-fit adjudication of goal omission; no production edit or new UI acceptance",
+  "routes": 15,
+  "exactGoalTitleDuplicates": 6,
+  "rows": [
+    {
+      "route": "lesson:blockchain",
+      "goal": "「記録を持つ」「前の記録とつながる」「ノードが情報をやり取りする」を、役割ごとの実装で確かめます。",
+      "title": "記録の出発点・つながり・ノードの通信を確かめる",
+      "scope": "Rethで観察できる記録と通信の例を並べます。三つが一つの関数として順番に呼ばれる図ではありません。どの履歴を確定するかの合意アルゴリズムは外部の合意側ソフトの担当です。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "area:foundation",
+          "title": "記録の出発点を用意する",
+          "purpose": "ノードが同じチェーンの出発点とルールを使うことを確かめる。",
+          "connection": "この設定を使うノードが、次に示すようなブロックのつながりを検査します。別の役割の実装例です。"
+        },
+        {
+          "context": "area:block-link",
+          "title": "前のブロックとのつながりを検査する",
+          "purpose": "前を指すハッシュと番号を比較し、不一致なら受け入れないことを確かめる。",
+          "connection": "検査に使う情報は他のノードとの通信でも受け取ります。次はノードが通信の出来事を扱う側の例です。"
+        },
+        {
+          "context": "startup:network",
+          "title": "ノードが通信の出来事を扱う",
+          "purpose": "通信は一度だけではなく、要求や出来事を待ちながら続くことを確かめる。",
+          "connection": "ここまでで記録・検証する参加者・通信の役割を区別できます。履歴選択と確定は、Rethと合意側の分担として後のページで読みます。"
+        },
+        {
+          "context": "area:network-budget",
+          "title": "通信の一回の処理件数をmacroで確かめる",
+          "purpose": "maybe_more_*が残件の確定ではなく、処理件数の上限に達したことを表す理由を原文で確かめる。",
+          "connection": "直前のNetworkManagerが呼ぶmacroの定義です。別の稼働タスクを始める場面ではありません。取得結果のboolがmanagerのL1194の条件へ戻ります。"
+        }
+      ],
+      "adjudication": "Three goal clauses remain in selected title (record origin/link/node communication), first three stage titles/purposes, and scope distinguishing separate role examples and external consensus. This does not claim full-history database storage is demonstrated by the genesis configuration excerpt.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "lesson:ethereum",
+      "goal": "残高などの状態、ブロック内の取引の実行、レシートの内容を別々の原文から結びつけます。",
+      "title": "状態を読み、取引を実行し、結果を記録する",
+      "scope": "状態読取、共通のブロック実行入口、Ethereum用レシート作成の実装例です。読取関数が実行関数を呼ぶという直列の経路ではありません。EVM命令ごとの内部処理は実行側の詳細として別にあります。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "area:storage-account",
+          "title": "現在の口座情報を読む",
+          "purpose": "状態とは、アドレスに対応する口座情報などを読み出せるデータであると確かめる。",
+          "connection": "この状態を参照・更新しながら進めるのが取引の実行です。次はブロック全体を処理する共通の入口です。"
+        },
+        {
+          "context": "area:execution",
+          "title": "ブロック内の取引を順に実行する",
+          "purpose": "実行前の変更、各取引、実行後の変更、結果の返却を追う。",
+          "connection": "ここで使われる実行処理はチェーンごとの実装を呼びます。次はEthereumで実行結果をレシートにまとめる実装例です。"
+        },
+        {
+          "context": "area:execution-receipt",
+          "title": "実行結果からレシートを作る",
+          "purpose": "取引の種類、成功印、ガス使用量、ログが記録になることを確かめる。",
+          "connection": "レシートを作ること、保存すること、履歴を確定することを区別して説明できるか確かめます。"
+        }
+      ],
+      "adjudication": "State/account information, transaction execution and receipt are separate named stages; scope explicitly says independent implementation examples rather than read→execute call chain. Receipt content is in the third purpose.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "lesson:rpc",
+      "goal": "eth_getBalanceの読取とeth_sendRawTransactionの送信を、受け取る値・呼び出し先・返す値で比べます。",
+      "title": "問い合わせと送信を、入口から担当処理まで比べる",
+      "scope": "残高問い合わせと署名済み取引送信という二つのRPCを扱います。P2Pの通信処理はRPCと別の役割で、Rethの部品組立のページでも確認します。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "area:rpc-balance-entry",
+          "title": "残高問い合わせを受け付ける",
+          "purpose": "アドレスと参照時点を受け取り、残高かエラーを返す入口を読む。",
+          "connection": "EthState::balanceの呼び出し先を次の範囲で読みます。"
+        },
+        {
+          "context": "area:rpc-balance-read",
+          "title": "状態から残高を読み出す",
+          "purpose": "問い合わせが状態を読み、値なしとエラーを分けることを確かめる。",
+          "connection": "ここまでが読取の例です。次は別のRPCである取引送信の入口と比べます。"
+        },
+        {
+          "context": "tx:rpc",
+          "title": "署名済み取引の送信を受け付ける",
+          "purpose": "送信要求は残高そのものではなく、取引のデータを受け取ると確かめる。",
+          "connection": "EthTransactions::send_raw_transactionの呼び出し先を次で読みます。"
+        },
+        {
+          "context": "tx:recover",
+          "title": "データを読み、送信者を求める",
+          "purpose": "データが取引と送信者を扱える形になって後続へ渡ることを確かめる。",
+          "connection": "この関数が選ぶPoolTransactionの復元hookの既定実装を次で読みます。"
+        },
+        {
+          "context": "tx:recovery-hook",
+          "title": "デコードと署名復元の既定実装を読む",
+          "purpose": "空入力・送信形式・署名の失敗を分け、復元した送信者を持つプール用の取引へ変換する。",
+          "connection": "この結果はsend_raw_transactionへ戻ります。復元に成功した取引を元のバイト列と組にして、send_pool_transactionへ渡します。このページはRPCの読取と送信の違いを扱い、送信後の追加結果は送信ページで続けて読みます。"
+        }
+      ],
+      "adjudication": "Scope identifies balance read versus signed transaction send, with separate received-value/return purposes in the two entry stages and the recovery helper. Method identifiers are in the displayed originals.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "lesson:reth",
+      "goal": "Rethの具体的な部品、プールでの検証・保持、ブロックの実行・状態検証と保存を原文で確かめ、外部の合意側との分担を区別します。",
+      "title": "実行側の部品と、合意側からの要求の接続を確かめる",
+      "scope": "ここにあるconsensusやConsensusEngineという名前は、Reth内部の検証・Engine処理を指します。外部のコンセンサスクライアント本体をRethが含むという意味ではありません。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "startup:components",
+          "title": "EVM・pool・ネットワークなどを組み立てる",
+          "purpose": "共通の組立でEVM設定・プール・通信・payload等に何を渡すか、返されるComponentsを読む。",
+          "connection": "この共通処理とEthereumNodeの具体的な構成は、実行時にこの順で呼ぶ関係ではなく、選ばれた型とその実装の対応です。"
+        },
+        {
+          "context": "area:startup-node-components",
+          "title": "EthereumNodeの関連型と部品構成を結びつける",
+          "purpose": "EthereumNodeのNode実装が具体的なbuilder型を定め、Self::componentsを呼ぶことを読む。",
+          "connection": "EthereumNodeのcomponents_builderはSelf::componentsを呼びます。EthereumNode::componentsが返す既定のbuilder構成と対応させます。"
+        },
+        {
+          "context": "area:startup-component-choice",
+          "title": "Ethereum用の具体的なbuilderを選ぶ",
+          "purpose": "EthereumNodeの既定構成に、どの具体的builderが対応するか比較する。",
+          "connection": "これは共通のbuild_componentsに対するEthereumNodeの具体的な構成です。そこで選ばれるnetwork builderとpayload builderの実装を対応させます。"
+        },
+        {
+          "context": "area:startup-network-builder",
+          "title": "Ethereumのネットワークを構築して起動へ渡す",
+          "purpose": "Ethereumのnetwork builderがネットワークの起動へ渡し、handleを返す箇所を読む。",
+          "connection": "build_networkはctx.network_builder().awaitで準備結果を待ったあと、同期のctx.start_network(network, pool)を呼びます。返ったnetwork handleをbuild_componentsへ返します。"
+        },
+        {
+          "context": "area:startup-network-start",
+          "title": "P2P関連タスクを起動してhandleを返す",
+          "purpose": "別の担当との比較：ネットワーク処理を実行器のタスクへ登録する実装を読む。",
+          "connection": "start_networkはネットワークのタスクを登録してhandleを返します。その後もタスクは動き続けます。payloadサービスの起動はbuild_componentsから行う別の呼出しです。"
+        },
+        {
+          "context": "area:startup-payload-spawn",
+          "title": "候補作成サービスを組み立てて別OSスレッドで起動する",
+          "purpose": "payload builderサービスを生成し、タスクを起動してhandleを返す箇所を読む。",
+          "connection": "payloadサービスを専用OSスレッドで動かし、handleを共通の部品構築へ返します。部品の生成後、Engine起動本体はEngine・同期の接続を用意します。"
+        },
+        {
+          "context": "startup:services",
+          "title": "Engine API・pipeline・treeをつなぐ",
+          "purpose": "要求チャネル、取得用client、pipelineを作ってEngineのbuilderへ渡す箇所を読む。",
+          "connection": "Engine起動本体がpipelineと要求ストリーム等をEngineOrchestratorBuilderへ渡し、buildを呼びます。"
+        },
+        {
+          "context": "area:startup-engine-build",
+          "title": "Engineの処理担当と保存サービスを組み立てる",
+          "purpose": "builderの中で保存処理とtreeを起動し、handlerとbackfillを結ぶ箇所を読む。",
+          "connection": "buildは保存サービス・treeを起動し、handlerとPipelineSyncをChainOrchestratorへ組み合わせて返します。treeの専用スレッド生成とPipelineSyncの初期化はそれぞれ別の実装です。"
+        },
+        {
+          "context": "area:startup-tree-spawn",
+          "title": "専用OSスレッドでtreeを起動する",
+          "purpose": "別の担当との比較：Engine Treeが専用OSスレッドを作る実装を読む。",
+          "connection": "spawn_newがtree用のチャネルを作り、OSスレッドでtask.runを実行します。PipelineSyncのnewは同じEngine builderが別に呼ぶ初期化です。"
+        },
+        {
+          "context": "area:rpc-launch",
+          "title": "RPCを起動してEngineの窓口を受け取る",
+          "purpose": "RPC等のadd-onsが起動し、要求を受け取るhandleを返す箇所を読む。",
+          "connection": "Engine等の接続情報をadd-onsへ渡してRPCのhandleを受け取ります。Engineを動かすorchestratorは起動本体が別のタスクへ登録します。"
+        },
+        {
+          "context": "area:node-handle",
+          "title": "起動した部品と終了待ちを呼び出し元へ返す",
+          "purpose": "FullNodeがプール・通信・状態参照・RPCを保持し、終了FutureとNodeHandleへまとまることを読む。",
+          "connection": "ここまでが起動と構成の例です。以降は稼働中の別の責務として、プールの検証と保持、ブロックの実行・状態検証、採用履歴の更新と保存をそれぞれ確かめます。"
+        },
+        {
+          "context": "tx:rpc",
+          "title": "RPC要求を受け、送信担当の結果を返す",
+          "purpose": "実際のRPCハンドラーが署名済みデータを受け取り、担当へ渡して結果を返すことを確かめる。",
+          "connection": "これは稼働中に呼ばれるRPCの入口です。直前の構築・起動の例を、この要求のたびに実行する関係ではありません。通常のローカル追加と転送設定時の結果の違いは送信処理で確認します。"
+        },
+        {
+          "context": "tx:pool",
+          "title": "検証してプールに追加",
+          "purpose": "プールの公開追加APIで、検証と内部への追加をつないで結果を返す箇所を読む。",
+          "connection": "プールの追加APIから検証へ進む経路です。起動関数からこの順に呼ぶという意味ではありません。"
+        },
+        {
+          "context": "area:send-validation-dispatch",
+          "title": "プールから検証担当へ渡す",
+          "purpose": "公開プールと検証担当の接続を読む。",
+          "connection": "標準構成では専用タスクに検証を渡すラッパーを使います。次はその送信側です。"
+        },
+        {
+          "context": "area:send-validation-task",
+          "title": "検証タスクへ仕事を渡し結果を待つ",
+          "purpose": "検証用の返答経路を作り、送信失敗や受信失敗を成功と区別する。",
+          "connection": "ValidationTask::runがキューからこの仕事を受け取って進めます。"
+        },
+        {
+          "context": "area:send-validation-worker",
+          "title": "検証用の仕事を受け取り実行する",
+          "purpose": "受信の待機と実際の検証の実行を分けて読む。",
+          "connection": "仕事の中で呼ばれた内側のvalidatorはEthereum用の実装です。"
+        },
+        {
+          "context": "area:send-validation-entry",
+          "title": "Ethereumの検証へ入る",
+          "purpose": "共通のvalidate_transactionからvalidate_oneへ渡す箇所を確かめる。",
+          "connection": "validate_oneは最新状態を読む方法を用意し、validate_one_with_providerへ渡します。"
+        },
+        {
+          "context": "area:send-validation-order",
+          "title": "データだけの検査から状態を使う検査へ進む",
+          "purpose": "状態なしの検査に通ったあとだけ状態を読み、次の検査へ進む順序を追う。",
+          "connection": "先に呼ばれるvalidate_statelessの全体を次で読みます。"
+        },
+        {
+          "context": "area:send-stateless",
+          "title": "形式・サイズ・ガス・手数料・ネットワークを検査する",
+          "purpose": "状態を読まずに判定する検証条件と、エラーで抜ける箇所を読む。",
+          "connection": "ここに通った取引だけが、前の関数からvalidate_statefulへ進みます。"
+        },
+        {
+          "context": "area:send-stateful",
+          "title": "残高や通し番号を状態と照合する",
+          "purpose": "口座の読取、送信者のコード、nonce、残高、blobなどの検査とValid結果を読む。",
+          "connection": "次の二つは、この関数が呼ぶ通し番号と残高の具体的な検査です。"
+        },
+        {
+          "context": "area:send-nonce",
+          "title": "古い通し番号を拒否する",
+          "purpose": "送信者の状態のnonceと取引のnonceを比べる条件を確かめる。",
+          "connection": "この検査に通ったあと、残高の条件も確かめます。"
+        },
+        {
+          "context": "area:pool-balance",
+          "title": "残高が足りない要求は、いつ失敗になる？",
+          "purpose": "残高検査が有効な場合の不足エラーと、無効設定の場合を区別する。",
+          "connection": "全検証の結果が公開プールへ戻り、self.pool.add_transactionsへ渡されます。次は内部追加の経路です。"
+        },
+        {
+          "context": "area:send-pool-limit",
+          "title": "内部プールの追加と容量制限をまとめて返す",
+          "purpose": "排他制御、各取引の追加、容量制限での除外、結果の調整を読む。",
+          "connection": "この範囲のself.add_transactionが、次に示す検証結果別の追加処理を呼びます。"
+        },
+        {
+          "context": "area:send-pool-add",
+          "title": "検証結果から内部プールへの追加結果を作る",
+          "purpose": "検証結果がValid/Invalid/Errorの場合を分け、保持の成功と拒否を読む。",
+          "connection": "この結果はプールの公開APIの呼出元へ戻ります。次のNewPayload処理は、プール追加の続きではなく、合意側から届くブロックを検証する別の責務です。"
+        },
+        {
+          "context": "area:journey-block-dispatch",
+          "title": "NewPayloadを実行し、その結果を返答口へ戻す",
+          "purpose": "Engineが受けたNewPayloadをon_new_payloadへ渡し、tx.sendで要求元へ返す箇所を読む。",
+          "connection": "これは稼働中のブロック検証の入口例です。on_new_payloadの結果をNewPayloadの返答口へ戻します。プールへ取引を保持しただけではこのブロック実行や採用は起きません。"
+        },
+        {
+          "context": "area:journey-block-receive",
+          "title": "無効な祖先・同期中・通常検証を分ける",
+          "purpose": "不正な祖先・同期中の一時保管・通常検証を分ける。",
+          "connection": "通常はtry_insert_payloadへ進みます。同期中はbufferへ入れる別の分岐です。"
+        },
+        {
+          "context": "area:journey-block-insert",
+          "title": "検証結果をVALID・SYNCINGなどへ変換する",
+          "purpose": "取り込みの結果がVALID・SYNCING・エラーへ分かれることを読む。",
+          "connection": "insert_payloadが検証処理を共通の取り込み処理へ渡します。"
+        },
+        {
+          "context": "area:journey-block-validate-call",
+          "title": "取り込みの中からpayloadの検証を呼ぶ",
+          "purpose": "取り込みの共通処理に、payloadを検証する関数を渡す。",
+          "connection": "渡された関数executeを、次の共通処理が状態とともに呼びます。"
+        },
+        {
+          "context": "area:journey-block-insert-state",
+          "title": "親の状態を確かめ、検証済みブロックをメモリーへ保持する",
+          "purpose": "既知ブロックと親の不足を分け、検証済みの実行結果をメモリーへ保持する。",
+          "connection": "この範囲のexecuteで呼ばれるvalidate_payloadと、その先の状態付き検証を次で読みます。"
+        },
+        {
+          "context": "area:journey-block-validator-entry",
+          "title": "payloadを状態付きブロック検証へ渡す",
+          "purpose": "payloadとtreeの状態を使う検証へ入る。",
+          "connection": "validate_block_with_stateへ渡します。"
+        },
+        {
+          "context": "area:journey-block-parent",
+          "title": "親を見つけ、基本的な変換と検査を始める",
+          "purpose": "親の状態を使えるか確認し、実行前の変換と基本検査を始める。",
+          "connection": "その後、BALを使う実行か通常の実行かを選びます。"
+        },
+        {
+          "context": "area:journey-block-execute-choice",
+          "title": "実行方法を選び、現在の状態を渡す",
+          "purpose": "どの状態と実行方法を使うかを読む。",
+          "connection": "通常側はexecute_blockへ渡します。その本体でEVM生成から取引ループと結果の取り出しまで読みます。BAL側は分岐に示す別の実装です。"
+        },
+        {
+          "context": "area:journey-block-executor",
+          "title": "状態とEVMを用意して実行結果へまとめる",
+          "purpose": "実行環境と親の状態からexecutorを作り、取引処理とfinishからBlockExecutionOutputを返す。",
+          "connection": "この本体が呼ぶexecute_transactionsを次で読みます。返答後はこの本体のfinishへ戻ります。"
+        },
+        {
+          "context": "area:journey-block-execute",
+          "title": "取引を一件ずつ実行してレシートを得る",
+          "purpose": "取引を順に実行し、結果のレシートを得る。",
+          "connection": "execute_blockへ戻ってfinishと状態出力の取り出しを行い、さらにvalidate_block_with_stateへ戻ります。実行結果をそのまま受け入れず、ブロック全体の検証を続けます。"
+        },
+        {
+          "context": "area:journey-block-after-execute",
+          "title": "実行結果とレシート集約の返答を受け取る",
+          "purpose": "状態変更の出力、レシート集約値の受信、実行後検証への呼び出しを読む。",
+          "connection": "ここで呼ばれたvalidate_post_executionの本体を次で読みます。"
+        },
+        {
+          "context": "area:journey-block-postcheck",
+          "title": "実行後の結果がブロックのルールに合うか検証する",
+          "purpose": "実行後に分かるルールを照合し、問題があればエラーにする。",
+          "connection": "このconsensus呼び出しに対応する、Ethereumの実装と具体的な検証条件を続けて読みます。"
+        },
+        {
+          "context": "area:journey-block-consensus-check",
+          "title": "Ethereumの実行後検証を呼ぶ",
+          "purpose": "共通の検証操作に対応するEthereum実装と設定による特例を読む。",
+          "connection": "ここから具体的な検証本体へ渡す値と、戻るResultを追います。"
+        },
+        {
+          "context": "area:journey-block-postconditions",
+          "title": "実行結果とブロックの値を照合する",
+          "purpose": "gas・レシートroot・bloom・requests・BALを適用時点と条件で照合する。",
+          "connection": "Ethereum実装を経て元の呼出元へ結果が戻ります。次に、状態rootの計算・照合と最終結果を読みます。"
+        },
+        {
+          "context": "area:journey-block-root",
+          "title": "計算した状態のまとめをヘッダーと照合し結果を返す",
+          "purpose": "実行後の状態root等を照合し、検証成功の結果またはエラーを返す箇所を読む。",
+          "connection": "この検証の結果はNewPayload要求元へ戻ります。VALIDは履歴への採用やディスク保存の完了通知ではありません。ForkchoiceUpdatedは合意側から採用先端等を受け取る別の要求です。"
+        },
+        {
+          "context": "area:journey-block-forkchoice-message",
+          "title": "履歴採用の指示と返答口をEngineへ送る",
+          "purpose": "合意側がhead・safe・finalizedを実行側へ渡す別の要求と、返答待ちの入口を読む。",
+          "connection": "この要求はブロック本体を検証するNewPayloadとは別です。実行側は指示された履歴の整合性を確認して自分の採用状態を反映します。合意側がheadを選びfinalityを判断するアルゴリズムの実装はReth外で、ページの公式基礎資料と区別します。"
+        },
+        {
+          "context": "area:journey-block-forkchoice",
+          "title": "合意側の履歴採用の指示を処理する",
+          "purpose": "指示されたhead・safe・finalizedの前提を検査し、履歴の変更へ進む。",
+          "connection": "現在の先端と違う場合、apply_chain_updateで変更を作ります。"
+        },
+        {
+          "context": "area:journey-block-forkchoice-precheck",
+          "title": "forkchoiceの不正と同期中を区別する",
+          "purpose": "ゼロhead・不正な祖先・同期中の主要条件と、INVALID/SYNCING/継続の結果を読む。",
+          "connection": "早期返答がなければon_forkchoice_updatedへ戻り、採用履歴の変更へ進みます。"
+        },
+        {
+          "context": "area:journey-block-canonical",
+          "title": "検証済みの履歴を採用する",
+          "purpose": "採用する履歴の変更が整合するか検査する。",
+          "connection": "まず呼び出すis_consistent_forkchoice_stateで、safe/finalizedが履歴に合うかを次で確かめます。"
+        },
+        {
+          "context": "area:journey-block-forkchoice-consistency",
+          "title": "safeとfinalizedが採用履歴に合うかを調べる",
+          "purpose": "safe/finalizedがゼロ・切替先・残る採用履歴のどれかを条件とともに読む。",
+          "connection": "この検査がtrueならapply_chain_updateへ戻り、on_canonical_chain_updateで履歴を切り替えます。"
+        },
+        {
+          "context": "area:journey-block-canonical-state",
+          "title": "採用中の先端と状態を更新し通知する",
+          "purpose": "採用中の先端・メモリー内の状態を切り替え、購読側へ通知する。",
+          "connection": "apply_chain_updateへ戻り、続けてensure_consistent_forkchoice_stateがsafe/finalizedの目印を更新します。"
+        },
+        {
+          "context": "area:journey-block-forkchoice-markers",
+          "title": "safeとfinalizedの目印を更新する",
+          "purpose": "ゼロ・未知・既知・参照エラーを分け、目印更新と番号の保存依頼を読む。",
+          "connection": "ブロック全体の保存はこの目印更新と別に、Engineの稼働ループが条件を見て進めます。"
+        },
+        {
+          "context": "startup:tree",
+          "title": "専用スレッドでEngine要求を処理する",
+          "purpose": "treeの処理ループで、要求や保存完了の扱いと保存開始の呼出しを読む。",
+          "connection": "以降は採用状態へ反映されたブロックを保存する別の進行例です。advance_persistenceは保存中か等を検査し、get_save_blocks_inputが対象範囲と抑止条件を選びます。検証成功だけで直ちに保存する処理ではありません。"
+        },
+        {
+          "context": "area:startup-tree-pressure",
+          "title": "保存中の滞留量からtree入力の抑制を決める",
+          "purpose": "保存中で、メモリー保持分を超えたブロック数が閾値以上かをAND条件で読む。",
+          "connection": "このboolをrunが使って通常の待機と保存だけの待機を選びます。"
+        },
+        {
+          "context": "area:startup-tree-wait",
+          "title": "treeの専用スレッドで保存・入力・候補作成完了を待つ",
+          "purpose": "保存中の滞留時と通常時で、何を受信し何を返すかを読む。",
+          "connection": "返したLoopEventをrunが処理します。保存用rxを消費していない分岐ではrxを状態へ戻すため、保存の返答待ちが保たれます。"
+        },
+        {
+          "context": "area:journey-block-save-start",
+          "title": "保存の条件を確認して別の処理へ依頼する",
+          "purpose": "保存を重ねて始めない条件と、保存依頼・返答待ちの管理を読む。",
+          "connection": "get_save_blocks_inputが、現在採用している履歴から保存範囲を選びます。"
+        },
+        {
+          "context": "area:journey-block-save-target",
+          "title": "採用中の履歴から保存範囲を選ぶ",
+          "purpose": "保存するブロックと状態の範囲を、先端と設定に従って選ぶ。",
+          "connection": "persist_blocksへ入力が戻り、PersistenceHandleのsave_blocksへ送られます。"
+        },
+        {
+          "context": "area:journey-block-save-queue",
+          "title": "保存依頼を専用の経路へ送る",
+          "purpose": "保存依頼が専用の経路へ送られることを読む。",
+          "connection": "保存担当のrunが、このSaveBlocksという依頼を受け取ります。"
+        },
+        {
+          "context": "area:journey-block-save-worker",
+          "title": "保存担当が依頼を受け取り結果を返す",
+          "purpose": "保存担当が依頼を受け取り、保存結果を返答口へ返す。",
+          "connection": "on_save_blocksが保存先への書き込みとcommitを進めます。"
+        },
+        {
+          "context": "area:journey-block-save-write",
+          "title": "ブロックと状態を保存しcommitする",
+          "purpose": "ブロックと状態を書き込み、commit後に保存済み位置を返す。",
+          "connection": "このPersistenceResultが保存担当からtree側へ返り、完了の反映へ進みます。"
+        },
+        {
+          "context": "area:journey-block-save-complete",
+          "title": "保存完了をtree側へ反映する",
+          "purpose": "保存完了の返答を受け、保存位置とメモリー内の管理状態を更新する箇所を読む。",
+          "connection": "保存担当の結果をtreeへ反映したあと、処理ループへ戻ります。プール受入・ブロック検証・採用履歴の更新・ディスク保存は別の段階です。外部の合意側の確定判断とも区別します。"
+        }
+      ],
+      "phaseFields": [
+        {
+          "title": "部品の構成とRPCの窓口",
+          "relationship": "構成・起動の実装例と稼働中のRPC入口を比較します。全てが要求ごとにこの順で実行される図ではありません。"
+        },
+        {
+          "title": "取引の検証と保持",
+          "relationship": "検証の依頼・返答と、内部追加・容量制限を対応づけます。"
+        },
+        {
+          "title": "ブロックの実行と状態の検査",
+          "relationship": "NewPayloadの入力、実行・結果照合、要求元への返答を追います。"
+        },
+        {
+          "title": "履歴の指示・採用反映・保存",
+          "relationship": "Forkchoiceの指示と整合性、採用の反映、条件付き保存の依頼と返答を区別します。常に一続きに全処理が実行されるとは限りません。"
+        }
+      ],
+      "adjudication": "Four responsibilities remain in phase labels/relationships and corresponding stage purposes: assembly, pool validation/holding, block execution/state checks, adoption/persistence. Scope explicitly separates internal consensus naming from external consensus client.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "lesson:send",
+      "goal": "受け取った取引がどの担当へ渡り、どこで失敗でき、どの結果がRPCへ戻るかを、実際の呼び出しと返答経路に沿って読みます。",
+      "title": "送信の受付から、検証・プール追加・返答まで追う",
+      "scope": "外部転送を使わない標準経路に加え、転送設定の分岐、検証タスク、内部プールの容量制限も原文で確かめます。通常はローカル追加のハッシュかエラーを返します。転送先がある場合はそのRPCのハッシュかエラーで、転送後のローカル追加の失敗は返答に反映しません。どちらのハッシュも、それだけでブロックへの取り込みや実行結果、確定を確認した根拠にはなりません。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "tx:rpc",
+          "title": "RPCで署名済みデータを受け取る",
+          "purpose": "入力txと、後続から戻るハッシュ・エラーの境界をつかむ。",
+          "connection": "EthTransactions::send_raw_transactionへ進みます。"
+        },
+        {
+          "context": "tx:recover",
+          "title": "取引の内容と送信者を読み取る",
+          "purpose": "読み取りに失敗する場合と、取引と元データを次へ渡す場合を追う。",
+          "connection": "この関数が選ぶPoolTransactionの復元hookの既定実装を次で読みます。"
+        },
+        {
+          "context": "tx:recovery-hook",
+          "title": "デコードと署名復元の既定実装を読む",
+          "purpose": "空入力・送信形式・署名の失敗を分け、復元した送信者を持つプール用の取引へ変換する。",
+          "connection": "この結果はsend_raw_transactionへ戻ります。復元に成功した取引を元のバイト列と組にして、send_pool_transactionへ渡します。次はその具体的な送信処理です。"
+        },
+        {
+          "context": "tx:submit",
+          "title": "通常のローカル追加経路を選ぶ",
+          "purpose": "転送設定による分岐を読み、通常経路のadd_pool_transactionと戻り値hashを確かめる。",
+          "connection": "通常経路ではself.inner.add_pool_transactionへ進みます。"
+        },
+        {
+          "context": "tx:queue",
+          "title": "キューへ依頼し、返答を待つ",
+          "purpose": "追加依頼と返答経路を作り、送信成功と追加成功を分ける。",
+          "connection": "依頼を受信するBatchTxProcessorは別の非同期処理です。次で受信側を読みます。"
+        },
+        {
+          "context": "area:send-receive",
+          "title": "キューから依頼を受け取る",
+          "purpose": "要求をまとめて取り出し、process_batchへ渡すタスクを読む。",
+          "connection": "受信した依頼はprocess_batchへ入り、件数や出所で処理を分けます。"
+        },
+        {
+          "context": "tx:batch",
+          "title": "プールへ渡し、要求ごとに結果を返す",
+          "purpose": "一件・同じ出所の複数件・異なる出所の複数件の分岐と、返答経路を読む。",
+          "connection": "まず一件の場合のpool.add_transactionを追います。複数件も同じ検証・追加の役割をまとめて行います。"
+        },
+        {
+          "context": "tx:pool",
+          "title": "検証してから内部プールへ渡す",
+          "purpose": "validateを待ち、その結果を内部プールへ渡して一件分の結果を取り出す。",
+          "connection": "self.validateの先を続けて読みます。内部追加の結果は、後でこの関数へ戻ります。"
+        },
+        {
+          "context": "area:send-validation-dispatch",
+          "title": "設定されたvalidatorへ検証を頼む",
+          "purpose": "公開プールと検証担当の接続を読む。",
+          "connection": "標準構成では専用タスクに検証を渡すラッパーを使います。次はその送信側です。"
+        },
+        {
+          "context": "area:send-validation-task",
+          "title": "検証用のキューへ仕事を渡す",
+          "purpose": "検証用の返答経路を作り、送信失敗や受信失敗を成功と区別する。",
+          "connection": "ValidationTask::runがキューからこの仕事を受け取って進めます。"
+        },
+        {
+          "context": "area:send-validation-worker",
+          "title": "検証の仕事を受け取って進める",
+          "purpose": "受信の待機と実際の検証の実行を分けて読む。",
+          "connection": "仕事の中で呼ばれた内側のvalidatorはEthereum用の実装です。"
+        },
+        {
+          "context": "area:send-validation-entry",
+          "title": "Ethereumの一件検証へ入る",
+          "purpose": "共通のvalidate_transactionからvalidate_oneへ渡す箇所を確かめる。",
+          "connection": "validate_oneは最新状態を読む方法を用意し、validate_one_with_providerへ渡します。"
+        },
+        {
+          "context": "area:send-validation-order",
+          "title": "データの検査から状態の検査へ進む",
+          "purpose": "状態なしの検査に通ったあとだけ状態を読み、次の検査へ進む順序を追う。",
+          "connection": "先に呼ばれるvalidate_statelessの全体を次で読みます。"
+        },
+        {
+          "context": "area:send-stateless",
+          "title": "形式・ガス・手数料などを検査する",
+          "purpose": "状態を読まずに判定する検証条件と、エラーで抜ける箇所を読む。",
+          "connection": "ここに通った取引だけが、前の関数からvalidate_statefulへ進みます。"
+        },
+        {
+          "context": "area:send-stateful",
+          "title": "送信者の状態に照らして検査する",
+          "purpose": "口座の読取、送信者のコード、nonce、残高、blobなどの検査とValid結果を読む。",
+          "connection": "次の二つは、この関数が呼ぶ通し番号と残高の具体的な検査です。"
+        },
+        {
+          "context": "area:send-nonce",
+          "title": "古い通し番号を拒否する",
+          "purpose": "送信者の状態のnonceと取引のnonceを比べる条件を確かめる。",
+          "connection": "この検査に通ったあと、残高の条件も確かめます。"
+        },
+        {
+          "context": "area:pool-balance",
+          "title": "必要額を払える残高か確かめる",
+          "purpose": "残高検査が有効な場合の不足エラーと、無効設定の場合を区別する。",
+          "connection": "全検証の結果が公開プールへ戻り、self.pool.add_transactionsへ渡されます。次は内部追加の経路です。"
+        },
+        {
+          "context": "area:send-pool-limit",
+          "title": "内部プールの追加と容量制限を扱う",
+          "purpose": "排他制御、各取引の追加、容量制限での除外、結果の調整を読む。",
+          "connection": "この範囲のself.add_transactionが、次に示す検証結果別の追加処理を呼びます。"
+        },
+        {
+          "context": "area:send-pool-add",
+          "title": "追加の成功・失敗を作って返す",
+          "purpose": "Validだけを内部プールへ渡し、Invalidや処理エラーを追加成功にしないことを確かめる。",
+          "connection": "追加結果は容量検査を経て公開プールへ戻り、batcherのresponse_tx.sendからadd_pool_transactionのresponse_rx.await??へ返されます。通常経路はその結果のhashをRPC応答に使い、転送後のローカル追加では結果を捨てて転送先RPCのhashを返します。"
+        }
+      ],
+      "phaseFields": [
+        {
+          "title": "受信データと復元",
+          "relationship": "RPCの入力と復元結果を送信処理へ渡すまで。"
+        },
+        {
+          "title": "送信先の分岐と追加の依頼・返答",
+          "relationship": "通常の追加依頼と、転送先RPCの結果を使う場合を区別します。送信と返答は逆向きの経路です。"
+        },
+        {
+          "title": "検証の依頼と返答",
+          "relationship": "追加用キューとは別の検証用キューと、その仕事・結果の受け渡しを追います。"
+        },
+        {
+          "title": "データと状態の検査条件",
+          "relationship": "データだけの条件と、取得した送信者の状態を使う条件を比較します。"
+        },
+        {
+          "title": "内部追加・容量制限と結果",
+          "relationship": "検証結果から追加結果を作り、容量制限で破棄される場合を含めて呼び出し元へ返します。通常経路はRPC応答に使い、転送後のローカル追加結果は捨てます。"
+        }
+      ],
+      "adjudication": "Scope retains ordinary versus forwarder response conditions and non-finality boundary. Phase relationships and stage purposes retain request transfer, failure branches, validation/internal addition and reversed reply path.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "lesson:startup",
+      "goal": "mainから先を追い、設定・DB・部品・RPCの準備と、稼働後に待つ処理を分けて確かめます。",
+      "title": "コマンドから部品の起動、稼働中の待機まで追う",
+      "scope": "起動の主要な受け渡しと、起動後に動く処理を扱います。起動時の順序と、稼働中に並行して進む処理の順序は同じではありません。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "startup:entry",
+          "title": "CLIから起動用の処理を渡す",
+          "purpose": "mainが起動用の非同期処理を渡し、起動後のhandleで終了を待つ箇所を読む。",
+          "connection": "mainが渡す起動closureと、その後のwait_for_node_exitを区別します。ここで呼ぶ公開Cli::runはinterface.rsの実装です。"
+        },
+        {
+          "context": "area:startup-cli-entry",
+          "title": "公開Cli.runがclosureをadapterへ渡す",
+          "purpose": "mainから呼ぶCli::runが起動closureを受け取り、configure後のCliAppへ渡す実装を読む。",
+          "connection": "公開Cli::runはconfigureでCliAppを作り、そのrunへ起動用closureを渡します。同名のrunでも受け手の型が異なります。"
+        },
+        {
+          "context": "area:startup-cli-configure",
+          "title": "CliからCliAppへ型をつなぐ",
+          "purpose": "configureがCliAppを返す型を確かめ、同じrunという名前でも受け手が変わることを読む。",
+          "connection": "configureの返すCliAppがrun_with_componentsを使って実行環境とコマンド分岐を準備します。"
+        },
+        {
+          "context": "area:startup-cli-prepare",
+          "title": "実行環境・ログ・metricsを準備してコマンドへ渡す",
+          "purpose": "CliApp::runがrun_with_componentsへ渡り、実行環境、ログ、metricsを準備してコマンド分岐へ進む箇所を読む。",
+          "connection": "CliApp::runはrun_with_componentsへ渡り、準備後にrun_commands_withで選択したコマンドへ進みます。"
+        },
+        {
+          "context": "startup:dispatch",
+          "title": "nodeサブコマンドを選ぶ",
+          "purpose": "node分岐のRPC設定検証と、終了監視付きrunnerへの受け渡しを読む。",
+          "connection": "Node分岐は起動用closureをFnLauncherで包み、run_command_until_exitの監視下でNodeCommandの実行を駆動します。監視と起動本体は同じ処理ではありません。"
+        },
+        {
+          "context": "startup:supervisor",
+          "title": "起動処理と終了条件を監視する",
+          "purpose": "コマンドを駆動し、正常終了とエラーで終了処理が分かれることを読む。",
+          "connection": "ランナーが駆動するcommand Futureの内部でNodeCommandが実行されます。終了監視ではcommand完了・重要タスクの異常・停止シグナルを待ち分けます。"
+        },
+        {
+          "context": "area:loop-cli",
+          "title": "CLIの処理完了・異常終了・停止指示を待つ",
+          "purpose": "command完了、重要タスクの異常、Ctrl-CやSIGTERMを待ち分ける実装を読む。",
+          "connection": "このselectはノードの終了を監視する処理です。NodeCommandの設定・DB準備や、起動後の通信イベント処理とは別の担当です。"
+        },
+        {
+          "context": "startup:database",
+          "title": "引数を設定に変えてDBを開く",
+          "purpose": "CLIの引数をNodeConfigへ組み替え、DBと実行器をbuilderへ渡す箇所を読む。",
+          "connection": "NodeCommandはDB等を持つbuilderをlauncher.entrypointへ渡します。FnLauncherが保持するclosureを経てmainから渡された起動処理へ戻ります。"
+        },
+        {
+          "context": "area:startup-launcher-entry",
+          "title": "FnLauncherが保持した起動closureを呼ぶ",
+          "purpose": "FnLauncherが起動用closureを保持し、entrypointでbuilderと拡張引数をそのclosureへ渡す実装を読む。",
+          "connection": "entrypointは保持するfuncにbuilderと引数を渡して結果を返します。CLI側のadapterで包まれたclosureを通り、mainのbuilder.node(...).launch_with_debug_capabilities().awaitへ接続します。"
+        },
+        {
+          "context": "area:startup-node-selection",
+          "title": "指定したnode型から部品builderと追加機能を選ぶ",
+          "purpose": "mainのbuilder.nodeが、渡されたnodeのcomponents_builderを選ぶ実装を読む。",
+          "connection": "builder.nodeはnode.components_builderとnode.add_onsを呼んで具体的な構成を選びます。EthereumNodeのNode実装がその型と生成元を定めます。"
+        },
+        {
+          "context": "area:startup-node-components",
+          "title": "EthereumNodeの関連型と部品構成を結びつける",
+          "purpose": "EthereumNodeのNode実装が具体的なbuilder型を定め、Self::componentsを呼ぶことを読む。",
+          "connection": "EthereumNodeのcomponents_builderはSelf::componentsを呼びます。EthereumNode::componentsが返す既定のbuilder構成と対応させます。"
+        },
+        {
+          "context": "area:startup-component-choice",
+          "title": "Ethereum用の具体的なbuilderを選ぶ",
+          "purpose": "EthereumNodeの既定構成に、どの具体的builderが対応するか比較する。",
+          "connection": "これは実行時の次の命令ではなく、mainが選んだEthereumNodeに対応する具体的な構成です。構成済みbuilderのlaunchがDebugで包むEngine launcherを作ります。"
+        },
+        {
+          "context": "area:startup-builder-launch",
+          "title": "mainのbuilderがDebug/Engine launcherを組み合わせる",
+          "purpose": "mainが呼ぶ起動APIで、Engine launcherを包むDebug launcherを作って渡す箇所を読む。",
+          "connection": "launchはDebugNodeLauncher::new(EngineNodeLauncher::new(...))を作り、builder.launch_withへ渡します。"
+        },
+        {
+          "context": "area:startup-builder-dispatch",
+          "title": "builderから渡されたlauncherへ起動を依頼する",
+          "purpose": "builderが選んだlauncherへ自分の材料を渡す実装を読む。",
+          "connection": "launch_withは選ばれたlauncher.launch_node(self)へbuilderを渡します。ここでのlauncherはDebugNodeLauncherです。"
+        },
+        {
+          "context": "area:startup-debug-adapter",
+          "title": "Debug launcherが内側とtargetをFutureへ保持する",
+          "purpose": "Debug launcherがinnerとtargetを保持し、await時にFutureへ変わる実装を読む。",
+          "connection": "Debug launcherのtrait実装はinnerとtargetを保持するDebugNodeLauncherFutureを返し、そのIntoFutureが非同期の起動処理を作ります。"
+        },
+        {
+          "context": "area:startup-debug-inner",
+          "title": "Debugの非同期本体が内側のEngine起動を待つ",
+          "purpose": "Debug Futureの冒頭が内側のEngine launcherを呼んで待つ箇所を読む。開発用の追加動作の解説とは区別する。",
+          "connection": "Debug Futureの冒頭でinner.launch_node(target).awaitを呼びます。innerはEngineNodeLauncherであり、開発用の追加動作の本体とは分けて読みます。"
+        },
+        {
+          "context": "area:startup-engine-dispatch",
+          "title": "Engine launcherのtrait操作を起動本体へつなぐ",
+          "purpose": "LaunchNode traitの実装からEngineNodeLauncher本体へ渡す箇所を読む。",
+          "connection": "LaunchNode traitの実装がEngineNodeLauncherの同名inherent methodへ渡します。同じ関数の再帰呼出しではありません。"
+        },
+        {
+          "context": "startup:context",
+          "title": "設定・provider・genesisを準備する",
+          "purpose": "provider、genesis、metrics、部品生成に必要な材料を準備する箇所を読む。",
+          "connection": "Engineの起動本体は設定・provider・genesisを準備し、with_componentsへcomponents_builderを渡して待ちます。"
+        },
+        {
+          "context": "startup:components",
+          "title": "EVM・pool・ネットワークなどを組み立てる",
+          "purpose": "traitの関連型と部品の依存関係、作成順、Componentsとしての返却を読む。",
+          "connection": "共通のbuild_componentsは各builderへ依存する値を渡してComponentsを返します。このmainで選ばれるnetworkとpayloadの具体的な実装を対応させます。"
+        },
+        {
+          "context": "area:startup-network-builder",
+          "title": "Ethereumのネットワークを構築して起動へ渡す",
+          "purpose": "Ethereumのnetwork builderがネットワークの起動へ渡し、handleを返す箇所を読む。",
+          "connection": "build_networkはctx.network_builder().awaitで準備結果を待ったあと、同期のctx.start_network(network, pool)を呼びます。返ったnetwork handleをbuild_componentsへ返します。"
+        },
+        {
+          "context": "area:startup-network-start",
+          "title": "P2P関連タスクを起動してhandleを返す",
+          "purpose": "別の担当との比較：ネットワーク処理を実行器のタスクへ登録する実装を読む。",
+          "connection": "start_networkはネットワークのタスクを登録してhandleを返します。その後もタスクは動き続けます。payloadサービスの起動はbuild_componentsから行う別の呼出しです。"
+        },
+        {
+          "context": "area:startup-payload-spawn",
+          "title": "候補作成サービスを組み立てて別OSスレッドで起動する",
+          "purpose": "payload builderサービスを生成し、タスクを起動してhandleを返す箇所を読む。",
+          "connection": "payloadサービスを専用OSスレッドで動かし、handleを共通の部品構築へ返します。部品の生成後、Engine起動本体はEngine・同期の接続を用意します。"
+        },
+        {
+          "context": "startup:services",
+          "title": "Engine API・pipeline・treeをつなぐ",
+          "purpose": "要求チャネル、取得用client、pipelineを作ってEngineのbuilderへ渡す箇所を読む。",
+          "connection": "Engine起動本体がpipelineと要求ストリーム等をEngineOrchestratorBuilderへ渡し、buildを呼びます。"
+        },
+        {
+          "context": "area:startup-engine-build",
+          "title": "Engineの処理担当と保存サービスを組み立てる",
+          "purpose": "builderの中で保存処理とtreeを起動し、handlerとbackfillを結ぶ箇所を読む。",
+          "connection": "buildは保存サービス・treeを起動し、handlerとPipelineSyncをChainOrchestratorへ組み合わせて返します。treeの専用スレッド生成とPipelineSyncの初期化はそれぞれ別の実装です。"
+        },
+        {
+          "context": "area:startup-tree-spawn",
+          "title": "専用OSスレッドでtreeを起動する",
+          "purpose": "別の担当との比較：Engine Treeが専用OSスレッドを作る実装を読む。",
+          "connection": "spawn_newがtree用のチャネルを作り、OSスレッドでtask.runを実行します。PipelineSyncのnewは同じEngine builderが別に呼ぶ初期化です。"
+        },
+        {
+          "context": "startup:backfill",
+          "title": "必要なときだけ段階的同期を走らせる",
+          "purpose": "目標の設定、Idleからの起動、返答待ち、受信成功時のIdleへの復帰と受信失敗を分けて読む。",
+          "connection": "newはIdleで目標なしに初期化します。Start後のpollで必要時にpipelineを起動し、oneshot受信OkならIdleへ戻してBackfillEvent::Finished(result)、受信ErrならBackfillEvent::TaskDroppedを返します。起動時に必ず同期を実行するわけではありません。"
+        },
+        {
+          "context": "area:rpc-launch",
+          "title": "RPCを起動してEngineの窓口を受け取る",
+          "purpose": "RPC等のadd-onsが起動し、要求を受け取るhandleを返す箇所を読む。",
+          "connection": "Engine等の接続情報をadd-onsへ渡してRPCのhandleを受け取ります。Engineを動かすorchestratorは起動本体が別のタスクへ登録します。"
+        },
+        {
+          "context": "startup:orchestrator",
+          "title": "Engineのイベントと終了要求を待つ",
+          "purpose": "Engineタスクが入力・停止・異常を待ち分け、treeへ依頼して終了結果を返す箇所を読む。",
+          "connection": "起動本体はタスクでorchestratorをpollし、イベント・停止・異常を扱います。orchestrator自身がhandlerとbackfillを調整します。"
+        },
+        {
+          "context": "area:startup-orchestrator-poll",
+          "title": "backfillとEngine入力処理の進行を調整する",
+          "purpose": "orchestratorがhandlerとbackfillの進行を調整してイベントを返す実装を読む。",
+          "connection": "orchestratorはhandler.pollとbackfill.pollを進め、開始・完了の通知をhandler.on_eventへ渡し、上位へChainEventを返します。"
+        },
+        {
+          "context": "area:startup-engine-poll",
+          "title": "treeのイベント・Engine要求・取得結果を取り次ぐ",
+          "purpose": "要求、ダウンロード結果、treeからの出来事を処理し、上位へ返す実装を読む。",
+          "connection": "ChainHandlerは通常要求やダウンロード結果を内側handlerへ渡し、そのイベントを上位へ返します。on_eventもFromOrchestratorの同期通知を内側handlerへ渡します。"
+        },
+        {
+          "context": "area:startup-engine-channel",
+          "title": "treeへ送りtreeからイベントを受け取る",
+          "purpose": "treeへ要求を送る側と、treeからの返答・イベントを受け取る側を読む。",
+          "connection": "EngineApiRequestHandlerはto_treeへ要求を送り、from_treeからイベントを取り出します。ネットワークのpollはこの直接の呼出先ではなく、起動時に登録した並行タスクの別の役割です。"
+        },
+        {
+          "context": "startup:network",
+          "title": "ネットワークの入出力をpollで進める",
+          "purpose": "NetworkManagerが内部要求と通信イベントを進め、予算や待機状態で制御を返す実装を読む。",
+          "connection": "NetworkManagerは内部要求とswarmイベントを進め、予算や待機条件で制御を返します。これら稼働中のタスクと、起動本体がNodeHandleを返す処理を区別します。"
+        },
+        {
+          "context": "area:network-budget",
+          "title": "通信の一回の処理件数をmacroで確かめる",
+          "purpose": "maybe_more_*が残件の確定ではなく、処理件数の上限に達したことを表す理由を原文で確かめる。",
+          "connection": "直前のNetworkManagerが呼ぶmacroの定義です。別の稼働タスクを始める場面ではありません。取得結果のboolがmanagerのL1194の条件へ戻ります。"
+        },
+        {
+          "context": "area:node-handle",
+          "title": "起動した部品と終了待ちを呼び出し元へ返す",
+          "purpose": "Engine本体が起動済みの部品と終了FutureをNodeHandleにまとめて返す箇所を読む。",
+          "connection": "Engine起動本体は稼働中の部品と終了FutureをNodeHandleへまとめます。結果はDebug Futureへ戻ります。"
+        },
+        {
+          "context": "area:startup-debug-return",
+          "title": "Debugの起動本体からhandleを返す",
+          "purpose": "内側の起動で得たhandleをDebug Futureから返す箇所を読む。途中の開発オプションを実行したという主張とは区別する。",
+          "connection": "Debug Future末尾のOk(handle)が起動元へ返り、mainはそのhandle.wait_for_node_exitをawaitします。開発用追加動作を全て実行したという意味ではありません。"
+        },
+        {
+          "context": "area:startup-node-wait",
+          "title": "起動したノードの終了を待つ",
+          "purpose": "handleが保持する終了Futureと、wait_for_node_exitが待つ値を確かめる。",
+          "connection": "wait_for_node_exitは保持するnode_exit_futureを待ちます。そのFutureが何を成功・失敗・待機として返すかを区別します。"
+        },
+        {
+          "context": "area:node-exit",
+          "title": "終了を待つ間、成功と失敗をどう返す？",
+          "purpose": "終了Futureが成功・失敗・まだ結果がない状態をどう返すか読む。",
+          "connection": "終了結果はwait_for_node_exitを経てmainの起動closureとCLIへ戻ります。mainはrunのErrを表示してexit(1)し、正常なら末尾へ進みます。"
+        }
+      ],
+      "phaseFields": [
+        {
+          "title": "CLIと実行の監視",
+          "relationship": "コマンド解釈・実行環境の準備と、処理の完了・異常・停止の監視を対応づけます。"
+        },
+        {
+          "title": "設定と起動先の受け渡し",
+          "relationship": "DBや設定を持つbuilderから、closure・launcher・Debug/Engineの実際の受け渡しを追います。型の対応と実行時の呼出しは区別します。"
+        },
+        {
+          "title": "実行・プール・通信の組み立て",
+          "relationship": "部品を作る実装と、その中から別に始める通信・候補作成処理を区別します。"
+        },
+        {
+          "title": "EngineとRPCの接続",
+          "relationship": "要求ストリーム・同期・tree・RPCを接続する起動時の例です。"
+        },
+        {
+          "title": "稼働中の進行と終了",
+          "relationship": "並行して進む担当と、終了要求・返答・mainの終了待ちを区別します。ここでの読解順を、実行順とはみなしません。"
+        }
+      ],
+      "adjudication": "Selected title and five phase labels retain CLI/setup/assembly/Engine-RPC/running-exit; scope and last phase relationship separate initialization order from concurrently running tasks. DB/configuration and return/exit are in same-page stage purposes.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "lesson:reading",
+      "goal": "短いRPC関数を起点に、型、呼び出し先、失敗時の戻り方を練習し、依頼を送れた時点と追加結果が返る時点を原文で確かめます。",
+      "title": "入力・送信先・追加の依頼と返答を原文で読む",
+      "scope": "短いRPCの入口から始め、受付時点という問いに必要な送信先の分岐、キューへの依頼、検証・内部追加の結果、返答経路を同じページで確かめます。通常経路はローカル追加結果を使い、転送設定時は転送先のRPC結果を使います。キューへの送信、プールへの追加、転送先からの返答を区別し、実行・取り込み・確定を同じ成功とみなしません。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "tx:rpc",
+          "title": "関数の入力と出力を読む",
+          "purpose": "tx: BytesとRpcResult<B256>、呼び出しと.await?の位置を見つける。",
+          "connection": "名前だけで処理を推測せず、呼ばれたsend_raw_transactionへ進みます。"
+        },
+        {
+          "context": "tx:recover",
+          "title": "次の関数でも入力と戻り値を追う",
+          "purpose": "元のデータから取引を得る処理と、その後の呼び出し・結果待ちを区別する。",
+          "connection": "send_raw_transactionはsend_pool_transactionの結果を待って戻ります。次の復元hookはその内側で使う既定の操作です。その後も同じページで、通常・転送の分岐と追加依頼・返答を追えます。"
+        },
+        {
+          "context": "tx:recovery-hook",
+          "title": "デコードと署名復元の既定実装を読む",
+          "purpose": "空入力・送信形式・署名の失敗を分け、復元した送信者を持つプール用の取引へ変換する。",
+          "connection": "この結果はsend_raw_transactionへ戻ります。復元に成功した取引を元のバイト列と組にして、send_pool_transactionへ渡します。次はその具体的な送信処理です。"
+        },
+        {
+          "context": "tx:submit",
+          "title": "通常のローカル追加経路を選ぶ",
+          "purpose": "転送設定による分岐を読み、通常経路のadd_pool_transactionと戻り値hashを確かめる。",
+          "connection": "通常経路ではself.inner.add_pool_transactionへ進みます。"
+        },
+        {
+          "context": "tx:queue",
+          "title": "キューへ依頼し、返答を待つ",
+          "purpose": "追加依頼と返答経路を作り、送信成功と追加成功を分ける。",
+          "connection": "依頼を受信するBatchTxProcessorは別の非同期処理です。次で受信側を読みます。"
+        },
+        {
+          "context": "area:send-receive",
+          "title": "キューから依頼を受け取る",
+          "purpose": "要求をまとめて取り出し、process_batchへ渡すタスクを読む。",
+          "connection": "受信した依頼はprocess_batchへ入り、件数や出所で処理を分けます。"
+        },
+        {
+          "context": "tx:batch",
+          "title": "プールへ渡し、要求ごとに結果を返す",
+          "purpose": "一件・同じ出所の複数件・異なる出所の複数件の分岐と、返答経路を読む。",
+          "connection": "まず一件の場合のpool.add_transactionを追います。複数件も同じ検証・追加の役割をまとめて行います。"
+        },
+        {
+          "context": "tx:pool",
+          "title": "検証してから内部プールへ渡す",
+          "purpose": "validateを待ち、その結果を内部プールへ渡して一件分の結果を取り出す。",
+          "connection": "self.validateの先を続けて読みます。内部追加の結果は、後でこの関数へ戻ります。"
+        },
+        {
+          "context": "area:send-validation-dispatch",
+          "title": "設定されたvalidatorへ検証を頼む",
+          "purpose": "公開プールと検証担当の接続を読む。",
+          "connection": "標準構成では専用タスクに検証を渡すラッパーを使います。次はその送信側です。"
+        },
+        {
+          "context": "area:send-validation-task",
+          "title": "検証用のキューへ仕事を渡す",
+          "purpose": "検証用の返答経路を作り、送信失敗や受信失敗を成功と区別する。",
+          "connection": "ValidationTask::runがキューからこの仕事を受け取って進めます。"
+        },
+        {
+          "context": "area:send-validation-worker",
+          "title": "検証の仕事を受け取って進める",
+          "purpose": "受信の待機と実際の検証の実行を分けて読む。",
+          "connection": "仕事の中で呼ばれた内側のvalidatorはEthereum用の実装です。"
+        },
+        {
+          "context": "area:send-validation-entry",
+          "title": "Ethereumの一件検証へ入る",
+          "purpose": "共通のvalidate_transactionからvalidate_oneへ渡す箇所を確かめる。",
+          "connection": "validate_oneは最新状態を読む方法を用意し、validate_one_with_providerへ渡します。"
+        },
+        {
+          "context": "area:send-validation-order",
+          "title": "データの検査から状態の検査へ進む",
+          "purpose": "状態なしの検査に通ったあとだけ状態を読み、次の検査へ進む順序を追う。",
+          "connection": "先に呼ばれるvalidate_statelessの全体を次で読みます。"
+        },
+        {
+          "context": "area:send-stateless",
+          "title": "形式・ガス・手数料などを検査する",
+          "purpose": "状態を読まずに判定する検証条件と、エラーで抜ける箇所を読む。",
+          "connection": "ここに通った取引だけが、前の関数からvalidate_statefulへ進みます。"
+        },
+        {
+          "context": "area:send-stateful",
+          "title": "送信者の状態に照らして検査する",
+          "purpose": "口座の読取、送信者のコード、nonce、残高、blobなどの検査とValid結果を読む。",
+          "connection": "次の二つは、この関数が呼ぶ通し番号と残高の具体的な検査です。"
+        },
+        {
+          "context": "area:send-nonce",
+          "title": "古い通し番号を拒否する",
+          "purpose": "送信者の状態のnonceと取引のnonceを比べる条件を確かめる。",
+          "connection": "この検査に通ったあと、残高の条件も確かめます。"
+        },
+        {
+          "context": "area:pool-balance",
+          "title": "必要額を払える残高か確かめる",
+          "purpose": "残高検査が有効な場合の不足エラーと、無効設定の場合を区別する。",
+          "connection": "全検証の結果が公開プールへ戻り、self.pool.add_transactionsへ渡されます。次は内部追加の経路です。"
+        },
+        {
+          "context": "area:send-pool-limit",
+          "title": "内部プールの追加と容量制限を扱う",
+          "purpose": "排他制御、各取引の追加、容量制限での除外、結果の調整を読む。",
+          "connection": "この範囲のself.add_transactionが、次に示す検証結果別の追加処理を呼びます。"
+        },
+        {
+          "context": "area:send-pool-add",
+          "title": "追加の成功・失敗を作って返す",
+          "purpose": "Validだけを内部プールへ渡し、Invalidや処理エラーを追加成功にしないことを確かめる。",
+          "connection": "追加結果は容量検査を経て公開プールへ戻り、batcherのresponse_tx.sendからadd_pool_transactionのresponse_rx.await??へ返されます。通常経路はその結果のhashをRPC応答に使い、転送後のローカル追加では結果を捨てて転送先RPCのhashを返します。"
+        }
+      ],
+      "phaseFields": [
+        {
+          "title": "受信データと復元",
+          "relationship": "RPCの入力と復元結果を送信処理へ渡すまで。"
+        },
+        {
+          "title": "送信先の分岐と追加の依頼・返答",
+          "relationship": "通常の追加依頼と、転送先RPCの結果を使う場合を区別します。送信と返答は逆向きの経路です。"
+        },
+        {
+          "title": "検証の依頼と返答",
+          "relationship": "追加用キューとは別の検証用キューと、その仕事・結果の受け渡しを追います。"
+        },
+        {
+          "title": "データと状態の検査条件",
+          "relationship": "データだけの条件と、取得した送信者の状態を使う条件を比較します。"
+        },
+        {
+          "title": "内部追加・容量制限と結果",
+          "relationship": "検証結果から追加結果を作り、容量制限で破棄される場合を含めて呼び出し元へ返します。通常経路はRPC応答に使い、転送後のローカル追加結果は捨てます。"
+        }
+      ],
+      "adjudication": "Scope and first stage purpose retain short RPC input/type/result practice plus queue acceptance versus pool outcome and forwarding boundary; phase relationships retain request/reply direction.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "journey:block",
+      "goal": "合意側からのブロックを実行検証して返答する経路と、その後の履歴採用・保存を別々に説明する。",
+      "title": "新しいブロックの実行検証・採用・保存を追う",
+      "scope": "通常実行の経路を中心に読みます。同期中の一時保管、親の不足、BALを使う実行の分岐も原文の該当箇所で区別します。newPayloadのVALIDは、forkchoiceによる採用・ディスク保存・finalityの完了と同じではありません。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "area:journey-block-rpc",
+          "title": "合意側からnewPayloadを受け取る",
+          "purpose": "合意側から届くブロックの実行データと、返す検証状況を読む。",
+          "connection": "new_payload_v4は内部のbeacon_consensus.new_payloadへ渡し、その結果を待ちます。"
+        },
+        {
+          "context": "area:journey-block-message",
+          "title": "Engineへの要求と返答経路を作る",
+          "purpose": "要求と返答用チャネルを作り、Engineの入力経路へ送る。",
+          "connection": "incoming_requestsで要求が取り出される側を次で読みます。"
+        },
+        {
+          "context": "area:journey-block-route",
+          "title": "届いたEngine要求を処理担当へ渡す",
+          "purpose": "内部の要求を受信してhandlerへ渡す。",
+          "connection": "handler.on_eventがtree側の入力経路へ送るところを続けて読みます。"
+        },
+        {
+          "context": "area:journey-block-tree-send",
+          "title": "tree側の要求経路へ送る",
+          "purpose": "要求がtreeの処理担当へ渡ることを確かめる。",
+          "connection": "treeがNewPayloadを扱う分岐へ進みます。"
+        },
+        {
+          "context": "area:journey-block-dispatch",
+          "title": "NewPayloadを実行し、その結果を返答口へ戻す",
+          "purpose": "NewPayloadの処理を呼ぶ箇所と、結果を要求元へ返す箇所を同時に見る。",
+          "connection": "on_new_payloadの実装を次で読みます。この範囲のtx.sendが、後で検証結果を返す出口です。"
+        },
+        {
+          "context": "area:journey-block-receive",
+          "title": "無効な祖先・同期中・通常検証を分ける",
+          "purpose": "不正な祖先・同期中の一時保管・通常検証を分ける。",
+          "connection": "通常はtry_insert_payloadへ進みます。同期中はbufferへ入れる別の分岐です。"
+        },
+        {
+          "context": "area:journey-block-insert",
+          "title": "検証結果をVALID・SYNCINGなどへ変換する",
+          "purpose": "取り込みの結果がVALID・SYNCING・エラーへ分かれることを読む。",
+          "connection": "insert_payloadが検証処理を共通の取り込み処理へ渡します。"
+        },
+        {
+          "context": "area:journey-block-validate-call",
+          "title": "取り込みの中からpayloadの検証を呼ぶ",
+          "purpose": "取り込みの共通処理に、payloadを検証する関数を渡す。",
+          "connection": "渡された関数executeを、次の共通処理が状態とともに呼びます。"
+        },
+        {
+          "context": "area:journey-block-insert-state",
+          "title": "親の状態を確かめ、検証済みブロックをメモリーへ保持する",
+          "purpose": "既知ブロックと親の不足を分け、検証済みの実行結果をメモリーへ保持する。",
+          "connection": "この範囲のexecuteで呼ばれるvalidate_payloadと、その先の状態付き検証を次で読みます。"
+        },
+        {
+          "context": "area:journey-block-validator-entry",
+          "title": "payloadを状態付きブロック検証へ渡す",
+          "purpose": "payloadとtreeの状態を使う検証へ入る。",
+          "connection": "validate_block_with_stateへ渡します。"
+        },
+        {
+          "context": "area:journey-block-parent",
+          "title": "親を見つけ、基本的な変換と検査を始める",
+          "purpose": "親の状態を使えるか確認し、実行前の変換と基本検査を始める。",
+          "connection": "その後、BALを使う実行か通常の実行かを選びます。"
+        },
+        {
+          "context": "area:journey-block-execute-choice",
+          "title": "実行方法を選び、現在の状態を渡す",
+          "purpose": "どの状態と実行方法を使うかを読む。",
+          "connection": "通常側はexecute_blockへ渡します。その本体でEVM生成から取引ループと結果の取り出しまで読みます。BAL側は分岐に示す別の実装です。"
+        },
+        {
+          "context": "area:journey-block-executor",
+          "title": "EVMと状態を用意して取引ループへ渡す",
+          "purpose": "実行環境と親の状態からexecutorを作り、取引処理とfinishからBlockExecutionOutputを返す。",
+          "connection": "この本体が呼ぶexecute_transactionsを次で読みます。返答後はこの本体のfinishへ戻ります。"
+        },
+        {
+          "context": "area:journey-block-execute",
+          "title": "取引を一件ずつ実行してレシートを得る",
+          "purpose": "取引を順に実行し、結果のレシートを得る。",
+          "connection": "execute_blockへ戻ってfinishと状態出力の取り出しを行い、さらにvalidate_block_with_stateへ戻ります。実行結果をそのまま受け入れず、ブロック全体の検証を続けます。"
+        },
+        {
+          "context": "area:journey-block-after-execute",
+          "title": "実行結果と集約計算の返答を受け取る",
+          "purpose": "状態変更の出力、レシート集約値の受信、実行後検証への呼び出しを読む。",
+          "connection": "ここで呼ばれたvalidate_post_executionの本体を次で読みます。"
+        },
+        {
+          "context": "area:journey-block-postcheck",
+          "title": "実行後の結果がブロックのルールに合うか検証する",
+          "purpose": "実行後に分かるルールを照合し、問題があればエラーにする。",
+          "connection": "このconsensus呼び出しに対応する、Ethereumの実装と具体的な検証条件を続けて読みます。"
+        },
+        {
+          "context": "area:journey-block-consensus-check",
+          "title": "Ethereumの実行後検証を呼ぶ",
+          "purpose": "共通の検証操作に対応するEthereum実装と設定による特例を読む。",
+          "connection": "ここから具体的な検証本体へ渡す値と、戻るResultを追います。"
+        },
+        {
+          "context": "area:journey-block-postconditions",
+          "title": "実行結果をブロックの値と比べる",
+          "purpose": "gas・レシートroot・bloom・requests・BALを適用時点と条件で照合する。",
+          "connection": "Ethereum実装を経て元の呼出元へ結果が戻ります。次に、状態rootの計算・照合と最終結果を読みます。"
+        },
+        {
+          "context": "area:journey-block-root",
+          "title": "計算した状態のまとめをヘッダーと照合し結果を返す",
+          "purpose": "実行後の状態のまとめが一致するか確認し、検証結果を返す。",
+          "connection": "ValidationOutputは取り込み処理へ戻り、メモリー内treeへ加えられ、PayloadStatusへ変換されます。最初のNewPayloadの返答口から結果が戻ります。"
+        },
+        {
+          "context": "area:journey-block-forkchoice-message",
+          "title": "履歴採用の指示と返答口をEngineへ送る",
+          "purpose": "履歴の採用指示が、NewPayloadとは別の要求であることを読む。",
+          "connection": "同じEngineの要求経路を通り、treeのon_forkchoice_updatedへ届きます。"
+        },
+        {
+          "context": "area:journey-block-forkchoice",
+          "title": "合意側の履歴採用の指示を処理する",
+          "purpose": "指示されたhead・safe・finalizedの前提を検査し、履歴の変更へ進む。",
+          "connection": "現在の先端と違う場合、apply_chain_updateで変更を作ります。"
+        },
+        {
+          "context": "area:journey-block-forkchoice-precheck",
+          "title": "不正な指示と同期中を区別する",
+          "purpose": "ゼロhead・不正な祖先・同期中の主要条件と、INVALID/SYNCING/継続の結果を読む。",
+          "connection": "早期返答がなければon_forkchoice_updatedへ戻り、採用履歴の変更へ進みます。"
+        },
+        {
+          "context": "area:journey-block-canonical",
+          "title": "検証済みの履歴を採用する",
+          "purpose": "採用する履歴の変更が整合するか検査する。",
+          "connection": "まず呼び出すis_consistent_forkchoice_stateで、safe/finalizedが履歴に合うかを次で確かめます。"
+        },
+        {
+          "context": "area:journey-block-forkchoice-consistency",
+          "title": "採用前に履歴の整合性を確かめる",
+          "purpose": "safe/finalizedがゼロ・切替先・残る採用履歴のどれかを条件とともに読む。",
+          "connection": "この検査がtrueならapply_chain_updateへ戻り、on_canonical_chain_updateで履歴を切り替えます。"
+        },
+        {
+          "context": "area:journey-block-canonical-state",
+          "title": "採用中の先端と状態を更新し通知する",
+          "purpose": "採用中の先端・メモリー内の状態を切り替え、購読側へ通知する。",
+          "connection": "apply_chain_updateへ戻り、続けてensure_consistent_forkchoice_stateがsafe/finalizedの目印を更新します。"
+        },
+        {
+          "context": "area:journey-block-forkchoice-markers",
+          "title": "safeとfinalizedの指定を反映する",
+          "purpose": "ゼロ・未知・既知・参照エラーを分け、目印更新と番号の保存依頼を読む。",
+          "connection": "ブロック全体の保存はこの目印更新と別に、Engineの稼働ループが条件を見て進めます。"
+        },
+        {
+          "context": "startup:tree",
+          "title": "Engineの要求と保存の状態を扱う",
+          "purpose": "稼働中の要求処理と、保存の進行が別々に進むことを読む。",
+          "connection": "advance_persistenceが保存中かどうかや保存対象を調べます。"
+        },
+        {
+          "context": "area:journey-block-save-start",
+          "title": "保存の条件を確認して別の処理へ依頼する",
+          "purpose": "保存を重ねて始めない条件と、保存依頼・返答待ちの管理を読む。",
+          "connection": "get_save_blocks_inputが、現在採用している履歴から保存範囲を選びます。"
+        },
+        {
+          "context": "area:journey-block-save-target",
+          "title": "採用中の履歴から保存範囲を選ぶ",
+          "purpose": "保存するブロックと状態の範囲を、先端と設定に従って選ぶ。",
+          "connection": "persist_blocksへ入力が戻り、PersistenceHandleのsave_blocksへ送られます。"
+        },
+        {
+          "context": "area:journey-block-save-queue",
+          "title": "保存依頼を専用の経路へ送る",
+          "purpose": "保存依頼が専用の経路へ送られることを読む。",
+          "connection": "保存担当のrunが、このSaveBlocksという依頼を受け取ります。"
+        },
+        {
+          "context": "area:journey-block-save-worker",
+          "title": "保存担当が依頼を受け取り結果を返す",
+          "purpose": "保存担当が依頼を受け取り、保存結果を返答口へ返す。",
+          "connection": "on_save_blocksが保存先への書き込みとcommitを進めます。"
+        },
+        {
+          "context": "area:journey-block-save-write",
+          "title": "ブロックと状態を保存しcommitする",
+          "purpose": "ブロックと状態を書き込み、commit後に保存済み位置を返す。",
+          "connection": "このPersistenceResultが保存担当からtree側へ返り、完了の反映へ進みます。"
+        },
+        {
+          "context": "area:journey-block-save-complete",
+          "title": "保存完了をtree側へ反映する",
+          "purpose": "保存された位置をtree側へ反映し、メモリーの後処理へ進む。",
+          "connection": "ここまでが実行検証・採用・保存の別々の結果です。合意側が決めるfinalityの投票アルゴリズムは、この経路の外です。"
+        }
+      ],
+      "adjudication": "Selected title names validation/adoption/persistence; scope explicitly distinguishes NewPayload VALID from forkchoice adoption, disk persistence and finality. Entry and persistence stage purposes retain the two different processes.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "journey:sync",
+      "goal": "不足範囲の決定から、P2Pでの取得、段階ごとの実行、進捗とデータの保存、完了通知までをつなげて説明する。",
+      "title": "出発点から履歴を取得・実行・保存して追いつく",
+      "scope": "通常の既定ステージ同期を扱います。ヘッダー取得のあと、本文のP2P取得を具体例として追います。ERA取り込みやsnap syncなど全ての取得方式の内部を解説したという意味ではありません。同期の進捗と、合意側による履歴の確定も別です。",
+      "exactTitleDuplicate": false,
+      "availablePurposeFields": [
+        {
+          "context": "startup:context",
+          "title": "出発点と保存先をノードへ接続する",
+          "purpose": "ノードの保存先と、チェーンの出発点であるgenesisを用意する。",
+          "connection": "手元にない履歴を、次の同期タスクで取得・実行していきます。"
+        },
+        {
+          "context": "area:loop-backfill",
+          "title": "同期タスクの開始・待機・完了を扱う",
+          "purpose": "同期の目標がある場合だけタスクを始め、結果が戻るまで待つ。",
+          "connection": "run_as_futの返した(pipeline, result)をoneshot経由でpoll_pipelineが受け取ります。受信OkではpipelineをIdleへ戻してBackfillEvent::Finished(result)を返し、受信ErrではBackfillEvent::TaskDroppedを返します。"
+        },
+        {
+          "context": "area:journey-sync-run",
+          "title": "同期目標をpipelineへ渡す",
+          "purpose": "Sync目標ではtipを設定して通常の段階処理へ進み、Unwind目標では巻き戻してpipelineと結果を返す。",
+          "connection": "既定の同期では、取得の段階に実行・索引などの段階をつないで使います。"
+        },
+        {
+          "context": "area:journey-sync-default-order",
+          "title": "取得の段階に実行・索引作成・終了の段階をつなぐ",
+          "purpose": "ネットワーク取得の段階と、取得後の実行などの段階の組み合わせを読む。",
+          "connection": "取得側のOnlineStagesがヘッダーと本文をどう並べるかを次で読みます。"
+        },
+        {
+          "context": "area:journey-sync-online-order",
+          "title": "ヘッダーのあとに本文を取得する段階を組む",
+          "purpose": "先にヘッダー、そのあと本文をそろえる順番を確かめる。",
+          "connection": "この一覧をpipelineが順に実行します。"
+        },
+        {
+          "context": "area:sync",
+          "title": "同期の段階を順に進める",
+          "purpose": "各段階を順に進め、失敗や巻き戻しの指示を分ける。",
+          "connection": "段階ごとのexecute_readyでデータを準備し、executeで保存や実行を進めます。次はヘッダーの段階です。"
+        },
+        {
+          "context": "area:journey-sync-headers",
+          "title": "不足するヘッダーを取得し保存する",
+          "purpose": "不足するヘッダーの範囲を決め、取得結果を集めて書き込む。",
+          "connection": "ヘッダーがそろったあと、それに対応する本文の段階へ進みます。"
+        },
+        {
+          "context": "area:journey-sync-bodies",
+          "title": "本文を取得し、ヘッダーに対応づけて保存する",
+          "purpose": "本文の取得結果を待ち、取得済みデータを保存する。",
+          "connection": "ここで使うdownloaderがネットワークから本文を求める箇所を続けて読みます。"
+        },
+        {
+          "context": "area:journey-sync-body-request",
+          "title": "downloaderが本文を要求する",
+          "purpose": "downloaderが必要なブロック本文をネットワークclientへ要求する。",
+          "connection": "取得用clientは、内部のfetch要求経路へ依頼を送ります。"
+        },
+        {
+          "context": "area:journey-sync-fetch-client",
+          "title": "ネットワーク取得のキューへ渡す",
+          "purpose": "要求と返答用の経路を作り、ネットワーク取得担当へ渡す。",
+          "connection": "fetcherが接続相手を選び、要求を通信側へ返します。"
+        },
+        {
+          "context": "area:journey-sync-peer-select",
+          "title": "取得する相手を選び要求へ変換する",
+          "purpose": "要求を満たす相手を選ぶ条件と、相手がいない場合を区別する。",
+          "connection": "準備したFetchAction::BlockRequestはネットワーク側でhandle_block_requestへ渡されます。"
+        },
+        {
+          "context": "area:journey-sync-peer-send",
+          "title": "選んだ相手の接続へ要求を渡す",
+          "purpose": "選ばれた相手との接続へ要求を渡し、返答を待つ経路を残す。",
+          "connection": "相手から返答が準備できると、ネットワークのpoll処理がon_eth_responseへ渡します。"
+        },
+        {
+          "context": "area:journey-sync-response",
+          "title": "通信相手からの本文を取得担当へ戻す",
+          "purpose": "本文の返答をfetcherへ戻す。",
+          "connection": "downloaderへ戻った本文は、保持していたヘッダーと組み合わせて検査されます。"
+        },
+        {
+          "context": "area:journey-sync-body-validate",
+          "title": "取得した本文をヘッダーと合わせて検査する",
+          "purpose": "本文をヘッダーと合わせ、実行前の検証に通ったブロックだけを取得結果へ入れる。",
+          "connection": "取得結果は先に読んだBodyStageのbufferへ戻り、append_block_bodiesで保存されます。"
+        },
+        {
+          "context": "area:journey-sync-offline-order",
+          "title": "取得後に実行・ハッシュ化・履歴索引の段階を並べる",
+          "purpose": "実行、条件付きの送信者復元prune、hashing、履歴索引、pruneという登録順序を読む。",
+          "connection": "このOfflineStagesが最初に使うExecutionStagesは、送信者復元と実行の二段階を登録します。"
+        },
+        {
+          "context": "area:journey-sync-execution-order",
+          "title": "送信者の復元後に実行する段階を組む",
+          "purpose": "取得した履歴を扱う段階で、送信者復元のあとに取引実行が来ることを読む。",
+          "connection": "ExecutionStageが保存済みのブロックを順に取り出して実行します。"
+        },
+        {
+          "context": "area:journey-sync-execution",
+          "title": "保存した履歴を順に実行する",
+          "purpose": "保存されたブロックを番号順に読み、executor.execute_oneへ渡す。",
+          "connection": "保存済みブロックに対する共通のexecute_oneを次で読み、その後ExecutionStageが呼ぶEthereumの実行後条件も確かめます。"
+        },
+        {
+          "context": "area:execution",
+          "title": "ブロック内の取引を順に実行する",
+          "purpose": "ブロック内の取引を順に実行し、実行結果を返す。",
+          "connection": "ExecutionStageへ戻り、同じ関数内のvalidate_block_post_executionで実行結果を照合します。次はEthereumの実装です。"
+        },
+        {
+          "context": "area:journey-block-consensus-check",
+          "title": "Ethereumの実行後検証を呼ぶ",
+          "purpose": "共通の検証操作に対応するEthereum実装と設定による特例を読む。",
+          "connection": "ここから具体的な検証本体へ渡す値と、戻るResultを追います。"
+        },
+        {
+          "context": "area:journey-block-postconditions",
+          "title": "実行結果をブロックの値と比べる",
+          "purpose": "gas・レシートroot・bloom・requests・BALを適用時点と条件で照合する。",
+          "connection": "Ethereum実装を経て元の呼出元へ結果が戻ります。ExecutionStageの状態書込とcheckpoint返答を経て、pipeline側のcommitを読みます。"
+        },
+        {
+          "context": "area:journey-sync-checkpoint",
+          "title": "段階の処理結果と進捗をcommitする",
+          "purpose": "取得や実行の準備、本処理、進捗の書き込み、commit、完了通知を順に読む。",
+          "connection": "commitは保存先の実装へ渡ります。次は保存先が変更を確定する実装例です。"
+        },
+        {
+          "context": "area:storage",
+          "title": "保存先のcommitを読む",
+          "purpose": "保存先で静的ファイル・DBの変更をcommitする役割を確かめる。",
+          "connection": "各段階が目標へ進むとpipelineが結果を返します。開始時に読んだ同期タスクの返答経路へ戻り、poll_pipelineがFinishedを通知して再び待機状態になります。"
+        }
+      ],
+      "adjudication": "Selected title names fetch/execute/save/catch-up; scope separates stage progress from consensus finality. Header/body stage purposes retain missing-range selection/P2P, stage commit purpose retains progress+data+completion, and backfill connection retains result-return direction.",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "operation:rpc",
+      "goal": "送信要求の入口と、その呼び出し先",
+      "title": "送信要求の入口と、その呼び出し先",
+      "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+      "exactTitleDuplicate": true,
+      "availablePurposeFields": [
+        {
+          "context": "tx:rpc",
+          "title": "RPCで署名済みデータを受け取る",
+          "purpose": "入力txと、後続から戻るハッシュ・エラーの境界をつかむ。",
+          "connection": "EthTransactions::send_raw_transactionへ進みます。"
+        },
+        {
+          "context": "tx:recover",
+          "title": "取引の内容と送信者を読み取る",
+          "purpose": "読み取りに失敗する場合と、取引と元データを次へ渡す場合を追う。",
+          "connection": "この関数が選ぶPoolTransactionの復元hookの既定実装を次で読みます。"
+        },
+        {
+          "context": "tx:recovery-hook",
+          "title": "デコードと署名復元の既定実装を読む",
+          "purpose": "空入力・送信形式・署名の失敗を分け、復元した送信者を持つプール用の取引へ変換する。",
+          "connection": "読み取りと署名復元の結果は、このページのsend_raw_transactionへ戻り、send_pool_transactionへ渡されます。"
+        }
+      ],
+      "adjudication": "redundant goal/title; no unique semantic loss",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "operation:recover",
+      "goal": "受信データの読み取りと送信者の復元",
+      "title": "受信データの読み取りと送信者の復元",
+      "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+      "exactTitleDuplicate": true,
+      "availablePurposeFields": [
+        {
+          "context": "tx:recover",
+          "title": "取引の内容と送信者を読み取る",
+          "purpose": "読み取りに失敗する場合と、取引と元データを次へ渡す場合を追う。",
+          "connection": "この関数が選ぶPoolTransactionの復元hookの既定実装を次で読みます。"
+        },
+        {
+          "context": "tx:recovery-hook",
+          "title": "デコードと署名復元の既定実装を読む",
+          "purpose": "空入力・送信形式・署名の失敗を分け、復元した送信者を持つプール用の取引へ変換する。",
+          "connection": "読み取りと署名復元の結果は、このページのsend_raw_transactionへ戻り、send_pool_transactionへ渡されます。"
+        }
+      ],
+      "adjudication": "redundant goal/title; no unique semantic loss",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "operation:submit",
+      "goal": "設定による転送・追加と、その返答",
+      "title": "設定による転送・追加と、その返答",
+      "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+      "exactTitleDuplicate": true,
+      "availablePurposeFields": [
+        {
+          "context": "tx:submit",
+          "title": "通常のローカル追加経路を選ぶ",
+          "purpose": "転送設定による分岐を読み、通常経路のadd_pool_transactionと戻り値hashを確かめる。",
+          "connection": "通常経路ではself.inner.add_pool_transactionへ進みます。"
+        },
+        {
+          "context": "tx:queue",
+          "title": "キューへ依頼し、返答を待つ",
+          "purpose": "追加依頼と返答経路を作り、送信成功と追加成功を分ける。",
+          "connection": "依頼を受信するBatchTxProcessorは別の非同期処理です。次で受信側を読みます。"
+        },
+        {
+          "context": "area:send-receive",
+          "title": "キューから依頼を受け取る",
+          "purpose": "要求をまとめて取り出し、process_batchへ渡すタスクを読む。",
+          "connection": "受信した依頼はprocess_batchへ入り、件数や出所で処理を分けます。"
+        },
+        {
+          "context": "tx:batch",
+          "title": "プールへ渡し、要求ごとに結果を返す",
+          "purpose": "一件・同じ出所の複数件・異なる出所の複数件の分岐と、返答経路を読む。",
+          "connection": "response_tx.sendが追加結果を返し、このページのadd_pool_transactionのresponse_rx.awaitが受け取ります。要求をキューへ送れた時点と、この返答を受け取る時点は別です。"
+        }
+      ],
+      "adjudication": "redundant goal/title; no unique semantic loss",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "operation:queue",
+      "goal": "要求キューと個別の返答の往復",
+      "title": "要求キューと個別の返答の往復",
+      "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+      "exactTitleDuplicate": true,
+      "availablePurposeFields": [
+        {
+          "context": "tx:queue",
+          "title": "キューへ依頼し、返答を待つ",
+          "purpose": "追加依頼と返答経路を作り、送信成功と追加成功を分ける。",
+          "connection": "依頼を受信するBatchTxProcessorは別の非同期処理です。次で受信側を読みます。"
+        },
+        {
+          "context": "area:send-receive",
+          "title": "キューから依頼を受け取る",
+          "purpose": "要求をまとめて取り出し、process_batchへ渡すタスクを読む。",
+          "connection": "受信した依頼はprocess_batchへ入り、件数や出所で処理を分けます。"
+        },
+        {
+          "context": "tx:batch",
+          "title": "プールへ渡し、要求ごとに結果を返す",
+          "purpose": "一件・同じ出所の複数件・異なる出所の複数件の分岐と、返答経路を読む。",
+          "connection": "response_tx.sendが追加結果を返し、このページのadd_pool_transactionのresponse_rx.awaitが受け取ります。要求をキューへ送れた時点と、この返答を受け取る時点は別です。"
+        }
+      ],
+      "adjudication": "redundant goal/title; no unique semantic loss",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "operation:batch",
+      "goal": "要求をまとめて追加し、個別に返答する",
+      "title": "要求をまとめて追加し、個別に返答する",
+      "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+      "exactTitleDuplicate": true,
+      "availablePurposeFields": [
+        {
+          "context": "area:send-receive",
+          "title": "キューから依頼を受け取る",
+          "purpose": "要求をまとめて取り出し、process_batchへ渡すタスクを読む。",
+          "connection": "受信した依頼はprocess_batchへ入り、件数や出所で処理を分けます。"
+        },
+        {
+          "context": "tx:batch",
+          "title": "プールへ渡し、要求ごとに結果を返す",
+          "purpose": "一件・同じ出所の複数件・異なる出所の複数件の分岐と、返答経路を読む。",
+          "connection": "まず一件の場合のpool.add_transactionを追います。複数件も同じ検証・追加の役割をまとめて行います。"
+        },
+        {
+          "context": "tx:pool",
+          "title": "検証してから内部プールへ渡す",
+          "purpose": "validateを待ち、その結果を内部プールへ渡して一件分の結果を取り出す。",
+          "connection": "self.validateの先を続けて読みます。内部追加の結果は、後でこの関数へ戻ります。"
+        },
+        {
+          "context": "area:send-validation-dispatch",
+          "title": "設定されたvalidatorへ検証を頼む",
+          "purpose": "公開プールと検証担当の接続を読む。",
+          "connection": "標準構成では専用タスクに検証を渡すラッパーを使います。次はその送信側です。"
+        },
+        {
+          "context": "area:send-validation-task",
+          "title": "検証用のキューへ仕事を渡す",
+          "purpose": "検証用の返答経路を作り、送信失敗や受信失敗を成功と区別する。",
+          "connection": "ValidationTask::runがキューからこの仕事を受け取って進めます。"
+        },
+        {
+          "context": "area:send-validation-worker",
+          "title": "検証の仕事を受け取って進める",
+          "purpose": "受信の待機と実際の検証の実行を分けて読む。",
+          "connection": "仕事の中で呼ばれた内側のvalidatorはEthereum用の実装です。"
+        },
+        {
+          "context": "area:send-validation-entry",
+          "title": "Ethereumの一件検証へ入る",
+          "purpose": "共通のvalidate_transactionからvalidate_oneへ渡す箇所を確かめる。",
+          "connection": "validate_oneは最新状態を読む方法を用意し、validate_one_with_providerへ渡します。"
+        },
+        {
+          "context": "area:send-validation-order",
+          "title": "データの検査から状態の検査へ進む",
+          "purpose": "状態なしの検査に通ったあとだけ状態を読み、次の検査へ進む順序を追う。",
+          "connection": "先に呼ばれるvalidate_statelessの全体を次で読みます。"
+        },
+        {
+          "context": "area:send-stateless",
+          "title": "形式・ガス・手数料などを検査する",
+          "purpose": "状態を読まずに判定する検証条件と、エラーで抜ける箇所を読む。",
+          "connection": "ここに通った取引だけが、前の関数からvalidate_statefulへ進みます。"
+        },
+        {
+          "context": "area:send-stateful",
+          "title": "送信者の状態に照らして検査する",
+          "purpose": "口座の読取、送信者のコード、nonce、残高、blobなどの検査とValid結果を読む。",
+          "connection": "次の二つは、この関数が呼ぶ通し番号と残高の具体的な検査です。"
+        },
+        {
+          "context": "area:send-nonce",
+          "title": "古い通し番号を拒否する",
+          "purpose": "送信者の状態のnonceと取引のnonceを比べる条件を確かめる。",
+          "connection": "この検査に通ったあと、残高の条件も確かめます。"
+        },
+        {
+          "context": "area:pool-balance",
+          "title": "必要額を払える残高か確かめる",
+          "purpose": "残高検査が有効な場合の不足エラーと、無効設定の場合を区別する。",
+          "connection": "全検証の結果が公開プールへ戻り、self.pool.add_transactionsへ渡されます。次は内部追加の経路です。"
+        },
+        {
+          "context": "area:send-pool-limit",
+          "title": "内部プールの追加と容量制限を扱う",
+          "purpose": "排他制御、各取引の追加、容量制限での除外、結果の調整を読む。",
+          "connection": "この範囲のself.add_transactionが、次に示す検証結果別の追加処理を呼びます。"
+        },
+        {
+          "context": "area:send-pool-add",
+          "title": "追加の成功・失敗を作って返す",
+          "purpose": "Validだけを内部プールへ渡し、Invalidや処理エラーを追加成功にしないことを確かめる。",
+          "connection": "追加結果は容量検査を経て公開プールへ戻り、batcherのresponse_tx.sendからadd_pool_transactionのresponse_rx.await??へ返されます。通常経路はその結果のhashをRPC応答に使い、転送後のローカル追加では結果を捨てて転送先RPCのhashを返します。"
+        }
+      ],
+      "adjudication": "redundant goal/title; no unique semantic loss",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    },
+    {
+      "route": "operation:pool",
+      "goal": "検証条件を確かめ、内部プールへ追加する",
+      "title": "検証条件を確かめ、内部プールへ追加する",
+      "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+      "exactTitleDuplicate": true,
+      "availablePurposeFields": [
+        {
+          "context": "tx:pool",
+          "title": "検証してから内部プールへ渡す",
+          "purpose": "validateを待ち、その結果を内部プールへ渡して一件分の結果を取り出す。",
+          "connection": "self.validateの先を続けて読みます。内部追加の結果は、後でこの関数へ戻ります。"
+        },
+        {
+          "context": "area:send-validation-dispatch",
+          "title": "設定されたvalidatorへ検証を頼む",
+          "purpose": "公開プールと検証担当の接続を読む。",
+          "connection": "標準構成では専用タスクに検証を渡すラッパーを使います。次はその送信側です。"
+        },
+        {
+          "context": "area:send-validation-task",
+          "title": "検証用のキューへ仕事を渡す",
+          "purpose": "検証用の返答経路を作り、送信失敗や受信失敗を成功と区別する。",
+          "connection": "ValidationTask::runがキューからこの仕事を受け取って進めます。"
+        },
+        {
+          "context": "area:send-validation-worker",
+          "title": "検証の仕事を受け取って進める",
+          "purpose": "受信の待機と実際の検証の実行を分けて読む。",
+          "connection": "仕事の中で呼ばれた内側のvalidatorはEthereum用の実装です。"
+        },
+        {
+          "context": "area:send-validation-entry",
+          "title": "Ethereumの一件検証へ入る",
+          "purpose": "共通のvalidate_transactionからvalidate_oneへ渡す箇所を確かめる。",
+          "connection": "validate_oneは最新状態を読む方法を用意し、validate_one_with_providerへ渡します。"
+        },
+        {
+          "context": "area:send-validation-order",
+          "title": "データの検査から状態の検査へ進む",
+          "purpose": "状態なしの検査に通ったあとだけ状態を読み、次の検査へ進む順序を追う。",
+          "connection": "先に呼ばれるvalidate_statelessの全体を次で読みます。"
+        },
+        {
+          "context": "area:send-stateless",
+          "title": "形式・ガス・手数料などを検査する",
+          "purpose": "状態を読まずに判定する検証条件と、エラーで抜ける箇所を読む。",
+          "connection": "ここに通った取引だけが、前の関数からvalidate_statefulへ進みます。"
+        },
+        {
+          "context": "area:send-stateful",
+          "title": "送信者の状態に照らして検査する",
+          "purpose": "口座の読取、送信者のコード、nonce、残高、blobなどの検査とValid結果を読む。",
+          "connection": "次の二つは、この関数が呼ぶ通し番号と残高の具体的な検査です。"
+        },
+        {
+          "context": "area:send-nonce",
+          "title": "古い通し番号を拒否する",
+          "purpose": "送信者の状態のnonceと取引のnonceを比べる条件を確かめる。",
+          "connection": "この検査に通ったあと、残高の条件も確かめます。"
+        },
+        {
+          "context": "area:pool-balance",
+          "title": "必要額を払える残高か確かめる",
+          "purpose": "残高検査が有効な場合の不足エラーと、無効設定の場合を区別する。",
+          "connection": "全検証の結果が公開プールへ戻り、self.pool.add_transactionsへ渡されます。次は内部追加の経路です。"
+        },
+        {
+          "context": "area:send-pool-limit",
+          "title": "内部プールの追加と容量制限を扱う",
+          "purpose": "排他制御、各取引の追加、容量制限での除外、結果の調整を読む。",
+          "connection": "この範囲のself.add_transactionが、次に示す検証結果別の追加処理を呼びます。"
+        },
+        {
+          "context": "area:send-pool-add",
+          "title": "追加の成功・失敗を作って返す",
+          "purpose": "Validだけを内部プールへ渡し、Invalidや処理エラーを追加成功にしないことを確かめる。",
+          "connection": "追加結果は容量検査を経て公開プールへ戻り、batcherのresponse_tx.sendからadd_pool_transactionのresponse_rx.await??へ返されます。通常経路はその結果のhashをRPC応答に使い、転送後のローカル追加では結果を捨てて転送先RPCのhashを返します。"
+        }
+      ],
+      "adjudication": "redundant goal/title; no unique semantic loss",
+      "status": "no specific semantic loss established from goal field omission; not an automatic G1 pass"
+    }
+  ],
+  "conclusion": "Do not fail solely because goal string is absent. In these15 routes, selected native-picker title, always available scope, phase labels/relationships and navigable same-page stage purposes retain the identified content and input/process/output boundaries. No unique missing processing claim identified in this review.",
+  "limits": [
+    "Stage text in other phase groups is available after selecting that phase, not necessarily simultaneously in the initial viewport.",
+    "A dictionary/string-presence check alone is not semantic approval; these are explicit manual clause-to-field mappings.",
+    "This does not establish novice discoverability or human comprehension. Those remain separate actual learning tasks.",
+    "If a future goal adds content absent from title/scope/purposes, this conclusion does not waive source-fit or consumer-fit review."
+  ]
+}

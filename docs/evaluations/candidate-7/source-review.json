@@ -1,10 +1,10 @@
 {
   "candidate": 7,
-  "revision": 3,
-  "status": "ready-for-corrected-baseline-application-and-integration-ui-evaluation",
-  "statusJapanese": "補正baselineの適用・統合UI評価へ進める",
+  "revision": 4,
+  "status": "ready-for-resolved-identity-helper-and-footprint-application-and-integration-evaluation",
+  "statusJapanese": "解決済みID正規化helper・境界の適用と統合評価へ進める",
   "scope": "Independent source/data/consumer-contract and pure-renderer/actual-adapter VM review of the combined18-file proposal. No canonical application or whole-product UI/human acceptance.",
-  "unionManifestSHA256": "6d72bd67032568ce67c859deed2349a24538e8c6dfb553b3e6d1a579ae6502ae",
+  "unionManifestSHA256": "252eabc6a647a1dac73f1a4f7c89a668a56986f73d5914f6f05f23f0c61acfbe",
   "pinnedSourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
   "counts": {
     "sourceContexts": 148,
@@ -354,11 +354,11 @@
     "After applying, regenerate all derived copies/asset revisions/CSP, verify reproducibility and served bytes, then evaluate all114routes/61files and108units in one fixed version for two rounds.",
     "C6 FAIL/R2 not-measured remain separate; this status does not overwrite earlier failures or grant whole-product acceptance."
   ],
-  "recordedAt": "2026-10-25T17:46:20.266980+00:00",
+  "recordedAt": "2026-10-25T17:58:10.831487+00:00",
   "instrumentationNote": "Hint diff keys use(line,match), because tx:rpc has two distinct comments onL923. The line-only initial count artifact is preserved separately and is not a product change.",
   "removedHints": [],
   "all18ProposedSHA256": {
-    "ui/reading-help.js": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+    "ui/reading-help.js": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
     "ui/studio.css": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
     "dist/atlas.js": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
     "dist/explore.html": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
@@ -371,15 +371,15 @@
     "scripts/build-help.cjs": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
     "scripts/reading-consumer-inventory.cjs": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
     "ui/reading-help-content.json": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
-    "ui/reading-consumer-sites.json": "28d84a2a188549740f4a70d7c60c2729a432b1d1920cd56ae033faa17ce460d9",
+    "ui/reading-consumer-sites.json": "3edd48bde195890087fe8ca0174f4de70edbf9a22523fd2b57f35aa38ace5519",
     "ui/area-source-excerpts.json": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
     "dist/reth-data.js": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
     "local-app/test/reading-consumer-inventory.test.mjs": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
     "local-app/test/atlas-reading-routes.test.mjs": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a"
   },
   "canonicalRuntimeEditedByReviewer": false,
-  "canonicalState": "Parent applied reviewed18 files; stopped at guard rejection of old isolated template fingerprint. Reviewer reads only; new baseline pending parent application.",
-  "previousUnionManifestSHA256": "1167ebbd2ba8a9112070f482659a5301eed1a75196e2c53770091b533e12de81",
+  "canonicalState": "Parent reports application of17 changed source/generated paths after independent footprint comparison. Reviewer has not edited canonical source. Full candidate tests/freeze/UI acceptance remain in progress.",
+  "previousUnionManifestSHA256": "6d72bd67032568ce67c859deed2349a24538e8c6dfb553b3e6d1a579ae6502ae",
   "revision3All18Comparison": [
     {
       "path": "ui/reading-help.js",
@@ -802,6 +802,134 @@
   ],
   "all18Files": [
     {
+      "target": "ui/reading-help.js",
+      "old": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
+      "new": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+      "matches": true,
+      "changed": true
+    },
+    {
+      "target": "ui/studio.css",
+      "old": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "new": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "dist/atlas.js",
+      "old": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "new": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "dist/explore.html",
+      "old": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "new": "19ccae5c00a42e2c9730fee1f9bd76c8af5c782c7830c4dee1eb491503dd8265",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/public/lenses.js",
+      "old": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "new": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/public/startup.js",
+      "old": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "new": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/public/guide-reading.js",
+      "old": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "new": "4bac2bb7b8d9397fd11eb254283589214fccbcb7539436e7fe26e3dca53950ce",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/test/explanation-surfaces.test.mjs",
+      "old": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "new": "e449f8029746327537a4b1a8a372ffe420019cd4ef44fa98e18e138b45ca7605",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/test/guide-g4.test.mjs",
+      "old": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "new": "2e63c024e2a4416dab03f62fbcf88ea85a9ee4a8eb8358e44f799b8b77a19522",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "scripts/reading-route-registry.cjs",
+      "old": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "new": "88ef3c787a64361dffbe69c84e99d605312a708ce00ff2621979303ce940f975",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "scripts/build-help.cjs",
+      "old": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "new": "18e2715d6fcb694be34676d7f1060bf4a187ff70dfcf00b48e8e0b02aebb2048",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "scripts/reading-consumer-inventory.cjs",
+      "old": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "new": "dfa5cb75a4aaf05330dafe0cfb4368c3eddcd9f11765c7a36d288f10dbb32206",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "ui/reading-help-content.json",
+      "old": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "new": "65bf249c888bfda783729a163294336dc5e242e7946f0b2caa856b769c04397a",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "ui/reading-consumer-sites.json",
+      "old": "28d84a2a188549740f4a70d7c60c2729a432b1d1920cd56ae033faa17ce460d9",
+      "new": "3edd48bde195890087fe8ca0174f4de70edbf9a22523fd2b57f35aa38ace5519",
+      "matches": true,
+      "changed": true
+    },
+    {
+      "target": "ui/area-source-excerpts.json",
+      "old": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "new": "a8cd4e38241d4f0e8f9d300ccd7b2602d1757fae6e9ca9764859ae76afa28f61",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "dist/reth-data.js",
+      "old": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "new": "c6f27e8adc0c62091ca973fda02c04b7d303c0d1ce6f49b13669d4e9f9647385",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/test/reading-consumer-inventory.test.mjs",
+      "old": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "new": "685a09d01729ac097a935cf5100755ed9702861cae839bb842e643bc9a8f472f",
+      "matches": true,
+      "changed": false
+    },
+    {
+      "target": "local-app/test/atlas-reading-routes.test.mjs",
+      "old": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "new": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "matches": true,
+      "changed": false
+    }
+  ],
+  "revision3HistoricalAll18Files": [
+    {
       "path": "ui/reading-help.js",
       "review2SHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
       "review3SHA256": "c8e27c53ead5fbdceb2722f3de2dcc929e777ea599e1d57c41f73ac6737650c7",
@@ -927,5 +1055,32 @@
       "manifestMatches": true,
       "changed": false
     }
-  ]
+  ],
+  "resolvedIdentityDelta": {
+    "helperSHA256": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+    "baselineSHA256": "3edd48bde195890087fe8ca0174f4de70edbf9a22523fd2b57f35aa38ace5519",
+    "authoredPayloadChanges": [
+      "ui/reading-help.js",
+      "ui/reading-consumer-sites.json"
+    ],
+    "sourceClaimsTermsRoutesReviewInputsUnchanged": true,
+    "actualMountContractCases": 9,
+    "contractErrors": 0,
+    "scope": "Publish only the already-resolved explicit/path/line id after valid-commit context validation. Keep WeakSet mount-once; current generic adapters create new nodes when navigating. Do not infer new ids from invalid contexts or reinterpret existing mounted nodes.",
+    "footprintDelta": "Four helper JS files total: one authoring and three distributed copies; twelve served HTML asset-revision changes. Dataset-readingHelp site count +1 in four copies; all other boundary semantic/data fields unchanged.",
+    "normalGeneration": {
+      "commands4Exit0": true,
+      "regularArtifacts": 76,
+      "byteChanges": [],
+      "testsPass": 46
+    },
+    "evidence": [
+      "root-generic-related-identity-before.json",
+      "a-resolved-identity-contract.json",
+      "a-identity-footprint-review.json",
+      "a-identity-generation-review.json",
+      "a-identity-tests.log"
+    ],
+    "actualBrowser": "Parent-owned post-application regression; its results are recorded separately, not inferred from this contract review."
+  }
 }

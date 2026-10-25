@@ -27,5 +27,26 @@
   "limits": [
     "Source excerpts for61/1283 Rust files do not establish whole-code comprehension",
     "Unit checks and preflight do not establish full two-round UI gates or human comprehension"
-  ]
+  ],
+  "evaluationProgress": {
+    "rootRust": {
+      "cases": 42,
+      "rounds": 2,
+      "records": 84,
+      "rawData": "Local outputs/candidate-7/root-rust-ui.json",
+      "allCriteriaAcceptance": "not inferred from source/control observations"
+    },
+    "rootAtlas": {
+      "routes": 41,
+      "round1Complete": true,
+      "round2": "in-progress"
+    },
+    "otherOwners": "C/A formal evaluation still running",
+    "freshAI": {
+      "lessons": 7,
+      "rounds": 2,
+      "humanParticipants": 0,
+      "majorRemainingIssue": "Reth phases expose6/12/15/16 excerpts,273/619/965/735 original lines; action count does not establish readability"
+    }
+  }
 }

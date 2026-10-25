@@ -1,0 +1,98 @@
+[
+  {
+    "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=65&end=79",
+    "forward": {
+      "focusContext": "tx:recover",
+      "focusInViewport": true,
+      "sources": [
+        {
+          "backVisible": true,
+          "code": "pub trait EthTransactions: LoadTransaction<Provider: BlockReaderIdExt> {\n    /// Returns a handle for signing data.\n    ///\n    /// Signer access in default (L1) trait method implementations.\n    fn signers(&self) -> &SignersForRpc<Self::Provider, Self::NetworkTypes>;\n\n    /// Returns a list of addresses owned by provider.\n    fn accounts(&self) -> Vec<Address> {\n        self.signers().read().iter().flat_map(|s| s.accounts()).collect()\n    }\n\n    /// Returns the timeout duration for `send_raw_transaction_sync` RPC method.\n    fn send_raw_transaction_sync_timeout(&self) -> Duration {\n        self.eth_api_settings().send_raw_transaction_sync_timeout\n    }",
+          "id": "tx:trait-contract",
+          "selected": "72",
+          "sourceOpen": true,
+          "sourceVisible": true
+        },
+        {
+          "backVisible": true,
+          "code": "    /// Decodes and recovers the transaction and submits it to the pool.\n    ///\n    /// Returns the hash of the transaction.\n    fn send_raw_transaction(\n        &self,\n        tx: Bytes,\n    ) -> impl Future<Output = Result<B256, Self::Error>> + Send {\n        async move {\n            let pool_transaction = self.recover_raw_pool_transaction(&tx)?;\n            self.send_pool_transaction(\n                TransactionOrigin::Local,\n                WithEncoded::new(tx, pool_transaction),\n            )\n            .await\n        }\n    }\n\n    /// Decodes and recovers a raw pool transaction, sharing sender recovery when configured.\n    fn recover_raw_pool_transaction(&self, tx: &[u8]) -> Result<PoolTx<Self::Pool>, Self::Error> {\n        match self.eth_api_settings().sender_recovery_cache.as_ref() {\n            Some(cache) => {\n                <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction_with_cache(\n                    tx, cache,\n                )\n            }\n            None => <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction(tx),\n        }\n        .map_err(Self::Error::from_eth_err)\n    }",
+          "id": "tx:recover",
+          "sourceOpen": true,
+          "sourceVisible": true
+        }
+      ],
+      "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=65&end=79"
+    },
+    "returned": {
+      "focusContext": "tx:trait-contract",
+      "focusInViewport": true,
+      "sources": [
+        {
+          "backVisible": false,
+          "code": "pub trait EthTransactions: LoadTransaction<Provider: BlockReaderIdExt> {\n    /// Returns a handle for signing data.\n    ///\n    /// Signer access in default (L1) trait method implementations.\n    fn signers(&self) -> &SignersForRpc<Self::Provider, Self::NetworkTypes>;\n\n    /// Returns a list of addresses owned by provider.\n    fn accounts(&self) -> Vec<Address> {\n        self.signers().read().iter().flat_map(|s| s.accounts()).collect()\n    }\n\n    /// Returns the timeout duration for `send_raw_transaction_sync` RPC method.\n    fn send_raw_transaction_sync_timeout(&self) -> Duration {\n        self.eth_api_settings().send_raw_transaction_sync_timeout\n    }",
+          "id": "tx:trait-contract",
+          "selected": "72",
+          "sourceOpen": true,
+          "sourceVisible": true
+        },
+        {
+          "backVisible": false,
+          "code": "    /// Decodes and recovers the transaction and submits it to the pool.\n    ///\n    /// Returns the hash of the transaction.\n    fn send_raw_transaction(\n        &self,\n        tx: Bytes,\n    ) -> impl Future<Output = Result<B256, Self::Error>> + Send {\n        async move {\n            let pool_transaction = self.recover_raw_pool_transaction(&tx)?;\n            self.send_pool_transaction(\n                TransactionOrigin::Local,\n                WithEncoded::new(tx, pool_transaction),\n            )\n            .await\n        }\n    }\n\n    /// Decodes and recovers a raw pool transaction, sharing sender recovery when configured.\n    fn recover_raw_pool_transaction(&self, tx: &[u8]) -> Result<PoolTx<Self::Pool>, Self::Error> {\n        match self.eth_api_settings().sender_recovery_cache.as_ref() {\n            Some(cache) => {\n                <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction_with_cache(\n                    tx, cache,\n                )\n            }\n            None => <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction(tx),\n        }\n        .map_err(Self::Error::from_eth_err)\n    }",
+          "id": "tx:recover",
+          "sourceOpen": true,
+          "sourceVisible": true
+        }
+      ],
+      "url": "http://127.0.0.1:4317/reader#path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&code=1&start=65&end=79"
+    },
+    "result": "PASS"
+  },
+  {
+    "url": "http://127.0.0.1:4317/files?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=65&end=79",
+    "forward": {
+      "focusContext": "tx:recover",
+      "focusInViewport": true,
+      "sources": [
+        {
+          "backVisible": true,
+          "code": "pub trait EthTransactions: LoadTransaction<Provider: BlockReaderIdExt> {\n    /// Returns a handle for signing data.\n    ///\n    /// Signer access in default (L1) trait method implementations.\n    fn signers(&self) -> &SignersForRpc<Self::Provider, Self::NetworkTypes>;\n\n    /// Returns a list of addresses owned by provider.\n    fn accounts(&self) -> Vec<Address> {\n        self.signers().read().iter().flat_map(|s| s.accounts()).collect()\n    }\n\n    /// Returns the timeout duration for `send_raw_transaction_sync` RPC method.\n    fn send_raw_transaction_sync_timeout(&self) -> Duration {\n        self.eth_api_settings().send_raw_transaction_sync_timeout\n    }",
+          "id": "tx:trait-contract",
+          "selected": "72",
+          "sourceOpen": true,
+          "sourceVisible": true
+        },
+        {
+          "backVisible": true,
+          "code": "    /// Decodes and recovers the transaction and submits it to the pool.\n    ///\n    /// Returns the hash of the transaction.\n    fn send_raw_transaction(\n        &self,\n        tx: Bytes,\n    ) -> impl Future<Output = Result<B256, Self::Error>> + Send {\n        async move {\n            let pool_transaction = self.recover_raw_pool_transaction(&tx)?;\n            self.send_pool_transaction(\n                TransactionOrigin::Local,\n                WithEncoded::new(tx, pool_transaction),\n            )\n            .await\n        }\n    }\n\n    /// Decodes and recovers a raw pool transaction, sharing sender recovery when configured.\n    fn recover_raw_pool_transaction(&self, tx: &[u8]) -> Result<PoolTx<Self::Pool>, Self::Error> {\n        match self.eth_api_settings().sender_recovery_cache.as_ref() {\n            Some(cache) => {\n                <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction_with_cache(\n                    tx, cache,\n                )\n            }\n            None => <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction(tx),\n        }\n        .map_err(Self::Error::from_eth_err)\n    }",
+          "id": "tx:recover",
+          "sourceOpen": true,
+          "sourceVisible": true
+        }
+      ],
+      "url": "http://127.0.0.1:4317/files?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=65&end=79"
+    },
+    "returned": {
+      "focusContext": "tx:trait-contract",
+      "focusInViewport": true,
+      "sources": [
+        {
+          "backVisible": false,
+          "code": "pub trait EthTransactions: LoadTransaction<Provider: BlockReaderIdExt> {\n    /// Returns a handle for signing data.\n    ///\n    /// Signer access in default (L1) trait method implementations.\n    fn signers(&self) -> &SignersForRpc<Self::Provider, Self::NetworkTypes>;\n\n    /// Returns a list of addresses owned by provider.\n    fn accounts(&self) -> Vec<Address> {\n        self.signers().read().iter().flat_map(|s| s.accounts()).collect()\n    }\n\n    /// Returns the timeout duration for `send_raw_transaction_sync` RPC method.\n    fn send_raw_transaction_sync_timeout(&self) -> Duration {\n        self.eth_api_settings().send_raw_transaction_sync_timeout\n    }",
+          "id": "tx:trait-contract",
+          "selected": "72",
+          "sourceOpen": true,
+          "sourceVisible": true
+        },
+        {
+          "backVisible": false,
+          "code": "    /// Decodes and recovers the transaction and submits it to the pool.\n    ///\n    /// Returns the hash of the transaction.\n    fn send_raw_transaction(\n        &self,\n        tx: Bytes,\n    ) -> impl Future<Output = Result<B256, Self::Error>> + Send {\n        async move {\n            let pool_transaction = self.recover_raw_pool_transaction(&tx)?;\n            self.send_pool_transaction(\n                TransactionOrigin::Local,\n                WithEncoded::new(tx, pool_transaction),\n            )\n            .await\n        }\n    }\n\n    /// Decodes and recovers a raw pool transaction, sharing sender recovery when configured.\n    fn recover_raw_pool_transaction(&self, tx: &[u8]) -> Result<PoolTx<Self::Pool>, Self::Error> {\n        match self.eth_api_settings().sender_recovery_cache.as_ref() {\n            Some(cache) => {\n                <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction_with_cache(\n                    tx, cache,\n                )\n            }\n            None => <PoolTx<Self::Pool> as PoolTransaction>::recover_raw_transaction(tx),\n        }\n        .map_err(Self::Error::from_eth_err)\n    }",
+          "id": "tx:recover",
+          "sourceOpen": true,
+          "sourceVisible": true
+        }
+      ],
+      "url": "http://127.0.0.1:4317/files?path=crates%2Frpc%2Frpc-eth-api%2Fsrc%2Fhelpers%2Ftransaction.rs&line=65&end=79"
+    },
+    "result": "PASS"
+  }
+]
