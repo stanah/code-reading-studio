@@ -1,0 +1,323 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "units": [
+    {
+      "id": "rust-topic:borrow",
+      "owner": "root",
+      "gates": {
+        "G1": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G3": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G2": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json",
+            "rust-ui-delegation-manifest.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G4": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G5": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-ui.json",
+            "root-rust-existing-peer-ui.json"
+          ],
+          "scope": "Fixed literal nondup/preparation condition only; first-use reading load/human understanding not accepted by this gate."
+        },
+        "G6": {
+          "status": "pass",
+          "evidence": [
+            "rust-ui-delegation-manifest.json",
+            "root-rust-ui.json",
+            "atlas-manifest-root.json",
+            "root-atlas-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        }
+      },
+      "ordinaryCases": 6,
+      "rounds": [
+        1,
+        2
+      ],
+      "extraConditionsNotClaimed": "Forced native-Rust data corruption/failure is not promoted from Atlas-only conditional fixtures."
+    },
+    {
+      "id": "rust-topic:future",
+      "owner": "root",
+      "gates": {
+        "G1": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G3": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G2": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json",
+            "rust-ui-delegation-manifest.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G4": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G5": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-ui.json",
+            "root-rust-existing-peer-ui.json"
+          ],
+          "scope": "Fixed literal nondup/preparation condition only; first-use reading load/human understanding not accepted by this gate."
+        },
+        "G6": {
+          "status": "pass",
+          "evidence": [
+            "rust-ui-delegation-manifest.json",
+            "root-rust-ui.json",
+            "atlas-manifest-root.json",
+            "root-atlas-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        }
+      },
+      "ordinaryCases": 10,
+      "rounds": [
+        1,
+        2
+      ],
+      "extraConditionsNotClaimed": "Forced native-Rust data corruption/failure is not promoted from Atlas-only conditional fixtures."
+    },
+    {
+      "id": "rust-topic:result",
+      "owner": "root",
+      "gates": {
+        "G1": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G3": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G2": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json",
+            "rust-ui-delegation-manifest.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G4": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G5": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-ui.json",
+            "root-rust-existing-peer-ui.json"
+          ],
+          "scope": "Fixed literal nondup/preparation condition only; first-use reading load/human understanding not accepted by this gate."
+        },
+        "G6": {
+          "status": "pass",
+          "evidence": [
+            "rust-ui-delegation-manifest.json",
+            "root-rust-ui.json",
+            "atlas-manifest-root.json",
+            "root-atlas-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        }
+      },
+      "ordinaryCases": 10,
+      "rounds": [
+        1,
+        2
+      ],
+      "extraConditionsNotClaimed": "Forced native-Rust data corruption/failure is not promoted from Atlas-only conditional fixtures."
+    },
+    {
+      "id": "rust-topic:trait",
+      "owner": "root",
+      "gates": {
+        "G1": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G3": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G2": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json",
+            "rust-ui-delegation-manifest.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G4": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G5": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-ui.json",
+            "root-rust-existing-peer-ui.json"
+          ],
+          "scope": "Fixed literal nondup/preparation condition only; first-use reading load/human understanding not accepted by this gate."
+        },
+        "G6": {
+          "status": "pass",
+          "evidence": [
+            "rust-ui-delegation-manifest.json",
+            "root-rust-ui.json",
+            "atlas-manifest-root.json",
+            "root-atlas-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        }
+      },
+      "ordinaryCases": 10,
+      "rounds": [
+        1,
+        2
+      ],
+      "extraConditionsNotClaimed": "Forced native-Rust data corruption/failure is not promoted from Atlas-only conditional fixtures."
+    },
+    {
+      "id": "rust-topic:channel",
+      "owner": "root",
+      "gates": {
+        "G1": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G3": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-independent-semantic-review.json",
+            "source-review.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G2": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json",
+            "rust-ui-delegation-manifest.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G4": {
+          "status": "pass",
+          "evidence": [
+            "root-ui-verification.json",
+            "root-rust-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        },
+        "G5": {
+          "status": "pass",
+          "evidence": [
+            "root-rust-ui.json",
+            "root-rust-existing-peer-ui.json"
+          ],
+          "scope": "Fixed literal nondup/preparation condition only; first-use reading load/human understanding not accepted by this gate."
+        },
+        "G6": {
+          "status": "pass",
+          "evidence": [
+            "rust-ui-delegation-manifest.json",
+            "root-rust-ui.json",
+            "atlas-manifest-root.json",
+            "root-atlas-ui.json"
+          ],
+          "scope": "Authored topic claims; local/static and all declared first-source variants freshly observed in both rounds. No memo field on native Rust view; Atlas nonempty question separately measured."
+        }
+      },
+      "ordinaryCases": 6,
+      "rounds": [
+        1,
+        2
+      ],
+      "extraConditionsNotClaimed": "Forced native-Rust data corruption/failure is not promoted from Atlas-only conditional fixtures."
+    }
+  ],
+  "humanParticipants": 0,
+  "productComplete": false
+}

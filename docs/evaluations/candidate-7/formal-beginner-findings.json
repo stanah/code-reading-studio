@@ -1,0 +1,116 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "findings": [
+    {
+      "id": "B-C7-LOAD-RETH",
+      "status": "open-major-reading-load-concern",
+      "axis": "G5 readability; not a reachability failure",
+      "evidence": [
+        "formal-beginner-r1-reth.json",
+        "formal-beginner-r2-reth.json"
+      ],
+      "sourceCounts": [
+        6,
+        12,
+        15,
+        16
+      ],
+      "sourceRows": [
+        273,
+        619,
+        965,
+        735
+      ],
+      "actualObservation": "Each phase opens all essential originals for that phase. Other phase groups are closed. A single phase can require fifteen originals/965 lines, often with separate internal code scrollbars.",
+      "interpretation": "Three phase choices reach evidence, but this does not show a novice can read it. Keep all source breadth and purpose; test a smaller simultaneous display with explicit next-source/return and visible proof obligations.",
+      "notClaimed": "No invented line-count threshold, human-comprehension failure rate or claim of cumulative phase visibility."
+    },
+    {
+      "id": "B-C7-LOAD-STARTUP",
+      "status": "open-major-reading-load-concern",
+      "axis": "G5 readability",
+      "evidence": [
+        "formal-beginner-r1-startup.json",
+        "formal-beginner-r2-startup.json"
+      ],
+      "sourceCounts": [
+        7,
+        11,
+        4,
+        5,
+        10
+      ],
+      "sourceRows": [
+        277,
+        367,
+        256,
+        361,
+        429
+      ],
+      "actualObservation": "The phase-level entry is understandable, but each click opens four to eleven originals across generic type adapters, async tasks, OS threads and wait paths.",
+      "interpretation": "Preserve the complete path; distinguish the first original and next proof from optional comparison, with controls on the same page."
+    },
+    {
+      "id": "B-C7-LOAD-SEND-READING",
+      "status": "open-reading-load-concern",
+      "axis": "G5 readability",
+      "evidence": [
+        "formal-beginner-r2-send.json",
+        "formal-beginner-r2-reading.json"
+      ],
+      "sourceCounts": [
+        3,
+        5,
+        5,
+        4,
+        2
+      ],
+      "sourceRows": [
+        99,
+        200,
+        130,
+        311,
+        144
+      ],
+      "actualObservation": "The send and practice pages each use nineteen originals. The data/state condition phase alone opens311 lines.",
+      "interpretation": "Useful return paths do not eliminate the amount to read. An experienced-code persona can pick contract/condition lines; a first-code persona needs another display-depth strategy."
+    },
+    {
+      "id": "B-C7-CALL-RETURN",
+      "status": "bounded-observed-success",
+      "axis": "code navigation only",
+      "evidence": [
+        "formal-beginner-r1-reading.json",
+        "formal-beginner-r2-reading.json"
+      ],
+      "actualObservation": "recover L90 -> submit L32 -> back to recover L90 in both cold rounds; selected declaration has adjacent input/completion-value explanation.",
+      "notClaimed": "No extension to every generic/legacy/Rust navigation route, unsaved notes or every assistance combination."
+    },
+    {
+      "id": "B-C7-MEASUREMENT-ANCESTORS",
+      "status": "corrected-measurement-error-initial-observation-preserved",
+      "axis": "evaluation instrumentation",
+      "evidence": [
+        "formal-r1-reth-rect-only-instrumentation-before.json",
+        "formal-beginner-r1-reth.json"
+      ],
+      "actualObservation": "getClientRects alone was nonempty inside closed ancestor details and falsely suggested cumulative 892/1857/2592 lines. Actual group.open and recorded pressed phase flags show273/619/965/735. All-ancestor visibility is used afterward.",
+      "productFailure": false
+    },
+    {
+      "id": "B-C7-ANSWER-CITATION",
+      "status": "initial-needs-review-corrected-without-new-ui-trial",
+      "axis": "answer evidence accuracy",
+      "evidence": [
+        "formal-r1-reth-before-citation-correction.json",
+        "formal-beginner-verification-before-citation-correction.json",
+        "formal-beginner-r1-reth.json"
+      ],
+      "actualObservation": "The first R1 answer named the correct FCU context with wrong line numbers64-91; the actually displayed original is378-405. Input evidence was corrected to378-402 from the preserved same-build DOM.",
+      "initialPass": false,
+      "notClaimed": "Not fourteen initially accurate answers; no product navigation failure inferred."
+    }
+  ]
+}

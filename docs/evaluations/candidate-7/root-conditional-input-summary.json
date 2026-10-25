@@ -1,0 +1,26 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "conditions": "conditional-fixture-protocol.json; same canonical asset bytes, explicit separate headers/delay inputs",
+  "CSP": {
+    "rounds": 2,
+    "rawFetch": "Intentionally blocked by connect-src self, annotated source remains available",
+    "retry": "Actual Enter on error retrybutton; draft/choice/scope/URL/rawopen/annotated source and manual controls retained in both rounds",
+    "networkRecoverySuccess": "not-measured; permanent CSP constraint does not simulate network restoration"
+  },
+  "lateData": {
+    "rounds": 2,
+    "before": "Both actual prearrival DOMs showed waiting text and0annotated lines; question entered and raw line44 selected",
+    "after": "8second-delayed data arrival produced30pinned original lines, preserving question/range/URL/manualrawopen",
+    "navigationMethod": "Start documented CUA navigation promise, interact with rendered original while resource pending, await the same navigation and data arrival; no browser source injection or request interception"
+  },
+  "issues": [],
+  "stateAndByteResult": "PASS",
+  "additionalC8Issues": [
+    "On retry the focused errorbutton moves outside viewport because Atlas focuses annotated source. Both rounds reproduced.",
+    "On late arrival active focus moves to annotated source despite manual raw selection; view/typing priority requires C8 correction."
+  ],
+  "humanParticipants": 0,
+  "productComplete": false
+}

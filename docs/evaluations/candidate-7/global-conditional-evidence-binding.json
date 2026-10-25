@@ -1,0 +1,70 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "scope": "Atlas source-preview only; canonical asset bytes same, environment input conditions explicitly differ from ordinary4317/4398",
+  "conditions": [
+    {
+      "origin": "http://127.0.0.1:4407",
+      "config": "CSP connect-src self blocks optionalGithub raw fetch",
+      "rounds": [
+        1,
+        2
+      ],
+      "proved": "actual failure + Enter retry preserves draft/choice/scope/URL/raw-open/annotated bytes/selected line/manual controls",
+      "notProved": "successful raw-network recovery or focus/viewport stability"
+    },
+    {
+      "origin": "http://127.0.0.1:4408",
+      "config": "reading-help-data.js delayed8seconds",
+      "rounds": [
+        1,
+        2
+      ],
+      "proved": "prearrival0originals + editable question/raw44 selection -> postarrival30pinnedoriginals preserves question/range/URL/manualraw",
+      "notProved": "same condition on every other producer; active focus/rawkeyboard priority remains C8finding"
+    }
+  ],
+  "evidence": [
+    "conditional-fixture-protocol.json",
+    "root-conditional-input-summary.json",
+    "root-conditional-csp-retry.json",
+    "root-conditional-late-data.json"
+  ],
+  "independentRecordVerification": {
+    "issues": [],
+    "pinnedSourceByteEquality": true,
+    "stateFieldsRetained": true,
+    "limits": "C independently checked saved formal records against frozen data; root performed actual browser observation. This is not a new C browser run."
+  },
+  "aExternalObligations": {
+    "needsReview": [
+      {
+        "route": "file-role:bin/reth/src/main.rs",
+        "round": 1
+      },
+      {
+        "route": "file-role:crates/cli/commands/src/node.rs",
+        "round": 1
+      },
+      {
+        "route": "file-role:bin/reth/src/main.rs",
+        "round": 2
+      }
+    ],
+    "evidence": "a-final-aggregate.json + a-atlas-restoration-diagnosis.json",
+    "scope": "A current-state checks have source/controls pass; final route-draft restoration timed out. Retain uncertainty; do not infer a productFailure from tooltimeout alone."
+  },
+  "unmeasured": [
+    "Successful raw fetch network recovery after failure",
+    "Forced late-data/failure on every other producer, not demonstrated by this Atlas-only fixture",
+    "Every nonrepresentative context×4helper states, beyond fixed representative plan",
+    "Human comprehension"
+  ],
+  "additionalC8Issues": [
+    "On retry the focused errorbutton moves outside viewport because Atlas focuses annotated source. Both rounds reproduced.",
+    "On late arrival active focus moves to annotated source despite manual raw selection; view/typing priority requires C8 correction."
+  ],
+  "overallAccepted": false,
+  "recordedAt": "2026-10-25T19:04:45.253951+00:00"
+}

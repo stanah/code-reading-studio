@@ -1,0 +1,402 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "reviewer": "root independent from Rust topic authoring",
+  "reviewedAt": "2026-10-25T19:16:43.603142+00:00",
+  "topics": {
+    "borrow": {
+      "basis": "recover81-109 borrows &tx then passes tx/pool_transaction into WithEncoded. Concrete send_pool_transaction receives an owned wrapper and borrowed EthApi; locked WithEncoded.split(self) confirms consumption. mut changes the local pool_transaction binding.",
+      "conditions": "No claim that move always copies, nor that TypeScript references implement Rust borrow checking.",
+      "next": "send_pool_transaction implementation32-114 preserves optional conversion/forward and ordinary addition branches.",
+      "status": "pass-for-authored-topic-claims",
+      "lineClaimCount": 4,
+      "lessonBodyReviewedFields": [
+        "problem",
+        "plain",
+        "ts",
+        "difference",
+        "benefit"
+      ],
+      "claims": [
+        {
+          "context": "tx:recover",
+          "line": 89,
+          "claim": "L89 の &tx は元データを貸して読みます。L92 では tx 自体を WithEncoded に渡します。借りることと値を渡すことを同じ操作として読まないでください。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:recover",
+          "line": 92,
+          "claim": "復元結果と元のデータを組にして渡します。async move が使う値を取り込む範囲は L88 のブロックです。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:submit",
+          "line": 33,
+          "claim": "L33 の &self は EthApi を借りる引数です。一方 L35 の tx は値で受け取り、L37 の split() がそれを消費して二つへ分けます。& が付く対象を確認して読み分けます。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:submit",
+          "line": 37,
+          "claim": "mut は pool_transaction の束縛を変更可能にします。&mut self の意味ではありません。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        }
+      ]
+    },
+    "future": {
+      "basis": "RPC async handler awaits default trait future; returned impl Future Output=Result<B256,Self::Error> + Send is separate from eventual result. Queue awaiting oneshot differs from enqueue. Batcher Future108-136 has Output=(); std::task::ready import9-14 confirms early Pending119, with a separate empty-buffer Pending133 and tokio::spawn124.",
+      "conditions": "RPC→queue statement is explicitly ordinary local-path comparison; forwarding branch is not hidden. async/Send are not claims of spawning an OS thread.",
+      "next": "Each batch awaits appropriate pool API, sends per-request reply; processor poll/spawn drives batching.",
+      "status": "pass-for-authored-topic-claims",
+      "lineClaimCount": 8,
+      "lessonBodyReviewedFields": [
+        "problem",
+        "plain",
+        "ts",
+        "difference",
+        "benefit"
+      ],
+      "claims": [
+        {
+          "context": "tx:rpc",
+          "line": 921,
+          "claim": "L921 の async fn は Future を返す関数です。L923 の .await が send_raw_transaction の結果を待ちます。ここに別スレッドの起動指示はありません。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:rpc",
+          "line": 923,
+          "claim": "通常のローカル追加経路で比べると、この待機の先はrecoverのasync moveと、その先のqueueの返答待ちです。同ページの「デコードして送信者を復元」と「追加要求をチャネルへ送る」の節で比較できます。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:recover",
+          "line": 87,
+          "claim": "L87 は具体的な型名を隠して Future を返す宣言です。結果は Result、+ Send はその Future をスレッド間で移せる条件です。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:recover",
+          "line": 88,
+          "claim": "L88 で Future の本体を作り、L94 で次の処理を待ちます。作っただけで本体が完了するわけではありません。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:queue",
+          "line": 503,
+          "claim": "L503 は要求ごとの返答を待ちます。キューへ送れた L500 と、返答が来る L503 は別の時点です。待っている間ずっとスレッドを占有する、という意味ではありません。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:batch",
+          "line": 71,
+          "claim": "L71 は単件のプール追加を待ちます。複数件では L91 / L101 の追加を待ちます。処理を開始させる側は、同ページの「Future が進む側」の poll と tokio::spawn にあります。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:batch",
+          "line": 91,
+          "claim": "Future の作成・実行器による poll・.await の待機を分けて読みます。into_iter / unzip はこの非同期の仕組み自体ではありません。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:batch-runner",
+          "line": 114,
+          "claim": "L108–112 は Future の実装と Output=() の宣言です。L114 の poll が L119 の受信を進め、Pending なら ready! がその場で Pending を返します。Ready を得た後、buf が空なら L133 でも Pending を返します。buf に依頼があれば L124–125 で追加のタスクを起動します。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        }
+      ]
+    },
+    "result": {
+      "basis": "RPC923 propagates returned Err into its own return type; recover89 exits the async block and map_err108 changes errors only. Queue501 handles enqueue failure; response_rx.await?? has nested Result verified by BatchTxRequest oneshot Sender<Result<AddedTransactionOutcome,PoolError>>. Pool502 expects Option from pop and preserves its inner PoolResult.",
+      "conditions": "Normal validation Err differs from panic for broken result count; ? is not EVM receipt/revert or JavaScript optional chaining.",
+      "next": "Normal/forward send outcomes remain Result values; no claim that RPC success proves inclusion/finality.",
+      "status": "pass-for-authored-topic-claims",
+      "lineClaimCount": 7,
+      "lessonBodyReviewedFields": [
+        "problem",
+        "plain",
+        "ts",
+        "difference",
+        "benefit"
+      ],
+      "claims": [
+        {
+          "context": "tx:rpc",
+          "line": 923,
+          "claim": "L923 は await の結果へ ? を適用します。Ok なら中身を取り出して外側の Ok(...) へ進み、Err ならこの関数から返ります。EVM の Revert や失敗レシートを示す記号ではありません。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:recover",
+          "line": 89,
+          "claim": "L89 の復元が Err なら ? でこの async ブロックから返り、L90 以降へ進みません。L108 の map_err は成功値を変えず、エラーの型を合わせます。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:recover",
+          "line": 108,
+          "claim": "失敗が Result の値として返ることと、panic で処理が中断することを区別します。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:queue",
+          "line": 501,
+          "claim": "L501 の ? は要求をキューへ渡せない失敗を返します。L503 の最初の ? は返答チャネルから受信できない失敗、二つ目の ? は受け取ったプール追加結果の Err を扱います。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:queue",
+          "line": 503,
+          "claim": "二つの ? があるのは同じ検証を二度するためではなく、Result の中に Result があるためです。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:pool",
+          "line": 499,
+          "claim": "L499 の戻り値は PoolResult です。L501 が返す配列には追加の成功または失敗が入り、L502 は最後の Result を取り出して呼出元へ返します。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:pool",
+          "line": 502,
+          "claim": "expect は配列から取り出す Option が空なら panic します。Result の Err を ? で呼出元へ返す操作ではありません。検証失敗の通常経路と、内部で想定する結果件数の破れを分けます。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        }
+      ]
+    },
+    "trait": {
+      "basis": "EthTransactions65 has LoadTransaction bound, required signers69, default accounts72 and default send_raw_transaction84. Concrete EthApi impl21-31 encloses send_pool_transaction32. Pool TransactionPool impl468-477 binds Self::Transaction=T::Transaction, a different Self from EthApi.",
+      "conditions": "Related members are reading references, not runtime calls; trait use does not imply dynamic dispatch. TS interface shown as a simplified analogy.",
+      "next": "Default common helper delegates to concrete implementation, which chooses the configured pool/forward handling.",
+      "status": "pass-for-authored-topic-claims",
+      "lineClaimCount": 7,
+      "lessonBodyReviewedFields": [
+        "problem",
+        "plain",
+        "ts",
+        "difference",
+        "benefit"
+      ],
+      "claims": [
+        {
+          "context": "tx:rpc",
+          "line": 923,
+          "claim": "L923 は EthTransactions の共通ヘルパーへ渡す箇所です。trait の約束は同ページの「約束と既定実装」、EthApi の impl は「具体実装」の節で確かめます。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:recover",
+          "line": 87,
+          "claim": "Self::Error は現在の実装が使うエラー型です。L90 の self.send_pool_transaction は具体実装へ渡す境界で、同ページの「具体実装：EthApi が EthTransactions を実装する」に対応します。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:recover",
+          "line": 99,
+          "claim": "Self::Pool は実装が提供するプール型で、継承する trait から得る関連型も含みます。Self は常に EthTransactions という trait 自体の型、という意味ではありません。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:submit",
+          "line": 35,
+          "claim": "この send_pool_transaction は、同ページの「具体実装」にある impl EthTransactions for EthApi の内側です。Self::Pool / Self::Error は EthApi に結び付く型です。共通処理から、この Ethereum 向け実装へ制御が移ります。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:pool",
+          "line": 498,
+          "claim": "L498 の Self::Transaction はこのプール実装が扱う関連型です。EthApi 側の Self と、ここでの Self は別の実装を指します。型名が Self というだけで同じ型とは限りません。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:trait-contract",
+          "line": 65,
+          "claim": "L65 が trait の宣言、L69 の signers は実装が提供する操作です。L72 の accounts には本体があり、共通の既定処理として使えます。同ページの「デコードして送信者を復元」に send_raw_transaction の既定処理があります。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:trait-implementation",
+          "line": 21,
+          "claim": "L21 の impl が具体型と trait を結び付け、L23–25 が利用する型の条件を示します。L28 の signers は EthApi 向けの処理です。同ページの「通常の送信経路を追う」に send_pool_transaction の実装があります。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        }
+      ]
+    },
+    "channel": {
+      "basis": "Queue496 creates the two oneshot ends;497 embeds response sender;500 sends request and503 waits. Batch request declaration19-26 fixes reply type, receiver/new53-65 fixes the mpsc queue. Single request70-72 and multiple92-103 pair each reply sender with its own pool result; runner119/124-125 receives/spawns processing.",
+      "conditions": "Enqueue success, pool-add outcome and reply delivery are separate. let _ ignores send failure and does not convert pool failure into success; oneshot is not a Promise resolve callback.",
+      "next": "Actual reply path is response_tx.send→response_rx.await, not an ordinary synchronous call stack.",
+      "status": "pass-for-authored-topic-claims",
+      "lineClaimCount": 5,
+      "lessonBodyReviewedFields": [
+        "problem",
+        "plain",
+        "ts",
+        "difference",
+        "benefit"
+      ],
+      "claims": [
+        {
+          "context": "tx:queue",
+          "line": 496,
+          "claim": "L496 が一度だけ返す返答用の両端を作り、L497 で返答を送る端を要求へ入れます。L500 で要求キューへ送り、受け取る端は L503 で待ちます。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:queue",
+          "line": 503,
+          "claim": "要求キューへの送信成功では追加結果はまだ分かりません。同ページの「バッチをプールへ引き渡す」が、同じ要求から response_tx を取り出して追加結果を返します。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:batch",
+          "line": 70,
+          "claim": "L70 は要求からトランザクションと返答先を取り出し、L71 の結果を L72 で返します。複数件は L92 / L102 で結果と対応する返答先を組にします。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:batch",
+          "line": 72,
+          "claim": "let _ = は返答先が失われたときの send の失敗をここでは使わない指定です。追加結果そのものは pool_result に入っています。要求の受信と起動は、同ページの「要求キューを読む側」の節にあります。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        },
+        {
+          "context": "tx:batch-runner",
+          "line": 119,
+          "claim": "L119 が要求をまとめて受信し、L124–125 で process_batch を動かします。queue の send → この受信 → batch の追加 → response_tx.send → queue の await が要求と返答の往復です。",
+          "status": "pass",
+          "evidence": "Pinned entire published context reread, not only match token; supporting enclosing declarations/dependency proof below."
+        }
+      ]
+    }
+  },
+  "totalClaims": 31,
+  "entirePublishedContextsReread": [
+    {
+      "context": "tx:recover",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "range": [
+        81,
+        109
+      ],
+      "sha256": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+    },
+    {
+      "context": "tx:submit",
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "range": [
+        32,
+        114
+      ],
+      "sha256": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+    },
+    {
+      "context": "tx:rpc",
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "range": [
+        920,
+        924
+      ],
+      "sha256": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+    },
+    {
+      "context": "tx:queue",
+      "path": "crates/rpc/rpc/src/eth/core.rs",
+      "range": [
+        489,
+        504
+      ],
+      "sha256": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+    },
+    {
+      "context": "tx:batch",
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "range": [
+        69,
+        105
+      ],
+      "sha256": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+    },
+    {
+      "context": "tx:batch-runner",
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "range": [
+        108,
+        136
+      ],
+      "sha256": "6119bd9e97d7e63e3e48b49ed38468cf0648fb3c8b45e8c906e2f764380291f7"
+    },
+    {
+      "context": "tx:pool",
+      "path": "crates/transaction-pool/src/lib.rs",
+      "range": [
+        495,
+        528
+      ],
+      "sha256": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+    },
+    {
+      "context": "tx:trait-contract",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "range": [
+        65,
+        79
+      ],
+      "sha256": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+    },
+    {
+      "context": "tx:trait-implementation",
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "range": [
+        21,
+        31
+      ],
+      "sha256": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+    }
+  ],
+  "extraPinnedSupport": [
+    "batcher.rs9-68: std ready import, request reply type, mpsc receiver/new",
+    "transaction-pool/src/lib.rs456-496: enclosing TransactionPool for Pool and type Transaction"
+  ],
+  "lockedDependency": "root-withencoded-dependency-proof.json; both crate checksums match fixed Cargo.lock, reexport and split(self) definition read",
+  "limits": [
+    "Authored5topic concepts/31claims and related code fit only; not every Rust language rule or Reth function/branch reviewed.",
+    "Source fidelity, actual UI controls and learning evidence remain separate.",
+    "TypeScript examples are marked simplified concept examples, not a Reth translation."
+  ],
+  "humanParticipants": 0
+}

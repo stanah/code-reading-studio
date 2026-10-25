@@ -1,0 +1,694 @@
+{
+  "candidate": 7,
+  "kind": "Warm AI simulation of software-experienced/blockchain-novice; independent human comprehension not measured",
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "protocol": "learning-protocol.json (C6v3 conditions retained)",
+  "origin": "http://localhost:4317",
+  "browser": "Dedicated Chrome tab; closed; localhost initial new/first restored. User127 origin and notes/read-progress untouched.",
+  "rounds": 2,
+  "completeCases": 14,
+  "taskOrder": [
+    "blockchain",
+    "ethereum",
+    "rpc",
+    "reth",
+    "send",
+    "startup",
+    "reading"
+  ],
+  "maxCountedActions": 10,
+  "actualMaximum": 6,
+  "countsByRound": [
+    [
+      3,
+      2,
+      4,
+      3,
+      4,
+      4,
+      6
+    ],
+    [
+      3,
+      2,
+      4,
+      3,
+      4,
+      4,
+      6
+    ]
+  ],
+  "countedUiActions": 52,
+  "executedUiActions": 52,
+  "replSyntaxErrorsNoUiDispatch": 2,
+  "initialAnswers": {
+    "boundedSourceTaskPass": 13,
+    "needsReviewWrongCitation": 1
+  },
+  "afterExplicitCitationCorrection": {
+    "boundedSourceTaskPass": 14,
+    "initialFailureNotErased": true
+  },
+  "mechanicalValidation": {
+    "errors": [],
+    "domOriginalPanelsChecked": 410,
+    "method": "Only exposed originals compared to fixed data; source bytes/line membership do not prove understanding"
+  },
+  "runtimeEvidence": {
+    "round1": "formal-round1-runtime-and-assets.json",
+    "final": "formal-final-runtime-and-assets.json",
+    "round2": "Per-case assetStart/assetEnd",
+    "round1Limitation": "R1 initial/action DOM script revision URLs bind to expected source/help; full C6-algorithm canonical file hash was captured at R1 end, not retroactively at each R1 start. R2 captures both per case. Root freeze supplies independent HTTP byte equality.",
+    "notClaimed": "Full HTTP response bytes freshly downloaded by B in every case"
+  },
+  "visibilityMethod": "Source and all ancestor details open; raw rect-only R1 Reth error retained and corrected. Exposed means DOM source accessible, not that all rows are simultaneously in the viewport.",
+  "fullOriginalRead": false,
+  "all1283RustFilesExplained": false,
+  "humanParticipants": 0,
+  "humanComprehension": "not-verified",
+  "g4FourCombinations": "not-measured in these learning tasks; separate audit obligation",
+  "readability": "not-passed-by-action-count; substantial per-phase original display load remains open",
+  "candidateOverall": "Not accepted by this report; all-consumer technical audit and readability loop remain separate",
+  "cases": [
+    {
+      "round": 1,
+      "lesson": "blockchain",
+      "file": "formal-beginner-r1-blockchain.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 3,
+      "executedActions": 3,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 1,
+          "originalRows": 30,
+          "phase": null
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 58,
+          "phase": null
+        },
+        {
+          "sourceCount": 3,
+          "originalRows": 128,
+          "phase": null
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 153,
+          "phase": null
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "lesson": "ethereum",
+      "file": "formal-beginner-r1-ethereum.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 2,
+      "executedActions": 2,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 1,
+          "originalRows": 16,
+          "phase": null
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 53,
+          "phase": null
+        },
+        {
+          "sourceCount": 3,
+          "originalRows": 69,
+          "phase": null
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "lesson": "rpc",
+      "file": "formal-beginner-r1-rpc.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 4,
+      "executedActions": 4,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 1,
+          "originalRows": 5,
+          "phase": null
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 18,
+          "phase": null
+        },
+        {
+          "sourceCount": 3,
+          "originalRows": 23,
+          "phase": null
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 52,
+          "phase": null
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 117,
+          "phase": null
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "lesson": "reth",
+      "file": "formal-beginner-r1-reth.json",
+      "initialAnswerStatus": "needs-review-answer-citation",
+      "currentAnswerStatus": "bounded-source-task-pass-after-citation-correction",
+      "countedActions": 3,
+      "executedActions": 3,
+      "replErrorsBeforeAnyUiDispatch": 2,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 6,
+          "originalRows": 273,
+          "phase": "1. 部品の構成とRPCの窓口"
+        },
+        {
+          "sourceCount": 12,
+          "originalRows": 619,
+          "phase": "2. 取引の検証と保持"
+        },
+        {
+          "sourceCount": 15,
+          "originalRows": 965,
+          "phase": "3. ブロックの実行と状態の検査"
+        },
+        {
+          "sourceCount": 16,
+          "originalRows": 735,
+          "phase": "4. 履歴の指示・採用反映・保存"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "lesson": "send",
+      "file": "formal-beginner-r1-send.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 4,
+      "executedActions": 4,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 3,
+          "originalRows": 99,
+          "phase": "1. 受信データと復元"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 200,
+          "phase": "2. 送信先の分岐と追加の依頼・返答"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 130,
+          "phase": "3. 検証の依頼と返答"
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 311,
+          "phase": "4. データと状態の検査条件"
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 144,
+          "phase": "5. 内部追加・容量制限と結果"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "lesson": "startup",
+      "file": "formal-beginner-r1-startup.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 4,
+      "executedActions": 4,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 7,
+          "originalRows": 277,
+          "phase": "1. CLIと実行の監視"
+        },
+        {
+          "sourceCount": 11,
+          "originalRows": 367,
+          "phase": "2. 設定と起動先の受け渡し"
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 256,
+          "phase": "3. 実行・プール・通信の組み立て"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 361,
+          "phase": "4. EngineとRPCの接続"
+        },
+        {
+          "sourceCount": 10,
+          "originalRows": 429,
+          "phase": "5. 稼働中の進行と終了"
+        }
+      ]
+    },
+    {
+      "round": 1,
+      "lesson": "reading",
+      "file": "formal-beginner-r1-reading.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 6,
+      "executedActions": 6,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 3,
+          "originalRows": 99,
+          "phase": "1. 受信データと復元"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 200,
+          "phase": "2. 送信先の分岐と追加の依頼・返答"
+        },
+        {
+          "sourceCount": 3,
+          "originalRows": 99,
+          "phase": "1. 受信データと復元"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 200,
+          "phase": "2. 送信先の分岐と追加の依頼・返答"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 130,
+          "phase": "3. 検証の依頼と返答"
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 311,
+          "phase": "4. データと状態の検査条件"
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 144,
+          "phase": "5. 内部追加・容量制限と結果"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "lesson": "blockchain",
+      "file": "formal-beginner-r2-blockchain.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 3,
+      "executedActions": 3,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 1,
+          "originalRows": 30,
+          "phase": null
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 58,
+          "phase": null
+        },
+        {
+          "sourceCount": 3,
+          "originalRows": 128,
+          "phase": null
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 153,
+          "phase": null
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "lesson": "ethereum",
+      "file": "formal-beginner-r2-ethereum.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 2,
+      "executedActions": 2,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 1,
+          "originalRows": 16,
+          "phase": null
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 53,
+          "phase": null
+        },
+        {
+          "sourceCount": 3,
+          "originalRows": 69,
+          "phase": null
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "lesson": "rpc",
+      "file": "formal-beginner-r2-rpc.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 4,
+      "executedActions": 4,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 1,
+          "originalRows": 5,
+          "phase": null
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 18,
+          "phase": null
+        },
+        {
+          "sourceCount": 3,
+          "originalRows": 23,
+          "phase": null
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 52,
+          "phase": null
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 117,
+          "phase": null
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "lesson": "reth",
+      "file": "formal-beginner-r2-reth.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 3,
+      "executedActions": 3,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 6,
+          "originalRows": 273,
+          "phase": "1. 部品の構成とRPCの窓口"
+        },
+        {
+          "sourceCount": 12,
+          "originalRows": 619,
+          "phase": "2. 取引の検証と保持"
+        },
+        {
+          "sourceCount": 15,
+          "originalRows": 965,
+          "phase": "3. ブロックの実行と状態の検査"
+        },
+        {
+          "sourceCount": 16,
+          "originalRows": 735,
+          "phase": "4. 履歴の指示・採用反映・保存"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "lesson": "send",
+      "file": "formal-beginner-r2-send.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 4,
+      "executedActions": 4,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 3,
+          "originalRows": 99,
+          "phase": "1. 受信データと復元"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 200,
+          "phase": "2. 送信先の分岐と追加の依頼・返答"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 130,
+          "phase": "3. 検証の依頼と返答"
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 311,
+          "phase": "4. データと状態の検査条件"
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 144,
+          "phase": "5. 内部追加・容量制限と結果"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "lesson": "startup",
+      "file": "formal-beginner-r2-startup.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 4,
+      "executedActions": 4,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 7,
+          "originalRows": 277,
+          "phase": "1. CLIと実行の監視"
+        },
+        {
+          "sourceCount": 11,
+          "originalRows": 367,
+          "phase": "2. 設定と起動先の受け渡し"
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 256,
+          "phase": "3. 実行・プール・通信の組み立て"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 361,
+          "phase": "4. EngineとRPCの接続"
+        },
+        {
+          "sourceCount": 10,
+          "originalRows": 429,
+          "phase": "5. 稼働中の進行と終了"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "lesson": "reading",
+      "file": "formal-beginner-r2-reading.json",
+      "initialAnswerStatus": "bounded-source-task-pass",
+      "currentAnswerStatus": "bounded-source-task-pass",
+      "countedActions": 6,
+      "executedActions": 6,
+      "replErrorsBeforeAnyUiDispatch": 0,
+      "answerComponents": [
+        "purpose",
+        "input",
+        "processing",
+        "result",
+        "nextOrBoundary"
+      ],
+      "allOriginalRead": false,
+      "sourceExposures": [
+        {
+          "sourceCount": 3,
+          "originalRows": 99,
+          "phase": "1. 受信データと復元"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 200,
+          "phase": "2. 送信先の分岐と追加の依頼・返答"
+        },
+        {
+          "sourceCount": 3,
+          "originalRows": 99,
+          "phase": "1. 受信データと復元"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 200,
+          "phase": "2. 送信先の分岐と追加の依頼・返答"
+        },
+        {
+          "sourceCount": 5,
+          "originalRows": 130,
+          "phase": "3. 検証の依頼と返答"
+        },
+        {
+          "sourceCount": 4,
+          "originalRows": 311,
+          "phase": "4. データと状態の検査条件"
+        },
+        {
+          "sourceCount": 2,
+          "originalRows": 144,
+          "phase": "5. 内部追加・容量制限と結果"
+        }
+      ]
+    }
+  ],
+  "findingsFile": "formal-beginner-findings.json",
+  "constraints": [
+    "Evaluator has reviewed multiple candidates and source code; warm learning effect prevents causal first-time comparison.",
+    "AI simulated answers are not human learning evidence.",
+    "Several key conditions were read selectively; full original bodies and all internal implementations were not read.",
+    "Observer syntax errors and wrong citation are preserved separately from product failures.",
+    "Bounded success does not shrink the page purpose or approve unreviewed source claims."
+  ]
+}

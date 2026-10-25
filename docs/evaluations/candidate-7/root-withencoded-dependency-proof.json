@@ -1,0 +1,26 @@
+{
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "lockPath": "targets/reth/Cargo.lock",
+  "reexport": {
+    "crate": "reth-primitives-traits",
+    "version": "0.8.1",
+    "checksum": "c6835d57ed17047c8ba42992550b3cd1232cb92deb119715d32f63079fb5844d",
+    "source": "reth-primitives-traits-0.8.1/src/lib.rs:161",
+    "line": "pub use alloy_eips::eip2718::WithEncoded;"
+  },
+  "definition": {
+    "crate": "alloy-eips",
+    "version": "2.5.0",
+    "url": "https://static.crates.io/crates/alloy-eips/alloy-eips-2.5.0.crate",
+    "archiveChecksumMatchesPinnedCargoLock": true,
+    "archiveSHA256": "e01905444bd2fc330673f11d2466c0f54e8488f7ce3132b6a5e6497916fca765",
+    "records": [
+      {
+        "path": "alloy-eips-2.5.0/src/eip2718.rs",
+        "sourceSHA256": "d16be919eae0c9bfd88ca4f9b67ac1cea0a73886abed4d4b94de76c692565ed3",
+        "splitDefinition": "462:     }\n463: \n464:     /// Split the wrapper into [`Bytes`] and value tuple\n465:     pub fn split(self) -> (Bytes, T) {\n466:         (self.0, self.1)\n467:     }\n468: \n469:     /// Maps the inner value while retaining the encoded bytes unchanged.\n470:     pub fn map<U, F: FnOnce(T) -> U>(self, op: F) -> WithEncoded<U> {"
+      }
+    ]
+  },
+  "finding": "split(self) consumes the wrapper and returns its encoded and decoded components. This is verified from locked dependency source, not inferred from method name."
+}

@@ -1,0 +1,51 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "observer": "A",
+  "formalAffected": [
+    {
+      "caseId": "atlas-route:file-role:bin/reth/src/main.rs",
+      "round": 1
+    },
+    {
+      "caseId": "atlas-route:file-role:crates/cli/commands/src/node.rs",
+      "round": 1
+    },
+    {
+      "caseId": "atlas-route:file-role:bin/reth/src/main.rs",
+      "round": 2
+    }
+  ],
+  "retry": {
+    "caseId": "atlas-route:file-role:bin/reth/src/main.rs",
+    "round": 1,
+    "record": "a-atlas-restore-retry-checks.json",
+    "fillTimeoutOverride": 15000,
+    "observedInnerTimeout": 3000,
+    "fillReturned": false,
+    "markerRemained": true,
+    "standardKeyAttempt": "Input.dispatchKeyEvent timed out"
+  },
+  "isolation": {
+    "action": "Clicked actual .learn-core-code summary closed, then locator.fill empty succeeded",
+    "after": {
+      "draftEmpty": true,
+      "previewOpen": false,
+      "profile": [
+        {
+          "axis": "chain",
+          "value": "new"
+        },
+        {
+          "axis": "code",
+          "value": "first"
+        }
+      ],
+      "url": "http://127.0.0.1:4398/explore.html?file=bin%2Freth%2Fsrc%2Fmain.rs&line=20"
+    }
+  },
+  "status": "needs-review: input response under all20source-open; product vs CUA3s boundary unresolved",
+  "interpretation": "Source rendering, controls4states, unchanged draft during choice/control passed; this is separate from restoration completion. Prior failed records retained. No runtime edit.",
+  "restoration": "Current retry marker cleared through visible UI. Former dedicated tab was closed; earlier formal restorations remain unconfirmed rather than retroactively pass.",
+  "observedAt": "2026-10-25T19:00:00.806Z"
+}

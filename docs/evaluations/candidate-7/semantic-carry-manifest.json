@@ -1,0 +1,3721 @@
+{
+  "candidate": 7,
+  "freezeBinding": {
+    "candidate": 7,
+    "status": "FROZEN_FOR_FORMAL_EVALUATION_NOT_ACCEPTED",
+    "preparedAt": "2026-10-25T17:58:57.506Z",
+    "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+    "runtimeAlgorithm": "C6 scripts/measure-reading.mjs runtimeHash() unchanged invocation; explicit manifest in proposed-freeze-bindings.json",
+    "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+    "baseCriteriaUnits": 108,
+    "totalUnitsStatus": "108 inherited named units plus additional generic/legacy/Rust consumer obligations must be explicitly assigned by parent before final acceptance; no new consumer is omitted from inverse inventory",
+    "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+    "c7AuxiliaryBindingHash": "ca0e4c44cdbb03168b5e500cbcad497172476e8aad3f93baf07db568066a3f84",
+    "sourceEvidence": {
+      "contexts": 148,
+      "lineHints": 762,
+      "lessonStages": 142,
+      "routeRegistry": 114,
+      "consumerBoundContexts": 148,
+      "sourceFilesWithExcerpts": 61,
+      "rustTopics": 5,
+      "rustBaseAndStartVariants": 21,
+      "legacyRoutes": 5,
+      "totalRustFiles": 1283,
+      "fullyReviewedRustFiles": 2
+    },
+    "localUrl": "http://127.0.0.1:4317",
+    "staticUrl": "http://127.0.0.1:4398",
+    "isolatedWarmReviewerOrigin": "http://localhost:4317",
+    "isolatedFreshReviewerOrigin": "http://localhost:4398",
+    "generationIdempotent": true,
+    "generationEvidence": "freeze-preparation-generation.json",
+    "tests": {
+      "total": 111,
+      "pass": 111,
+      "fail": 0,
+      "evidence": "tests.tap",
+      "reportedBy": "root; latest post-normalization full suite; B verifies evidence summary read-only"
+    },
+    "learningProtocol": "learning-protocol.json",
+    "rounds": "not-started at freeze; preflight excluded",
+    "humanParticipants": 0,
+    "humanComprehension": "not-verified",
+    "productComplete": false,
+    "canonicalMutationByB": false,
+    "frozenAt": "2026-10-25T18:00:59.183464+00:00",
+    "totalUnits": 108,
+    "ownership": {
+      "global_review": 73,
+      "curriculum_sources": 30,
+      "rootRust": 5
+    },
+    "supplemental": {
+      "AtlasRoutes": 114,
+      "AtlasFiles": 61,
+      "AtlasContextSubcasesInsideFiles": 148,
+      "manifest": "atlas-manifest-all.json",
+      "assignment": "global-review-plan.json",
+      "note": "Display replicas attached to the original108 owners; uncovered subcases stay not-measured."
+    },
+    "configuration": {
+      "technicalUi": {
+        "chain": "new",
+        "code": "first",
+        "origins": [
+          "http://127.0.0.1:4317",
+          "http://127.0.0.1:4398"
+        ],
+        "rounds": 2
+      },
+      "warmLearner": {
+        "chain": "new",
+        "code": "other",
+        "origin": "http://localhost:4317",
+        "rounds": 2
+      },
+      "freshLearner": {
+        "chain": "new",
+        "code": "first",
+        "origin": "http://localhost:4398",
+        "rounds": 2,
+        "first": "No implementation or previous evaluation context",
+        "second": "Practiced AI; cold document; not independent from first experience"
+      },
+      "unsavedInputs": "Dedicated tabs only; no submit/save/queue; restore profile and markers after task"
+    },
+    "serverSession": 17180,
+    "implementationCommit": "184088e"
+  },
+  "sourceReviewRevision": 3,
+  "sourceReviewStatus": "ready-for-resolved-identity-helper-and-footprint-application-and-integration-evaluation",
+  "contexts": [
+    {
+      "id": "tx:rpc",
+      "sourceHash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "f225be8286623c1b687277935059241849faae1eba727745f56785e0af9b33c1",
+      "candidate7ClaimHash": "f225be8286623c1b687277935059241849faae1eba727745f56785e0af9b33c1",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:recover",
+      "sourceHash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "c0b433644dd985c4db5e9b1ab5ad4684b7536a542a0a72a0b313c967abcc1970",
+      "candidate7ClaimHash": "c0b433644dd985c4db5e9b1ab5ad4684b7536a542a0a72a0b313c967abcc1970",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:submit",
+      "sourceHash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "9f0f856a428e566bd5b61571dbdf9dbb20350512fc86e4826ed1a21bb1ea35f2",
+      "candidate7ClaimHash": "9f0f856a428e566bd5b61571dbdf9dbb20350512fc86e4826ed1a21bb1ea35f2",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:queue",
+      "sourceHash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "9d78595d9260473be1ff585fffe9594b79dc4745e91241344f4f810a09ce9ca7",
+      "candidate7ClaimHash": "9d78595d9260473be1ff585fffe9594b79dc4745e91241344f4f810a09ce9ca7",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:batch",
+      "sourceHash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "f127769b5dc99251dbb39f28f89b78ee0cb0fc2667e7f4d166c87bf1b3abf54f",
+      "candidate7ClaimHash": "f127769b5dc99251dbb39f28f89b78ee0cb0fc2667e7f4d166c87bf1b3abf54f",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:pool",
+      "sourceHash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "b44d9a4603a6bf442fa106641ba12cc9eec362fcda0830aac4dd98076d403f83",
+      "candidate7ClaimHash": "b44d9a4603a6bf442fa106641ba12cc9eec362fcda0830aac4dd98076d403f83",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:entry",
+      "sourceHash": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "59a645a0387735e80cf71c8adfe95a9f27105509412b3d511344b5bf83d44b78",
+      "candidate7ClaimHash": "59a645a0387735e80cf71c8adfe95a9f27105509412b3d511344b5bf83d44b78",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:dispatch",
+      "sourceHash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "89b5800866ce5fa851b66ed10485ae5818e2f86895cfaf9a8b2a96c9e713c317",
+      "candidate7ClaimHash": "89b5800866ce5fa851b66ed10485ae5818e2f86895cfaf9a8b2a96c9e713c317",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:supervisor",
+      "sourceHash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "1bbf506da2ba80b4e8002b7d1c1aafd0c68da07cf261b3825453c09e162a5bfc",
+      "candidate7ClaimHash": "1bbf506da2ba80b4e8002b7d1c1aafd0c68da07cf261b3825453c09e162a5bfc",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:database",
+      "sourceHash": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "4b4676a32bdf856dfdab834fdb98a988e627bf212741f4fb7c2ebd96f5fc5138",
+      "candidate7ClaimHash": "4b4676a32bdf856dfdab834fdb98a988e627bf212741f4fb7c2ebd96f5fc5138",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:context",
+      "sourceHash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "34a0a8c8eb75cae12f6a6d2c06cf18328c9eb79e3e6ccf354815e5af616af081",
+      "candidate7ClaimHash": "34a0a8c8eb75cae12f6a6d2c06cf18328c9eb79e3e6ccf354815e5af616af081",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:components",
+      "sourceHash": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "0424275906c456a3b0ae23888f977a5d0c0b4300503f2eeb74c272e42e75626f",
+      "candidate7ClaimHash": "0424275906c456a3b0ae23888f977a5d0c0b4300503f2eeb74c272e42e75626f",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:services",
+      "sourceHash": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "76b8062c74273b6c8918190bb5d7b1972a4be21843247931f831cf1909fc55b3",
+      "candidate7ClaimHash": "76b8062c74273b6c8918190bb5d7b1972a4be21843247931f831cf1909fc55b3",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:orchestrator",
+      "sourceHash": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "433bf243165ca5eec7e0f9f93b0fc5e4742f267e94b818e3657fcad878109ce9",
+      "candidate7ClaimHash": "433bf243165ca5eec7e0f9f93b0fc5e4742f267e94b818e3657fcad878109ce9",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:tree",
+      "sourceHash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "d53c3f214bd8737234d30ce50a8416c0a829ec9055b06f4a316afb92580e86df",
+      "candidate7ClaimHash": "d53c3f214bd8737234d30ce50a8416c0a829ec9055b06f4a316afb92580e86df",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:network",
+      "sourceHash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "1581cb94a96431ed723717b0241ac5a66248db112c0ebe77467adafec1374a21",
+      "candidate7ClaimHash": "1581cb94a96431ed723717b0241ac5a66248db112c0ebe77467adafec1374a21",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "startup:backfill",
+      "sourceHash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2e86a7fd0ec3df29d518937fd4294be81805175541c687eb954745d87d1816ce",
+      "candidate7ClaimHash": "2e86a7fd0ec3df29d518937fd4294be81805175541c687eb954745d87d1816ce",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:sync",
+      "sourceHash": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "90158040de86092f276909703789cfda477b8a520d2e10011015421364ffd9c0",
+      "candidate7ClaimHash": "90158040de86092f276909703789cfda477b8a520d2e10011015421364ffd9c0",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:execution",
+      "sourceHash": "e2d250e6445fc04f2a8f22e4d5102947f67d11d71c631a31163d16e72854316f",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "e51ec87033d297577a4e2d4bb24be6024eca7bc986bd4e9ba411feb53e7369a2",
+      "candidate7ClaimHash": "e51ec87033d297577a4e2d4bb24be6024eca7bc986bd4e9ba411feb53e7369a2",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:payload",
+      "sourceHash": "45364bcf43e4e47358bf9dd021f81c1f95141dcb934aa10ae75ccca4d39add33",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "9b8755bff93fb4b2d2b5596d4bf77adf6d8672d821e039dd838e37f4236c1d79",
+      "candidate7ClaimHash": "9b8755bff93fb4b2d2b5596d4bf77adf6d8672d821e039dd838e37f4236c1d79",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:storage",
+      "sourceHash": "8ed93abedc6226be38c12f9bcfe98931d303a7a686637031e668236af8b06d62",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "b03fa158d698784ecbbdaca583a39b2b6198f6741597627226b103d6fae24f18",
+      "candidate7ClaimHash": "b03fa158d698784ecbbdaca583a39b2b6198f6741597627226b103d6fae24f18",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:extension",
+      "sourceHash": "21c3b8f32db8b3f1356204e9ec5726e9d601eaca036bfa3d2e663fd2475cd3de",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "166741ba143ebd22a14842183a4780a41675949856bd6936f8ce2538ae82a555",
+      "candidate7ClaimHash": "166741ba143ebd22a14842183a4780a41675949856bd6936f8ce2538ae82a555",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:foundation",
+      "sourceHash": "c76ea04a3faac76d238f6f222c7e4fe703a378e17e12e60ed02368b840f27f58",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2a98b42075b88e40fb504bca27df937cbf94028665359ffb834401bbe8f70411",
+      "candidate7ClaimHash": "2a98b42075b88e40fb504bca27df937cbf94028665359ffb834401bbe8f70411",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:pool-validation",
+      "sourceHash": "8e6b9d2e8ec6ae08600fc9e6bd1ed2f68d160aa36bbf0d5a582451d3c4f9c1ac",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "6a6b52d72fdcde633a4508e8954949fdc9fbe02434db235c09d1323871e6c18c",
+      "candidate7ClaimHash": "6a6b52d72fdcde633a4508e8954949fdc9fbe02434db235c09d1323871e6c18c",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:node-exit",
+      "sourceHash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "807ff07a66a7f01085b8c7bd44238530c2c91a8244c3bbc3f9ceb1f30f6cfeda",
+      "candidate7ClaimHash": "807ff07a66a7f01085b8c7bd44238530c2c91a8244c3bbc3f9ceb1f30f6cfeda",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:rpc-recovery",
+      "sourceHash": "03aefeb423d3fff38a2750477cee38730e61c055dd8802693ef568cc2432cca8",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "4e5beca84b8e62a8286e37c01135690a66a0af2879ec7a012fe39258c6f99fcb",
+      "candidate7ClaimHash": "4e5beca84b8e62a8286e37c01135690a66a0af2879ec7a012fe39258c6f99fcb",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:pool-balance",
+      "sourceHash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "d918df021a28425688a8708a2f04f8a4bc6bc17970add3830dbe37e528dbca6a",
+      "candidate7ClaimHash": "d918df021a28425688a8708a2f04f8a4bc6bc17970add3830dbe37e528dbca6a",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:network-reputation",
+      "sourceHash": "328b551bd002f7d8f169b7f7c409fcc5e30501d2f81530381de17c5488dd3944",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "61c12b9747ad71a91aba3f3410c24fa5711987441e0f02578c6eb64835bafaab",
+      "candidate7ClaimHash": "61c12b9747ad71a91aba3f3410c24fa5711987441e0f02578c6eb64835bafaab",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:sync-unwind",
+      "sourceHash": "8c38b504093ea8e6b3e42301b29889f9f7be0d99191d86ae8deb2f710088b4d4",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "d0c9cfb4c89a12c1a7c0e5551dee2b2d5756c58b57ef037c2673219830d786d8",
+      "candidate7ClaimHash": "d0c9cfb4c89a12c1a7c0e5551dee2b2d5756c58b57ef037c2673219830d786d8",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:engine-timestamp",
+      "sourceHash": "e654d1df933b4ad9d99d53578439a26297eb6cee35755981561bce6971bf190d",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "029aa744a31584f05a4024f29082ddd836623c70f8c11c83f167a875a6543723",
+      "candidate7ClaimHash": "029aa744a31584f05a4024f29082ddd836623c70f8c11c83f167a875a6543723",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:execution-receipt",
+      "sourceHash": "299af6fbea744e4558ceb00f1a1941518efdfaf3849e3cccb595440e7820844e",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "8172c5cc4d4d45dc0b07d43d5172f392dc67bf789448c28555bd1a42e03ab987",
+      "candidate7ClaimHash": "8172c5cc4d4d45dc0b07d43d5172f392dc67bf789448c28555bd1a42e03ab987",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:payload-cancel",
+      "sourceHash": "51ff71fac90e873f0fa0f32e9c58e5d9e70e970a9952dbb2e9a6f934241cab7c",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "02e45822dff7aaed89618f05f41841063d03e4beb19205a810fe11b636af99f6",
+      "candidate7ClaimHash": "02e45822dff7aaed89618f05f41841063d03e4beb19205a810fe11b636af99f6",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:storage-account",
+      "sourceHash": "6ef8fd3d3c9f1d215d3ad00ad86b0bf602aa20098b5031c67818b6642c8f5327",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "50490af7f7fc80054833162ca9d31cb870dfa215766453107011a981f0569dda",
+      "candidate7ClaimHash": "50490af7f7fc80054833162ca9d31cb870dfa215766453107011a981f0569dda",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:extension-reorg",
+      "sourceHash": "bcde49e579c27ab3c716d4ab713353ff9fb679aa5e9b642ab9296badff728e2f",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "c643627f4965b1f8c1c270bdf9897504f0288e97c46f8ecb2223388329c9d29e",
+      "candidate7ClaimHash": "c643627f4965b1f8c1c270bdf9897504f0288e97c46f8ecb2223388329c9d29e",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:foundation-fee",
+      "sourceHash": "5a8bb53a0f98e277a334ff58744a183276518fcc3dda2409205db13d2a645a00",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "d9180740921496114c4917c6908fa9ac2da855972b47b30ca7ee8a4c9ac79259",
+      "candidate7ClaimHash": "d9180740921496114c4917c6908fa9ac2da855972b47b30ca7ee8a4c9ac79259",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:block-link",
+      "sourceHash": "d95e4fad6597ea43c131a28d05884247cff4680aa1bbdf374a849bb4f34322f1",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "4ae1e0f7b1ee5adfc2b95e0464798ece547dfc173a413163369f1430a1a6084a",
+      "candidate7ClaimHash": "4ae1e0f7b1ee5adfc2b95e0464798ece547dfc173a413163369f1430a1a6084a",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:rpc-balance-entry",
+      "sourceHash": "f07bffb57ee40502842464c878b5fb536d8c762fc66196d235d8c931eebbdee7",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "a21b6ab0f1cdc29390b6a24fb6372e5392e91f2cd5135da33c5e70c9975031c8",
+      "candidate7ClaimHash": "a21b6ab0f1cdc29390b6a24fb6372e5392e91f2cd5135da33c5e70c9975031c8",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:rpc-balance-read",
+      "sourceHash": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "96cc36df4d6c8b9c5cd9776decdc7dfc7f50af06d5eeed67bf2b9b1f556f9422",
+      "candidate7ClaimHash": "96cc36df4d6c8b9c5cd9776decdc7dfc7f50af06d5eeed67bf2b9b1f556f9422",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-receive",
+      "sourceHash": "f9f435a35e90fa74ec30605228d75d9a7e67135a49c6eec50c3c4f1e3710fef5",
+      "sourceSameAsCandidate6": false,
+      "claimsSameAsCandidate6": false,
+      "candidate6ClaimHash": "86317223a9247c71081fb08f31d70d305e613a75f1039b613989521e38e3268b",
+      "candidate7ClaimHash": "8938c89733bb5c13535fd4b7eb72cf4a2d6025800d221e2fd699b70102b5c6eb",
+      "carryEligibility": "C7 revision independent source-review required",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-validation-dispatch",
+      "sourceHash": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "a371442893e1589b7deac9d8e1384305f6f3d8af7b8c6497c10bb010478e50da",
+      "candidate7ClaimHash": "a371442893e1589b7deac9d8e1384305f6f3d8af7b8c6497c10bb010478e50da",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-validation-task",
+      "sourceHash": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "44e9ac6d4d57e39c3d31f5fc66a4dd0ec42714977f2cfce3b49db31c707363ef",
+      "candidate7ClaimHash": "44e9ac6d4d57e39c3d31f5fc66a4dd0ec42714977f2cfce3b49db31c707363ef",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-validation-entry",
+      "sourceHash": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "279698b06b5a22854fe6b63c4ca1e189cd72a6ab9d1be223f49d11b83e950786",
+      "candidate7ClaimHash": "279698b06b5a22854fe6b63c4ca1e189cd72a6ab9d1be223f49d11b83e950786",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-validation-order",
+      "sourceHash": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "3dbe5e58086eab9830faf073fe158e09cf8af83f45d354fff4fbb13411724027",
+      "candidate7ClaimHash": "3dbe5e58086eab9830faf073fe158e09cf8af83f45d354fff4fbb13411724027",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-stateless",
+      "sourceHash": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "0958180f65a0ccc341066958bb4374cee47fddab689d30f173dc8eb8e7c45b09",
+      "candidate7ClaimHash": "0958180f65a0ccc341066958bb4374cee47fddab689d30f173dc8eb8e7c45b09",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-stateful",
+      "sourceHash": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "4d7cc5184bb97475ea6bac3baaefa53b514791dd78a9249ce9f9263bfc07aa02",
+      "candidate7ClaimHash": "4d7cc5184bb97475ea6bac3baaefa53b514791dd78a9249ce9f9263bfc07aa02",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-nonce",
+      "sourceHash": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "271876479dbcc327ac533bacef66b3872feea542d1057078c64ec04591ae145a",
+      "candidate7ClaimHash": "271876479dbcc327ac533bacef66b3872feea542d1057078c64ec04591ae145a",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-pool-add",
+      "sourceHash": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "45e3940c373263ac8bf39d33f410ac2527410419939f7f0dff99b5dc0f3b48df",
+      "candidate7ClaimHash": "45e3940c373263ac8bf39d33f410ac2527410419939f7f0dff99b5dc0f3b48df",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-pool-limit",
+      "sourceHash": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "6f9f7f58d20f43e0eee2ef411a08cd408087abe30fed9e021494ab80f3309dac",
+      "candidate7ClaimHash": "6f9f7f58d20f43e0eee2ef411a08cd408087abe30fed9e021494ab80f3309dac",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:send-validation-worker",
+      "sourceHash": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "ab96544cb29598780552d08e7b5c38b8f5100b12d0bbaebc91b72e9b87e1362f",
+      "candidate7ClaimHash": "ab96544cb29598780552d08e7b5c38b8f5100b12d0bbaebc91b72e9b87e1362f",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:rpc-launch",
+      "sourceHash": "1f587935df27b9e9b1695425728f7f2e4e6a9e44a136c5e8e18e80e4e140c8ab",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "70b48eadb9cb479f33229b17665816240231b1cb7768eca529db22826778c480",
+      "candidate7ClaimHash": "70b48eadb9cb479f33229b17665816240231b1cb7768eca529db22826778c480",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:node-handle",
+      "sourceHash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "84bc2134ec75ac2cd9535247a19ba2169829953a606832d7a2d35604399e58c9",
+      "candidate7ClaimHash": "84bc2134ec75ac2cd9535247a19ba2169829953a606832d7a2d35604399e58c9",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:loop-cli",
+      "sourceHash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "6f2078b5c3c6439e543b9ac84e44a8130eb78bc42186c5126903f30abd054db7",
+      "candidate7ClaimHash": "6f2078b5c3c6439e543b9ac84e44a8130eb78bc42186c5126903f30abd054db7",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:loop-engine",
+      "sourceHash": "4df33038adafbba10133d79fc403ff5cc60b8273d3a1a71192da21ed9916ebe1",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "af96d39cc363c031b8b71eb79d85597c37c926e610802056d604ce242078b585",
+      "candidate7ClaimHash": "af96d39cc363c031b8b71eb79d85597c37c926e610802056d604ce242078b585",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:loop-backfill",
+      "sourceHash": "a2c3ad029f4949d95f1a82897280e67e0649c9b8df7b011ebe1b9e11ededfa6d",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "0f62f12353380baa5e016f6a24d7674d67d0f84fe1891581e91d6fe35d2e9a7f",
+      "candidate7ClaimHash": "0f62f12353380baa5e016f6a24d7674d67d0f84fe1891581e91d6fe35d2e9a7f",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:rpc-contract",
+      "sourceHash": "0d5c59ce83e07e6461ea6fbdcf270c3df5b9f16155958cf47f2f483634574dd5",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "da900ef574e70b1bab1ff55ca5aa44a6df2e1302a5d5aa84ea13cd41efb7e1ff",
+      "candidate7ClaimHash": "da900ef574e70b1bab1ff55ca5aa44a6df2e1302a5d5aa84ea13cd41efb7e1ff",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:recovery-hook",
+      "sourceHash": "e950d241fcce9d58db11bae7fdc8a41dca100ee7ffc19467318481b3c232b19b",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "99ec38b3ff43a9aae2d0511365aaebf57845a12a5ba28a88b6f022a408f89b15",
+      "candidate7ClaimHash": "99ec38b3ff43a9aae2d0511365aaebf57845a12a5ba28a88b6f022a408f89b15",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:forward",
+      "sourceHash": "17d1ea7cc58e3ebd06e114620b397fb1cccc2fe0c1620fc0d7acca0ae7f862ff",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "56980008e342bed7fefafd4ccefda75ed8dfbe42e88f09362480e37d5adea3e8",
+      "candidate7ClaimHash": "56980008e342bed7fefafd4ccefda75ed8dfbe42e88f09362480e37d5adea3e8",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:batch-runner",
+      "sourceHash": "6119bd9e97d7e63e3e48b49ed38468cf0648fb3c8b45e8c906e2f764380291f7",
+      "sourceSameAsCandidate6": false,
+      "claimsSameAsCandidate6": false,
+      "candidate6ClaimHash": "b0353960bab863a4d4233beb8a0534a1af6586023da30debc80ac11f7054eafe",
+      "candidate7ClaimHash": "b9104ab6f7f4a61243ebcd93bb27c01424544c8944fc5ca138635cc5d3fc00ff",
+      "carryEligibility": "C7 revision independent source-review required",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:pool-test",
+      "sourceHash": "69cfe4e334cae1d378c4674ddbd8d62624fd27b1446b9789caaa78c3d827a755",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "9deb76f26d0f1e0b8d4166671964a2cf0776dc83ebc1eb82bfad815abdcba73b",
+      "candidate7ClaimHash": "9deb76f26d0f1e0b8d4166671964a2cf0776dc83ebc1eb82bfad815abdcba73b",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-rpc",
+      "sourceHash": "a7ef2b6ff568497b6e94db00f11bd7d1ad11a1ea76c332d952eff479b104d582",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2f214bebe105f6ff71fc7f927b537ee5cd2ed5ba1200e35ade9a6c2ae4eb1083",
+      "candidate7ClaimHash": "2f214bebe105f6ff71fc7f927b537ee5cd2ed5ba1200e35ade9a6c2ae4eb1083",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-message",
+      "sourceHash": "124986a7b675c2f2090ac9cb52a17631b76c97c2e048da4f85c36adba496547c",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "881bbb7710a35e95749b6f1c55e4ef82ba4bdb4dd1258f35190df279ee27b219",
+      "candidate7ClaimHash": "881bbb7710a35e95749b6f1c55e4ef82ba4bdb4dd1258f35190df279ee27b219",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-route",
+      "sourceHash": "c859b35c87b8157d2f2b5e7d0c8af8929482ac8e4e997fa888a3a919111b81f7",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "bd5e8412ce5bc96c133f5292042be8f5d613fdec16ae7577c5d87bc70abb260b",
+      "candidate7ClaimHash": "bd5e8412ce5bc96c133f5292042be8f5d613fdec16ae7577c5d87bc70abb260b",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-tree-send",
+      "sourceHash": "4625e0cc28c2f748672eee3561f74b3bc199aa1e47778bba9edf60ce16831fbe",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "d7ed40010ca5ac3ece82233db3fbbf3c969a00801042493112f5511671881f09",
+      "candidate7ClaimHash": "d7ed40010ca5ac3ece82233db3fbbf3c969a00801042493112f5511671881f09",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-dispatch",
+      "sourceHash": "950be0ffff535603eabe63701940b633c87691f6b22483fc172389b5d4779401",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "bd820d0ec38cec237d89633b3140a91a852f2395a8340fca86634ae704ca2710",
+      "candidate7ClaimHash": "bd820d0ec38cec237d89633b3140a91a852f2395a8340fca86634ae704ca2710",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-receive",
+      "sourceHash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "167f61ef8d798d8d65060cd2ed4bc9f96f741fec8b371876c015fa8466267d0f",
+      "candidate7ClaimHash": "167f61ef8d798d8d65060cd2ed4bc9f96f741fec8b371876c015fa8466267d0f",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-insert",
+      "sourceHash": "de517d1a66a3881446dc99919e629594e468d33b31781fea2bfb02d19937a7bd",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "db60081279fe0ed6775f4a6e81c88181aa151c1630cdb65dfc6f5be6e998f8ae",
+      "candidate7ClaimHash": "db60081279fe0ed6775f4a6e81c88181aa151c1630cdb65dfc6f5be6e998f8ae",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-validate-call",
+      "sourceHash": "9b4536d1d9dc551b21815e2ecc2ec4965784c1f85bc1730943ee40bf01bd72f7",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "698937e1cfb4ae20d8d46621351871549d9b6dd7e73201e2c001217955559bf3",
+      "candidate7ClaimHash": "698937e1cfb4ae20d8d46621351871549d9b6dd7e73201e2c001217955559bf3",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-validator-entry",
+      "sourceHash": "c66538723c75d22023c83ae37c961c7b6274b911073853cc78cb4829908e2c56",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "c63623d3b7f953632aca75ebeb2c5871d4871368957fcda275b846fd61c8e843",
+      "candidate7ClaimHash": "c63623d3b7f953632aca75ebeb2c5871d4871368957fcda275b846fd61c8e843",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-parent",
+      "sourceHash": "eb38e94d428fa755c9ca712de5117dcba6c73df32c9e34351c93ec47b21551d6",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "bbcbec88c71c16275bcd203b3e25013a53d009817b9293eda449f7389f2e5500",
+      "candidate7ClaimHash": "bbcbec88c71c16275bcd203b3e25013a53d009817b9293eda449f7389f2e5500",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-execute-choice",
+      "sourceHash": "c4e189e665f1d08917262e0c64586729aa4f465241385f456a536f7547d140cf",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "55eb4a22880f555d17b8e5bbe291b483d839c70ee091707a2952a8f4af703498",
+      "candidate7ClaimHash": "55eb4a22880f555d17b8e5bbe291b483d839c70ee091707a2952a8f4af703498",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-execute",
+      "sourceHash": "a21f66d8e989c663b0a78bb0533662e34108574c72f3938b4e8353a6854fac93",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "7fdc6f0cbf302fb2fd40b46eefa8634538724a1e651c3ad2cbc10fc6e8f3bfa3",
+      "candidate7ClaimHash": "7fdc6f0cbf302fb2fd40b46eefa8634538724a1e651c3ad2cbc10fc6e8f3bfa3",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-postcheck",
+      "sourceHash": "f47fe2bd0c2b4ad8a8111a88d37a97a887014c46e30763a5af50d10827fc16ec",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "82fce441e3faaef5ff724da098c15b31107a8e6baa6718a9ba80a1f0b294d250",
+      "candidate7ClaimHash": "82fce441e3faaef5ff724da098c15b31107a8e6baa6718a9ba80a1f0b294d250",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-root",
+      "sourceHash": "637397d644226d2d753fc423127447ad27a676d3d2b78b8f9e76607c2aed379c",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "32a871b8fe26ecef80a468be566fb9bae07bb522f01c1bb9ca5f3c694af2c9e9",
+      "candidate7ClaimHash": "32a871b8fe26ecef80a468be566fb9bae07bb522f01c1bb9ca5f3c694af2c9e9",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-forkchoice",
+      "sourceHash": "23f95db945554ba018f60281c74367fc353104f230b91a1cdb04ac0b45f25cb2",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "c141504ab9f37e3af4eeaca6fc8c3d0cb5c6463ba3f4b4ec8be650a0ac430aa2",
+      "candidate7ClaimHash": "c141504ab9f37e3af4eeaca6fc8c3d0cb5c6463ba3f4b4ec8be650a0ac430aa2",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-canonical",
+      "sourceHash": "d6cc524eb2d8a9914ee5e01768a1448c2f84e30d116759c3775c4ea6711dab8f",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "3254d5b8c5a6f7302a3a5d9c4f184832d4ffd37140cef5a235062b4792863e0b",
+      "candidate7ClaimHash": "3254d5b8c5a6f7302a3a5d9c4f184832d4ffd37140cef5a235062b4792863e0b",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-save-target",
+      "sourceHash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "18ff606a73ffbad62cdda952be9a3858e28ff3f71fe12208ab9a2cd806a88217",
+      "candidate7ClaimHash": "18ff606a73ffbad62cdda952be9a3858e28ff3f71fe12208ab9a2cd806a88217",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-save-start",
+      "sourceHash": "f8ee7a543ce985f60e68bb29bc78f0f9a1fe28c276b8bf34ad2cc1eb360a891a",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "5f5ae99f963e2746410e1249aac57118a3a7822a25d95b76f7ba6cac76d63974",
+      "candidate7ClaimHash": "5f5ae99f963e2746410e1249aac57118a3a7822a25d95b76f7ba6cac76d63974",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-save-queue",
+      "sourceHash": "99a9c2c1502502b9e83ab396f0b67f757a4880b2cd0883eaa236014f09e1bc27",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "5b0a78c9e58579085b693685b463f5f8ecd801446c2efd6461ce614c9b53b902",
+      "candidate7ClaimHash": "5b0a78c9e58579085b693685b463f5f8ecd801446c2efd6461ce614c9b53b902",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-save-worker",
+      "sourceHash": "46681faf273c80398f48b38494338111ad75438d410e94ca813a24636216e0e2",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "759e4fc866449c93f349fc39b029cdf02e882e8de5478170e0ade8b3ee8b9a8d",
+      "candidate7ClaimHash": "759e4fc866449c93f349fc39b029cdf02e882e8de5478170e0ade8b3ee8b9a8d",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-save-write",
+      "sourceHash": "c54d03d224fc07e8244fc4bb773efa2cdbac38567fa55b7682800b3b69f16d07",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "850e699532cefd5fca6a9df9946ce4f9c02de51454e588e68321ec103035735c",
+      "candidate7ClaimHash": "850e699532cefd5fca6a9df9946ce4f9c02de51454e588e68321ec103035735c",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-save-complete",
+      "sourceHash": "d5ca7e38795af67e413db2c488b16fe35f7762bb0680437f9cb0fedb09060f29",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "b898d4f5b4a9a2518be5c27989ad9dda15ad739b30d767f08001d1b2bcae88d3",
+      "candidate7ClaimHash": "b898d4f5b4a9a2518be5c27989ad9dda15ad739b30d767f08001d1b2bcae88d3",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-run",
+      "sourceHash": "5e25bdd2473abb8e9e0250b936f011c2ce94a7d0812884c6eea527e97b69f412",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "dd91b0b6e78b205aacfe694c3c5c218c684636e29c5af81e0dda5b0f97ac6bcb",
+      "candidate7ClaimHash": "dd91b0b6e78b205aacfe694c3c5c218c684636e29c5af81e0dda5b0f97ac6bcb",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-online-order",
+      "sourceHash": "9db4181f2b4d7379521f8c3213e98c658a0adfec37b690cb28d1a270055e97be",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "b9aa1b6258ef8e3c76d63be06f13ee089780b9a5aa618cfbc30e4bf7068c5bab",
+      "candidate7ClaimHash": "b9aa1b6258ef8e3c76d63be06f13ee089780b9a5aa618cfbc30e4bf7068c5bab",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-headers",
+      "sourceHash": "12c88f97483d54648c86613da2a4e45209d124365ee96ed23cda8da808a3570e",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "57f7f4e9144a4bc8ad8b9250635eb20dc7c944aa17641c78f681d8831db46454",
+      "candidate7ClaimHash": "57f7f4e9144a4bc8ad8b9250635eb20dc7c944aa17641c78f681d8831db46454",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-bodies",
+      "sourceHash": "223919ebb835cc668b562b44b2f3dcadec06acf49ec96a9ace1226fae67cc356",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "cf7748f699c75b7a1bd3488f2ba292cd824c6657c37c005802709ee6247f7925",
+      "candidate7ClaimHash": "cf7748f699c75b7a1bd3488f2ba292cd824c6657c37c005802709ee6247f7925",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-body-request",
+      "sourceHash": "247dec957dd6d09393418992e3d693b43fbe597daf29850fb1657371283d41c6",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "6a69ddcae92e86d71742d6e166a92b521806ee70991b85d3a9a6f7aa31bf91e5",
+      "candidate7ClaimHash": "6a69ddcae92e86d71742d6e166a92b521806ee70991b85d3a9a6f7aa31bf91e5",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-fetch-client",
+      "sourceHash": "8b0d2dc92abe5e63a916e94eb6f8d0bdb24da60dd2103626f64087c1088a24bc",
+      "sourceSameAsCandidate6": false,
+      "claimsSameAsCandidate6": false,
+      "candidate6ClaimHash": "1375d55a7e0f4053d935626fee0e8864a323b7fe3651a47fe2367e3d9930df65",
+      "candidate7ClaimHash": "f3f115e9867d921db483b578afc745ed0a33eff203d8dd3f270e2ff458b8cfce",
+      "carryEligibility": "C7 revision independent source-review required",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-peer-select",
+      "sourceHash": "03f7f9eb5ea9d712f0de1d80a3226370ceec9631670934b89437bf833dbf31c9",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "ad9dc51cc1f38c69356401c44d93b19ebcc2c3ed711d4a61e9caed52758a0cf2",
+      "candidate7ClaimHash": "ad9dc51cc1f38c69356401c44d93b19ebcc2c3ed711d4a61e9caed52758a0cf2",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-peer-send",
+      "sourceHash": "5f74f6b33f5903b06834fb0938eee53b20cee0fb1d69cd527ed00ce25bdb0d3c",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "80dd7d6d3a26b6b730af8f88793f747863c307705cbd5e1715381843fa98d64e",
+      "candidate7ClaimHash": "80dd7d6d3a26b6b730af8f88793f747863c307705cbd5e1715381843fa98d64e",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-body-validate",
+      "sourceHash": "bb709532dfc6f7177e54aee7da4e40fdd8aa4d2cd1736358748ee9763f5f27eb",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "86b1733c3365c95afa91eb23c17e28a459b8f765d78a058459780b31f07a41f6",
+      "candidate7ClaimHash": "86b1733c3365c95afa91eb23c17e28a459b8f765d78a058459780b31f07a41f6",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-execution",
+      "sourceHash": "0a9537a41a4779bffe29f2d868125d4f3705ef707e4c54e86a41bbd81f1c09fc",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "503b373fc18c31535af3de983819b274bd65e0ec7ee1eddf5bf5e03b21982362",
+      "candidate7ClaimHash": "503b373fc18c31535af3de983819b274bd65e0ec7ee1eddf5bf5e03b21982362",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-checkpoint",
+      "sourceHash": "f66bc5cf3ea83354392694574bbdddbe557a2b203ba2430cedffcd343773b7d5",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "08bcca3c1780a801a112863594b37e0ed9190f6279fd8dbf97e1fc581569d706",
+      "candidate7ClaimHash": "08bcca3c1780a801a112863594b37e0ed9190f6279fd8dbf97e1fc581569d706",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-insert-state",
+      "sourceHash": "87271310ed6572c4f81d3908d7b202104a5018821e2adc50d87108586aed3f45",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "03e7cde90a9fe78aa7e640a0df9ee051ce3cc47fc3c45942267ed56b7c9b0ca2",
+      "candidate7ClaimHash": "03e7cde90a9fe78aa7e640a0df9ee051ce3cc47fc3c45942267ed56b7c9b0ca2",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-canonical-state",
+      "sourceHash": "a23b29f4a59fe4e21fdb6136db5a22488d6f8b82652489b08681a1f368302497",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "e30670d23bf4486db58f1458cb757614c054e0a2c9e99002577a62de90743efc",
+      "candidate7ClaimHash": "e30670d23bf4486db58f1458cb757614c054e0a2c9e99002577a62de90743efc",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-forkchoice-message",
+      "sourceHash": "b5cff2af722715415155185b38d8d2d55128ba155836eb83d1decd11cd72695e",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "5f3163c463a9a7d8179360c53c57bb3eaed23ff5e8993566f682bb48b39f7185",
+      "candidate7ClaimHash": "5f3163c463a9a7d8179360c53c57bb3eaed23ff5e8993566f682bb48b39f7185",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-default-order",
+      "sourceHash": "7b79f1e1d7052ba7a95ebb5c0b69918a97c11b5ed70f2743dc4c20c6d493e810",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "6d97fae52b66f9577b28f2c20aca59770882890cdec7aef7e0412d75ab3214ed",
+      "candidate7ClaimHash": "6d97fae52b66f9577b28f2c20aca59770882890cdec7aef7e0412d75ab3214ed",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-execution-order",
+      "sourceHash": "59466b5adec500d4f4e762f36f68fea9de4e0527eefb05213589f1964ed71199",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2e23f62a12bdd47dd4822fc555be5da02c189edda17fb730ee9c568f61f00cb7",
+      "candidate7ClaimHash": "2e23f62a12bdd47dd4822fc555be5da02c189edda17fb730ee9c568f61f00cb7",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-response",
+      "sourceHash": "3b401845cab12cda055d021e0d682b860d00022267db112d82461ab368195fd7",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "b5da2c478d567363f5d238807eb579a4192b35cfc9d6bb13f074bd8ea246a279",
+      "candidate7ClaimHash": "b5da2c478d567363f5d238807eb579a4192b35cfc9d6bb13f074bd8ea246a279",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:trait-contract",
+      "sourceHash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": false,
+      "candidate6ClaimHash": "218c65bce871b3f3b738da897122b3d1d388693f2a05fcc2c7604f89d52e314b",
+      "candidate7ClaimHash": "d51491799db74156dc3c77419cb888bbaeb8e625758eb496a9d90840a11d7e4d",
+      "carryEligibility": "C7 revision independent source-review required",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "tx:trait-implementation",
+      "sourceHash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": false,
+      "candidate6ClaimHash": "1b34462196a551933d9b96a44b15d5b34a3b97911ac82ecb7bc504791f60674e",
+      "candidate7ClaimHash": "7d710469ed042f54bad3986f9ec5dff722809b9055d04a23b5aeb5fb362b7b64",
+      "carryEligibility": "C7 revision independent source-review required",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-engine-build",
+      "sourceHash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "c9c68753bb86c4ba0cce4dd7757452fbcd58f4a201975f1dfab36ec4e4e44ff4",
+      "candidate7ClaimHash": "c9c68753bb86c4ba0cce4dd7757452fbcd58f4a201975f1dfab36ec4e4e44ff4",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-node-wait",
+      "sourceHash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "91c6daf44656fd930f5dc1e9e629d4033a0a1ca6dfc10908827ff9a50b50f21c",
+      "candidate7ClaimHash": "91c6daf44656fd930f5dc1e9e629d4033a0a1ca6dfc10908827ff9a50b50f21c",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-forkchoice-precheck",
+      "sourceHash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2f9c6233e1bf9c9315b9cf4fc3a895e93286419512dc35b8dff036fad99f81ca",
+      "candidate7ClaimHash": "2f9c6233e1bf9c9315b9cf4fc3a895e93286419512dc35b8dff036fad99f81ca",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-forkchoice-consistency",
+      "sourceHash": "14041726f3e843af0fb69a53889dbfd0c162e71faf07890cacfa19f41789982f",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "3151b6f43afbbbb5b73874b93fa211ef8df2f1e11e41c670e332acc6478b5908",
+      "candidate7ClaimHash": "3151b6f43afbbbb5b73874b93fa211ef8df2f1e11e41c670e332acc6478b5908",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-forkchoice-markers",
+      "sourceHash": "f7852679866e245de7b67ee32fa2323fedf77e9d9fca29ea3f85642f2a488c8a",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "076b18ad65a1eca769d534836f20e45ca7f9fdc5d9eb44cb0306b867eec4b390",
+      "candidate7ClaimHash": "076b18ad65a1eca769d534836f20e45ca7f9fdc5d9eb44cb0306b867eec4b390",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-executor",
+      "sourceHash": "92421e55b428911f9cd556a922e468b964bd273ba1b9920aaf90e91ce75bc416",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "86cfb896a79f5cdc0f3125bb113cf7dcb62e88faaf7799000d10f9b83b09c070",
+      "candidate7ClaimHash": "86cfb896a79f5cdc0f3125bb113cf7dcb62e88faaf7799000d10f9b83b09c070",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-after-execute",
+      "sourceHash": "2dcda1d08ddeef5a29bbb7e22d507cc13ec7c3afd1e69a4f9a507cd9ce5cf7e2",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "c89d2f7c12d5586705a1acf0d01bccdd5ce38f6c871cc7a7e23cd40778309dd2",
+      "candidate7ClaimHash": "c89d2f7c12d5586705a1acf0d01bccdd5ce38f6c871cc7a7e23cd40778309dd2",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-consensus-check",
+      "sourceHash": "1ef318820e38ce2d30473948cb91d7cf5e2b5e27e08464718e51f7f5822adb29",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "7b24c8474b8c2894c9be73a7546d0b96fdbc072f2de4f5357dd0b67d64df231c",
+      "candidate7ClaimHash": "7b24c8474b8c2894c9be73a7546d0b96fdbc072f2de4f5357dd0b67d64df231c",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-block-postconditions",
+      "sourceHash": "beae261b839a2e9318b7b12c0f9918b12ca12aba197738018cdc701e2009e43e",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "3f3b22940c6b746dc8b5e3d0da526c22d37b44f86603994219e513be158d5480",
+      "candidate7ClaimHash": "3f3b22940c6b746dc8b5e3d0da526c22d37b44f86603994219e513be158d5480",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:file-tx-get-entry",
+      "sourceHash": "e93a9c7dd2a387fd25a0ed14ca8358f11aa0f01d29073e63e0e6193292aafb3b",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "7db9c1b7a6395a04c42d61522bac6fbd1a74c970850c39bb4f4f325099fcf69f",
+      "candidate7ClaimHash": "7db9c1b7a6395a04c42d61522bac6fbd1a74c970850c39bb4f4f325099fcf69f",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:file-tx-get",
+      "sourceHash": "d5d1d2a7767308c1888bbc86ee9d842016fa82dc38cd095221349289fe4fea86",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "9183ad3b6ce846001de7a440f1113c9c26f3172a9da9870efb66c53588d0f6f1",
+      "candidate7ClaimHash": "9183ad3b6ce846001de7a440f1113c9c26f3172a9da9870efb66c53588d0f6f1",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:file-pool-get",
+      "sourceHash": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "3f1120f050aa0df828e9299df51b83523f1c45f10b4ba96f4ceaf61fb81c761a",
+      "candidate7ClaimHash": "3f1120f050aa0df828e9299df51b83523f1c45f10b4ba96f4ceaf61fb81c761a",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:file-pool-listeners",
+      "sourceHash": "04adbae1169369a2c273c5a3e7d7df97625ef6d592456ed8ea730939355cf45f",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "467b771e00d4ef4112a137b6daf8386a8689ba444ba71fbd3ee0984944da3c50",
+      "candidate7ClaimHash": "467b771e00d4ef4112a137b6daf8386a8689ba444ba71fbd3ee0984944da3c50",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:file-rpc-inner",
+      "sourceHash": "101f6cc6e922e7e0e705de80bcdb6d914d3c2254a70e311000b21ea81ce6913c",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2f7391def6b6ce3eb8db14a9428e36d45f6ab74e4428440ecc4ccbb69c1f4c42",
+      "candidate7ClaimHash": "2f7391def6b6ce3eb8db14a9428e36d45f6ab74e4428440ecc4ccbb69c1f4c42",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:file-rpc-inner-build",
+      "sourceHash": "521631bd3b17f79924116d28cf40c729e94474a44f02422a95d1629095cb9a8a",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "5c3bffac30e464ac1064760cb38a15952f1b79477947140279f5debff13314f5",
+      "candidate7ClaimHash": "5c3bffac30e464ac1064760cb38a15952f1b79477947140279f5debff13314f5",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:component-rpc-namespace",
+      "sourceHash": "e602da8a8ad8e88ae33b11dfe299e01c423ea3b6055498b7a55e326db5a8288c",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "230765962dca1f0b245e47ed45c393818ef0e7d54ec0926a0f8f10d7b7cd09f0",
+      "candidate7ClaimHash": "230765962dca1f0b245e47ed45c393818ef0e7d54ec0926a0f8f10d7b7cd09f0",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:component-block-read",
+      "sourceHash": "e35e1e2f55459bfa1a3405158faf8d70ad42cf6f8577c6111ea086b3a554d079",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "44c94f4d6ff3f3d352b661a9c17c09b0dfc1aa4518279460f320929c47b00c44",
+      "candidate7ClaimHash": "44c94f4d6ff3f3d352b661a9c17c09b0dfc1aa4518279460f320929c47b00c44",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:component-rpc-setup",
+      "sourceHash": "15a59940184307f5f4f779ac5c80c33454fe1f2f77e252e42063b3b78093be42",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "755f7c1de46a8172135e6809e6c40dab05197bc08a022a1570bdc12573321a0d",
+      "candidate7ClaimHash": "755f7c1de46a8172135e6809e6c40dab05197bc08a022a1570bdc12573321a0d",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:component-rpc-launch",
+      "sourceHash": "b2ba3277858df012eaaa2decc2b70878905bf4b611c14d6547c84552f3a03b95",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "6bc621cb8a03eac4da5e712ca0ae9fd7126b8cea5922a2c93daa36abdf101650",
+      "candidate7ClaimHash": "6bc621cb8a03eac4da5e712ca0ae9fd7126b8cea5922a2c93daa36abdf101650",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:component-rpc-start",
+      "sourceHash": "44e860aece3ab7526132dc3fdf0c1f6d1478ab04e96e6a15f81738ec9b022e07",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "572dda7af85679fdc55d3f439993949a046899d80413ed443e6d1b663d07f625",
+      "candidate7ClaimHash": "572dda7af85679fdc55d3f439993949a046899d80413ed443e6d1b663d07f625",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-cli-prepare",
+      "sourceHash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "25e3bca9b87f5b04a20e426d6908889f20706684b7381e345d44affadc1950d0",
+      "candidate7ClaimHash": "25e3bca9b87f5b04a20e426d6908889f20706684b7381e345d44affadc1950d0",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-tree-spawn",
+      "sourceHash": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2568d020e9de13f7bc60dd0d667c0bbce545b56594d4d13fca6864d9bc3b9288",
+      "candidate7ClaimHash": "2568d020e9de13f7bc60dd0d667c0bbce545b56594d4d13fca6864d9bc3b9288",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-orchestrator-poll",
+      "sourceHash": "4ae9eb17486289bd32ed5db4b016addcc4b5100b6548518908ac5af93d3d9d4f",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "bf33c1cc724478c52f8455c8a78b9bc89ab9ba6cf3aad75f03b31befa9011bb3",
+      "candidate7ClaimHash": "bf33c1cc724478c52f8455c8a78b9bc89ab9ba6cf3aad75f03b31befa9011bb3",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-engine-poll",
+      "sourceHash": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "86e72882c7cfbaf037520b302b49a23babb4fa5fe7fc24fd5e424d6b5e458edf",
+      "candidate7ClaimHash": "86e72882c7cfbaf037520b302b49a23babb4fa5fe7fc24fd5e424d6b5e458edf",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-engine-channel",
+      "sourceHash": "7b6266b0f75f515c7f4bd1dbd24d679aa590bb3943e1b69497395a42ed13f636",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "fabcb9b9e4823f1aa8c72ad028b557908429aebf8786d489b69547a3ef2bc815",
+      "candidate7ClaimHash": "fabcb9b9e4823f1aa8c72ad028b557908429aebf8786d489b69547a3ef2bc815",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-component-choice",
+      "sourceHash": "375884d2b503f1246c58a6147123aeafd73ff58a8919dc41fc0946e533c75f0b",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "8c3a472259c679866871718951dcb83acd0300437fc7dc2076dddc59a80ab4f2",
+      "candidate7ClaimHash": "8c3a472259c679866871718951dcb83acd0300437fc7dc2076dddc59a80ab4f2",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-network-builder",
+      "sourceHash": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "72b62ae55caaf34da82a538c338f2eb48d2cc6c7f72f0e96bcf1eeb617d9fc73",
+      "candidate7ClaimHash": "72b62ae55caaf34da82a538c338f2eb48d2cc6c7f72f0e96bcf1eeb617d9fc73",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-network-start",
+      "sourceHash": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "75aa7af4112a7f4e9251a2f6cfbc98925139d0ee7983091e210de77bd20bfb28",
+      "candidate7ClaimHash": "75aa7af4112a7f4e9251a2f6cfbc98925139d0ee7983091e210de77bd20bfb28",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-payload-spawn",
+      "sourceHash": "855d512d773954cfd06c403f540f77d6dc790ba55cd22b97134a362072680fdd",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "f0a1587942b3854079c73709827a32ded5ae267598faca17d0a40ae69f31e190",
+      "candidate7ClaimHash": "f0a1587942b3854079c73709827a32ded5ae267598faca17d0a40ae69f31e190",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:file-batch-create",
+      "sourceHash": "f2062606cc038c1446552ea0f1fdb28273772e867172c35c540573055daac19f",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "08f51243f5b10abe8b708b3c422ba2a0bd575c14705bc58c46343d5b360dbb09",
+      "candidate7ClaimHash": "08f51243f5b10abe8b708b3c422ba2a0bd575c14705bc58c46343d5b360dbb09",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-cli-entry",
+      "sourceHash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "b1c0b175a5a86c89ea2281c6acac1459aac0fabb394fa386f0cdda72401c9753",
+      "candidate7ClaimHash": "b1c0b175a5a86c89ea2281c6acac1459aac0fabb394fa386f0cdda72401c9753",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-cli-configure",
+      "sourceHash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "3cc16b0aa32199077ad5d881b27df2531cc23716c450ad9340c7a38f8e1e487b",
+      "candidate7ClaimHash": "3cc16b0aa32199077ad5d881b27df2531cc23716c450ad9340c7a38f8e1e487b",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-launcher-entry",
+      "sourceHash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2051a264f1cc71df12c9fffca8ca2650c5528fe57c891a264ca8d55d141f8963",
+      "candidate7ClaimHash": "2051a264f1cc71df12c9fffca8ca2650c5528fe57c891a264ca8d55d141f8963",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-builder-launch",
+      "sourceHash": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "b1908844209b7ba440b962c2fdd63ddac12a56ee8d8812eab0f8abf321095527",
+      "candidate7ClaimHash": "b1908844209b7ba440b962c2fdd63ddac12a56ee8d8812eab0f8abf321095527",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-builder-dispatch",
+      "sourceHash": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "74ba4468b929de34cafdbe400f672489fed5826c8caa5c07d1a133db7bdb7af1",
+      "candidate7ClaimHash": "74ba4468b929de34cafdbe400f672489fed5826c8caa5c07d1a133db7bdb7af1",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-debug-adapter",
+      "sourceHash": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "57218e811c776276751e85a0aa0abc6ca44ac205e9f6ec95ba9bac63ac956205",
+      "candidate7ClaimHash": "57218e811c776276751e85a0aa0abc6ca44ac205e9f6ec95ba9bac63ac956205",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-debug-inner",
+      "sourceHash": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "4b4e8a1e69040196b32fae4b7bbf21f1a1619084ab1a64774f02e6186cea5c0b",
+      "candidate7ClaimHash": "4b4e8a1e69040196b32fae4b7bbf21f1a1619084ab1a64774f02e6186cea5c0b",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-engine-dispatch",
+      "sourceHash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "5ec7c4f6c31b0e33bee9f50ae9ab0f0b05c27dfb0d1cf92f860a0bc3979c0707",
+      "candidate7ClaimHash": "5ec7c4f6c31b0e33bee9f50ae9ab0f0b05c27dfb0d1cf92f860a0bc3979c0707",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-debug-return",
+      "sourceHash": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "d0d99aa7538b9e8f6a8fc91b636b83d08c381145910935835b9e495e79f3fe67",
+      "candidate7ClaimHash": "d0d99aa7538b9e8f6a8fc91b636b83d08c381145910935835b9e495e79f3fe67",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-tree-pressure",
+      "sourceHash": "e538ae5ba22df639ddfab6f3f9c65f6f89b2961a77139d12ddfdac99d04d2588",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "0541678e601df859b5d8110a3be16ad3433f605fb8433d39ec25f4b02176b16e",
+      "candidate7ClaimHash": "0541678e601df859b5d8110a3be16ad3433f605fb8433d39ec25f4b02176b16e",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-backfill-gate",
+      "sourceHash": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "416ac25b6a317a389ddd635b626d0e379eb04ced583f0bb2d672dad65805958e",
+      "candidate7ClaimHash": "416ac25b6a317a389ddd635b626d0e379eb04ced583f0bb2d672dad65805958e",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-backfill-events",
+      "sourceHash": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "50f3a6bd4e475fac5b1fb9d38e9d6e8c9a5ff44bb0873b8ceacf4fad0ea5edab",
+      "candidate7ClaimHash": "50f3a6bd4e475fac5b1fb9d38e9d6e8c9a5ff44bb0873b8ceacf4fad0ea5edab",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-backfill-finished",
+      "sourceHash": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "ea48eba965c030d86d41620581b9478a520025b3d1873fa7bc8de946c5489ee8",
+      "candidate7ClaimHash": "ea48eba965c030d86d41620581b9478a520025b3d1873fa7bc8de946c5489ee8",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-node-selection",
+      "sourceHash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "a9740431d9371ab16327ae18ee708f284ebb73f683bb2b14806fb52f4d74c36d",
+      "candidate7ClaimHash": "a9740431d9371ab16327ae18ee708f284ebb73f683bb2b14806fb52f4d74c36d",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-node-components",
+      "sourceHash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "80b039e236d1426c41ae7213cf98f18a7bf63b9e1532f671994c552fac2027dc",
+      "candidate7ClaimHash": "80b039e236d1426c41ae7213cf98f18a7bf63b9e1532f671994c552fac2027dc",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:journey-sync-offline-order",
+      "sourceHash": "4ea54dedb10faef1c27c0b9c0a41203ffc9ece9d19b0b0089043f0858c61fd28",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "4ddcc3bc6b1774511f0f3727a24ed04734e965bc879168c267ca0ec2044b5dd7",
+      "candidate7ClaimHash": "4ddcc3bc6b1774511f0f3727a24ed04734e965bc879168c267ca0ec2044b5dd7",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:startup-tree-wait",
+      "sourceHash": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "2e943e8e63de7bf9b1166cd4f2bcc7ead432df4fe2861c744ea2c7491cb84c91",
+      "candidate7ClaimHash": "2e943e8e63de7bf9b1166cd4f2bcc7ead432df4fe2861c744ea2c7491cb84c91",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    },
+    {
+      "id": "area:network-budget",
+      "sourceHash": "6b00b2871168e4155ae0cfe459333f604404e3935601ccaf2b9f2c13866be795",
+      "sourceSameAsCandidate6": true,
+      "claimsSameAsCandidate6": true,
+      "candidate6ClaimHash": "ccf8830669004ac2b28097279f7629651f20a592f821c2ad3d62876cbf73d323",
+      "candidate7ClaimHash": "ccf8830669004ac2b28097279f7629651f20a592f821c2ad3d62876cbf73d323",
+      "carryEligibility": "exact old independent source review only; no old UI carry",
+      "semanticPassInferred": false
+    }
+  ],
+  "routes": [
+    {
+      "route": "lesson:blockchain",
+      "kind": "lesson",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "2b666591d84d5b1a3e53c4a8de7061516f68515972c46b8be10a17afa08be881",
+      "contexts": [
+        "area:foundation",
+        "area:block-link",
+        "startup:network",
+        "area:network-budget"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "lesson:ethereum",
+      "kind": "lesson",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "29344f75c5cf5ca0a59f8fddabb069c11d4bb18da5aed0a76129ec0e24d23a7e",
+      "contexts": [
+        "area:storage-account",
+        "area:execution",
+        "area:execution-receipt"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "lesson:rpc",
+      "kind": "lesson",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "76cb32b3ebf73edc9c98cce05d3b047f4692d9e2e4eb9781cd20313c01fd59bf",
+      "contexts": [
+        "area:rpc-balance-entry",
+        "area:rpc-balance-read",
+        "tx:rpc",
+        "tx:recover",
+        "tx:recovery-hook"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "lesson:reth",
+      "kind": "lesson",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "ea35af986b0f78025cfce17b06bac39625e3b9897a83efda4b5f318a082b0a21",
+      "contexts": [
+        "startup:components",
+        "area:startup-node-components",
+        "area:startup-component-choice",
+        "area:startup-network-builder",
+        "area:startup-network-start",
+        "area:startup-payload-spawn",
+        "startup:services",
+        "area:startup-engine-build",
+        "area:startup-tree-spawn",
+        "area:rpc-launch",
+        "area:node-handle",
+        "tx:rpc",
+        "tx:pool",
+        "area:send-validation-dispatch",
+        "area:send-validation-task",
+        "area:send-validation-worker",
+        "area:send-validation-entry",
+        "area:send-validation-order",
+        "area:send-stateless",
+        "area:send-stateful",
+        "area:send-nonce",
+        "area:pool-balance",
+        "area:send-pool-limit",
+        "area:send-pool-add",
+        "area:journey-block-dispatch",
+        "area:journey-block-receive",
+        "area:journey-block-insert",
+        "area:journey-block-validate-call",
+        "area:journey-block-insert-state",
+        "area:journey-block-validator-entry",
+        "area:journey-block-parent",
+        "area:journey-block-execute-choice",
+        "area:journey-block-executor",
+        "area:journey-block-execute",
+        "area:journey-block-after-execute",
+        "area:journey-block-postcheck",
+        "area:journey-block-consensus-check",
+        "area:journey-block-postconditions",
+        "area:journey-block-root",
+        "area:journey-block-forkchoice-message",
+        "area:journey-block-forkchoice",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-canonical",
+        "area:journey-block-forkchoice-consistency",
+        "area:journey-block-canonical-state",
+        "area:journey-block-forkchoice-markers",
+        "startup:tree",
+        "area:startup-tree-pressure",
+        "area:startup-tree-wait",
+        "area:journey-block-save-start",
+        "area:journey-block-save-target",
+        "area:journey-block-save-queue",
+        "area:journey-block-save-worker",
+        "area:journey-block-save-write",
+        "area:journey-block-save-complete"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "lesson:send",
+      "kind": "lesson",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "71590af68b375e5092e0b5b3b677a61dbf52d57d40e86f9103c2ced3b3800c54",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:recovery-hook",
+        "tx:submit",
+        "tx:queue",
+        "area:send-receive",
+        "tx:batch",
+        "tx:pool",
+        "area:send-validation-dispatch",
+        "area:send-validation-task",
+        "area:send-validation-worker",
+        "area:send-validation-entry",
+        "area:send-validation-order",
+        "area:send-stateless",
+        "area:send-stateful",
+        "area:send-nonce",
+        "area:pool-balance",
+        "area:send-pool-limit",
+        "area:send-pool-add"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "lesson:startup",
+      "kind": "lesson",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "f328a50ca504a64553e982d26b4272e4d6111bada1dc9928bf818f01af5dcb52",
+      "contexts": [
+        "startup:entry",
+        "area:startup-cli-entry",
+        "area:startup-cli-configure",
+        "area:startup-cli-prepare",
+        "startup:dispatch",
+        "startup:supervisor",
+        "area:loop-cli",
+        "startup:database",
+        "area:startup-launcher-entry",
+        "area:startup-node-selection",
+        "area:startup-node-components",
+        "area:startup-component-choice",
+        "area:startup-builder-launch",
+        "area:startup-builder-dispatch",
+        "area:startup-debug-adapter",
+        "area:startup-debug-inner",
+        "area:startup-engine-dispatch",
+        "startup:context",
+        "startup:components",
+        "area:startup-network-builder",
+        "area:startup-network-start",
+        "area:startup-payload-spawn",
+        "startup:services",
+        "area:startup-engine-build",
+        "area:startup-tree-spawn",
+        "startup:backfill",
+        "area:rpc-launch",
+        "startup:orchestrator",
+        "area:startup-orchestrator-poll",
+        "area:startup-engine-poll",
+        "area:startup-engine-channel",
+        "startup:network",
+        "area:network-budget",
+        "area:node-handle",
+        "area:startup-debug-return",
+        "area:startup-node-wait",
+        "area:node-exit"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "lesson:reading",
+      "kind": "lesson",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "e2317b839f712da778380018eea12a4f0cd1a7684fb74d97a8bd61e5ca33e583",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:recovery-hook",
+        "tx:submit",
+        "tx:queue",
+        "area:send-receive",
+        "tx:batch",
+        "tx:pool",
+        "area:send-validation-dispatch",
+        "area:send-validation-task",
+        "area:send-validation-worker",
+        "area:send-validation-entry",
+        "area:send-validation-order",
+        "area:send-stateless",
+        "area:send-stateful",
+        "area:send-nonce",
+        "area:pool-balance",
+        "area:send-pool-limit",
+        "area:send-pool-add"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "journey:block",
+      "kind": "journey",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "8bbb5432e8ac9450502f9d3475883df00f99d31ec3b1cfce8cb22eb66832faea",
+      "contexts": [
+        "area:journey-block-rpc",
+        "area:journey-block-message",
+        "area:journey-block-route",
+        "area:journey-block-tree-send",
+        "area:journey-block-dispatch",
+        "area:journey-block-receive",
+        "area:journey-block-insert",
+        "area:journey-block-validate-call",
+        "area:journey-block-insert-state",
+        "area:journey-block-validator-entry",
+        "area:journey-block-parent",
+        "area:journey-block-execute-choice",
+        "area:journey-block-executor",
+        "area:journey-block-execute",
+        "area:journey-block-after-execute",
+        "area:journey-block-postcheck",
+        "area:journey-block-consensus-check",
+        "area:journey-block-postconditions",
+        "area:journey-block-root",
+        "area:journey-block-forkchoice-message",
+        "area:journey-block-forkchoice",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-canonical",
+        "area:journey-block-forkchoice-consistency",
+        "area:journey-block-canonical-state",
+        "area:journey-block-forkchoice-markers",
+        "startup:tree",
+        "area:journey-block-save-start",
+        "area:journey-block-save-target",
+        "area:journey-block-save-queue",
+        "area:journey-block-save-worker",
+        "area:journey-block-save-write",
+        "area:journey-block-save-complete"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "journey:sync",
+      "kind": "journey",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "76c4aa2bc02ed9d11653fb7598ab687092e7bbbef15ec2fa426f456c331a2eb6",
+      "contexts": [
+        "startup:context",
+        "area:loop-backfill",
+        "area:journey-sync-run",
+        "area:journey-sync-default-order",
+        "area:journey-sync-online-order",
+        "area:sync",
+        "area:journey-sync-headers",
+        "area:journey-sync-bodies",
+        "area:journey-sync-body-request",
+        "area:journey-sync-fetch-client",
+        "area:journey-sync-peer-select",
+        "area:journey-sync-peer-send",
+        "area:journey-sync-response",
+        "area:journey-sync-body-validate",
+        "area:journey-sync-offline-order",
+        "area:journey-sync-execution-order",
+        "area:journey-sync-execution",
+        "area:execution",
+        "area:journey-block-consensus-check",
+        "area:journey-block-postconditions",
+        "area:journey-sync-checkpoint",
+        "area:storage"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "operation:rpc",
+      "kind": "operation",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "d13deff296485f12223230bc57694618b52dca54c92d3b3291c2e8688217ce33",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:recovery-hook"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "operation:recover",
+      "kind": "operation",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "edfe8009542d8ff79dcc3ac6f0415c702a96660bb5329463307b91ad68c08545",
+      "contexts": [
+        "tx:recover",
+        "tx:recovery-hook"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "operation:submit",
+      "kind": "operation",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "52d374d3e4cb56652c9d34f24fb63af9af55762d0705a67128d177d9bd96a1c1",
+      "contexts": [
+        "tx:submit",
+        "tx:queue",
+        "area:send-receive",
+        "tx:batch"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "operation:queue",
+      "kind": "operation",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "aed61df497b85ea9c9d15634e8b36a7fcd6c1d5f5251692a4b2c2f4bfbad0fef",
+      "contexts": [
+        "tx:queue",
+        "area:send-receive",
+        "tx:batch"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "operation:batch",
+      "kind": "operation",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "f059814f432fc63112b9496f4a1e81163a7747e529a53cf2b8b7f84a5ba7e03a",
+      "contexts": [
+        "area:send-receive",
+        "tx:batch",
+        "tx:pool",
+        "area:send-validation-dispatch",
+        "area:send-validation-task",
+        "area:send-validation-worker",
+        "area:send-validation-entry",
+        "area:send-validation-order",
+        "area:send-stateless",
+        "area:send-stateful",
+        "area:send-nonce",
+        "area:pool-balance",
+        "area:send-pool-limit",
+        "area:send-pool-add"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "operation:pool",
+      "kind": "operation",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "c68a90d98dcfbdbf7fa42eb9c4ce605700bd615cbb463badb5c1877b6ee180f6",
+      "contexts": [
+        "tx:pool",
+        "area:send-validation-dispatch",
+        "area:send-validation-task",
+        "area:send-validation-worker",
+        "area:send-validation-entry",
+        "area:send-validation-order",
+        "area:send-stateless",
+        "area:send-stateful",
+        "area:send-nonce",
+        "area:pool-balance",
+        "area:send-pool-limit",
+        "area:send-pool-add"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "bcb95c929df7fac8ebd7a3ddef2d55b9724c7d614582c04f9cc4bce4b3c08fda",
+      "contexts": [
+        "tx:recover",
+        "tx:recovery-hook",
+        "tx:submit",
+        "tx:queue",
+        "area:send-receive",
+        "tx:batch",
+        "tx:pool",
+        "area:file-tx-get-entry",
+        "area:file-tx-get",
+        "area:file-pool-get"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "c8807e2f67a7e01fcd7d453a77e09234b96db2d471b4bc27c97bafb91f5f7995",
+      "contexts": [
+        "area:component-rpc-namespace",
+        "tx:rpc-contract",
+        "tx:rpc",
+        "tx:recover",
+        "tx:recovery-hook",
+        "area:rpc-balance-entry",
+        "area:rpc-balance-read"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/transaction-pool/src/batcher.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "55e675141e7761995c7c85f8ca15f5bd3ef720a3ce98c0e4914f81c4f264af20",
+      "contexts": [
+        "area:send-receive",
+        "tx:batch",
+        "tx:pool",
+        "area:send-validation-dispatch",
+        "area:send-validation-task",
+        "area:send-validation-worker",
+        "area:send-validation-entry",
+        "area:send-validation-order",
+        "area:send-stateless",
+        "area:send-stateful",
+        "area:send-nonce",
+        "area:pool-balance",
+        "area:send-pool-limit",
+        "area:send-pool-add"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/transaction-pool/src/lib.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "69030878256c8e79d24bcde95848b8be6710814428c1ad0c3769b955fcb26513",
+      "contexts": [
+        "tx:pool",
+        "area:send-validation-dispatch",
+        "area:send-validation-task",
+        "area:send-validation-worker",
+        "area:send-validation-entry",
+        "area:send-validation-order",
+        "area:send-stateless",
+        "area:send-stateful",
+        "area:send-nonce",
+        "area:pool-balance",
+        "area:send-pool-limit",
+        "area:send-pool-add",
+        "area:file-pool-get",
+        "area:file-pool-listeners"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "8248828b9e51743e7ce49d5259ae70063661694265047dd3dc366487af0a572c",
+      "contexts": [
+        "tx:submit",
+        "tx:queue",
+        "area:send-receive",
+        "tx:batch",
+        "tx:pool"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/rpc/rpc/src/eth/core.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "0ac6a7a1d9589d12897349a26887fd88679eda67a72c4d54f4ad30064672e7e3",
+      "contexts": [
+        "area:file-rpc-inner",
+        "area:file-rpc-inner-build",
+        "area:file-batch-create",
+        "tx:queue",
+        "area:send-receive",
+        "tx:batch"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:bin/reth/src/main.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "c54aea01b8f24c79b19948bce0d5f1980229466e4ff9a3d4a8aaa29fc4bfc95b",
+      "contexts": [
+        "startup:entry",
+        "area:startup-cli-entry",
+        "area:startup-cli-configure",
+        "area:startup-cli-prepare",
+        "startup:dispatch",
+        "startup:supervisor",
+        "startup:database",
+        "area:startup-launcher-entry",
+        "area:startup-node-selection",
+        "area:startup-node-components",
+        "area:startup-builder-launch",
+        "area:startup-builder-dispatch",
+        "area:startup-debug-adapter",
+        "area:startup-debug-inner",
+        "area:startup-engine-dispatch",
+        "startup:context",
+        "area:node-handle",
+        "area:startup-debug-return",
+        "area:startup-node-wait",
+        "area:node-exit"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/ethereum/cli/src/app.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "469d15752a246b5449a2addf6f10867c8b1ed9f6f8d09c80ea59ef0a9999846c",
+      "contexts": [
+        "area:startup-cli-entry",
+        "area:startup-cli-configure",
+        "area:startup-cli-prepare",
+        "startup:dispatch",
+        "area:startup-launcher-entry",
+        "startup:supervisor"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/cli/runner/src/lib.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "a57e6c201cf04e0a7358f1e44f186d1c7247558d9b09a9cd53b7cb30fedd6e06",
+      "contexts": [
+        "startup:supervisor",
+        "area:loop-cli"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/cli/commands/src/node.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "cea5d57ff52441208799b3ca722c2d9e04fd6c9b73cff264a50bc41f07e0b2b5",
+      "contexts": [
+        "startup:database",
+        "area:startup-launcher-entry",
+        "startup:entry",
+        "area:startup-cli-entry",
+        "area:startup-cli-configure",
+        "area:startup-cli-prepare",
+        "startup:dispatch",
+        "area:startup-node-selection",
+        "area:startup-node-components",
+        "area:startup-builder-launch",
+        "area:startup-builder-dispatch",
+        "area:startup-debug-adapter",
+        "area:startup-debug-inner",
+        "area:startup-engine-dispatch",
+        "startup:context",
+        "area:node-handle",
+        "area:startup-debug-return",
+        "area:startup-node-wait",
+        "area:node-exit"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/node/builder/src/launch/engine.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "76853c50fd160a1c6800bc87d8a740d78028a696ff5c6601e7644dc82dc59df1",
+      "contexts": [
+        "area:startup-engine-dispatch",
+        "startup:context",
+        "startup:components",
+        "startup:services",
+        "area:startup-engine-build",
+        "area:rpc-launch",
+        "startup:orchestrator",
+        "area:node-handle",
+        "area:startup-node-wait"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/node/builder/src/components/builder.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "a69e02df63dbc0faa55442f812d0220b4e77c406bb9ee5d310b9c0367463b827",
+      "contexts": [
+        "startup:components",
+        "area:startup-node-selection",
+        "area:startup-node-components",
+        "area:startup-component-choice",
+        "area:startup-network-builder",
+        "area:startup-network-start",
+        "area:startup-payload-spawn"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/engine/tree/src/tree/mod.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "5d186346ae020d4e8b70f3edcdfc59d3cfbee7ac7514d2f7458854400a19a29e",
+      "contexts": [
+        "area:startup-tree-spawn",
+        "startup:tree",
+        "area:startup-tree-pressure",
+        "area:startup-tree-wait",
+        "area:journey-block-save-start",
+        "area:journey-block-save-target",
+        "area:journey-block-save-complete",
+        "area:startup-backfill-gate",
+        "area:startup-backfill-events",
+        "area:startup-backfill-finished",
+        "area:journey-block-receive",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-dispatch",
+        "area:journey-block-canonical-state"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/net/network/src/manager.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "5dab587674eb5fe5e09c838d692c72062c04d8d06ca3f96dfe6c110560a6cce8",
+      "contexts": [
+        "area:startup-network-builder",
+        "area:startup-network-start",
+        "startup:network",
+        "area:network-budget"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/engine/tree/src/backfill.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "5423e5450519a449c29be37a8de62af74b1faa2452fea6e84ef1888979df9cb1",
+      "contexts": [
+        "startup:backfill",
+        "area:journey-sync-run",
+        "area:journey-sync-default-order",
+        "area:journey-sync-online-order",
+        "area:journey-sync-offline-order",
+        "area:journey-sync-execution-order",
+        "area:sync",
+        "area:sync-unwind",
+        "area:startup-backfill-gate",
+        "area:startup-backfill-events",
+        "area:startup-backfill-finished",
+        "area:journey-block-receive",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-save-target"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/engine/tree/src/launch.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "cb197d5f83722841123081fe3973ba28ae878f25f8144ec88af70ca07b05c9cf",
+      "contexts": [
+        "area:startup-engine-build",
+        "area:startup-tree-spawn",
+        "startup:backfill"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/engine/tree/src/chain.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "eb4a5502da030febff50953aa4b6f86ad3d17cdf92812b86703b9ad8a33cc8f6",
+      "contexts": [
+        "area:startup-orchestrator-poll",
+        "startup:backfill",
+        "area:startup-engine-poll"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/engine/tree/src/engine.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "85c1b628b1bdd46ef69d00c65cb9cffb2a021612a8503fbd32deea71cc431167",
+      "contexts": [
+        "area:startup-engine-poll",
+        "area:startup-engine-channel"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "file-role:crates/node/builder/src/handle.rs",
+      "kind": "file-role",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "a5c3891c489e158126c05febb8a7cb02e4d6e4e353e16f17c63d811f2eae8564",
+      "contexts": [
+        "area:node-handle",
+        "area:startup-node-wait",
+        "area:node-exit"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "component:rpc:interface",
+      "kind": "component",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "fe45a5bae35065724669b71d332bcfa88d63b066981b260f2c29b9e59b550ac2",
+      "contexts": [
+        "area:component-rpc-namespace",
+        "tx:rpc-contract",
+        "tx:rpc",
+        "tx:recover",
+        "tx:recovery-hook",
+        "area:rpc-balance-entry",
+        "area:rpc-balance-read"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "component:rpc:helpers",
+      "kind": "component",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "4c6cae6ee78ee8419e4b2d92fe6ccaef410f54f84261db41666a02c350404bda",
+      "contexts": [
+        "area:component-block-read",
+        "area:rpc-balance-read",
+        "tx:recover",
+        "tx:recovery-hook",
+        "area:file-tx-get-entry",
+        "area:file-tx-get",
+        "area:file-pool-get"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "component:rpc:implementation",
+      "kind": "component",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "b1803e3ff25bca41610b2860561e38b3a539c4a9c5e271ddaf6720db0b14ebdc",
+      "contexts": [
+        "tx:trait-implementation",
+        "tx:submit",
+        "area:file-rpc-inner",
+        "area:file-rpc-inner-build",
+        "area:file-batch-create",
+        "tx:queue",
+        "area:send-receive",
+        "tx:batch",
+        "tx:pool"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "component:rpc:integration",
+      "kind": "component",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "e107fc9355815002c8af571175cb9f648a01e97528d9c28a230e23a55bc2927a",
+      "contexts": [
+        "area:component-rpc-launch",
+        "area:component-rpc-setup",
+        "area:component-rpc-start",
+        "area:journey-block-rpc"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:node:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "0b9a9b080cd02242f1addd592dd276c211712a7df27a3880cda5536e6b6ceff4",
+      "contexts": [
+        "startup:entry"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:node:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "93d161493c005dbb1643df6b27d697c200c09d95c4fc58f8ec84543a82378de4",
+      "contexts": [
+        "area:node-exit"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:rpc:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "68993e7ad8c5fd3aabd2c365c8d5f72ebed7d2a5bba8d5b7543c9325294c5245",
+      "contexts": [
+        "tx:rpc"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:rpc:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "ae85a78a57cb45027433da35bd478d528c78773970fa4403045967567104729c",
+      "contexts": [
+        "tx:recover",
+        "tx:recovery-hook"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:pool:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "1106616beabd4a16b5d53973baef8251f63cd17c91fdc8d11efd62e8c68c0af0",
+      "contexts": [
+        "tx:pool",
+        "area:send-validation-dispatch",
+        "area:send-validation-task",
+        "area:send-validation-worker",
+        "area:send-validation-entry",
+        "area:send-validation-order",
+        "area:send-stateless",
+        "area:send-stateful",
+        "area:send-nonce",
+        "area:pool-balance",
+        "area:send-pool-limit",
+        "area:send-pool-add"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:pool:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "d118b672bb028657a13467610fc7af8d8d3c5db89ba523ca00ac9c93c50f3d24",
+      "contexts": [
+        "area:pool-balance"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:pool:extra",
+      "kind": "area-extra",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "6baa9bdaa10a8cea864d6199b79087be65d92357eedae558406152ce55d16eda",
+      "contexts": [
+        "area:send-stateless"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:network:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "fd280d56151605b2e9221746be3c055c6d4af2fde68ba0135014018c19f0d41a",
+      "contexts": [
+        "startup:network",
+        "area:network-budget"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:network:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "968f02474e54713c8cd8ab6b26ab992b5a785989a1f2353e4553ff34adbfbcdc",
+      "contexts": [
+        "area:network-reputation"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:sync:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "67644571a83c719135d232322682be48f2de7b012d7f2f5ff59ff7bb434d07f1",
+      "contexts": [
+        "area:sync"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:sync:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "a6eace0c576319832051c12a40ce3c55665c7f8630ff48019c96b2be036aaafd",
+      "contexts": [
+        "area:sync-unwind"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:engine:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "16b04cccc052afc8a37b53a98d7aa1c4286e62ec978faca154ab2c5b30534671",
+      "contexts": [
+        "area:startup-tree-spawn",
+        "startup:tree",
+        "area:startup-tree-pressure",
+        "area:startup-tree-wait"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:engine:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "7890a78f18208c4dbc294714a3fc6ec544205c7d1697fc28ee04768c2c7cae08",
+      "contexts": [
+        "area:engine-timestamp"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:execution:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "4313edab97d4ec27bbdb013c32ad2eeef6eb03e8c97b66fdbb5de73b08f8db9d",
+      "contexts": [
+        "area:execution"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:execution:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "99c6d1a74ed6be7a528a47490a54a4b87351df6041c8051122fc7e425658df4e",
+      "contexts": [
+        "area:execution-receipt"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:payload:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "697c95a21ab165efa30a67a6641d6c5a411a9c82191c1f9147e22243e05935bb",
+      "contexts": [
+        "area:payload"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:payload:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "79a4851976834e1096215df127e156ae7a98742af819b21a0d3efde185626342",
+      "contexts": [
+        "area:payload-cancel"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:storage:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "acdaf72ae773f6ffdfe6b7cef3bd041c6f6eb71a1fed4f1e84a5576b2033b12c",
+      "contexts": [
+        "area:storage"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:storage:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "4752a5c72d6922e7626eec3e4ab69428189ad3d4e58a14431db85d37bc795cb7",
+      "contexts": [
+        "area:storage-account"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:extension:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "f10cf3eaff52873cc217f4fa7f585b646fce7192b38f04714b2e543c767b9020",
+      "contexts": [
+        "area:extension"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:extension:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "170543fd22632d004d84f667d462417ac4663f45af5fada26f75c9911eae631b",
+      "contexts": [
+        "area:extension-reorg"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:foundation:main",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "2ac1d1e9e3c44ae39631f0351aee269410fbd7586006be88be83ba806af7fdc5",
+      "contexts": [
+        "area:foundation"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "area:foundation:followup",
+      "kind": "area",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "e0e947c6db6d91b861ebc31159c7bc1f7296eca245027c38d61d8fcfae629fa1",
+      "contexts": [
+        "area:foundation-fee"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:entry",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "2f1190fb066473cd229a568aa1402a4ded70a05eeb963d1e919c7a6b3a342886",
+      "contexts": [
+        "startup:entry",
+        "area:startup-cli-entry",
+        "area:startup-cli-configure",
+        "area:startup-node-wait",
+        "area:node-exit"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:dispatch",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "b590467782b0753dbad9c7644d9b63aeb1e68e3f4ef4506dd84e88e3245ec430",
+      "contexts": [
+        "startup:dispatch",
+        "area:startup-cli-entry",
+        "area:startup-cli-configure",
+        "area:startup-cli-prepare",
+        "startup:supervisor",
+        "area:startup-launcher-entry"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:supervisor",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "4712594c4d56920486ebd9040c89546b93a4344bda8765488750a0dbc41e835d",
+      "contexts": [
+        "startup:supervisor",
+        "area:loop-cli",
+        "startup:entry",
+        "area:startup-tree-spawn",
+        "area:startup-network-start"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:database",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "49617ea5c5c65f0d57ef1df7006e5fe5ac6c61ec6071438e7d640e90f1ecb994",
+      "contexts": [
+        "startup:database",
+        "area:startup-launcher-entry",
+        "startup:entry",
+        "area:startup-builder-launch",
+        "area:startup-builder-dispatch",
+        "area:startup-debug-adapter",
+        "area:startup-debug-inner",
+        "area:startup-engine-dispatch",
+        "startup:context",
+        "area:node-handle",
+        "area:startup-debug-return",
+        "area:startup-node-wait"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:context",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "850c7ba077613a1101eb1ba04e0e3dd27edd698417ffbb2d79c4d4b124db7e2b",
+      "contexts": [
+        "startup:context",
+        "startup:components"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:components",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "dec3c49e89020197c563754b66a1204ee86653c9f54ceea2148139684156f2df",
+      "contexts": [
+        "startup:components",
+        "area:startup-node-selection",
+        "area:startup-node-components",
+        "area:startup-component-choice",
+        "area:startup-network-builder",
+        "area:startup-network-start",
+        "area:startup-payload-spawn"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:services",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "3a83387c0e5fa0fa94e9117bd7a4b9d57a4cd2a7f739216cc385140ea7ada114",
+      "contexts": [
+        "startup:services",
+        "area:startup-engine-build",
+        "area:startup-tree-spawn",
+        "startup:backfill",
+        "area:rpc-launch"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:orchestrator",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "e14dd945519b5d5031e65efb1f4dfb0b28d0d1c2c6b649c5270bd6d8d27cfca4",
+      "contexts": [
+        "startup:orchestrator",
+        "area:startup-orchestrator-poll",
+        "area:startup-engine-poll",
+        "area:startup-engine-channel",
+        "area:node-handle",
+        "area:startup-node-wait",
+        "startup:services",
+        "area:startup-engine-build",
+        "area:startup-tree-spawn"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:tree",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "88a1f1fc30d9613284895b920b541ca0b8d8ac32cfd0ec2a16a289ee07359beb",
+      "contexts": [
+        "startup:tree",
+        "area:startup-tree-spawn",
+        "area:startup-tree-pressure",
+        "area:startup-tree-wait",
+        "area:journey-block-save-start",
+        "area:journey-block-save-complete",
+        "area:startup-backfill-gate",
+        "area:startup-backfill-events",
+        "area:startup-backfill-finished",
+        "area:journey-block-receive",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-save-target",
+        "area:journey-block-dispatch",
+        "area:journey-block-canonical-state"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:network",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "53cc809036909ef6500a7aea0271fb5e93fbf34e02cbf0371fe9fbb490f8d52e",
+      "contexts": [
+        "startup:network",
+        "area:network-budget",
+        "area:startup-network-builder",
+        "area:startup-network-start"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:step:backfill",
+      "kind": "guide-step",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "ed754b738e1910479cdc2f76457adebd2ae1a8479471184b2ded308d0b2d376b",
+      "contexts": [
+        "startup:backfill",
+        "area:journey-sync-run",
+        "area:journey-sync-default-order",
+        "area:journey-sync-online-order",
+        "area:journey-sync-execution-order",
+        "area:journey-sync-offline-order",
+        "area:sync",
+        "area:sync-unwind",
+        "area:startup-backfill-gate",
+        "area:startup-backfill-events",
+        "area:startup-backfill-finished",
+        "area:journey-block-receive",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-save-target"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:loop:1",
+      "kind": "guide-loop",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "b33e14dff55bfc52def7793fb09326b567e4a420be63a7d994e8ac8522fd5bdb",
+      "contexts": [
+        "area:loop-cli",
+        "startup:supervisor"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:loop:2",
+      "kind": "guide-loop",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "5bcf598887884891a05d5a5a7f384a8604fddbcd4e0123d2d9a1c2e0f8457c07",
+      "contexts": [
+        "area:loop-engine",
+        "area:startup-orchestrator-poll",
+        "area:startup-engine-poll",
+        "area:startup-engine-channel",
+        "startup:services",
+        "area:startup-engine-build",
+        "area:startup-tree-spawn"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:loop:3",
+      "kind": "guide-loop",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "ca91f99cb39fd937c135567653fbd5b660d92acefae45d428d8b38db4fb2b1b3",
+      "contexts": [
+        "startup:tree",
+        "area:startup-tree-spawn",
+        "area:startup-tree-pressure",
+        "area:startup-tree-wait",
+        "area:journey-block-save-start",
+        "area:journey-block-save-complete",
+        "area:startup-backfill-gate",
+        "area:startup-backfill-events",
+        "area:startup-backfill-finished",
+        "area:journey-block-receive",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-save-target",
+        "area:journey-block-dispatch",
+        "area:journey-block-canonical-state"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:loop:4",
+      "kind": "guide-loop",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "b7c001dadf1c23c1f1feac6e9f15f38c2da92d92e1d763fbe40c71312d49d8ea",
+      "contexts": [
+        "startup:network",
+        "area:network-budget",
+        "area:startup-network-builder",
+        "area:startup-network-start"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:loop:5",
+      "kind": "guide-loop",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "c25c52c36fcdee9b934a4c4b758292494ef339efccbf90da4af9df9328a18620",
+      "contexts": [
+        "startup:backfill",
+        "area:journey-sync-run",
+        "area:journey-sync-default-order",
+        "area:journey-sync-online-order",
+        "area:journey-sync-execution-order",
+        "area:journey-sync-offline-order",
+        "area:sync",
+        "area:sync-unwind",
+        "area:startup-backfill-gate",
+        "area:startup-backfill-events",
+        "area:startup-backfill-finished",
+        "area:journey-block-receive",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-save-target"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticStartup:1",
+      "kind": "guide-startup",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "9f1fd5baa9ae15d036ba7eb8ac93ef79e7e34104008ad4d30531b5433e2e0224",
+      "contexts": [
+        "startup:entry",
+        "area:startup-cli-entry",
+        "area:startup-cli-configure",
+        "area:startup-cli-prepare",
+        "startup:dispatch"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticStartup:2",
+      "kind": "guide-startup",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "581a59e054b76dc60ed4a22cb8118a49950776e86b2667ab7a307b4800ecb44b",
+      "contexts": [
+        "startup:database",
+        "area:startup-launcher-entry",
+        "startup:entry",
+        "area:startup-builder-launch",
+        "area:startup-builder-dispatch",
+        "area:startup-debug-adapter",
+        "area:startup-debug-inner",
+        "area:startup-engine-dispatch",
+        "startup:context",
+        "area:node-handle",
+        "area:startup-debug-return",
+        "area:startup-node-wait"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticStartup:3",
+      "kind": "guide-startup",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "898d038f6f844bef5ba986872d3264f45b86378e9dd49bf3390bb32a8138e032",
+      "contexts": [
+        "startup:context",
+        "startup:components"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticStartup:4",
+      "kind": "guide-startup",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "939c02def38f31fffe12d96c92549b4d27a4edda2b3dc2726d70c83a126b0683",
+      "contexts": [
+        "startup:components",
+        "area:startup-node-selection",
+        "area:startup-node-components",
+        "area:startup-component-choice",
+        "area:startup-network-builder",
+        "area:startup-network-start",
+        "area:startup-payload-spawn"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticStartup:5",
+      "kind": "guide-startup",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "77d8dcc64ae45130bb2d7884c11d009a5199e0cdf6523c40863e2150d6a4dd6f",
+      "contexts": [
+        "startup:services",
+        "area:startup-engine-build",
+        "area:startup-tree-spawn",
+        "startup:backfill",
+        "area:rpc-launch"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticStartup:6",
+      "kind": "guide-startup",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "70bd60bf4a9eca96f6fd10403eeb7feaed06858dca3023d77e8388fe4f57ca12",
+      "contexts": [
+        "area:rpc-launch",
+        "startup:orchestrator",
+        "area:node-handle"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticStartup:7",
+      "kind": "guide-startup",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "20e81b35bdfb461c59c90df12c914d41d78dae2a100ab5293127e2ee9cd1788c",
+      "contexts": [
+        "area:startup-node-wait",
+        "area:node-exit",
+        "startup:supervisor",
+        "area:loop-cli"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticRuntime:1",
+      "kind": "guide-runtime",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "f154fc15c36b06a890bec708f056d463ac64712c35df41d0806db2e46d977e71",
+      "contexts": [
+        "area:loop-engine",
+        "area:startup-orchestrator-poll",
+        "area:startup-engine-poll",
+        "area:startup-engine-channel",
+        "startup:services",
+        "area:startup-engine-build",
+        "area:startup-tree-spawn"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticRuntime:2",
+      "kind": "guide-runtime",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "9cefe48ccd9b119d08bdbe7a40e20560c2af2b606115183cf868dde38f2aaa51",
+      "contexts": [
+        "startup:tree",
+        "area:startup-tree-spawn",
+        "area:startup-tree-pressure",
+        "area:startup-tree-wait",
+        "area:journey-block-save-start",
+        "area:journey-block-save-complete",
+        "area:startup-backfill-gate",
+        "area:startup-backfill-events",
+        "area:startup-backfill-finished",
+        "area:journey-block-receive",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-save-target",
+        "area:journey-block-dispatch",
+        "area:journey-block-canonical-state"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticRuntime:3",
+      "kind": "guide-runtime",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "c40235392a86828eed5d59f4dad2802d9d7835bfcaea1a2c6920f98691c3c952",
+      "contexts": [
+        "startup:network",
+        "area:network-budget",
+        "area:startup-network-builder",
+        "area:startup-network-start"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "guide:staticRuntime:4",
+      "kind": "guide-runtime",
+      "routePayloadSameAsCandidate6": true,
+      "claimHash": "0bb2266e5eb84e7040077cf962193566b2d3a2ca07482d05e2ff1d81dd16a36b",
+      "contexts": [
+        "startup:backfill",
+        "area:journey-sync-run",
+        "area:journey-sync-default-order",
+        "area:journey-sync-online-order",
+        "area:journey-sync-execution-order",
+        "area:journey-sync-offline-order",
+        "area:sync",
+        "area:sync-unwind",
+        "area:startup-backfill-gate",
+        "area:startup-backfill-events",
+        "area:startup-backfill-finished",
+        "area:journey-block-receive",
+        "area:journey-block-forkchoice-precheck",
+        "area:journey-block-save-target"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "legacy-detail:rpc-contract",
+      "kind": "legacy-detail",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "cb95f30223cabdf9c923cb920f3c0007cae533da411271b5ef89d66fd7fcf6fc",
+      "contexts": [
+        "tx:rpc-contract"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "legacy-detail:recovery-hook",
+      "kind": "legacy-detail",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "af56b67b5c41f3665a04ec99b78f7c84e3cf7400816461fd91cb49ed6b92e64c",
+      "contexts": [
+        "tx:recovery-hook"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "legacy-detail:forward",
+      "kind": "legacy-detail",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "c3c222ed5b50e12b17c07cb0dbe172f70849ca95eae40f71dd1444abc9b93e12",
+      "contexts": [
+        "tx:forward"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "legacy-detail:batch-runner",
+      "kind": "legacy-detail",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "b31232cb74f70490d256877a66b3de55060365bd9408e0806d075223e7468f1b",
+      "contexts": [
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": true,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "legacy-detail:pool-test",
+      "kind": "legacy-detail",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "b26ac2fb94ea1bc0047521676e2b2d80a788c8ba0e2812f1faab6f41c57ddd47",
+      "contexts": [
+        "tx:pool-test"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:borrow",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "d62c13d41ad72e02006e8fdc90a0b2e7a56084786638d4ad90f0f51c99d69387",
+      "contexts": [
+        "tx:recover",
+        "tx:submit"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:borrow:recover",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "d48bfd4a7febdb004b307804014e1bed44fe48b08d835007400ab8f59908dfe2",
+      "contexts": [
+        "tx:recover",
+        "tx:submit"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:borrow:submit",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "7539fb6b709cc1d1ac664d087876d3a7b5ab03e0e7c2aae745700352c5fe6f00",
+      "contexts": [
+        "tx:submit",
+        "tx:recover"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:future",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "f68376512ddb04dd64ffcdfa9f459f45ce9ad4223fe4d975a6684132a8dc9be0",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": true,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:future:rpc",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "fa59a3f05ec822b6df5bd3591b7b5e5cd506c75084f03285da9b098fbe677ade",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": true,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:future:recover",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "7d6ba3d5c75648d125e77f1cba868f0cdcd43fab748b49975060facfb6ac55fb",
+      "contexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": true,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:future:queue",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "141e36759cc0ec77ac3001deb1771a5aca4ecd0a3c0e55db82ae02951a74e159",
+      "contexts": [
+        "tx:queue",
+        "tx:rpc",
+        "tx:recover",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": true,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:future:batch",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "3e25b40e4fc1840fca26526043628d4e19a3659d9f44dba02ff098d090109d58",
+      "contexts": [
+        "tx:batch",
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": true,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:result",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "43fb9c53a0d4c09928fd4dcc63f0d3fad84625f77125d82c713d2eae87d07b6a",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:result:rpc",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "e9a97e57ab0ea94fe4fd0ac872bb860ef83480843783981ff5b1937187bd4e0b",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:result:recover",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "433414eea95826775dfc1defc413bedfa9935b8e72bd6aed97837d87aa4fb435",
+      "contexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:queue",
+        "tx:pool"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:result:queue",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "83b9133f8c43104d6eed76894050c543916b00892470212509ae8fd3647243c1",
+      "contexts": [
+        "tx:queue",
+        "tx:rpc",
+        "tx:recover",
+        "tx:pool"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:result:pool",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "bfbcbab62ceb41bcc565ad673dd7cbd22e0d8d5f96ec9fab94d2fa416905fba9",
+      "contexts": [
+        "tx:pool",
+        "tx:rpc",
+        "tx:recover",
+        "tx:queue"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:trait",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "210d3f057273ce3d6adc0d58b264d5560a679d8aefd6f4fbaba24f6f9530835a",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:trait:rpc",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "5ed6e17ae46a2bca03e85732ff2b6d30a62e8e6e03f12ae1232d04ae62dc5b77",
+      "contexts": [
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:trait:recover",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "b9ebe866116ce2a480c3356bcfd9e67a2a44746fe0144d95fd2319f84fef58ee",
+      "contexts": [
+        "tx:recover",
+        "tx:rpc",
+        "tx:submit",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:trait:submit",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "dd12f6bbeb003a5c95bd60d0b8d46390f99e6f084ddffbe9a898d408d1abd4b9",
+      "contexts": [
+        "tx:submit",
+        "tx:rpc",
+        "tx:recover",
+        "tx:pool",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:trait:pool",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "119510cfebf5e693659379fa917abe59c76d31e22c286f59de467e8260d45581",
+      "contexts": [
+        "tx:pool",
+        "tx:rpc",
+        "tx:recover",
+        "tx:submit",
+        "tx:trait-contract",
+        "tx:trait-implementation"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:channel",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "1a67491b98ba4d479178cc5bc8d69ac48f721c4e01133234bfaf631c15351fc8",
+      "contexts": [
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:channel:queue",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "f5eea3e603ed7970ef45f22f5071bf56c625337eeb265cdd8d8dd5cbbb8a6b26",
+      "contexts": [
+        "tx:queue",
+        "tx:batch",
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    },
+    {
+      "route": "rust:channel:batch",
+      "kind": "rust-topic",
+      "routePayloadSameAsCandidate6": false,
+      "claimHash": "1f57fd327d3f8e7be078d0dd06bca7ce2c9a09f633f782efb4decb3aa92388bd",
+      "contexts": [
+        "tx:batch",
+        "tx:queue",
+        "tx:batch-runner"
+      ],
+      "reviewBinding": "source-review.json revision3 and exact source claims; legacy/Rust new payload consumer fit explicitly reviewed; formal UI still separate",
+      "candidate6KnownFailure": false,
+      "candidate6FailureCarryForbidden": true,
+      "semanticPassInferred": false
+    }
+  ],
+  "sourceChanges": [
+    "area:send-receive",
+    "tx:batch-runner",
+    "area:journey-sync-fetch-client"
+  ],
+  "claimChanges": [
+    "area:send-receive",
+    "tx:batch-runner",
+    "area:journey-sync-fetch-client",
+    "tx:trait-contract",
+    "tx:trait-implementation"
+  ],
+  "limitations": [
+    "Exact source+claim identity makes prior independent review eligible, not automatic G1 pass. Final108 gate map must name actual independent evidence.",
+    "C6 batch-runner Future Output and earlyPending failures stay failed; revised C7 pinned ranges/claims use revision3 review.",
+    "No fresh independent semantic reread of all148. No UI or human understanding carry."
+  ]
+}

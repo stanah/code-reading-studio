@@ -1,0 +1,1403 @@
+{
+  "candidate": 7,
+  "status": "needs-review",
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "ownerUnits": 30,
+  "ownerIDs": [
+    "component:node",
+    "component:rpc",
+    "component:pool",
+    "component:network",
+    "component:sync",
+    "component:engine",
+    "component:execution",
+    "component:payload",
+    "component:storage",
+    "component:extension",
+    "component:foundation",
+    "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+    "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+    "file-role:crates/transaction-pool/src/batcher.rs",
+    "file-role:crates/transaction-pool/src/lib.rs",
+    "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+    "file-role:crates/rpc/rpc/src/eth/core.rs",
+    "file-role:bin/reth/src/main.rs",
+    "file-role:crates/ethereum/cli/src/app.rs",
+    "file-role:crates/cli/runner/src/lib.rs",
+    "file-role:crates/cli/commands/src/node.rs",
+    "file-role:crates/node/builder/src/launch/engine.rs",
+    "file-role:crates/node/builder/src/components/builder.rs",
+    "file-role:crates/engine/tree/src/tree/mod.rs",
+    "file-role:crates/net/network/src/manager.rs",
+    "file-role:crates/engine/tree/src/backfill.rs",
+    "file-role:crates/engine/tree/src/launch.rs",
+    "file-role:crates/engine/tree/src/chain.rs",
+    "file-role:crates/engine/tree/src/engine.rs",
+    "file-role:crates/node/builder/src/handle.rs"
+  ],
+  "rounds": [
+    1,
+    2
+  ],
+  "corePerRound": {
+    "1": {
+      "ownerUnits": 30,
+      "staticCatalogueDestinations": 171,
+      "localCatalogueDestinations": 146,
+      "roleSurfaces": 38,
+      "rpcComponentSurfaces": 4,
+      "sourceWidgets": 351,
+      "uniqueSourceContexts": 93,
+      "adjacentHints": 1916,
+      "controlsCases": 42,
+      "controlsStates": 168,
+      "nonemptyDraftCases": 2,
+      "draftCheckboxStates": 16,
+      "draftProfileStates": 24
+    },
+    "2": {
+      "ownerUnits": 30,
+      "staticCatalogueDestinations": 171,
+      "localCatalogueDestinations": 146,
+      "roleSurfaces": 38,
+      "rpcComponentSurfaces": 4,
+      "sourceWidgets": 351,
+      "uniqueSourceContexts": 93,
+      "adjacentHints": 1916,
+      "controlsCases": 42,
+      "controlsStates": 168,
+      "nonemptyDraftCases": 2,
+      "draftCheckboxStates": 16,
+      "draftProfileStates": 24
+    }
+  },
+  "atlasPerRound": {
+    "1": {
+      "atlasRoutes": 23,
+      "atlasFiles": 61,
+      "atlasContextSubcases": 148,
+      "filesByA": 30,
+      "filesByRootAssist": 31
+    },
+    "2": {
+      "atlasRoutes": 23,
+      "atlasFiles": 61,
+      "atlasContextSubcases": 148,
+      "filesByA": 30,
+      "filesByRootAssist": 31
+    }
+  },
+  "atlasSourcePanelObservations": 676,
+  "atlasUniqueContexts": 148,
+  "atlasAdjacentHintObservations": 3594,
+  "atlasRepresentativeFourStateObservations": 672,
+  "atlasRawRecords": 342,
+  "observers": {
+    "A": "Core role/RPC both rounds, catalogueR1, Atlas23routes both rounds +file0..29/88contexts both rounds, isolated draft/profile both rounds",
+    "root-assist-A": "Atlasfile30..60/60contexts both rounds",
+    "root-assist-catalogue-A": "CatalogueR2 171static+146local destinations"
+  },
+  "measurementAttempts": {
+    "initialErrorCount": 1,
+    "preserved": [
+      {
+        "unit": "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "surface": "static",
+        "round": 2,
+        "url": "http://127.0.0.1:4398/zoom.html?area=rpc&c=implementation&f=crates%2Frpc%2Frpc%2Fsrc%2Feth%2Fhelpers%2Ftransaction.rs",
+        "error": "Error: Error: Detached while handling command.\nlocator.fill failed for selector #fn-filter\nLocator diagnostics: {\"kind\":\"action_failed\",\"action\":\"fill\",\"locator\":\"#fn-filter\",\"matchCount\":1,\"matches\":[{\"ariaLabel\":\"関数候補を検索\",\"disabled\":false,\"role\":null,\"tag\":\"input\",\"text\":\"\",\"type\":null,\"visible\":true}],\"visibleCount\":1,\"truncated\":false}"
+      }
+    ],
+    "resolution": "The single detached #fn-filter.fill R2 static concretehelper attempt retained, then same route fully reobserved with source5/controls4/selected-function complete. No product mutation or old-version success substitution.",
+    "extraAttemptWidgets": 5
+  },
+  "unresolvedRestoration": [
+    "main/R1",
+    "NodeCommand/R1",
+    "main/R2"
+  ],
+  "restorationDiagnostic": "a-atlas-restoration-diagnosis.json",
+  "extraAtlasRetry": "a-atlas-restore-retry-checks.json",
+  "notMeasured": [
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/core.rs",
+      "context": "tx:rpc-contract",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/core.rs",
+      "context": "area:rpc-balance-entry",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/core.rs",
+      "context": "tx:rpc",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "context": "tx:recover",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "context": "area:file-tx-get-entry",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "context": "area:rpc-recovery",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "context": "area:file-tx-get",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "context": "tx:submit",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "context": "tx:forward",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "context": "tx:pool-test",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/core.rs",
+      "context": "area:file-rpc-inner-build",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/core.rs",
+      "context": "tx:queue",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/batcher.rs",
+      "context": "tx:batch",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/batcher.rs",
+      "context": "tx:batch-runner",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/batcher.rs",
+      "context": "area:send-receive",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/lib.rs",
+      "context": "tx:pool",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/lib.rs",
+      "context": "area:file-pool-listeners",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/lib.rs",
+      "context": "area:file-pool-get",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/cli/src/app.rs",
+      "context": "startup:dispatch",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/cli/runner/src/lib.rs",
+      "context": "area:loop-cli",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "startup:services",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "area:rpc-launch",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "startup:orchestrator",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "area:loop-engine",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "area:node-handle",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "area:startup-engine-dispatch",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-tree-pressure",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "startup:tree",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-tree-wait",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-receive",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-insert",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-forkchoice",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-forkchoice-precheck",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-canonical",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-save-start",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-save-complete",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-backfill-events",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-dispatch",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-backfill-finished",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-backfill-gate",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-save-target",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-canonical-state",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-validate-call",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-insert-state",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-forkchoice-consistency",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-forkchoice-markers",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/backfill.rs",
+      "context": "area:loop-backfill",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/api/src/pipeline/mod.rs",
+      "context": "area:sync",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/api/src/pipeline/mod.rs",
+      "context": "area:sync-unwind",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/api/src/pipeline/mod.rs",
+      "context": "area:journey-sync-checkpoint",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/payload/src/lib.rs",
+      "context": "area:payload-cancel",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/chainspec/src/spec.rs",
+      "context": "area:foundation-fee",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:send-stateless",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:pool-validation",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:send-stateful",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:send-nonce",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:pool-balance",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:send-validation-entry",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/task.rs",
+      "context": "area:send-validation-task",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/pool/mod.rs",
+      "context": "area:send-pool-limit",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/primitives/src/message.rs",
+      "context": "area:journey-block-forkchoice-message",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/engine.rs",
+      "context": "area:journey-block-route",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/engine.rs",
+      "context": "area:journey-block-tree-send",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/engine.rs",
+      "context": "area:startup-engine-channel",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-execute-choice",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-after-execute",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-root",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-executor",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-execute",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-postcheck",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-validator-entry",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/persistence.rs",
+      "context": "area:journey-block-save-write",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/persistence.rs",
+      "context": "area:journey-block-save-queue",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/stages/src/sets.rs",
+      "context": "area:journey-sync-online-order",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/stages/src/sets.rs",
+      "context": "area:journey-sync-offline-order",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/stages/src/sets.rs",
+      "context": "area:journey-sync-execution-order",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/net/downloaders/src/bodies/request.rs",
+      "context": "area:journey-sync-body-validate",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/net/network/src/state.rs",
+      "context": "area:journey-sync-response",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/rpc.rs",
+      "context": "area:component-rpc-setup",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/rpc.rs",
+      "context": "area:component-rpc-start",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/node/src/node.rs",
+      "context": "area:startup-node-components",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/node/src/node.rs",
+      "context": "area:startup-network-builder",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/builder/mod.rs",
+      "context": "area:startup-builder-launch",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/builder/mod.rs",
+      "context": "area:startup-network-start",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/cli/src/interface.rs",
+      "context": "area:startup-cli-entry",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/debug.rs",
+      "context": "area:startup-debug-return",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/debug.rs",
+      "context": "area:startup-debug-adapter",
+      "round": 1,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/core.rs",
+      "context": "tx:rpc-contract",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/core.rs",
+      "context": "area:rpc-balance-entry",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/core.rs",
+      "context": "tx:rpc",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "context": "tx:recover",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "context": "area:file-tx-get-entry",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "context": "area:rpc-recovery",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "context": "area:file-tx-get",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "context": "tx:submit",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "context": "tx:forward",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "context": "tx:pool-test",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/core.rs",
+      "context": "area:file-rpc-inner-build",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/rpc/rpc/src/eth/core.rs",
+      "context": "tx:queue",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/batcher.rs",
+      "context": "tx:batch",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/batcher.rs",
+      "context": "tx:batch-runner",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/batcher.rs",
+      "context": "area:send-receive",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/lib.rs",
+      "context": "tx:pool",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/lib.rs",
+      "context": "area:file-pool-listeners",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/lib.rs",
+      "context": "area:file-pool-get",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/cli/src/app.rs",
+      "context": "startup:dispatch",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/cli/runner/src/lib.rs",
+      "context": "area:loop-cli",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "startup:services",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "area:rpc-launch",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "startup:orchestrator",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "area:loop-engine",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "area:node-handle",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/engine.rs",
+      "context": "area:startup-engine-dispatch",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-tree-pressure",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "startup:tree",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-tree-wait",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-receive",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-insert",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-forkchoice",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-forkchoice-precheck",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-canonical",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-save-start",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-save-complete",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-backfill-events",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-dispatch",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-backfill-finished",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:startup-backfill-gate",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-save-target",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-canonical-state",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-validate-call",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-insert-state",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-forkchoice-consistency",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/mod.rs",
+      "context": "area:journey-block-forkchoice-markers",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/backfill.rs",
+      "context": "area:loop-backfill",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/api/src/pipeline/mod.rs",
+      "context": "area:sync",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/api/src/pipeline/mod.rs",
+      "context": "area:sync-unwind",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/api/src/pipeline/mod.rs",
+      "context": "area:journey-sync-checkpoint",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/payload/src/lib.rs",
+      "context": "area:payload-cancel",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/chainspec/src/spec.rs",
+      "context": "area:foundation-fee",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:send-stateless",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:pool-validation",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:send-stateful",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:send-nonce",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:pool-balance",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/eth.rs",
+      "context": "area:send-validation-entry",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/validate/task.rs",
+      "context": "area:send-validation-task",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/transaction-pool/src/pool/mod.rs",
+      "context": "area:send-pool-limit",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/primitives/src/message.rs",
+      "context": "area:journey-block-forkchoice-message",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/engine.rs",
+      "context": "area:journey-block-route",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/engine.rs",
+      "context": "area:journey-block-tree-send",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/engine.rs",
+      "context": "area:startup-engine-channel",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-execute-choice",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-after-execute",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-root",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-executor",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-execute",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-postcheck",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/tree/payload_validator.rs",
+      "context": "area:journey-block-validator-entry",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/persistence.rs",
+      "context": "area:journey-block-save-write",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/engine/tree/src/persistence.rs",
+      "context": "area:journey-block-save-queue",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/stages/src/sets.rs",
+      "context": "area:journey-sync-online-order",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/stages/src/sets.rs",
+      "context": "area:journey-sync-offline-order",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/stages/stages/src/sets.rs",
+      "context": "area:journey-sync-execution-order",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/net/downloaders/src/bodies/request.rs",
+      "context": "area:journey-sync-body-validate",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/net/network/src/state.rs",
+      "context": "area:journey-sync-response",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/rpc.rs",
+      "context": "area:component-rpc-setup",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/rpc.rs",
+      "context": "area:component-rpc-start",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/node/src/node.rs",
+      "context": "area:startup-node-components",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/node/src/node.rs",
+      "context": "area:startup-network-builder",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/builder/mod.rs",
+      "context": "area:startup-builder-launch",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/builder/mod.rs",
+      "context": "area:startup-network-start",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/ethereum/cli/src/interface.rs",
+      "context": "area:startup-cli-entry",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/debug.rs",
+      "context": "area:startup-debug-return",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    },
+    {
+      "case": "atlas-file:crates/node/builder/src/launch/debug.rs",
+      "context": "area:startup-debug-adapter",
+      "round": 2,
+      "gate": "all4G4combinations",
+      "reason": "Representative first context measured for this file/renderer; other context source+comments+controls presence measured."
+    }
+  ],
+  "Gates": {
+    "G1": "Exact claim/source semantic carry from bounded C7 source-review.json plus fresh stage/role/purpose/connection text checks. This does not freshly reread all148 semantics or infer correctness from hashes.",
+    "G2": "All role/RPC DOM widgets and all148 Atlas selectable source contexts checked against pinned git bytes/hash/line numbers; adjacent authored hints checked.",
+    "G3": "FixedG3 call/request/reply/related distinction: bounded reviewed semantic connection metadata preserved and freshly compared in actual stages; catalogue membership does not assert call edges. Navigation observed separately supportsG6/G5 preparation.",
+    "G4": "Core42surfaces×4states per round; Atlas23route+61file representative×4states per round; other87file-context modes per round presence/source/hints only, explicitly not-measured for all4states. Supplemental actual nonempty local#note/static#new-question 8manual-open/closed states +12profile states each case/round; no save/delete/queue.",
+    "G5": "Fixed literal nondup/preparation: no simultaneous visible(path,line) duplicates across427raw; source-first definitions/currentclaims exact semantic carry; no forced profile/tool setup before role source. See a-fixed-G5-literal-review.json. Broader display-load and novice/human understanding remain separate/not accepted; C8newthreshold not retroactively applied.",
+    "G6": "Assigned producer inventory: all30owner surfaces plus23Atlasroutes/61files148subcases bothrounds observed with sourcebyte/claim/control evidence;3formal restoration unresolved. Whole108/all114union is parent aggregate. Generic nonrepresentative4mode not-measured retained. File breadth/understanding is separate."
+  },
+  "catalogueApplicability": "167static structural catalogue cards and146local Cargo cards assert membership, responsibility location and destinations, not per-function execution; G1/G2 process-proof and per-card G4 assistance are not fabricated. Their real files/manifest/links checked; RPC4 authored processing cards/source panels checked separately. Total static cards171 includes thoseRPC4.",
+  "restoration": {
+    "dedicatedTabsClosed": 5,
+    "127Profiles": "new/first observed after all operations",
+    "localhostProfiles": "new/first restored after each6-profile scenario",
+    "drafts": "All4 supplemental editors restored; Atlas formal3 route restorations unconfirmed after CUA timeout. Retry marker cleared after closing long preview. See a-atlas-restoration-diagnosis.json. Static autosave #note never typed. No note/save/delete/readmarks action."
+  },
+  "verificationErrors": [
+    {
+      "test": "case-status-draft",
+      "case": "atlas-route:file-role:bin/reth/src/main.rs",
+      "round": 1
+    },
+    {
+      "test": "case-status-draft",
+      "case": "atlas-route:file-role:crates/cli/commands/src/node.rs",
+      "round": 1
+    },
+    {
+      "test": "case-status-draft",
+      "case": "atlas-route:file-role:bin/reth/src/main.rs",
+      "round": 2
+    }
+  ],
+  "evidenceSHA256": {
+    "freeze.json": "540154c05c5f0b2db34b940c1d15685154a373d11ffebe8d85aa3f97b6f5524f",
+    "a-data-reviewer-inputs.json": "fdf064d2bec332cf67f4daba1045a85eab3d6d67459e1aedf7136f7dafa467a4",
+    "a-data-reviewer-ui.json": "c3b016ef4933436a3ec926decb04b79fbc591ae6d193bb881e3f481c7ed7fba7",
+    "a-data-reviewer-r1-verification.json": "03748c22f721a5003fc8f2fb353d0b72d57d2a8caed3b25935fd4a06d9c390f0",
+    "a-data-reviewer-r2-verification.json": "ef5874c29e204a5fbb9b89d4c70b2c1c97b9f8845fac20773b2acb4bb0e5696c",
+    "a-atlas-raw.json": "f372e5697c43c39323cbc325ab567e0188a56231d3295ae89b157bf9baaf978b",
+    "a-atlas-checks.json": "aca7c6a3699fcad5988455563a42b82fc19262cd32ac344298c1be7134c5b4fe",
+    "root-assist-atlas-ui.json": "79e867862a6be86f075bacefb27b4eb3044e4fc28b592854c92c41f3d27f1112",
+    "root-assist-atlas-checks.json": "8676d09cd3912826751f39b0b4f43c89794d03940446d23ac431c5be5e02ed03",
+    "root-assist-atlas-summary.json": "9a0dadb28c82078af70508233fc6235e6ff7fa2f65b78a73c35b40456c81875c",
+    "root-assist-catalogue-ui.json": "5d1aff50065eea6502703650bf8af0d3b78ceb5b3993c913ef7531c159d0f51f",
+    "root-assist-catalogue-summary.json": "ff29a01fc0f6ffa109a1c6f06e27bee3bde2cec19260e640576ecf82b913f36a",
+    "a-atlas-file-handover.json": "5ec38d8755c97f0d4e26ff414437ba17e166b0d10589eb812b4a61e23b379a02",
+    "source-review.json": "6d385b16ab76c6274133c02bd5950b8c80f8f08ae104af34c8416fc30a4ea951",
+    "a-atlas-goal-consumer-review.json": "1b70516d338c39cbf7d4ed40372400a63a49d3c962981b8ab016e63111d73496",
+    "a-atlas-restoration-diagnosis.json": "8a7cbdb3acb25b7c0ee225741cb2188795109d8ef396b37ee0403bee3ce4e46c",
+    "a-atlas-restore-retry-checks.json": "7027e1570e736fd23897322d383b615a0efd4106911270e9709f796b55e38994"
+  },
+  "limits": [
+    "Two rounds repeat the same implementation-aware agent protocol, not two independent novice trials.",
+    "PhaseVisibilityObservations proves each source was opened during its visit; end-of-page closed groups are not counted as product failures. Every row was not simultaneously within viewport.",
+    "Selected representative row/code viewport observed for each Atlas selection; this is not a pixel-level reading/comprehension result for every source row.",
+    "Known whole-candidate novice and route-discovery findings remain separate, not overwritten by this technical result.",
+    "G4 all4states on non-representative87file-context selections per round remains not-measured.",
+    "Source breadth/comprehension of all1283Rust files and human comprehension not achieved."
+  ],
+  "measuredAt": "2026-10-25T19:06:30.215485+00:00"
+}

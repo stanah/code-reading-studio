@@ -1,0 +1,7 @@
+{
+  "candidate": 7,
+  "method": "actual sourceVisible with all ancestor details checked at saved capture; pair(path,line) no simultaneous duplicate across visible hosts",
+  "issues": [],
+  "issueCount": 0,
+  "limits": "Final capture plus recorded phase visits and source/raw manual separation; not every transient state in between interactions."
+}

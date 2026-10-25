@@ -1,0 +1,19 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "observer": "root-assist-catalogue-A",
+  "assignment": "R2-only catalogue membership/reach, A owns allR1 plus separate roles/controls. Case/criteria/source unchanged.",
+  "catalogues": 22,
+  "staticDestinations": 171,
+  "localDestinations": 146,
+  "round": 2,
+  "allDestinationContextsReached": true,
+  "membershipComparedTo": "Frozen dist/drill-data.js components, frozen index146crate groups perarea",
+  "issues": [],
+  "technicalResult": "PASS",
+  "navigationMethod": "Read real visible catalogue link hrefs, then navigate dedicated CUA tabs to each href and inspect rendered destination. This is exhaustive destination/membership observation; it is not a claim of317individual card clicks.",
+  "G1G4": "Catalogue metadata is not process explanation. Source/control evidence and catalogue applicability remain separate owning-unit decisions.",
+  "humanParticipants": 0,
+  "productComplete": false
+}

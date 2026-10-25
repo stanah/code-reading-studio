@@ -1,0 +1,108 @@
+{
+  "candidate": 7,
+  "kind": "Supplemental conditional-input browser fixtures, declared before observations; not ordinary4398config",
+  "definedAt": "2026-10-25T18:50:34.984383+00:00",
+  "productionFreeze": {
+    "candidate": 7,
+    "status": "FROZEN_FOR_FORMAL_EVALUATION_NOT_ACCEPTED",
+    "preparedAt": "2026-10-25T17:58:57.506Z",
+    "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+    "runtimeAlgorithm": "C6 scripts/measure-reading.mjs runtimeHash() unchanged invocation; explicit manifest in proposed-freeze-bindings.json",
+    "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+    "baseCriteriaUnits": 108,
+    "totalUnitsStatus": "108 inherited named units plus additional generic/legacy/Rust consumer obligations must be explicitly assigned by parent before final acceptance; no new consumer is omitted from inverse inventory",
+    "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+    "c7AuxiliaryBindingHash": "ca0e4c44cdbb03168b5e500cbcad497172476e8aad3f93baf07db568066a3f84",
+    "sourceEvidence": {
+      "contexts": 148,
+      "lineHints": 762,
+      "lessonStages": 142,
+      "routeRegistry": 114,
+      "consumerBoundContexts": 148,
+      "sourceFilesWithExcerpts": 61,
+      "rustTopics": 5,
+      "rustBaseAndStartVariants": 21,
+      "legacyRoutes": 5,
+      "totalRustFiles": 1283,
+      "fullyReviewedRustFiles": 2
+    },
+    "localUrl": "http://127.0.0.1:4317",
+    "staticUrl": "http://127.0.0.1:4398",
+    "isolatedWarmReviewerOrigin": "http://localhost:4317",
+    "isolatedFreshReviewerOrigin": "http://localhost:4398",
+    "generationIdempotent": true,
+    "generationEvidence": "freeze-preparation-generation.json",
+    "tests": {
+      "total": 111,
+      "pass": 111,
+      "fail": 0,
+      "evidence": "tests.tap",
+      "reportedBy": "root; latest post-normalization full suite; B verifies evidence summary read-only"
+    },
+    "learningProtocol": "learning-protocol.json",
+    "rounds": "not-started at freeze; preflight excluded",
+    "humanParticipants": 0,
+    "humanComprehension": "not-verified",
+    "productComplete": false,
+    "canonicalMutationByB": false,
+    "frozenAt": "2026-10-25T18:00:59.183464+00:00",
+    "totalUnits": 108,
+    "ownership": {
+      "global_review": 73,
+      "curriculum_sources": 30,
+      "rootRust": 5
+    },
+    "supplemental": {
+      "AtlasRoutes": 114,
+      "AtlasFiles": 61,
+      "AtlasContextSubcasesInsideFiles": 148,
+      "manifest": "atlas-manifest-all.json",
+      "assignment": "global-review-plan.json",
+      "note": "Display replicas attached to the original108 owners; uncovered subcases stay not-measured."
+    },
+    "configuration": {
+      "technicalUi": {
+        "chain": "new",
+        "code": "first",
+        "origins": [
+          "http://127.0.0.1:4317",
+          "http://127.0.0.1:4398"
+        ],
+        "rounds": 2
+      },
+      "warmLearner": {
+        "chain": "new",
+        "code": "other",
+        "origin": "http://localhost:4317",
+        "rounds": 2
+      },
+      "freshLearner": {
+        "chain": "new",
+        "code": "first",
+        "origin": "http://localhost:4398",
+        "rounds": 2,
+        "first": "No implementation or previous evaluation context",
+        "second": "Practiced AI; cold document; not independent from first experience"
+      },
+      "unsavedInputs": "Dedicated tabs only; no submit/save/queue; restore profile and markers after task"
+    },
+    "serverSession": 17180,
+    "implementationCommit": "184088e"
+  },
+  "serverScriptSHA256": "1559d76801ee13a0a9015ddbc45a399c2166ab78727abc7cd057c2bf9cdca604",
+  "assetPolicy": "Serve canonical dist bytes without modifying assets/HTML; conditional headers and8second data response delay only. Runtime bytes remain40f226...; each condition binds separate environment config.",
+  "conditions": [
+    {
+      "port": 4407,
+      "condition": "CSP connect-src self intentionally blocks optional rawGithub fetch. Actual failure/retry buttons must preserve source annotations/selection/draft. Successful-network recovery not simulated."
+    },
+    {
+      "port": 4408,
+      "condition": "reading-help-data.js response delayed8seconds; observe before/after if supported by documented CUA navigation; otherwise mark prearrival interactions not-measured."
+    }
+  ],
+  "rounds": 2,
+  "humanParticipants": 0,
+  "productComplete": false
+}

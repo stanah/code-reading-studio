@@ -1,0 +1,11 @@
+{
+  "candidate": 7,
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "status": "evaluation ended; not accepted; source snapshot retained before next implementation",
+  "productionBytesStillMatchFrozen": true,
+  "retainedSnapshotFiles": 91,
+  "at": "2026-10-25T19:23:28.128296+00:00",
+  "result": "global-evaluation-summary.json",
+  "furtherUiObservations": "None mixed into the completed candidate7 evaluation; next candidate has separate freeze."
+}

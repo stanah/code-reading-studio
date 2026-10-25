@@ -1555,6 +1555,16 @@
       "criteriaUnchanged": true,
       "historicalInventoryRule": "The fixed criteria phrase annotations6+guide13 records the discovery-time producers. It is preserved and not silently rewritten to the later generated state.",
       "meaning": "Generated original seed text/catalogue availability is separate from authored explanation or full-file semantic review."
+    },
+    "candidate7ConsumerBoundary": {
+      "routes": 114,
+      "indexedGenericContexts": 148,
+      "legacyDetails": 5,
+      "rustBaseAndStartVariants": 21,
+      "sourceFilesWithExcerpts": 61,
+      "outsideInInventory": "scripts/reading-consumer-inventory.cjs",
+      "reviewBoundary": "ui/reading-consumer-sites.json",
+      "meaning": "Actual producer union; indexing and reachability do not establish full-file or human comprehension."
     }
   },
   "baseline": {
@@ -2095,6 +2105,61 @@
         "evidence": "outputs/global-reading-loop/candidate-7/self-output-context-audit.json",
         "sourceFidelityStillPass": true
       }
+    },
+    {
+      "id": "candidate-7",
+      "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+      "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+      "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+      "result": "not-accepted",
+      "observationScope": "All108 owners, Atlas114routes/61files and148contextsubcases, source-specific Rust21variants×local/static, metadata317destinations×2; conditional Atlas same-byte fixtures recorded separately.",
+      "findings": [
+        "Reth default phase breadth6/12/15/16 originals;273/619/965/735 source rows.",
+        "Send/startup/reading also expose hundreds of rows; small operation count is not a readability result.",
+        "Raw row click recreates button and loses keyboard focus.",
+        "Retry/data arrival can steal focus/viewport from manual original or input; C8 proposal addresses this."
+      ],
+      "unmetGatePairs": [
+        {
+          "unit": "atlas-overview:main",
+          "gate": "G4",
+          "status": "not-measured",
+          "evidenceMap": "global-owned-gate-map.json"
+        },
+        {
+          "unit": "atlas-overview:main",
+          "gate": "G6",
+          "status": "not-measured",
+          "evidenceMap": "global-owned-gate-map.json"
+        },
+        {
+          "unit": "file-role:bin/reth/src/main.rs",
+          "gate": "G4",
+          "status": "not-measured",
+          "evidenceMap": "a-owner-gate-normalized.json"
+        },
+        {
+          "unit": "file-role:bin/reth/src/main.rs",
+          "gate": "G6",
+          "status": "not-measured",
+          "evidenceMap": "a-owner-gate-normalized.json"
+        },
+        {
+          "unit": "file-role:crates/cli/commands/src/node.rs",
+          "gate": "G4",
+          "status": "not-measured",
+          "evidenceMap": "a-owner-gate-normalized.json"
+        },
+        {
+          "unit": "file-role:crates/cli/commands/src/node.rs",
+          "gate": "G6",
+          "status": "not-measured",
+          "evidenceMap": "a-owner-gate-normalized.json"
+        }
+      ],
+      "firstFailuresRetained": true,
+      "details": "docs/evaluations/candidate-7/global-evaluation-summary.json",
+      "sourceAndUiOnlyNotHumanEvidence": true
     }
   ],
   "humanStudy": {
@@ -2232,5 +2297,36 @@
     "details": "docs/evaluations/candidate-6/global-review-summary.json",
     "sourceCoverage": "61/1283 excerpt-only source files, 2 full-file reviews; not full repository completion",
     "humanParticipants": 0
+  },
+  "candidate7Checkpoint": {
+    "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+    "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+    "tests": {
+      "total": 111,
+      "pass": 111,
+      "fail": 0
+    },
+    "functionalAudit": "NOT_ACCEPTED; all108 owner observations in two frozen-version rounds recorded,6gate pairs unresolved; known source-depth/keyboard/view priority findings retained.",
+    "details": "docs/evaluations/candidate-7/global-evaluation-summary.json",
+    "gatePairs": {
+      "pass": 579,
+      "not-applicable": 63,
+      "not-measured": 6
+    },
+    "sourceCoverage": {
+      "totalTracked": 1872,
+      "totalRustFiles": 1283,
+      "totalCargo": 147,
+      "indexedCrateGroups": 146,
+      "filesWithReviewedExcerpts": 61,
+      "fullyReviewedRustFiles": 2,
+      "functionAndBranchCoverage": "not-measured"
+    },
+    "humanParticipants": 0
+  },
+  "candidate8Preparation": {
+    "status": "isolated-prototype-independent-review-only",
+    "purpose": "Keep whole original ranges, reduce first-reader simultaneous originals, enable same-page focus/parallel reading and preserve focus/input priority.",
+    "uiEvidenceCarriedFromCandidate7": false
   }
 }

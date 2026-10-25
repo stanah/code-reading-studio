@@ -7,21 +7,23 @@
       "kind": "rust",
       "casesPerRound": 42,
       "roundsObserved": [
-        1
+        1,
+        2
       ],
-      "records": 42,
-      "sourcePanelObservations": 180,
-      "representativeFourStateObservations": 168
+      "records": 84,
+      "sourcePanelObservations": 360,
+      "representativeFourStateObservations": 336
     },
     {
       "kind": "atlas",
       "casesPerRound": 41,
       "roundsObserved": [
-        1
+        1,
+        2
       ],
-      "records": 41,
-      "sourcePanelObservations": 330,
-      "representativeFourStateObservations": 164
+      "records": 82,
+      "sourcePanelObservations": 660,
+      "representativeFourStateObservations": 328
     }
   ],
   "issues": [],
@@ -130,11 +132,121 @@
       1,
       "purpose text omitted from preview; source/meaning review required",
       "検証条件を確かめ、内部プールへ追加する"
+    ],
+    [
+      "atlas",
+      "atlas-route:lesson:blockchain",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "「記録を持つ」「前の記録とつながる」「ノードが情報をやり取りする」を、役割ごとの実装で確かめます。"
+    ],
+    [
+      "atlas",
+      "atlas-route:lesson:ethereum",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "残高などの状態、ブロック内の取引の実行、レシートの内容を別々の原文から結びつけます。"
+    ],
+    [
+      "atlas",
+      "atlas-route:lesson:rpc",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "eth_getBalanceの読取とeth_sendRawTransactionの送信を、受け取る値・呼び出し先・返す値で比べます。"
+    ],
+    [
+      "atlas",
+      "atlas-route:lesson:reth",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "Rethの具体的な部品、プールでの検証・保持、ブロックの実行・状態検証と保存を原文で確かめ、外部の合意側との分担を区別します。"
+    ],
+    [
+      "atlas",
+      "atlas-route:lesson:send",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "受け取った取引がどの担当へ渡り、どこで失敗でき、どの結果がRPCへ戻るかを、実際の呼び出しと返答経路に沿って読みます。"
+    ],
+    [
+      "atlas",
+      "atlas-route:lesson:startup",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "mainから先を追い、設定・DB・部品・RPCの準備と、稼働後に待つ処理を分けて確かめます。"
+    ],
+    [
+      "atlas",
+      "atlas-route:lesson:reading",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "短いRPC関数を起点に、型、呼び出し先、失敗時の戻り方を練習し、依頼を送れた時点と追加結果が返る時点を原文で確かめます。"
+    ],
+    [
+      "atlas",
+      "atlas-route:journey:block",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "合意側からのブロックを実行検証して返答する経路と、その後の履歴採用・保存を別々に説明する。"
+    ],
+    [
+      "atlas",
+      "atlas-route:journey:sync",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "不足範囲の決定から、P2Pでの取得、段階ごとの実行、進捗とデータの保存、完了通知までをつなげて説明する。"
+    ],
+    [
+      "atlas",
+      "atlas-route:operation:rpc",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "送信要求の入口と、その呼び出し先"
+    ],
+    [
+      "atlas",
+      "atlas-route:operation:recover",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "受信データの読み取りと送信者の復元"
+    ],
+    [
+      "atlas",
+      "atlas-route:operation:submit",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "設定による転送・追加と、その返答"
+    ],
+    [
+      "atlas",
+      "atlas-route:operation:queue",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "要求キューと個別の返答の往復"
+    ],
+    [
+      "atlas",
+      "atlas-route:operation:batch",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "要求をまとめて追加し、個別に返答する"
+    ],
+    [
+      "atlas",
+      "atlas-route:operation:pool",
+      2,
+      "purpose text omitted from preview; source/meaning review required",
+      "検証条件を確かめ、内部プールへ追加する"
     ]
   ],
   "detectorCorrection": "Use saved visible visits for mutually exclusive groups. Picker title remains visible outside preview; omitted goal is a semantic-review question, not an automatic byte-check failure. Initial detector record retained.",
   "technicalResult": "PASS",
   "semanticMeaning": "Independent source review and owning-unit prose mapping remain separate; byte/payload presence is not G1 acceptance",
   "humanParticipants": 0,
-  "productComplete": false
+  "productComplete": false,
+  "consumerGoalReview": {
+    "file": "a-atlas-goal-consumer-review.json",
+    "sha256": "1b70516d338c39cbf7d4ed40372400a63a49d3c962981b8ab016e63111d73496",
+    "finding": "The15 omitted goal strings do not by themselves demonstrate a unique missing claim. Operation goal/title duplicate; other meaning is retained in title/scope/phase and same-page selectable stage purposes. This is separate from novice readability and overall G1 acceptance."
+  }
 }

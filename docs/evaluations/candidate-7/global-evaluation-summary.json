@@ -1,0 +1,132 @@
+{
+  "candidate": 7,
+  "status": "EVALUATION_RECORDED_NOT_ACCEPTED",
+  "runtimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "sourceDataHash": "8952471066cb003d73f32a3e19d2a0e1c1e89a411b1ad39b42d9ce0077269c7c",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "auxiliaryBindingHash": "ca0e4c44cdbb03168b5e500cbcad497172476e8aad3f93baf07db568066a3f84",
+  "namedUnits": 108,
+  "gatePairs": 648,
+  "gatePairCounts": {
+    "pass": 579,
+    "not-applicable": 63,
+    "not-measured": 6
+  },
+  "unmetGatePairs": [
+    {
+      "unit": "atlas-overview:main",
+      "gate": "G4",
+      "status": "not-measured",
+      "evidenceMap": "global-owned-gate-map.json"
+    },
+    {
+      "unit": "atlas-overview:main",
+      "gate": "G6",
+      "status": "not-measured",
+      "evidenceMap": "global-owned-gate-map.json"
+    },
+    {
+      "unit": "file-role:bin/reth/src/main.rs",
+      "gate": "G4",
+      "status": "not-measured",
+      "evidenceMap": "a-owner-gate-normalized.json"
+    },
+    {
+      "unit": "file-role:bin/reth/src/main.rs",
+      "gate": "G6",
+      "status": "not-measured",
+      "evidenceMap": "a-owner-gate-normalized.json"
+    },
+    {
+      "unit": "file-role:crates/cli/commands/src/node.rs",
+      "gate": "G4",
+      "status": "not-measured",
+      "evidenceMap": "a-owner-gate-normalized.json"
+    },
+    {
+      "unit": "file-role:crates/cli/commands/src/node.rs",
+      "gate": "G6",
+      "status": "not-measured",
+      "evidenceMap": "a-owner-gate-normalized.json"
+    }
+  ],
+  "maps": [
+    {
+      "file": "global-owned-gate-map.json",
+      "sha256": "5f077f91960d15796d3a2042258893bd4b23344e02c5ea722131d143421af077"
+    },
+    {
+      "file": "a-owner-gate-normalized.json",
+      "sha256": "eea94bc08a08266ee9ce792c3c482340459d2d9d4ece48a9a4f26fab5ae8992b"
+    },
+    {
+      "file": "root-owner-gate-map.json",
+      "sha256": "82930b3e539e2d56f7c828fe989f88b03040f70fcc399744478937475e5edd2f"
+    }
+  ],
+  "unitGateMatrix": "global-108-gate-matrix.json",
+  "ordinaryUiRounds": 2,
+  "ordinaryUiCoverage": "C73/A30/root5 owners all visited, including delegated Atlas175 obligations and all148context subcases. Per-renderer controls sampling limitations remain explicit.",
+  "sourceCoverage": {
+    "totalTracked": 1872,
+    "totalRustFiles": 1283,
+    "totalCargo": 147,
+    "indexedCrateGroups": 146,
+    "filesWithReviewedExcerpts": 61,
+    "fullyReviewedRustFiles": 2,
+    "functionAndBranchCoverage": "not-measured"
+  },
+  "supplementalControlsLimit": {
+    "genericContextSubcasesObservedPerRound": 148,
+    "fourStatesMeasuredOnRepresentativeFirstContextPerFile": 61,
+    "otherContextFourStateNotMeasuredPerRound": 87,
+    "totalOtherContextFourStateNotMeasured": 174,
+    "nextCandidate": "Candidate8 explicitly expands all148choices to4states in both rounds, without rewriting C7 results."
+  },
+  "unresolvedRestoration": "a-atlas-restoration-diagnosis.json:3formal Atlas restoration observations unresolved; source/control/choice readings succeeded, textarea automation timeout repeated with20expanded sources; cleanup succeeded after closing the source sequence. Tool limit versus actual UI responsiveness not conclusively separated.",
+  "broaderLearningAcceptance": false,
+  "majorOpenFindings": [
+    "Reth default phase breadth6/12/15/16 originals;273/619/965/735 source rows.",
+    "Send/startup/reading also expose hundreds of rows; small operation count is not a readability result.",
+    "Raw row click recreates button and loses keyboard focus.",
+    "Retry/data arrival can steal focus/viewport from manual original or input; C8 proposal addresses this."
+  ],
+  "conditionalEvidence": {
+    "file": "root-conditional-input-summary.json",
+    "sameAssetBytes": true,
+    "differentExplicitConfigurations": [
+      "CSP4407",
+      "8second-data-delay4408"
+    ],
+    "networkRestorationSuccess": "not-measured",
+    "otherProducerForcedFaultInputs": "not-measured; do not extrapolate Atlas fixture to every producer"
+  },
+  "independentAi": {
+    "freshFirstUseTrialCount": 14,
+    "freshFirstUse": "First round no implementation context; second experienced AI. Bounded task answers, not whole-code reading.",
+    "warmTrialCount": 14,
+    "warmFirstCitationError": 1,
+    "warmCorrection": "Saved original incorrect citation and corrected against captured same-version DOM, without UI rerun.",
+    "humanParticipants": 0
+  },
+  "causeAnalysis": {
+    "whyEarlierJudgmentsWereInsufficient": [
+      "Reached source/low click count and byte/hash test success were treated as proxies for reading guidance.",
+      "Phase grouping was considered sufficient even when a phase opened16 full originals/735 lines or15/965 lines.",
+      "Registry-centered checks missed generic/legacy/typed consumers; C7 outside-in inventory corrected this.",
+      "Exact source ranges and sufficient context were confused with how much to display at once.",
+      "Review metadata used inconsistent gate meanings until the literal fixed schema was rechecked and normalized."
+    ],
+    "preventRecurrence": [
+      "Bind every owning unit to fixed G1..G6 IDs and exact evidence, without reinterpreting them per reviewer.",
+      "Keep source integrity, UI behavior, AI task outcomes and human comprehension as separate layers.",
+      "Measure default simultaneous original count, source rows and focus/input behavior before accepting the next candidate.",
+      "Preserve whole source ranges and every producer; control view depth within the same page.",
+      "Retain first counterexamples, detector/measurement mistakes and missing observations; no retroactive success."
+    ]
+  },
+  "functionalLoopComplete": false,
+  "productComplete": false,
+  "evaluationRecordedAt": "2026-10-25T19:23:28.125824+00:00",
+  "nextCandidate": "candidate-8/reading-guidance-proposal.json; isolated prototype/independent review only until approved integration evidence."
+}

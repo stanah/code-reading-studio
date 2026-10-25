@@ -1,0 +1,45 @@
+{
+  "candidate": 7,
+  "recordedAt": "2026-10-25T18:56:55.465134+00:00",
+  "fixedCriteriaUnchanged": true,
+  "finding": "Fixedv2G5 captured duplication and setup navigation but did not bound the simultaneous reading load enough for the original first-code learning purpose.",
+  "evidence": [
+    "formal-beginner-findings.json",
+    "fresh-persona4/summary.json"
+  ],
+  "observedLoad": {
+    "rethSourceCounts": [
+      6,
+      12,
+      15,
+      16
+    ],
+    "rethRows": [
+      273,
+      619,
+      965,
+      735
+    ],
+    "startupSources": [
+      7,
+      11,
+      4,
+      5,
+      10
+    ]
+  },
+  "whyCouldBeMistaken": [
+    "Reaching original in3phase choices and preserving source/hints was treated as a promising proxy, but it says little about how much code a first-time reader must digest.",
+    "Closing unrelated phases avoided cumulative sources, yet every essential original inside the chosen phase was automatically opened.",
+    "Restoring complete call boundaries correctly repaired narrow excerpts, but required full scope was conflated with simultaneous display depth."
+  ],
+  "preventRecurrence": [
+    "Retain fixedv2results and limitations instead of inventing a threshold after seeing results.",
+    "Freeze new prospective primary-original/callee-depth/proof-obligation criteria before candidate8 evaluation.",
+    "Keep all original scope on the same page, distinguish initial reading from optional comparisons, and assess returned focus/selected line/draft as well as bounded learning answer.",
+    "Do not accept functional matrices as human comprehension or fullReth explanation."
+  ],
+  "nextProposal": "../candidate-8/reading-guidance-proposal.json",
+  "overallPurposeAccepted": false,
+  "humanParticipants": 0
+}

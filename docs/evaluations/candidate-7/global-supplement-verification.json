@@ -1,0 +1,28 @@
+{
+  "candidate": 7,
+  "rounds": [
+    1,
+    2
+  ],
+  "supplementCasesPerRound": 17,
+  "navigationCasesPerRound": 20,
+  "issues": [],
+  "issueCount": 0,
+  "notMeasured": [
+    "Successful raw fetch network recovery after failure",
+    "Forced late-data/failure on every other producer, not demonstrated by this Atlas-only fixture",
+    "Every nonrepresentative context×4helper states, beyond fixed representative plan",
+    "Human comprehension"
+  ],
+  "limits": [
+    "actual current runtime navigation/retention proof, not comprehension",
+    "no gate NA inferred merely from widget absence",
+    "guide57source fourstates are representative plus fragment sample; root separate guide all-source states if supplied"
+  ],
+  "conditionalEvidence": "global-conditional-evidence-binding.json",
+  "priorNotMeasuredRetainedAsHistory": [
+    "forced late/shareddata failure under formal production configuration",
+    "formal production raw-source retry failure condition"
+  ],
+  "conditionalScope": "TwoAtlasonlyconfigs observed byroot with identicalassets; noordinary4398orotherproducerblanketcarry"
+}
