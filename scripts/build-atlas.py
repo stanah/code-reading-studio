@@ -31,11 +31,11 @@ for a in areas:
  a['manifests']=sum(p.endswith('Cargo.toml') and (next((x['id'] for x in areas if any(p.startswith(pre) for pre in x['prefixes'])),'foundation')==a['id']) for p in tree)
 topics=[
  dict(id='transaction',title='送信したトランザクションはどこへ行く？',desc='JSON-RPC で受け付けてからプールに追加するまでを追う。その後の伝播・選択は別の問いとして扱う。',areas=['rpc','pool','network','payload'],entries=['crates/rpc/rpc-eth-api/src/core.rs','crates/transaction-pool/src/lib.rs'],ready=True,scope='今回解説済み：RPC 受付からプール追加まで。'),
- dict(id='block',title='新しいブロックはどう検証される？',desc='Engine API とチェーン進行、実行、永続化の責務を分けて読む。',areas=['rpc','engine','execution','storage'],entries=['crates/engine/tree/src/lib.rs','crates/consensus/consensus/src/lib.rs','crates/evm/evm/src/lib.rs'],ready=False,scope='入口の候補。関数単位の経路・解説は未作成。'),
- dict(id='sync',title='まっさらなノードはどう追いつく？',desc='ピアからの取得と、同期の段階、実行、保存を追う。',areas=['network','sync','engine','execution','storage'],entries=['crates/stages/stages/src/lib.rs','crates/engine/tree/src/lib.rs'],ready=False,scope='入口の候補。各モードの詳細は追加読解が必要。'),
+ dict(id='block',title='新しいブロックはどう検証される？',desc='Engine API とチェーン進行、実行、永続化の責務を分けて読む。',areas=['rpc','engine','execution','storage'],entries=['crates/engine/tree/src/lib.rs','crates/consensus/consensus/src/lib.rs','crates/evm/evm/src/lib.rs'],ready=True,scope='Engine APIの受信、検証・実行、採用指示、保存を原文で区別して追います。'),
+ dict(id='sync',title='まっさらなノードはどう追いつく？',desc='ピアからの取得と、同期の段階、実行、保存を追う。',areas=['network','sync','engine','execution','storage'],entries=['crates/stages/stages/src/lib.rs','crates/engine/tree/src/lib.rs'],ready=True,scope='履歴を取得する段階型同期の経路を、要求から保存・完了通知まで追います。ほかの同期モードとは区別します。'),
  dict(id='boot',title='起動時に何が組み立てられる？',desc='main からノードのビルダーへ処理をたどり、全体を構成する部品をつかむ。',areas=['node','rpc','network','engine'],entries=['bin/reth/src/main.rs','crates/node/builder/src/lib.rs'],ready=True,scope='CLI → ノードの準備 → 稼働中の処理を、起動資料で解説しています。')]
 seed={}
-for p in {p for a in areas for p in a['entry']}:
+for p in sorted({p for a in areas for p in a['entry']}):
  if p in tree:seed[p]=source(p)
 # Include the actual files behind the existing source-backed reading pack.
 pack=json.loads((out/'reth-data.js').read_text().removeprefix('window.RETH_PACK = ').removesuffix(';\n'))

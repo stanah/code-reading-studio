@@ -121,3 +121,30 @@ test('browser navigation and popstate render the selected overview, stage or ste
   assert.equal(follow('/files?path=Cargo.toml'), false, 'source navigation is a normal page navigation');
   assert.equal(requests.length, 1, 'guide navigation reuses the same commit-pinned data');
 });
+
+
+test('shared runtime source references open ancestor loops and return without rebuilding source or selection', async () => {
+  const nodes = new Map(), handlers = {};
+  const node = id => {
+    if (!nodes.has(id)) nodes.set(id, {innerHTML:'', textContent:'', content:'test-token', classList:{add() {}}});
+    return nodes.get(id);
+  };
+  const ownerLoop={tagName:'DETAILS',open:false,parentElement:null};
+  const source={open:false,selectedLine:476,commentsEnabled:false};
+  const returnButton={hidden:true,dataset:{startupBack:''}};
+  let focused='',scrolled='';
+  const owner={parentElement:ownerLoop,scrollIntoView(){scrolled='owner';},querySelector(selector){return selector==='.rh-source'?source:selector==='[data-startup-back]'?returnButton:selector==='.rh-source > summary'?{focus(){focused='source';}}:null;}};
+  const originLoop={tagName:'DETAILS',open:false,parentElement:null};
+  const origin={parentElement:originLoop,scrollIntoView(){scrolled='origin';},querySelector(){return {focus(){focused='origin';}};}};
+  const document={querySelector:node,getElementById(id){return {owner,origin}[id];},body:{dataset:{}},addEventListener(name,handler){handlers[name]=handler;},dispatchEvent(){}};
+  const location=new URL('http://localhost/startup?stage=run');
+  await mount({document,location,fetch:async()=>({ok:true,json:async()=>guide}),history:{pushState(){throw Error('reference must not change URL');}},addEventListener(){},scrollTo(){},Event:class{}});
+  const previousHtml=node('#startup-content').innerHTML;
+  handlers.click({target:{closest(selector){return selector==='[data-startup-read]'?{dataset:{startupRead:'owner',startupRefOrigin:'origin'}}:null;}}});
+  assert.equal(ownerLoop.open,true);assert.equal(source.open,true);assert.equal(scrolled,'owner');assert.equal(focused,'source');
+  assert.equal(returnButton.hidden,false);assert.equal(returnButton.dataset.startupBack,'origin');
+  handlers.click({target:{closest(selector){return selector==='[data-startup-back]'?returnButton:null;}}});
+  assert.equal(originLoop.open,true);assert.equal(scrolled,'origin');assert.equal(focused,'origin');
+  assert.equal(source.selectedLine,476);assert.equal(source.commentsEnabled,false);assert.equal(node('#startup-content').innerHTML,previousHtml);
+  assert.equal(location.href,'http://localhost/startup?stage=run');
+});

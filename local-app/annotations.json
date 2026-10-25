@@ -3,7 +3,7 @@
   "roles": {
     "crates/rpc/rpc-eth-api/src/helpers/transaction.rs": {
       "name": "トランザクションの送信・取得",
-      "role": "送信、取得、送信者の復元などの共通処理を提供する。今回は送信の責務だけに絞る。",
+      "role": "送信、取得、送信者の復元などの共通処理を提供する。",
       "input": "署名済みバイト列、トランザクションの識別子など",
       "output": "送信時はハッシュ。取得系は対応するデータ。"
     },
@@ -36,6 +36,84 @@
       "role": "API 内部のプール・設定・チャネルなどを保持し、追加要求をバッチ処理へつなぐ。",
       "input": "未検証トランザクションと origin",
       "output": "追加結果の非同期応答"
+    },
+    "bin/reth/src/main.rs": {
+      "name": "rethバイナリーの入口",
+      "role": "CLIへEthereumノードの起動処理を渡し、起動後の終了結果を待つ。",
+      "input": "プロセスの引数",
+      "output": "正常時はmainの末尾へ進み、runのエラー時は表示してprocess::exit(1)へ進む。"
+    },
+    "crates/ethereum/cli/src/app.rs": {
+      "name": "CLIアプリケーションとコマンド分岐",
+      "role": "実行環境・ログ・metricsを準備し、サブコマンドに対応した実行経路を選ぶ。",
+      "input": "解析済みCLIと起動用launcher",
+      "output": "選択したコマンドの実行結果"
+    },
+    "crates/cli/runner/src/lib.rs": {
+      "name": "コマンドの実行と終了監視",
+      "role": "実行環境でコマンドを実行し、完了・シグナル・criticalタスクのpanicに応じて終了処理を行う。",
+      "input": "コマンドのFutureやCliContextを受け取る関数",
+      "output": "終了結果と実行環境の停止"
+    },
+    "crates/cli/commands/src/node.rs": {
+      "name": "nodeサブコマンドの準備",
+      "role": "引数をNodeConfigへ変換し、DB付きNodeBuilderをlauncherへ渡す。",
+      "input": "nodeの引数、実行context、launcher",
+      "output": "設定・DB・タスクの実行器を持つbuilderの起動結果"
+    },
+    "crates/node/builder/src/launch/engine.rs": {
+      "name": "Engineを使うノードの起動",
+      "role": "設定・provider・部品を準備し、pipeline・Engine・RPC等を接続してNodeHandleを返す。",
+      "input": "NodeBuilderWithComponentsとlaunch context",
+      "output": "稼働するノードのhandleと終了待機Future"
+    },
+    "crates/node/builder/src/components/builder.rs": {
+      "name": "ノードの主要部品の組立",
+      "role": "EVM、pool、ネットワーク、payload builder、consensusのbuilderを呼び、依存を渡す。",
+      "input": "設定・providerを持つBuilderContext",
+      "output": "生成したComponents"
+    },
+    "crates/engine/tree/src/tree/mod.rs": {
+      "name": "Engine Treeの要求処理",
+      "role": "専用スレッドでEngine要求を処理し、チェーン状態と永続化の進行を調整する。",
+      "input": "Engine要求、ダウンロード済みブロック、永続化完了等",
+      "output": "要求ごとの返答、チェーン・同期の通知、必要な保存処理への依頼。"
+    },
+    "crates/net/network/src/manager.rs": {
+      "name": "P2Pネットワークの進行管理",
+      "role": "handleからの要求とswarmイベントをpollし、ピア通信やネットワーク状態を進める。",
+      "input": "内部要求チャネルとP2P通信イベント",
+      "output": "ネットワーク状態の更新と関連イベントの処理"
+    },
+    "crates/engine/tree/src/backfill.rs": {
+      "name": "backfill同期の状態管理",
+      "role": "段階的同期pipelineをIdle/Runningで管理し、targetに応じてタスクを起動して結果を返す。",
+      "input": "BackfillAction::Startとpipeline",
+      "output": "Started・Finished・TaskDroppedイベント"
+    },
+    "crates/engine/tree/src/launch.rs": {
+      "name": "Engine内部サービスの配線",
+      "role": "downloader・persistence・tree・要求handler・backfillを結び、orchestratorを作る。",
+      "input": "provider、pipeline、要求ストリーム、Engine各部品",
+      "output": "ChainOrchestrator"
+    },
+    "crates/engine/tree/src/chain.rs": {
+      "name": "チェーン進行とbackfillの調整",
+      "role": "handlerとbackfillをpollし、開始・完了やチェーンイベントを上下へ伝える。",
+      "input": "ChainHandlerとBackfillSync",
+      "output": "ChainEventとhandlerへの同期状態通知"
+    },
+    "crates/engine/tree/src/engine.rs": {
+      "name": "Engine要求の中継",
+      "role": "要求ストリーム・ブロックのダウンロード処理・treeのチャネルを接続し、要求と結果イベントを取り次ぐ。",
+      "input": "Engine API要求、ダウンロード結果、treeイベント",
+      "output": "treeへのmessage、上位へのチェーン/backfill/ダウンロードイベント"
+    },
+    "crates/node/builder/src/handle.rs": {
+      "name": "起動済みノードのhandle",
+      "role": "ノードの部品群と終了Futureを保持し、終了待機の入口を提供する。",
+      "input": "起動済みノードと終了Future",
+      "output": "node_exit_futureの結果"
     }
   },
   "pathAreas": {
@@ -1684,7 +1762,7 @@
       "summary": "通常経路では購読者へ通知し、プールへの追加結果を待ちます。",
       "detail": "WithEncoded を分解し、設定に応じて blob sidecar を変換します。その後、外部 RPC への転送先がなければ add_pool_transaction を呼び、成功結果から hash を取り出します。",
       "input": "origin と WithEncoded<PoolTx<Self::Pool>>",
-      "output": "成功時はプール追加結果の hash",
+      "output": "通常はプール追加の成功結果AddedTransactionOutcomeからhashを取り出して返します。転送先が設定された分岐では、転送先RPCが返したhashを返します。",
       "side": "raw transaction 購読者への通知、追加要求",
       "branch": "転送先があれば別経路で早期 return します。通常経路の追加失敗は ? で返ります。購読者への通知を P2P 伝播の完了と混同しないでください。",
       "concept": "構造体パターン { hash, .. }",
@@ -1750,7 +1828,7 @@
       "summary": "要求の件数と origin に合わせて、プールの追加メソッドを選びます。",
       "detail": "一件なら process_request を経由して add_transaction を呼びます。複数件で origin が同じなら add_transactions、混在していれば add_transactions_with_origins です。各要求の response_tx に結果を戻します。",
       "input": "Vec<BatchTxRequest<Pool::Transaction>>",
-      "output": "各要求の oneshot にプールの結果を返す",
+      "output": "この非同期関数の完了値は()です。プールの追加結果は各要求のresponse_tx（oneshotの送信口）へ別に送ります。",
       "side": "検証・追加の委譲、応答チャネルへの送信",
       "branch": "response_tx.send の結果は let _ で捨てています。受信側がなくても、この箇所ではエラーを上へ返しません。",
       "concept": "into_iter / unzip / zip",
@@ -1791,7 +1869,7 @@
       "input": "未検証トランザクションと origin",
       "output": "PoolResult<AddedTransactionOutcome>",
       "side": "検証処理、内部プールの更新",
-      "branch": "内部プールが検証結果を受け取り、追加結果を返します。結果のリストが空なら expect は panic します。検証器の具体的な条件はこの抜粋では確認できません。",
+      "branch": "内部プールが検証結果を受け取り、追加結果を返します。結果のリストが空ならexpectはpanicします。self.validateの先にある検証条件・タスクへの受け渡しと、内部追加の分岐も同じページで読みます。",
       "concept": "Self::Transaction / expect",
       "language": "Self::Transaction は、この実装が使う関連型です。expect は値が存在すれば取り出し、存在しなければ指定メッセージで panic します。? によるエラー伝播とは挙動が違います。",
       "compare": "TypeScript の非 null アサーション ! は実行時検証をしません。Rust の expect は実行時に失敗を検出し、panic します。",

@@ -1,0 +1,96 @@
+[
+  {
+    "id": "rpc",
+    "title": "送信要求の入口と、その呼び出し先",
+    "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+    "contexts": [
+      "tx:rpc",
+      "tx:recover",
+      "tx:recovery-hook"
+    ],
+    "connections": {
+      "tx:recovery-hook": "読み取りと署名復元の結果は、このページのsend_raw_transactionへ戻り、send_pool_transactionへ渡されます。"
+    }
+  },
+  {
+    "id": "recover",
+    "title": "受信データの読み取りと送信者の復元",
+    "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+    "contexts": [
+      "tx:recover",
+      "tx:recovery-hook"
+    ],
+    "connections": {
+      "tx:recovery-hook": "読み取りと署名復元の結果は、このページのsend_raw_transactionへ戻り、send_pool_transactionへ渡されます。"
+    }
+  },
+  {
+    "id": "submit",
+    "title": "設定による転送・追加と、その返答",
+    "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+    "contexts": [
+      "tx:submit",
+      "tx:queue",
+      "area:send-receive",
+      "tx:batch"
+    ],
+    "connections": {
+      "tx:batch": "response_tx.sendが追加結果を返し、このページのadd_pool_transactionのresponse_rx.awaitが受け取ります。要求をキューへ送れた時点と、この返答を受け取る時点は別です。"
+    }
+  },
+  {
+    "id": "queue",
+    "title": "要求キューと個別の返答の往復",
+    "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+    "contexts": [
+      "tx:queue",
+      "area:send-receive",
+      "tx:batch"
+    ],
+    "connections": {
+      "tx:batch": "response_tx.sendが追加結果を返し、このページのadd_pool_transactionのresponse_rx.awaitが受け取ります。要求をキューへ送れた時点と、この返答を受け取る時点は別です。"
+    }
+  },
+  {
+    "id": "batch",
+    "title": "要求をまとめて追加し、個別に返答する",
+    "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+    "contexts": [
+      "area:send-receive",
+      "tx:batch",
+      "tx:pool",
+      "area:send-validation-dispatch",
+      "area:send-validation-task",
+      "area:send-validation-worker",
+      "area:send-validation-entry",
+      "area:send-validation-order",
+      "area:send-stateless",
+      "area:send-stateful",
+      "area:send-nonce",
+      "area:pool-balance",
+      "area:send-pool-limit",
+      "area:send-pool-add"
+    ],
+    "connections": {}
+  },
+  {
+    "id": "pool",
+    "title": "検証条件を確かめ、内部プールへ追加する",
+    "scope": "この段階の入力、主要な条件、結果と、その処理を担う実装を同じページで読みます。「次に読む」は読解の順序です。実際の呼び出しはコード中の実線の下線から追えます。",
+    "contexts": [
+      "tx:pool",
+      "area:send-validation-dispatch",
+      "area:send-validation-task",
+      "area:send-validation-worker",
+      "area:send-validation-entry",
+      "area:send-validation-order",
+      "area:send-stateless",
+      "area:send-stateful",
+      "area:send-nonce",
+      "area:pool-balance",
+      "area:send-pool-limit",
+      "area:send-pool-add"
+    ],
+    "connections": {}
+  }
+]

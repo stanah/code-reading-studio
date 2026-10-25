@@ -50,6 +50,13 @@ test('tree, file and startup routes require auth and keep commit-specific explan
   assert.equal((await fetch(base+'/api/startup',{headers})).status,404);
   const learning=await fetch(base+'/');assert.equal(learning.status,200);assert.match(await learning.text(),/id="learning-root"/);
   for(const route of ['/learning.js','/learning-content.js'])assert.equal((await fetch(base+route)).status,200);
+  const portableGuide=await fetch(base+'/guide');
+  assert.equal(portableGuide.status,200);assert.equal(portableGuide.headers.get('cache-control'),'no-store');
+  assert.match(portableGuide.headers.get('content-security-policy'),/script-src 'self' 'sha256-/);
+  const guideHtml=await portableGuide.text();
+  const guideScripts=[...guideHtml.matchAll(/<script[^>]*src="([^"]+)"/g)].map(m=>m[1]);
+  assert.ok(guideScripts.some(src=>src.startsWith('guide-reading.js?v=')),'guide activates its shared assistance adapter');
+  for(const src of guideScripts){const asset=await fetch(new URL(src,base+'/guide'));assert.equal(asset.status,200,src);assert.equal(asset.headers.get('cache-control'),'no-store',src);}
   for(const route of ['/reader','/files','/startup']){
    const page=await fetch(base+route);assert.equal(page.status,200);
    const html=await page.text();assert.ok(html.includes(app.token));assert.ok(!html.includes('__TOKEN__'));

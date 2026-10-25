@@ -1,0 +1,372 @@
+[
+  {
+    "path": "bin/reth/src/main.rs",
+    "goal": "CLIへEthereumノードの起動処理を渡し、起動後の終了結果を待つ。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "startup:entry",
+        "purpose": "mainが起動用の非同期処理を渡し、起動後のhandleで終了を待つ箇所を読む。",
+        "title": "mainが起動用の非同期処理を渡し、起動後のhandleで終了を待つ箇所を読む。"
+      },
+      {
+        "context": "area:startup-node-wait",
+        "purpose": "handleが保持する終了Futureと、wait_for_node_exitが待つ値を確かめる。",
+        "title": "handleが保持する終了Futureと、wait_for_node_exitが待つ値を確かめる。"
+      },
+      {
+        "context": "area:node-exit",
+        "purpose": "終了Futureが成功・失敗・まだ結果がない状態をどう返すか読む。",
+        "title": "終了Futureが成功・失敗・まだ結果がない状態をどう返すか読む。"
+      }
+    ],
+    "roleName": "rethバイナリーの入口",
+    "input": "プロセスの引数",
+    "output": "CLI実行結果とプロセス終了コード"
+  },
+  {
+    "path": "crates/ethereum/cli/src/app.rs",
+    "goal": "実行環境・ログ・metricsを準備し、サブコマンドに対応した実行経路を選ぶ。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "area:startup-cli-prepare",
+        "purpose": "Cli::runが実行環境、ログ、metricsを準備してコマンド分岐へ渡す箇所を読む。",
+        "title": "Cli::runが実行環境、ログ、metricsを準備してコマンド分岐へ渡す箇所を読む。"
+      },
+      {
+        "context": "startup:dispatch",
+        "purpose": "node分岐のRPC設定検証と、終了監視付きrunnerへの受け渡しを読む。",
+        "title": "node分岐のRPC設定検証と、終了監視付きrunnerへの受け渡しを読む。"
+      },
+      {
+        "context": "startup:supervisor",
+        "purpose": "コマンドを駆動し、正常終了とエラーで終了処理が分かれることを読む。",
+        "title": "コマンドを駆動し、正常終了とエラーで終了処理が分かれることを読む。"
+      }
+    ],
+    "roleName": "CLIアプリケーションとコマンド分岐",
+    "input": "解析済みCLIと起動用launcher",
+    "output": "選択したコマンドの実行結果"
+  },
+  {
+    "path": "crates/cli/runner/src/lib.rs",
+    "goal": "実行環境でコマンドを実行し、完了・シグナル・criticalタスクのpanicに応じて終了処理を行う。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "startup:supervisor",
+        "purpose": "コマンドを駆動し、正常終了とエラーで終了処理が分かれることを読む。",
+        "title": "コマンドを駆動し、正常終了とエラーで終了処理が分かれることを読む。"
+      },
+      {
+        "context": "area:loop-cli",
+        "purpose": "command完了、重要タスクの異常、Ctrl-CやSIGTERMを待ち分ける実装を読む。",
+        "title": "command完了、重要タスクの異常、Ctrl-CやSIGTERMを待ち分ける実装を読む。"
+      }
+    ],
+    "roleName": "コマンドの実行と終了監視",
+    "input": "コマンドのFutureやCliContextを受け取る関数",
+    "output": "終了結果と実行環境の停止"
+  },
+  {
+    "path": "crates/cli/commands/src/node.rs",
+    "goal": "引数をNodeConfigへ変換し、DB付きNodeBuilderをlauncherへ渡す。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "startup:database",
+        "purpose": "CLIの引数をNodeConfigへ組み替え、DBと実行器をbuilderへ渡す箇所を読む。",
+        "title": "CLIの引数をNodeConfigへ組み替え、DBと実行器をbuilderへ渡す箇所を読む。"
+      },
+      {
+        "context": "startup:context",
+        "purpose": "provider、genesis、metrics、部品生成に必要な材料を準備する箇所を読む。",
+        "title": "provider、genesis、metrics、部品生成に必要な材料を準備する箇所を読む。"
+      }
+    ],
+    "roleName": "nodeサブコマンドの準備",
+    "input": "nodeの引数、実行context、launcher",
+    "output": "設定・DB・タスクの実行器を持つbuilderの起動結果"
+  },
+  {
+    "path": "crates/node/builder/src/launch/engine.rs",
+    "goal": "設定・provider・部品を準備し、pipeline・Engine・RPC等を接続してNodeHandleを返す。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "startup:context",
+        "purpose": "provider、genesis、metrics、部品生成に必要な材料を準備する箇所を読む。",
+        "title": "provider、genesis、metrics、部品生成に必要な材料を準備する箇所を読む。"
+      },
+      {
+        "context": "startup:components",
+        "purpose": "traitの関連型と部品の依存関係、作成順、Componentsとしての返却を読む。",
+        "title": "traitの関連型と部品の依存関係、作成順、Componentsとしての返却を読む。"
+      },
+      {
+        "context": "startup:services",
+        "purpose": "要求チャネル、取得用client、pipelineを作ってEngineのbuilderへ渡す箇所を読む。",
+        "title": "要求チャネル、取得用client、pipelineを作ってEngineのbuilderへ渡す箇所を読む。"
+      },
+      {
+        "context": "area:startup-engine-build",
+        "purpose": "builderの中で保存処理とtreeを起動し、handlerとbackfillを結ぶ箇所を読む。",
+        "title": "builderの中で保存処理とtreeを起動し、handlerとbackfillを結ぶ箇所を読む。"
+      },
+      {
+        "context": "area:rpc-launch",
+        "purpose": "RPC等のadd-onsが起動し、要求を受け取るhandleを返す箇所を読む。",
+        "title": "RPC等のadd-onsが起動し、要求を受け取るhandleを返す箇所を読む。"
+      },
+      {
+        "context": "startup:orchestrator",
+        "purpose": "Engineタスクが入力・停止・異常を待ち分け、treeへ依頼して終了結果を返す箇所を読む。",
+        "title": "Engineタスクが入力・停止・異常を待ち分け、treeへ依頼して終了結果を返す箇所を読む。"
+      },
+      {
+        "context": "area:node-handle",
+        "purpose": "起動済み部品と終了FutureをNodeHandleにまとめて返す箇所を読む。",
+        "title": "起動済み部品と終了FutureをNodeHandleにまとめて返す箇所を読む。"
+      },
+      {
+        "context": "area:startup-node-wait",
+        "purpose": "handleが保持する終了Futureと、wait_for_node_exitが待つ値を確かめる。",
+        "title": "handleが保持する終了Futureと、wait_for_node_exitが待つ値を確かめる。"
+      }
+    ],
+    "roleName": "Engineを使うノードの起動",
+    "input": "NodeBuilderWithComponentsとlaunch context",
+    "output": "稼働するノードのhandleと終了待機Future"
+  },
+  {
+    "path": "crates/node/builder/src/components/builder.rs",
+    "goal": "EVM、pool、ネットワーク、payload builder、consensusのbuilderを呼び、依存を渡す。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "startup:components",
+        "purpose": "traitの関連型と部品の依存関係、作成順、Componentsとしての返却を読む。",
+        "title": "traitの関連型と部品の依存関係、作成順、Componentsとしての返却を読む。"
+      },
+      {
+        "context": "area:startup-component-choice",
+        "purpose": "このmainが選ぶEthereumNodeの既定構成に、どの具体的builderが対応するか比較する。",
+        "title": "このmainが選ぶEthereumNodeの既定構成に、どの具体的builderが対応するか比較する。"
+      },
+      {
+        "context": "area:startup-network-builder",
+        "purpose": "Ethereumのnetwork builderがネットワークの起動へ渡し、handleを返す箇所を読む。",
+        "title": "Ethereumのnetwork builderがネットワークの起動へ渡し、handleを返す箇所を読む。"
+      },
+      {
+        "context": "area:startup-network-start",
+        "purpose": "networkの起動が実際に三つのタスクを登録し、停止時にピア情報を扱う箇所を読む。",
+        "title": "networkの起動が実際に三つのタスクを登録し、停止時にピア情報を扱う箇所を読む。"
+      },
+      {
+        "context": "area:startup-payload-spawn",
+        "purpose": "payload builderサービスを生成し、タスクを起動してhandleを返す箇所を読む。",
+        "title": "payload builderサービスを生成し、タスクを起動してhandleを返す箇所を読む。"
+      }
+    ],
+    "roleName": "ノードの主要部品の組立",
+    "input": "設定・providerを持つBuilderContext",
+    "output": "生成したComponents"
+  },
+  {
+    "path": "crates/engine/tree/src/tree/mod.rs",
+    "goal": "専用スレッドでEngine要求を処理し、チェーン状態と永続化の進行を調整する。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "area:startup-tree-spawn",
+        "purpose": "Engine要求と返答のチャネルを作り、専用OSスレッドでrunを起動する実装を読む。",
+        "title": "Engine要求と返答のチャネルを作り、専用OSスレッドでrunを起動する実装を読む。"
+      },
+      {
+        "context": "startup:tree",
+        "purpose": "要求・保存完了を待ち分け、backpressureや異常時の制御を読む。",
+        "title": "要求・保存完了を待ち分け、backpressureや異常時の制御を読む。"
+      },
+      {
+        "context": "area:journey-block-save-start",
+        "purpose": "保存済み位置と進行中の処理を確認して、次の保存を始める条件を読む。",
+        "title": "保存済み位置と進行中の処理を確認して、次の保存を始める条件を読む。"
+      },
+      {
+        "context": "area:journey-block-save-complete",
+        "purpose": "保存完了がtreeの位置やメモリーの後処理へ反映される箇所を読む。",
+        "title": "保存完了がtreeの位置やメモリーの後処理へ反映される箇所を読む。"
+      }
+    ],
+    "roleName": "Engine Treeの要求処理",
+    "input": "Engine要求、ダウンロード済みブロック、永続化完了等",
+    "output": "Engine結果、チェーンイベント、永続化・同期に関する要求"
+  },
+  {
+    "path": "crates/net/network/src/manager.rs",
+    "goal": "handleからの要求とswarmイベントをpollし、ピア通信やネットワーク状態を進める。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "area:startup-network-builder",
+        "purpose": "Ethereumのnetwork builderがネットワークの起動へ渡し、handleを返す箇所を読む。",
+        "title": "Ethereumのnetwork builderがネットワークの起動へ渡し、handleを返す箇所を読む。"
+      },
+      {
+        "context": "area:startup-network-start",
+        "purpose": "networkの起動が実際に三つのタスクを登録し、停止時にピア情報を扱う箇所を読む。",
+        "title": "networkの起動が実際に三つのタスクを登録し、停止時にピア情報を扱う箇所を読む。"
+      },
+      {
+        "context": "startup:network",
+        "purpose": "NetworkManagerが内部要求と通信イベントを進め、予算や待機状態で制御を返す実装を読む。",
+        "title": "NetworkManagerが内部要求と通信イベントを進め、予算や待機状態で制御を返す実装を読む。"
+      }
+    ],
+    "roleName": "P2Pネットワークの進行管理",
+    "input": "内部要求チャネルとP2P通信イベント",
+    "output": "ネットワーク状態の更新と関連イベントの処理"
+  },
+  {
+    "path": "crates/engine/tree/src/backfill.rs",
+    "goal": "段階的同期pipelineをIdle/Runningで管理し、targetに応じてタスクを起動して結果を返す。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "startup:backfill",
+        "purpose": "目標の設定、Idleからの起動、返答待ち、Idleへの復帰を一続きで読む。",
+        "title": "目標の設定、Idleからの起動、返答待ち、Idleへの復帰を一続きで読む。"
+      },
+      {
+        "context": "area:journey-sync-run",
+        "purpose": "同期目標と巻き戻し目標を分け、実行後にpipelineと結果を返す箇所を読む。",
+        "title": "同期目標と巻き戻し目標を分け、実行後にpipelineと結果を返す箇所を読む。"
+      },
+      {
+        "context": "area:journey-sync-default-order",
+        "purpose": "既定のpipelineが取得・実行等の段階をどう組み合わせるか読む。",
+        "title": "既定のpipelineが取得・実行等の段階をどう組み合わせるか読む。"
+      },
+      {
+        "context": "area:journey-sync-online-order",
+        "purpose": "ヘッダーの後に本文をそろえる段階の順番を確かめる。",
+        "title": "ヘッダーの後に本文をそろえる段階の順番を確かめる。"
+      },
+      {
+        "context": "area:journey-sync-execution-order",
+        "purpose": "送信者復元、実行、その後の索引等を並べる順番を確かめる。",
+        "title": "送信者復元、実行、その後の索引等を並べる順番を確かめる。"
+      },
+      {
+        "context": "area:sync",
+        "purpose": "登録した段階を順に進め、通常進行・巻き戻し・エラーを分ける実装を読む。",
+        "title": "登録した段階を順に進め、通常進行・巻き戻し・エラーを分ける実装を読む。"
+      },
+      {
+        "context": "area:sync-unwind",
+        "purpose": "逆順の段階選択から巻き戻し、進捗と目印の調整、commit、結果返却まで読む。",
+        "title": "逆順の段階選択から巻き戻し、進捗と目印の調整、commit、結果返却まで読む。"
+      }
+    ],
+    "roleName": "backfill同期の状態管理",
+    "input": "BackfillAction::Startとpipeline",
+    "output": "Started・Finished・TaskDroppedイベント"
+  },
+  {
+    "path": "crates/engine/tree/src/launch.rs",
+    "goal": "downloader・persistence・tree・要求handler・backfillを結び、orchestratorを作る。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "area:startup-engine-build",
+        "purpose": "builderの中で保存処理とtreeを起動し、handlerとbackfillを結ぶ箇所を読む。",
+        "title": "builderの中で保存処理とtreeを起動し、handlerとbackfillを結ぶ箇所を読む。"
+      },
+      {
+        "context": "area:startup-tree-spawn",
+        "purpose": "Engine要求と返答のチャネルを作り、専用OSスレッドでrunを起動する実装を読む。",
+        "title": "Engine要求と返答のチャネルを作り、専用OSスレッドでrunを起動する実装を読む。"
+      },
+      {
+        "context": "startup:backfill",
+        "purpose": "目標の設定、Idleからの起動、返答待ち、Idleへの復帰を一続きで読む。",
+        "title": "目標の設定、Idleからの起動、返答待ち、Idleへの復帰を一続きで読む。"
+      }
+    ],
+    "roleName": "Engine内部サービスの配線",
+    "input": "provider、pipeline、要求ストリーム、Engine各部品",
+    "output": "ChainOrchestrator"
+  },
+  {
+    "path": "crates/engine/tree/src/chain.rs",
+    "goal": "handlerとbackfillをpollし、開始・完了やチェーンイベントを上下へ伝える。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "area:startup-orchestrator-poll",
+        "purpose": "orchestratorがhandlerとbackfillの進行を調整してイベントを返す実装を読む。",
+        "title": "orchestratorがhandlerとbackfillの進行を調整してイベントを返す実装を読む。"
+      },
+      {
+        "context": "startup:backfill",
+        "purpose": "目標の設定、Idleからの起動、返答待ち、Idleへの復帰を一続きで読む。",
+        "title": "目標の設定、Idleからの起動、返答待ち、Idleへの復帰を一続きで読む。"
+      },
+      {
+        "context": "area:startup-engine-poll",
+        "purpose": "要求、ダウンロード結果、treeからの出来事を処理し、上位へ返す実装を読む。",
+        "title": "要求、ダウンロード結果、treeからの出来事を処理し、上位へ返す実装を読む。"
+      }
+    ],
+    "roleName": "チェーン進行とbackfillの調整",
+    "input": "ChainHandlerとBackfillSync",
+    "output": "ChainEventとhandlerへの同期状態通知"
+  },
+  {
+    "path": "crates/engine/tree/src/engine.rs",
+    "goal": "要求ストリーム・ブロックのダウンロード処理・treeのチャネルを接続し、要求と結果イベントを取り次ぐ。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "area:startup-engine-poll",
+        "purpose": "要求、ダウンロード結果、treeからの出来事を処理し、上位へ返す実装を読む。",
+        "title": "要求、ダウンロード結果、treeからの出来事を処理し、上位へ返す実装を読む。"
+      },
+      {
+        "context": "area:startup-engine-channel",
+        "purpose": "treeへ要求を送る側と、treeからの返答・イベントを受け取る側を読む。",
+        "title": "treeへ要求を送る側と、treeからの返答・イベントを受け取る側を読む。"
+      }
+    ],
+    "roleName": "Engine要求の中継",
+    "input": "Engine API要求、ダウンロード結果、treeイベント",
+    "output": "treeへのmessage、上位へのチェーン/backfill/ダウンロードイベント"
+  },
+  {
+    "path": "crates/node/builder/src/handle.rs",
+    "goal": "ノードの部品群と終了Futureを保持し、終了待機の入口を提供する。",
+    "scope": "このモジュールの役割・入力・返答の根拠です。各関連実装は役割の接続として示し、実行トレースとは区別します。",
+    "readings": [
+      {
+        "context": "area:node-handle",
+        "purpose": "起動済み部品と終了FutureをNodeHandleにまとめて返す箇所を読む。",
+        "title": "起動済み部品と終了FutureをNodeHandleにまとめて返す箇所を読む。"
+      },
+      {
+        "context": "area:startup-node-wait",
+        "purpose": "handleが保持する終了Futureと、wait_for_node_exitが待つ値を確かめる。",
+        "title": "handleが保持する終了Futureと、wait_for_node_exitが待つ値を確かめる。"
+      },
+      {
+        "context": "area:node-exit",
+        "purpose": "終了Futureが成功・失敗・まだ結果がない状態をどう返すか読む。",
+        "title": "終了Futureが成功・失敗・まだ結果がない状態をどう返すか読む。"
+      }
+    ],
+    "roleName": "起動済みノードのhandle",
+    "input": "起動済みノードと終了Future",
+    "output": "node_exit_futureの結果"
+  }
+]

@@ -1,0 +1,196 @@
+[
+  {
+    "area": "rpc",
+    "component": "interface",
+    "goal": "公開名・型・ハンドラーと、共通処理へ渡す位置を確かめる。",
+    "scope": "公開インターフェースとハンドラーの役割を、名前空間・メソッド宣言・送信と読取の入口に対応づけます。",
+    "readings": [
+      {
+        "context": "area:component-rpc-namespace",
+        "title": "RPCの名前空間と操作の型を宣言する",
+        "purpose": "名前空間とRPC名、メソッドの型の宣言を読む。",
+        "connection": "同じtraitで宣言されるsendRawTransactionとSync版の型を次で読みます。"
+      },
+      {
+        "context": "tx:rpc-contract",
+        "title": "RPC の公開インターフェース",
+        "purpose": "通常の送信とSync版の入力・返す型・待機条件を区別する。",
+        "connection": "宣言と実装を区別して、次の通常送信のハンドラー本体を読みます。"
+      },
+      {
+        "context": "tx:rpc",
+        "title": "RPC の入口を読む",
+        "purpose": "署名済みデータを共通helperへ渡し、ハッシュまたはRPCエラーへ戻す。",
+        "connection": "このハンドラーが呼ぶsend_raw_transactionの既定実装を次で読みます。"
+      },
+      {
+        "context": "tx:recover",
+        "title": "デコードして送信者を復元",
+        "purpose": "共通helperが復元と後続送信を呼ぶ位置を読む。",
+        "connection": "復元hookの既定実装で、読取りと署名の失敗の条件を確認します。"
+      },
+      {
+        "context": "tx:recovery-hook",
+        "title": "デフォルトの復元フック",
+        "purpose": "空入力・形式エラー・署名復元の結果を区別する。",
+        "connection": "復元結果は共通helperへ戻ります。次は同じRPC入口ファイルの、書込を伴わない残高問い合わせです。"
+      },
+      {
+        "context": "area:rpc-balance-entry",
+        "title": "残高問い合わせのRPC入口",
+        "purpose": "getBalanceのハンドラーがアドレスと参照する時点を渡すことを読む。",
+        "connection": "呼び出すEthState::balanceの本体を次で読みます。"
+      },
+      {
+        "context": "area:rpc-balance-read",
+        "title": "指定した状態から残高を読む",
+        "purpose": "状態からの読取エラーと、値なしを0にする結果を分ける。",
+        "connection": "残高は元のRPCハンドラーへ返ります。RPCの宣言、ハンドラー、対象別の共通処理の分担を確かめます。"
+      }
+    ]
+  },
+  {
+    "area": "rpc",
+    "component": "helpers",
+    "goal": "ブロック・状態・取引の共通helperを、実際の入力と戻り値から比べる。",
+    "scope": "対象別に分かれたhelperの責務を原文で比較します。隣接する範囲が一つの呼出列とは限らず、ブロック・残高・取引という別の操作であることを明記します。",
+    "readings": [
+      {
+        "context": "area:component-block-read",
+        "title": "ブロックの読取結果をRPC用の型へ変換する",
+        "purpose": "ブロックIDとfull指定を受け取り、取得したブロックがない場合とRPC用のヘッダー/ブロックへ変換して返す場合を分ける。",
+        "connection": "これはブロック用helperです。次は呼出先ではなく、状態を扱う別のhelperの残高読取です。"
+      },
+      {
+        "context": "area:rpc-balance-read",
+        "title": "指定した状態から残高を読む",
+        "purpose": "状態用helperが残高を読み、エラーと値なしを分ける。",
+        "connection": "次は同じ残高処理の続きではなく、取引用helperの送信入口です。"
+      },
+      {
+        "context": "tx:recover",
+        "title": "デコードして送信者を復元",
+        "purpose": "送信用のバイト列を受け、復元と後続の送信処理を呼び、結果のFutureを返す。",
+        "connection": "呼んでいるPoolTransactionの復元hookの既定実装を次で読みます。"
+      },
+      {
+        "context": "tx:recovery-hook",
+        "title": "デフォルトの復元フック",
+        "purpose": "デコードの空入力・形式エラー、署名復元とその失敗を分ける。",
+        "connection": "復元の結果は共通送信関数へ戻り、実装型のsend_pool_transactionへ渡されます。ハッシュによる取得は、その送信の続きではなく別の読取操作です。"
+      },
+      {
+        "context": "area:file-tx-get-entry",
+        "title": "ハッシュによる取得を共通の読取担当へ渡す",
+        "purpose": "ハッシュによる取得の共通入口を読む。",
+        "connection": "この入口からLoadTransactionの同名メソッドへ渡します。"
+      },
+      {
+        "context": "area:file-tx-get",
+        "title": "キャッシュ・保存済み履歴・プールから取引を探す",
+        "purpose": "キャッシュ、保存済み取引、プールの順で探し、Block/Pool/Noneとエラーを分ける。",
+        "connection": "この読取の途中で呼ぶpool.getの公開入口を次で読みます。"
+      },
+      {
+        "context": "area:file-pool-get",
+        "title": "公開の取引取得を内部プールにつなぐ",
+        "purpose": "ハッシュ指定の取得結果を内部プールから返す。",
+        "connection": "Optionは見つかったかを表す結果です。この結果はLoadTransactionを経て取得の入口へ戻ります。"
+      }
+    ]
+  },
+  {
+    "area": "rpc",
+    "component": "implementation",
+    "goal": "EthApiがtraitを実装し、ノード部品とプール追加の経路へつなぐことを確かめる。",
+    "scope": "共通traitの約束をEthApiが実装する箇所と、保持するノード部品・追加要求の経路を読みます。別の型の実装まで同じ動作だと一般化しません。",
+    "readings": [
+      {
+        "context": "tx:trait-implementation",
+        "title": "EthApiがtraitの操作を具体化する",
+        "purpose": "EthApiにEthTransactionsを実装する宣言と、実装が使える型の条件を読む。",
+        "connection": "同じimplのsend_pool_transaction本体が次の範囲です。"
+      },
+      {
+        "context": "tx:submit",
+        "title": "通常の送信経路を追う",
+        "purpose": "EthApiの具体実装で、blob変換・外部転送の有無と通常のプール追加を分ける。",
+        "connection": "通常はinner.add_pool_transactionへ渡します。外部転送の分岐はこの本体内で結果を返します。"
+      },
+      {
+        "context": "area:file-rpc-inner",
+        "title": "RPCが共有するノード部品・設定・チャネルを読む",
+        "purpose": "具体的なRPC実装が保持するノード部品と送受信用チャネルを読む。",
+        "connection": "ここは送信関数の次の命令ではなく、self.innerに入る値の型の定義です。次でその作成と接続を確認します。"
+      },
+      {
+        "context": "area:file-rpc-inner-build",
+        "title": "バッチ処理担当を作りRPC内部へつなぐ",
+        "purpose": "constructorがプールとprocessorを接続し、追加依頼の送信口を保持する。",
+        "connection": "このconstructorが呼ぶBatchTxProcessor::newで、二つの口がどう作られるかを次で確かめます。"
+      },
+      {
+        "context": "area:file-batch-create",
+        "title": "バッチ担当の受信口と追加依頼の送信口を作る",
+        "purpose": "キューの送信口と受信口を作り、受信担当と送信口を呼出元へ返す。",
+        "connection": "processorはEthApiInner作成元のspawn_critical_taskで動きます。このtx_batch_senderを使うadd_pool_transactionへ戻ります。"
+      },
+      {
+        "context": "tx:queue",
+        "title": "追加要求をチャネルへ送る",
+        "purpose": "未検証の取引を追加依頼に包み、返答口を作り、結果を待つ。",
+        "connection": "送信側tx_batch_senderの依頼を、次の受信側request_rxが取り出します。"
+      },
+      {
+        "context": "area:send-receive",
+        "title": "内部キューから追加依頼を受け取る",
+        "purpose": "内部依頼を受信してバッチ処理を別のタスクで進める。",
+        "connection": "ここでspawnするprocess_batchの本体を次で読みます。"
+      },
+      {
+        "context": "tx:batch",
+        "title": "バッチをプールへ引き渡す",
+        "purpose": "件数とoriginに合わせて追加し、それぞれの返答口へ結果を返す。",
+        "connection": "pool.add_transaction等の公開APIへ渡します。返答はresponse_txから、前のadd_pool_transactionが待つresponse_rxへ戻ります。"
+      },
+      {
+        "context": "tx:pool",
+        "title": "検証してプールに追加",
+        "purpose": "公開の追加APIで検証と内部プールへの追加をつなぎ、結果を返す。",
+        "connection": "追加結果はbatcherの返答口からEthApiInner.add_pool_transactionへ戻り、send_pool_transactionがハッシュまたはエラーを返します。traitの実装、保持する部品、送信と返答を対応づけます。"
+      }
+    ]
+  },
+  {
+    "area": "rpc",
+    "component": "integration",
+    "goal": "公開module・ノード部品・通信設定・Engine用の窓口が、RPC起動へどう集まるか確かめる。",
+    "scope": "組立側でRPC部品を使う実装を読み、通常RPCと認証用サーバーの設定・起動・返るhandleを区別します。最後のEngine APIは起動処理の次の呼出しではなく、稼働後に使う別の要求入口です。",
+    "readings": [
+      {
+        "context": "area:component-rpc-launch",
+        "title": "通常RPCと認証用Engineサーバーを起動する",
+        "purpose": "設定から通常RPCと認証サーバーの分岐を選び、起動結果をRpcHandleへまとめる。",
+        "connection": "ここで先に呼ぶsetup_rpc_componentsの本体を次で読みます。"
+      },
+      {
+        "context": "area:component-rpc-setup",
+        "title": "ノード部品からRPCモジュールとEngine接続を作る",
+        "purpose": "provider・pool・network・Engine APIと共通設定をmodule/registryへ接続する。",
+        "connection": "RpcSetupContextが前の起動本体へ戻ると、次の起動helperがサーバーのstart APIを待ちます。"
+      },
+      {
+        "context": "area:component-rpc-start",
+        "title": "サーバー起動結果と通信窓口のhandleを受け取る",
+        "purpose": "通常/authそれぞれの起動結果と、通信窓口のhandleを返す。",
+        "connection": "起動helperの結果はlaunch_add_ons_with_opt_engineへ戻ります。次はその直後の呼出しではなく、稼働後に認証用の窓口で扱うEngine API要求の例です。"
+      },
+      {
+        "context": "area:journey-block-rpc",
+        "title": "合意側からnewPayloadを受け取る",
+        "purpose": "Engine APIがpayloadを受け、合意処理側へ渡して返答を待つ入口を読む。",
+        "connection": "Engineの要求・返答の全経路はblockの経路で続けて読めます。ここではアプリ向けRPCとEngine用RPCの役割を区別します。"
+      }
+    ]
+  }
+]

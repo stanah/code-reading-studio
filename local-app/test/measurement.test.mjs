@@ -8,7 +8,7 @@ import {measure,policyHash,runtimeHash,projectRoot} from '../../scripts/measure-
 
 test('[FR-COV-001] [FR-COV-002] [FR-COV-003] all files stay in the denominator and excerpts never count as full-file reviews',async()=>{
  const result=await measure();assert.equal(result.metrics.totalTracked,1872);assert.equal(result.inventory.length,1872);assert.equal(new Set(result.inventory.map(f=>f.path)).size,1872);
- assert.equal(result.metrics.totalRust,1283);assert.equal(result.metrics.anchoredRustFiles,30);assert.equal(result.metrics.fullyReviewedRustFiles,2);
+ assert.equal(result.metrics.totalRust,1283);assert.equal(result.metrics.anchoredRustFiles,60);assert.equal(result.metrics.fullyReviewedRustFiles,2);
  assert.ok(result.inventory.some(f=>f.kind==='rust-example'));assert.ok(result.inventory.some(f=>f.kind==='rust-test-or-bench'));
  assert.ok(result.inventory.filter(f=>f.status==='excerpt-only').every(f=>f.evidence.length));assert.equal(result.productComplete,false);
  for(const id of ['FR-COV-002','FR-COV-003','FR-EVAL-003'])assert.notEqual(result.gates.find(g=>g.id===id).status,'pass');
@@ -17,7 +17,7 @@ test('[FR-COV-001] [FR-COV-002] [FR-COV-003] all files stay in the denominator a
 test('[FR-READ-001] [FR-READ-002] every area points to a source-backed operation and inert in-place hints',async()=>{
  const c={};c.window=c;vm.runInNewContext(await readFile(join(projectRoot,'dist/reading-help-data.js'),'utf8'),c);vm.runInNewContext(await readFile(join(projectRoot,'ui/area-reading.js'),'utf8'),c);
  const result=await measure();assert.equal(result.metrics.guidedAreas,11);assert.equal(result.metrics.invalidEvidence,0);
- const d=c.READING_HELP_DATA;for(const r of d.areaReadings){const h=c.ReadingAreas.render(r.area,d.commit);assert.match(h,/受け取るもの/);assert.match(h,/失敗・待ち/);assert.ok(h.includes('data-reading-help="'+r.context+'"'));assert.ok(d.contexts[r.context]);if(r.extraContext)assert.ok(d.contexts[r.extraContext]);}
+ const d=c.READING_HELP_DATA;for(const r of d.areaReadings){const h=c.ReadingAreas.render(r.area,d.commit);assert.match(h,/受け取るもの/);assert.match(h,/失敗・待ち/);if(r.readings?.length){assert.ok(h.includes('data-area-reading-path="'+r.area+'"'));assert.ok(r.readings.some(s=>s.context===r.context));}else if(r.area==='pool'){assert.match(h,/data-reading-operation="pool"/);assert.ok(d.operationLinks.find(o=>o.id==='pool').contexts.includes(r.context));}else assert.ok(h.includes('data-reading-help="'+r.context+'"'));assert.ok(d.contexts[r.context]);if(r.extraContext)assert.ok(d.contexts[r.extraContext]);}
  assert.equal(c.ReadingAreas.render('rpc','wrong-commit'),'');assert.equal(c.ReadingAreas.render('unknown',d.commit),'');
  const original=d.areaReadings[0].input;d.areaReadings[0].input='<img src=x onerror=alert(1)>';assert.doesNotMatch(c.ReadingAreas.render(d.areaReadings[0].area,d.commit),/<img/);d.areaReadings[0].input=original;
 });
@@ -53,10 +53,11 @@ test('[FR-EVAL-003] AI evidence labelled as simulation is never accepted as a hu
 
 test('[FR-READ-002] a correct hash with a different displayed excerpt cannot count as valid teaching coverage',async()=>{
  const dir=await mkdtemp(join(tmpdir(),'reading-source-'));try{
-  for(const name of ['reading-target.json','dist/reth-data.js','dist/atlas-data.js','dist/reading-help-data.js','local-app/startup-guide.json','ui/area-readings.json','ui/lesson-code-links.json']){await mkdir(join(dir,name.substring(0,name.lastIndexOf('/'))||'.'),{recursive:true});await copyFile(join(projectRoot,name),join(dir,name));}
+  for(const name of ['reading-target.json','dist/reth-data.js','dist/atlas-data.js','dist/drill-data.js','dist/reading-help-data.js','local-app/annotations.json','local-app/startup-guide.json','ui/area-readings.json','ui/area-source-excerpts.json','ui/reading-help-content.json','ui/lesson-code-links.json','ui/journey-code-links.json','ui/file-role-code-links.json','ui/component-code-links.json','ui/operation-code-links.json']){await mkdir(join(dir,name.substring(0,name.lastIndexOf('/'))||'.'),{recursive:true});await copyFile(join(projectRoot,name),join(dir,name));}
+  assert.equal((await measure({root:dir})).metrics.invalidEvidence,0,'fixture is valid before the displayed source is tampered');
   const c={window:{}};vm.runInNewContext(await readFile(join(dir,'dist/reading-help-data.js'),'utf8'),c);c.window.READING_HELP_DATA.contexts['area:foundation'].source.code='not the pinned excerpt';
   await writeFile(join(dir,'dist/reading-help-data.js'),'window.READING_HELP_DATA = '+JSON.stringify(c.window.READING_HELP_DATA)+';');
-  const result=await measure({root:dir});assert.ok(result.metrics.invalidEvidence>0);assert.equal(result.metrics.guidedAreas,10);assert.equal(result.metrics.anchoredRustFiles,30);assert.ok(!result.inventory.find(f=>f.path==='crates/chainspec/src/spec.rs').evidence.some(e=>e.start===114));assert.equal(result.gates.find(g=>g.id==='FR-READ-002').status,'unmet');
+  const result=await measure({root:dir});assert.ok(result.metrics.invalidEvidence>0);assert.equal(result.metrics.guidedAreas,10);assert.equal(result.metrics.anchoredRustFiles,60);assert.ok(!result.inventory.find(f=>f.path==='crates/chainspec/src/spec.rs').evidence.some(e=>e.start===114));assert.equal(result.gates.find(g=>g.id==='FR-READ-002').status,'unmet');
  }finally{await rm(dir,{recursive:true,force:true});}
 });
 

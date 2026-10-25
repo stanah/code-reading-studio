@@ -19,7 +19,7 @@ let source={path:null,text:null,offset:0,selection:null,anchor:null},controller=
 const cache=new Map();
 const sourceURL=p=>'https://github.com/paradigmxyz/reth/blob/'+atlas.commit+'/'+p.split('/').map(encodeURIComponent).join('/');
 const topic=()=>atlas.topics.find(t=>t.id===state.topic);
-const topicGuide=t=>t.id==='boot'?{href:'startup.html',label:'起動から稼働までの資料を読む →',status:'● 起動の資料あり'}:{href:'zoom.html?area=rpc',label:'送信処理の位置づけから読む →',status:'● 6ステップの送信解説あり'};
+const topicGuide=t=>['block','sync'].includes(t.id)?{href:'zoom.html?'+new URLSearchParams({area:t.id==='block'?'engine':'sync',journey:t.id}),label:'原文と補助コメントで経路を読む →',status:'● 要求から結果までの読解経路あり'}:t.id==='boot'?{href:'startup.html',label:'起動から稼働までの資料を読む →',status:'● 起動の資料あり'}:{href:'index.html#lesson=send',label:'受付から検証・追加・返答までコードで読む →',status:'● 送信の読解経路あり'};
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch{toast('保存に失敗しました。ブラウザーの空き容量をご確認ください。')}}
 function toast(message){$('atlas-toast').textContent=message;$('atlas-toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('atlas-toast').classList.remove('show'),2800)}
 function filterFiles(){return atlas.files.filter(f=>(!state.area||f.area===state.area)&&(!topic()||topic().areas.includes(f.area))&&f.path.startsWith(state.folder)&&f.path.toLowerCase().includes(state.query.toLowerCase())&&(!state.hideTests||!f.test)&&(state.status==='all'||state.status==='explained'&&explained.has(f.path)||state.status==='opened'&&state.opened.includes(f.path)||state.status==='unseen'&&!state.opened.includes(f.path)||state.status==='queued'&&state.queue.some(q=>q.path===f.path)))}

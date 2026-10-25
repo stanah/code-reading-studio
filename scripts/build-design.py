@@ -10,7 +10,8 @@ page=(root/'ui/learning-page.html').read_text()
 (root/'local-app/public/index.html').write_text(page.replace('<body class="learning-page">','<body data-studio="local" class="learning-page">').replace('href="studio.css"','href="/studio.css"').replace('src="','src="/'))
 for target in (root/'dist',root/'local-app/public'):
  for name in ('studio.css','studio.js','learning.js','learning-content.js','reading-help.js','area-reading.js'):shutil.copyfile(root/'ui'/name,target/name)
-for folder,names in [('dist',['index.html','explore.html','zoom.html','reader.html','lenses.html','implementation.html','startup.html']),('local-app/public',['index.html','reader.html','files.html','startup.html'])]:
+# The standalone startup guide is owned by build-guide.py, including its CSP-safe script.
+for folder,names in [('dist',['index.html','explore.html','zoom.html','reader.html','lenses.html','implementation.html']),('local-app/public',['index.html','reader.html','files.html','startup.html'])]:
  for name in names:
   p=root/folder/name
   if not p.exists():continue
@@ -28,6 +29,15 @@ for folder,names in [('dist',['index.html','explore.html','zoom.html','reader.ht
   s=re.sub(r'href="(/?)studio\.css(?:\?[^"]*)?"',lambda m:'href="'+m[1]+'studio.css?v='+css_revision+'"',s)
   # Defer in dependency order: content -> learner state -> shared navigation.
   for asset in ('learning-content.js','learning.js','reading-help-data.js','reading-help.js','reading-coverage-data.js','area-reading.js','studio.js'):
-   s=re.sub(r'<script[^>]*src="/?'+re.escape(asset)+r'"[^>]*></script>','',s)
+   s=re.sub(r'<script[^>]*src="/?'+re.escape(asset)+r'(?:\?[^\"]*)?"[^>]*></script>','',s)
   s=s.replace('</head>',''.join(f'<script defer src="{prefix}{asset}"></script>' for asset in ('learning-content.js','learning.js','reading-help-data.js','reading-help.js','reading-coverage-data.js','area-reading.js','studio.js'))+'</head>')
+  # A page reload may reuse heuristic caches for unchanged script URLs. Bind each
+  # local asset URL to its actual content, including data and alternate readers.
+  def version_asset(match):
+   src=match[2]
+   asset=root/folder/src.lstrip('/')
+   if not asset.is_file():return match[0]
+   revision=hashlib.sha256(asset.read_bytes()).hexdigest()[:12]
+   return match[1]+src+'?v='+revision+match[3]
+  s=re.sub(r'(\b(?:src|href)=")([^"?]+\.(?:js|css))(?:\?[^\"]*)?(")',version_asset,s)
   p.write_text('\n'.join(line.rstrip() for line in s.splitlines())+'\n')

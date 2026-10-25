@@ -113,10 +113,10 @@
     "title": "巻き戻す段階は、どの順に選ぶ？",
     "source": {
       "path": "crates/stages/api/src/pipeline/mod.rs",
-      "start": 302,
-      "end": 346,
-      "hash": "d142b6232a76ffd0f4dd005b8acfee11a7bcd6e8e2c19b5a28a86e1490c591bd",
-      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/api/src/pipeline/mod.rs#L302-L346"
+      "start": 300,
+      "end": 429,
+      "hash": "8c38b504093ea8e6b3e42301b29889f9f7be0d99191d86ae8deb2f710088b4d4",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/api/src/pipeline/mod.rs#L300-L429"
     }
   },
   "engine-timestamp": {
@@ -187,6 +187,1066 @@
       "end": 317,
       "hash": "d95e4fad6597ea43c131a28d05884247cff4680aa1bbdf374a849bb4f34322f1",
       "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/consensus/common/src/validation.rs#L290-L317"
+    }
+  },
+  "rpc-balance-entry": {
+    "title": "残高問い合わせのRPC入口",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 695,
+      "end": 699,
+      "hash": "f07bffb57ee40502842464c878b5fb536d8c762fc66196d235d8c931eebbdee7",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/core.rs#L695-L699"
+    }
+  },
+  "rpc-balance-read": {
+    "title": "指定した状態から残高を読む",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/state.rs",
+      "start": 78,
+      "end": 90,
+      "hash": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/helpers/state.rs#L78-L90"
+    }
+  },
+  "send-receive": {
+    "title": "内部キューから追加依頼を受け取る",
+    "source": {
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "start": 113,
+      "end": 137,
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/batcher.rs#L113-L137"
+    }
+  },
+  "send-validation-dispatch": {
+    "title": "プールから検証担当へ渡す",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 383,
+      "end": 391,
+      "hash": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/lib.rs#L383-L391"
+    }
+  },
+  "send-validation-task": {
+    "title": "検証タスクへ仕事を渡し結果を待つ",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/task.rs",
+      "start": 233,
+      "end": 264,
+      "hash": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/task.rs#L233-L264"
+    }
+  },
+  "send-validation-entry": {
+    "title": "Ethereumの検証へ入る",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 1009,
+      "end": 1016,
+      "hash": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L1009-L1016"
+    }
+  },
+  "send-validation-order": {
+    "title": "データだけの検査から状態を使う検査へ進む",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 367,
+      "end": 435,
+      "hash": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L367-L435"
+    }
+  },
+  "send-stateless": {
+    "title": "形式・サイズ・ガス・手数料・ネットワークを検査する",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 452,
+      "end": 655,
+      "hash": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L452-L655"
+    }
+  },
+  "send-stateful": {
+    "title": "残高や通し番号を状態と照合する",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 657,
+      "end": 727,
+      "hash": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L657-L727"
+    }
+  },
+  "send-nonce": {
+    "title": "古い通し番号を拒否する",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 766,
+      "end": 782,
+      "hash": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/eth.rs#L766-L782"
+    }
+  },
+  "send-pool-add": {
+    "title": "検証結果から内部プールへの追加結果を作る",
+    "source": {
+      "path": "crates/transaction-pool/src/pool/mod.rs",
+      "start": 578,
+      "end": 639,
+      "hash": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/pool/mod.rs#L578-L639"
+    }
+  },
+  "send-pool-limit": {
+    "title": "内部プールの追加と容量制限をまとめて返す",
+    "source": {
+      "path": "crates/transaction-pool/src/pool/mod.rs",
+      "start": 661,
+      "end": 742,
+      "hash": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/pool/mod.rs#L661-L742"
+    }
+  },
+  "send-validation-worker": {
+    "title": "検証用の仕事を受け取り実行する",
+    "source": {
+      "path": "crates/transaction-pool/src/validate/task.rs",
+      "start": 56,
+      "end": 67,
+      "hash": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/validate/task.rs#L56-L67"
+    }
+  },
+  "rpc-launch": {
+    "title": "RPCを起動してEngineの窓口を受け取る",
+    "source": {
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 288,
+      "end": 300,
+      "hash": "1f587935df27b9e9b1695425728f7f2e4e6a9e44a136c5e8e18e80e4e140c8ab",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L288-L300"
+    }
+  },
+  "node-handle": {
+    "title": "起動した部品と終了待ちを呼び出し元へ返す",
+    "source": {
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 417,
+      "end": 445,
+      "hash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L417-L445"
+    }
+  },
+  "loop-cli": {
+    "title": "CLIの処理完了・異常終了・停止指示を待つ",
+    "source": {
+      "path": "crates/cli/runner/src/lib.rs",
+      "start": 228,
+      "end": 294,
+      "hash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/cli/runner/src/lib.rs#L228-L294"
+    }
+  },
+  "loop-engine": {
+    "title": "Engineの入力と停止要求を待ち分ける",
+    "source": {
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 329,
+      "end": 413,
+      "hash": "4df33038adafbba10133d79fc403ff5cc60b8273d3a1a71192da21ed9916ebe1",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L329-L413"
+    }
+  },
+  "loop-backfill": {
+    "title": "同期タスクの開始・待機・完了を扱う",
+    "source": {
+      "path": "crates/engine/tree/src/backfill.rs",
+      "start": 138,
+      "end": 208,
+      "hash": "a2c3ad029f4949d95f1a82897280e67e0649c9b8df7b011ebe1b9e11ededfa6d",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/backfill.rs#L138-L208"
+    }
+  },
+  "journey-block-rpc": {
+    "title": "合意側からnewPayloadを受け取る",
+    "source": {
+      "path": "crates/rpc/rpc-engine-api/src/engine_api.rs",
+      "start": 236,
+      "end": 250,
+      "hash": "a7ef2b6ff568497b6e94db00f11bd7d1ad11a1ea76c332d952eff479b104d582",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-engine-api/src/engine_api.rs#L236-L250"
+    }
+  },
+  "journey-block-message": {
+    "title": "Engineへの要求と返答経路を作る",
+    "source": {
+      "path": "crates/engine/primitives/src/message.rs",
+      "start": 342,
+      "end": 349,
+      "hash": "124986a7b675c2f2090ac9cb52a17631b76c97c2e048da4f85c36adba496547c",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/primitives/src/message.rs#L342-L349"
+    }
+  },
+  "journey-block-route": {
+    "title": "届いたEngine要求を処理担当へ渡す",
+    "source": {
+      "path": "crates/engine/tree/src/engine.rs",
+      "start": 107,
+      "end": 113,
+      "hash": "c859b35c87b8157d2f2b5e7d0c8af8929482ac8e4e997fa888a3a919111b81f7",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/engine.rs#L107-L113"
+    }
+  },
+  "journey-block-tree-send": {
+    "title": "tree側の要求経路へ送る",
+    "source": {
+      "path": "crates/engine/tree/src/engine.rs",
+      "start": 189,
+      "end": 200,
+      "hash": "4625e0cc28c2f748672eee3561f74b3bc199aa1e47778bba9edf60ce16831fbe",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/engine.rs#L189-L200"
+    }
+  },
+  "journey-block-dispatch": {
+    "title": "NewPayloadを実行し、その結果を返答口へ戻す",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1690,
+      "end": 1718,
+      "hash": "950be0ffff535603eabe63701940b633c87691f6b22483fc172389b5d4779401",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L1690-L1718"
+    }
+  },
+  "journey-block-receive": {
+    "title": "無効な祖先・同期中・通常検証を分ける",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 735,
+      "end": 807,
+      "hash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L735-L807"
+    }
+  },
+  "journey-block-insert": {
+    "title": "検証結果をVALID・SYNCINGなどへ変換する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 811,
+      "end": 857,
+      "hash": "de517d1a66a3881446dc99919e629594e468d33b31781fea2bfb02d19937a7bd",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L811-L857"
+    }
+  },
+  "journey-block-validate-call": {
+    "title": "取り込みの中からpayloadの検証を呼ぶ",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 3101,
+      "end": 3111,
+      "hash": "9b4536d1d9dc551b21815e2ecc2ec4965784c1f85bc1730943ee40bf01bd72f7",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L3101-L3111"
+    }
+  },
+  "journey-block-validator-entry": {
+    "title": "payloadを状態付きブロック検証へ渡す",
+    "source": {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 1863,
+      "end": 1869,
+      "hash": "c66538723c75d22023c83ae37c961c7b6274b911073853cc78cb4829908e2c56",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/payload_validator.rs#L1863-L1869"
+    }
+  },
+  "journey-block-parent": {
+    "title": "親を見つけ、基本的な変換と検査を始める",
+    "source": {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 487,
+      "end": 535,
+      "hash": "eb38e94d428fa755c9ca712de5117dcba6c73df32c9e34351c93ec47b21551d6",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/payload_validator.rs#L487-L535"
+    }
+  },
+  "journey-block-execute-choice": {
+    "title": "実行方法を選び、現在の状態を渡す",
+    "source": {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 724,
+      "end": 749,
+      "hash": "c4e189e665f1d08917262e0c64586729aa4f465241385f456a536f7547d140cf",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/payload_validator.rs#L724-L749"
+    }
+  },
+  "journey-block-execute": {
+    "title": "取引を一件ずつ実行してレシートを得る",
+    "source": {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 1244,
+      "end": 1330,
+      "hash": "a21f66d8e989c663b0a78bb0533662e34108574c72f3938b4e8353a6854fac93",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/payload_validator.rs#L1244-L1330"
+    }
+  },
+  "journey-block-postcheck": {
+    "title": "実行後の結果がブロックのルールに合うか検証する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 1344,
+      "end": 1395,
+      "hash": "f47fe2bd0c2b4ad8a8111a88d37a97a887014c46e30763a5af50d10827fc16ec",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/payload_validator.rs#L1344-L1395"
+    }
+  },
+  "journey-block-root": {
+    "title": "計算した状態のまとめをヘッダーと照合し結果を返す",
+    "source": {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 818,
+      "end": 935,
+      "hash": "637397d644226d2d753fc423127447ad27a676d3d2b78b8f9e76607c2aed379c",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/payload_validator.rs#L818-L935"
+    }
+  },
+  "journey-block-forkchoice": {
+    "title": "合意側の履歴採用の指示を処理する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1150,
+      "end": 1178,
+      "hash": "23f95db945554ba018f60281c74367fc353104f230b91a1cdb04ac0b45f25cb2",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L1150-L1178"
+    }
+  },
+  "journey-block-canonical": {
+    "title": "検証済みの履歴を採用する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1346,
+      "end": 1371,
+      "hash": "d6cc524eb2d8a9914ee5e01768a1448c2f84e30d116759c3775c4ea6711dab8f",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L1346-L1371"
+    }
+  },
+  "journey-block-save-target": {
+    "title": "採用中の履歴から保存範囲を選ぶ",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 2209,
+      "end": 2304,
+      "hash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L2209-L2304"
+    }
+  },
+  "journey-block-save-start": {
+    "title": "保存の条件を確認して別の処理へ依頼する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1425,
+      "end": 1461,
+      "hash": "f8ee7a543ce985f60e68bb29bc78f0f9a1fe28c276b8bf34ad2cc1eb360a891a",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L1425-L1461"
+    }
+  },
+  "journey-block-save-queue": {
+    "title": "保存依頼を専用の経路へ送る",
+    "source": {
+      "path": "crates/engine/tree/src/persistence.rs",
+      "start": 347,
+      "end": 354,
+      "hash": "99a9c2c1502502b9e83ab396f0b67f757a4880b2cd0883eaa236014f09e1bc27",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/persistence.rs#L347-L354"
+    }
+  },
+  "journey-block-save-worker": {
+    "title": "保存担当が依頼を受け取り結果を返す",
+    "source": {
+      "path": "crates/engine/tree/src/persistence.rs",
+      "start": 93,
+      "end": 130,
+      "hash": "46681faf273c80398f48b38494338111ad75438d410e94ca813a24636216e0e2",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/persistence.rs#L93-L130"
+    }
+  },
+  "journey-block-save-write": {
+    "title": "ブロックと状態を保存しcommitする",
+    "source": {
+      "path": "crates/engine/tree/src/persistence.rs",
+      "start": 163,
+      "end": 225,
+      "hash": "c54d03d224fc07e8244fc4bb773efa2cdbac38567fa55b7682800b3b69f16d07",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/persistence.rs#L163-L225"
+    }
+  },
+  "journey-block-save-complete": {
+    "title": "保存完了をtree側へ反映する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1531,
+      "end": 1575,
+      "hash": "d5ca7e38795af67e413db2c488b16fe35f7762bb0680437f9cb0fedb09060f29",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L1531-L1575"
+    }
+  },
+  "journey-sync-run": {
+    "title": "同期目標をpipelineへ渡す",
+    "source": {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 151,
+      "end": 178,
+      "hash": "5e25bdd2473abb8e9e0250b936f011c2ce94a7d0812884c6eea527e97b69f412",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/api/src/pipeline/mod.rs#L151-L178"
+    }
+  },
+  "journey-sync-online-order": {
+    "title": "ヘッダーのあとに本文を取得する段階を組む",
+    "source": {
+      "path": "crates/stages/stages/src/sets.rs",
+      "start": 272,
+      "end": 289,
+      "hash": "9db4181f2b4d7379521f8c3213e98c658a0adfec37b690cb28d1a270055e97be",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/stages/src/sets.rs#L272-L289"
+    }
+  },
+  "journey-sync-headers": {
+    "title": "不足するヘッダーを取得し保存する",
+    "source": {
+      "path": "crates/stages/stages/src/stages/headers.rs",
+      "start": 199,
+      "end": 319,
+      "hash": "12c88f97483d54648c86613da2a4e45209d124365ee96ed23cda8da808a3570e",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/stages/src/stages/headers.rs#L199-L319"
+    }
+  },
+  "journey-sync-bodies": {
+    "title": "本文を取得し、ヘッダーに対応づけて保存する",
+    "source": {
+      "path": "crates/stages/stages/src/stages/bodies.rs",
+      "start": 159,
+      "end": 217,
+      "hash": "223919ebb835cc668b562b44b2f3dcadec06acf49ec96a9ace1226fae67cc356",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/stages/src/stages/bodies.rs#L159-L217"
+    }
+  },
+  "journey-sync-body-request": {
+    "title": "downloaderが本文を要求する",
+    "source": {
+      "path": "crates/net/downloaders/src/bodies/request.rs",
+      "start": 109,
+      "end": 114,
+      "hash": "247dec957dd6d09393418992e3d693b43fbe597daf29850fb1657371283d41c6",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/downloaders/src/bodies/request.rs#L109-L114"
+    }
+  },
+  "journey-sync-fetch-client": {
+    "title": "ネットワーク取得のキューへ渡す",
+    "source": {
+      "path": "crates/net/network/src/fetch/client.rs",
+      "start": 108,
+      "end": 124,
+      "hash": "b70607872dabee891235379f60e024531a45ec0c06728e54f7f737a6ea061d10",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/fetch/client.rs#L108-L124"
+    }
+  },
+  "journey-sync-peer-select": {
+    "title": "取得する相手を選び要求へ変換する",
+    "source": {
+      "path": "crates/net/network/src/fetch/mod.rs",
+      "start": 213,
+      "end": 236,
+      "hash": "03f7f9eb5ea9d712f0de1d80a3226370ceec9631670934b89437bf833dbf31c9",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/fetch/mod.rs#L213-L236"
+    }
+  },
+  "journey-sync-peer-send": {
+    "title": "選んだ相手の接続へ要求を渡す",
+    "source": {
+      "path": "crates/net/network/src/state.rs",
+      "start": 400,
+      "end": 459,
+      "hash": "5f74f6b33f5903b06834fb0938eee53b20cee0fb1d69cd527ed00ce25bdb0d3c",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/state.rs#L400-L459"
+    }
+  },
+  "journey-sync-body-validate": {
+    "title": "取得した本文をヘッダーと合わせて検査する",
+    "source": {
+      "path": "crates/net/downloaders/src/bodies/request.rs",
+      "start": 159,
+      "end": 209,
+      "hash": "bb709532dfc6f7177e54aee7da4e40fdd8aa4d2cd1736358748ee9763f5f27eb",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/downloaders/src/bodies/request.rs#L159-L209"
+    }
+  },
+  "journey-sync-execution": {
+    "title": "保存した履歴を順に実行する",
+    "source": {
+      "path": "crates/stages/stages/src/stages/execution/mod.rs",
+      "start": 297,
+      "end": 550,
+      "hash": "0a9537a41a4779bffe29f2d868125d4f3705ef707e4c54e86a41bbd81f1c09fc",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/stages/src/stages/execution/mod.rs#L297-L550"
+    }
+  },
+  "journey-sync-checkpoint": {
+    "title": "段階の処理結果と進捗をcommitする",
+    "source": {
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 431,
+      "end": 547,
+      "hash": "f66bc5cf3ea83354392694574bbdddbe557a2b203ba2430cedffcd343773b7d5",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/api/src/pipeline/mod.rs#L431-L547"
+    }
+  },
+  "journey-block-insert-state": {
+    "title": "親の状態を確かめ、検証済みブロックをメモリーへ保持する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 3142,
+      "end": 3278,
+      "hash": "87271310ed6572c4f81d3908d7b202104a5018821e2adc50d87108586aed3f45",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L3142-L3278"
+    }
+  },
+  "journey-block-canonical-state": {
+    "title": "採用中の先端と状態を更新し通知する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 2876,
+      "end": 2914,
+      "hash": "a23b29f4a59fe4e21fdb6136db5a22488d6f8b82652489b08681a1f368302497",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L2876-L2914"
+    }
+  },
+  "journey-block-forkchoice-message": {
+    "title": "履歴採用の指示と返答口をEngineへ送る",
+    "source": {
+      "path": "crates/engine/primitives/src/message.rs",
+      "start": 378,
+      "end": 405,
+      "hash": "b5cff2af722715415155185b38d8d2d55128ba155836eb83d1decd11cd72695e",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/primitives/src/message.rs#L378-L405"
+    }
+  },
+  "journey-sync-default-order": {
+    "title": "取得の段階に実行・索引作成・終了の段階をつなぐ",
+    "source": {
+      "path": "crates/stages/stages/src/sets.rs",
+      "start": 138,
+      "end": 181,
+      "hash": "7b79f1e1d7052ba7a95ebb5c0b69918a97c11b5ed70f2743dc4c20c6d493e810",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/stages/src/sets.rs#L138-L181"
+    }
+  },
+  "journey-sync-execution-order": {
+    "title": "送信者の復元後に実行する段階を組む",
+    "source": {
+      "path": "crates/stages/stages/src/sets.rs",
+      "start": 392,
+      "end": 405,
+      "hash": "59466b5adec500d4f4e762f36f68fea9de4e0527eefb05213589f1964ed71199",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/stages/src/sets.rs#L392-L405"
+    }
+  },
+  "journey-sync-response": {
+    "title": "通信相手からの本文を取得担当へ戻す",
+    "source": {
+      "path": "crates/net/network/src/state.rs",
+      "start": 474,
+      "end": 517,
+      "hash": "3b401845cab12cda055d021e0d682b860d00022267db112d82461ab368195fd7",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/state.rs#L474-L517"
+    }
+  },
+  "trait-contract": {
+    "title": "traitが求める操作と既定の処理を読む",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 65,
+      "end": 79,
+      "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/helpers/transaction.rs#L65-L79"
+    }
+  },
+  "trait-implementation": {
+    "title": "EthApiがtraitの操作を具体化する",
+    "source": {
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "start": 21,
+      "end": 31,
+      "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/helpers/transaction.rs#L21-L31"
+    }
+  },
+  "startup-engine-build": {
+    "title": "Engineの処理担当と保存サービスを組み立てる",
+    "source": {
+      "path": "crates/engine/tree/src/launch.rs",
+      "start": 109,
+      "end": 160,
+      "hash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/launch.rs#L109-L160"
+    }
+  },
+  "startup-node-wait": {
+    "title": "起動したノードの終了を待つ",
+    "source": {
+      "path": "crates/node/builder/src/handle.rs",
+      "start": 8,
+      "end": 26,
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/handle.rs#L8-L26"
+    }
+  },
+  "journey-block-forkchoice-precheck": {
+    "title": "forkchoiceの不正と同期中を区別する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1189,
+      "end": 1212,
+      "hash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L1189-L1212"
+    }
+  },
+  "journey-block-forkchoice-consistency": {
+    "title": "safeとfinalizedが採用履歴に合うかを調べる",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 3411,
+      "end": 3440,
+      "hash": "14041726f3e843af0fb69a53889dbfd0c162e71faf07890cacfa19f41789982f",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L3411-L3440"
+    }
+  },
+  "journey-block-forkchoice-markers": {
+    "title": "safeとfinalizedの目印を更新する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 3442,
+      "end": 3532,
+      "hash": "f7852679866e245de7b67ee32fa2323fedf77e9d9fca29ea3f85642f2a488c8a",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L3442-L3532"
+    }
+  },
+  "journey-block-executor": {
+    "title": "状態とEVMを用意して実行結果へまとめる",
+    "source": {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 1017,
+      "end": 1121,
+      "hash": "92421e55b428911f9cd556a922e468b964bd273ba1b9920aaf90e91ce75bc416",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/payload_validator.rs#L1017-L1121"
+    }
+  },
+  "journey-block-after-execute": {
+    "title": "実行結果とレシート集約の返答を受け取る",
+    "source": {
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 750,
+      "end": 816,
+      "hash": "2dcda1d08ddeef5a29bbb7e22d507cc13ec7c3afd1e69a4f9a507cd9ce5cf7e2",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/payload_validator.rs#L750-L816"
+    }
+  },
+  "journey-block-consensus-check": {
+    "title": "Ethereumの実行後検証を呼ぶ",
+    "source": {
+      "path": "crates/ethereum/consensus/src/lib.rs",
+      "start": 118,
+      "end": 141,
+      "hash": "1ef318820e38ce2d30473948cb91d7cf5e2b5e27e08464718e51f7f5822adb29",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/consensus/src/lib.rs#L118-L141"
+    }
+  },
+  "journey-block-postconditions": {
+    "title": "実行結果とブロックの値を照合する",
+    "source": {
+      "path": "crates/ethereum/consensus/src/validation.rs",
+      "start": 43,
+      "end": 175,
+      "hash": "beae261b839a2e9318b7b12c0f9918b12ca12aba197738018cdc701e2009e43e",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/consensus/src/validation.rs#L43-L175"
+    }
+  },
+  "file-tx-get-entry": {
+    "title": "ハッシュによる取得を共通の読取担当へ渡す",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 187,
+      "end": 200,
+      "hash": "e93a9c7dd2a387fd25a0ed14ca8358f11aa0f01d29073e63e0e6193292aafb3b",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/helpers/transaction.rs#L187-L200"
+    }
+  },
+  "file-tx-get": {
+    "title": "キャッシュ・保存済み履歴・プールから取引を探す",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 777,
+      "end": 825,
+      "hash": "d5d1d2a7767308c1888bbc86ee9d842016fa82dc38cd095221349289fe4fea86",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/helpers/transaction.rs#L777-L825"
+    }
+  },
+  "file-pool-get": {
+    "title": "公開の取引取得を内部プールにつなぐ",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 697,
+      "end": 703,
+      "hash": "c28b1f81ab59c9a7a42e80b97c0962c97b0bd58b82c2a31ead7c8108acc215ee",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/lib.rs#L697-L703"
+    }
+  },
+  "file-pool-listeners": {
+    "title": "取引イベントを購読する窓口を返す",
+    "source": {
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 530,
+      "end": 551,
+      "hash": "04adbae1169369a2c273c5a3e7d7df97625ef6d592456ed8ea730939355cf45f",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/lib.rs#L530-L551"
+    }
+  },
+  "file-rpc-inner": {
+    "title": "RPCが共有するノード部品・設定・チャネルを読む",
+    "source": {
+      "path": "crates/rpc/rpc/src/eth/core.rs",
+      "start": 230,
+      "end": 276,
+      "hash": "101f6cc6e922e7e0e705de80bcdb6d914d3c2254a70e311000b21ea81ce6913c",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/core.rs#L230-L276"
+    }
+  },
+  "file-rpc-inner-build": {
+    "title": "バッチ処理担当を作りRPC内部へつなぐ",
+    "source": {
+      "path": "crates/rpc/rpc/src/eth/core.rs",
+      "start": 285,
+      "end": 338,
+      "hash": "521631bd3b17f79924116d28cf40c729e94474a44f02422a95d1629095cb9a8a",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc/src/eth/core.rs#L285-L338"
+    }
+  },
+  "component-rpc-namespace": {
+    "title": "RPCの名前空間と操作の型を宣言する",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 55,
+      "end": 69,
+      "hash": "e602da8a8ad8e88ae33b11dfe299e01c423ea3b6055498b7a55e326db5a8288c",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/core.rs#L55-L69"
+    }
+  },
+  "component-block-read": {
+    "title": "ブロックの読取結果をRPC用の型へ変換する",
+    "source": {
+      "path": "crates/rpc/rpc-eth-api/src/helpers/block.rs",
+      "start": 34,
+      "end": 75,
+      "hash": "e35e1e2f55459bfa1a3405158faf8d70ad42cf6f8577c6111ea086b3a554d079",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/rpc/rpc-eth-api/src/helpers/block.rs#L34-L75"
+    }
+  },
+  "component-rpc-setup": {
+    "title": "ノード部品からRPCモジュールとEngine接続を作る",
+    "source": {
+      "path": "crates/node/builder/src/rpc.rs",
+      "start": 1133,
+      "end": 1246,
+      "hash": "15a59940184307f5f4f779ac5c80c33454fe1f2f77e252e42063b3b78093be42",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/rpc.rs#L1133-L1246"
+    }
+  },
+  "component-rpc-launch": {
+    "title": "通常RPCと認証用Engineサーバーを起動する",
+    "source": {
+      "path": "crates/node/builder/src/rpc.rs",
+      "start": 1043,
+      "end": 1130,
+      "hash": "b2ba3277858df012eaaa2decc2b70878905bf4b611c14d6547c84552f3a03b95",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/rpc.rs#L1043-L1130"
+    }
+  },
+  "component-rpc-start": {
+    "title": "サーバー起動結果と通信窓口のhandleを受け取る",
+    "source": {
+      "path": "crates/node/builder/src/rpc.rs",
+      "start": 1248,
+      "end": 1286,
+      "hash": "44e860aece3ab7526132dc3fdf0c1f6d1478ab04e96e6a15f81738ec9b022e07",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/rpc.rs#L1248-L1286"
+    }
+  },
+  "startup-cli-prepare": {
+    "title": "実行環境・ログ・metricsを準備してコマンドへ渡す",
+    "source": {
+      "path": "crates/ethereum/cli/src/app.rs",
+      "start": 64,
+      "end": 157,
+      "hash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/cli/src/app.rs#L64-L157"
+    }
+  },
+  "startup-tree-spawn": {
+    "title": "専用OSスレッドでtreeを起動する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 421,
+      "end": 481,
+      "hash": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L421-L481"
+    }
+  },
+  "startup-orchestrator-poll": {
+    "title": "backfillとEngine入力処理の進行を調整する",
+    "source": {
+      "path": "crates/engine/tree/src/chain.rs",
+      "start": 75,
+      "end": 152,
+      "hash": "4ae9eb17486289bd32ed5db4b016addcc4b5100b6548518908ac5af93d3d9d4f",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/chain.rs#L75-L152"
+    }
+  },
+  "startup-engine-poll": {
+    "title": "treeのイベント・Engine要求・取得結果を取り次ぐ",
+    "source": {
+      "path": "crates/engine/tree/src/engine.rs",
+      "start": 67,
+      "end": 127,
+      "hash": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/engine.rs#L67-L127"
+    }
+  },
+  "startup-engine-channel": {
+    "title": "treeへ送りtreeからイベントを受け取る",
+    "source": {
+      "path": "crates/engine/tree/src/engine.rs",
+      "start": 189,
+      "end": 218,
+      "hash": "7b6266b0f75f515c7f4bd1dbd24d679aa590bb3943e1b69497395a42ed13f636",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/engine.rs#L189-L218"
+    }
+  },
+  "startup-component-choice": {
+    "title": "Ethereum用の具体的なbuilderを選ぶ",
+    "source": {
+      "path": "crates/ethereum/node/src/node.rs",
+      "start": 77,
+      "end": 104,
+      "hash": "375884d2b503f1246c58a6147123aeafd73ff58a8919dc41fc0946e533c75f0b",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/node/src/node.rs#L77-L104"
+    }
+  },
+  "startup-network-builder": {
+    "title": "Ethereumのネットワークを構築して起動へ渡す",
+    "source": {
+      "path": "crates/ethereum/node/src/node.rs",
+      "start": 770,
+      "end": 790,
+      "hash": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/node/src/node.rs#L770-L790"
+    }
+  },
+  "startup-network-start": {
+    "title": "P2P関連タスクを起動してhandleを返す",
+    "source": {
+      "path": "crates/node/builder/src/builder/mod.rs",
+      "start": 863,
+      "end": 998,
+      "hash": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/builder/mod.rs#L863-L998"
+    }
+  },
+  "startup-payload-spawn": {
+    "title": "候補作成サービスを組み立てて別OSスレッドで起動する",
+    "source": {
+      "path": "crates/node/builder/src/components/payload.rs",
+      "start": 98,
+      "end": 144,
+      "hash": "855d512d773954cfd06c403f540f77d6dc790ba55cd22b97134a362072680fdd",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/components/payload.rs#L98-L144"
+    }
+  },
+  "file-batch-create": {
+    "title": "バッチ担当の受信口と追加依頼の送信口を作る",
+    "source": {
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "start": 58,
+      "end": 67,
+      "hash": "f2062606cc038c1446552ea0f1fdb28273772e867172c35c540573055daac19f",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/transaction-pool/src/batcher.rs#L58-L67"
+    }
+  },
+  "startup-cli-entry": {
+    "title": "公開Cli.runがclosureをadapterへ渡す",
+    "source": {
+      "path": "crates/ethereum/cli/src/interface.rs",
+      "start": 158,
+      "end": 166,
+      "hash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/cli/src/interface.rs#L158-L166"
+    }
+  },
+  "startup-cli-configure": {
+    "title": "CliからCliAppへ型をつなぐ",
+    "source": {
+      "path": "crates/ethereum/cli/src/interface.rs",
+      "start": 112,
+      "end": 114,
+      "hash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/cli/src/interface.rs#L112-L114"
+    }
+  },
+  "startup-launcher-entry": {
+    "title": "FnLauncherが保持した起動closureを呼ぶ",
+    "source": {
+      "path": "crates/cli/commands/src/launcher.rs",
+      "start": 38,
+      "end": 91,
+      "hash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/cli/commands/src/launcher.rs#L38-L91"
+    }
+  },
+  "startup-builder-launch": {
+    "title": "mainのbuilderがDebug/Engine launcherを組み合わせる",
+    "source": {
+      "path": "crates/node/builder/src/builder/mod.rs",
+      "start": 736,
+      "end": 757,
+      "hash": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/builder/mod.rs#L736-L757"
+    }
+  },
+  "startup-builder-dispatch": {
+    "title": "builderから渡されたlauncherへ起動を依頼する",
+    "source": {
+      "path": "crates/node/builder/src/builder/states.rs",
+      "start": 276,
+      "end": 288,
+      "hash": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/builder/states.rs#L276-L288"
+    }
+  },
+  "startup-debug-adapter": {
+    "title": "Debug launcherが内側とtargetをFutureへ保持する",
+    "source": {
+      "path": "crates/node/builder/src/launch/debug.rs",
+      "start": 354,
+      "end": 391,
+      "hash": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/debug.rs#L354-L391"
+    }
+  },
+  "startup-debug-inner": {
+    "title": "Debugの非同期本体が内側のEngine起動を待つ",
+    "source": {
+      "path": "crates/node/builder/src/launch/debug.rs",
+      "start": 211,
+      "end": 221,
+      "hash": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/debug.rs#L211-L221"
+    }
+  },
+  "startup-engine-dispatch": {
+    "title": "Engine launcherのtrait操作を起動本体へつなぐ",
+    "source": {
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 448,
+      "end": 468,
+      "hash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L448-L468"
+    }
+  },
+  "startup-debug-return": {
+    "title": "Debugの起動本体からhandleを返す",
+    "source": {
+      "path": "crates/node/builder/src/launch/debug.rs",
+      "start": 350,
+      "end": 351,
+      "hash": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/debug.rs#L350-L351"
+    }
+  },
+  "startup-tree-pressure": {
+    "title": "保存中の滞留量からtree入力の抑制を決める",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 496,
+      "end": 515,
+      "hash": "e538ae5ba22df639ddfab6f3f9c65f6f89b2961a77139d12ddfdac99d04d2588",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L496-L515"
+    }
+  },
+  "startup-backfill-gate": {
+    "title": "live側の処理が残る間はbackfill依頼を保留する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 2142,
+      "end": 2201,
+      "hash": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L2142-L2201"
+    }
+  },
+  "startup-backfill-events": {
+    "title": "treeが同期開始・完了・停止の通知を受け取る",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1577,
+      "end": 1600,
+      "hash": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L1577-L1600"
+    }
+  },
+  "startup-backfill-finished": {
+    "title": "同期結果をtree・保存位置へ反映して残りの取得を判断する",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1834,
+      "end": 1988,
+      "hash": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L1834-L1988"
+    }
+  },
+  "startup-node-selection": {
+    "title": "指定したnode型から部品builderと追加機能を選ぶ",
+    "source": {
+      "path": "crates/node/builder/src/builder/mod.rs",
+      "start": 414,
+      "end": 427,
+      "hash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/builder/mod.rs#L414-L427"
+    }
+  },
+  "startup-node-components": {
+    "title": "EthereumNodeの関連型と部品構成を結びつける",
+    "source": {
+      "path": "crates/ethereum/node/src/node.rs",
+      "start": 460,
+      "end": 483,
+      "hash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/node/src/node.rs#L460-L483"
+    }
+  },
+  "journey-sync-offline-order": {
+    "title": "取得後に実行・ハッシュ化・履歴索引の段階を並べる",
+    "source": {
+      "path": "crates/stages/stages/src/sets.rs",
+      "start": 325,
+      "end": 358,
+      "hash": "4ea54dedb10faef1c27c0b9c0a41203ffc9ece9d19b0b0089043f0858c61fd28",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/stages/stages/src/sets.rs#L325-L358"
+    }
+  },
+  "startup-tree-wait": {
+    "title": "treeの専用スレッドで保存・入力・候補作成完了を待つ",
+    "source": {
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 608,
+      "end": 678,
+      "hash": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L608-L678"
     }
   }
 }

@@ -1452,8 +1452,8 @@
       "learningScope": "rust",
       "evidence": [
         {
-          "start": 33,
-          "end": 48
+          "start": 20,
+          "end": 49
         }
       ],
       "status": "excerpt-only"
@@ -2234,8 +2234,13 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 38,
+          "end": 91
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/cli/commands/src/lib.rs",
@@ -2259,7 +2264,7 @@
       "evidence": [
         {
           "start": 157,
-          "end": 225
+          "end": 226
         }
       ],
       "status": "excerpt-only"
@@ -3270,8 +3275,17 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 342,
+          "end": 349
+        },
+        {
+          "start": 378,
+          "end": 405
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/engine/tree/Cargo.toml",
@@ -3415,8 +3429,8 @@
       "learningScope": "rust",
       "evidence": [
         {
-          "start": 123,
-          "end": 183
+          "start": 97,
+          "end": 209
         },
         {
           "start": 138,
@@ -3433,8 +3447,13 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 75,
+          "end": 152
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/engine/tree/src/download.rs",
@@ -3455,8 +3474,25 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 107,
+          "end": 113
+        },
+        {
+          "start": 189,
+          "end": 200
+        },
+        {
+          "start": 67,
+          "end": 127
+        },
+        {
+          "start": 189,
+          "end": 218
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/engine/tree/src/launch.rs",
@@ -3466,8 +3502,13 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 109,
+          "end": 160
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/engine/tree/src/lib.rs",
@@ -3499,8 +3540,21 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 347,
+          "end": 354
+        },
+        {
+          "start": 93,
+          "end": 130
+        },
+        {
+          "start": 163,
+          "end": 225
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/engine/tree/src/test_utils.rs",
@@ -3580,6 +3634,86 @@
         {
           "start": 517,
           "end": 606
+        },
+        {
+          "start": 1690,
+          "end": 1718
+        },
+        {
+          "start": 735,
+          "end": 807
+        },
+        {
+          "start": 811,
+          "end": 857
+        },
+        {
+          "start": 3101,
+          "end": 3111
+        },
+        {
+          "start": 1150,
+          "end": 1178
+        },
+        {
+          "start": 1346,
+          "end": 1371
+        },
+        {
+          "start": 2209,
+          "end": 2304
+        },
+        {
+          "start": 1425,
+          "end": 1461
+        },
+        {
+          "start": 1531,
+          "end": 1575
+        },
+        {
+          "start": 3142,
+          "end": 3278
+        },
+        {
+          "start": 2876,
+          "end": 2914
+        },
+        {
+          "start": 1189,
+          "end": 1212
+        },
+        {
+          "start": 3411,
+          "end": 3440
+        },
+        {
+          "start": 3442,
+          "end": 3532
+        },
+        {
+          "start": 421,
+          "end": 481
+        },
+        {
+          "start": 496,
+          "end": 515
+        },
+        {
+          "start": 2142,
+          "end": 2201
+        },
+        {
+          "start": 1577,
+          "end": 1600
+        },
+        {
+          "start": 1834,
+          "end": 1988
+        },
+        {
+          "start": 608,
+          "end": 678
         }
       ],
       "status": "excerpt-only"
@@ -3691,8 +3825,41 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 1863,
+          "end": 1869
+        },
+        {
+          "start": 487,
+          "end": 535
+        },
+        {
+          "start": 724,
+          "end": 749
+        },
+        {
+          "start": 1244,
+          "end": 1330
+        },
+        {
+          "start": 1344,
+          "end": 1395
+        },
+        {
+          "start": 818,
+          "end": 935
+        },
+        {
+          "start": 1017,
+          "end": 1121
+        },
+        {
+          "start": 750,
+          "end": 816
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/engine/tree/src/tree/persistence_state.rs",
@@ -4729,6 +4896,10 @@
         {
           "start": 159,
           "end": 192
+        },
+        {
+          "start": 64,
+          "end": 157
         }
       ],
       "status": "excerpt-only"
@@ -4752,8 +4923,17 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 158,
+          "end": 166
+        },
+        {
+          "start": 112,
+          "end": 114
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/ethereum/cli/src/lib.rs",
@@ -4785,8 +4965,13 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 118,
+          "end": 141
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/ethereum/consensus/src/validation.rs",
@@ -4796,8 +4981,13 @@
       "area": "engine",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 43,
+          "end": 175
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/ethereum/engine-primitives/Cargo.toml",
@@ -5065,8 +5255,21 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 77,
+          "end": 104
+        },
+        {
+          "start": 770,
+          "end": 790
+        },
+        {
+          "start": 460,
+          "end": 483
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/ethereum/node/src/payload.rs",
@@ -6387,8 +6590,17 @@
       "area": "network",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 109,
+          "end": 114
+        },
+        {
+          "start": 159,
+          "end": 209
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/net/downloaders/src/bodies/task.rs",
@@ -7586,8 +7798,13 @@
       "area": "network",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 108,
+          "end": 124
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/net/network/src/fetch/mod.rs",
@@ -7597,8 +7814,13 @@
       "area": "network",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 213,
+          "end": 236
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/net/network/src/flattened_response.rs",
@@ -7816,8 +8038,17 @@
       "area": "network",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 400,
+          "end": 459
+        },
+        {
+          "start": 474,
+          "end": 517
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/net/network/src/swarm.rs",
@@ -8542,8 +8773,21 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 863,
+          "end": 998
+        },
+        {
+          "start": 736,
+          "end": 757
+        },
+        {
+          "start": 414,
+          "end": 427
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/node/builder/src/builder/states.rs",
@@ -8553,8 +8797,13 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 276,
+          "end": 288
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/node/builder/src/components/builder.rs",
@@ -8566,8 +8815,8 @@
       "learningScope": "rust",
       "evidence": [
         {
-          "start": 375,
-          "end": 403
+          "start": 353,
+          "end": 404
         }
       ],
       "status": "excerpt-only"
@@ -8624,8 +8873,13 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 98,
+          "end": 144
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/node/builder/src/components/pool.rs",
@@ -8668,8 +8922,13 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 8,
+          "end": 26
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/node/builder/src/hooks.rs",
@@ -8701,8 +8960,21 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 354,
+          "end": 391
+        },
+        {
+          "start": 211,
+          "end": 221
+        },
+        {
+          "start": 350,
+          "end": 351
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/node/builder/src/launch/engine.rs",
@@ -8714,7 +8986,7 @@
       "learningScope": "rust",
       "evidence": [
         {
-          "start": 101,
+          "start": 69,
           "end": 140
         },
         {
@@ -8728,6 +9000,18 @@
         {
           "start": 329,
           "end": 413
+        },
+        {
+          "start": 288,
+          "end": 300
+        },
+        {
+          "start": 417,
+          "end": 445
+        },
+        {
+          "start": 448,
+          "end": 468
         }
       ],
       "status": "excerpt-only"
@@ -8795,8 +9079,21 @@
       "area": "node",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 1133,
+          "end": 1246
+        },
+        {
+          "start": 1043,
+          "end": 1130
+        },
+        {
+          "start": 1248,
+          "end": 1286
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/node/builder/src/setup.rs",
@@ -10879,8 +11176,13 @@
       "area": "rpc",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 236,
+          "end": 250
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/rpc/rpc-engine-api/src/error.rs",
@@ -10985,7 +11287,15 @@
         },
         {
           "start": 380,
-          "end": 390
+          "end": 392
+        },
+        {
+          "start": 695,
+          "end": 699
+        },
+        {
+          "start": 55,
+          "end": 69
         }
       ],
       "status": "excerpt-only"
@@ -11031,8 +11341,13 @@
       "area": "rpc",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 34,
+          "end": 75
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/rpc/rpc-eth-api/src/helpers/blocking_task.rs",
@@ -11152,8 +11467,13 @@
       "area": "rpc",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 78,
+          "end": 90
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/rpc/rpc-eth-api/src/helpers/subscriptions.rs",
@@ -11193,6 +11513,18 @@
         {
           "start": 750,
           "end": 760
+        },
+        {
+          "start": 65,
+          "end": 79
+        },
+        {
+          "start": 187,
+          "end": 200
+        },
+        {
+          "start": 777,
+          "end": 825
         }
       ],
       "status": "excerpt-only"
@@ -11737,6 +12069,14 @@
         {
           "start": 489,
           "end": 504
+        },
+        {
+          "start": 230,
+          "end": 276
+        },
+        {
+          "start": 285,
+          "end": 338
         }
       ],
       "status": "excerpt-only"
@@ -11914,7 +12254,11 @@
         },
         {
           "start": 349,
-          "end": 362
+          "end": 381
+        },
+        {
+          "start": 21,
+          "end": 31
         }
       ],
       "status": "excerpt-only"
@@ -12516,8 +12860,16 @@
           "end": 259
         },
         {
-          "start": 302,
-          "end": 346
+          "start": 300,
+          "end": 429
+        },
+        {
+          "start": 151,
+          "end": 178
+        },
+        {
+          "start": 431,
+          "end": 547
         }
       ],
       "status": "excerpt-only"
@@ -12618,8 +12970,25 @@
       "area": "sync",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 272,
+          "end": 289
+        },
+        {
+          "start": 138,
+          "end": 181
+        },
+        {
+          "start": 392,
+          "end": 405
+        },
+        {
+          "start": 325,
+          "end": 358
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/stages/stages/src/stages/bodies.rs",
@@ -12629,8 +12998,13 @@
       "area": "sync",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 159,
+          "end": 217
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/stages/stages/src/stages/era.rs",
@@ -12651,8 +13025,13 @@
       "area": "sync",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 297,
+          "end": 550
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/stages/stages/src/stages/execution/slot_preimages.rs",
@@ -12706,8 +13085,13 @@
       "area": "sync",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 199,
+          "end": 319
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/stages/stages/src/stages/index_account_history.rs",
@@ -15650,6 +16034,14 @@
         {
           "start": 114,
           "end": 135
+        },
+        {
+          "start": 113,
+          "end": 137
+        },
+        {
+          "start": 58,
+          "end": 67
         }
       ],
       "status": "excerpt-only"
@@ -15765,6 +16157,18 @@
         {
           "start": 495,
           "end": 528
+        },
+        {
+          "start": 383,
+          "end": 391
+        },
+        {
+          "start": 697,
+          "end": 703
+        },
+        {
+          "start": 530,
+          "end": 551
         }
       ],
       "status": "excerpt-only"
@@ -15865,8 +16269,17 @@
       "area": "pool",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 578,
+          "end": 639
+        },
+        {
+          "start": 661,
+          "end": 742
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/transaction-pool/src/pool/parked.rs",
@@ -15988,7 +16401,7 @@
       "learningScope": "rust",
       "evidence": [
         {
-          "start": 1429,
+          "start": 1402,
           "end": 1466
         }
       ],
@@ -16021,6 +16434,26 @@
         {
           "start": 783,
           "end": 801
+        },
+        {
+          "start": 1009,
+          "end": 1016
+        },
+        {
+          "start": 367,
+          "end": 435
+        },
+        {
+          "start": 452,
+          "end": 655
+        },
+        {
+          "start": 657,
+          "end": 727
+        },
+        {
+          "start": 766,
+          "end": 782
         }
       ],
       "status": "excerpt-only"
@@ -16044,8 +16477,17 @@
       "area": "pool",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 233,
+          "end": 264
+        },
+        {
+          "start": 56,
+          "end": 67
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/transaction-pool/test_data/blob1.json",

@@ -9,12 +9,13 @@ vm.runInNewContext(await read('../public/reading-help-data.js'),ctx);vm.runInNew
 const help=ctx.ReadingHelp,data=ctx.READING_HELP_DATA;
 
 test('every authored line hint is tied to the pinned excerpt, exact line and source hash',()=>{
- assert.equal(Object.keys(data.contexts).length,36);
+ assert.ok(Object.keys(data.contexts).length>=36);
  for(const [id,c] of Object.entries(data.contexts)){
   assert.equal(createHash('sha256').update(c.source.code).digest('hex'),c.source.hash,id);
   for(const line of c.lines)assert.ok(c.source.code.split('\n')[line.line-c.source.start]?.includes(line.match),id+' L'+line.line);
   assert.equal(help.context(id,'wrong-commit'),undefined);
-  assert.equal(help.forSource(c.source.path,c.source.start,data.commit),id);
+  const resolved=data.contexts[help.forSource(c.source.path,c.source.start,data.commit)];
+  assert.equal(resolved.source.path,c.source.path);assert.ok(resolved.source.start<=c.source.start&&resolved.source.end>=c.source.start);assert.ok(resolved.source.end-resolved.source.start<=c.source.end-c.source.start);
  }
  assert.equal(help.forSource('unknown.rs',1,data.commit),undefined);
 });
@@ -24,7 +25,7 @@ test('RPC hint explains its one question mark, and the two-error explanation is 
  assert.ok(rpc.lines.some(l=>l.match==='.await?'&&l.explanation.includes('?が1個')));
  assert.ok(queue.lines.some(l=>l.match==='response_rx.await??'&&l.explanation.includes('?が2個')));
  const rpcHtml=help.render('tx:rpc',data.commit,{openCode:true});
- assert.match(rpcHtml,/data-rh-line="0"/);assert.match(rpcHtml,/data-code-line="921"/);
+ assert.match(rpcHtml,/data-comment-for="921"/);assert.match(rpcHtml,/data-code-line="921"/);
  assert.doesNotMatch(rpcHtml,/response_rx|TypeScript/);
  assert.match(rpcHtml,/data-rh-term="await"/);
 });
@@ -67,16 +68,24 @@ test('[FR-READ-002] the for in a Future implementation is not described as an it
  assert.doesNotMatch(help.codeHtml({source:{start:1,code:'impl Future for OtherType {}'}}),/data-rh-term="for-loop"/);
 });
 
-test('[FR-READ-002] each lesson links one pinned core snippet and its actual Cargo package, with its origin',()=>{
+test('[FR-READ-002] every reading in each lesson links its pinned code, owner and originating lesson',()=>{
  ctx.URLSearchParams=URLSearchParams;
  assert.equal(data.lessonLinks.length,7);
  for(const r of data.lessonLinks){
-  const c=data.contexts[r.context],html=help.lessonBridge(r.lesson,true),links=[...html.matchAll(/href="([^"]+)"/g)].map(m=>m[1].replaceAll('&amp;','&'));
-  assert.equal(links.length,2);const source=new URL(links[0],'http://localhost'),crate=new URL(links[1],'http://localhost'),s=new URLSearchParams(source.hash.slice(1)),p=new URLSearchParams(crate.hash.slice(1));
-  assert.equal(source.pathname,'/reader');assert.equal(s.get('path'),c.source.path);assert.equal(Number(s.get('start')),c.source.start);assert.equal(Number(s.get('end')),c.source.end);assert.equal(s.get('lesson'),r.lesson);
-  assert.equal(p.get('crate'),r.crate.id);assert.equal(p.get('lesson'),r.lesson);assert.ok(c.source.path.startsWith(r.crate.id.replace('Cargo.toml','')));
-  assert.match(html,/<details class="learn-core-code">/);assert.ok(html.includes(r.scope));assert.ok(html.includes('data-reading-help="'+r.context+'"'));
-  const stat=help.lessonBridge(r.lesson,false);assert.ok(stat.includes(c.source.url));assert.ok(stat.includes(r.crate.url));assert.equal((stat.match(/target="_blank"/g)||[]).length,2);
+  const readings=r.readings?.length?r.readings:[{context:r.context}],html=help.lessonBridge(r.lesson,true);
+  const sections=[...html.matchAll(/<section class="learn-reading-stage"[^>]*data-reading-stage="([^"]+)">([\s\S]*?)<\/section>/g)];
+  assert.equal(sections.length,readings.length,r.lesson);
+  for(const [i,[,id,section]] of sections.entries()){
+   assert.equal(id,readings[i].context);
+   const c=data.contexts[id],owner=data.sourceOwners?.[id]||r;
+   const links=[...section.matchAll(/href="([^"]+)"/g)].map(m=>m[1].replaceAll('&amp;','&'));
+   assert.equal(links.length,2);const source=new URL(links[0],'http://localhost'),crate=new URL(links[1],'http://localhost'),s=new URLSearchParams(source.hash.slice(1)),p=new URLSearchParams(crate.hash.slice(1));
+   assert.equal(source.pathname,'/reader');assert.equal(s.get('path'),c.source.path);assert.equal(Number(s.get('start')),c.source.start);assert.equal(Number(s.get('end')),c.source.end);assert.equal(s.get('lesson'),r.lesson);
+   assert.equal(p.get('crate'),owner.crate.id);assert.equal(p.get('lesson'),r.lesson);assert.ok(c.source.path.startsWith(owner.crate.id.replace('Cargo.toml','')));
+   assert.ok(section.includes('data-reading-help="'+id+'"'));
+  }
+  assert.match(html,/<details class="learn-core-code" open>/);assert.ok(html.includes(r.scope));
+  const stat=help.lessonBridge(r.lesson,false);assert.equal((stat.match(/target="_blank"/g)||[]).length,2*readings.length);
  }
  assert.equal(help.lessonBridge('missing',true),'');
 });

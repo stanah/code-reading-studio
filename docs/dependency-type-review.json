@@ -1,0 +1,52 @@
+{
+  "targetCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "dependency": {
+    "name": "alloy-evm",
+    "version": "0.39.0",
+    "source": "https://static.crates.io/crates/alloy-evm/alloy-evm-0.39.0.crate",
+    "sha256": "7b6bd5f7e5ce9858bac99275e3f548c3b63bb3e5806da0142dc0b2f518d3ec4a",
+    "checksumMatchesCargoLock": true
+  },
+  "findings": [
+    {
+      "path": "src/block/mod.rs",
+      "lines": [
+        259,
+        264,
+        357,
+        370
+      ],
+      "finding": "execute_transaction returns Result<GasOutput, BlockExecutionError>; commit_transaction is reached after successful execution processing."
+    },
+    {
+      "path": "src/eth/block.rs",
+      "lines": [
+        238,
+        247,
+        250,
+        280
+      ],
+      "finding": "EVM errors map to BlockExecutionError; a successfully obtained EthTxResult supplies its ExecutionResult to ReceiptBuilderCtx and receipt creation."
+    },
+    {
+      "path": "src/eth/receipt_builder.rs",
+      "lines": [
+        10,
+        21
+      ],
+      "finding": "ReceiptBuilderCtx.result has type ExecutionResult<E::HaltReason>, distinct from Rust Result."
+    },
+    {
+      "path": "crates/ethereum/evm/src/receipt.rs",
+      "lines": [
+        16,
+        27
+      ],
+      "repository": "reth",
+      "finding": "RethReceiptBuilder returns Receipt with success=result.is_success(); no Result::Err return branch in this function."
+    }
+  ],
+  "limitations": [
+    "Source/type review only; no live Ethereum transaction execution or human comprehension claim."
+  ]
+}

@@ -1,0 +1,348 @@
+[
+  {
+    "id": "block",
+    "title": "新しいブロックの実行検証・採用・保存を追う",
+    "goal": "合意側からのブロックを実行検証して返答する経路と、その後の履歴採用・保存を別々に説明する。",
+    "scope": "通常実行の経路を中心に読みます。同期中の一時保管、親の不足、BALを使う実行の分岐も原文の該当箇所で区別します。newPayloadのVALIDは、forkchoiceによる採用・ディスク保存・finalityの完了と同じではありません。",
+    "readings": [
+      {
+        "context": "area:journey-block-rpc",
+        "title": "合意側からnewPayloadを受け取る",
+        "purpose": "合意側から届くブロックの実行データと、返す検証状況を読む。",
+        "connection": "new_payload_v4は内部のbeacon_consensus.new_payloadへ渡し、その結果を待ちます。"
+      },
+      {
+        "context": "area:journey-block-message",
+        "title": "Engineへの要求と返答経路を作る",
+        "purpose": "要求と返答用チャネルを作り、Engineの入力経路へ送る。",
+        "connection": "incoming_requestsで要求が取り出される側を次で読みます。"
+      },
+      {
+        "context": "area:journey-block-route",
+        "title": "届いたEngine要求を処理担当へ渡す",
+        "purpose": "内部の要求を受信してhandlerへ渡す。",
+        "connection": "handler.on_eventがtree側の入力経路へ送るところを続けて読みます。"
+      },
+      {
+        "context": "area:journey-block-tree-send",
+        "title": "tree側の要求経路へ送る",
+        "purpose": "要求がtreeの処理担当へ渡ることを確かめる。",
+        "connection": "treeがNewPayloadを扱う分岐へ進みます。"
+      },
+      {
+        "context": "area:journey-block-dispatch",
+        "title": "NewPayloadを実行し、その結果を返答口へ戻す",
+        "purpose": "NewPayloadの処理を呼ぶ箇所と、結果を要求元へ返す箇所を同時に見る。",
+        "connection": "on_new_payloadの実装を次で読みます。この範囲のtx.sendが、後で検証結果を返す出口です。"
+      },
+      {
+        "context": "area:journey-block-receive",
+        "title": "無効な祖先・同期中・通常検証を分ける",
+        "purpose": "不正な祖先・同期中の一時保管・通常検証を分ける。",
+        "connection": "通常はtry_insert_payloadへ進みます。同期中はbufferへ入れる別の分岐です。"
+      },
+      {
+        "context": "area:journey-block-insert",
+        "title": "検証結果をVALID・SYNCINGなどへ変換する",
+        "purpose": "取り込みの結果がVALID・SYNCING・エラーへ分かれることを読む。",
+        "connection": "insert_payloadが検証処理を共通の取り込み処理へ渡します。"
+      },
+      {
+        "context": "area:journey-block-validate-call",
+        "title": "取り込みの中からpayloadの検証を呼ぶ",
+        "purpose": "取り込みの共通処理に、payloadを検証する関数を渡す。",
+        "connection": "渡された関数executeを、次の共通処理が状態とともに呼びます。"
+      },
+      {
+        "context": "area:journey-block-insert-state",
+        "title": "親の状態を確かめ、検証済みブロックをメモリーへ保持する",
+        "purpose": "既知ブロックと親の不足を分け、検証済みの実行結果をメモリーへ保持する。",
+        "connection": "この範囲のexecuteで呼ばれるvalidate_payloadと、その先の状態付き検証を次で読みます。"
+      },
+      {
+        "context": "area:journey-block-validator-entry",
+        "title": "payloadを状態付きブロック検証へ渡す",
+        "purpose": "payloadとtreeの状態を使う検証へ入る。",
+        "connection": "validate_block_with_stateへ渡します。"
+      },
+      {
+        "context": "area:journey-block-parent",
+        "title": "親を見つけ、基本的な変換と検査を始める",
+        "purpose": "親の状態を使えるか確認し、実行前の変換と基本検査を始める。",
+        "connection": "その後、BALを使う実行か通常の実行かを選びます。"
+      },
+      {
+        "context": "area:journey-block-execute-choice",
+        "title": "実行方法を選び、現在の状態を渡す",
+        "purpose": "どの状態と実行方法を使うかを読む。",
+        "connection": "通常側はexecute_blockへ渡します。その本体でEVM生成から取引ループと結果の取り出しまで読みます。BAL側は分岐に示す別の実装です。"
+      },
+      {
+        "context": "area:journey-block-executor",
+        "title": "EVMと状態を用意して取引ループへ渡す",
+        "purpose": "実行環境と親の状態からexecutorを作り、取引処理とfinishからBlockExecutionOutputを返す。",
+        "connection": "この本体が呼ぶexecute_transactionsを次で読みます。返答後はこの本体のfinishへ戻ります。"
+      },
+      {
+        "context": "area:journey-block-execute",
+        "title": "取引を一件ずつ実行してレシートを得る",
+        "purpose": "取引を順に実行し、結果のレシートを得る。",
+        "connection": "execute_blockへ戻ってfinishと状態出力の取り出しを行い、さらにvalidate_block_with_stateへ戻ります。実行結果をそのまま受け入れず、ブロック全体の検証を続けます。"
+      },
+      {
+        "context": "area:journey-block-after-execute",
+        "title": "実行結果と集約計算の返答を受け取る",
+        "purpose": "状態変更の出力、レシート集約値の受信、実行後検証への呼び出しを読む。",
+        "connection": "ここで呼ばれたvalidate_post_executionの本体を次で読みます。"
+      },
+      {
+        "context": "area:journey-block-postcheck",
+        "title": "実行後の結果がブロックのルールに合うか検証する",
+        "purpose": "実行後に分かるルールを照合し、問題があればエラーにする。",
+        "connection": "このconsensus呼び出しに対応する、Ethereumの実装と具体的な検証条件を続けて読みます。"
+      },
+      {
+        "context": "area:journey-block-consensus-check",
+        "title": "Ethereumの実行後検証を呼ぶ",
+        "purpose": "共通の検証操作に対応するEthereum実装と設定による特例を読む。",
+        "connection": "ここから具体的な検証本体へ渡す値と、戻るResultを追います。"
+      },
+      {
+        "context": "area:journey-block-postconditions",
+        "title": "実行結果をブロックの値と比べる",
+        "purpose": "gas・レシートroot・bloom・requests・BALを適用時点と条件で照合する。",
+        "connection": "Ethereum実装を経て元の呼出元へ結果が戻ります。次に、状態rootの計算・照合と最終結果を読みます。"
+      },
+      {
+        "context": "area:journey-block-root",
+        "title": "計算した状態のまとめをヘッダーと照合し結果を返す",
+        "purpose": "実行後の状態のまとめが一致するか確認し、検証結果を返す。",
+        "connection": "ValidationOutputは取り込み処理へ戻り、メモリー内treeへ加えられ、PayloadStatusへ変換されます。最初のNewPayloadの返答口から結果が戻ります。"
+      },
+      {
+        "context": "area:journey-block-forkchoice-message",
+        "title": "履歴採用の指示と返答口をEngineへ送る",
+        "purpose": "履歴の採用指示が、NewPayloadとは別の要求であることを読む。",
+        "connection": "同じEngineの要求経路を通り、treeのon_forkchoice_updatedへ届きます。"
+      },
+      {
+        "context": "area:journey-block-forkchoice",
+        "title": "合意側の履歴採用の指示を処理する",
+        "purpose": "指示されたhead・safe・finalizedの前提を検査し、履歴の変更へ進む。",
+        "connection": "現在の先端と違う場合、apply_chain_updateで変更を作ります。"
+      },
+      {
+        "context": "area:journey-block-forkchoice-precheck",
+        "title": "不正な指示と同期中を区別する",
+        "purpose": "ゼロhead・不正な祖先・同期中の主要条件と、INVALID/SYNCING/継続の結果を読む。",
+        "connection": "早期返答がなければon_forkchoice_updatedへ戻り、採用履歴の変更へ進みます。"
+      },
+      {
+        "context": "area:journey-block-canonical",
+        "title": "検証済みの履歴を採用する",
+        "purpose": "採用する履歴の変更が整合するか検査する。",
+        "connection": "まず呼び出すis_consistent_forkchoice_stateで、safe/finalizedが履歴に合うかを次で確かめます。"
+      },
+      {
+        "context": "area:journey-block-forkchoice-consistency",
+        "title": "採用前に履歴の整合性を確かめる",
+        "purpose": "safe/finalizedがゼロ・切替先・残る採用履歴のどれかを条件とともに読む。",
+        "connection": "この検査がtrueならapply_chain_updateへ戻り、on_canonical_chain_updateで履歴を切り替えます。"
+      },
+      {
+        "context": "area:journey-block-canonical-state",
+        "title": "採用中の先端と状態を更新し通知する",
+        "purpose": "採用中の先端・メモリー内の状態を切り替え、購読側へ通知する。",
+        "connection": "apply_chain_updateへ戻り、続けてensure_consistent_forkchoice_stateがsafe/finalizedの目印を更新します。"
+      },
+      {
+        "context": "area:journey-block-forkchoice-markers",
+        "title": "safeとfinalizedの指定を反映する",
+        "purpose": "ゼロ・未知・既知・参照エラーを分け、目印更新と番号の保存依頼を読む。",
+        "connection": "ブロック全体の保存はこの目印更新と別に、Engineの稼働ループが条件を見て進めます。"
+      },
+      {
+        "context": "startup:tree",
+        "title": "Engineの要求と保存の状態を扱う",
+        "purpose": "稼働中の要求処理と、保存の進行が別々に進むことを読む。",
+        "connection": "advance_persistenceが保存中かどうかや保存対象を調べます。"
+      },
+      {
+        "context": "area:journey-block-save-start",
+        "title": "保存の条件を確認して別の処理へ依頼する",
+        "purpose": "保存を重ねて始めない条件と、保存依頼・返答待ちの管理を読む。",
+        "connection": "get_save_blocks_inputが、現在採用している履歴から保存範囲を選びます。"
+      },
+      {
+        "context": "area:journey-block-save-target",
+        "title": "採用中の履歴から保存範囲を選ぶ",
+        "purpose": "保存するブロックと状態の範囲を、先端と設定に従って選ぶ。",
+        "connection": "persist_blocksへ入力が戻り、PersistenceHandleのsave_blocksへ送られます。"
+      },
+      {
+        "context": "area:journey-block-save-queue",
+        "title": "保存依頼を専用の経路へ送る",
+        "purpose": "保存依頼が専用の経路へ送られることを読む。",
+        "connection": "保存担当のrunが、このSaveBlocksという依頼を受け取ります。"
+      },
+      {
+        "context": "area:journey-block-save-worker",
+        "title": "保存担当が依頼を受け取り結果を返す",
+        "purpose": "保存担当が依頼を受け取り、保存結果を返答口へ返す。",
+        "connection": "on_save_blocksが保存先への書き込みとcommitを進めます。"
+      },
+      {
+        "context": "area:journey-block-save-write",
+        "title": "ブロックと状態を保存しcommitする",
+        "purpose": "ブロックと状態を書き込み、commit後に保存済み位置を返す。",
+        "connection": "このPersistenceResultが保存担当からtree側へ返り、完了の反映へ進みます。"
+      },
+      {
+        "context": "area:journey-block-save-complete",
+        "title": "保存完了をtree側へ反映する",
+        "purpose": "保存された位置をtree側へ反映し、メモリーの後処理へ進む。",
+        "connection": "ここまでが実行検証・採用・保存の別々の結果です。合意側が決めるfinalityの投票アルゴリズムは、この経路の外です。"
+      }
+    ]
+  },
+  {
+    "id": "sync",
+    "title": "出発点から履歴を取得・実行・保存して追いつく",
+    "goal": "不足範囲の決定から、P2Pでの取得、段階ごとの実行、進捗とデータの保存、完了通知までをつなげて説明する。",
+    "scope": "通常の既定ステージ同期を扱います。ヘッダー取得のあと、本文のP2P取得を具体例として追います。ERA取り込みやsnap syncなど全ての取得方式の内部を解説したという意味ではありません。同期の進捗と、合意側による履歴の確定も別です。",
+    "readings": [
+      {
+        "context": "startup:context",
+        "title": "出発点と保存先をノードへ接続する",
+        "purpose": "ノードの保存先と、チェーンの出発点であるgenesisを用意する。",
+        "connection": "手元にない履歴を、次の同期タスクで取得・実行していきます。"
+      },
+      {
+        "context": "area:loop-backfill",
+        "title": "同期タスクの開始・待機・完了を扱う",
+        "purpose": "同期の目標がある場合だけタスクを始め、結果が戻るまで待つ。",
+        "connection": "run_as_futの返した(pipeline, result)をoneshot経由でpoll_pipelineが受け取ります。受信OkではpipelineをIdleへ戻してBackfillEvent::Finished(result)を返し、受信ErrではBackfillEvent::TaskDroppedを返します。"
+      },
+      {
+        "context": "area:journey-sync-run",
+        "title": "同期目標をpipelineへ渡す",
+        "purpose": "Sync目標ではtipを設定して通常の段階処理へ進み、Unwind目標では巻き戻してpipelineと結果を返す。",
+        "connection": "既定の同期では、取得の段階に実行・索引などの段階をつないで使います。"
+      },
+      {
+        "context": "area:journey-sync-default-order",
+        "title": "取得の段階に実行・索引作成・終了の段階をつなぐ",
+        "purpose": "ネットワーク取得の段階と、取得後の実行などの段階の組み合わせを読む。",
+        "connection": "取得側のOnlineStagesがヘッダーと本文をどう並べるかを次で読みます。"
+      },
+      {
+        "context": "area:journey-sync-online-order",
+        "title": "ヘッダーのあとに本文を取得する段階を組む",
+        "purpose": "先にヘッダー、そのあと本文をそろえる順番を確かめる。",
+        "connection": "この一覧をpipelineが順に実行します。"
+      },
+      {
+        "context": "area:sync",
+        "title": "同期の段階を順に進める",
+        "purpose": "各段階を順に進め、失敗や巻き戻しの指示を分ける。",
+        "connection": "段階ごとのexecute_readyでデータを準備し、executeで保存や実行を進めます。次はヘッダーの段階です。"
+      },
+      {
+        "context": "area:journey-sync-headers",
+        "title": "不足するヘッダーを取得し保存する",
+        "purpose": "不足するヘッダーの範囲を決め、取得結果を集めて書き込む。",
+        "connection": "ヘッダーがそろったあと、それに対応する本文の段階へ進みます。"
+      },
+      {
+        "context": "area:journey-sync-bodies",
+        "title": "本文を取得し、ヘッダーに対応づけて保存する",
+        "purpose": "本文の取得結果を待ち、取得済みデータを保存する。",
+        "connection": "ここで使うdownloaderがネットワークから本文を求める箇所を続けて読みます。"
+      },
+      {
+        "context": "area:journey-sync-body-request",
+        "title": "downloaderが本文を要求する",
+        "purpose": "downloaderが必要なブロック本文をネットワークclientへ要求する。",
+        "connection": "取得用clientは、内部のfetch要求経路へ依頼を送ります。"
+      },
+      {
+        "context": "area:journey-sync-fetch-client",
+        "title": "ネットワーク取得のキューへ渡す",
+        "purpose": "要求と返答用の経路を作り、ネットワーク取得担当へ渡す。",
+        "connection": "fetcherが接続相手を選び、要求を通信側へ返します。"
+      },
+      {
+        "context": "area:journey-sync-peer-select",
+        "title": "取得する相手を選び要求へ変換する",
+        "purpose": "要求を満たす相手を選ぶ条件と、相手がいない場合を区別する。",
+        "connection": "準備したFetchAction::BlockRequestはネットワーク側でhandle_block_requestへ渡されます。"
+      },
+      {
+        "context": "area:journey-sync-peer-send",
+        "title": "選んだ相手の接続へ要求を渡す",
+        "purpose": "選ばれた相手との接続へ要求を渡し、返答を待つ経路を残す。",
+        "connection": "相手から返答が準備できると、ネットワークのpoll処理がon_eth_responseへ渡します。"
+      },
+      {
+        "context": "area:journey-sync-response",
+        "title": "通信相手からの本文を取得担当へ戻す",
+        "purpose": "本文の返答をfetcherへ戻す。",
+        "connection": "downloaderへ戻った本文は、保持していたヘッダーと組み合わせて検査されます。"
+      },
+      {
+        "context": "area:journey-sync-body-validate",
+        "title": "取得した本文をヘッダーと合わせて検査する",
+        "purpose": "本文をヘッダーと合わせ、実行前の検証に通ったブロックだけを取得結果へ入れる。",
+        "connection": "取得結果は先に読んだBodyStageのbufferへ戻り、append_block_bodiesで保存されます。"
+      },
+      {
+        "context": "area:journey-sync-offline-order",
+        "title": "取得後に実行・ハッシュ化・履歴索引の段階を並べる",
+        "purpose": "実行、条件付きの送信者復元prune、hashing、履歴索引、pruneという登録順序を読む。",
+        "connection": "このOfflineStagesが最初に使うExecutionStagesは、送信者復元と実行の二段階を登録します。"
+      },
+      {
+        "context": "area:journey-sync-execution-order",
+        "title": "送信者の復元後に実行する段階を組む",
+        "purpose": "取得した履歴を扱う段階で、送信者復元のあとに取引実行が来ることを読む。",
+        "connection": "ExecutionStageが保存済みのブロックを順に取り出して実行します。"
+      },
+      {
+        "context": "area:journey-sync-execution",
+        "title": "保存した履歴を順に実行する",
+        "purpose": "保存されたブロックを番号順に読み、executor.execute_oneへ渡す。",
+        "connection": "保存済みブロックに対する共通のexecute_oneを次で読み、その後ExecutionStageが呼ぶEthereumの実行後条件も確かめます。"
+      },
+      {
+        "context": "area:execution",
+        "title": "ブロック内の取引を順に実行する",
+        "purpose": "ブロック内の取引を順に実行し、実行結果を返す。",
+        "connection": "ExecutionStageへ戻り、同じ関数内のvalidate_block_post_executionで実行結果を照合します。次はEthereumの実装です。"
+      },
+      {
+        "context": "area:journey-block-consensus-check",
+        "title": "Ethereumの実行後検証を呼ぶ",
+        "purpose": "共通の検証操作に対応するEthereum実装と設定による特例を読む。",
+        "connection": "ここから具体的な検証本体へ渡す値と、戻るResultを追います。"
+      },
+      {
+        "context": "area:journey-block-postconditions",
+        "title": "実行結果をブロックの値と比べる",
+        "purpose": "gas・レシートroot・bloom・requests・BALを適用時点と条件で照合する。",
+        "connection": "Ethereum実装を経て元の呼出元へ結果が戻ります。ExecutionStageの状態書込とcheckpoint返答を経て、pipeline側のcommitを読みます。"
+      },
+      {
+        "context": "area:journey-sync-checkpoint",
+        "title": "段階の処理結果と進捗をcommitする",
+        "purpose": "取得や実行の準備、本処理、進捗の書き込み、commit、完了通知を順に読む。",
+        "connection": "commitは保存先の実装へ渡ります。次は保存先が変更を確定する実装例です。"
+      },
+      {
+        "context": "area:storage",
+        "title": "保存先のcommitを読む",
+        "purpose": "保存先で静的ファイル・DBの変更をcommitする役割を確かめる。",
+        "connection": "各段階が目標へ進むとpipelineが結果を返します。開始時に読んだ同期タスクの返答経路へ戻り、poll_pipelineがFinishedを通知して再び待機状態になります。"
+      }
+    ]
+  }
+]

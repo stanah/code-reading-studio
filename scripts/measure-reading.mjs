@@ -42,10 +42,64 @@ export async function measure({root=projectRoot,evidenceDir,depth=0}={}){
   for(const [line,tokens] of Object.entries(c.tokenHints||{}))for(const [token,term] of Object.entries(tokens))if(!c.source.code.split('\n')[Number(line)-c.source.start]?.includes(token)||!help.terms[term]){invalidEvidence++;valid=false;}
   validHints.set(id,valid);
  }
+ const authoredSources=await optional(resolve(root,'ui/area-source-excerpts.json'),{}),authoredHelp=await optional(resolve(root,'ui/reading-help-content.json'),{contexts:{}});
+ if(JSON.stringify(Object.keys(authoredHelp.contexts).sort())!==JSON.stringify(Object.keys(help.contexts).sort()))invalidEvidence++;
+ for(const [id,c] of Object.entries(help.contexts)){
+  const [kind,key]=id.split(':'),item=kind==='startup'?startup.steps.find(s=>s.id===key):kind==='tx'?([...pack.steps,...pack.details].find(s=>s.id===key)||authoredSources[key]):authoredSources[key],expected=item?.source||item,{title,source:ignoredSource,...hints}=c;
+  const published={path:c.source.path,start:c.source.start,end:c.source.end,hash:c.source.hash,url:c.source.url};
+  if(!expected||JSON.stringify(published)!==JSON.stringify({path:expected.path,start:expected.start,end:expected.end,hash:expected.hash||expected.contentHash,url:expected.url||expected.sourceUrl})||JSON.stringify(hints)!==JSON.stringify(authoredHelp.contexts[id])){invalidEvidence++;validHints.set(id,false);}
+ }
+ const owners=help.sourceOwners||{};
+ if(JSON.stringify(Object.keys(owners).sort())!==JSON.stringify(Object.keys(help.contexts).sort()))invalidEvidence++;
+ for(const [id,owner] of Object.entries(owners)){
+  const c=help.contexts[id],crate=index.crates.find(k=>k.id===owner.crate?.id),manifest=crate?await git(index.repo,'show',target.commit+':'+owner.crate.id):'',packageName=manifest.split('[package]')[1]?.split(/\n\[/)[0]?.match(/^name\s*=\s*"([^"]+)"/m)?.[1];
+  if(!c||!validHints.get(id)||!crate?.files.includes(c.source.path)||owner.crate.name!==packageName||owner.area!==areaByPath.get(c.source.path)||owner.crate.hash!==digest(manifest)||owner.crate.url!==`https://github.com/${target.repository}/tree/${target.commit}/${owner.crate.id.replace(/\/Cargo\.toml$/,'')}`)invalidEvidence++;
+ }
  const lessonRefs=await optional(resolve(root,'ui/lesson-code-links.json'),[]);
  if(lessonRefs.length||(help.lessonLinks||[]).length){
   if(JSON.stringify(lessonRefs)!==JSON.stringify((help.lessonLinks||[]).map(({area,crate,...r})=>r)))invalidEvidence++;
-  for(const ref of help.lessonLinks||[]){const c=help.contexts[ref.context],crate=index.crates.find(k=>k.id===ref.crate?.id),manifest=crate?await git(index.repo,'show',target.commit+':'+ref.crate.id):'',packageName=manifest.split('[package]')[1]?.split(/\n\[/)[0]?.match(/^name\s*=\s*"([^"]+)"/m)?.[1];if(!c||!validHints.get(ref.context)||!crate?.files.includes(c.source.path)||ref.crate.name!==packageName||ref.area!==areaByPath.get(c.source.path)||ref.crate.hash!==digest(manifest))invalidEvidence++;}
+  for(const ref of help.lessonLinks||[]){
+   if(JSON.stringify({area:ref.area,crate:ref.crate})!==JSON.stringify(owners[ref.context]))invalidEvidence++;
+   if(!Array.isArray(ref.readings)||ref.readings.length<2||new Set(ref.readings.map(r=>r.context)).size!==ref.readings.length)invalidEvidence++;
+   for(const reading of ref.readings||[])if(!validHints.get(reading.context)||!owners[reading.context]||!['title','purpose','connection'].every(k=>typeof reading[k]==='string'&&reading[k].trim()))invalidEvidence++;
+  }
+ }
+ const journeyRefs=await optional(resolve(root,'ui/journey-code-links.json'),[]);
+ if(JSON.stringify(journeyRefs)!==JSON.stringify(help.journeyLinks||[]))invalidEvidence++;
+ if(new Set((help.journeyLinks||[]).map(j=>j.id)).size!==(help.journeyLinks||[]).length)invalidEvidence++;
+ for(const journey of help.journeyLinks||[]){
+  if(!['id','title','goal','scope'].every(k=>typeof journey[k]==='string'&&journey[k].trim())||!Array.isArray(journey.readings)||journey.readings.length<2||new Set(journey.readings.map(r=>r.context)).size!==journey.readings.length)invalidEvidence++;
+  for(const reading of journey.readings||[])if(!validHints.get(reading.context)||!owners[reading.context]||!['title','purpose','connection'].every(k=>typeof reading[k]==='string'&&reading[k].trim()))invalidEvidence++;
+ }
+ const pathValid=row=>{
+  if(!['goal','scope'].every(k=>typeof row[k]==='string'&&row[k].trim())||!Array.isArray(row.readings)||!row.readings.length||new Set(row.readings.map(s=>s.context)).size!==row.readings.length)return false;
+  return row.readings.every(s=>validHints.get(s.context)&&owners[s.context]&&['title','purpose','connection'].every(k=>typeof s[k]==='string'&&s[k].trim()));
+ };
+ const fileRoleRefs=await optional(resolve(root,'ui/file-role-code-links.json'),[]),annotations=await optional(resolve(root,'local-app/annotations.json'),{roles:{}}),expectedRoles=Object.keys({...annotations.roles,...startup.roles}).sort();
+ if(JSON.stringify(fileRoleRefs)!==JSON.stringify(help.fileRoleLinks||[])||JSON.stringify((help.fileRoleLinks||[]).map(r=>r.path).sort())!==JSON.stringify(expectedRoles))invalidEvidence++;
+ for(const row of help.fileRoleLinks||[])if(!pathValid(row)||!row.readings?.some(s=>help.contexts[s.context]?.source.path===row.path))invalidEvidence++;
+ try{vm.runInNewContext(await readFile(resolve(root,'dist/drill-data.js'),'utf8'),context);}catch(error){if(error.code!=='ENOENT')throw error;invalidEvidence++;}
+ const drill=context.window.RETH_DRILL;
+ if(drill?.commit!==target.commit)invalidEvidence++;
+ for(const path of expectedRoles){
+  if(JSON.stringify(drill?.roles?.[path])!==JSON.stringify(annotations.roles[path])||startup.roles[path]&&JSON.stringify(drill?.roles?.[path])!==JSON.stringify(startup.roles[path]))invalidEvidence++;
+  if(!index.paths.includes(path)||drill?.seed?.[path]!==((await source(path)).join('\n')))invalidEvidence++;
+ }
+ const componentRefs=await optional(resolve(root,'ui/component-code-links.json'),[]),expectedComponents=['interface','helpers','implementation','integration'].map(id=>'rpc:'+id).sort();
+ if(JSON.stringify(componentRefs)!==JSON.stringify(help.componentLinks||[])||JSON.stringify((help.componentLinks||[]).map(r=>r.area+':'+r.component).sort())!==JSON.stringify(expectedComponents))invalidEvidence++;
+ for(const row of help.componentLinks||[]){const group=context.window.RETH_DRILL?.components[row.area]?.find(c=>c.id===row.component);if(!pathValid(row)||!group||!row.readings?.some(s=>group.files.includes(help.contexts[s.context]?.source.path)))invalidEvidence++;}
+ const operationRefs=await optional(resolve(root,'ui/operation-code-links.json'),[]),expectedOperations=['rpc','recover','submit','queue','batch','pool'].sort(),canonicalSend=new Set((help.lessonLinks||[]).find(r=>r.lesson==='send')?.readings?.map(r=>r.context)||[]);
+ if(JSON.stringify(operationRefs)!==JSON.stringify(help.operationLinks||[])||JSON.stringify((help.operationLinks||[]).map(r=>r.id).sort())!==JSON.stringify(expectedOperations))invalidEvidence++;
+ for(const row of help.operationLinks||[]){
+  if(!['title','scope'].every(k=>typeof row[k]==='string'&&row[k].trim())||!Array.isArray(row.contexts)||!row.contexts.length||new Set(row.contexts).size!==row.contexts.length||row.contexts.some(id=>!canonicalSend.has(id)||!validHints.get(id)||!owners[id]))invalidEvidence++;
+  if(!row.connections||Array.isArray(row.connections)||Object.entries(row.connections).some(([id,value])=>!row.contexts?.includes(id)||typeof value!=='string'||!value.trim()))invalidEvidence++;
+ }
+ for(const row of help.fileRoleLinks||[])for(const operation of help.operationLinks||[])if(help.contexts['tx:'+operation.id]?.source.path===row.path&&operation.contexts?.some(id=>!row.readings?.some(s=>s.context===id)))invalidEvidence++;
+ const startupScopes=startup.readingScopes;
+ if(!startupScopes||JSON.stringify(Object.keys(startupScopes.steps||{}).sort())!==JSON.stringify(startup.steps.map(s=>s.id).sort())||JSON.stringify(Object.keys(startupScopes.loops||{}).sort())!==JSON.stringify(startup.loops.map((_,i)=>String(i+1)).sort())||startupScopes.staticStartup?.length!==7||startupScopes.staticRuntime?.length!==4)invalidEvidence++;
+ if(startupScopes)for(const rows of [...Object.values(startupScopes.steps||{}),...Object.values(startupScopes.loops||{}),...(startupScopes.staticStartup||[]).map(s=>s.readings),...(startupScopes.staticRuntime||[]).map(s=>s.readings)]){
+  if(!Array.isArray(rows)||!rows.length||new Set(rows.map(r=>r.context)).size!==rows.length||rows.some(r=>!validHints.get(r.context)||!owners[r.context]||typeof r.purpose!=='string'||!r.purpose.trim())){invalidEvidence++;continue;}
+  for(let i=0;i<rows.length;i++)for(let j=i+1;j<rows.length;j++){const a=help.contexts[rows[i].context].source,b=help.contexts[rows[j].context].source;if(a.path===b.path&&a.start<=b.end&&b.start<=a.end)invalidEvidence++;}
  }
  const reviewed=new Set();
  for(const review of fullReviews){
@@ -60,9 +114,12 @@ export async function measure({root=projectRoot,evidenceDir,depth=0}={}){
  });
  const guidedAreas=[];
  if(JSON.stringify(authoredAreas)!==JSON.stringify(help.areaReadings||[]))invalidEvidence++;
+ for(const row of authoredAreas)for(const part of [row,row.followup])if(part?.readings){
+  const stages=part.readings;if(!Array.isArray(stages)||!stages.length||new Set(stages.map(r=>r.context)).size!==stages.length||stages.some(r=>!validHints.get(r.context)||!owners[r.context]||!['title','purpose','connection'].every(k=>typeof r[k]==='string'&&r[k].trim())))invalidEvidence++;
+ }
  for(const area of atlas.areas){
   const reading=authoredAreas.find(r=>r.area===area.id),c=reading&&help.contexts[reading.context];
-  if(c&&validHints.get(reading.context)&&(!reading.extraContext||validHints.get(reading.extraContext))&&areaByPath.get(c.source.path)===area.id&&['question','role','input','output','boundary'].every(k=>typeof reading[k]==='string'&&reading[k].trim())&&c.lines.length&&c.terms.length)guidedAreas.push(area.id);
+  if(c&&validHints.get(reading.context)&&(!reading.extraContext||validHints.get(reading.extraContext))&&areaByPath.get(c.source.path)===area.id&&['question','role','input','output','boundary'].every(k=>typeof reading[k]==='string'&&reading[k].trim())&&(!reading.readings||reading.readings.every(r=>validHints.get(r.context)&&owners[r.context]))&&c.lines.length&&c.terms.length)guidedAreas.push(area.id);
  }
  const evalReports=[];let evidenceBuild=null,adjudications=[];
  if(evidenceDir){

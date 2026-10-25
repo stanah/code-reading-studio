@@ -5,7 +5,7 @@
     "question": "ノードは、いつ起動を終えて何を待つ？",
     "role": "文字のコマンドを読み、ノードを起動する処理を渡し、終了を待ちます。",
     "input": "コマンドラインで指定された起動方法や設定。",
-    "output": "起動後のhandleでノードの終了を待ち、CLI全体の実行結果を返します。",
+    "output": "起動後のhandleでノード終了を待ちます。main自体はResultを返さず、runが正常なら末尾へ進み、Errなら表示してexit(1)で終了します。",
     "boundary": "L42は起動の完了待ち、L44は終了待ちです。起動完了でプロセス全体が終了するわけではありません。",
     "context": "startup:entry",
     "followup": {
@@ -28,13 +28,27 @@
     "boundary": "返答のハッシュはブロックへの取り込みや確定の完了を意味しません。ログの?txと、失敗を返す.await?を分けて読みます。",
     "context": "tx:rpc",
     "followup": {
-      "context": "area:rpc-recovery",
+      "context": "tx:recover",
       "question": "受信したデータから送信者を求めるには？",
-      "role": "送信用のデータを読み解き、署名から送信者を求め、両方を組にして返します。",
-      "input": "txという名前で借りたバイト列と、復元キャッシュの設定。",
-      "output": "署名済みデータと送信者の組Recovered、またはEthApiError。",
-      "boundary": "秘密鍵を取り出す処理でも、プール追加やブロックへの取り込みでもありません。キャッシュがなくても直接の復元を試みます。",
-      "selfCheck": "復元用キャッシュが未設定の場合と、署名の復元に失敗した場合をそれぞれ説明する"
+      "role": "外側のsend_raw_transactionが受け取ったデータを、内側の復元helperへ借りて渡します。helperはデータを読み解いて署名から送信者を求め、外側は復元済み取引を元のバイト列と組にして送信担当へ渡します。",
+      "input": "外側は所有するtx: Bytesを受け、内側のrecover_raw_pool_transactionへ&txとして借用します。復元キャッシュの設定はself.eth_api_settings()から読みます。",
+      "output": "内側の復元helperはPoolTx<Self::Pool>またはSelf::Errorを返します。外側はsend_pool_transactionの結果を待ち、ハッシュB256またはSelf::Errorを返すFutureを返します。",
+      "boundary": "復元helper自体はプールへ追加しません。外側は復元後にプール追加を担当する処理へ渡し、その結果を待ちます。秘密鍵の取出しやブロック取り込みの確認とは別です。キャッシュなしでは直接の復元hookを試し、復元エラーはSelf::Errorへ変換します。",
+      "selfCheck": "復元用キャッシュが未設定の場合と、署名の復元に失敗した場合をそれぞれ説明する",
+      "readings": [
+        {
+          "context": "tx:recover",
+          "title": "送信用データを復元hookへ渡す",
+          "purpose": "キャッシュ有無に応じてPoolTransactionの復元hookを呼び、失敗時のSelf::Errorへの変換と後続送信への受け渡しを読む。RPC応答のエラーへ変換するのは入口側の処理です。",
+          "connection": "データの読み取りと署名復元の実処理は、PoolTransactionの既定hookを対応させます。traitの実装では上書きできる境界も区別します。"
+        },
+        {
+          "context": "tx:recovery-hook",
+          "title": "デフォルトの復元フック",
+          "purpose": "空入力、形式の読取り失敗、送信者復元の失敗を条件ごとに分け、成功時の値と返し先を読む。",
+          "connection": "復元結果またはエラーはsend_raw_transactionへ戻ります。キャッシュを使う分岐はありますが、cache内部の探索・格納や署名の暗号計算の内部までは、このhookで実装説明済みとはしません。"
+        }
+      ]
     }
   },
   {
@@ -44,7 +58,7 @@
     "role": "トランザクションを検証してから、内部プールへ渡して追加結果を返します。",
     "input": "トランザクションと、その要求がどこから来たかを示すorigin。",
     "output": "1件分のプール追加結果。検証や追加に失敗する場合もあります。",
-    "boundary": "下の追加入口だけでは検証の全条件は分かりません。「検証条件の一例」でチェーンID不一致のエラーを原文で確認できます。プール追加はブロックの確定とは別です。",
+    "boundary": "公開追加APIから検証担当、Ethereumのstateless/stateful条件、内部プールへの追加とサイズ制限までを続けて読みます。特定条件の通過・プール追加・ブロックへの取り込み・確定は別です。",
     "context": "tx:pool",
     "extraContext": "area:pool-validation",
     "followup": {
@@ -90,8 +104,8 @@
       "question": "巻き戻す段階は、どの順に選ぶ？",
       "role": "保存済み進捗と目標を確認し、同期した順と逆に段階を見て、目標より手前の段階を飛ばします。",
       "input": "巻き戻し先to、問題ブロックbad_block、段階と保存先を持つself。",
-      "output": "この抜粋では対象の段階を選びます。外側のunwind全体は成功かPipelineErrorを返します。",
-      "boundary": "進捗が目標より小さい段階はSkipped通知後にcontinueします。等しい場合の処理や実際の段階の巻き戻し・保存は後続の範囲です。",
+      "output": "各段階を必要な位置まで戻し、進捗を書き込みます。完了ならOk(())、対象の検査・段階の処理・保存などに失敗すればPipelineErrorを返します。",
+      "boundary": "進捗が目標より小さい段階は飛ばし、等しい段階はwhileに入りません。進んでいる段階だけを逆順に戻します。safe/finalizedの保存番号の調整は、合意側の投票で新しい確定を決める処理ではありません。",
       "selfCheck": "目標番号より進捗番号が小さい段階はどうなるか、巻き戻す順序とともに説明する"
     }
   },
@@ -102,7 +116,7 @@
     "role": "Engineの要求や、保存側の完了を専用スレッドで扱います。",
     "input": "Engineの要求、保存完了の出来事、保存の進み具合。",
     "output": "出来事を処理し続けます。このrun自体は値を返さない形です。",
-    "boundary": "保存が追いつかない条件ではL564で保存側を待ち、通常はL569で入力を待ちます。保存監視などのエラーではループを終える場合があります。",
+    "boundary": "保存中で、メモリー内の保持数から設定バッファを引いた差が閾値以上なら、保存の返答だけを待ちます。ただし保存の受信口がなければ通常の待機へ戻ります。通常は保存完了・payload作成完了・Engine要求を待ち分けます。チャネル切断や処理のエラーではループを終える場合があります。",
     "context": "startup:tree",
     "followup": {
       "context": "area:engine-timestamp",
@@ -112,7 +126,33 @@
       "output": "属性時刻が大きければOk(())、小さいか同じならInvalidTimestamp。",
       "boundary": "この関数は時刻の条件だけを検査します。Okは候補の作成完了や、履歴の採用・確定を意味しません。",
       "selfCheck": "候補の属性時刻が現在のヘッダーと同じ場合と、大きい場合の戻り値を説明する"
-    }
+    },
+    "readings": [
+      {
+        "context": "area:startup-tree-spawn",
+        "purpose": "Engine要求と返答のチャネルを作り、専用OSスレッドでrunを起動する実装を読む。",
+        "title": "専用OSスレッドでtreeを起動する",
+        "connection": "spawn_newが作った専用OSスレッドでtask.runを呼びます。runは入力と保存の進み具合に応じて待ち方を変えます。"
+      },
+      {
+        "context": "startup:tree",
+        "purpose": "要求・保存完了を待ち分け、backpressureや異常時の制御を読む。",
+        "title": "専用スレッドでEngine要求を処理する",
+        "connection": "runはshould_backpressureで待つ入力を選び、イベント処理後にadvance_persistenceを呼びます。should_backpressureの条件と待機処理、別の保存開始条件を分けて読みます。"
+      },
+      {
+        "context": "area:startup-tree-pressure",
+        "title": "保存中の滞留量からtree入力の抑制を決める",
+        "purpose": "保存中で、メモリー保持分を超えたブロック数が閾値以上かをAND条件で読む。",
+        "connection": "このboolをrunが使って通常の待機と保存だけの待機を選びます。"
+      },
+      {
+        "context": "area:startup-tree-wait",
+        "title": "treeの専用スレッドで保存・入力・候補作成完了を待つ",
+        "purpose": "保存中の滞留時と通常時で、何を受信し何を返すかを読む。",
+        "connection": "待った出来事はrunへ戻り、要求処理や保存完了の反映を進めます。保存中の受信口を一時的に取り出した場合、別の出来事を選んだときは受信口を戻します。"
+      }
+    ]
   },
   {
     "area": "execution",
@@ -121,16 +161,16 @@
     "role": "ブロック内のトランザクションを順に実行し、前後の状態変更と結果をまとめます。",
     "input": "送信者が復元されたトランザクションを含むブロックと、状態を扱うself。",
     "output": "レシートなどを含むブロック実行結果、または実行エラー。",
-    "boundary": "L621の?は一件の実行失敗を返します。L631の成功返却は、保存先へcommitしたことや履歴の確定を示しません。",
+    "boundary": "L621の?は、取引を処理する呼び出しがRustのErrを返したとき、ブロックの処理を中断してエラーを返します。コントラクトのRevertは、処理結果として受け取り失敗のレシートを作る場合で、ここでのErrとは区別します。L631の成功返却は保存や履歴の確定を意味しません。",
     "context": "area:execution",
     "followup": {
       "context": "area:execution-receipt",
-      "question": "失敗した実行も、レシートには残る？",
-      "role": "実行結果から、種類・成功印・累積ガス・ログを持つレシートを組み立てます。",
+      "question": "コントラクトがRevertした場合も、レシートは作られる？",
+      "role": "コントラクトの実行から得た結果を、種類・成功印・累積ガス・ログを持つレシートへ移します。",
       "input": "tx_type、result、cumulative_gas_usedを含む実行の情報ctx。",
       "output": "Receiptという実行結果の記録。戻り値はResultではありません。",
-      "boundary": "この関数は実行済みの結果を記録へ移します。実行失敗ならsuccessがfalseになり、レシートの作成自体をErrにする分岐はありません。保存や確定も別です。",
-      "selfCheck": "実行結果が失敗だった場合、レシート自体が作られないのか、成功印はどうなるか説明する"
+      "boundary": "実行結果がRevertなどならsuccessはfalseですが、レシートは作られます。取引の処理自体がRustのErrを返して中断する場合とは別です。この関数は保存や確定を行いません。",
+      "selfCheck": "コントラクトの実行結果がRevertの場合、レシートは作られるか。取引を処理する呼び出しのRustのErrと区別して説明する"
     }
   },
   {

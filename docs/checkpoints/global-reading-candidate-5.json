@@ -1,0 +1,35 @@
+{
+  "kind": "implementation checkpoint; evaluation remains in progress",
+  "candidate": 5,
+  "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "referenceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "tests": {
+    "total": 73,
+    "pass": 73,
+    "fail": 0
+  },
+  "functionalAudit": {
+    "units": 108,
+    "requiredRounds": 2,
+    "status": "in progress; not accepted"
+  },
+  "knownFindings": [
+    "First-use reading picker requires an additional open action and obscures navigation.",
+    "Novice main-path tasks cannot yet be completed reliably within ten actions.",
+    "Atlas explanation availability still derives from the older transaction annotation list."
+  ],
+  "sourceEvidence": {
+    "contexts": 147,
+    "lineHints": 714,
+    "anchoredRustFiles": 60,
+    "totalRustFiles": 1283,
+    "fullyReviewedRustFiles": 2
+  },
+  "humanStudy": {
+    "participants": 0,
+    "status": "not-verified"
+  },
+  "productComplete": false,
+  "publication": "Git checkpoint only; no website deployment or product acceptance"
+}

@@ -511,6 +511,24 @@
       ],
       "lines": [
         {
+          "line": 20,
+          "match": "fn main() {",
+          "label": "プロセスの入口の型を読む",
+          "explanation": "mainの引数リストは空で、Resultを返す宣言ではありません。プロセスの引数は後のCli::parseで読み、runのResultをmain内で扱います。"
+        },
+        {
+          "line": 21,
+          "match": "#[cfg(feature = \"jit\")]",
+          "label": "JIT機能でのみ有効な準備を分ける",
+          "explanation": "このブロックはjit機能付きの構成で有効です。通常のnode起動へ進む主線と、補助プロセスとして終わる分岐を区別します。"
+        },
+        {
+          "line": 24,
+          "match": "Ok(std::ops::ControlFlow::Break(())) => return,",
+          "label": "補助処理で終える場合はここでmainから戻る",
+          "explanation": "Breakならmainからreturnし、Continueなら後のCLI処理へ進みます。JIT補助のエラーはこのブロック内で表示してexit(1)します。"
+        },
+        {
           "line": 40,
           "match": "Cli::<EthereumChainSpecParser>::parse()",
           "label": "コマンドを読む",
@@ -527,6 +545,18 @@
           "match": "wait_for_node_exit",
           "label": "ノードの終了を待つ",
           "explanation": "起動完了とは別に、動いているノードが終了するのを待ちます。"
+        },
+        {
+          "line": 46,
+          "match": "eprintln!(\"Error: {err:?}\");",
+          "label": "runが返したエラーを表示する",
+          "explanation": "if let Errに入った場合だけエラーを表示します。runがOkならこのブロックを実行せずmainの末尾へ進みます。"
+        },
+        {
+          "line": 47,
+          "match": "std::process::exit(1);",
+          "label": "エラー時は終了コード1で終える",
+          "explanation": "runのエラーを表示したあと、プロセスをexit(1)で終了します。mainからResultを返しているわけではありません。"
         }
       ],
       "note": "主な読解箇所はL40・42・44です。L33–38は障害調査に関する準備です。"
@@ -637,6 +667,36 @@
       ],
       "lines": [
         {
+          "line": 69,
+          "match": "async fn launch_node<N, DB, T, CB, AO>(",
+          "label": "ノード起動の本体を開始する",
+          "explanation": "launch_nodeは非同期の関数です。入力として部品のbuilderと設定を持つtargetを受け取り、NodeHandleのResultを返します。"
+        },
+        {
+          "line": 71,
+          "match": "target: NodeBuilderWithComponents<T, CB, AO>,",
+          "label": "起動に使うbuilder一式を受け取る",
+          "explanation": "targetはNodeBuilderWithComponentsで、DB・構築担当・追加機能・設定が中に入っています。"
+        },
+        {
+          "line": 72,
+          "match": ") -> eyre::Result<NodeHandle<NodeAdapter<T, CB::Components>, AO>>",
+          "label": "起動成功時の返り値の型を読む",
+          "explanation": "成功時はNodeHandleを返し、失敗時はeyreのエラーです。ノードの終了を待つFutureは成功したhandleの中に保持されます。"
+        },
+        {
+          "line": 86,
+          "match": "let NodeBuilderWithComponents {",
+          "label": "targetから必要な材料を取り出す",
+          "explanation": "DB、部品を組み立てるcomponents_builder、add_onsやhooksを個別の値として取り出します。"
+        },
+        {
+          "line": 91,
+          "match": "config,",
+          "label": "受け取った設定を準備へつなぐ",
+          "explanation": "configもtargetから取り出し、後でwith_loaded_toml_config等へ渡します。NodeHandleを返す場所は同じ関数の後半です。"
+        },
+        {
           "line": 109,
           "match": ".attach(database.clone())",
           "label": "データベースを結びつける",
@@ -666,6 +726,24 @@
       ],
       "lines": [
         {
+          "line": 353,
+          "match": "impl<Node, PoolB, PayloadB, NetworkB, ExecB, ConsB> NodeComponentsBuilder<Node>",
+          "label": "共通の部品構築をこの型へ実装する",
+          "explanation": "ComponentsBuilderにNodeComponentsBuilderの操作を実装します。PoolB等の型が、どの部品のbuilderなのかを次のwhere条件で定めます。"
+        },
+        {
+          "line": 357,
+          "match": "PoolB: PoolBuilder<Node, ExecB::EVM, Pool: TransactionPool>,",
+          "label": "使うbuilderが満たす条件を読む",
+          "explanation": "PoolBにはPoolBuilderを求め、同様にNetworkB、PayloadB、ExecB、ConsBにも必要なtraitを求めます。具体的なEthereumの型の選択は別の構成箇所で確かめます。"
+        },
+        {
+          "line": 372,
+          "match": "type Components =",
+          "label": "生成して返す部品の型を示す",
+          "explanation": "Componentsは、各builderが作るNetwork・Pool・EVM・Consensusの型を組み合わせたものです。Selfを単に文字で置き換えて読むのではなく、builderの型との対応を読みます。"
+        },
+        {
           "line": 388,
           "match": "build_evm",
           "label": "実行の設定を作る",
@@ -688,6 +766,12 @@
           "match": "spawn_payload_builder_service",
           "label": "ブロック候補を作る処理を始める",
           "explanation": "プールと実行の設定を使う、ブロック候補の実行部分を作るサービスを始めます。"
+        },
+        {
+          "line": 394,
+          "match": "consensus_builder.build_consensus",
+          "label": "実行側で使うブロック検証を用意する",
+          "explanation": "ここでいうconsensusはReth内部のブロック検証の部品です。外部のコンセンサスクライアント本体を組み立てているわけではありません。"
         }
       ],
       "note": ""
@@ -705,6 +789,24 @@
           "match": "build_networked_pipeline",
           "label": "過去のデータをそろえる仕組みを作る",
           "explanation": "ネットワークから得るデータを、段階的に扱うpipelineを用意します。"
+        },
+        {
+          "line": 195,
+          "match": "ConsensusEngineHandle::new",
+          "label": "Engine APIと内部処理をつなぐ窓口を作る",
+          "explanation": "合意側からの要求を、Reth内部の要求チャネルへ流すためのhandleを用意します。外部の合意アルゴリズム本体ではありません。"
+        },
+        {
+          "line": 252,
+          "match": "incoming_requests:",
+          "label": "受信した要求を実行側へ接続する",
+          "explanation": "Engine API側から届く要求の流れを、RethのEngineOrchestratorへ渡します。"
+        },
+        {
+          "line": 263,
+          "match": "evm_config:",
+          "label": "実行の設定も接続する",
+          "explanation": "部品として作ったEVMの設定を渡します。実行側はこの設定などを使い、ブロック内の取引を扱います。"
         }
       ],
       "note": ""
@@ -846,6 +948,24 @@
       ],
       "lines": [
         {
+          "line": 99,
+          "match": "pub fn new(pipeline: Pipeline<N>, pipeline_task_spawner: Runtime) -> Self {",
+          "label": "pipelineと実行器から同期担当を作る",
+          "explanation": "newはpipelineを受け取って状態管理の値を作ります。ここで同期タスクを起動しているわけではありません。"
+        },
+        {
+          "line": 102,
+          "match": "pipeline_state: PipelineState::Idle(Some(Box::new(pipeline))),",
+          "label": "初期状態は待機中にする",
+          "explanation": "pipelineを保持したIdleから始めます。新しい要求が届くまでは実行中ではありません。"
+        },
+        {
+          "line": 103,
+          "match": "pending_pipeline_target: None,",
+          "label": "初期の同期目標は未設定にする",
+          "explanation": "pending_pipeline_targetはNoneです。後のStart要求や初期目標の設定を受けてSomeになります。"
+        },
+        {
           "line": 143,
           "match": "pending_pipeline_target.take()",
           "label": "同期の目標を取り出す",
@@ -868,6 +988,30 @@
           "match": "PipelineState::Idle",
           "label": "次に備えて待機状態へ戻す",
           "explanation": "受け取ったpipelineを保持し直し、次の要求に備えます。"
+        },
+        {
+          "line": 189,
+          "match": "BackfillAction::Start(target) => self.set_pipeline_sync_target(target),",
+          "label": "Start要求を目標設定へ渡す",
+          "explanation": "BackfillAction::Startのtargetをset_pipeline_sync_targetへ渡します。ゼロhashを拒否し、受理したtargetを保持する処理は上の範囲です。"
+        },
+        {
+          "line": 195,
+          "match": "if let Some(event) = self.try_spawn_pipeline() {",
+          "label": "poll時に目標があれば起動を試みる",
+          "explanation": "try_spawn_pipelineがStartedイベントを返した場合は、すぐReadyで返します。"
+        },
+        {
+          "line": 202,
+          "match": "if let Poll::Ready(event) = self.poll_pipeline(cx) {",
+          "label": "稼働中なら完了の返答を調べる",
+          "explanation": "pipelineがactiveの場合だけpoll_pipelineを呼びます。結果が届けばFinishedやTaskDroppedを返します。"
+        },
+        {
+          "line": 207,
+          "match": "Poll::Pending",
+          "label": "今すぐ返せるものがなければ待つ",
+          "explanation": "Pendingを返し、次に進められる状態になるまで実行を譲ります。"
         }
       ],
       "note": "",
@@ -952,8 +1096,8 @@
         {
           "line": 621,
           "match": "execute_transaction(tx)?",
-          "label": "一件を実行する",
-          "explanation": "取り出した要求を実行します。失敗したときは後続へ進まず、エラーを返します。"
+          "label": "一件を実行し、処理エラーを確かめる",
+          "explanation": "取引を実行します。この?はRustのResult::Errならブロックの処理を中断してエラーを返します。EthereumのコントラクトのRevert（処理の取り消し）は、正常に得られたExecutionResultに含まれる失敗結果で、失敗印のレシートへ進みます。"
         },
         {
           "line": 627,
@@ -968,7 +1112,7 @@
           "explanation": "実行結果を成功として返します。保存先へのcommitをこの行で実行しているわけではありません。"
         }
       ],
-      "note": "BALがあるかどうかの分岐も含みますが、個別のEVM命令や検証ルールの全てをこの範囲で解説してはいません。",
+      "note": "execute_transactionのResult::Errはブロック処理を中断するエラーです。正常に受け取ったExecutionResultの中でコントラクトがRevertしている場合は、失敗印のレシートにできます。?のエラー伝播とレシートのsuccessを区別します。BALの有無の分岐も含みます。",
       "tokenHints": {
         "620": {
           "for": "for-loop"
@@ -1323,7 +1467,7 @@
       "note": "この抜粋はoutcomeを得るまでです。結果に応じた遮断など後続の処理全体は含みません。信頼済みでも全ての変更が免除されるわけではありません。"
     },
     "area:sync-unwind": {
-      "intro": "保存済み進捗と目標を確認し、同期した順と逆に段階を見て、目標より手前の段階を飛ばします。",
+      "intro": "戻せる範囲か確認したあと、各段階を逆順に戻し、進捗と保存済みの目印を更新してcommitします。",
       "terms": [
         "stage",
         "unwind",
@@ -1354,9 +1498,57 @@
           "match": "self.event_sender.notify(PipelineEvent::Skipped",
           "label": "飛ばしたことを通知する",
           "explanation": "この段階は飛ばすと通知してから、continueで次の段階へ進みます。"
+        },
+        {
+          "line": 354,
+          "match": "while checkpoint.block_number > to {",
+          "label": "目標まで戻す必要がある間だけ処理する",
+          "explanation": "進捗がtoより大きい間、各stageの巻き戻しを繰り返します。等しければこのwhileには入りません。"
+        },
+        {
+          "line": 359,
+          "match": "let output = stage.unwind(&provider_rw, input);",
+          "label": "段階ごとの巻き戻しを呼ぶ",
+          "explanation": "checkpoint、戻す位置to、不正ブロックの情報をinputとしてstage.unwindへ渡します。"
+        },
+        {
+          "line": 372,
+          "match": "provider_rw.save_stage_checkpoint(stage_id, checkpoint)?;",
+          "label": "戻した進捗を書き込む",
+          "explanation": "成功時は返されたcheckpointを保存し、Unwoundイベントで結果を通知します。"
+        },
+        {
+          "line": 395,
+          "match": "if last_saved_finalized_block_number.is_none() ||",
+          "label": "保存済みfinalized番号も必要なら戻す",
+          "explanation": "番号が未保存、または戻した進捗より先なら、保存する番号をcheckpointまで戻します。"
+        },
+        {
+          "line": 405,
+          "match": "if last_saved_safe_block_number.is_none() ||",
+          "label": "保存済みsafe番号も必要なら戻す",
+          "explanation": "safeにも同じ番号の調整条件を適用します。新しく投票による合意を行う処理ではありません。"
+        },
+        {
+          "line": 413,
+          "match": "provider_rw.commit()?;",
+          "label": "変更をcommitする",
+          "explanation": "戻した状態と進捗をcommitし、段階のpost_unwind_commitを呼んで次の書込用providerを用意します。"
+        },
+        {
+          "line": 422,
+          "match": "return Err(PipelineError::Stage(StageError::Fatal(Box::new(err))))",
+          "label": "段階の失敗を返す",
+          "explanation": "unwindが失敗したらエラーを通知し、Fatalを含むPipelineErrorで戻ります。"
+        },
+        {
+          "line": 428,
+          "match": "Ok(())",
+          "label": "全段階の巻き戻し完了を返す",
+          "explanation": "必要な段階を処理し終えたらOk(())を呼び出し元へ返します。"
         }
       ],
-      "note": "進捗が目標より小さい段階はSkipped通知後にcontinueします。等しい場合の処理や実際の段階の巻き戻し・保存は後続の範囲です。",
+      "note": "進捗が目標より小さい段階はSkipped、等しい段階はwhileに入らず、目標より進んでいる段階だけ巻き戻します。保存済みsafe/finalized番号の調整は、合意側の新しい投票やfinality決定ではありません。",
       "tokenHints": {
         "329": {
           "for": "for-loop"
@@ -1424,7 +1616,7 @@
           "line": 22,
           "match": "success: result.is_success()",
           "label": "実行成功かを印にする",
-          "explanation": "実行が失敗ならfalseをsuccess欄へ入れます。それでもレシートの値を組み立てます。"
+          "explanation": "実行して得たExecutionResultの成功印をレシートへ写します。Revert（コントラクトによる取り消し）などの結果ならfalseです。execute_transactionのResult::Errでブロック処理を中断する場合とは別です。この関数自体はReceiptを返します。"
         },
         {
           "line": 24,
@@ -1433,7 +1625,7 @@
           "explanation": "累積ガスとともに、実行結果から取り出したログをレシートへ入れます。"
         }
       ],
-      "note": "この関数は実行済みの結果を記録へ移します。実行失敗ならsuccessがfalseになり、レシートの作成自体をErrにする分岐はありません。保存や確定も別です。",
+      "note": "このresultはExecutionResultという実行結果です。Revertならsuccess=falseのReceiptを作ります。一方、取引実行がRustのResult::Errになった場合は、ブロックを処理する側でエラーを返すため、この「失敗結果からレシートを作る」話とは別です。保存や確定も別の段階です。",
       "tokenHints": {
         "12": {
           "for": "for-implementation"
@@ -1625,6 +1817,4507 @@
         }
       ],
       "note": "この関数は渡された親とのつながりを検査する一部です。共有の履歴を選ぶことや確定を決める処理、ブロック検証の全条件を示すものではありません。"
+    },
+    "area:rpc-balance-entry": {
+      "intro": "eth_getBalanceはアドレスと参照するブロックを受け取り、残高の読取結果かエラーを返します。",
+      "terms": [
+        "rpc",
+        "account",
+        "hash"
+      ],
+      "lines": [
+        {
+          "line": 696,
+          "match": "async fn balance",
+          "label": "アドレスと参照先を受け取る",
+          "explanation": "addressは残高を知りたいアドレス、block_numberはどのブロック時点を調べるかの指定です。"
+        },
+        {
+          "line": 698,
+          "match": "EthState::balance",
+          "label": "読取処理を呼び、結果を返す",
+          "explanation": "次の範囲のbalanceへ渡します。成功なら残高をOkで返し、失敗なら?でRPCのエラーを返します。取引をプールに追加する処理ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:rpc-balance-read": {
+      "intro": "指定したブロックの状態を使って残高を読み、値がなければ既定値の0を返します。",
+      "terms": [
+        "rpc",
+        "account",
+        "state",
+        "option"
+      ],
+      "lines": [
+        {
+          "line": 84,
+          "match": "spawn_blocking_io_with_state",
+          "label": "読む時点の状態を用意する",
+          "explanation": "block_idの指定があればその時点、なければ既定の指定で状態を扱う読取処理を実行します。"
+        },
+        {
+          "line": 86,
+          "match": ".account_balance(&address)",
+          "label": "アドレスに対応する残高を読む",
+          "explanation": "account_balanceに調べるアドレスを渡します。ここでは状態を書き換えません。"
+        },
+        {
+          "line": 87,
+          "match": ".map_err(Self::Error::from_eth_err)?",
+          "label": "読取エラーを返す",
+          "explanation": "読取に失敗したらRPCで扱えるエラーへ変換し、?で返します。"
+        },
+        {
+          "line": 88,
+          "match": ".unwrap_or_default())",
+          "label": "値なしを0として返す",
+          "explanation": "口座の値がない場合は既定の数値0を返します。読取エラーと値なしは別です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-receive": {
+      "intro": "追加担当は内部キューから依頼を取り出し、まとめて処理するタスクへ渡します。",
+      "terms": [
+        "pool",
+        "channel",
+        "thread",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 119,
+          "match": "request_rx.poll_recv_many",
+          "label": "キューから届いた依頼を取り出す",
+          "explanation": "送信側のtx_batch_senderが送った依頼を、受信側のrequest_rxで取り出します。まだ届かない場合はready!で実行を譲ります。"
+        },
+        {
+          "line": 122,
+          "match": "let batch =",
+          "label": "受信した依頼をまとめる",
+          "explanation": "受信バッファから、その回に処理する依頼のまとまりを取り出します。"
+        },
+        {
+          "line": 124,
+          "match": "tokio::spawn",
+          "label": "追加処理を別のタスクとして進める",
+          "explanation": "次のprocess_batchを動かす非同期タスクを始めます。キューを受信する役割と、検証・追加を待つ役割が分かれます。"
+        },
+        {
+          "line": 133,
+          "match": "return Poll::Pending",
+          "label": "次の入力まで待つ",
+          "explanation": "今すぐ進める依頼がなければPendingを返します。プール追加の成功を返す行ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-validation-dispatch": {
+      "intro": "公開の追加処理から呼ばれるvalidateは、設定されたvalidatorへ検証を委譲します。",
+      "terms": [
+        "pool",
+        "await",
+        "trait"
+      ],
+      "lines": [
+        {
+          "line": 384,
+          "match": "async fn validate",
+          "label": "取引と出所を検証の入口で受け取る",
+          "explanation": "originはRPC・P2Pなどの出所、transactionは検証したい取引です。"
+        },
+        {
+          "line": 389,
+          "match": "self.pool.validator()",
+          "label": "設定された検証担当の結果を待つ",
+          "explanation": "プールに設定されたvalidatorのvalidate_transactionを呼びます。次の範囲は標準構成で使う検証タスクとEthereumの検証処理です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-validation-task": {
+      "intro": "検証用の仕事を専用タスクへ送り、その仕事の結果を返答経路で受け取ります。",
+      "terms": [
+        "pool",
+        "channel",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 239,
+          "match": "oneshot::channel()",
+          "label": "検証結果を返す経路を作る",
+          "explanation": "このtxとrxは検証用の返答経路です。RPC受付とプール追加担当の返答経路とは別にあります。"
+        },
+        {
+          "line": 244,
+          "match": "validator.validate_transaction",
+          "label": "Ethereumの検証処理を呼ぶ",
+          "explanation": "検証タスクで内側のvalidatorを呼び、結果をtxで戻します。"
+        },
+        {
+          "line": 247,
+          "match": "self.to_validation_task.send",
+          "label": "用意した検証の仕事を送る",
+          "explanation": "検証タスクへの送信結果を待ちます。送れない場合はValidationServiceUnreachableを返します。"
+        },
+        {
+          "line": 257,
+          "match": "match rx.await",
+          "label": "検証結果か受信失敗を返す",
+          "explanation": "返答を受け取れたらその検証結果を返します。経路が切れた場合は検証を成功扱いしません。"
+        }
+      ],
+      "note": "ここは専用タスクへの委譲です。タスクはValidationTask::runで受け取られ、用意されたFutureを進めます。"
+    },
+    "area:send-validation-entry": {
+      "intro": "Ethereum用のvalidatorは、一件の検証をvalidate_oneへ渡します。",
+      "terms": [
+        "pool",
+        "function",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 1010,
+          "match": "async fn validate_transaction",
+          "label": "validatorに求められた操作を実装する",
+          "explanation": "TransactionValidatorという共通の取り決めに対する、Ethereum用の実装です。"
+        },
+        {
+          "line": 1015,
+          "match": "self.validate_one",
+          "label": "一件の検証へ進む",
+          "explanation": "validate_oneが最新状態の取得方法を渡し、次のvalidate_one_with_providerへつなぎます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-validation-order": {
+      "intro": "最新状態の取得方法を渡し、データだけでできる検査に通った取引を状態付き検査へ進めます。",
+      "terms": [
+        "pool",
+        "state",
+        "result",
+        "option"
+      ],
+      "lines": [
+        {
+          "line": 377,
+          "match": "self.validate_one_with_provider(origin, transaction, &mut state",
+          "label": "最新状態を取得する方法を渡す",
+          "explanation": "最初は状態をまだ読んでいません。必要になったらclient.latest()で最新状態を取得するよう渡します。"
+        },
+        {
+          "line": 411,
+          "match": "match self.validate_stateless",
+          "label": "まず取引のデータを調べる",
+          "explanation": "形式、サイズ、ガス、手数料、チェーンIDなど、口座の状態を読まずに判定できる条件を確かめます。"
+        },
+        {
+          "line": 416,
+          "match": "match state_provider()",
+          "label": "必要な状態を読む",
+          "explanation": "データだけの検査を通ったあと、残高や通し番号の検査に使う状態を取得します。取得エラーも別の結果になります。"
+        },
+        {
+          "line": 431,
+          "match": "self.validate_stateful",
+          "label": "状態を使った検査へ進む",
+          "explanation": "取得した状態を使い、送信者の残高や通し番号などを調べます。"
+        },
+        {
+          "line": 433,
+          "match": "Err(err) => TransactionValidationOutcome::Invalid",
+          "label": "最初の検査で不正なら先へ進めない",
+          "explanation": "形式などの検査で失敗した取引は、状態を読む後続の検査へ進めずInvalidを返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-stateless": {
+      "intro": "validate_statelessの全体です。データの形式や設定を使う条件を順に確認します。",
+      "terms": [
+        "pool",
+        "gas",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 461,
+          "match": "match transaction.ty()",
+          "label": "現在のルールで対応する取引形式か確かめる",
+          "explanation": "まだ有効になっていない形式や、未対応の形式ならエラーを返します。"
+        },
+        {
+          "line": 490,
+          "match": "transaction.nonce() == u64::MAX",
+          "label": "通し番号の上限を確かめる",
+          "explanation": "通し番号の上限検査が必要な取引では、許されない最大値を拒否します。"
+        },
+        {
+          "line": 494,
+          "match": "// Reject transactions over defined size",
+          "label": "データのサイズを制限する",
+          "explanation": "大きすぎるデータを拒否します。blob付きの取引と通常の取引では、数えるデータが異なります。"
+        },
+        {
+          "line": 529,
+          "match": "transaction.ensure_max_init_code_size",
+          "label": "新しいコントラクトの初期コードを検査する",
+          "explanation": "対象のルールが有効なら、初期コードのサイズ上限も確認します。"
+        },
+        {
+          "line": 535,
+          "match": "if transaction_gas_limit > block_gas_limit",
+          "label": "ガス上限がブロックの枠を超えないか確かめる",
+          "explanation": "取引のガス上限がブロック全体の上限を超えていれば、プールに受け付けません。"
+        },
+        {
+          "line": 553,
+          "match": "if transaction.max_priority_fee_per_gas() >",
+          "label": "手数料の設定の矛盾を確かめる",
+          "explanation": "優先手数料の上限が、手数料全体の上限を超えていればエラーです。"
+        },
+        {
+          "line": 563,
+          "match": "if is_local {",
+          "label": "ローカルから届いた取引の手数料制限を確認する",
+          "explanation": "RPCなどから届いた取引では、設定された最大手数料の制限を確認します。0や未設定はこの制限を適用しません。"
+        },
+        {
+          "line": 579,
+          "match": "// Drop dynamic fee transactions",
+          "label": "ノードが受け付ける最低優先手数料を確認する",
+          "explanation": "動的手数料の取引には、設定に応じた最低優先手数料の条件があります。"
+        },
+        {
+          "line": 593,
+          "match": "if let Some(chain_id)",
+          "label": "対象ネットワークが合っているか確かめる",
+          "explanation": "取引に入っているチェーンIDが、このノードのネットワークと違えばエラーです。"
+        },
+        {
+          "line": 610,
+          "match": "ensure_intrinsic_gas(transaction",
+          "label": "最低限必要なガスを確かめる",
+          "explanation": "データ量などから決まる最低限のガスを満たすか、別の検査関数に確かめてもらいます。"
+        },
+        {
+          "line": 614,
+          "match": "// light blob tx pre-checks",
+          "label": "blob付き取引に固有の条件を確認する",
+          "explanation": "ルールの有効化やblobの個数を確認します。証明データの重い検査は後段です。"
+        },
+        {
+          "line": 645,
+          "match": "if tx_gas_limit_cap > 0",
+          "label": "ルール上の取引単位のガス上限を確認する",
+          "explanation": "有効な上限がある場合、取引のgas_limitが超えていないか確かめます。"
+        },
+        {
+          "line": 650,
+          "match": "if let Some(check) = &self.additional_stateless_validation",
+          "label": "追加設定の検査を適用する",
+          "explanation": "拡張された検査があれば、その結果も確認します。"
+        },
+        {
+          "line": 654,
+          "match": "Ok(())",
+          "label": "この段階の検査に通ったことを返す",
+          "explanation": "Okはデータだけで判定する条件を通ったことです。状態付き検査や実際のコントラクト実行の成功はまだ表しません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-stateful": {
+      "intro": "送信者の状態を読み、通し番号や残高などの条件を照合して検証結果を作ります。",
+      "terms": [
+        "pool",
+        "state",
+        "account",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 671,
+          "match": "let account = match state.basic_account",
+          "label": "送信者の現在の状態を読む",
+          "explanation": "アドレスから口座の状態を読みます。状態がない場合と読取エラーを分けて扱います。"
+        },
+        {
+          "line": 679,
+          "match": "match self.validate_sender_bytecode",
+          "label": "取引を送れる種類の口座か確かめる",
+          "explanation": "送信者が持つコードがルールに合うか、別の検査関数で確認します。"
+        },
+        {
+          "line": 687,
+          "match": "let Err(err) = self.validate_sender_nonce",
+          "label": "通し番号を状態と比べる",
+          "explanation": "送信者が既に使った番号より古くないかを調べます。具体的な条件は次の範囲で読みます。"
+        },
+        {
+          "line": 693,
+          "match": "if let Err(err) = self.validate_sender_balance",
+          "label": "残高で必要額を払えるか確かめる",
+          "explanation": "送る金額と最大手数料などを含む必要額を、現在の残高と比べます。"
+        },
+        {
+          "line": 698,
+          "match": "let maybe_blob_sidecar =",
+          "label": "blob付き取引の証明データを調べる",
+          "explanation": "必要ならblobに付くデータや証明を別の関数で検証します。単純なETH送金ではこの種類に当たりません。"
+        },
+        {
+          "line": 704,
+          "match": "if let Some(check) = &self.additional_stateful_validation",
+          "label": "状態を使う追加の検査を適用する",
+          "explanation": "拡張された検査があれば、その失敗もInvalidとして返します。"
+        },
+        {
+          "line": 712,
+          "match": "TransactionValidationOutcome::Valid {",
+          "label": "検証済みの取引と読み取った状態を返す",
+          "explanation": "Validに取引、残高、通し番号などをまとめます。このあと内部プールへの追加が失敗する場合もあります。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-nonce": {
+      "intro": "送信者の状態が持つ次の通し番号より、取引の番号が古ければ拒否します。",
+      "terms": [
+        "pool",
+        "account",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 772,
+          "match": "let tx_nonce",
+          "label": "取引の通し番号を読む",
+          "explanation": "nonceは同じ送信者の取引の順番を管理する番号です。"
+        },
+        {
+          "line": 774,
+          "match": "if tx_nonce < sender.nonce",
+          "label": "すでに使い終わった番号か比べる",
+          "explanation": "取引の番号が状態側の番号より小さければ、NonceNotConsistentというエラーを返します。"
+        },
+        {
+          "line": 780,
+          "match": "}",
+          "label": "この番号検査に通ったことを返す",
+          "explanation": "番号が先の場合も、この関数だけならOkです。先に必要な取引が届くまでプール内で待つ場合があります。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-pool-add": {
+      "intro": "検証でValidとなった取引だけを内部プールへ渡し、追加の成功・失敗を返します。",
+      "terms": [
+        "pool",
+        "result",
+        "hash"
+      ],
+      "lines": [
+        {
+          "line": 585,
+          "match": "match tx {",
+          "label": "検証結果によって分ける",
+          "explanation": "Valid、Invalid、読取などのErrorを分けて扱います。"
+        },
+        {
+          "line": 618,
+          "match": "let added = match pool.add_transaction",
+          "label": "内部プールへ追加する",
+          "explanation": "Validの取引を内部プールへ渡します。追加が失敗したら、そのエラーを返します。検証に通っただけでは追加成功とは限りません。"
+        },
+        {
+          "line": 627,
+          "match": "(Ok(AddedTransactionOutcome",
+          "label": "追加成功の結果を作る",
+          "explanation": "追加された取引のハッシュと、プール内での状態を返します。"
+        },
+        {
+          "line": 629,
+          "match": "TransactionValidationOutcome::Invalid(tx, err)",
+          "label": "検証失敗を追加の失敗として返す",
+          "explanation": "不正な取引は内部プールへ追加せず、元の検証エラーを含む結果を返します。"
+        },
+        {
+          "line": 633,
+          "match": "TransactionValidationOutcome::Error(tx_hash, err)",
+          "label": "検証処理自体のエラーも返す",
+          "explanation": "状態読取などのエラーも、成功とせず呼び出し元へ返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-pool-limit": {
+      "intro": "内部プールを更新し、容量制限で新しい取引が取り除かれた場合も反映して結果を返します。",
+      "terms": [
+        "pool",
+        "result",
+        "hash"
+      ],
+      "lines": [
+        {
+          "line": 666,
+          "match": "self.add_transactions_with_origins",
+          "label": "出所を添えて共通の追加処理へ渡す",
+          "explanation": "一件または複数件の検証結果に出所を添え、共通の追加処理へ渡します。"
+        },
+        {
+          "line": 682,
+          "match": "let mut pool = self.pool.write()",
+          "label": "内部プールを書き換える間の排他制御を取る",
+          "explanation": "同時に別の処理が書き換えないようにして、追加を進めます。"
+        },
+        {
+          "line": 687,
+          "match": "let (result, meta) = self.add_transaction",
+          "label": "一件ずつ追加し、その結果を集める",
+          "explanation": "次の「検証結果から内部プールへの追加結果を作る」で読むadd_transactionへ渡します。この箇所では一件ずつの成功・失敗と通知用の情報を集めます。"
+        },
+        {
+          "line": 702,
+          "match": "let discarded = pool.discard_worst()",
+          "label": "容量の上限を守る",
+          "explanation": "追加後に容量を超えていれば、優先度などに従って取引を取り除きます。"
+        },
+        {
+          "line": 713,
+          "match": "self.on_added_transaction(meta)",
+          "label": "追加された取引を通知する",
+          "explanation": "排他制御を解放したあと、追加の通知やblobの保存を行います。"
+        },
+        {
+          "line": 736,
+          "match": "*res = Err(PoolError::new",
+          "label": "追加直後に取り除いた取引は失敗へ直す",
+          "explanation": "新しい取引が容量制限ですぐ取り除かれたら、成功だった結果をDiscardedOnInsertへ置き換えます。"
+        },
+        {
+          "line": 741,
+          "match": "results",
+          "label": "最終的な追加結果を返す",
+          "explanation": "この結果が公開プールのadd_transaction、追加担当の返答経路、RPC受付へ戻ります。"
+        }
+      ],
+      "note": ""
+    },
+    "area:send-validation-worker": {
+      "intro": "検証担当のタスクは、検証用キューから仕事を取り出して進めます。",
+      "terms": [
+        "pool",
+        "thread",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 59,
+          "match": "pub async fn run",
+          "label": "検証担当の待機処理を始める",
+          "explanation": "この処理が続いている間、追加された検証の仕事を受け取れます。"
+        },
+        {
+          "line": 63,
+          "match": "self.validation_jobs.lock()",
+          "label": "検証用キューから一件を受け取る",
+          "explanation": "キューを共有する他の検証担当も仕事を取れるよう、受信が済んだらロックを解放します。"
+        },
+        {
+          "line": 65,
+          "match": "task.await",
+          "label": "受け取った検証処理を進める",
+          "explanation": "この仕事の中でEthereumのvalidatorを呼び、用意した返答経路へ結果を返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:rpc-launch": {
+      "intro": "追加機能を起動し、アプリ向けRPCやEngine用のhandleを受け取ります。",
+      "terms": [
+        "rpc",
+        "engine",
+        "node"
+      ],
+      "lines": [
+        {
+          "line": 289,
+          "match": "rpc_server_handles,",
+          "label": "起動したRPCのhandleを受け取る",
+          "explanation": "起動後のRPCを参照・管理するための値を受け取ります。"
+        },
+        {
+          "line": 294,
+          "match": "add_ons.launch_add_ons",
+          "label": "準備した設定でRPCなどを起動する",
+          "explanation": "設定やノード部品を渡し、RPCなどの起動結果を待ちます。失敗すれば?でノード起動のエラーを返します。"
+        },
+        {
+          "line": 297,
+          "match": "EngineShutdown::new()",
+          "label": "Engineを止めるための経路を用意する",
+          "explanation": "稼働後にEngineへ停止を伝え、終了を待てるようにします。"
+        }
+      ],
+      "note": ""
+    },
+    "area:node-handle": {
+      "intro": "実行設定・プール・通信・RPCをFullNodeへまとめ、終了待ちを持つNodeHandleを返します。",
+      "terms": [
+        "node",
+        "pool",
+        "engine",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 417,
+          "match": "let full_node =",
+          "label": "動いているノードの部品をまとめる",
+          "explanation": "実行設定、プール、通信、保存先、RPCのhandleなどを一つのFullNodeへまとめます。"
+        },
+        {
+          "line": 435,
+          "match": "on_node_started.on_event",
+          "label": "起動を待っていた処理へ知らせる",
+          "explanation": "部品を持つFullNodeを、起動時のフックへ渡します。"
+        },
+        {
+          "line": 440,
+          "match": "node_exit_future:",
+          "label": "ノードの終了を待つ値を用意する",
+          "explanation": "起動の成功とは別に、そのあとノードの処理が終了するまで待つための値を保持します。"
+        },
+        {
+          "line": 444,
+          "match": "Ok(handle)",
+          "label": "呼び出し元へ起動結果を返す",
+          "explanation": "このhandleがCLIの起動呼び出しへ戻り、wait_for_node_exitで終了を待つために使われます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:loop-cli": {
+      "intro": "CLIはノードの処理、重要タスクの異常、利用者からの停止指示を待ち分けます。",
+      "terms": [
+        "node",
+        "thread",
+        "await",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 240,
+          "match": "tokio::select! {",
+          "label": "重要タスクの異常と処理の完了を待ち分ける",
+          "explanation": "tokio::select!で準備できた側を進めます。重要タスクのpanicが通知されたらエラーとして返します。"
+        },
+        {
+          "line": 246,
+          "match": "res = fut => res?,",
+          "label": "通常処理のエラーも返す",
+          "explanation": "futの結果がエラーなら?で返し、成功ならこの待機処理も成功へ進みます。"
+        },
+        {
+          "line": 259,
+          "match": "let ctrl_c = tokio::signal",
+          "label": "停止操作を待つ準備をする",
+          "explanation": "Ctrl-Cという利用者の停止操作を待てるようにします。"
+        },
+        {
+          "line": 263,
+          "match": "let mut stream = tokio::signal::unix",
+          "label": "Unixの終了シグナルも待つ",
+          "explanation": "Unix上ではSIGTERMという終了要求も待ちます。これはブロックの確定を待つ処理ではありません。"
+        },
+        {
+          "line": 269,
+          "match": "tokio::select! {",
+          "label": "停止操作と処理の完了を待ち分ける",
+          "explanation": "Unix側ではCtrl-C、SIGTERM、通常処理futのいずれかが準備できたら、その分岐を進めます。"
+        },
+        {
+          "line": 293,
+          "match": "Ok(())",
+          "label": "待機処理の成功を返す",
+          "explanation": "ノードの終了や停止指示を扱ったあとに戻ります。チェーンの同期完了とは別です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:loop-engine": {
+      "intro": "Engineを管理する非同期処理は、入力、停止指示、異常を扱いながら進み続けます。",
+      "terms": [
+        "engine",
+        "thread",
+        "channel"
+      ],
+      "lines": [
+        {
+          "line": 332,
+          "match": "loop {",
+          "label": "次の入力を扱い続ける",
+          "explanation": "一度入力を処理しても終了せず、次の入力または停止の指示を待ちます。"
+        },
+        {
+          "line": 333,
+          "match": "tokio::select!",
+          "label": "入力や停止指示を待ち分ける",
+          "explanation": "いくつかの待ち先のうち、準備できたものの処理を進めます。"
+        },
+        {
+          "line": 334,
+          "match": "event = orchestrator.next()",
+          "label": "Engine側の出来事を受け取る",
+          "explanation": "同期や処理担当からの出来事を受け取り、種類によって対応します。"
+        },
+        {
+          "line": 413,
+          "match": "spawn_critical_with_graceful_shutdown_signal",
+          "label": "停止手順を持つ管理対象タスクとして始める",
+          "explanation": "ここまで用意した処理を起動し、ノード終了時には停止の通知を受け取れるようにします。"
+        }
+      ],
+      "note": ""
+    },
+    "area:loop-backfill": {
+      "intro": "同期の目標があるときだけ処理を始め、結果が届くまで待ち、完了後は再び待機状態へ戻します。",
+      "terms": [
+        "node",
+        "channel",
+        "option",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 143,
+          "match": "let target = self.pending_pipeline_target.take()?",
+          "label": "同期先があるか確かめる",
+          "explanation": "目標がなければOptionの?でNoneを返し、新しいタスクを始めません。"
+        },
+        {
+          "line": 147,
+          "match": "self.pipeline_task_spawner.spawn_critical_blocking_task",
+          "label": "同期処理を別タスクで始める",
+          "explanation": "pipeline.run_as_futを進め、結果を返答経路txへ送るタスクを始めます。"
+        },
+        {
+          "line": 154,
+          "match": "self.pipeline_state = PipelineState::Running(rx)",
+          "label": "実行中として結果を待つ",
+          "explanation": "返答を受け取るrxを状態に保持し、同じ同期タスクを二重に起動しないようにします。"
+        },
+        {
+          "line": 167,
+          "match": "PipelineState::Idle(_) => return Poll::Pending",
+          "label": "待機中なら実行を譲る",
+          "explanation": "動いている同期タスクがない状態では、ここで同期完了とはせずPendingを返します。"
+        },
+        {
+          "line": 169,
+          "match": "ready!(fut.poll_unpin(cx))",
+          "label": "実行中の同期結果を待つ",
+          "explanation": "結果が未準備なら実行を譲り、届いたら次の結果処理へ進みます。"
+        },
+        {
+          "line": 174,
+          "match": "self.pipeline_state = PipelineState::Idle(Some",
+          "label": "完了後はpipelineを待機状態へ戻す",
+          "explanation": "実行結果とpipelineが戻ったら、再び次の同期要求に使える状態へ戻します。"
+        },
+        {
+          "line": 179,
+          "match": "BackfillEvent::TaskDropped",
+          "label": "返答経路の切断を別の出来事にする",
+          "explanation": "タスクから結果を受け取れなかった場合は、正常なFinishedと区別して通知します。"
+        }
+      ],
+      "note": "",
+      "tokenHints": {
+        "143": {
+          "?": "option-question"
+        }
+      }
+    },
+    "tx:rpc-contract": {
+      "intro": "公開するRPCの名前と返す結果を宣言しています。通常版とレシート待ちのSync版を区別します。",
+      "terms": [
+        "rpc",
+        "hash",
+        "receipt"
+      ],
+      "lines": [
+        {
+          "line": 381,
+          "match": "#[method(name = \"sendRawTransaction\")]",
+          "label": "通常版のRPC名を決める",
+          "explanation": "この属性でsendRawTransactionという名前を公開します。RPCではeth_という名前空間と組み合わせて使います。"
+        },
+        {
+          "line": 382,
+          "match": "async fn send_raw_transaction(&self, bytes: Bytes) -> RpcResult<B256>;",
+          "label": "通常版はハッシュを返す",
+          "explanation": "成功時にB256という識別子の型を返す宣言です。レシートや確定を返す宣言ではありません。"
+        },
+        {
+          "line": 387,
+          "match": "#[method(name = \"sendRawTransactionSync\")]",
+          "label": "Sync版は別のRPCとして公開する",
+          "explanation": "sendRawTransactionSyncはレシート待ちを行う別の操作です。上のコメントはタイムアウトになる可能性も説明しています。"
+        },
+        {
+          "line": 391,
+          "match": "timeout_ms: Option<u64>,",
+          "label": "待つ時間の指定を受け取る",
+          "explanation": "Sync版は署名済みデータとともに、省略可能な待ち時間timeout_msを受け取ります。タイムアウトは通常版のハッシュ返却とは別の条件です。"
+        },
+        {
+          "line": 392,
+          "match": ") -> RpcResult<R>;",
+          "label": "Sync版の結果の型まで読む",
+          "explanation": "返答はこのtraitの型引数Rです。直前の原文コメントはRをトランザクションのレシートとして説明しています。この宣言は待ち方やレシート生成の実装ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "tx:recovery-hook": {
+      "intro": "送信用の形式を読み、署名から送信者を求めるtraitの既定実装です。",
+      "terms": [
+        "bytes",
+        "recover",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1403,
+          "match": "pooled.try_into_recovered().map(Self::from_pooled)",
+          "label": "署名から送信者を得てプール型へ変換する",
+          "explanation": "既定のtry_recoverは、署名済み取引のtry_into_recoveredを呼び、成功時にfrom_pooledでプール用の型へ変換します。署名復元の暗号計算そのものはこの復元操作の責務です。"
+        },
+        {
+          "line": 1411,
+          "match": "match cache.recover(&pooled)",
+          "label": "キャッシュを使う復元操作の結果を分ける",
+          "explanation": "キャッシュを使う既定のhookではcache.recoverへ渡し、得られた送信者でプール型を作ります。失敗なら元のpooledをErrで返します。cacheのhit/missや挿入処理の内部をこの範囲で示しているわけではありません。"
+        },
+        {
+          "line": 1424,
+          "match": "match cache {",
+          "label": "任意のキャッシュ指定を分ける補助メソッド",
+          "explanation": "Someならキャッシュを使うhook、Noneなら通常のtry_recoverへ渡します。このoptメソッドと、RPCが別々に選んで呼ぶ下のraw hookを区別します。"
+        },
+        {
+          "line": 1437,
+          "match": "Self::try_recover(Self::decode_raw_transaction",
+          "label": "データを読み、送信者を求める",
+          "explanation": "decode_raw_transactionが読めたデータをtry_recoverへ渡します。ここで秘密鍵を取得するわけではありません。"
+        },
+        {
+          "line": 1438,
+          "match": ".map_err(|_| RawPoolTransactionError::InvalidTransactionSignature)",
+          "label": "署名の問題を専用のエラーにする",
+          "explanation": "送信者を求められない場合はInvalidTransactionSignatureとして返します。"
+        },
+        {
+          "line": 1451,
+          "match": "Self::try_recover_with_cache",
+          "label": "キャッシュありの経路を使う",
+          "explanation": "設定された復元キャッシュを使う場合も、デコードと復元を行います。"
+        },
+        {
+          "line": 1460,
+          "match": "if data.is_empty()",
+          "label": "空のデータを拒否する",
+          "explanation": "受信データが空なら、読み取りへ進まずEmptyRawTransactionDataを返します。"
+        },
+        {
+          "line": 1464,
+          "match": "Self::Pooled::decode_2718_exact",
+          "label": "全体を送信用形式として読む",
+          "explanation": "余った末尾を許さずデータ全体を読みます。形式のエラーはFailedToDecodeSignedTransactionへ変換します。"
+        }
+      ],
+      "note": "PoolTransaction traitの既定実装です。実装型によってoverrideできます。キャッシュ設定の有無で選ぶhook、空データ/形式/署名の失敗をここで確認します。キャッシュ内部のhit/missや格納、署名復元の暗号計算の内部は別の実装です。"
+    },
+    "tx:forward": {
+      "intro": "転送先が設定された場合は、別のRPCへ送信してその結果を返します。",
+      "terms": [
+        "rpc",
+        "pool",
+        "hash"
+      ],
+      "lines": [
+        {
+          "line": 89,
+          "match": "if let Some(client)",
+          "label": "転送先の設定がある場合だけ分岐する",
+          "explanation": "この分岐に入る場合は、後ろの通常のローカル追加経路とは異なる処理を行います。"
+        },
+        {
+          "line": 97,
+          "match": "client.request(\"eth_sendRawTransaction\"",
+          "label": "転送先のRPCから結果を受け取る",
+          "explanation": "元の取引を送信用の文字列にして転送し、先方が返したハッシュかエラーを受け取ります。"
+        },
+        {
+          "line": 102,
+          "match": "let _ = self.inner.add_pool_transaction",
+          "label": "ローカルのプールにも保持を試みる",
+          "explanation": "転送後にローカル追加も試みますが、この行の結果は_で受け取り、その成否を返答の条件にしていません。"
+        },
+        {
+          "line": 104,
+          "match": "return Ok(hash)",
+          "label": "転送先が返したハッシュを返す",
+          "explanation": "ここで関数を終えます。下の通常経路へ続くわけではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "tx:batch-runner": {
+      "intro": "キューから受け取った追加依頼をまとめ、追加処理のタスクへ渡します。",
+      "terms": [
+        "pool",
+        "channel",
+        "thread"
+      ],
+      "lines": [
+        {
+          "line": 119,
+          "match": "ready!(this.request_rx.poll_recv_many",
+          "label": "依頼をキューから受け取る",
+          "explanation": "追加依頼がなければ待ち、届いたらバッファへ取り出します。"
+        },
+        {
+          "line": 122,
+          "match": "let batch =",
+          "label": "届いた依頼を取り出す",
+          "explanation": "この回で処理する依頼を、受信バッファから取り出します。"
+        },
+        {
+          "line": 124,
+          "match": "tokio::spawn",
+          "label": "追加の仕事を別タスクとして進める",
+          "explanation": "process_batchでプールへの追加結果を待つタスクを始めます。"
+        },
+        {
+          "line": 133,
+          "match": "return Poll::Pending",
+          "label": "次の入力まで実行を譲る",
+          "explanation": "今すぐ進める入力がなければPendingを返します。追加成功の通知ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "tx:pool-test": {
+      "intro": "既存テストの送信、二件の保持確認、ハッシュによる取得とLocal originの確認を、関数全体で読みます。",
+      "terms": [
+        "pool",
+        "rpc",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 351,
+          "match": "let eth_api = mock_eth_api",
+          "label": "テスト用のRPCとプールを用意する",
+          "explanation": "実ネットワークへの送信ではなく、mock_eth_apiで作った環境を使います。"
+        },
+        {
+          "line": 354,
+          "match": "raw_transfer_tx()",
+          "label": "テスト用の取引データを用意する",
+          "explanation": "送金の署名済みデータを作るテスト用の関数です。"
+        },
+        {
+          "line": 356,
+          "match": "eth_api.send_raw_transaction",
+          "label": "送信操作の結果を待つ",
+          "explanation": "送信がエラーならunwrapでこのテストは失敗します。"
+        },
+        {
+          "line": 357,
+          "match": "assert_eq!",
+          "label": "プール内の取引数を確かめる",
+          "explanation": "送信後のpool.len()が1であることを検証します。ブロック取り込みや実際の残高変化を確認するテストではありません。"
+        },
+        {
+          "line": 365,
+          "match": "let tx_2 = Bytes::from",
+          "label": "二件目の署名済みデータを用意する",
+          "explanation": "この長いバイト列もテスト入力です。テストはネットワークへ新しい送金を発行するものではありません。"
+        },
+        {
+          "line": 369,
+          "match": "let tx_2_result = eth_api.send_raw_transaction",
+          "label": "二件目も同じ公開操作で送る",
+          "explanation": "同じmockのAPIで送信結果のハッシュを受け取ります。エラーならunwrapでテストは失敗します。"
+        },
+        {
+          "line": 370,
+          "match": "assert_eq!",
+          "label": "二件の保持を確認する",
+          "explanation": "二件目の送信後はpool.len()が2であることを確認します。"
+        },
+        {
+          "line": 377,
+          "match": "assert!(pool.get(&tx_1_result).is_some()",
+          "label": "返ったハッシュで取引を取得できるか確かめる",
+          "explanation": "二つの送信結果を識別子にして、プールで各取引を見つけられるか確認します。ブロック内の取引を探す検査とは別です。"
+        },
+        {
+          "line": 379,
+          "match": "TransactionOrigin::Local",
+          "label": "二つの取引の受付元を確認する",
+          "explanation": "取得した各取引のoriginがLocalか確認します。RPC側で指定した受付元が保持されることを期待するassertです。実ネットワーク全体で共有されたという意味ではありません。"
+        }
+      ],
+      "note": "このアプリで上流Rustテストを実行した結果ではなく、固定コミットに存在するテストの期待値を読んでいます。"
+    },
+    "area:journey-block-rpc": {
+      "intro": "合意側からnewPayloadを受け取るの実装を読みます。",
+      "terms": [
+        "engine",
+        "block",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 236,
+          "match": "pub async fn new_payload_v4",
+          "label": "合意側からブロックの実行データを受け取る",
+          "explanation": "これはEngine APIのV4に対応する入口です。一般のウォレットが送る取引のRPCとは別です。"
+        },
+        {
+          "line": 247,
+          "match": "validate_version_specific_fields",
+          "label": "APIの版に合うデータか確認する",
+          "explanation": "この版で使える項目かを検査します。ここだけで全取引の実行が終わるわけではありません。"
+        },
+        {
+          "line": 249,
+          "match": "self.inner.beacon_consensus.new_payload",
+          "label": "内部のEngineへ渡し、結果を待つ",
+          "explanation": "次のnew_payloadへ渡し、PayloadStatusという検証状況かエラーを返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-message": {
+      "intro": "Engineへの要求と返答経路を作るの実装を読みます。",
+      "terms": [
+        "engine",
+        "channel",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 346,
+          "match": "oneshot::channel()",
+          "label": "返答専用の経路を作る",
+          "explanation": "実行側が結果を返すtxと、呼び出し元が待つrxを作ります。"
+        },
+        {
+          "line": 347,
+          "match": "self.to_engine.send",
+          "label": "要求をEngineへ送る",
+          "explanation": "ブロックのデータと返答口txをNewPayloadという要求にまとめて渡します。"
+        },
+        {
+          "line": 348,
+          "match": "rx.await",
+          "label": "結果が戻るまで待つ",
+          "explanation": "内部処理の結果を受け取ります。経路が閉じた場合はEngineUnavailableを返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-route": {
+      "intro": "届いたEngine要求を処理担当へ渡すの実装を読みます。",
+      "terms": [
+        "engine",
+        "channel",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 108,
+          "match": "self.incoming_requests.poll_next_unpin",
+          "label": "内部の要求を取り出す",
+          "explanation": "準備できた要求があれば一件取り出します。"
+        },
+        {
+          "line": 110,
+          "match": "self.handler.on_event",
+          "label": "Engineの処理担当へ渡す",
+          "explanation": "要求をFromEngine::Requestへ包んでhandlerへ渡します。次のon_eventでtree側へ送られます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-tree-send": {
+      "intro": "tree側の要求経路へ送るの実装を読みます。",
+      "terms": [
+        "engine",
+        "channel"
+      ],
+      "lines": [
+        {
+          "line": 197,
+          "match": "fn on_event",
+          "label": "Engineの出来事を受け取る",
+          "explanation": "要求または取得したブロックなど、Engineからの出来事を受け取ります。"
+        },
+        {
+          "line": 199,
+          "match": "self.to_tree.send",
+          "label": "ブロック処理担当へ渡す",
+          "explanation": "treeへの経路へ出来事を送ります。送れたこと自体はブロックの検証成功を意味しません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-dispatch": {
+      "intro": "NewPayloadを実行し、その結果を返答口へ戻すの実装を読みます。",
+      "terms": [
+        "engine",
+        "channel",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1690,
+          "match": "BeaconEngineMessage::NewPayload",
+          "label": "NewPayload要求の分岐へ入る",
+          "explanation": "要求に入っているpayloadと返答口txを取り出します。"
+        },
+        {
+          "line": 1694,
+          "match": "self.on_new_payload(payload)",
+          "label": "ブロックの受付処理を呼ぶ",
+          "explanation": "次に読むon_new_payloadで、検証や保留の分岐を進めます。"
+        },
+        {
+          "line": 1707,
+          "match": "tx.send(output.map",
+          "label": "処理結果を要求元へ返す",
+          "explanation": "得られた結果をPayloadStatusまたはエラーにして、最初に作った返答経路へ送ります。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-receive": {
+      "intro": "無効な祖先・同期中・通常検証を分けるの実装を読みます。",
+      "terms": [
+        "engine",
+        "block",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 735,
+          "match": "fn on_new_payload",
+          "label": "新しいブロックの受付を始める",
+          "explanation": "既知のブロックや不正な祖先、同期中かどうかを順に確認します。"
+        },
+        {
+          "line": 779,
+          "match": "if let Some(invalid)",
+          "label": "不正な祖先があれば早く結果を返す",
+          "explanation": "既に不正と判定した履歴につながる場合、通常の実行へ進まずその結果を返します。"
+        },
+        {
+          "line": 788,
+          "match": "self.try_insert_payload(payload)?",
+          "label": "同期の取り込みが動いていなければ検証を進める",
+          "explanation": "通常経路ではtry_insert_payloadへ進みます。同期中は別の分岐で一時保管します。"
+        },
+        {
+          "line": 794,
+          "match": "if outcome.outcome.is_valid()",
+          "label": "有効でも採用は別の条件を見る",
+          "explanation": "検証が有効で、指定された同期先のheadでもある場合に、採用を進める出来事を作ります。"
+        },
+        {
+          "line": 806,
+          "match": "Ok(outcome)",
+          "label": "検証状況と必要な出来事を返す",
+          "explanation": "この返り値が先ほどのNewPayload分岐へ戻ります。ディスクへの保存完了を待つ処理ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-insert": {
+      "intro": "検証結果をVALID・SYNCINGなどへ変換するの実装を読みます。",
+      "terms": [
+        "block",
+        "engine",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 820,
+          "match": "match self.insert_payload(payload)",
+          "label": "実際の取り込み・検証を呼ぶ",
+          "explanation": "insert_payloadへ渡し、その成功・失敗を見てPayloadStatusを組み立てます。"
+        },
+        {
+          "line": 823,
+          "match": "InsertPayloadOk::Inserted(BlockStatus::Valid)",
+          "label": "接続できた有効なブロックをVALIDとする",
+          "explanation": "有効だったブロックを基準に、待機していた子ブロックも接続できるか試みます。"
+        },
+        {
+          "line": 832,
+          "match": "InsertPayloadOk::Inserted(BlockStatus::Disconnected",
+          "label": "親とつながらない場合はSYNCINGとする",
+          "explanation": "まだ必要な履歴と接続できない場合、ここでは不正と断定せず同期が必要な状況を返します。"
+        },
+        {
+          "line": 846,
+          "match": "Err(error) =>",
+          "label": "取り込みや検証の失敗を結果へ変える",
+          "explanation": "ブロック側の問題とpayload側の問題を分けて扱います。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-validate-call": {
+      "intro": "取り込みの中からpayloadの検証を呼ぶの実装を読みます。",
+      "terms": [
+        "block",
+        "function"
+      ],
+      "lines": [
+        {
+          "line": 3105,
+          "match": "self.insert_block_or_payload",
+          "label": "ブロック取り込みの共通処理へ渡す",
+          "explanation": "親との関係、payload、検証する処理、変換する処理を共通処理へ渡します。"
+        },
+        {
+          "line": 3108,
+          "match": "validator.validate_payload(payload, ctx)",
+          "label": "検証担当と状態を接続する",
+          "explanation": "共通処理はこの検証関数を使います。validate_payloadの実装は、状態を使うブロック検証へ進みます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-validator-entry": {
+      "intro": "payloadを状態付きブロック検証へ渡すの実装を読みます。",
+      "terms": [
+        "block",
+        "state",
+        "function"
+      ],
+      "lines": [
+        {
+          "line": 1863,
+          "match": "fn validate_payload",
+          "label": "payloadの検証を受け取る",
+          "explanation": "Engineから届いたデータと、treeの状態を扱うctxを受け取ります。"
+        },
+        {
+          "line": 1868,
+          "match": "self.validate_block_with_state",
+          "label": "実行と結果照合を行う処理へ進む",
+          "explanation": "payloadを入力の種類として明示し、親の取得・実行・検証を行う共通処理へ渡します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-parent": {
+      "intro": "親を見つけ、基本的な変換と検査を始めるの実装を読みます。",
+      "terms": [
+        "block",
+        "state",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 496,
+          "match": "let parent_hash",
+          "label": "前のブロックの識別子を読む",
+          "explanation": "親の状態から取引を実行するため、まず入力が指す親を特定します。"
+        },
+        {
+          "line": 504,
+          "match": "match self.sealed_header_by_hash",
+          "label": "親のブロックを探す",
+          "explanation": "親がない場合や保存データの読取に失敗した場合は、成功として先へ進みません。"
+        },
+        {
+          "line": 521,
+          "match": "self.spawn_convert_and_validate",
+          "label": "形式変換と基本検査を始める",
+          "explanation": "payloadからブロックへの変換など、実行前にできる検査を並行して始めます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-execute-choice": {
+      "intro": "実行方法を選び、現在の状態を渡すの実装を読みます。",
+      "terms": [
+        "block",
+        "state",
+        "evm"
+      ],
+      "lines": [
+        {
+          "line": 729,
+          "match": "self.execute_block_bal",
+          "label": "BALを使う場合の実行へ進む",
+          "explanation": "事前条件が揃う場合はブロックアクセスリストを使う実行へ進みます。"
+        },
+        {
+          "line": 731,
+          "match": "let state_provider = make_state_provider(false)",
+          "label": "通常実行で使う状態を用意する",
+          "explanation": "通常経路では親につながる状態を読むためのproviderを作ります。"
+        },
+        {
+          "line": 733,
+          "match": "Ok(state_provider) => self.execute_block",
+          "label": "通常の取引実行を呼ぶ",
+          "explanation": "状態、実行環境、ブロックのデータを渡します。次はこの通常実行の取引ループです。"
+        }
+      ],
+      "note": "BAL実行と通常実行は分岐です。次の範囲では通常実行の側を追います。"
+    },
+    "area:journey-block-execute": {
+      "intro": "取引を一件ずつ実行してレシートを得るの実装を読みます。",
+      "terms": [
+        "block",
+        "evm",
+        "receipt"
+      ],
+      "lines": [
+        {
+          "line": 1285,
+          "match": "let Some(tx_result)",
+          "label": "次の取引を取り出す",
+          "explanation": "取引がなくなったらループを終えます。"
+        },
+        {
+          "line": 1288,
+          "match": "let tx = tx_result.map_err",
+          "label": "取引を扱える結果か確認する",
+          "explanation": "送信者復元などの失敗があれば、?で実行全体のエラーへ返します。"
+        },
+        {
+          "line": 1306,
+          "match": "executor.execute_transaction(tx)?",
+          "label": "この取引をEVMで実行する",
+          "explanation": "現在の状態で取引を実行します。この?はRustのResult::Errをブロック処理のエラーとして返します。コントラクトのRevertという実行結果と、処理を続けられないErrは区別します。"
+        },
+        {
+          "line": 1316,
+          "match": "if let Some(receipt)",
+          "label": "得られたレシートを後続の計算へ渡す",
+          "explanation": "実行結果のレシートを、レシートのまとめの計算にも使います。"
+        },
+        {
+          "line": 1322,
+          "match": "if has_bal {",
+          "label": "BALのindex更新も条件で分ける",
+          "explanation": "取引後のBAL index更新はhas_balの場合だけ行います。通常ループにもBALに関する条件が残っています。"
+        },
+        {
+          "line": 1329,
+          "match": "Ok((executor, senders))",
+          "label": "実行担当と送信者一覧を返す",
+          "explanation": "取引ループが完了するとexecute_blockへ戻します。その呼び出し元でfinishを行い、ブロック全体の結果へまとめます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-postcheck": {
+      "intro": "実行後の結果がブロックのルールに合うか検証するの実装を読みます。",
+      "terms": [
+        "block",
+        "receipt",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1373,
+          "match": "self.consensus.validate_block_post_execution",
+          "label": "実行後に分かる条件を照合する",
+          "explanation": "レシートのまとめや実行出力などを、ブロックの実行後ルールで確かめます。ここでいうconsensusは実行側の検証部品です。"
+        },
+        {
+          "line": 1381,
+          "match": "if let Err(err)",
+          "label": "検証が失敗したら不正なブロックとして扱う",
+          "explanation": "失敗を記録する処理を呼び、エラーを返します。"
+        },
+        {
+          "line": 1394,
+          "match": "Ok(())",
+          "label": "実行後の検証成功を返す",
+          "explanation": "この検証で問題がなければOk(())でvalidate_block_with_stateへ戻ります。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-root": {
+      "intro": "計算した状態のまとめをヘッダーと照合し結果を返すの実装を読みます。",
+      "terms": [
+        "block",
+        "state",
+        "hash",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 836,
+          "match": "let root_outcome = ensure_ok_post_block!(",
+          "label": "状態rootの計算結果を受け取る",
+          "explanation": "実行後の状態変更を使うstate_root_jobの結果を受け取ります。計算に失敗したらマクロのエラー経路へ進みます。"
+        },
+        {
+          "line": 876,
+          "match": "if let Err(err) = hashed_state_validate_result {",
+          "label": "状態変更に関する追加検証のエラーも返す",
+          "explanation": "計算済みの状態を使う追加検証がエラーなら、ヘッダーのstate_rootが一致するかの比較へ進まずエラーを返します。"
+        },
+        {
+          "line": 889,
+          "match": "if state_root != block.header().state_root()",
+          "label": "計算結果と宣言された状態を比べる",
+          "explanation": "実行後に計算した状態のまとめstate_rootが、ブロックのヘッダーの値と一致するか確かめます。"
+        },
+        {
+          "line": 901,
+          "match": "ConsensusError::BodyStateRootDiff",
+          "label": "一致しなければ検証エラーを返す",
+          "explanation": "計算結果とブロックの値が違う場合、そのブロックを有効として受け入れません。"
+        },
+        {
+          "line": 934,
+          "match": "Ok(ValidationOutput::new",
+          "label": "検証を通った実行結果を返す",
+          "explanation": "検証済みブロックと状態変更などの結果を取り込み側へ返します。これだけで履歴の採用やディスク保存が完了するわけではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-forkchoice": {
+      "intro": "合意側の履歴採用の指示を処理するの実装を読みます。",
+      "terms": [
+        "engine",
+        "block",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1150,
+          "match": "fn on_forkchoice_updated",
+          "label": "採用するheadなどの指示を受け取る",
+          "explanation": "newPayloadによる実行検証とは別の要求です。合意側が指定したhead・safe・finalizedなどを扱います。"
+        },
+        {
+          "line": 1161,
+          "match": "self.validate_forkchoice_state",
+          "label": "指示された値の前提を確かめる",
+          "explanation": "不正なheadや既知の不正な祖先に加え、同期中も早く返答する分岐です。次のvalidate_forkchoice_state本体で、INVALIDとSYNCINGを区別して読みます。"
+        },
+        {
+          "line": 1172,
+          "match": "self.apply_chain_update",
+          "label": "必要なら採用する履歴を更新する",
+          "explanation": "現在のheadと異なる場合、次のapply_chain_updateの該当部分で変更を試みます。"
+        },
+        {
+          "line": 1177,
+          "match": "self.handle_missing_block",
+          "label": "まだブロックがない場合は同期へ進める",
+          "explanation": "指示されたブロックが手元にない場合、検証済みとして扱わず取得が必要な経路へ進みます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-canonical": {
+      "intro": "検証済みの履歴を採用するの実装を読みます。",
+      "terms": [
+        "engine",
+        "block",
+        "state"
+      ],
+      "lines": [
+        {
+          "line": 1347,
+          "match": "self.on_new_head(state.head_block_hash)",
+          "label": "指定されたheadへつながる変更を用意する",
+          "explanation": "手元の検証済みのブロックから、採用する履歴の変更を作ります。"
+        },
+        {
+          "line": 1348,
+          "match": "self.is_consistent_forkchoice_state",
+          "label": "指示と履歴の変更が整合するか確かめる",
+          "explanation": "整合しない場合はinvalid_stateという結果を返します。"
+        },
+        {
+          "line": 1353,
+          "match": "self.on_canonical_chain_update",
+          "label": "現在採用する履歴を更新する",
+          "explanation": "新しい履歴の採用をReth内部へ反映します。これとディスク保存の完了は別です。"
+        },
+        {
+          "line": 1356,
+          "match": "self.ensure_consistent_forkchoice_state",
+          "label": "safeとfinalizedの値も確認する",
+          "explanation": "合意側から来たsafe・finalizedの指示の整合性を確かめます。Reth自身が投票でfinalityを決める処理ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-save-target": {
+      "intro": "採用中の履歴から保存範囲を選ぶの実装を読みます。",
+      "terms": [
+        "block",
+        "database",
+        "state"
+      ],
+      "lines": [
+        {
+          "line": 2216,
+          "match": "let canonical_head_number",
+          "label": "採用中の先端番号を読む",
+          "explanation": "保存範囲の上限を決める基準です。検証した全ブロックを無条件で保存対象にするわけではありません。"
+        },
+        {
+          "line": 2227,
+          "match": "PersistTarget::Threshold =>",
+          "label": "通常の保存の条件を確かめる",
+          "explanation": "候補作成中の抑制、同期の状況、メモリー内のブロック数などを見て、まだ保存しない場合はNoneを返します。"
+        },
+        {
+          "line": 2269,
+          "match": "let mut current_hash =",
+          "label": "採用中の先端から親をたどる",
+          "explanation": "採用中の履歴をさかのぼり、設定された保存範囲のブロックを集めます。"
+        },
+        {
+          "line": 2295,
+          "match": "blocks.reverse()",
+          "label": "古い順に並べる",
+          "explanation": "先端から集めた並びを逆にし、保存処理へ渡す順番にします。"
+        },
+        {
+          "line": 2297,
+          "match": "Some(SaveBlocksInput::new",
+          "label": "保存する範囲と状態の境界を渡す",
+          "explanation": "集めたブロックと、前回・今回の保存境界を一つの入力として返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-save-start": {
+      "intro": "保存の条件を確認して別の処理へ依頼するの実装を読みます。",
+      "terms": [
+        "database",
+        "channel",
+        "block"
+      ],
+      "lines": [
+        {
+          "line": 1429,
+          "match": "crossbeam_channel::bounded(1)",
+          "label": "保存完了の返答経路を作る",
+          "explanation": "保存担当が結果を返すtxと、それを待つrxを用意します。"
+        },
+        {
+          "line": 1430,
+          "match": "self.persistence.save_blocks",
+          "label": "保存担当へ依頼する",
+          "explanation": "次のPersistenceHandleへ、保存入力と返答口を渡します。"
+        },
+        {
+          "line": 1432,
+          "match": "self.persistence_state.start_save",
+          "label": "保存中として記録する",
+          "explanation": "結果を受け取るまで、この保存が進行中であることを管理します。"
+        },
+        {
+          "line": 1440,
+          "match": "if !self.persistence_state.in_progress()",
+          "label": "保存を重ねて始めないようにする",
+          "explanation": "まだ保存中なら新しい保存を始めません。"
+        },
+        {
+          "line": 1455,
+          "match": "PersistTarget::Threshold",
+          "label": "通常の保存対象があるか確かめる",
+          "explanation": "保存対象を選ぶ関数がSomeを返した場合に、persist_blocksを呼びます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-save-queue": {
+      "intro": "保存依頼を専用の経路へ送るの実装を読みます。",
+      "terms": [
+        "database",
+        "channel"
+      ],
+      "lines": [
+        {
+          "line": 347,
+          "match": "pub fn save_blocks",
+          "label": "保存するデータと返答口を受け取る",
+          "explanation": "保存担当へ渡すためのhandleのメソッドです。"
+        },
+        {
+          "line": 352,
+          "match": "self.send_action",
+          "label": "SaveBlocksという依頼として送る",
+          "explanation": "依頼の送信と、保存先へのcommitの成功は別です。次の専用処理が受信します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-save-worker": {
+      "intro": "保存担当が依頼を受け取り結果を返すの実装を読みます。",
+      "terms": [
+        "database",
+        "channel",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 97,
+          "match": "while let Ok(action)",
+          "label": "保存の依頼を受け取り続ける",
+          "explanation": "経路が開いている間は、到着した保存や削除の依頼を処理します。"
+        },
+        {
+          "line": 106,
+          "match": "PersistenceAction::SaveBlocks",
+          "label": "ブロック保存の分岐へ入る",
+          "explanation": "保存する入力と、要求元へ返すsenderを取り出します。"
+        },
+        {
+          "line": 109,
+          "match": "self.on_save_blocks(input)?",
+          "label": "実際の保存処理を呼ぶ",
+          "explanation": "次に読む処理で保存とcommitを行います。失敗すれば?でこの保存処理のエラーになります。"
+        },
+        {
+          "line": 111,
+          "match": "let _ = sender.send(result);",
+          "label": "保存結果を要求元へ返す",
+          "explanation": "保存処理が返した結果を、最初のtree側が待つ経路へ送ります。"
+        },
+        {
+          "line": 121,
+          "match": "PersistenceAction::SaveFinalizedBlock(finalized_block) => {",
+          "label": "finalizedの目印の保存を保留する",
+          "explanation": "この依頼では目印をpending_finalized_blockへ置きます。後のブロック保存と一緒に書き込むため、この代入だけでディスク保存は完了しません。"
+        },
+        {
+          "line": 124,
+          "match": "PersistenceAction::SaveSafeBlock(safe_block) => {",
+          "label": "safeの目印の保存も保留する",
+          "explanation": "safeの指定も保留して、次の保存処理で扱います。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-save-write": {
+      "intro": "ブロックと状態を保存しcommitするの実装を読みます。",
+      "terms": [
+        "database",
+        "block",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 184,
+          "match": "database_provider_rw()",
+          "label": "書き込み用の保存先を用意する",
+          "explanation": "ブロックや状態を書き込むためのproviderを取得します。"
+        },
+        {
+          "line": 198,
+          "match": "provider_rw.save_blocks(&input)?",
+          "label": "ブロックと実行結果を書き込む",
+          "explanation": "保存入力に指定された範囲を書き込みます。失敗なら成功として先へ進みません。"
+        },
+        {
+          "line": 201,
+          "match": "provider_rw.save_finalized_block_number",
+          "label": "合意側から受け取った確定位置を保存する",
+          "explanation": "finalizedの値を保存します。この行で投票を集めて確定を決めるわけではありません。"
+        },
+        {
+          "line": 213,
+          "match": "provider_rw.commit()?",
+          "label": "保存の変更を確定する",
+          "explanation": "書き込みをcommitし、失敗した場合はエラーを返します。"
+        },
+        {
+          "line": 224,
+          "match": "Ok(PersistenceResult",
+          "label": "保存された位置と処理結果を返す",
+          "explanation": "保存済みのブロック・状態の位置などを、保存依頼の呼び出し元へ返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-save-complete": {
+      "intro": "保存完了をtree側へ反映するの実装を読みます。",
+      "terms": [
+        "database",
+        "block",
+        "state"
+      ],
+      "lines": [
+        {
+          "line": 1538,
+          "match": "let PersistenceResult",
+          "label": "保存担当から戻った位置を受け取る",
+          "explanation": "ブロックと状態の保存済み位置、commit時間などを受け取ります。"
+        },
+        {
+          "line": 1545,
+          "match": "self.persistence_state.finish",
+          "label": "保存中の状態を完了へ更新する",
+          "explanation": "保存が終わったことをtree側へ反映します。newPayloadへのVALID応答とは別の出来事です。"
+        },
+        {
+          "line": 1570,
+          "match": "self.on_new_persisted_block()?",
+          "label": "保存されたブロックの後処理へ進む",
+          "explanation": "保存済みになった位置を使い、メモリー内の状態の整理など後続の処理を進めます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-run": {
+      "intro": "同期目標をpipelineへ渡すの実装を読みます。",
+      "terms": [
+        "node",
+        "block",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 153,
+          "match": "pub fn run_as_fut",
+          "label": "同期処理を非同期に進められる形にする",
+          "explanation": "pipelineと結果が返るFutureを用意します。"
+        },
+        {
+          "line": 159,
+          "match": "PipelineTarget::Sync(tip)",
+          "label": "同期する先端を設定する",
+          "explanation": "取得すべき履歴の目標tipを設定します。巻き戻しの指示は別の分岐です。"
+        },
+        {
+          "line": 174,
+          "match": "self.run_loop().await",
+          "label": "各段階を進める処理の結果を待つ",
+          "explanation": "run_loopが段階ごとの同期を進めます。結果が戻るとpipeline自体と結果を返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-online-order": {
+      "intro": "ヘッダーのあとに本文を取得する段階を組むの実装を読みます。",
+      "terms": [
+        "block",
+        "node"
+      ],
+      "lines": [
+        {
+          "line": 275,
+          "match": "if self.era_import_source",
+          "label": "別の取得元がある場合を分ける",
+          "explanation": "ERAからの取り込み元がある場合は、その段階も追加します。ここでは通常のネットワーク取得を追います。"
+        },
+        {
+          "line": 281,
+          "match": ".add_stage(HeaderStage::new(",
+          "label": "先にヘッダー取得の段階を加える",
+          "explanation": "ブロックの見出しをそろえるHeaderStageを追加します。"
+        },
+        {
+          "line": 287,
+          "match": "BodyStage::new",
+          "label": "そのあと本文取得の段階を加える",
+          "explanation": "ヘッダーに対応する取引などの本文をそろえるBodyStageを追加します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-headers": {
+      "intro": "不足するヘッダーを取得し保存するの実装を読みます。",
+      "terms": [
+        "block",
+        "node",
+        "database"
+      ],
+      "lines": [
+        {
+          "line": 204,
+          "match": "let current_checkpoint = input.checkpoint();",
+          "label": "前回どこまで進んだかを読む",
+          "explanation": "保存された進捗から、次に取得すべき範囲を考えます。"
+        },
+        {
+          "line": 212,
+          "match": "let local_head =",
+          "label": "手元の先端と目標の差を調べる",
+          "explanation": "手元のヘッダーと同期先のtipを使い、不足している範囲gapを作ります。"
+        },
+        {
+          "line": 236,
+          "match": "self.downloader.update_sync_gap",
+          "label": "取得する範囲をdownloaderへ渡す",
+          "explanation": "不足範囲に合わせて、ヘッダー取得を進める担当へ設定します。"
+        },
+        {
+          "line": 241,
+          "match": "self.downloader.poll_next_unpin",
+          "label": "取得したヘッダーを受け取る",
+          "explanation": "結果が未準備なら待ち、取得できたデータを取り出します。"
+        },
+        {
+          "line": 248,
+          "match": "self.header_collector",
+          "label": "受け取ったヘッダーを収集する",
+          "explanation": "ヘッダーを番号と対応づけ、保存するためにまとめます。"
+        },
+        {
+          "line": 296,
+          "match": "self.write_headers",
+          "label": "集めたヘッダーを書き込む",
+          "explanation": "execute側で、取得したヘッダーを保存用providerへ書き込みます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-bodies": {
+      "intro": "本文を取得し、ヘッダーに対応づけて保存するの実装を読みます。",
+      "terms": [
+        "block",
+        "database",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 169,
+          "match": "self.downloader.set_download_range",
+          "label": "次に必要な本文の範囲を渡す",
+          "explanation": "進捗と目標から、取得するブロック番号の範囲をdownloaderへ設定します。"
+        },
+        {
+          "line": 172,
+          "match": "self.downloader.try_poll_next_unpin",
+          "label": "本文の取得結果を待つ",
+          "explanation": "結果が届くまで実行を譲り、届いたデータをbufferに保持します。"
+        },
+        {
+          "line": 199,
+          "match": "let buffer = self.buffer.take()",
+          "label": "取得済みの本文を取り出す",
+          "explanation": "executeは、準備段階で受け取った本文を使います。bufferがなければエラーです。"
+        },
+        {
+          "line": 204,
+          "match": "provider.append_block_bodies",
+          "label": "ブロック本文を書き込む",
+          "explanation": "番号と本文を組にして保存用providerへ渡します。"
+        },
+        {
+          "line": 213,
+          "match": "checkpoint: StageCheckpoint::new",
+          "label": "進捗とこの回の完了状態を返す",
+          "explanation": "書き込んだ最後の番号をcheckpointとして返します。このあとpipelineがcommitします。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-body-request": {
+      "intro": "downloaderが本文を要求するの実装を読みます。",
+      "terms": [
+        "block",
+        "node",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 111,
+          "match": "let client =",
+          "label": "ネットワーク取得の窓口を使う",
+          "explanation": "downloaderは直接保存先を読むのでなく、取得用clientを使って必要な本文を頼みます。"
+        },
+        {
+          "line": 113,
+          "match": "client.get_block_bodies_with_priority",
+          "label": "本文の取得要求を出す",
+          "explanation": "取得したいブロックのハッシュ一覧と優先度を渡し、返答を待つFutureを保持します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-fetch-client": {
+      "intro": "ネットワーク取得のキューへ渡すの実装を読みます。",
+      "terms": [
+        "node",
+        "channel",
+        "block"
+      ],
+      "lines": [
+        {
+          "line": 114,
+          "match": "oneshot::channel()",
+          "label": "取得結果の返答経路を作る",
+          "explanation": "本文が届いたら結果を返すためのresponseと、それを待つrxを作ります。"
+        },
+        {
+          "line": 117,
+          "match": "DownloadRequest::GetBlockBodies",
+          "label": "要求を取得担当へ送る",
+          "explanation": "必要なハッシュ一覧、優先度、返答口を含む要求を内部キューへ渡します。"
+        },
+        {
+          "line": 120,
+          "match": "Either::Left",
+          "label": "要求を送れたら返答待ちを返す",
+          "explanation": "ここはデータが届く前です。rxを通じて返される結果を待てる形にします。"
+        },
+        {
+          "line": 122,
+          "match": "Either::Right",
+          "label": "要求を送れない場合はエラーにする",
+          "explanation": "内部経路が閉じている場合はChannelClosedを返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-peer-select": {
+      "intro": "取得する相手を選び要求へ変換するの実装を読みます。",
+      "terms": [
+        "node",
+        "peer",
+        "block"
+      ],
+      "lines": [
+        {
+          "line": 220,
+          "match": "let Some(peer_id)",
+          "label": "要求を満たす通信相手を選ぶ",
+          "explanation": "必要な機能を持つ相手がいなければ、待機やエラーに分けて処理します。"
+        },
+        {
+          "line": 233,
+          "match": "self.prepare_block_request",
+          "label": "相手へ送る要求へ変える",
+          "explanation": "返答経路を管理しながら、ネットワーク上のブロック取得要求へ変換します。"
+        },
+        {
+          "line": 235,
+          "match": "FetchAction::BlockRequest",
+          "label": "通信側に送信の仕事を返す",
+          "explanation": "相手の識別子と要求を、ネットワーク状態を進める側へ渡します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-peer-send": {
+      "intro": "選んだ相手の接続へ要求を渡すの実装を読みます。",
+      "terms": [
+        "node",
+        "peer",
+        "channel"
+      ],
+      "lines": [
+        {
+          "line": 404,
+          "match": "fn handle_block_request",
+          "label": "選ばれた相手と取得要求を受け取る",
+          "explanation": "既に選んだpeer_idに対応する接続を使い、本文やヘッダーの要求を処理します。"
+        },
+        {
+          "line": 413,
+          "match": "BlockRequest::GetBlockBodies",
+          "label": "本文を要求する通信メッセージを作る",
+          "explanation": "本文用の返答経路を付け、相手との接続で扱うPeerRequestへ変換します。"
+        },
+        {
+          "line": 456,
+          "match": "peer.request_tx.to_session_tx.try_send",
+          "label": "相手との接続を扱う処理へ送る",
+          "explanation": "接続の担当へ要求を渡します。ネットワークの相手から返答が来るまでの経路を残します。"
+        },
+        {
+          "line": 457,
+          "match": "peer.pending_response",
+          "label": "この相手の返答待ちを保持する",
+          "explanation": "返答が準備できると、ネットワークのpoll処理が取り出してfetcherへ戻します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-body-validate": {
+      "intro": "取得した本文をヘッダーと合わせて検査するの実装を読みます。",
+      "terms": [
+        "block",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 186,
+          "match": "SealedBlock::from_sealed_parts",
+          "label": "ヘッダーと本文を一つのブロックにする",
+          "explanation": "取得した本文を、要求時に持っていたヘッダーと組み合わせます。"
+        },
+        {
+          "line": 188,
+          "match": "self.consensus.validate_block_pre_execution",
+          "label": "実行前に確かめられる条件を検証する",
+          "explanation": "本文とヘッダーの整合などを確かめ、問題があれば取得失敗として返します。"
+        },
+        {
+          "line": 200,
+          "match": "self.buffer.push(BlockResponse::Full",
+          "label": "検査に通ったブロックを取得結果へ加える",
+          "explanation": "この結果がBodyStageのdownloaderへ戻り、保存されます。"
+        },
+        {
+          "line": 175,
+          "match": "None => return Ok(()), // no more headers",
+          "label": "対応するヘッダーが尽きたら戻る",
+          "explanation": "本文だけを余分にブロックとして採用しません。対応するヘッダーがなければこの処理を終えます。"
+        },
+        {
+          "line": 178,
+          "match": "if next_header.is_empty() {",
+          "label": "空ブロックは本文なしで記録する",
+          "explanation": "ヘッダーが空ブロックを示す場合はBlockResponse::Emptyとしてbufferへ入れます。"
+        },
+        {
+          "line": 208,
+          "match": "Ok(())",
+          "label": "bufferへの取り込み完了を返す",
+          "explanation": "各本文をヘッダーと組み合わせ終えたらOkで呼び出し元へ戻ります。ディスク保存の完了ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-execution": {
+      "intro": "保存した履歴を順に実行するの実装を読みます。",
+      "terms": [
+        "block",
+        "evm",
+        "state"
+      ],
+      "lines": [
+        {
+          "line": 340,
+          "match": "for block_number",
+          "label": "取得済みの範囲を順番に扱う",
+          "explanation": "実行すべきブロック番号を、古い順に取り出します。"
+        },
+        {
+          "line": 345,
+          "match": "let block = provider",
+          "label": "保存されたブロックと送信者を読む",
+          "explanation": "providerから、その番号のブロックと送信者が復元された取引を読み出します。"
+        },
+        {
+          "line": 360,
+          "match": "executor.execute_one(input)",
+          "label": "ブロックの実行を呼ぶ",
+          "explanation": "ブロックの実行入口execute_oneへ渡します。RustのResult::ErrならStageErrorにして同期段階の処理を中断します。コントラクトのRevertという実行結果とは区別します。"
+        },
+        {
+          "line": 298,
+          "match": "if input.target_reached() {",
+          "label": "すでに目標まで進んでいたら終える",
+          "explanation": "inputの目標に到達済みなら既存checkpointでdoneを返し、同じブロックを実行しません。"
+        },
+        {
+          "line": 310,
+          "match": "let mut executor = self.evm_config.batch_executor(db);",
+          "label": "DBの状態でまとめて実行する担当を作る",
+          "explanation": "保存済み状態を読むDBでbatch_executorを作ります。この担当を番号順のブロックで使い続けます。"
+        },
+        {
+          "line": 367,
+          "match": "if let Some(bal) = &built_bal &&",
+          "label": "BALがあればgas limitの検証を加える",
+          "explanation": "BALがある場合はgas limit条件を検査し、問題があればそのブロックのValidationエラーを返します。"
+        },
+        {
+          "line": 378,
+          "match": "self.consensus.validate_block_post_execution(&block, &result, None, bal_hash)",
+          "label": "ブロックの実行後ルールを照合する",
+          "explanation": "execute_oneの結果だけで受け入れず、consensus検証部品へ実行結果を渡します。不一致なら続けずエラーを返します。"
+        },
+        {
+          "line": 414,
+          "match": "if self.thresholds.is_end_of_batch(",
+          "label": "一度に処理する量の条件で区切る",
+          "explanation": "ブロック数、実行状態の大きさ、gas、経過時間を渡し、バッチの区切りなら目標前でもloopを抜けます。"
+        },
+        {
+          "line": 426,
+          "match": "let mut state = ExecutionOutcome::from_blocks(",
+          "label": "状態変更と各ブロックの結果をまとめる",
+          "explanation": "executorの状態変更とresultsをExecutionOutcomeへまとめ、書き込みに使います。"
+        },
+        {
+          "line": 506,
+          "match": "provider.write_state(&state, OriginalValuesKnown::Yes, StateWriteConfig::default())?;",
+          "label": "実行結果をproviderへ書き込む",
+          "explanation": "write_stateに実行結果を渡します。この段階の書き込みのあと、pipeline側がcheckpointとともにcommitします。"
+        },
+        {
+          "line": 508,
+          "match": "if provider.cached_storage_settings().use_hashed_state() {",
+          "label": "保存方式に応じた追加の書き込みを行う",
+          "explanation": "hashed stateを使う設定では、状態変更をハッシュ化した形式でも書き込みます。"
+        },
+        {
+          "line": 545,
+          "match": "Ok(ExecOutput {",
+          "label": "進んだ位置と完了かどうかを返す",
+          "explanation": "目標へ届いたかをdoneで示し、実際に進んだstage_progressをcheckpointとしてpipelineへ返します。バッチの区切りならdone=falseのまま次回へ続きます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-checkpoint": {
+      "intro": "段階の処理結果と進捗をcommitするの実装を読みます。",
+      "terms": [
+        "database",
+        "node",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 443,
+          "match": "let prev_checkpoint",
+          "label": "その段階の前回の進捗を読む",
+          "explanation": "保存されたcheckpointから、どこまで実行するかを決めます。"
+        },
+        {
+          "line": 476,
+          "match": "self.stage(stage_index).execute_ready",
+          "label": "取得などの準備ができるまで待つ",
+          "explanation": "ヘッダーや本文なら、downloaderから必要なデータがそろうまで待ちます。"
+        },
+        {
+          "line": 497,
+          "match": "match self.stage(stage_index).execute",
+          "label": "段階の本処理を進める",
+          "explanation": "取得済みデータの保存や、取引の実行など、段階ごとの処理を呼びます。"
+        },
+        {
+          "line": 500,
+          "match": "provider_rw.save_stage_checkpoint",
+          "label": "進捗を書き込む",
+          "explanation": "処理できた番号をcheckpointとして、データと一緒に保存対象へ書き込みます。"
+        },
+        {
+          "line": 503,
+          "match": "provider_rw.commit()",
+          "label": "データと進捗の変更を確定する",
+          "explanation": "保存先へのcommitが失敗した場合は、成功として次へ進みません。"
+        },
+        {
+          "line": 509,
+          "match": "PipelineEvent::Ran",
+          "label": "段階の処理結果を通知する",
+          "explanation": "commit後に、結果を待っている監視や後続処理へ通知します。"
+        },
+        {
+          "line": 529,
+          "match": "if done {",
+          "label": "その段階が目標に届いたかを判断する",
+          "explanation": "この回の処理で段階の目標に届けば、進んだ番号を返して次の段階へ進めます。"
+        },
+        {
+          "line": 537,
+          "match": "Err(err) => {",
+          "label": "段階の失敗も処理する",
+          "explanation": "段階の本処理が失敗した場合は、この書込用providerを破棄し、エラー通知とon_stage_errorの返す制御結果へ進みます。この分岐で先の成功時のcommitを行うわけではありません。"
+        },
+        {
+          "line": 541,
+          "match": "if let Some(ctrl) = self.on_stage_error",
+          "label": "エラー担当が返した制御結果を返す",
+          "explanation": "on_stage_errorがSomeならその制御結果で戻り、Noneなら外側のloopで再試行します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-insert-state": {
+      "intro": "取り込みの共通処理で、既知のブロックや親の不足を分け、検証結果をメモリーへ挿入します。",
+      "terms": [
+        "block",
+        "state",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 3160,
+          "match": "if self.state.tree_state.contains_hash",
+          "label": "すでにあるブロックか確かめる",
+          "explanation": "既知のブロックは新しい検証の結果と区別してAlreadySeenを返します。"
+        },
+        {
+          "line": 3182,
+          "match": "if !self.state.tree_state.contains_hash",
+          "label": "親の状態を使えるか確かめる",
+          "explanation": "メモリーと保存済みの履歴を確かめ、親がなければbufferへ置いてDisconnectedを返します。"
+        },
+        {
+          "line": 3222,
+          "match": "execute(&mut self.payload_validator",
+          "label": "渡された検証処理を呼ぶ",
+          "explanation": "insert_payloadが渡したvalidate_payloadの呼び出しです。状態を扱うctxと入力を渡し、検証済みの実行結果を受け取ります。"
+        },
+        {
+          "line": 3254,
+          "match": "self.state.tree_state.insert_executed(executed.clone())",
+          "label": "検証済みのブロックを保持する",
+          "explanation": "実行済みの結果をメモリー内のtreeへ加えます。まだ全てのデータがディスクに保存されたことを表しません。"
+        },
+        {
+          "line": 3277,
+          "match": "Ok(InsertPayloadOk::Inserted(BlockStatus::Valid))",
+          "label": "取り込みの結果を返す",
+          "explanation": "このValidがtry_insert_payloadへ戻り、PayloadStatusのVALIDに変換されます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-canonical-state": {
+      "intro": "採用する履歴の変更を、メモリー内の先端・状態・通知へ反映します。",
+      "terms": [
+        "block",
+        "state",
+        "engine"
+      ],
+      "lines": [
+        {
+          "line": 2881,
+          "match": "self.state.tree_state.set_canonical_head",
+          "label": "採用中の先端を更新する",
+          "explanation": "chain_updateの先端を、tree側が追う現在の先端へ設定します。"
+        },
+        {
+          "line": 2887,
+          "match": "if let NewCanonicalChain::Reorg",
+          "label": "履歴の差し替えなら新旧を扱う",
+          "explanation": "reorgでは採用した側と外した側のブロックを保持し、必要な状態を整えます。"
+        },
+        {
+          "line": 2899,
+          "match": "self.canonical_in_memory_state.update_chain",
+          "label": "採用中の履歴の状態を更新する",
+          "explanation": "保存前のメモリー内で、新しい採用履歴の状態へ切り替えます。"
+        },
+        {
+          "line": 2907,
+          "match": "self.canonical_in_memory_state.notify_canon_state",
+          "label": "採用した履歴の変更を通知する",
+          "explanation": "プールなどの購読側へ、履歴が変わったことを知らせます。この通知とディスク保存の完了は別です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-forkchoice-message": {
+      "intro": "合意側からのforkchoiceUpdatedを、NewPayloadとは別の要求としてEngineへ渡します。",
+      "terms": [
+        "engine",
+        "channel",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 399,
+          "match": "self.to_engine.send",
+          "label": "採用指示の要求を送る",
+          "explanation": "head・safe・finalizedなどのstate、任意の候補作成属性、返答口をForkchoiceUpdatedにまとめます。"
+        },
+        {
+          "line": 398,
+          "match": "let (tx, rx)",
+          "label": "採用指示の返答口を用意する",
+          "explanation": "返答を送るtxと、呼び出し元が待つrxを作ります。"
+        },
+        {
+          "line": 387,
+          "match": ".map_err(BeaconForkChoiceUpdateError::internal)",
+          "label": "返答の失敗を扱う",
+          "explanation": "送信先から受け取った結果が失敗なら、この要求のエラーとして返します。後続の結果も待って呼び出し元へ戻します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-default-order": {
+      "intro": "既定の同期段階を組み、ネットワーク取得の段階の後ろへ状態の実行などを加えます。",
+      "terms": [
+        "node",
+        "evm",
+        "database"
+      ],
+      "lines": [
+        {
+          "line": 174,
+          "match": "self.online.builder()",
+          "label": "ヘッダーと本文の取得段階を用意する",
+          "explanation": "OnlineStagesがヘッダー・本文の順で取得する段階を作ります。"
+        },
+        {
+          "line": 158,
+          "match": ".add_set(OfflineStages::new(evm_config, consensus, stages_config, prune_modes))",
+          "label": "取得したデータを扱う段階を追加する",
+          "explanation": "渡された段階のあとへ、取引実行・状態の計算・履歴索引などのOfflineStagesを追加します。"
+        },
+        {
+          "line": 159,
+          "match": "FinishStage",
+          "label": "最後に終了確認の段階を加える",
+          "explanation": "全体の進捗をそろえるためのFinishStageを最後へ追加します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-execution-order": {
+      "intro": "取得したブロックの取引から送信者を復元し、そのあと実行する順番を組みます。",
+      "terms": [
+        "node",
+        "recover",
+        "evm"
+      ],
+      "lines": [
+        {
+          "line": 394,
+          "match": "SenderRecoveryStage::new",
+          "label": "先に送信者復元の段階を加える",
+          "explanation": "各取引について署名から送信者を扱えるようにする段階です。"
+        },
+        {
+          "line": 398,
+          "match": "ExecutionStage::from_config",
+          "label": "そのあと実行段階を加える",
+          "explanation": "EVM設定と実行側の検証部品を渡し、ブロックを順に実行する段階を作ります。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-response": {
+      "intro": "相手から届いた返答を種類で分け、本文取得の返答をfetcherへ戻します。",
+      "terms": [
+        "node",
+        "peer",
+        "block"
+      ],
+      "lines": [
+        {
+          "line": 478,
+          "match": "fn on_eth_response",
+          "label": "相手からの返答を受け取る",
+          "explanation": "peerは返答元の相手、respは要求に対する結果です。"
+        },
+        {
+          "line": 483,
+          "match": "PeerResponseResult::BlockBodies",
+          "label": "本文の返答を分ける",
+          "explanation": "ヘッダーなどの別の返答と区別し、on_block_bodies_responseへ渡します。"
+        }
+      ],
+      "note": ""
+    },
+    "tx:trait-contract": {
+      "intro": "EthTransactionsは実装に求める操作と、共通に使える既定の処理をまとめています。",
+      "terms": [
+        "trait",
+        "function",
+        "return",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 65,
+          "match": "pub trait EthTransactions",
+          "label": "操作の取り決めと必要な前提を宣言する",
+          "explanation": "EthTransactionsを実装する型には、LoadTransactionという別のtraitの条件も求めます。ここがsupertraitの関係です。"
+        },
+        {
+          "line": 69,
+          "match": "fn signers(&self)",
+          "label": "実装側が用意する操作を宣言する",
+          "explanation": "本体のない宣言なので、実装する型がsignersの処理を用意します。"
+        },
+        {
+          "line": 72,
+          "match": "fn accounts(&self)",
+          "label": "既定の処理を用意する",
+          "explanation": "このメソッドには本体があります。実装側のsignersを呼んで、アドレス一覧を集めます。"
+        }
+      ],
+      "note": "送信の既定処理の本体は、同じページの「デコードして送信者を復元」で続けて読みます。Selfの関連型は、その型が実装するtraitや前提traitの定義に基づいて決まります。"
+    },
+    "tx:trait-implementation": {
+      "intro": "EthApiという型に対して、EthTransactionsの操作を実装しています。",
+      "terms": [
+        "trait",
+        "function",
+        "return",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 21,
+          "match": "impl<N, Rpc> EthTransactions for EthApi",
+          "label": "どの型に何を実装するかを示す",
+          "explanation": "EthApi<N, Rpc>という型が、EthTransactionsの取り決めを満たす実装です。"
+        },
+        {
+          "line": 23,
+          "match": "N: RpcNodeCore",
+          "label": "使える型の条件を示す",
+          "explanation": "where以下はNやRpcに必要な条件です。あらゆる型の組み合わせに使えるという意味ではありません。"
+        },
+        {
+          "line": 29,
+          "match": "self.inner.signers()",
+          "label": "signersの実装を用意する",
+          "explanation": "trait側で本体のなかったsignersを、内部の値を返す処理として実装します。"
+        }
+      ],
+      "note": "send_pool_transactionの本体は、同じページの「通常の送信経路を追う」で読みます。Self::PoolやSelf::Errorは、実装型と前提traitの取り決めに対応する型です。"
+    },
+    "area:startup-engine-build": {
+      "intro": "EngineOrchestratorBuilderのbuild本体です。保存、tree、入力、同期の処理担当を組み合わせます。",
+      "terms": [
+        "function",
+        "channel",
+        "thread",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 113,
+          "match": "let Self {",
+          "label": "Builderが保持していた入力を取り出す",
+          "explanation": "要求の流れ、保存先、同期pipeline、検証や実行の設定を、組み立てに使う値として取り出します。"
+        },
+        {
+          "line": 132,
+          "match": "let downloader =",
+          "label": "必要なブロックを取得する担当を作る",
+          "explanation": "P2P用のclientと検証部品からdownloaderを作ります。作成しただけで全ブロックを取得済みになるわけではありません。"
+        },
+        {
+          "line": 135,
+          "match": "PersistenceHandle::<",
+          "label": "保存サービスを起動し依頼窓口を受け取る",
+          "explanation": "providerとprunerを保存サービスへ渡します。返るhandleは保存依頼を送る窓口です。この行が各ブロックの保存完了を表すわけではありません。"
+        },
+        {
+          "line": 139,
+          "match": "EngineApiTreeHandler::spawn_new",
+          "label": "検証と履歴管理を扱うtreeを起動する",
+          "explanation": "保存の窓口やpayload検証部品などを渡し、treeへ要求を送る経路とtreeからの返答経路を受け取ります。"
+        },
+        {
+          "line": 153,
+          "match": "let engine_handler =",
+          "label": "treeとの要求と返答をまとめる",
+          "explanation": "to_tree_txでtreeへ送り、from_treeでtree側から受け取る担当を作ります。"
+        },
+        {
+          "line": 154,
+          "match": "let handler =",
+          "label": "Engineの入力と取得担当をつなぐ",
+          "explanation": "入力される要求とdownloaderを、Engine要求の担当と組み合わせます。"
+        },
+        {
+          "line": 156,
+          "match": "let backfill_sync =",
+          "label": "過去区間の同期担当を作る",
+          "explanation": "pipelineとタスク起動用の部品から、同期処理を動かす担当を作ります。"
+        },
+        {
+          "line": 158,
+          "match": "ChainOrchestrator::new",
+          "label": "入力処理と同期処理をまとめて返す",
+          "explanation": "handlerとbackfill_syncを持つorchestratorを返します。呼び出し元はこの返り値を非同期のループで進めます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-node-wait": {
+      "intro": "起動結果にはFullNodeと終了用Futureが入ります。mainから呼ぶwait_for_node_exitの本体を読みます。",
+      "terms": [
+        "await",
+        "result",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 9,
+          "match": "#[must_use",
+          "label": "終了用Futureを待つ必要を示す",
+          "explanation": "この属性のメッセージは、起動したhandleで終了用Futureをawaitする必要があると説明しています。"
+        },
+        {
+          "line": 12,
+          "match": "pub node:",
+          "label": "起動したノードの部品を保持する",
+          "explanation": "FullNodeには起動済みのノードの部品が入ります。終了待ちのFutureとは別のフィールドです。"
+        },
+        {
+          "line": 14,
+          "match": "pub node_exit_future:",
+          "label": "終了を知らせるFutureを保持する",
+          "explanation": "ノードの終了処理を待つためのNodeExitFutureを保持します。値を持つだけでは待ちません。"
+        },
+        {
+          "line": 23,
+          "match": "pub async fn wait_for_node_exit",
+          "label": "mainが呼ぶ待機処理の本体を読む",
+          "explanation": "handle自身を受け取り、終了待ちの結果をeyre::Result<()>として返す非同期メソッドです。"
+        },
+        {
+          "line": 24,
+          "match": "self.node_exit_future.await",
+          "label": "終了用Futureの結果を待って返す",
+          "explanation": "起動の成功後、ここで終了用Futureをawaitします。各取引の完了やチェーンの確定を待つ処理ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-forkchoice-precheck": {
+      "intro": "前段の早期返答には、不正だけでなく同期中という別の理由があります。",
+      "terms": [
+        "engine",
+        "result",
+        "option",
+        "hash"
+      ],
+      "lines": [
+        {
+          "line": 1193,
+          "match": "if state.head_block_hash.is_zero() {",
+          "label": "ゼロのheadを拒否する",
+          "explanation": "headがゼロならINVALID_STATEを返す早期条件です。"
+        },
+        {
+          "line": 1200,
+          "match": "if let Some(status) = self.check_invalid_ancestor(lowest_buffered_ancestor_fcu)? {",
+          "label": "既知の不正な祖先を調べる",
+          "explanation": "祖先が既知の不正なブロックと接続していれば、その不正のstatusを返します。"
+        },
+        {
+          "line": 1204,
+          "match": "if !self.backfill_sync_state.is_idle() {",
+          "label": "同期処理中かを分ける",
+          "explanation": "backfillが稼働中ならDBを同時に扱わないよう、指示の採用処理を進めません。不正だと判定したわけではありません。"
+        },
+        {
+          "line": 1208,
+          "match": "return Ok(Some(OnForkChoiceUpdated::syncing()));",
+          "label": "同期中という返答を返す",
+          "explanation": "この早期返答はSYNCINGです。上のINVALIDとは意味が異なります。"
+        },
+        {
+          "line": 1211,
+          "match": "Ok(None)",
+          "label": "早期返答せず呼び出し元の続きへ進む",
+          "explanation": "Noneは採用成功を表しません。この事前チェックで早く返す理由がなく、次の履歴処理へ進めることを表します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-forkchoice-consistency": {
+      "intro": "履歴を切り替える前の整合検査です。新しい枝か、残る採用履歴の範囲にsafe/finalizedが入ることを確かめます。",
+      "terms": [
+        "engine",
+        "hash",
+        "option",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 3416,
+          "match": "let canonical_head_number = match chain_update {",
+          "label": "採用履歴に残る高さを決める",
+          "explanation": "新しい枝への切替時は、その最初のブロックより前が残る履歴です。切替なしなら指定headが採用履歴にあることを調べ、その高さを使います。"
+        },
+        {
+          "line": 3430,
+          "match": "for hash in [state.finalized_block_hash, state.safe_block_hash] {",
+          "label": "finalizedとsafeをそれぞれ調べる",
+          "explanation": "合意側が指定した二つのハッシュを順に検査します。投票でハッシュを決める処理ではありません。"
+        },
+        {
+          "line": 3431,
+          "match": "if hash.is_zero() || chain_update.is_some_and(|update| update.contains(hash)) {",
+          "label": "未指定と新しい枝の中を区別する",
+          "explanation": "ゼロのハッシュはこの検査を通過します。切替先の枝に含まれるハッシュもここで通過します。"
+        },
+        {
+          "line": 3434,
+          "match": "let Some(header) = self.find_canonical_header(hash)? else { return Ok(false) };",
+          "label": "残る採用履歴にないものを拒否する",
+          "explanation": "指定ハッシュの採用履歴上のヘッダーが見つからなければfalseを返します。DB参照エラーは?で別に返ります。"
+        },
+        {
+          "line": 3435,
+          "match": "if header.number() > canonical_head_number {",
+          "label": "切替で捨てる高さの指定を拒否する",
+          "explanation": "ヘッダーがあっても、残る採用履歴の上限より高ければ整合しないとします。"
+        },
+        {
+          "line": 3439,
+          "match": "Ok(true)",
+          "label": "この整合検査を通過する",
+          "explanation": "trueはこの履歴整合検査の結果です。ディスク保存や合意側の投票完了を示す値ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-forkchoice-markers": {
+      "intro": "採用するheadが決まったあと、safe/finalizedの指定を既知の採用履歴と照合し、目印を更新します。",
+      "terms": [
+        "engine",
+        "hash",
+        "state",
+        "database",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 3447,
+          "match": "if finalized_block_hash.is_zero() {",
+          "label": "ゼロ指定ならfinalizedを変えない",
+          "explanation": "未指定を表すゼロなら成功として戻り、現在のfinalizedの目印を維持します。"
+        },
+        {
+          "line": 3452,
+          "match": "Ok(None) => {",
+          "label": "採用履歴で見つからない指定を拒否する",
+          "explanation": "指定したfinalizedのヘッダーが採用履歴にない場合はINVALID_STATEを返します。"
+        },
+        {
+          "line": 3463,
+          "match": "let _ = self.persistence.save_finalized_block_number(finalized.number());",
+          "label": "変わったfinalizedの番号を保存依頼する",
+          "explanation": "前回の目印と違う場合、再起動後に読み直すための番号の保存を依頼します。ブロック全体の保存とは別の依頼で、この行では保存完了を待っていません。"
+        },
+        {
+          "line": 3464,
+          "match": "self.canonical_in_memory_state.set_finalized(finalized.clone());",
+          "label": "メモリー内のfinalizedを更新する",
+          "explanation": "受け取った指示に対応する既知のヘッダーを目印として保持します。Rethが新たに投票したわけではありません。"
+        },
+        {
+          "line": 3470,
+          "match": "error!(target: \"engine::tree\", %err, \"Failed to fetch finalized block header\");",
+          "label": "参照エラーはログへ記録する",
+          "explanation": "この分岐は参照エラーをログへ残し、関数末尾のOkへ進みます。未知のハッシュでINVALIDを返す分岐とは異なります。"
+        },
+        {
+          "line": 3479,
+          "match": "if safe_block_hash.is_zero() {",
+          "label": "ゼロ指定ならsafeを変えない",
+          "explanation": "safeにも未指定の場合があり、そのときは現在の目印を維持します。"
+        },
+        {
+          "line": 3484,
+          "match": "Ok(None) => {",
+          "label": "未知のsafeも拒否する",
+          "explanation": "採用履歴でsafeが見つからないとINVALID_STATEを返します。"
+        },
+        {
+          "line": 3493,
+          "match": "let _ = self.persistence.save_safe_block_number(safe.number());",
+          "label": "変わったsafeの番号を保存依頼する",
+          "explanation": "safeの目印が変わると、番号の保存を依頼してからメモリー内の目印も更新します。"
+        },
+        {
+          "line": 3500,
+          "match": "error!(target: \"engine::tree\", %err, \"Failed to fetch safe block header\");",
+          "label": "safeの参照エラーをログへ記録する",
+          "explanation": "safeのDB参照エラーもここではログへ残します。全てのエラーで同じ返答になるわけではありません。"
+        },
+        {
+          "line": 3524,
+          "match": "self.update_finalized_block(state.finalized_block_hash)?;",
+          "label": "finalizedを先に検査して更新する",
+          "explanation": "この呼び出しがErrなら?で返り、safeの更新には進みません。"
+        },
+        {
+          "line": 3531,
+          "match": "self.update_safe_block(state.safe_block_hash)",
+          "label": "次にsafeの結果を返す",
+          "explanation": "finalizedのあとsafeを更新し、そのResultを呼び出し元へ返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-executor": {
+      "intro": "通常のexecute_block本体です。実行担当の生成から取引ループ、finish、状態変更の取り出しまでを読みます。",
+      "terms": [
+        "evm",
+        "state",
+        "receipt",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1038,
+          "match": "let mut db = debug_span!(target: \"engine::tree\", \"build_state_db\").in_scope(|| {",
+          "label": "親から読める状態で実行用DBを作る",
+          "explanation": "state_providerを読むDBに渡し、ブロックの状態変更をまとめて保持するようにします。"
+        },
+        {
+          "line": 1050,
+          "match": "let evm = evm_config.evm_with_env(&mut db, env.evm_env);",
+          "label": "指定された実行環境でEVMを作る",
+          "explanation": "環境envとDBからEVMを作り、続けてブロック実行用のexecutorを生成します。"
+        },
+        {
+          "line": 1078,
+          "match": "let (receipt_tx, result_rx) = self.spawn_receipt_root_task(transaction_count);",
+          "label": "レシートから集約値を計算する返答経路を用意する",
+          "explanation": "取引数に合わせたレシートrootの計算タスクを起動し、レシートを送る口と結果を受け取る口を得ます。"
+        },
+        {
+          "line": 1085,
+          "match": "let (executor, senders) = self.execute_transactions(",
+          "label": "取引ループへ実行担当と取引列を渡す",
+          "explanation": "次のexecute_transactionsが取引を順に実行し、実行担当と送信者一覧を返します。Errは?でこの関数のエラーになります。"
+        },
+        {
+          "line": 1098,
+          "match": ".in_scope(|| executor.finish())",
+          "label": "ブロック実行の後処理を終えて結果を得る",
+          "explanation": "取引ループの後、executor.finishでブロックの後処理を行い実行結果を受け取ります。"
+        },
+        {
+          "line": 1113,
+          "match": "let output = BlockExecutionOutput { result, state: db.take_bundle() };",
+          "label": "実行結果と状態変更を出力へまとめる",
+          "explanation": "resultとDBに蓄積した状態変更をBlockExecutionOutputへまとめます。"
+        },
+        {
+          "line": 1120,
+          "match": "Ok((output, senders, result_rx, built_bal))",
+          "label": "呼び出し元へ実行結果と返答用の口を返す",
+          "explanation": "出力、送信者一覧、レシートrootの受信口、BAL情報を返します。採用やディスク保存を完了させる返答ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-after-execute": {
+      "intro": "取引実行が返ったあと、状態変更を保持し、レシートrootの計算結果を受け取り、実行後検証を呼びます。",
+      "terms": [
+        "state",
+        "receipt",
+        "thread",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 757,
+          "match": "let output = Arc::new(output);",
+          "label": "状態の出力を共有できる形へする",
+          "explanation": "execute_blockが返した状態変更と実行結果をArcに包み、後の検証や計算で使います。"
+        },
+        {
+          "line": 761,
+          "match": "let valid_block_tx = handle.terminate_caching(Some(output.clone()));",
+          "label": "実行完了後のキャッシュ処理を終える",
+          "explanation": "出力を渡してキャッシュ処理を終えます。キャッシュの終了はブロックの採用や永続保存の完了ではありません。"
+        },
+        {
+          "line": 769,
+          "match": "self.runtime.spawn_blocking_named(\"hash-post-state\", move || {",
+          "label": "状態変更のハッシュ計算を別処理へ渡す",
+          "explanation": "実行の状態変更を使う計算をタスクへ渡します。先に計算された結果が得られなければここで計算する分岐があります。"
+        },
+        {
+          "line": 795,
+          "match": "receipt_root_rx",
+          "label": "レシートrootとbloomの返答を待つ",
+          "explanation": "実行中に送ったレシートからの計算結果を待ちます。返答経路が閉じた場合はログを記録し、Noneとして次へ渡します。"
+        },
+        {
+          "line": 807,
+          "match": "self.validate_post_execution(",
+          "label": "実行後ルールの検証へ渡す",
+          "explanation": "ブロック、親、実行結果とレシートの集約値をvalidate_post_executionへ渡します。この検証結果はマクロで確認され、エラーなら処理を中断します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-consensus-check": {
+      "intro": "共通のconsensus呼び出しに対応するEthereumの実装です。チェーン設定と検証用フラグも渡します。",
+      "terms": [
+        "result",
+        "gas",
+        "receipt",
+        "hardfork"
+      ],
+      "lines": [
+        {
+          "line": 125,
+          "match": "let res = validation::validate_block_post_execution_with_bal_hashes(",
+          "label": "Ethereum用の検証関数へ渡す",
+          "explanation": "ブロック、実行結果、チェーン設定、レシート集約値、BAL hashと設定フラグを次の検証関数へ渡します。"
+        },
+        {
+          "line": 134,
+          "match": "if self.skip_requests_hash_check &&",
+          "label": "requests hash検証の省略設定を分ける",
+          "explanation": "skip_requests_hash_check設定がある場合、requests hashの不一致だけを成功へ変える条件があります。全ての検証エラーを無視する分岐ではありません。"
+        },
+        {
+          "line": 140,
+          "match": "res",
+          "label": "検証関数の結果を返す",
+          "explanation": "上の特例に当てはまらなければ、検証の成功またはConsensusErrorを呼び出し元へ返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-block-postconditions": {
+      "intro": "Ethereumの具体的な実行後条件です。gas、レシート、requests、BALを、適用時点のルールで照合します。",
+      "terms": [
+        "gas",
+        "receipt",
+        "hash",
+        "hardfork",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 57,
+          "match": "if block.header().gas_used() != result.gas_used {",
+          "label": "gasの計算結果とヘッダーの値を比べる",
+          "explanation": "ブロック全体で使用したgasがヘッダーと異なればBlockGasUsedを返します。"
+        },
+        {
+          "line": 68,
+          "match": "if chain_spec.is_byzantium_active_at_block(block.header().number()) {",
+          "label": "レシート検証の適用時点を分ける",
+          "explanation": "Byzantiumが有効なブロックでは、レシートrootとログのbloomを検証します。"
+        },
+        {
+          "line": 69,
+          "match": "let res = if let Some((receipts_root, logs_bloom)) = receipt_root_bloom {",
+          "label": "すでに計算した集約値があるかを分ける",
+          "explanation": "receipt_root_bloomがあればその値をヘッダーと比較し、なければレシート列から計算して照合します。"
+        },
+        {
+          "line": 96,
+          "match": "if chain_spec.is_prague_active_at_timestamp(block.header().timestamp()) {",
+          "label": "Prague以降のrequestsを照合する",
+          "explanation": "対象時点ではヘッダーのrequests hashが必要です。実行結果から得た値が一致しなければエラーになります。"
+        },
+        {
+          "line": 109,
+          "match": "let is_allowed_pre_amsterdam_bal_hash = allow_bal_hashes &&",
+          "label": "有効化前のBALを許す設定を調べる",
+          "explanation": "Amsterdamより前でも許可設定とヘッダーのBAL hashがある場合は、後の比較対象になります。"
+        },
+        {
+          "line": 114,
+          "match": "if is_amsterdam && block_access_list_hash.is_none() {",
+          "label": "AmsterdamでBAL hashが必要かを調べる",
+          "explanation": "Amsterdamが有効なのに計算したBAL hashがなければBlockAccessListHashMissingを返します。"
+        },
+        {
+          "line": 118,
+          "match": "if (is_amsterdam || is_allowed_pre_amsterdam_bal_hash) &&",
+          "label": "適用対象のBAL hashを照合する",
+          "explanation": "Amsterdamまたは有効化前の許可条件を満たす場合、計算値とヘッダーの値が違えばエラーを返します。"
+        },
+        {
+          "line": 129,
+          "match": "Ok(())",
+          "label": "適用される条件を通過する",
+          "explanation": "各時点の検証を通ればOkでEthereum側の実装へ戻ります。"
+        },
+        {
+          "line": 141,
+          "match": "let receipts_root = calculate_receipt_root(&receipts_with_bloom);",
+          "label": "レシート列からrootを計算する",
+          "explanation": "集約値が渡されなかった場合に使う関数です。レシート列からrootとログbloomを求め、比較関数へ渡します。"
+        },
+        {
+          "line": 162,
+          "match": "if calculated_receipts_root != expected_receipts_root {",
+          "label": "レシートrootの不一致を返す",
+          "explanation": "計算したrootとヘッダーのrootが一致しなければBodyReceiptRootDiffを返します。"
+        },
+        {
+          "line": 168,
+          "match": "if calculated_logs_bloom != expected_logs_bloom {",
+          "label": "ログbloomの不一致を返す",
+          "explanation": "ログの集約値bloomが一致しない場合も専用のエラーを返し、一致すれば末尾でOkを返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:file-tx-get-entry": {
+      "intro": "送信と同じファイルにある取得の入口です。送信のハッシュ返却と、指定したハッシュで取引を探す操作を区別します。",
+      "terms": [
+        "hash",
+        "function",
+        "result",
+        "option"
+      ],
+      "lines": [
+        {
+          "line": 193,
+          "match": "fn transaction_by_hash(",
+          "label": "ハッシュを入力として受け取る",
+          "explanation": "hashという識別子から取引を探すメソッドです。出力はエラーまたは、見つかった取引を表すOptionです。"
+        },
+        {
+          "line": 199,
+          "match": "LoadTransaction::transaction_by_hash(self, hash)",
+          "label": "LoadTransactionの取得実装へ渡す",
+          "explanation": "同じ名前でも別のtrait側の実装です。次のLoadTransaction::transaction_by_hashが、キャッシュ・保存済みデータ・プールを調べます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:file-tx-get": {
+      "intro": "LoadTransactionの取得本体です。問い合わせは状態の読取であり、新しい取引の追加ではありません。",
+      "terms": [
+        "hash",
+        "option",
+        "result",
+        "pool",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 785,
+          "match": "if let Some(cached) = self.cache().get_transaction_by_hash(hash).await &&",
+          "label": "まずRPCキャッシュを調べる",
+          "explanation": "キャッシュの値をTransactionSourceに変換できれば、その値をSomeとしてすぐ返します。"
+        },
+        {
+          "line": 792,
+          "match": "if let Some((tx, meta)) = self",
+          "label": "次に保存済みの取引を調べる",
+          "explanation": "providerを使う読取処理を別タスクで行い、結果をawaitします。読取エラーは?で返り、見つからない場合は後のプール検索へ進みます。"
+        },
+        {
+          "line": 803,
+          "match": "let transaction = tx",
+          "label": "保存済み取引から送信者を復元する",
+          "explanation": "保存済みの取引を、過去の署名ルールも扱うuncheckedの復元操作へ渡します。復元できなければInvalidTransactionSignatureです。"
+        },
+        {
+          "line": 807,
+          "match": "return Ok(Some(TransactionSource::Block {",
+          "label": "ブロック由来の情報と一緒に返す",
+          "explanation": "見つかった取引を、ブロック番号・ハッシュ・位置などとともにBlock由来の取引として返します。"
+        },
+        {
+          "line": 818,
+          "match": "if let Some(tx) = self.pool().get(&hash).map(|tx| tx.transaction.clone_into_consensus())",
+          "label": "保存先にもなければプールを調べる",
+          "explanation": "プールにある場合は取引を取り出し、Pool由来の取引として返します。次のgetはこの読取の窓口です。"
+        },
+        {
+          "line": 823,
+          "match": "Ok(None)",
+          "label": "どこにもなければ値なしを返す",
+          "explanation": "Ok(None)は見つからなかった結果です。RPCやDBのエラーとは別です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:file-pool-get": {
+      "intro": "プールの公開APIの取得入口です。getの値なしと、get_allで返る一覧を区別します。",
+      "terms": [
+        "hash",
+        "pool",
+        "option",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 697,
+          "match": "fn get(&self, tx_hash: &TxHash) -> Option<Arc<ValidPoolTransaction<Self::Transaction>>> {",
+          "label": "ハッシュ一件の取得結果の型を読む",
+          "explanation": "見つかった場合は検証済み取引の共有参照ArcをSomeで、なければNoneで返す契約です。"
+        },
+        {
+          "line": 698,
+          "match": "self.inner().get(tx_hash)",
+          "label": "内部プールの取得結果を返す",
+          "explanation": "同じハッシュを内部プールのgetへ渡し、そのOptionを返します。取引を追加したりブロックへ取り込んだりする操作ではありません。"
+        },
+        {
+          "line": 701,
+          "match": "fn get_all(&self, txs: Vec<TxHash>) -> Vec<Arc<ValidPoolTransaction<Self::Transaction>>> {",
+          "label": "複数件の取得を一覧として返す",
+          "explanation": "get_allはハッシュ列を受け取り、内部プールから得た取引の一覧を返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:file-pool-listeners": {
+      "intro": "公開プールAPIには、データ取得のほかにイベントを受け取るための入口があります。",
+      "terms": [
+        "pool",
+        "channel",
+        "hash",
+        "option"
+      ],
+      "lines": [
+        {
+          "line": 530,
+          "match": "fn transaction_event_listener(&self, tx_hash: TxHash) -> Option<TransactionEvents> {",
+          "label": "一件の取引のイベント受信口を求める",
+          "explanation": "tx_hashで取引を指定し、内部のイベント購読を登録した結果を返します。Optionなので必ず受信口が得られるとは限りません。"
+        },
+        {
+          "line": 534,
+          "match": "fn all_transactions_event_listener(&self) -> AllTransactionsEvents<Self::Transaction> {",
+          "label": "全取引のイベント受信口を得る",
+          "explanation": "内部プールのadd_all_transactions_event_listenerへ渡し、全取引用の受信口を返します。"
+        },
+        {
+          "line": 538,
+          "match": "fn pending_transactions_listener_for(&self, kind: TransactionListenerKind) -> Receiver<TxHash> {",
+          "label": "pending取引の通知種別を指定する",
+          "explanation": "kindを内部の購読登録へ渡し、取引ハッシュを受け取るReceiverを返します。"
+        },
+        {
+          "line": 542,
+          "match": "fn blob_transaction_sidecars_listener(&self) -> Receiver<NewBlobSidecar> {",
+          "label": "blob sidecar用の通知を分ける",
+          "explanation": "blob sidecarの通知を受け取る入口は別です。"
+        },
+        {
+          "line": 546,
+          "match": "fn new_transactions_listener_for(",
+          "label": "新しい取引の通知を受け取る",
+          "explanation": "指定したkindに応じたNewTransactionEventの受信口を返します。受信口を得た時点で取引の確定まで完了したという意味ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:file-rpc-inner": {
+      "intro": "EthApiInnerが持つフィールドです。処理本体ではなく、RPCから使う部品や送受信経路の保持を確かめます。",
+      "terms": [
+        "type",
+        "pool",
+        "channel",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 232,
+          "match": "components: N,",
+          "label": "ノードの部品を保持する",
+          "explanation": "componentsという型Nの値にproviderやpoolなどのノード部品がまとまっています。個々の部品をここで新しく実行したわけではありません。"
+        },
+        {
+          "line": 240,
+          "match": "settings: EthApiSettings,",
+          "label": "共通設定を保持する",
+          "explanation": "eth RPCヘルパーが使う設定をsettingsとして持ちます。"
+        },
+        {
+          "line": 259,
+          "match": "raw_tx_sender: broadcast::Sender<Bytes>,",
+          "label": "生データの通知チャネルを持つ",
+          "explanation": "raw_tx_senderは生のBytesを通知するbroadcastチャネルです。プール追加依頼を送る次のチャネルとは別です。"
+        },
+        {
+          "line": 262,
+          "match": "raw_tx_forwarder: Option<RpcClient>,",
+          "label": "外部転送先は省略可能にする",
+          "explanation": "raw_tx_forwarderはOptionなので、外部RPC転送が常に行われるわけではありません。"
+        },
+        {
+          "line": 271,
+          "match": "tx_batch_sender:",
+          "label": "追加依頼の送信口を保持する",
+          "explanation": "tx_batch_senderはBatchTxRequestを送る内部のmpscチャネルです。バッチ処理担当と結びつける作成箇所を次で読みます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:file-rpc-inner-build": {
+      "intro": "EthApiInnerの作成時に、プール追加依頼の送受信とバッチ担当を用意します。",
+      "terms": [
+        "function",
+        "pool",
+        "channel",
+        "thread",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 285,
+          "match": "pub fn new(",
+          "label": "作成に必要な部品を受け取る",
+          "explanation": "ノード部品、共通設定、キャッシュ、タスク実行用の値などを引数で受け取ります。"
+        },
+        {
+          "line": 309,
+          "match": "let (raw_tx_sender, _) = broadcast::channel(DEFAULT_BROADCAST_CAPACITY);",
+          "label": "生データの通知用チャネルを作る",
+          "explanation": "これはbroadcastチャネルです。直後のプール追加用mpscとは用途を分けます。"
+        },
+        {
+          "line": 312,
+          "match": "let (processor, tx_batch_sender) =",
+          "label": "プールと件数設定からバッチ担当を作る",
+          "explanation": "BatchTxProcessor::newはprocessorと送信口tx_batch_senderを返します。内部の受信口はprocessorが持ちます。"
+        },
+        {
+          "line": 314,
+          "match": "task_spawner.spawn_critical_task(\"tx-batcher\", processor);",
+          "label": "受信側のバッチ処理をタスクとして進める",
+          "explanation": "processorをcriticalタスクとして起動します。送信口を保存するだけで受信処理が動くわけではありません。"
+        },
+        {
+          "line": 316,
+          "match": "Self {",
+          "label": "起動済みの部品と送信口を保持して返す",
+          "explanation": "Selfの各フィールドへ受け取った部品を置き、tx_batch_senderも保持したEthApiInnerを返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:component-rpc-namespace": {
+      "intro": "公開インターフェースの宣言の始まりです。ethという名前空間と、メソッド名・戻り値を定める仕組みを読みます。",
+      "terms": [
+        "rpc",
+        "trait",
+        "type",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 56,
+          "match": "#[cfg_attr(not(feature = \"client\"), rpc(server, namespace = \"eth\"))]",
+          "label": "ethの名前空間を指定する",
+          "explanation": "このrpc属性はserver側のインターフェースを生成するための情報です。client機能がある構成では次の属性でclient側も生成します。"
+        },
+        {
+          "line": 58,
+          "match": "pub trait EthApi<",
+          "label": "RPCに使うデータの型を受け取る",
+          "explanation": "EthApiは引数や取引・ブロック・レシート等の型を型パラメータで受け取るtraitです。ここは宣言の開始で、全メソッド本文の実装ではありません。"
+        },
+        {
+          "line": 68,
+          "match": "#[method(name = \"protocolVersion\")]",
+          "label": "公開する操作の名前を定める",
+          "explanation": "protocolVersionというRPC名をこの属性で指定します。"
+        },
+        {
+          "line": 69,
+          "match": "async fn protocol_version(&self) -> RpcResult<U64>;",
+          "label": "戻り値とエラーの型を宣言する",
+          "explanation": "この操作は成功ならU64、失敗ならRPCエラーを返す契約です。名前の宣言とハンドラーの本体は別の箇所です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:component-block-read": {
+      "intro": "対象別に分かれた共通ヘルパーのうち、ブロックを扱う実装です。取得要求を受け、なければNone、あればRPC用の値を返します。",
+      "terms": [
+        "rpc",
+        "block",
+        "option",
+        "result",
+        "await"
+      ],
+      "lines": [
+        {
+          "line": 36,
+          "match": "pub trait EthBlocks: LoadBlock<RpcConvert: RpcConvert<Primitives = Self::Primitives>> {",
+          "label": "ブロックを扱うヘルパーを分ける",
+          "explanation": "EthBlocksはLoadBlockの操作を前提にした、ブロック用の共通traitです。"
+        },
+        {
+          "line": 46,
+          "match": "let Some(block) = self.recovered_block(block_id).await? else { return Ok(None) };",
+          "label": "ヘッダーを返す前にブロックを取得する",
+          "explanation": "recovered_blockの結果を待ち、なければOk(None)で返します。取得エラーは?で返します。"
+        },
+        {
+          "line": 48,
+          "match": "let header = self.converter().convert_header(block.clone_sealed_header(), None)?;",
+          "label": "ヘッダーをRPCの型へ変換する",
+          "explanation": "元のヘッダーをconverterへ渡し、RPC用の値をSomeとして返します。"
+        },
+        {
+          "line": 57,
+          "match": "fn rpc_block(",
+          "label": "ブロック全体を返す操作を分ける",
+          "explanation": "block_idと、取引本体を含めるかを示すfullを受け取ります。"
+        },
+        {
+          "line": 68,
+          "match": "let block = block.clone_into_rpc_block(",
+          "label": "取引とヘッダーをRPC向けに変換する",
+          "explanation": "fullの指定と変換関数を渡します。取得できても変換に失敗すれば?でエラーになり、成功時はSome(block)を返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:component-rpc-setup": {
+      "intro": "RPCの組立を行う呼出側の実装です。RPC領域の共通部品を使い、ノードのprovider・pool・networkと設定を渡します。",
+      "terms": [
+        "rpc",
+        "engine",
+        "pool",
+        "node",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 1143,
+          "match": "let engine_api = engine_api_builder.build_engine_api(&ctx).await?;",
+          "label": "Engine APIの実装を作る",
+          "explanation": "Engine用builderからAPIを構築し、失敗なら?で返します。"
+        },
+        {
+          "line": 1155,
+          "match": "let cache = EthStateCache::spawn_with(",
+          "label": "状態読取のキャッシュを起動する",
+          "explanation": "providerと設定、タスク実行用の値を渡してRPCのキャッシュを作ります。"
+        },
+        {
+          "line": 1182,
+          "match": "let eth_api = eth_api_builder.build_eth_api(ctx).await?;",
+          "label": "アプリ向けeth APIを作る",
+          "explanation": "ノード部品、設定、cache、Engine handle等を持つctxをeth_api_builderへ渡します。"
+        },
+        {
+          "line": 1192,
+          "match": "let auth_config = config.rpc.auth_server_config(jwt_secret)?;",
+          "label": "認証用とアプリ向けの設定を分ける",
+          "explanation": "jwt_secretを使う認証サーバー設定と、各通信方式で公開するRPC module設定を作ります。"
+        },
+        {
+          "line": 1196,
+          "match": "let (mut modules, mut auth_module, registry) = RpcModuleBuilder::default()",
+          "label": "各ノード部品をRPC構築へ渡す",
+          "explanation": "provider・pool・network・executor・EVM・consensusをbuilderへ渡し、アプリ向けmoduleと認証用moduleを組み立てます。"
+        },
+        {
+          "line": 1212,
+          "match": "if config.dev.dev {",
+          "label": "dev設定だけで署名用アカウントを加える",
+          "explanation": "開発用の構成でのみdev signerを登録します。通常の公開RPCで秘密鍵を自動生成して署名するという説明ではありません。"
+        },
+        {
+          "line": 1228,
+          "match": "ext(RpcModuleContainer {",
+          "label": "追加モジュール用のhookを呼ぶ",
+          "explanation": "呼出元のextと設定されたextend hookに、組立中のmoduleやregistryを渡します。失敗は?で返ります。"
+        },
+        {
+          "line": 1235,
+          "match": "Ok(RpcSetupContext {",
+          "label": "起動に使う部品を一つの値で返す",
+          "explanation": "ノード、公開module、auth module、設定、registry、Engine handle等をRpcSetupContextにまとめて返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:component-rpc-launch": {
+      "intro": "RPCの起動を調整する本体です。設定に応じた認証サーバーの分岐と、起動後に返すhandleを読みます。",
+      "terms": [
+        "rpc",
+        "engine",
+        "await",
+        "handle",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1054,
+          "match": "let disable_auth = ctx.config.rpc.disable_auth_server;",
+          "label": "認証サーバーを無効にする設定を読む",
+          "explanation": "CLI由来のdisable_auth_serverを、次の起動本体へ渡します。"
+        },
+        {
+          "line": 1075,
+          "match": "let setup_ctx = self.setup_rpc_components(ctx, ext).await?;",
+          "label": "先にRPCの部品とmoduleを組み立てる",
+          "explanation": "setup_rpc_componentsを待ち、APIやノード部品が接続されたRpcSetupContextを受け取ります。"
+        },
+        {
+          "line": 1088,
+          "match": "let server_config = config",
+          "label": "通常RPCの通信設定を用意する",
+          "explanation": "設定からRPC server configを作り、middlewareとruntimeを指定します。"
+        },
+        {
+          "line": 1096,
+          "match": "let (rpc, auth) = if disable_auth {",
+          "label": "認証サーバーを起動するか分ける",
+          "explanation": "disable_authなら通常RPCだけを起動し、auth側にはnoopのhandleを使います。"
+        },
+        {
+          "line": 1103,
+          "match": "let (rpc, auth) = futures::future::try_join(",
+          "label": "通常RPCと認証サーバーを並行に起動する",
+          "explanation": "認証を使う構成では二つの起動Futureをtry_joinで待ちます。一方の起動に失敗すると?でエラーを返します。"
+        },
+        {
+          "line": 1113,
+          "match": "Self::finalize_rpc_setup(",
+          "label": "起動済みhandleを渡して後処理する",
+          "explanation": "registryやmoduleと起動結果をfinalize_rpc_setupへ渡します。"
+        },
+        {
+          "line": 1123,
+          "match": "Ok(RpcHandle {",
+          "label": "RPCとEngine接続のhandleを返す",
+          "explanation": "通常RPC/authのhandle、registry、EngineイベントとhandleなどをRpcHandleにまとめて返します。起動できたことは各取引の処理完了とは別です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:component-rpc-start": {
+      "intro": "直前の起動本体が呼ぶ二つのhelperです。サーバー構築APIとの境界で、成功時のhandleと失敗時のエラーを受け取ります。",
+      "terms": [
+        "rpc",
+        "await",
+        "handle",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1256,
+          "match": "let handle = server_config.start(modules).await?;",
+          "label": "通常RPCの起動APIを待つ",
+          "explanation": "configと公開moduleをサーバーのstartへ渡し、その結果を待ちます。失敗なら?で返します。HTTP/WS/IPCの内部処理そのものはstart側の責務です。"
+        },
+        {
+          "line": 1258,
+          "match": "if let Some(path) = handle.ipc_endpoint() {",
+          "label": "有効になった通信方式の窓口を記録する",
+          "explanation": "IPC/HTTP/WSのendpointがhandleにある場合だけ、対応するログを出します。全ての通信方式が必ず有効という意味ではありません。"
+        },
+        {
+          "line": 1268,
+          "match": "Ok(handle)",
+          "label": "通常RPCのhandleを返す",
+          "explanation": "サーバーの起動結果を呼出元へ返します。"
+        },
+        {
+          "line": 1275,
+          "match": "start_fut",
+          "label": "認証サーバーの起動も結果を待つ",
+          "explanation": "渡されたstart_futをawaitし、エラー型を変換して返します。成功時のinspectは窓口をログに記録する処理です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-cli-prepare": {
+      "intro": "CliApp::runが具体的な部品構成とlauncherをrun_with_componentsへ渡し、その本体が実行環境・ログ・metricsを用意してコマンド分岐へ進みます。",
+      "terms": [
+        "cli",
+        "function",
+        "result",
+        "logging",
+        "thread"
+      ],
+      "lines": [
+        {
+          "line": 68,
+          "match": "pub fn run(self, launcher: impl Launcher<C, Ext>) -> Result<()>",
+          "label": "通常のEthereum構成でコマンドを実行する入口",
+          "explanation": "CliApp::runはlauncherを受け取り、最後に呼ぶrun_with_componentsのResult<()>をそのまま自分の結果として返します。"
+        },
+        {
+          "line": 80,
+          "match": ".expect(\"failed to start revmc JIT backend\");",
+          "label": "部品作成の失敗時の扱いを区別する",
+          "explanation": "EVM構成の作成はここではexpectを使います。失敗ならpanicとなり、後段の?によるResultのエラー返却と同じ書き方ではありません。"
+        },
+        {
+          "line": 81,
+          "match": "(evm_config, Arc::new(EthBeaconConsensus::new(spec)))",
+          "label": "実行側の検証部品を選ぶ",
+          "explanation": "EthBeaconConsensusは実行側でブロック等のルールを検証する部品です。外部のコンセンサスクライアントそのものをこの行で起動するわけではありません。"
+        },
+        {
+          "line": 84,
+          "match": "self.run_with_components::<EthereumNode>(components, async move |builder, ext| {",
+          "label": "準備の本体へ部品と起動用の処理を渡す",
+          "explanation": "run_with_componentsに部品を作るclosureとlauncherを呼ぶ非同期closureを渡します。この式のResultがrunの返り値であり、この場所に?を付けて返しているわけではありません。"
+        },
+        {
+          "line": 94,
+          "match": "pub fn run_with_components<N>(",
+          "label": "CLIと起動用の処理を受け取る",
+          "explanation": "self、部品を作るcomponents、ノードを起動するlauncherを受け取り、Result<()>を返す関数です。"
+        },
+        {
+          "line": 106,
+          "match": "let runner = match self.runner.take() {",
+          "label": "runnerの有無で準備方法を分ける",
+          "explanation": "渡されたrunnerがあれば使います。なければコマンドの種類に合うruntime設定を作り、CliRunnerを生成します。"
+        },
+        {
+          "line": 110,
+          "match": "Commands::Node(command) => {",
+          "label": "node用の実行設定を選ぶ",
+          "explanation": "nodeのときはCPUやworkerに関する指定をruntime設定へ渡します。ほかのコマンドでは既定設定を使います。"
+        },
+        {
+          "line": 126,
+          "match": "if let Some(chain_spec) = self.cli.command.chain_spec() {",
+          "label": "チェーンに応じたログの保存先を選ぶ",
+          "explanation": "コマンドからチェーン設定が得られる場合、その名前をログ用ディレクトリに加えます。"
+        },
+        {
+          "line": 132,
+          "match": "if matches!(self.cli.command, Commands::Node(_)) {",
+          "label": "node用のログの既定値を反映する",
+          "explanation": "nodeコマンドの場合だけapply_node_defaultsを呼びます。"
+        },
+        {
+          "line": 136,
+          "match": "self.init_tracing(&runner)?;",
+          "label": "ログ記録の初期化を行う",
+          "explanation": "同じ範囲のinit_tracingを呼び、失敗なら?で戻ります。"
+        },
+        {
+          "line": 142,
+          "match": "install_prometheus_recorder();",
+          "label": "metricsの記録器を用意する",
+          "explanation": "コマンド実行前にPrometheusの記録器を登録します。"
+        },
+        {
+          "line": 144,
+          "match": "run_commands_with::<C, Ext, Rpc, N, SubCmd>(self.cli, runner, components, launcher)",
+          "label": "コマンド分岐へ準備した値を渡す",
+          "explanation": "CLI、runner、components、launcherをrun_commands_withへ渡し、その結果を返します。"
+        },
+        {
+          "line": 151,
+          "match": "if let Some(layers) = self.layers.take() {",
+          "label": "ログ用layerがある場合に初期化する",
+          "explanation": "layersがある場合だけCLIのtracing初期化を呼び、返ったguardを保持します。なければそのままOkで戻ります。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-tree-spawn": {
+      "intro": "EngineApiTreeHandler::spawn_newです。要求の受信側を持つ処理を作り、専用OSスレッドでrunを始めます。",
+      "terms": [
+        "thread",
+        "channel",
+        "engine",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 427,
+          "match": "pub fn spawn_new(",
+          "label": "起動に使う部品と設定を受け取る",
+          "explanation": "provider、検証部品、保存handle、payload builderなどを引数に受け取ります。返り値は要求の送信口とイベントの受信口です。"
+        },
+        {
+          "line": 450,
+          "match": "let (tx, outgoing) = unbounded_channel();",
+          "label": "イベント返答用の経路を用意する",
+          "explanation": "treeがイベントを送るtxと、呼出元が受け取るoutgoingを作ります。"
+        },
+        {
+          "line": 460,
+          "match": "let task = Self::new(",
+          "label": "tree処理の値を作る",
+          "explanation": "保存や検証、状態と通知先などを渡して、runするtaskを作ります。"
+        },
+        {
+          "line": 475,
+          "match": "let incoming = task.incoming_tx.clone();",
+          "label": "要求を送る側の窓口を取り出す",
+          "explanation": "taskに要求を送るincoming_txを複製し、呼出元へ渡す準備をします。"
+        },
+        {
+          "line": 476,
+          "match": "spawn_os_thread(\"engine\", || {",
+          "label": "専用OSスレッドを開始する",
+          "explanation": "engineという名前のOSスレッドで、優先度を上げたあとtask.runを呼びます。これはtokio::spawnによる非同期タスク起動とは区別します。"
+        },
+        {
+          "line": 480,
+          "match": "(incoming, outgoing)",
+          "label": "要求とイベントの窓口を返す",
+          "explanation": "incomingは要求の送信側、outgoingはtreeのイベントを受け取る側です。runの完了そのものをこの関数で待つわけではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-orchestrator-poll": {
+      "intro": "launcher側のorchestrator.next()が進める処理です。backfillの開始・終了をhandlerへ通知し、要求処理のイベントを上へ返します。",
+      "terms": [
+        "poll",
+        "stage",
+        "engine",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 84,
+          "match": "match this.backfill_sync.poll(cx) {",
+          "label": "backfillを先に進める",
+          "explanation": "backfillのpollがReadyなら、その開始や結果に応じた分岐へ進みます。Pendingでも直後のhandlerのpollは行います。"
+        },
+        {
+          "line": 88,
+          "match": "this.handler.on_event(FromOrchestrator::BackfillSyncStarted);",
+          "label": "同期開始をhandlerへ知らせる",
+          "explanation": "BackfillSyncStartedをhandlerへ渡してから、上位にも開始イベントを返します。"
+        },
+        {
+          "line": 96,
+          "match": "this.handler.on_event(FromOrchestrator::BackfillSyncFinished(ctrl));",
+          "label": "同期の成功結果をhandlerへ渡す",
+          "explanation": "pipelineが返した制御結果ctrlを通知してから、上位へFinishedイベントを返します。"
+        },
+        {
+          "line": 99,
+          "match": "Err(err) => {",
+          "label": "同期の失敗はFatalErrorへする",
+          "explanation": "完了結果がErrの場合とTaskDroppedの場合は、上位へFatalErrorを返します。"
+        },
+        {
+          "line": 114,
+          "match": "match this.handler.poll(cx) {",
+          "label": "要求処理側の次のイベントを調べる",
+          "explanation": "handlerをpollし、同期依頼や通常イベント、致命的エラーを分けます。"
+        },
+        {
+          "line": 119,
+          "match": "this.backfill_sync.on_action(action);",
+          "label": "同期依頼をbackfill担当へ渡す",
+          "explanation": "handlerから来たBackfillActionはbackfill_sync.on_actionへ渡します。"
+        },
+        {
+          "line": 123,
+          "match": "return Poll::Ready(ChainEvent::Handler(ev));",
+          "label": "通常イベントを上位へ返す",
+          "explanation": "handlerのイベントをChainEvent::Handlerに包んで返します。"
+        },
+        {
+          "line": 138,
+          "match": "Poll::Pending",
+          "label": "今すぐ返すイベントがなければ待つ",
+          "explanation": "Pendingで実行を譲ります。処理全体の完了という意味ではありません。"
+        },
+        {
+          "line": 149,
+          "match": "fn poll_next(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<Self::Item>> {",
+          "label": "Streamからこの処理へつなぐ",
+          "explanation": "Stream::poll_nextはpoll_next_eventを呼び、得られたChainEventをSomeに包んで上位へ返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-engine-poll": {
+      "intro": "EngineHandlerのpoll本体です。tree側のイベントを先に取り出し、Engine API要求やdownloaderの結果をhandlerへ渡します。",
+      "terms": [
+        "poll",
+        "engine",
+        "channel",
+        "block"
+      ],
+      "lines": [
+        {
+          "line": 67,
+          "match": "impl<T, S, D> ChainHandler for EngineHandler<T, S, D>",
+          "label": "EngineHandlerをChainHandlerとして動かす実装",
+          "explanation": "orchestratorが呼ぶChainHandlerをEngineHandlerが実装します。内側のTはEngineRequestHandlerで、外側のEngineHandlerとは別の型です。"
+        },
+        {
+          "line": 78,
+          "match": "self.handler.on_event(event.into());",
+          "label": "開始や完了の通知も内側へ渡す",
+          "explanation": "orchestratorから受けた制御イベントをFromEngine側へ変換して内側のhandlerへ渡します。内側がEngineApiRequestHandlerの場合はto_treeを通り、treeのBackfillSyncStarted/Finished等の分岐に届きます。"
+        },
+        {
+          "line": 84,
+          "match": "while let Poll::Ready(ev) = self.handler.poll(cx) {",
+          "label": "まずtree側のイベントを取り出す",
+          "explanation": "handlerから届くイベントを先に処理し、通常イベントや同期依頼を上位へ返します。"
+        },
+        {
+          "line": 88,
+          "match": "HandlerEvent::BackfillAction(target) => {",
+          "label": "backfill依頼ならdownloaderを整理する",
+          "explanation": "同期の依頼は進行中のdownloaderへClearを送り、上位へBackfillActionを返します。"
+        },
+        {
+          "line": 102,
+          "match": "self.downloader.on_action(DownloadAction::Download(req));",
+          "label": "取得依頼はdownloaderへ渡す",
+          "explanation": "tree側からDownloadの要求があれば、その要求をdownloaderへ渡します。"
+        },
+        {
+          "line": 108,
+          "match": "if let Poll::Ready(Some(req)) = self.incoming_requests.poll_next_unpin(cx) {",
+          "label": "次のEngine API要求を取り出す",
+          "explanation": "要求があればFromEngine::Requestでhandlerへ渡し、loopの先頭へ戻って処理を進めます。"
+        },
+        {
+          "line": 116,
+          "match": "if let Poll::Ready(outcome) = self.downloader.poll(cx) {",
+          "label": "取得結果もhandlerへ渡す",
+          "explanation": "downloaderがブロックを返した場合はDownloadedBlocksとして渡します。"
+        },
+        {
+          "line": 124,
+          "match": "return Poll::Pending",
+          "label": "どれも進まなければ待つ",
+          "explanation": "今すぐ扱えるイベントや要求がなければPendingを返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-engine-channel": {
+      "intro": "EngineApiRequestHandlerの実装です。treeへの送信とtreeからのイベント受信の両方を読みます。",
+      "terms": [
+        "engine",
+        "channel",
+        "poll",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 197,
+          "match": "fn on_event(&mut self, event: FromEngine<Self::Request, Self::Block>) {",
+          "label": "入力をtreeの経路へ送る",
+          "explanation": "on_eventに渡された入力をto_treeへ送ります。送信できたこととtreeで処理が完了したことは別です。"
+        },
+        {
+          "line": 203,
+          "match": "let Some(ev) = ready!(self.from_tree.poll_recv(cx)) else {",
+          "label": "treeから届くイベントを待つ",
+          "explanation": "from_treeをpollし、まだならready!で待ちます。チャネルが閉じてNoneならFatalErrorを上位へ返します。"
+        },
+        {
+          "line": 207,
+          "match": "let ev = match ev {",
+          "label": "返ってきたイベントの種類を分ける",
+          "explanation": "通常のEngineイベント、backfill依頼、download依頼をそれぞれ対応する上位のイベントへ変換します。"
+        },
+        {
+          "line": 216,
+          "match": "Poll::Ready(ev)",
+          "label": "変換したイベントを返す",
+          "explanation": "ReadyでEngineHandler側へイベントを返し、同じファイルのpoll処理がそれぞれの担当へ取り次ぎます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-component-choice": {
+      "intro": "共通のComponentsBuilderで使う具体的な型を、通常のEthereumNodeが選ぶ構成です。呼出し本体とは別の、型の対応を読む箇所です。",
+      "terms": [
+        "type",
+        "trait",
+        "node",
+        "pool",
+        "engine"
+      ],
+      "lines": [
+        {
+          "line": 79,
+          "match": "pub fn components<Node>() -> ComponentsBuilder<",
+          "label": "返すComponentsBuilderの型を宣言する",
+          "explanation": "Ethereumのpool・payload・network・executor・consensusのbuilder型を型パラメータとして選びます。"
+        },
+        {
+          "line": 88,
+          "match": "Node: FullNodeTypes<",
+          "label": "この構成を使えるノード型の条件を読む",
+          "explanation": "NodeTypesのチェーン設定、取引/ブロックの型、payloadの型などに条件があります。"
+        },
+        {
+          "line": 97,
+          "match": "ComponentsBuilder::default()",
+          "label": "builderを組み合わせる",
+          "explanation": "既定値から始め、pool/executor/payload/network/consensusの具体的なbuilderを登録して返します。型の対応であり、ここで全サービスが起動済みになるわけではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-network-builder": {
+      "intro": "EthereumNetworkBuilderによるNetworkBuilderの実装です。共通の部品構築から、どの型のbuild_networkへ渡るかを確認します。",
+      "terms": [
+        "trait",
+        "node",
+        "pool",
+        "await",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 770,
+          "match": "impl<Node, Pool> NetworkBuilder<Node, Pool> for EthereumNetworkBuilder",
+          "label": "Ethereum用の実装型を特定する",
+          "explanation": "NetworkBuilderという約束をEthereumNetworkBuilderが実装します。これが、構成で選ばれた具体的なbuilderの本体です。"
+        },
+        {
+          "line": 780,
+          "match": "async fn build_network(",
+          "label": "設定とプールを受け取る",
+          "explanation": "BuilderContextとpoolを受け取り、起動したネットワークと接続するhandleをResultで返します。"
+        },
+        {
+          "line": 785,
+          "match": "let network = ctx.network_builder().await?;",
+          "label": "設定に合うネットワークbuilderを用意する",
+          "explanation": "network_builderを待ち、失敗なら?で返します。"
+        },
+        {
+          "line": 786,
+          "match": "let handle = ctx.start_network(network, pool);",
+          "label": "ネットワークのタスクを起動する",
+          "explanation": "start_networkにbuilderとpoolを渡し、返ったhandleを受け取ります。次の範囲がこの起動処理の本体です。"
+        },
+        {
+          "line": 788,
+          "match": "Ok(handle)",
+          "label": "起動元へhandleを返す",
+          "explanation": "このhandleを共通の部品構築へ返します。ネットワーク全体の処理完了を待つ返答ではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-network-start": {
+      "intro": "start_networkから設定の引き渡しを追い、ネットワーク・取引プール通信・要求処理の担当を起動してhandleを返す本体まで読みます。",
+      "terms": [
+        "node",
+        "pool",
+        "thread",
+        "channel",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 883,
+          "match": "self.start_network_with(",
+          "label": "起動設定と伝播方針を渡す",
+          "explanation": "通常のstart_networkは、contextの設定から取引管理設定と伝播方針を取り出し、start_network_withへ渡します。"
+        },
+        {
+          "line": 917,
+          "match": "self.start_network_with_policies(",
+          "label": "通知の選別方針も追加する",
+          "explanation": "start_network_withは、既定のStrictEthAnnouncementFilterを加えてstart_network_with_policiesへ渡します。"
+        },
+        {
+          "line": 955,
+          "match": "let (handle, network, txpool, eth) = builder",
+          "label": "ネットワークと関連処理の部品を取り出す",
+          "explanation": "poolと方針をbuilderへ渡し、ネットワークhandle、network、txpool通信、eth要求処理を別の値として受け取ります。"
+        },
+        {
+          "line": 963,
+          "match": "if let Some(cache) = self.sender_recovery_cache.clone() {",
+          "label": "送信者復元キャッシュの設定を渡す",
+          "explanation": "cacheがあれば通信の取引担当に渡し、なければそのまま使います。キャッシュ内部の実装をここで説明しているわけではありません。"
+        },
+        {
+          "line": 969,
+          "match": ".request_handler_with_blob_store(self.provider().clone(), pool.blob_store())",
+          "label": "ブロック等の要求処理に保存先をつなぐ",
+          "explanation": "providerとblob_storeを要求処理側へ渡し、split_with_handleで関連する部品を分けます。"
+        },
+        {
+          "line": 972,
+          "match": "self.executor.spawn_critical_blocking_task(\"p2p txpool\", txpool);",
+          "label": "取引プール通信の処理を起動する",
+          "explanation": "p2p txpool担当をcritical blocking taskとして起動します。続く行でeth request handlerも別に起動します。"
+        },
+        {
+          "line": 977,
+          "match": "self.executor.spawn_critical_with_graceful_shutdown_signal(",
+          "label": "ネットワークの進行と停止処理を起動する",
+          "explanation": "p2p network taskをgraceful shutdown signal付きで起動します。network.run_until_graceful_shutdownが停止指示までネットワークを進めます。"
+        },
+        {
+          "line": 981,
+          "match": "if let Some(peers_file) = known_peers_file {",
+          "label": "停止時の接続相手保存は設定で分ける",
+          "explanation": "known_peers_fileが設定されている場合だけ接続相手を書き出します。書込の成功/失敗をログに記録します。"
+        },
+        {
+          "line": 997,
+          "match": "handle",
+          "label": "構築側へネットワークhandleを返す",
+          "explanation": "各処理の開始後にhandleを返します。終了まで待つFutureの結果や、取引の追加結果とは別です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-payload-spawn": {
+      "intro": "BasicPayloadServiceBuilderの実装です。実行設定とpoolから候補作成のサービスを用意し、サービス用handleを返します。",
+      "terms": [
+        "trait",
+        "payload",
+        "pool",
+        "thread",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 98,
+          "match": "impl<Node, Pool, PB, EvmConfig> PayloadServiceBuilder<Node, Pool, EvmConfig>",
+          "label": "具体的なサービスbuilderの実装を読む",
+          "explanation": "PayloadServiceBuilderという約束をBasicPayloadServiceBuilderが実装し、使えるNode/Pool/具体builderの条件をwhereで定めます。"
+        },
+        {
+          "line": 113,
+          "match": "let payload_builder =",
+          "label": "候補作成の担当を作る",
+          "explanation": "ctx、pool、EVM設定をbuild_payload_builderへ渡し、作成結果をawaitします。失敗なら?で返します。"
+        },
+        {
+          "line": 118,
+          "match": "let payload_job_config = BasicPayloadJobGeneratorConfig::default()",
+          "label": "候補作成の実行設定を渡す",
+          "explanation": "interval、deadline、同時タスク数、事前cache状態の設定をjob generatorへ渡します。"
+        },
+        {
+          "line": 124,
+          "match": "let payload_generator = BasicPayloadJobGenerator::with_builder(",
+          "label": "providerと実行器をgeneratorへつなぐ",
+          "explanation": "providerとtask executor、設定、候補作成担当からjob generatorを作ります。"
+        },
+        {
+          "line": 130,
+          "match": "let (payload_service, payload_service_handle) =",
+          "label": "サービスと外部から使うhandleを分ける",
+          "explanation": "候補作成generatorと採用履歴のイベント列から、サービス本体とhandleを受け取ります。"
+        },
+        {
+          "line": 136,
+          "match": "ctx.task_executor().spawn_critical_os_thread(",
+          "label": "サービスを専用のOSスレッドで進める",
+          "explanation": "spawn_critical_os_threadでpayload_serviceを起動します。ここでブロック候補を全て作り終えるのではありません。"
+        },
+        {
+          "line": 142,
+          "match": "Ok(payload_service_handle)",
+          "label": "起動元へ操作用のhandleを返す",
+          "explanation": "payload_service_handleを返し、ほかの部品が候補作成サービスへ要求できるようにします。"
+        }
+      ],
+      "note": ""
+    },
+    "area:file-batch-create": {
+      "intro": "BatchTxProcessor::new本体です。追加依頼を送る口と、プールを持って受信するprocessorを一緒に作ります。",
+      "terms": [
+        "channel",
+        "pool",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 62,
+          "match": "let (request_tx, request_rx) = mpsc::unbounded_channel();",
+          "label": "依頼を送る口と受け取る口を作る",
+          "explanation": "mpsc::unbounded_channelで内部依頼用の送信口と受信口を作ります。max_batch_sizeは一度に扱う件数の設定で、このキュー容量の上限を設定する値ではありません。"
+        },
+        {
+          "line": 64,
+          "match": "let processor = Self { pool, max_batch_size, buf: Vec::with_capacity(1), request_rx };",
+          "label": "受信担当にプールと受信口を持たせる",
+          "explanation": "processorにpool、最大バッチ件数、バッファ、request_rxを保持します。"
+        },
+        {
+          "line": 66,
+          "match": "(processor, request_tx)",
+          "label": "処理担当と送信口を呼出元へ返す",
+          "explanation": "processorとrequest_txを返します。呼出元がprocessorを動かし、request_txを保持して使います。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-cli-entry": {
+      "intro": "mainが呼ぶCli::runの本体です。起動用closureをFnLauncherに包み、CliAppのrunへ渡します。",
+      "terms": [
+        "cli",
+        "closure",
+        "await",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 158,
+          "match": "pub fn run<L, Fut>(self, launcher: L) -> eyre::Result<()>",
+          "label": "mainから起動用の処理を受け取る",
+          "explanation": "launcherというclosureを受け取り、CLI全体の実行結果をResult<()>で返します。"
+        },
+        {
+          "line": 160,
+          "match": "L: FnOnce(WithLaunchContext<NodeBuilder<DatabaseEnv, C::ChainSpec>>, Ext) -> Fut,",
+          "label": "渡せるclosureの入力と結果を定める",
+          "explanation": "launcherはDB付きbuilderと拡張引数を受け、Result<()>を返すFutureを作る処理です。"
+        },
+        {
+          "line": 164,
+          "match": "self.configure()",
+          "label": "CLIをCliAppへ組み替える",
+          "explanation": "configureが返す型はCliAppです。この同名runと、ここで定義するCli::runを区別します。"
+        },
+        {
+          "line": 165,
+          "match": ".run(FnLauncher::new::<C, Ext>(async move |builder, ext| launcher(builder, ext).await))",
+          "label": "最初の関数adapterに包んで実行へ渡す",
+          "explanation": "mainから来たlauncherを呼ぶ非同期closureをFnLauncher::newで保持し、CliApp::runへ渡します。CliApp内のwrapperとNode分岐で作る別のFnLauncherも、同じadapterの実装を使います。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-cli-configure": {
+      "intro": "公開Cli::runが呼ぶconfigureの本体です。戻る型がCliAppであることを、同名メソッドを推測せず確かめます。",
+      "terms": [
+        "cli",
+        "type",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 112,
+          "match": "pub fn configure(self) -> CliApp<C, Ext, Rpc, SubCmd> {",
+          "label": "返す型を明記する",
+          "explanation": "configureはCliApp<C, Ext, Rpc, SubCmd>を返すメソッドです。元のCliとは違う型です。"
+        },
+        {
+          "line": 113,
+          "match": "CliApp::new(self)",
+          "label": "CLIの値をCliAppの作成へ渡す",
+          "explanation": "selfをCliApp::newへ渡し、その返り値をそのまま返します。このあと呼ばれるrunはCliAppのメソッドです。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-launcher-entry": {
+      "intro": "関数をLauncherという操作に合わせるadapterです。同じ型の宣言を使っても、CLIの各層で保持するclosureの型Fと値は別です。",
+      "terms": [
+        "closure",
+        "trait",
+        "function",
+        "return",
+        "async"
+      ],
+      "lines": [
+        {
+          "line": 43,
+          "match": "pub struct FnLauncher<F> {",
+          "label": "起動に使う処理を保持する型を読む",
+          "explanation": "FnLauncher<F>はfuncという処理を持つ値です。Fは保持するclosureなどの具体的な型です。"
+        },
+        {
+          "line": 57,
+          "match": "pub fn new<C, Ext>(func: F) -> Self",
+          "label": "渡された処理からadapterを作る",
+          "explanation": "newはfuncを受け取り、そのまま保持するSelfを返します。CとExtは型の条件を決めるための引数で、別のフィールドとして保存していません。"
+        },
+        {
+          "line": 60,
+          "match": "F: AsyncFnOnce(",
+          "label": "処理の入力と非同期の結果に条件を付ける",
+          "explanation": "funcはDB付きbuilderと拡張引数を受け、Result<()>を返す非同期の処理であることを求めます。"
+        },
+        {
+          "line": 75,
+          "match": "impl<C, Ext, F> Launcher<C, Ext> for FnLauncher<F>",
+          "label": "Launcherとして呼べるように実装する",
+          "explanation": "このimplが、保持したFの処理をLauncher::entrypointという共通の呼び方へつなぎます。"
+        },
+        {
+          "line": 84,
+          "match": "fn entrypoint(",
+          "label": "NodeCommandから呼ばれる入口を読む",
+          "explanation": "entrypointはbuilderとbuilder_argsを受け取ります。"
+        },
+        {
+          "line": 89,
+          "match": "(self.func)(builder, builder_args)",
+          "label": "保持していた処理へ値を渡す",
+          "explanation": "self.funcへ二つの値を渡し、得られたFutureをそのまま返します。実行結果を待つのは呼出元です。CLIで作る各wrapperを介して、mainの起動closureへつながります。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-builder-launch": {
+      "intro": "mainの起動closureが呼ぶlaunch_with_debug_capabilitiesです。内側にEngineNodeLauncherを持つDebugNodeLauncherを作り、builderへ渡します。",
+      "terms": [
+        "node",
+        "type",
+        "handle",
+        "function"
+      ],
+      "lines": [
+        {
+          "line": 740,
+          "match": "pub fn launch_with_debug_capabilities(",
+          "label": "mainが呼ぶ起動メソッドを読む",
+          "explanation": "返り値はDebugNodeLauncherが作るFutureの型です。このメソッド内でノード起動完了を待つのではありません。"
+        },
+        {
+          "line": 747,
+          "match": "let Self { builder, task_executor } = self;",
+          "label": "builderとタスク実行器を取り出す",
+          "explanation": "WithLaunchContextが持つbuilderとtask_executorを起動に使います。"
+        },
+        {
+          "line": 751,
+          "match": "let launcher = DebugNodeLauncher::new(EngineNodeLauncher::new(",
+          "label": "Engine launcherをDebug launcherで包む",
+          "explanation": "タスク実行器、データ保存先、tree設定からEngineNodeLauncherを作り、それをDebugNodeLauncherの内側へ入れます。"
+        },
+        {
+          "line": 756,
+          "match": "builder.launch_with(launcher)",
+          "label": "選んだlauncherをbuilderへ渡す",
+          "explanation": "builder.launch_withの返り値をそのまま返します。実際の待機はmainの.awaitで進みます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-builder-dispatch": {
+      "intro": "NodeBuilderWithComponentsのlaunch_withです。型Lに求めるLaunchNodeの操作で、builder自身を渡します。",
+      "terms": [
+        "node",
+        "trait",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 276,
+          "match": "impl<T, CB, AO> NodeBuilderWithComponents<T, CB, AO>",
+          "label": "部品付きbuilderの実装を読む",
+          "explanation": "このimplはNodeBuilderWithComponentsのメソッドです。T、CB、AOにはwhereで条件を求めます。"
+        },
+        {
+          "line": 283,
+          "match": "pub fn launch_with<L>(self, launcher: L) -> L::Future",
+          "label": "launcherとそのFutureの型を受け取る",
+          "explanation": "launcherはLaunchNode<Self>を満たす型です。戻り値はその型LのFutureです。"
+        },
+        {
+          "line": 287,
+          "match": "launcher.launch_node(self)",
+          "label": "launcherへbuilder自身を渡す",
+          "explanation": "launcher.launch_node(self)を呼び、返るFutureをそのまま返します。ここではawaitしていません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-debug-adapter": {
+      "intro": "DebugNodeLauncherがLaunchNodeを実装する箇所と、その返り値がawaitされると呼ぶIntoFutureの接続です。",
+      "terms": [
+        "trait",
+        "async",
+        "type",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 354,
+          "match": "impl<L, Target, N, AddOns, B> IntoFuture for DebugNodeLauncherFuture<L, Target, N, B>",
+          "label": "awaitへ変換する実装を読む",
+          "explanation": "DebugNodeLauncherFutureはIntoFutureを実装します。mainの.awaitはこの変換を介して非同期の起動本体へ進みます。"
+        },
+        {
+          "line": 365,
+          "match": "fn into_future(self) -> Self::IntoFuture {",
+          "label": "保持した起動本体をFutureへ変換する",
+          "explanation": "self.launch_node()のFutureをBox::pinして返します。これはDebugNodeLauncherFutureの非同期メソッドです。"
+        },
+        {
+          "line": 370,
+          "match": "impl<L, Target, N, AddOns> LaunchNode<Target> for DebugNodeLauncher<L>",
+          "label": "DebugNodeLauncherの起動操作を実装する",
+          "explanation": "builderから渡されたlauncherに対するLaunchNodeの実装です。直前のIntoFutureとは、実装対象の型が異なります。"
+        },
+        {
+          "line": 381,
+          "match": "fn launch_node(self, target: Target) -> Self::Future {",
+          "label": "targetと内側のlauncherを保持する",
+          "explanation": "受け取ったtargetとself.innerをDebugNodeLauncherFutureへ保存し、debug用の追加値はNoneから始めます。Futureを作ることと、その処理が完了することは別です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-debug-inner": {
+      "intro": "DebugNodeLauncherFutureの非同期メソッドの入力分解と、通常の内側の起動へ委譲する箇所です。",
+      "terms": [
+        "async",
+        "await",
+        "result",
+        "node"
+      ],
+      "lines": [
+        {
+          "line": 211,
+          "match": "async fn launch_node(self) -> eyre::Result<NodeHandle<N, AddOns>> {",
+          "label": "起動本体が返す結果の型を読む",
+          "explanation": "この非同期メソッドはNodeHandleまたはeyreのエラーを返す型です。ここで表示しているのは、その冒頭の入力と内側起動の受け渡しです。"
+        },
+        {
+          "line": 212,
+          "match": "let Self {",
+          "label": "内側のlauncherとtargetを取り出す",
+          "explanation": "Futureが保持したinnerとtarget、追加のdebug設定を分けて取り出します。"
+        },
+        {
+          "line": 221,
+          "match": "let handle = inner.launch_node(target).await?;",
+          "label": "内側の起動を待ちhandleを受け取る",
+          "explanation": "inner.launch_node(target)の結果をawaitします。内側起動に失敗したら?で返り、成功ならNodeHandleをhandleへ保持します。設定に応じたdebug処理を経た末尾のOk(handle)は別の範囲で確認します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-engine-dispatch": {
+      "intro": "EngineNodeLauncherに対するLaunchNodeの実装です。同名のtraitメソッドから、型自身の非同期の起動本体へ渡します。",
+      "terms": [
+        "trait",
+        "node",
+        "type",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 448,
+          "match": "impl<N, DB, T, CB, AO> LaunchNode<NodeBuilderWithComponents<T, CB, AO>> for EngineNodeLauncher",
+          "label": "builderに対応するEngine launcherの実装を読む",
+          "explanation": "NodeBuilderWithComponentsを入力とするLaunchNodeを、EngineNodeLauncherに実装しています。"
+        },
+        {
+          "line": 462,
+          "match": "type Node = NodeHandle<NodeAdapter<T, CB::Components>, AO>;",
+          "label": "成功時のノード型とFutureを示す",
+          "explanation": "成功時はNodeHandleです。FutureはそのNodeHandleのResultを返します。"
+        },
+        {
+          "line": 465,
+          "match": "fn launch_node(self, target: NodeBuilderWithComponents<T, CB, AO>) -> Self::Future {",
+          "label": "traitの入口でbuilderを受け取る",
+          "explanation": "targetは設定と部品のbuilderを持つ値です。"
+        },
+        {
+          "line": 466,
+          "match": "Box::pin(self.launch_node(target))",
+          "label": "型自身の起動本体のFutureを返す",
+          "explanation": "self.launch_node(target)はEngineNodeLauncherの非同期メソッドです。同じtraitメソッドを無限に再帰呼出しする意味ではありません。Box::pinでそのFutureを返し、本体は起動用の69行以降です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-debug-return": {
+      "intro": "DebugNodeLauncherFutureの非同期メソッドの末尾です。内側起動から得たhandleは、設定に応じたdebug用処理の後に返ります。",
+      "terms": [
+        "return",
+        "result",
+        "handle"
+      ],
+      "lines": [
+        {
+          "line": 350,
+          "match": "Ok(handle)",
+          "label": "呼出元へ起動結果を返す",
+          "explanation": "正常終了ではOk(handle)を返します。211–221の内側起動の待機と、この返却の間にはdebug機能の設定に応じた処理があります。この読解では通常の起動の型と値の受け渡しを追い、それら開発用処理を実行済みだとは主張しません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-tree-pressure": {
+      "intro": "treeのrunが呼ぶshould_backpressureの本体です。保存中という条件と、メモリー保持分を引いたブロック数の条件を組み合わせます。",
+      "terms": [
+        "block",
+        "database",
+        "poll"
+      ],
+      "lines": [
+        {
+          "line": 499,
+          "match": "self.canonical_in_memory_state.canonical_chain().count() as u64",
+          "label": "採用中のブロックの保持数を数える",
+          "explanation": "数えるのはcanonical_in_memory_stateのブロック数です。トランザクションプールの取引件数ではありません。"
+        },
+        {
+          "line": 504,
+          "match": "self.persistence_gap().saturating_sub(self.config.memory_block_buffer_target())",
+          "label": "設定した保持分を差し引く",
+          "explanation": "memory_block_buffer_targetをsaturating_subで引き、保持分以下なら差を0にします。"
+        },
+        {
+          "line": 512,
+          "match": "self.persistence_state.in_progress() &&",
+          "label": "保存中と閾値到達の両方を求める",
+          "explanation": "in_progressがtrueで、かつ控除後の数がthreshold以上のときだけtrueです。一方の条件だけで必ず抑制するわけではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-backfill-gate": {
+      "intro": "treeからorchestratorへbackfill依頼を出す条件です。tree側のPending/Active等は、pipeline側のIdle/RunningやPoll::Pendingとは別の状態です。",
+      "terms": [
+        "engine",
+        "stage",
+        "database",
+        "channel"
+      ],
+      "lines": [
+        {
+          "line": 2146,
+          "match": "if let EngineApiEvent::BackfillAction(action) = event {",
+          "label": "backfillの依頼だけをこの条件へ通す",
+          "explanation": "BackfillActionでない通常イベントは、末尾のsend_eventへ送ります。"
+        },
+        {
+          "line": 2153,
+          "match": "let persistence_in_progress = self.persistence_state.in_progress();",
+          "label": "保存と状態trieの進行を調べる",
+          "explanation": "保存中か、状態trieの保存位置がブロックの保存位置に追いついているかを確認します。"
+        },
+        {
+          "line": 2156,
+          "match": "if self.payload_builds.is_active() ||",
+          "label": "一つでも処理が残れば開始依頼を保留する",
+          "explanation": "候補作成中、保存中、trieの追いつきが必要な状態のいずれかなら、すぐbackfillを始めません。"
+        },
+        {
+          "line": 2172,
+          "match": "self.backfill_sync_state = BackfillSyncState::PendingRevalidation;",
+          "label": "再評価待ちの状態へ移る",
+          "explanation": "PendingRevalidationにしてreturnします。この分岐ではorchestratorへBackfillActionを送っていません。"
+        },
+        {
+          "line": 2176,
+          "match": "self.dispatch_backfill_action(action);",
+          "label": "条件を通ればbackfill依頼を送る",
+          "explanation": "dispatch_backfill_actionに渡します。条件の再評価と実際に依頼を送る段階を区別します。"
+        },
+        {
+          "line": 2190,
+          "match": "self.backfill_sync_state = BackfillSyncState::Pending;",
+          "label": "依頼送信に伴いPendingへする",
+          "explanation": "tree側の状態をPendingへ移します。まだBackfillSyncStartedを受けたActiveではありません。"
+        },
+        {
+          "line": 2193,
+          "match": "self.send_event(EngineApiEvent::BackfillAction(action));",
+          "label": "内部イベントとして上位へ送る",
+          "explanation": "BackfillActionはEngineApiEventとしてsend_eventへ渡します。"
+        },
+        {
+          "line": 2198,
+          "match": "let _ = self.outgoing.send(event).inspect_err(",
+          "label": "orchestrator側へのチャネルへ送る",
+          "explanation": "outgoingへイベントを送ります。送信先が閉じていればログを記録します。要求の送信成功を同期完了とは扱いません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-backfill-events": {
+      "intro": "on_engine_messageのうち、orchestratorから来る制御イベントの分岐です。後続のEngine要求の分岐とは分けた範囲です。",
+      "terms": [
+        "engine",
+        "stage",
+        "channel",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1580,
+          "match": "fn on_engine_message(",
+          "label": "tree側のイベント入口の型を読む",
+          "explanation": "FromEngineを受け取り、ループの継続/停止または致命的エラーをResultで返すメソッドの入口です。"
+        },
+        {
+          "line": 1588,
+          "match": "self.backfill_sync_state = BackfillSyncState::Active;",
+          "label": "開始通知でtree側をActiveにする",
+          "explanation": "BackfillSyncStartedを受けてからActiveにします。依頼を送る直前のPendingとは別です。"
+        },
+        {
+          "line": 1591,
+          "match": "self.on_backfill_sync_finished(ctrl)?;",
+          "label": "完了の制御結果を後処理へ渡す",
+          "explanation": "ctrlをon_backfill_sync_finishedへ渡します。完了通知の受信と、treeの位置やバッファを反映する後処理を区別します。"
+        },
+        {
+          "line": 1593,
+          "match": "FromOrchestrator::Terminate { tx } => {",
+          "label": "停止の要求は別の分岐にする",
+          "explanation": "Terminateではfinish_terminationを呼び、失敗をログに残した場合もControlFlow::Breakでループ停止を指示します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-backfill-finished": {
+      "intro": "on_backfill_sync_finishedの本体です。同期が終わった位置を反映したあと、まだ必要な同期や取得があるかを判断し、結果を返します。",
+      "terms": [
+        "stage",
+        "block",
+        "database",
+        "engine",
+        "result"
+      ],
+      "lines": [
+        {
+          "line": 1839,
+          "match": "self.backfill_sync_state = BackfillSyncState::Idle;",
+          "label": "tree側の同期状態をIdleへ戻す",
+          "explanation": "orchestratorがOk(ctrl)を受け、FromOrchestrator::BackfillSyncFinished(ctrl)として通知した結果を反映します。ctrlにはUnwindもあり、検証対象が全て有効という意味ではありません。pipeline返答チャネルの切断は別のエラー経路です。"
+        },
+        {
+          "line": 1842,
+          "match": "let backfill_height = if let ControlFlow::Unwind { bad_block, target } = &ctrl {",
+          "label": "巻き戻しの結果と通常進行の高さを分ける",
+          "explanation": "Unwindなら不正ヘッダーを記録してtargetを使い、それ以外はctrl.block_numberを使います。"
+        },
+        {
+          "line": 1855,
+          "match": "let Some(backfill_height) = backfill_height else { return Ok(()) };",
+          "label": "完了位置がなければここで終える",
+          "explanation": "backfill_heightがない場合はOk(())で戻り、以下の位置反映には進みません。"
+        },
+        {
+          "line": 1862,
+          "match": "let Some(backfill_num_hash) = self",
+          "label": "完了位置のブロックハッシュを読む",
+          "explanation": "DBに対応するハッシュがなければOkで戻ります。参照エラーは?で返ります。"
+        },
+        {
+          "line": 1871,
+          "match": "if ctrl.is_unwind() {",
+          "label": "巻き戻しと通常同期でtreeの整理を分ける",
+          "explanation": "Unwindではその高さへresetし、通常進行では保存済み位置に合わせてremove_untilします。"
+        },
+        {
+          "line": 1888,
+          "match": "self.state.buffer.remove_old_blocks(backfill_height);",
+          "label": "古いbufferとメモリー状態を整理する",
+          "explanation": "完了位置より前のbufferや時刻情報を除き、canonicalのメモリー状態をclearします。"
+        },
+        {
+          "line": 1894,
+          "match": "if let Ok(Some(new_head)) = self.provider.sealed_header(backfill_height) {",
+          "label": "新しい先端を読み直せた場合に反映する",
+          "explanation": "ヘッダーが得られれば、treeの先端、保存済み位置、canonicalの先端を更新します。巻き戻しでない場合は合意側の同期先の目印の反映も委譲します。"
+        },
+        {
+          "line": 1913,
+          "match": "let Some(sync_target_state) = self.state.forkchoice_state_tracker.sync_target_state()",
+          "label": "まだ同期先があるかを調べる",
+          "explanation": "同期先がなければOkで戻ります。続く分岐ではfinalizedの指定や目標ハッシュの有無を確認し、条件がなければ再取得の判断を行いません。"
+        },
+        {
+          "line": 1934,
+          "match": "ctrl.block_number().zip(newest_target).and_then(|(progress, target_number)| {",
+          "label": "さらにbackfillが必要かを距離判定へ渡す",
+          "explanation": "進捗と新しい目標位置が両方そろう場合、backfill_sync_targetで再同期を行うかを判断します。戻った目標があればBackfillActionを発行します。"
+        },
+        {
+          "line": 1948,
+          "match": "if let Some(lowest_buffered) =",
+          "label": "buffer済みの先祖と現在の先端の差を調べる",
+          "explanation": "不足区間があれば範囲のdownloadを依頼します。先祖もbufferになければhead一件のdownloadを依頼する別の分岐です。"
+        },
+        {
+          "line": 1987,
+          "match": "self.try_connect_buffered_blocks(self.state.tree_state.current_canonical_head)",
+          "label": "残ったbufferを接続する結果を返す",
+          "explanation": "追加のdownload依頼等で早く戻らなければ、現在の先端の子に当たるbufferの接続を試し、そのResultを返します。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-node-selection": {
+      "intro": "mainのbuilder.node(EthereumNode::default())が使うnodeメソッドです。Node型の操作で、部品builderと追加機能を組み合わせます。",
+      "terms": [
+        "node",
+        "type",
+        "trait",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 417,
+          "match": "pub fn node<N>(",
+          "label": "使うnodeの値を受け取る",
+          "explanation": "型Nとその値nodeを受け、NodeBuilderWithComponentsを包むWithLaunchContextを返すメソッドです。"
+        },
+        {
+          "line": 424,
+          "match": "N: Node<RethFullAdapter<DB, N>, ChainSpec = ChainSpec> + NodeTypesForProvider,",
+          "label": "node型に求める条件を読む",
+          "explanation": "NにはNodeの操作と、provider向けのノード型の条件を求めます。"
+        },
+        {
+          "line": 426,
+          "match": "self.with_types().with_components(node.components_builder()).with_add_ons(node.add_ons())",
+          "label": "nodeから部品builderと追加機能を受け取る",
+          "explanation": "node.components_builder()とnode.add_ons()を使って、型・部品・追加機能を備えたbuilderへ組み替えます。この式だけで各サービスが起動済みになるわけではありません。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-node-components": {
+      "intro": "Nodeという約束をEthereumNodeが具体化する実装です。components_builderが返す型と、実際に呼ぶSelf::componentsを対応づけます。",
+      "terms": [
+        "node",
+        "type",
+        "trait",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 460,
+          "match": "impl<N> Node<N> for EthereumNode",
+          "label": "EthereumNodeがNodeを実装する箇所を読む",
+          "explanation": "NodeBuilderのnodeメソッドが使う、具体的なEthereumNodeの実装です。"
+        },
+        {
+          "line": 464,
+          "match": "type ComponentsBuilder = ComponentsBuilder<",
+          "label": "返すComponentsBuilderの型を宣言する",
+          "explanation": "EthereumのPool/Payload/Network/Executor/Consensusのbuilder型を関連型ComponentsBuilderに定めます。"
+        },
+        {
+          "line": 473,
+          "match": "type AddOns =",
+          "label": "追加機能の型も定める",
+          "explanation": "AddOnsの型はEthereumAddOnsで、eth APIとEngine検証用のbuilder型を組み合わせています。"
+        },
+        {
+          "line": 476,
+          "match": "fn components_builder(&self) -> Self::ComponentsBuilder {",
+          "label": "部品構成を作るメソッドへ渡す",
+          "explanation": "components_builderはSelf::components()を呼んで、その具体的な構成を返します。"
+        },
+        {
+          "line": 480,
+          "match": "fn add_ons(&self) -> Self::AddOns {",
+          "label": "追加機能の既定構成を返す",
+          "explanation": "add_onsはEthereumAddOnsの既定値を返します。部品構成の値を作ることとサーバー起動を分けます。"
+        }
+      ],
+      "note": ""
+    },
+    "area:journey-sync-offline-order": {
+      "intro": "OfflineStagesのbuilderです。ネットワーク取得後に扱う段階の順序と、削除設定に応じた段階の有無を読みます。",
+      "terms": [
+        "stage",
+        "trait",
+        "return"
+      ],
+      "lines": [
+        {
+          "line": 335,
+          "match": "ExecutionStages::new(",
+          "label": "まず取引実行の段階を組む",
+          "explanation": "ExecutionStagesを作り、そのbuilderを使います。この中がSenderRecoveryとExecutionの順です。"
+        },
+        {
+          "line": 343,
+          "match": ".add_stage_opt(self.prune_modes.sender_recovery.map(|prune_mode| {",
+          "label": "設定がある場合だけ送信者復元の削除段階を加える",
+          "explanation": "sender_recoveryのprune modeがSomeのときだけ、PruneSenderRecoveryStageを加えます。"
+        },
+        {
+          "line": 346,
+          "match": ".add_set(HashingStages { stages_config: self.stages_config.clone() })",
+          "label": "実行のあと状態のハッシュ化を加える",
+          "explanation": "HashingStagesを追加したあと、HistoryIndexingStagesを追加します。"
+        },
+        {
+          "line": 353,
+          "match": ".add_stage(PruneStage::new(",
+          "label": "最後に削除の段階を加える",
+          "explanation": "PruneStageはhashingや履歴の段階のあとに登録し、このstage列を返します。ここは各段階の内部アルゴリズムではなく、登録する順序の実装です。"
+        }
+      ],
+      "note": ""
+    },
+    "area:startup-tree-wait": {
+      "intro": "runが呼ぶ二つのブロッキング待機です。保存の滞留時に入力を受け取らない待ち方と、通常の複数イベント待ちを分けます。",
+      "terms": [
+        "thread",
+        "channel",
+        "engine",
+        "database"
+      ],
+      "lines": [
+        {
+          "line": 616,
+          "match": "if let Some((persistence_rx, start_time, _action)) = maybe_persistence {",
+          "label": "保存用の受信口があるかを分ける",
+          "explanation": "wait_for_persistence_eventは保存用rxがある場合、その返答だけをrecvで待ちます。この分岐ではtreeの入力チャネルを読みません。"
+        },
+        {
+          "line": 618,
+          "match": "Ok(result) => LoopEvent::PersistenceComplete { result, start_time },",
+          "label": "保存結果または切断を返す",
+          "explanation": "保存の返答があればPersistenceComplete、チャネルが切れていればDisconnectedをrunへ返します。rxがなければwait_for_eventへ移る分岐もあります。"
+        },
+        {
+          "line": 634,
+          "match": "if let Some((persistence_rx, start_time, action)) = maybe_persistence {",
+          "label": "通常待機では保存用受信口の有無を分ける",
+          "explanation": "保存中なら、保存完了・payload job完了・入力メッセージの三つを待ちます。"
+        },
+        {
+          "line": 637,
+          "match": "crossbeam_channel::select_biased! {",
+          "label": "複数の準備済み入力では保存完了を優先する",
+          "explanation": "select_biasedの並びは保存完了が先です。これは専用スレッドのブロッキング待機で、tokioのawait式ではありません。"
+        },
+        {
+          "line": 648,
+          "match": "recv(self.payload_build_finished) -> result => {",
+          "label": "候補作成jobの完了も受け取る",
+          "explanation": "この場合は保存結果をまだ受けていないのでpersistence rxを元へ戻し、PayloadBuildFinishedまたはDisconnectedを返します。"
+        },
+        {
+          "line": 656,
+          "match": "recv(self.incoming) -> msg => {",
+          "label": "treeへの要求も受け取る",
+          "explanation": "Engineの入力を受けた場合も、消費していない保存用rxを戻し、EngineMessageとしてrunへ渡します。"
+        },
+        {
+          "line": 667,
+          "match": "crossbeam_channel::select_biased! {",
+          "label": "保存中でなければ二つの入力を待つ",
+          "explanation": "この分岐はpayload jobの完了とtreeの入力を待ちます。どのrecvでも切断はDisconnectedとして区別します。"
+        }
+      ],
+      "note": ""
     }
   }
 }

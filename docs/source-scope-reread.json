@@ -1,0 +1,998 @@
+{
+  "reviewKind": "source-author reread; independent adjudication remains separate",
+  "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "version": "v2.7.0",
+  "criterion": "For each authored scope, inspect original input, major conditions, output and called/returning responsibility; distinguish real calls from related implementations.",
+  "scope": {
+    "lessons": [
+      {
+        "id": "blockchain",
+        "contexts": [
+          "area:foundation",
+          "area:block-link",
+          "startup:network"
+        ]
+      },
+      {
+        "id": "ethereum",
+        "contexts": [
+          "area:storage-account",
+          "area:execution",
+          "area:execution-receipt"
+        ]
+      },
+      {
+        "id": "rpc",
+        "contexts": [
+          "area:rpc-balance-entry",
+          "area:rpc-balance-read",
+          "tx:rpc",
+          "tx:recover"
+        ]
+      },
+      {
+        "id": "reth",
+        "contexts": [
+          "startup:components",
+          "startup:services",
+          "area:startup-engine-build",
+          "area:rpc-launch",
+          "area:node-handle",
+          "startup:tree"
+        ]
+      },
+      {
+        "id": "send",
+        "contexts": [
+          "tx:rpc",
+          "tx:recover",
+          "tx:submit",
+          "tx:queue",
+          "area:send-receive",
+          "tx:batch",
+          "tx:pool",
+          "area:send-validation-dispatch",
+          "area:send-validation-task",
+          "area:send-validation-worker",
+          "area:send-validation-entry",
+          "area:send-validation-order",
+          "area:send-stateless",
+          "area:send-stateful",
+          "area:send-nonce",
+          "area:pool-balance",
+          "area:send-pool-limit",
+          "area:send-pool-add"
+        ]
+      },
+      {
+        "id": "startup",
+        "contexts": [
+          "startup:entry",
+          "startup:dispatch",
+          "startup:supervisor",
+          "startup:database",
+          "startup:context",
+          "startup:components",
+          "startup:services",
+          "area:startup-engine-build",
+          "area:rpc-launch",
+          "startup:orchestrator",
+          "area:node-handle",
+          "area:startup-node-wait"
+        ]
+      },
+      {
+        "id": "reading",
+        "contexts": [
+          "tx:rpc",
+          "tx:recover"
+        ]
+      }
+    ],
+    "journeys": [
+      {
+        "id": "block",
+        "contexts": [
+          "area:journey-block-rpc",
+          "area:journey-block-message",
+          "area:journey-block-route",
+          "area:journey-block-tree-send",
+          "area:journey-block-dispatch",
+          "area:journey-block-receive",
+          "area:journey-block-insert",
+          "area:journey-block-validate-call",
+          "area:journey-block-insert-state",
+          "area:journey-block-validator-entry",
+          "area:journey-block-parent",
+          "area:journey-block-execute-choice",
+          "area:journey-block-executor",
+          "area:journey-block-execute",
+          "area:journey-block-after-execute",
+          "area:journey-block-postcheck",
+          "area:journey-block-consensus-check",
+          "area:journey-block-postconditions",
+          "area:journey-block-root",
+          "area:journey-block-forkchoice-message",
+          "area:journey-block-forkchoice",
+          "area:journey-block-forkchoice-precheck",
+          "area:journey-block-canonical",
+          "area:journey-block-forkchoice-consistency",
+          "area:journey-block-canonical-state",
+          "area:journey-block-forkchoice-markers",
+          "startup:tree",
+          "area:journey-block-save-start",
+          "area:journey-block-save-target",
+          "area:journey-block-save-queue",
+          "area:journey-block-save-worker",
+          "area:journey-block-save-write",
+          "area:journey-block-save-complete"
+        ]
+      },
+      {
+        "id": "sync",
+        "contexts": [
+          "startup:context",
+          "area:loop-backfill",
+          "area:journey-sync-run",
+          "area:journey-sync-default-order",
+          "area:journey-sync-online-order",
+          "area:sync",
+          "area:journey-sync-headers",
+          "area:journey-sync-bodies",
+          "area:journey-sync-body-request",
+          "area:journey-sync-fetch-client",
+          "area:journey-sync-peer-select",
+          "area:journey-sync-peer-send",
+          "area:journey-sync-response",
+          "area:journey-sync-body-validate",
+          "area:journey-sync-execution-order",
+          "area:journey-sync-execution",
+          "area:execution",
+          "area:journey-block-consensus-check",
+          "area:journey-block-postconditions",
+          "area:journey-sync-checkpoint",
+          "area:storage"
+        ]
+      }
+    ]
+  },
+  "findingsPreserved": [
+    {
+      "id": "scope-01",
+      "problem": "send-pool-limit described the next source as previously read",
+      "resolution": "Corrected connection to the following add_transaction scope."
+    },
+    {
+      "id": "scope-02",
+      "problem": "Rust Result::Err and contract Revert were both called execution failure",
+      "resolution": "Distinguished block-processing Err from successfully produced ExecutionResult whose receipt has success=false; exact locked alloy-evm source checksum verified in dependency-type-review.json."
+    },
+    {
+      "id": "scope-03",
+      "problem": "rpc-contract declaration ended before timeout argument and return type",
+      "resolution": "Expanded pack detail to core.rs380–392; source hash and URL regenerated."
+    },
+    {
+      "id": "scope-04",
+      "problem": "Engine builder and NodeHandle wait were described by call sites only",
+      "resolution": "Added build109–160 and NodeHandle8–26, also connected their local lesson stages."
+    },
+    {
+      "id": "scope-05",
+      "problem": "forkchoice early reply described all cases as an invalid instruction",
+      "resolution": "Added original precheck1189–1212; explained INVALID versus backfill SYNCING and continuation."
+    },
+    {
+      "id": "scope-06",
+      "problem": "safe/finalized consistency and marker update were delegated without main conditions",
+      "resolution": "Added consistency3411–3440 and marker implementation3442–3532; preserved zero/unknown/provider-error conditions and save-request versus disk-complete distinction."
+    },
+    {
+      "id": "scope-07",
+      "problem": "Several journey anchors ended within a relevant arm, loop or declaration",
+      "resolution": "Reviewed every added area source boundary; completed relevant NewPayload dispatch, execution loop, body validator, stage error arm, save worker and peer-response method; removed unrelated next declaration starts."
+    },
+    {
+      "id": "scope-08",
+      "problem": "Normal block execution jumped from its caller to a nested transaction loop, omitting executor construction/finalization/output",
+      "resolution": "Added execute_block1017–1121 and execute_transactions1244–1330, plus returned-state/receipt result routing750–816."
+    },
+    {
+      "id": "scope-09",
+      "problem": "Execution-stage snippet showed DB read and execute_one but no execution verification, state write or checkpoint return",
+      "resolution": "Expanded to full ExecutionStage.execute297–550 and annotated major validation/batch/write/return conditions."
+    },
+    {
+      "id": "scope-10",
+      "problem": "Post-execution rule explanation ended at a delegated consensus call",
+      "resolution": "Added Ethereum implementation118–141 plus specific conditions43–175, shared once in each applicable journey; completed validate_post_execution and state-root result sections."
+    }
+  ],
+  "remainingMajorCounterexamplesFoundInThisReread": [],
+  "limits": [
+    "This is a source-author reread, not an independent G1 pass.",
+    "Scope is the authored lesson/journey claims; all 1283 Rust files are not explained or reviewed.",
+    "BAL alternative is distinguished at the branch; this journey teaches normal execution, not the separate BAL executor internals.",
+    "Cryptographic primitives and generic database implementation internals are outside the current pedagogical claims.",
+    "Source checks and simulated UI evaluation do not prove human comprehension."
+  ],
+  "verification": {
+    "contexts": 109,
+    "lineHints": 481,
+    "sourceOwners": 109,
+    "lessonStages": 48,
+    "journeyStages": 54,
+    "sourceCheck": "PASS",
+    "invalidEvidence": 0,
+    "mutationTests": {
+      "passed": 2,
+      "failed": 0
+    },
+    "diffCheck": "PASS"
+  },
+  "sourceManifest": [
+    {
+      "context": "tx:rpc",
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 920,
+      "end": 924,
+      "hash": "bed3557bb9602e7337d6c7249cd3e0b53870c86f15ff7896dcf186b648322b9f"
+    },
+    {
+      "context": "tx:recover",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 81,
+      "end": 109,
+      "hash": "d066febcf3cc92992a5addaa4c13654202cf6dd200054e0a4f9f37799aafe0ef"
+    },
+    {
+      "context": "tx:submit",
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "start": 32,
+      "end": 114,
+      "hash": "866ae7cc641b85c2d06260abf471913d5741ef54e97838fe4f8f991c6ab7cd17"
+    },
+    {
+      "context": "tx:queue",
+      "path": "crates/rpc/rpc/src/eth/core.rs",
+      "start": 489,
+      "end": 504,
+      "hash": "fd159467b7670555e1ab3e3663276a187ca277d261c29e6b27f1f7dbb37cd512"
+    },
+    {
+      "context": "tx:batch",
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "start": 69,
+      "end": 105,
+      "hash": "651fd1d5815a1733309eba00584f2a24807211cfcce73c75598fbe3738163262"
+    },
+    {
+      "context": "tx:pool",
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 495,
+      "end": 528,
+      "hash": "87582b4a22dc8ac527f8380847cec7d6dcc133c0e12ff281034d3a6252df1443"
+    },
+    {
+      "context": "startup:entry",
+      "path": "bin/reth/src/main.rs",
+      "start": 33,
+      "end": 48,
+      "hash": "fa6e17b75f46bef74d5bcd122d25f92116d1d07ca9e598ccb20b109d1484070c"
+    },
+    {
+      "context": "startup:dispatch",
+      "path": "crates/ethereum/cli/src/app.rs",
+      "start": 159,
+      "end": 192,
+      "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce"
+    },
+    {
+      "context": "startup:supervisor",
+      "path": "crates/cli/runner/src/lib.rs",
+      "start": 63,
+      "end": 102,
+      "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7"
+    },
+    {
+      "context": "startup:database",
+      "path": "crates/cli/commands/src/node.rs",
+      "start": 157,
+      "end": 225,
+      "hash": "687cca2e2fe17fd8ce1f54a4c854791e9a615879aede465c96c20bf6ea7b40a3"
+    },
+    {
+      "context": "startup:context",
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 101,
+      "end": 140,
+      "hash": "67b1d28700a9ebe0a2d0736498bc87779f95b415af2b0573a4537f263a6cf31b"
+    },
+    {
+      "context": "startup:components",
+      "path": "crates/node/builder/src/components/builder.rs",
+      "start": 375,
+      "end": 403,
+      "hash": "acf421ecf15af4f79502ffe35f6a53011085d8a002c65656cc76732108e62ba7"
+    },
+    {
+      "context": "startup:services",
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 145,
+      "end": 266,
+      "hash": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d"
+    },
+    {
+      "context": "startup:orchestrator",
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 317,
+      "end": 413,
+      "hash": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692"
+    },
+    {
+      "context": "startup:tree",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 517,
+      "end": 606,
+      "hash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94"
+    },
+    {
+      "context": "startup:network",
+      "path": "crates/net/network/src/manager.rs",
+      "start": 1134,
+      "end": 1203,
+      "hash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664"
+    },
+    {
+      "context": "startup:backfill",
+      "path": "crates/engine/tree/src/backfill.rs",
+      "start": 123,
+      "end": 183,
+      "hash": "b04ca743e3203651126f4c80adf62b084637154e66662ef9ec358b82d9bf1c6b"
+    },
+    {
+      "context": "area:sync",
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 213,
+      "end": 259,
+      "hash": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a"
+    },
+    {
+      "context": "area:execution",
+      "path": "crates/evm/evm/src/execute.rs",
+      "start": 596,
+      "end": 632,
+      "hash": "e2d250e6445fc04f2a8f22e4d5102947f67d11d71c631a31163d16e72854316f"
+    },
+    {
+      "context": "area:payload",
+      "path": "crates/ethereum/payload/src/lib.rs",
+      "start": 90,
+      "end": 102,
+      "hash": "45364bcf43e4e47358bf9dd021f81c1f95141dcb934aa10ae75ccca4d39add33"
+    },
+    {
+      "context": "area:storage",
+      "path": "crates/storage/provider/src/providers/database/provider.rs",
+      "start": 3965,
+      "end": 3991,
+      "hash": "8ed93abedc6226be38c12f9bcfe98931d303a7a686637031e668236af8b06d62"
+    },
+    {
+      "context": "area:extension",
+      "path": "crates/exex/exex/src/manager.rs",
+      "start": 609,
+      "end": 620,
+      "hash": "21c3b8f32db8b3f1356204e9ec5726e9d601eaca036bfa3d2e663fd2475cd3de"
+    },
+    {
+      "context": "area:foundation",
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 114,
+      "end": 143,
+      "hash": "c76ea04a3faac76d238f6f222c7e4fe703a378e17e12e60ed02368b840f27f58"
+    },
+    {
+      "context": "area:pool-validation",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 592,
+      "end": 598,
+      "hash": "8e6b9d2e8ec6ae08600fc9e6bd1ed2f68d160aa36bbf0d5a582451d3c4f9c1ac"
+    },
+    {
+      "context": "area:node-exit",
+      "path": "crates/node/core/src/exit.rs",
+      "start": 34,
+      "end": 51,
+      "hash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc"
+    },
+    {
+      "context": "area:rpc-recovery",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 750,
+      "end": 760,
+      "hash": "03aefeb423d3fff38a2750477cee38730e61c055dd8802693ef568cc2432cca8"
+    },
+    {
+      "context": "area:pool-balance",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 783,
+      "end": 801,
+      "hash": "f866a8645febe255f2b629d59278403ba631b955696eb0fc1437281d45928a7d"
+    },
+    {
+      "context": "area:network-reputation",
+      "path": "crates/net/network/src/peers.rs",
+      "start": 546,
+      "end": 585,
+      "hash": "328b551bd002f7d8f169b7f7c409fcc5e30501d2f81530381de17c5488dd3944"
+    },
+    {
+      "context": "area:sync-unwind",
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 302,
+      "end": 346,
+      "hash": "d142b6232a76ffd0f4dd005b8acfee11a7bcd6e8e2c19b5a28a86e1490c591bd"
+    },
+    {
+      "context": "area:engine-timestamp",
+      "path": "crates/engine/primitives/src/lib.rs",
+      "start": 254,
+      "end": 264,
+      "hash": "e654d1df933b4ad9d99d53578439a26297eb6cee35755981561bce6971bf190d"
+    },
+    {
+      "context": "area:execution-receipt",
+      "path": "crates/ethereum/evm/src/receipt.rs",
+      "start": 12,
+      "end": 27,
+      "hash": "299af6fbea744e4558ceb00f1a1941518efdfaf3849e3cccb595440e7820844e"
+    },
+    {
+      "context": "area:payload-cancel",
+      "path": "crates/ethereum/payload/src/lib.rs",
+      "start": 265,
+      "end": 300,
+      "hash": "51ff71fac90e873f0fa0f32e9c58e5d9e70e970a9952dbb2e9a6f934241cab7c"
+    },
+    {
+      "context": "area:storage-account",
+      "path": "crates/storage/provider/src/providers/state/latest.rs",
+      "start": 69,
+      "end": 84,
+      "hash": "6ef8fd3d3c9f1d215d3ad00ad86b0bf602aa20098b5031c67818b6642c8f5327"
+    },
+    {
+      "context": "area:extension-reorg",
+      "path": "crates/exex/types/src/notification.rs",
+      "start": 10,
+      "end": 48,
+      "hash": "bcde49e579c27ab3c716d4ab713353ff9fb679aa5e9b642ab9296badff728e2f"
+    },
+    {
+      "context": "area:foundation-fee",
+      "path": "crates/chainspec/src/spec.rs",
+      "start": 538,
+      "end": 556,
+      "hash": "5a8bb53a0f98e277a334ff58744a183276518fcc3dda2409205db13d2a645a00"
+    },
+    {
+      "context": "area:block-link",
+      "path": "crates/consensus/common/src/validation.rs",
+      "start": 290,
+      "end": 317,
+      "hash": "d95e4fad6597ea43c131a28d05884247cff4680aa1bbdf374a849bb4f34322f1"
+    },
+    {
+      "context": "area:rpc-balance-entry",
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 695,
+      "end": 699,
+      "hash": "f07bffb57ee40502842464c878b5fb536d8c762fc66196d235d8c931eebbdee7"
+    },
+    {
+      "context": "area:rpc-balance-read",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/state.rs",
+      "start": 78,
+      "end": 90,
+      "hash": "23030b3ae163ff86bcea08dffb8d95189bad177f51e02a14923641f962e6a012"
+    },
+    {
+      "context": "area:send-receive",
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "start": 113,
+      "end": 137,
+      "hash": "9afd5d71973e50dcfde62ed1a12f898b2cbff0d0665f18d0cc16cb933cb355ec"
+    },
+    {
+      "context": "area:send-validation-dispatch",
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 383,
+      "end": 391,
+      "hash": "d81320211af96cf6228a736a62bfd0fb472faefd6013f353f8fbc6b6166f4263"
+    },
+    {
+      "context": "area:send-validation-task",
+      "path": "crates/transaction-pool/src/validate/task.rs",
+      "start": 233,
+      "end": 264,
+      "hash": "75cb01031de790ec7fddbe0506a7998d80f2db1acfcd0ba43f1d3fa3d8418cfd"
+    },
+    {
+      "context": "area:send-validation-entry",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 1009,
+      "end": 1016,
+      "hash": "50e6f6ecf8ccb3635568690ff106e5165862010c09d98c67a63e8d75f529a8d9"
+    },
+    {
+      "context": "area:send-validation-order",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 367,
+      "end": 435,
+      "hash": "c8f79b8faf1478f6f49c76740d59666e24710f76bac1c85a7ad5f8022ea7e4b5"
+    },
+    {
+      "context": "area:send-stateless",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 452,
+      "end": 655,
+      "hash": "fae8976e3d419011ac952728f6aefbef46974bdccc97fb774fbd55535e690d9e"
+    },
+    {
+      "context": "area:send-stateful",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 657,
+      "end": 727,
+      "hash": "1aeef3b2402ddc01658083b526258d2aa1c0e54b94de80e55613620a48114fbc"
+    },
+    {
+      "context": "area:send-nonce",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 766,
+      "end": 782,
+      "hash": "4e0e5f2dc7ce30ecfe53a5f135655bea8ea3fc3d3ecdc69078460e0122b59f87"
+    },
+    {
+      "context": "area:send-pool-add",
+      "path": "crates/transaction-pool/src/pool/mod.rs",
+      "start": 578,
+      "end": 639,
+      "hash": "d8fdb7e83cd2c227a66b0a688bb28cc0866c37f8855ca3950d37c405d971f83b"
+    },
+    {
+      "context": "area:send-pool-limit",
+      "path": "crates/transaction-pool/src/pool/mod.rs",
+      "start": 661,
+      "end": 742,
+      "hash": "322e19798a192c7863dffc2c31f97853bfce69c5aa3d3b8540e34dab4f6d02a9"
+    },
+    {
+      "context": "area:send-validation-worker",
+      "path": "crates/transaction-pool/src/validate/task.rs",
+      "start": 56,
+      "end": 67,
+      "hash": "6209a54dad8b85b64e7bdd4d462ef279de9bb692417d61940b8c8ca4953ce023"
+    },
+    {
+      "context": "area:rpc-launch",
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 288,
+      "end": 300,
+      "hash": "1f587935df27b9e9b1695425728f7f2e4e6a9e44a136c5e8e18e80e4e140c8ab"
+    },
+    {
+      "context": "area:node-handle",
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 417,
+      "end": 444,
+      "hash": "552905012cc834940ae2e574855971a2965bc7797590ab7877f2fb66777db7ed"
+    },
+    {
+      "context": "area:loop-cli",
+      "path": "crates/cli/runner/src/lib.rs",
+      "start": 228,
+      "end": 294,
+      "hash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab"
+    },
+    {
+      "context": "area:loop-engine",
+      "path": "crates/node/builder/src/launch/engine.rs",
+      "start": 329,
+      "end": 413,
+      "hash": "4df33038adafbba10133d79fc403ff5cc60b8273d3a1a71192da21ed9916ebe1"
+    },
+    {
+      "context": "area:loop-backfill",
+      "path": "crates/engine/tree/src/backfill.rs",
+      "start": 138,
+      "end": 208,
+      "hash": "a2c3ad029f4949d95f1a82897280e67e0649c9b8df7b011ebe1b9e11ededfa6d"
+    },
+    {
+      "context": "tx:rpc-contract",
+      "path": "crates/rpc/rpc-eth-api/src/core.rs",
+      "start": 380,
+      "end": 392,
+      "hash": "0d5c59ce83e07e6461ea6fbdcf270c3df5b9f16155958cf47f2f483634574dd5"
+    },
+    {
+      "context": "tx:recovery-hook",
+      "path": "crates/transaction-pool/src/traits.rs",
+      "start": 1429,
+      "end": 1466,
+      "hash": "b3416b3c7c92c93a95765a63213319f6d56974a1cfca3eaf546e6901f696b27f"
+    },
+    {
+      "context": "tx:forward",
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "start": 88,
+      "end": 105,
+      "hash": "17d1ea7cc58e3ebd06e114620b397fb1cccc2fe0c1620fc0d7acca0ae7f862ff"
+    },
+    {
+      "context": "tx:batch-runner",
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "start": 114,
+      "end": 135,
+      "hash": "0e804cb18f0af19cb16042b3321d50a2c924f21c33eb97c127062976075fa041"
+    },
+    {
+      "context": "tx:pool-test",
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "start": 349,
+      "end": 362,
+      "hash": "d846f899697a9dc98775def30f182d904bd9ae9f373b3452fde54823da05e507"
+    },
+    {
+      "context": "area:journey-block-rpc",
+      "path": "crates/rpc/rpc-engine-api/src/engine_api.rs",
+      "start": 236,
+      "end": 250,
+      "hash": "a7ef2b6ff568497b6e94db00f11bd7d1ad11a1ea76c332d952eff479b104d582"
+    },
+    {
+      "context": "area:journey-block-message",
+      "path": "crates/engine/primitives/src/message.rs",
+      "start": 342,
+      "end": 349,
+      "hash": "124986a7b675c2f2090ac9cb52a17631b76c97c2e048da4f85c36adba496547c"
+    },
+    {
+      "context": "area:journey-block-route",
+      "path": "crates/engine/tree/src/engine.rs",
+      "start": 107,
+      "end": 113,
+      "hash": "c859b35c87b8157d2f2b5e7d0c8af8929482ac8e4e997fa888a3a919111b81f7"
+    },
+    {
+      "context": "area:journey-block-tree-send",
+      "path": "crates/engine/tree/src/engine.rs",
+      "start": 189,
+      "end": 200,
+      "hash": "4625e0cc28c2f748672eee3561f74b3bc199aa1e47778bba9edf60ce16831fbe"
+    },
+    {
+      "context": "area:journey-block-dispatch",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1690,
+      "end": 1718,
+      "hash": "950be0ffff535603eabe63701940b633c87691f6b22483fc172389b5d4779401"
+    },
+    {
+      "context": "area:journey-block-receive",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 735,
+      "end": 807,
+      "hash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf"
+    },
+    {
+      "context": "area:journey-block-insert",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 811,
+      "end": 857,
+      "hash": "de517d1a66a3881446dc99919e629594e468d33b31781fea2bfb02d19937a7bd"
+    },
+    {
+      "context": "area:journey-block-validate-call",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 3101,
+      "end": 3111,
+      "hash": "9b4536d1d9dc551b21815e2ecc2ec4965784c1f85bc1730943ee40bf01bd72f7"
+    },
+    {
+      "context": "area:journey-block-validator-entry",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 1863,
+      "end": 1869,
+      "hash": "c66538723c75d22023c83ae37c961c7b6274b911073853cc78cb4829908e2c56"
+    },
+    {
+      "context": "area:journey-block-parent",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 487,
+      "end": 535,
+      "hash": "eb38e94d428fa755c9ca712de5117dcba6c73df32c9e34351c93ec47b21551d6"
+    },
+    {
+      "context": "area:journey-block-execute-choice",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 724,
+      "end": 749,
+      "hash": "c4e189e665f1d08917262e0c64586729aa4f465241385f456a536f7547d140cf"
+    },
+    {
+      "context": "area:journey-block-execute",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 1244,
+      "end": 1330,
+      "hash": "a21f66d8e989c663b0a78bb0533662e34108574c72f3938b4e8353a6854fac93"
+    },
+    {
+      "context": "area:journey-block-postcheck",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 1344,
+      "end": 1395,
+      "hash": "f47fe2bd0c2b4ad8a8111a88d37a97a887014c46e30763a5af50d10827fc16ec"
+    },
+    {
+      "context": "area:journey-block-root",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 818,
+      "end": 935,
+      "hash": "637397d644226d2d753fc423127447ad27a676d3d2b78b8f9e76607c2aed379c"
+    },
+    {
+      "context": "area:journey-block-forkchoice",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1150,
+      "end": 1178,
+      "hash": "23f95db945554ba018f60281c74367fc353104f230b91a1cdb04ac0b45f25cb2"
+    },
+    {
+      "context": "area:journey-block-canonical",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1346,
+      "end": 1371,
+      "hash": "d6cc524eb2d8a9914ee5e01768a1448c2f84e30d116759c3775c4ea6711dab8f"
+    },
+    {
+      "context": "area:journey-block-save-target",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 2209,
+      "end": 2304,
+      "hash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302"
+    },
+    {
+      "context": "area:journey-block-save-start",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1425,
+      "end": 1461,
+      "hash": "f8ee7a543ce985f60e68bb29bc78f0f9a1fe28c276b8bf34ad2cc1eb360a891a"
+    },
+    {
+      "context": "area:journey-block-save-queue",
+      "path": "crates/engine/tree/src/persistence.rs",
+      "start": 347,
+      "end": 354,
+      "hash": "99a9c2c1502502b9e83ab396f0b67f757a4880b2cd0883eaa236014f09e1bc27"
+    },
+    {
+      "context": "area:journey-block-save-worker",
+      "path": "crates/engine/tree/src/persistence.rs",
+      "start": 93,
+      "end": 130,
+      "hash": "46681faf273c80398f48b38494338111ad75438d410e94ca813a24636216e0e2"
+    },
+    {
+      "context": "area:journey-block-save-write",
+      "path": "crates/engine/tree/src/persistence.rs",
+      "start": 163,
+      "end": 225,
+      "hash": "c54d03d224fc07e8244fc4bb773efa2cdbac38567fa55b7682800b3b69f16d07"
+    },
+    {
+      "context": "area:journey-block-save-complete",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1531,
+      "end": 1575,
+      "hash": "d5ca7e38795af67e413db2c488b16fe35f7762bb0680437f9cb0fedb09060f29"
+    },
+    {
+      "context": "area:journey-sync-run",
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 151,
+      "end": 178,
+      "hash": "5e25bdd2473abb8e9e0250b936f011c2ce94a7d0812884c6eea527e97b69f412"
+    },
+    {
+      "context": "area:journey-sync-online-order",
+      "path": "crates/stages/stages/src/sets.rs",
+      "start": 272,
+      "end": 289,
+      "hash": "9db4181f2b4d7379521f8c3213e98c658a0adfec37b690cb28d1a270055e97be"
+    },
+    {
+      "context": "area:journey-sync-headers",
+      "path": "crates/stages/stages/src/stages/headers.rs",
+      "start": 199,
+      "end": 319,
+      "hash": "12c88f97483d54648c86613da2a4e45209d124365ee96ed23cda8da808a3570e"
+    },
+    {
+      "context": "area:journey-sync-bodies",
+      "path": "crates/stages/stages/src/stages/bodies.rs",
+      "start": 159,
+      "end": 217,
+      "hash": "223919ebb835cc668b562b44b2f3dcadec06acf49ec96a9ace1226fae67cc356"
+    },
+    {
+      "context": "area:journey-sync-body-request",
+      "path": "crates/net/downloaders/src/bodies/request.rs",
+      "start": 109,
+      "end": 114,
+      "hash": "247dec957dd6d09393418992e3d693b43fbe597daf29850fb1657371283d41c6"
+    },
+    {
+      "context": "area:journey-sync-fetch-client",
+      "path": "crates/net/network/src/fetch/client.rs",
+      "start": 108,
+      "end": 124,
+      "hash": "b70607872dabee891235379f60e024531a45ec0c06728e54f7f737a6ea061d10"
+    },
+    {
+      "context": "area:journey-sync-peer-select",
+      "path": "crates/net/network/src/fetch/mod.rs",
+      "start": 213,
+      "end": 236,
+      "hash": "03f7f9eb5ea9d712f0de1d80a3226370ceec9631670934b89437bf833dbf31c9"
+    },
+    {
+      "context": "area:journey-sync-peer-send",
+      "path": "crates/net/network/src/state.rs",
+      "start": 400,
+      "end": 459,
+      "hash": "5f74f6b33f5903b06834fb0938eee53b20cee0fb1d69cd527ed00ce25bdb0d3c"
+    },
+    {
+      "context": "area:journey-sync-body-validate",
+      "path": "crates/net/downloaders/src/bodies/request.rs",
+      "start": 159,
+      "end": 209,
+      "hash": "bb709532dfc6f7177e54aee7da4e40fdd8aa4d2cd1736358748ee9763f5f27eb"
+    },
+    {
+      "context": "area:journey-sync-execution",
+      "path": "crates/stages/stages/src/stages/execution/mod.rs",
+      "start": 297,
+      "end": 550,
+      "hash": "0a9537a41a4779bffe29f2d868125d4f3705ef707e4c54e86a41bbd81f1c09fc"
+    },
+    {
+      "context": "area:journey-sync-checkpoint",
+      "path": "crates/stages/api/src/pipeline/mod.rs",
+      "start": 431,
+      "end": 547,
+      "hash": "f66bc5cf3ea83354392694574bbdddbe557a2b203ba2430cedffcd343773b7d5"
+    },
+    {
+      "context": "area:journey-block-insert-state",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 3142,
+      "end": 3278,
+      "hash": "87271310ed6572c4f81d3908d7b202104a5018821e2adc50d87108586aed3f45"
+    },
+    {
+      "context": "area:journey-block-canonical-state",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 2876,
+      "end": 2914,
+      "hash": "a23b29f4a59fe4e21fdb6136db5a22488d6f8b82652489b08681a1f368302497"
+    },
+    {
+      "context": "area:journey-block-forkchoice-message",
+      "path": "crates/engine/primitives/src/message.rs",
+      "start": 378,
+      "end": 405,
+      "hash": "b5cff2af722715415155185b38d8d2d55128ba155836eb83d1decd11cd72695e"
+    },
+    {
+      "context": "area:journey-sync-default-order",
+      "path": "crates/stages/stages/src/sets.rs",
+      "start": 138,
+      "end": 181,
+      "hash": "7b79f1e1d7052ba7a95ebb5c0b69918a97c11b5ed70f2743dc4c20c6d493e810"
+    },
+    {
+      "context": "area:journey-sync-execution-order",
+      "path": "crates/stages/stages/src/sets.rs",
+      "start": 392,
+      "end": 405,
+      "hash": "59466b5adec500d4f4e762f36f68fea9de4e0527eefb05213589f1964ed71199"
+    },
+    {
+      "context": "area:journey-sync-response",
+      "path": "crates/net/network/src/state.rs",
+      "start": 474,
+      "end": 517,
+      "hash": "3b401845cab12cda055d021e0d682b860d00022267db112d82461ab368195fd7"
+    },
+    {
+      "context": "tx:trait-contract",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 65,
+      "end": 79,
+      "hash": "ca817ecb06c55f62cac4949588e11ed492f2701f6103d88dadaa0c2bb44de39a"
+    },
+    {
+      "context": "tx:trait-implementation",
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "start": 21,
+      "end": 31,
+      "hash": "badfc3752b5edde4fd4e1979c459c8078a3e568afed6ad4bda0929fc713a5bdd"
+    },
+    {
+      "context": "area:startup-engine-build",
+      "path": "crates/engine/tree/src/launch.rs",
+      "start": 109,
+      "end": 160,
+      "hash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440"
+    },
+    {
+      "context": "area:startup-node-wait",
+      "path": "crates/node/builder/src/handle.rs",
+      "start": 8,
+      "end": 26,
+      "hash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e"
+    },
+    {
+      "context": "area:journey-block-forkchoice-precheck",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 1189,
+      "end": 1212,
+      "hash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a"
+    },
+    {
+      "context": "area:journey-block-forkchoice-consistency",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 3411,
+      "end": 3440,
+      "hash": "14041726f3e843af0fb69a53889dbfd0c162e71faf07890cacfa19f41789982f"
+    },
+    {
+      "context": "area:journey-block-forkchoice-markers",
+      "path": "crates/engine/tree/src/tree/mod.rs",
+      "start": 3442,
+      "end": 3532,
+      "hash": "f7852679866e245de7b67ee32fa2323fedf77e9d9fca29ea3f85642f2a488c8a"
+    },
+    {
+      "context": "area:journey-block-executor",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 1017,
+      "end": 1121,
+      "hash": "92421e55b428911f9cd556a922e468b964bd273ba1b9920aaf90e91ce75bc416"
+    },
+    {
+      "context": "area:journey-block-after-execute",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "start": 750,
+      "end": 816,
+      "hash": "2dcda1d08ddeef5a29bbb7e22d507cc13ec7c3afd1e69a4f9a507cd9ce5cf7e2"
+    },
+    {
+      "context": "area:journey-block-consensus-check",
+      "path": "crates/ethereum/consensus/src/lib.rs",
+      "start": 118,
+      "end": 141,
+      "hash": "1ef318820e38ce2d30473948cb91d7cf5e2b5e27e08464718e51f7f5822adb29"
+    },
+    {
+      "context": "area:journey-block-postconditions",
+      "path": "crates/ethereum/consensus/src/validation.rs",
+      "start": 43,
+      "end": 175,
+      "hash": "beae261b839a2e9318b7b12c0f9918b12ca12aba197738018cdc701e2009e43e"
+    }
+  ]
+}

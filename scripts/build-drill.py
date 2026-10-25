@@ -16,16 +16,33 @@ for id,name,prefixes,role,inp,outp in rpc_specs:
  rpc.append(dict(id=id,name=name,prefix=prefixes[0] if len(prefixes)==1 and prefixes[0].endswith('/') else '',files=fs,role=role,input=inp,output=outp,kind='コード構造・宣言から事前整理'))
 models['rpc']=rpc
 roles={
-'crates/rpc/rpc-eth-api/src/helpers/transaction.rs':{'name':'トランザクションの送信・取得','role':'送信、取得、送信者の復元などの共通処理を提供する。今回は送信の責務だけに絞る。','input':'署名済みバイト列、トランザクションの識別子など','output':'送信時はハッシュ。取得系は対応するデータ。'},
+'crates/rpc/rpc-eth-api/src/helpers/transaction.rs':{'name':'トランザクションの送信・取得','role':'送信、取得、送信者の復元などの共通処理を提供する。','input':'署名済みバイト列、トランザクションの識別子など','output':'送信時はハッシュ。取得系は対応するデータ。'},
 'crates/rpc/rpc-eth-api/src/core.rs':{'name':'公開メソッドと RPC ハンドラー','role':'外部に公開するメソッドの定義と、その要求を共通処理へ渡す入口。','input':'JSON-RPC のパラメーター','output':'RpcResult に包んだ成功値またはエラー'},
 'crates/transaction-pool/src/batcher.rs':{'name':'追加要求のバッチ処理','role':'要求を受信し、件数と origin に応じてプールへ渡して個別に返答する。','input':'追加要求と返信用チャネル','output':'要求ごとのプール追加結果'},
 'crates/transaction-pool/src/lib.rs':{'name':'トランザクションプールの公開操作','role':'検証と内部プールの操作をつなぐ。追加、取得、購読などの入口。','input':'トランザクションと origin など','output':'追加結果・取得データ・イベントなど'},
 'crates/rpc/rpc/src/eth/helpers/transaction.rs':{'name':'Ethereum 向け送信処理','role':'通常のプール追加と、設定に応じた blob 変換・外部転送を扱う。','input':'origin とエンコード付きトランザクション','output':'ハッシュまたはエラー'},
 'crates/rpc/rpc/src/eth/core.rs':{'name':'RPC 内部の部品と要求チャネル','role':'API 内部のプール・設定・チャネルなどを保持し、追加要求をバッチ処理へつなぐ。','input':'未検証トランザクションと origin','output':'追加結果の非同期応答'}
 }
+# The local reader publishes these startup roles too. Use the same authored
+# claims in the static structure view, rather than treating their files as
+# unexplained catalogue entries while source-backed role paths already exist.
+guide=json.loads((root/'local-app/startup-guide.json').read_text())
+if guide['commit']!=atlas['commit']:
+ raise ValueError('Startup roles and structural data must use the same commit')
+tracked_rust={f['path'] for f in atlas['files']}
+for path,role in guide['roles'].items():
+ if path not in tracked_rust:
+  raise ValueError('Startup role is missing from the pinned source inventory: '+path)
+ if path in roles and roles[path]!=role:
+  raise ValueError('Conflicting role producers: '+path)
+ roles[path]=role
 seeds={}
 for p in atlas['files']:
  path=p['path']
  if path.startswith('crates/rpc/rpc-eth-api/src/helpers/'):seeds[path]=subprocess.check_output(['git','-C',str(repo),'show',atlas['commit']+':'+path]).decode()
-(out/'drill-data.js').write_text('window.RETH_DRILL = '+json.dumps(dict(components=models,roles=roles,seed=seeds),ensure_ascii=False,separators=(',',':'))+';\n')
-print('Generated components for',len(models),'areas')
+# Existing role pages must not depend on a network request just to list their
+# original declarations. Cache their complete pinned files, not more prose.
+for path in roles:
+ if path not in seeds:seeds[path]=subprocess.check_output(['git','-C',str(repo),'show',atlas['commit']+':'+path]).decode()
+(out/'drill-data.js').write_text('window.RETH_DRILL = '+json.dumps(dict(commit=atlas['commit'],components=models,roles=roles,seed=seeds),ensure_ascii=False,separators=(',',':'))+';\n')
+print('Generated components for',len(models),'areas and',len(roles),'shared file roles')

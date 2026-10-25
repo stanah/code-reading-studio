@@ -1,0 +1,2159 @@
+{
+  "version": 1,
+  "criteria": {
+    "version": 2,
+    "frozenAt": "2026-10-25",
+    "originalPurpose": "ブロックチェーンとコードの知識を前提にせず、実装を根拠にReth・Ethereum・RPCの基本と動作を理解する",
+    "minimumUnits": 108,
+    "unitIds": [
+      "learning:blockchain",
+      "learning:ethereum",
+      "learning:rpc",
+      "learning:reth",
+      "learning:send",
+      "learning:startup",
+      "learning:reading",
+      "area:node",
+      "followup:node",
+      "area:rpc",
+      "followup:rpc",
+      "area:pool",
+      "followup:pool",
+      "area-extra:pool",
+      "area:network",
+      "followup:network",
+      "area:sync",
+      "followup:sync",
+      "area:engine",
+      "followup:engine",
+      "area:execution",
+      "followup:execution",
+      "area:payload",
+      "followup:payload",
+      "area:storage",
+      "followup:storage",
+      "area:extension",
+      "followup:extension",
+      "area:foundation",
+      "followup:foundation",
+      "startup-step:entry",
+      "startup-step:dispatch",
+      "startup-step:supervisor",
+      "startup-step:database",
+      "startup-step:context",
+      "startup-step:components",
+      "startup-step:services",
+      "startup-step:orchestrator",
+      "startup-step:tree",
+      "startup-step:network",
+      "startup-step:backfill",
+      "startup-loop:1",
+      "startup-loop:2",
+      "startup-loop:3",
+      "startup-loop:4",
+      "startup-loop:5",
+      "flow-step:rpc",
+      "flow-step:recover",
+      "flow-step:submit",
+      "flow-step:queue",
+      "flow-step:batch",
+      "flow-step:pool",
+      "flow-detail:rpc-contract",
+      "flow-detail:recovery-hook",
+      "flow-detail:forward",
+      "flow-detail:batch-runner",
+      "flow-detail:pool-test",
+      "rust-topic:borrow",
+      "rust-topic:future",
+      "rust-topic:result",
+      "rust-topic:trait",
+      "rust-topic:channel",
+      "atlas-topic:transaction",
+      "atlas-topic:block",
+      "atlas-topic:sync",
+      "atlas-topic:boot",
+      "component:node",
+      "component:rpc",
+      "component:pool",
+      "component:network",
+      "component:sync",
+      "component:engine",
+      "component:execution",
+      "component:payload",
+      "component:storage",
+      "component:extension",
+      "component:foundation",
+      "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+      "file-role:crates/transaction-pool/src/batcher.rs",
+      "file-role:crates/transaction-pool/src/lib.rs",
+      "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "file-role:crates/rpc/rpc/src/eth/core.rs",
+      "startup-overview:main",
+      "startup-stage:cli",
+      "startup-stage:prepare",
+      "startup-stage:run",
+      "flow-overview:main",
+      "flow-group:receive",
+      "flow-group:dispatch",
+      "flow-group:validate",
+      "structure-overview:main",
+      "file-role:bin/reth/src/main.rs",
+      "file-role:crates/ethereum/cli/src/app.rs",
+      "file-role:crates/cli/runner/src/lib.rs",
+      "file-role:crates/cli/commands/src/node.rs",
+      "file-role:crates/node/builder/src/launch/engine.rs",
+      "file-role:crates/node/builder/src/components/builder.rs",
+      "file-role:crates/engine/tree/src/tree/mod.rs",
+      "file-role:crates/net/network/src/manager.rs",
+      "file-role:crates/engine/tree/src/backfill.rs",
+      "file-role:crates/engine/tree/src/launch.rs",
+      "file-role:crates/engine/tree/src/chain.rs",
+      "file-role:crates/engine/tree/src/engine.rs",
+      "file-role:crates/node/builder/src/handle.rs",
+      "learning-home:main",
+      "atlas-overview:main",
+      "product-help:local-installation"
+    ],
+    "surfaceRules": {
+      "deduplication": "同じ説明をlocal/staticや複数ルートで表示しても単位数を増やさない。ただし表示実装が異なるsurfaceは機能確認を分ける",
+      "newUnits": "候補版に新しい説明単位が増えたら母数へ追加。既存単位の削除・目的の狭小化で合格にしない",
+      "sourceFiles": "全Rust1283ファイルの説明網羅は別の未達条件。原文を開けることは解説済みを意味しない"
+    },
+    "gates": [
+      {
+        "id": "G1",
+        "name": "目的との一致",
+        "pass": "ページの問い・本文で主張する各動作をコードまたは明示した外部基礎資料に結び付け、入力・主要な処理/条件・結果・次の担当/戻り経路が追える。scope文だけで不足を正当化しない"
+      },
+      {
+        "id": "G2",
+        "name": "原文と補助の対応",
+        "pass": "コードを読む単位には同じページに固定コミットの原文があり、必要な日本語補助コメントが対象行に隣接する。字句・行番号・hashが一致し、補助を原文と誤認させない"
+      },
+      {
+        "id": "G3",
+        "name": "呼出し・非同期・関連例の区別",
+        "pass": "呼出し先・要求送信先・返答元・単なる関連例を区別し、責務を超えて完了や確定を主張しない"
+      },
+      {
+        "id": "G4",
+        "name": "補助切り替えの維持",
+        "pass": "全補助ON/OFFと片方だけの4組合せで、切り替え操作・原文・選択行・URL・未保存メモを失わず、その場で補助を戻せる"
+      },
+      {
+        "id": "G5",
+        "name": "重複と導線",
+        "pass": "同じ定義や同じ行の説明を同時に重複表示しない。コードを読む操作より多くの準備操作を強制しない"
+      },
+      {
+        "id": "G6",
+        "name": "全surface",
+        "pass": "learning7,area23,startup20,flow10,Rust5+16contextual variants,legacy detail5,structure/Atlas候補/metadataを棚卸しし、適用するG1-G5を各surfaceで観察。未計測を一覧に残す。公開役割19、learning home、Atlas全体、製品利用説明、同単位のmodal/tab/関数/原文viewer別実装までproducer registryで照合する"
+      }
+    ],
+    "statusRules": {
+      "pass": "コード根拠と実際の観察が揃い、該当gateが全て満たされた場合のみ",
+      "fail": "根拠不足・誤説明・到達不可・消える操作・明示的な未完成はfail",
+      "notMeasured": "未操作・未レビュー・中断・自動検査しかない学習評価はnot-measured。pass率の母数から除外しない",
+      "notApplicable": "ナビゲーションカタログなど処理の説明でない単位に限り、理由を記録して特定gateの適用を除外する。単位全体を達成扱いにしない"
+    },
+    "functionalStop": "同一runtime/source/config版で全適用gateを2回連続で満たす。重大な未解決またはnot-measuredがあれば全体完了にしない",
+    "learningEvidence": "AIペルソナは模擬操作評価。人間の理解検証は別枠で0人。テスト・固定ソース整合・UI操作の成功を学習達成に置き換えない",
+    "inventoryRule": "Published producer and runtime merge union: annotations.roles6 + startup-guide.roles13; all route/render variants and modal/tab/source-view replicas are attached to the owning unit. Supplemental dictionaries and line comments are measured separately, not silently treated as reviewed."
+  },
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "inventory": {
+    "authoredUnits": 108,
+    "counts": {
+      "learning": 7,
+      "area": 11,
+      "followup": 11,
+      "area-extra": 1,
+      "startup-step": 11,
+      "startup-loop": 5,
+      "flow-step": 6,
+      "flow-detail": 5,
+      "rust-topic": 5,
+      "atlas-topic": 4,
+      "component": 11,
+      "file-role": 19,
+      "startup-overview": 1,
+      "startup-stage": 3,
+      "flow-overview": 1,
+      "flow-group": 3,
+      "structure-overview": 1,
+      "learning-home": 1,
+      "atlas-overview": 1,
+      "product-help": 1
+    },
+    "rustContextCombinations": [
+      {
+        "topic": "borrow",
+        "step": "recover"
+      },
+      {
+        "topic": "borrow",
+        "step": "submit"
+      },
+      {
+        "topic": "future",
+        "step": "rpc"
+      },
+      {
+        "topic": "future",
+        "step": "recover"
+      },
+      {
+        "topic": "future",
+        "step": "queue"
+      },
+      {
+        "topic": "future",
+        "step": "batch"
+      },
+      {
+        "topic": "result",
+        "step": "rpc"
+      },
+      {
+        "topic": "result",
+        "step": "recover"
+      },
+      {
+        "topic": "result",
+        "step": "queue"
+      },
+      {
+        "topic": "result",
+        "step": "pool"
+      },
+      {
+        "topic": "trait",
+        "step": "rpc"
+      },
+      {
+        "topic": "trait",
+        "step": "recover"
+      },
+      {
+        "topic": "trait",
+        "step": "submit"
+      },
+      {
+        "topic": "trait",
+        "step": "pool"
+      },
+      {
+        "topic": "channel",
+        "step": "queue"
+      },
+      {
+        "topic": "channel",
+        "step": "batch"
+      }
+    ],
+    "replicas": [
+      "local",
+      "static"
+    ],
+    "dynamicExploration": {
+      "trackedFiles": 1872,
+      "rustFiles": 1283,
+      "coveredByTeachingAudit": false
+    },
+    "units": [
+      {
+        "id": "learning:blockchain",
+        "kind": "learning",
+        "purpose": "「記録をまとめるブロック」と「記録を確かめるノード」の違いを説明する。",
+        "source": null,
+        "question": "一つの会社のサーバーに任せず、同じ記録を共有するには？",
+        "baselineCodeRefs": 1
+      },
+      {
+        "id": "learning:ethereum",
+        "kind": "learning",
+        "purpose": "状態、トランザクション、実行の関係をつかむ。",
+        "source": null,
+        "question": "送金やプログラムの実行は、どのようなデータになる？",
+        "baselineCodeRefs": 1
+      },
+      {
+        "id": "learning:rpc",
+        "kind": "learning",
+        "purpose": "RPCへの問い合わせと、ネットワークへの参加を分けて捉える。",
+        "source": null,
+        "question": "ウォレットとブロックチェーンの間には、何がある？",
+        "baselineCodeRefs": 1
+      },
+      {
+        "id": "learning:reth",
+        "kind": "learning",
+        "purpose": "実行クライアントとコンセンサスクライアントの分担を知る。",
+        "source": null,
+        "question": "Ethereumのノードは、Rethだけでできている？",
+        "baselineCodeRefs": 1
+      },
+      {
+        "id": "learning:send",
+        "kind": "learning",
+        "purpose": "RPCの受付から、プールに追加できたかの返事までを追う。",
+        "source": null,
+        "question": "署名済みのデータが届いたあと、Rethは何をする？",
+        "baselineCodeRefs": 1
+      },
+      {
+        "id": "learning:startup",
+        "kind": "learning",
+        "purpose": "起動の準備と、起動後に続く処理を分ける。",
+        "source": null,
+        "question": "RPCやプールは、いつ、どこで準備される？",
+        "baselineCodeRefs": 1
+      },
+      {
+        "id": "learning:reading",
+        "kind": "learning",
+        "purpose": "一つの疑問を選び、説明と根拠のコードを往復する。",
+        "source": null,
+        "question": "大きなリポジトリで、最初にどこを読めばいい？",
+        "baselineCodeRefs": 1
+      },
+      {
+        "id": "area:node",
+        "kind": "area",
+        "purpose": "ノードは、いつ起動を終えて何を待つ？",
+        "source": "startup:entry"
+      },
+      {
+        "id": "followup:node",
+        "kind": "followup",
+        "purpose": "終了を待つ間、成功と失敗をどう返す？",
+        "source": "area:node-exit"
+      },
+      {
+        "id": "area:rpc",
+        "kind": "area",
+        "purpose": "送信要求の入口は何を受け取り、何を返す？",
+        "source": "tx:rpc"
+      },
+      {
+        "id": "followup:rpc",
+        "kind": "followup",
+        "purpose": "受信したデータから送信者を求めるには？",
+        "source": "area:rpc-recovery"
+      },
+      {
+        "id": "area:pool",
+        "kind": "area",
+        "purpose": "プールに追加する前に、何を確かめる？",
+        "source": "tx:pool"
+      },
+      {
+        "id": "followup:pool",
+        "kind": "followup",
+        "purpose": "残高が足りない要求は、いつ失敗になる？",
+        "source": "area:pool-balance"
+      },
+      {
+        "id": "area-extra:pool",
+        "kind": "area-extra",
+        "purpose": "検証条件の具体例を原文から確かめる",
+        "source": "area:pool-validation"
+      },
+      {
+        "id": "area:network",
+        "kind": "area",
+        "purpose": "通信の出来事がない間は、どう待つ？",
+        "source": "startup:network"
+      },
+      {
+        "id": "followup:network",
+        "kind": "followup",
+        "purpose": "通信相手の評価変更を、いつ省略する？",
+        "source": "area:network-reputation"
+      },
+      {
+        "id": "area:sync",
+        "kind": "area",
+        "purpose": "過去のブロックをそろえる仕事を、どう進める？",
+        "source": "area:sync"
+      },
+      {
+        "id": "followup:sync",
+        "kind": "followup",
+        "purpose": "巻き戻す段階は、どの順に選ぶ？",
+        "source": "area:sync-unwind"
+      },
+      {
+        "id": "area:engine",
+        "kind": "area",
+        "purpose": "届いた要求と、保存の完了をどう扱う？",
+        "source": "startup:tree"
+      },
+      {
+        "id": "followup:engine",
+        "kind": "followup",
+        "purpose": "次の候補の時刻が同じだったら、どうなる？",
+        "source": "area:engine-timestamp"
+      },
+      {
+        "id": "area:execution",
+        "kind": "area",
+        "purpose": "ブロック内の要求を、どの順に実行する？",
+        "source": "area:execution"
+      },
+      {
+        "id": "followup:execution",
+        "kind": "followup",
+        "purpose": "失敗した実行も、レシートには残る？",
+        "source": "area:execution-receipt"
+      },
+      {
+        "id": "area:payload",
+        "kind": "area",
+        "purpose": "ブロック候補を作る処理へ、何を渡す？",
+        "source": "area:payload"
+      },
+      {
+        "id": "followup:payload",
+        "kind": "followup",
+        "purpose": "候補に入れない要求と、候補作成の中止は同じ？",
+        "source": "area:payload-cancel"
+      },
+      {
+        "id": "area:storage",
+        "kind": "area",
+        "purpose": "状態の変更は、どう保存先へ確定する？",
+        "source": "area:storage"
+      },
+      {
+        "id": "followup:storage",
+        "kind": "followup",
+        "purpose": "アドレスから読むとき、値なしとエラーをどう分ける？",
+        "source": "area:storage-account"
+      },
+      {
+        "id": "area:extension",
+        "kind": "area",
+        "purpose": "新しい出来事を、拡張機能へどう伝える？",
+        "source": "area:extension"
+      },
+      {
+        "id": "followup:extension",
+        "kind": "followup",
+        "purpose": "履歴の差し替え通知から、新旧どちらを取れる？",
+        "source": "area:extension-reorg"
+      },
+      {
+        "id": "area:foundation",
+        "kind": "area",
+        "purpose": "チェーンの設定をどう読み、失敗したらどうなる？",
+        "source": "area:foundation"
+      },
+      {
+        "id": "followup:foundation",
+        "kind": "followup",
+        "purpose": "時刻で使う手数料の設定を、どう選ぶ？",
+        "source": "area:foundation-fee"
+      },
+      {
+        "id": "startup-step:entry",
+        "kind": "startup-step",
+        "purpose": "mainはノードのどこまでを担当する？",
+        "source": {
+          "path": "bin/reth/src/main.rs",
+          "symbol": "main",
+          "start": 33,
+          "end": 48,
+          "hash": "fa6e17b75f46bef74d5bcd122d25f92116d1d07ca9e598ccb20b109d1484070c",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/bin/reth/src/main.rs#L33-L48"
+        }
+      },
+      {
+        "id": "startup-step:dispatch",
+        "kind": "startup-step",
+        "purpose": "どの分岐で通常のノード起動へ入る？",
+        "source": {
+          "path": "crates/ethereum/cli/src/app.rs",
+          "symbol": "run_commands_with",
+          "start": 159,
+          "end": 192,
+          "hash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/ethereum/cli/src/app.rs#L159-L192"
+        }
+      },
+      {
+        "id": "startup-step:supervisor",
+        "kind": "startup-step",
+        "purpose": "CLIの待機は何を待っている？",
+        "source": {
+          "path": "crates/cli/runner/src/lib.rs",
+          "symbol": "CliRunner::run_command_until_exit",
+          "start": 63,
+          "end": 102,
+          "hash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/cli/runner/src/lib.rs#L63-L102"
+        }
+      },
+      {
+        "id": "startup-step:database",
+        "kind": "startup-step",
+        "purpose": "CLIの値はどこでノードの材料に変わる？",
+        "source": {
+          "path": "crates/cli/commands/src/node.rs",
+          "symbol": "NodeCommand::execute",
+          "start": 157,
+          "end": 225,
+          "hash": "687cca2e2fe17fd8ce1f54a4c854791e9a615879aede465c96c20bf6ea7b40a3",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/cli/commands/src/node.rs#L157-L225"
+        }
+      },
+      {
+        "id": "startup-step:context",
+        "kind": "startup-step",
+        "purpose": "DBを開いた後、何を揃えて部品生成へ進む？",
+        "source": {
+          "path": "crates/node/builder/src/launch/engine.rs",
+          "symbol": "EngineNodeLauncher::launch_node / launch context",
+          "start": 101,
+          "end": 140,
+          "hash": "67b1d28700a9ebe0a2d0736498bc87779f95b415af2b0573a4537f263a6cf31b",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L101-L140"
+        }
+      },
+      {
+        "id": "startup-step:components",
+        "kind": "startup-step",
+        "purpose": "ノードを構成する主要な部品は何か？",
+        "source": {
+          "path": "crates/node/builder/src/components/builder.rs",
+          "symbol": "ComponentsBuilder::build_components",
+          "start": 375,
+          "end": 403,
+          "hash": "acf421ecf15af4f79502ffe35f6a53011085d8a002c65656cc76732108e62ba7",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/components/builder.rs#L375-L403"
+        }
+      },
+      {
+        "id": "startup-step:services",
+        "kind": "startup-step",
+        "purpose": "外部からの要求と内部の同期処理はどこで接続される？",
+        "source": {
+          "path": "crates/node/builder/src/launch/engine.rs",
+          "symbol": "EngineNodeLauncher::launch_node / engine wiring",
+          "start": 145,
+          "end": 266,
+          "hash": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L145-L266"
+        }
+      },
+      {
+        "id": "startup-step:orchestrator",
+        "kind": "startup-step",
+        "purpose": "起動後、Engine全体を進め続ける処理はどれか？",
+        "source": {
+          "path": "crates/node/builder/src/launch/engine.rs",
+          "symbol": "consensus_engine task",
+          "start": 317,
+          "end": 413,
+          "hash": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L317-L413"
+        }
+      },
+      {
+        "id": "startup-step:tree",
+        "kind": "startup-step",
+        "purpose": "ブロック処理と永続化の調整はどこで繰り返す？",
+        "source": {
+          "path": "crates/engine/tree/src/tree/mod.rs",
+          "symbol": "EngineApiTreeHandler::run",
+          "start": 517,
+          "end": 606,
+          "hash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L517-L606"
+        }
+      },
+      {
+        "id": "startup-step:network",
+        "kind": "startup-step",
+        "purpose": "ピア通信はどの反復処理で進む？",
+        "source": {
+          "path": "crates/net/network/src/manager.rs",
+          "symbol": "Future for NetworkManager::poll",
+          "start": 1134,
+          "end": 1203,
+          "hash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/manager.rs#L1134-L1203"
+        }
+      },
+      {
+        "id": "startup-step:backfill",
+        "kind": "startup-step",
+        "purpose": "大きな同期範囲はいつ、どのように処理される？",
+        "source": {
+          "path": "crates/engine/tree/src/backfill.rs",
+          "symbol": "PipelineSync::try_spawn_pipeline / poll_pipeline",
+          "start": 123,
+          "end": 183,
+          "hash": "b04ca743e3203651126f4c80adf62b084637154e66662ef9ec358b82d9bf1c6b",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/backfill.rs#L123-L183"
+        }
+      },
+      {
+        "id": "startup-loop:1",
+        "kind": "startup-loop",
+        "purpose": "コマンド完了・シグナル・criticalタスクのpanicを監視する待機層。ブロック処理のループではない。",
+        "source": {
+          "path": "crates/cli/runner/src/lib.rs",
+          "symbol": "run_to_completion_or_panic / run_until_ctrl_c",
+          "start": 228,
+          "end": 294,
+          "hash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/cli/runner/src/lib.rs#L228-L294"
+        },
+        "title": "CLIの終了監視"
+      },
+      {
+        "id": "startup-loop:2",
+        "kind": "startup-loop",
+        "purpose": "orchestratorを駆動し、built payloadと終了要求をtreeへ渡す。",
+        "source": {
+          "path": "crates/node/builder/src/launch/engine.rs",
+          "symbol": "consensus_engine task loop",
+          "start": 329,
+          "end": 413,
+          "hash": "4df33038adafbba10133d79fc403ff5cc60b8273d3a1a71192da21ed9916ebe1",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/node/builder/src/launch/engine.rs#L329-L413"
+        },
+        "title": "consensus engineのイベントループ"
+      },
+      {
+        "id": "startup-loop:3",
+        "kind": "startup-loop",
+        "purpose": "要求を実処理し、永続化との進行を調整する。backfill中のDB書き込み排他もtree側の状態と連携する。",
+        "source": {
+          "path": "crates/engine/tree/src/tree/mod.rs",
+          "symbol": "EngineApiTreeHandler::run",
+          "start": 517,
+          "end": 606,
+          "hash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L517-L606"
+        },
+        "title": "Engine Treeの専用スレッド"
+      },
+      {
+        "id": "startup-loop:4",
+        "kind": "startup-loop",
+        "purpose": "handleの要求とswarmイベントを処理してP2Pネットワークを進める。",
+        "source": {
+          "path": "crates/net/network/src/manager.rs",
+          "symbol": "Future for NetworkManager::poll",
+          "start": 1134,
+          "end": 1203,
+          "hash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/manager.rs#L1134-L1203"
+        },
+        "title": "NetworkManagerのpoll"
+      },
+      {
+        "id": "startup-loop:5",
+        "kind": "startup-loop",
+        "purpose": "targetまでの段階的同期を行う。live syncとの同時実行ではなく、排他的な同期モードとして使う。",
+        "source": {
+          "path": "crates/engine/tree/src/backfill.rs",
+          "symbol": "PipelineSync state transitions",
+          "start": 138,
+          "end": 208,
+          "hash": "a2c3ad029f4949d95f1a82897280e67e0649c9b8df7b011ebe1b9e11ededfa6d",
+          "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/backfill.rs#L138-L208"
+        },
+        "title": "必要時のbackfill pipeline"
+      },
+      {
+        "id": "flow-step:rpc",
+        "kind": "flow-step",
+        "purpose": "署名済みトランザクションはどこへ渡る？",
+        "source": {
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 920,
+          "end": 924
+        }
+      },
+      {
+        "id": "flow-step:recover",
+        "kind": "flow-step",
+        "purpose": "バイト列はどうプール用の型になる？",
+        "source": {
+          "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+          "start": 81,
+          "end": 109
+        }
+      },
+      {
+        "id": "flow-step:submit",
+        "kind": "flow-step",
+        "purpose": "どの条件で、ローカルのプールへ進む？",
+        "source": {
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 32,
+          "end": 114
+        }
+      },
+      {
+        "id": "flow-step:queue",
+        "kind": "flow-step",
+        "purpose": "RPC はプールへの追加をどう待つ？",
+        "source": {
+          "path": "crates/rpc/rpc/src/eth/core.rs",
+          "start": 489,
+          "end": 504
+        }
+      },
+      {
+        "id": "flow-step:batch",
+        "kind": "flow-step",
+        "purpose": "要求の件数や origin で、処理はどう変わる？",
+        "source": {
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 69,
+          "end": 105
+        }
+      },
+      {
+        "id": "flow-step:pool",
+        "kind": "flow-step",
+        "purpose": "成功したら、すでにチェーンへ記録された？",
+        "source": {
+          "path": "crates/transaction-pool/src/lib.rs",
+          "start": 495,
+          "end": 528
+        }
+      },
+      {
+        "id": "flow-detail:rpc-contract",
+        "kind": "flow-detail",
+        "purpose": "通常版と Sync 版は何を返す？",
+        "source": {
+          "path": "crates/rpc/rpc-eth-api/src/core.rs",
+          "start": 380,
+          "end": 390
+        }
+      },
+      {
+        "id": "flow-detail:recovery-hook",
+        "kind": "flow-detail",
+        "purpose": "どんな入力がデコードで拒否される？",
+        "source": {
+          "path": "crates/transaction-pool/src/traits.rs",
+          "start": 1429,
+          "end": 1466
+        }
+      },
+      {
+        "id": "flow-detail:forward",
+        "kind": "flow-detail",
+        "purpose": "外部へ転送した後、ローカル追加が失敗したら？",
+        "source": {
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 88,
+          "end": 105
+        }
+      },
+      {
+        "id": "flow-detail:batch-runner",
+        "kind": "flow-detail",
+        "purpose": "キューの向こう側はどこで動く？",
+        "source": {
+          "path": "crates/transaction-pool/src/batcher.rs",
+          "start": 114,
+          "end": 135
+        }
+      },
+      {
+        "id": "flow-detail:pool-test",
+        "kind": "flow-detail",
+        "purpose": "このテストはどこまで確かめている？",
+        "source": {
+          "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+          "start": 349,
+          "end": 362
+        }
+      },
+      {
+        "id": "rust-topic:borrow",
+        "kind": "rust-topic",
+        "purpose": "バイト列を読む処理と、その値を後で使う非同期処理で、データをどう受け渡すか。",
+        "source": null,
+        "contextualSteps": [
+          "recover",
+          "submit"
+        ]
+      },
+      {
+        "id": "rust-topic:future",
+        "kind": "rust-topic",
+        "purpose": "別の処理が終わるまで、実行スレッドを占有せずに結果を待ちたい。",
+        "source": null,
+        "contextualSteps": [
+          "rpc",
+          "recover",
+          "queue",
+          "batch"
+        ]
+      },
+      {
+        "id": "rust-topic:result",
+        "kind": "rust-topic",
+        "purpose": "復元や検証に失敗した場合、後続処理を止めて呼び出し元へ伝えたい。",
+        "source": null,
+        "contextualSteps": [
+          "rpc",
+          "recover",
+          "queue",
+          "pool"
+        ]
+      },
+      {
+        "id": "rust-topic:trait",
+        "kind": "rust-topic",
+        "purpose": "共通のRPC処理を保ちつつ、使うプールや具体的な処理を差し替えたい。",
+        "source": null,
+        "contextualSteps": [
+          "rpc",
+          "recover",
+          "submit",
+          "pool"
+        ]
+      },
+      {
+        "id": "rust-topic:channel",
+        "kind": "rust-topic",
+        "purpose": "要求をまとめて処理する側と、個別の結果を待つ側を分離したい。",
+        "source": null,
+        "contextualSteps": [
+          "queue",
+          "batch"
+        ]
+      },
+      {
+        "id": "atlas-topic:transaction",
+        "kind": "atlas-topic",
+        "purpose": "送信したトランザクションはどこへ行く？",
+        "source": null,
+        "baselineReady": true,
+        "entryCandidates": [
+          "crates/rpc/rpc-eth-api/src/core.rs",
+          "crates/transaction-pool/src/lib.rs"
+        ]
+      },
+      {
+        "id": "atlas-topic:block",
+        "kind": "atlas-topic",
+        "purpose": "新しいブロックはどう検証される？",
+        "source": null,
+        "baselineReady": false,
+        "entryCandidates": [
+          "crates/engine/tree/src/lib.rs",
+          "crates/consensus/consensus/src/lib.rs",
+          "crates/evm/evm/src/lib.rs"
+        ]
+      },
+      {
+        "id": "atlas-topic:sync",
+        "kind": "atlas-topic",
+        "purpose": "まっさらなノードはどう追いつく？",
+        "source": null,
+        "baselineReady": false,
+        "entryCandidates": [
+          "crates/stages/stages/src/lib.rs",
+          "crates/engine/tree/src/lib.rs"
+        ]
+      },
+      {
+        "id": "atlas-topic:boot",
+        "kind": "atlas-topic",
+        "purpose": "起動時に何が組み立てられる？",
+        "source": null,
+        "baselineReady": true,
+        "entryCandidates": [
+          "bin/reth/src/main.rs",
+          "crates/node/builder/src/lib.rs"
+        ]
+      },
+      {
+        "id": "component:node",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 22,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:rpc",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 4,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:pool",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 3,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:network",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 19,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:sync",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 15,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:engine",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 12,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:execution",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 6,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:payload",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 7,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:storage",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 27,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:extension",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 33,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "component:foundation",
+        "kind": "component",
+        "purpose": "この領域の構成グループと入口ファイルを識別する",
+        "source": null,
+        "componentCount": 23,
+        "role": "navigation-catalog"
+      },
+      {
+        "id": "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "kind": "file-role",
+        "purpose": "送信、取得、送信者の復元などの共通処理を提供する。今回は送信の責務だけに絞る。",
+        "source": null,
+        "role": "authored-file-summary"
+      },
+      {
+        "id": "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+        "kind": "file-role",
+        "purpose": "外部に公開するメソッドの定義と、その要求を共通処理へ渡す入口。",
+        "source": null,
+        "role": "authored-file-summary"
+      },
+      {
+        "id": "file-role:crates/transaction-pool/src/batcher.rs",
+        "kind": "file-role",
+        "purpose": "要求を受信し、件数と origin に応じてプールへ渡して個別に返答する。",
+        "source": null,
+        "role": "authored-file-summary"
+      },
+      {
+        "id": "file-role:crates/transaction-pool/src/lib.rs",
+        "kind": "file-role",
+        "purpose": "検証と内部プールの操作をつなぐ。追加、取得、購読などの入口。",
+        "source": null,
+        "role": "authored-file-summary"
+      },
+      {
+        "id": "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "kind": "file-role",
+        "purpose": "通常のプール追加と、設定に応じた blob 変換・外部転送を扱う。",
+        "source": null,
+        "role": "authored-file-summary"
+      },
+      {
+        "id": "file-role:crates/rpc/rpc/src/eth/core.rs",
+        "kind": "file-role",
+        "purpose": "API 内部のプール・設定・チャネルなどを保持し、追加要求をバッチ処理へつなぐ。",
+        "source": null,
+        "role": "authored-file-summary"
+      },
+      {
+        "id": "startup-overview:main",
+        "kind": "startup-overview",
+        "purpose": "reth nodeの入口から、設定・DB・部品の準備を経て、Engineとネットワークが処理を続ける仕組みを追う。全11点は読む順番であり、タスクの開始順とは異なる。backfillとlive同期は同時に進めない。",
+        "source": null
+      },
+      {
+        "id": "startup-stage:cli",
+        "kind": "startup-stage",
+        "purpose": "コマンドを選び、起動処理を終了まで監視する。",
+        "source": null
+      },
+      {
+        "id": "startup-stage:prepare",
+        "kind": "startup-stage",
+        "purpose": "設定・DB・主要な部品・Engineの接続を準備する。タスクの一部はこの段階から動き始める。",
+        "source": null
+      },
+      {
+        "id": "startup-stage:run",
+        "kind": "startup-stage",
+        "purpose": "稼働中の各処理が何を待ち、何を担当するかを読む。複数のタスクとスレッドが協調してノードを動かす。",
+        "source": null
+      },
+      {
+        "id": "flow-overview:main",
+        "kind": "flow-overview",
+        "purpose": "送信要求を3段階へ分け、入力と出力を保って処理へ進む",
+        "source": null
+      },
+      {
+        "id": "flow-group:receive",
+        "kind": "flow-group",
+        "purpose": "署名済みのバイト列 → 送信者を復元したトランザクション",
+        "source": null
+      },
+      {
+        "id": "flow-group:dispatch",
+        "kind": "flow-group",
+        "purpose": "復元したトランザクションと元データ → キューの追加要求と返答待ち",
+        "source": null
+      },
+      {
+        "id": "flow-group:validate",
+        "kind": "flow-group",
+        "purpose": "追加要求 → ハッシュまたはエラー",
+        "source": null
+      },
+      {
+        "id": "structure-overview:main",
+        "kind": "structure-overview",
+        "purpose": "同じ送信動作の担当コードの配置とクレートを識別する",
+        "source": null
+      },
+      {
+        "id": "file-role:bin/reth/src/main.rs",
+        "kind": "file-role",
+        "purpose": "CLIへEthereumノードの起動処理を渡し、起動後の終了結果を待つ。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/ethereum/cli/src/app.rs",
+        "kind": "file-role",
+        "purpose": "実行環境・ログ・metricsを準備し、サブコマンドに対応した実行経路を選ぶ。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/cli/runner/src/lib.rs",
+        "kind": "file-role",
+        "purpose": "実行環境でコマンドを実行し、完了・シグナル・criticalタスクのpanicに応じて終了処理を行う。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/cli/commands/src/node.rs",
+        "kind": "file-role",
+        "purpose": "引数をNodeConfigへ変換し、DB付きNodeBuilderをlauncherへ渡す。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/node/builder/src/launch/engine.rs",
+        "kind": "file-role",
+        "purpose": "設定・provider・部品を準備し、pipeline・Engine・RPC等を接続してNodeHandleを返す。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/node/builder/src/components/builder.rs",
+        "kind": "file-role",
+        "purpose": "EVM、pool、ネットワーク、payload builder、consensusのbuilderを呼び、依存を渡す。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/engine/tree/src/tree/mod.rs",
+        "kind": "file-role",
+        "purpose": "専用スレッドでEngine要求を処理し、チェーン状態と永続化の進行を調整する。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/net/network/src/manager.rs",
+        "kind": "file-role",
+        "purpose": "handleからの要求とswarmイベントをpollし、ピア通信やネットワーク状態を進める。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/engine/tree/src/backfill.rs",
+        "kind": "file-role",
+        "purpose": "段階的同期pipelineをIdle/Runningで管理し、targetに応じてタスクを起動して結果を返す。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/engine/tree/src/launch.rs",
+        "kind": "file-role",
+        "purpose": "downloader・persistence・tree・要求handler・backfillを結び、orchestratorを作る。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/engine/tree/src/chain.rs",
+        "kind": "file-role",
+        "purpose": "handlerとbackfillをpollし、開始・完了やチェーンイベントを上下へ伝える。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/engine/tree/src/engine.rs",
+        "kind": "file-role",
+        "purpose": "要求ストリーム・ブロックのダウンロード処理・treeのチャネルを接続し、要求と結果イベントを取り次ぐ。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "file-role:crates/node/builder/src/handle.rs",
+        "kind": "file-role",
+        "purpose": "ノードの部品群と終了Futureを保持し、終了待機の入口を提供する。",
+        "role": "authored-file-summary",
+        "runtimeProducer": "server.mjs /api/index roles union with startup-guide.roles"
+      },
+      {
+        "id": "learning-home:main",
+        "kind": "learning-home",
+        "purpose": "学習の目的、入口、経験に合わせた補助と続きを識別する",
+        "role": "navigation-overview"
+      },
+      {
+        "id": "atlas-overview:main",
+        "kind": "atlas-overview",
+        "purpose": "全体の責務、模式的な関係、問いと構造の入口を識別する",
+        "role": "navigation-overview"
+      },
+      {
+        "id": "product-help:local-installation",
+        "kind": "product-help",
+        "purpose": "ローカル版の取得/起動方法、機能、検証済み範囲と限界を正確に理解する",
+        "role": "product-instructions"
+      }
+    ],
+    "surfaceImplementations": [
+      {
+        "units": "learning7",
+        "implementations": [
+          "local-app/public/learning.js on /#lesson",
+          "dist/learning.js on index.html#lesson"
+        ],
+        "samePurposeDifferentSurface": true
+      },
+      {
+        "units": "area23",
+        "implementations": [
+          "local-app/public/app.js area branch + ReadingAreas.render",
+          "dist/zoom.js renderArea + ReadingAreas.render"
+        ]
+      },
+      {
+        "units": "flow-step6",
+        "implementations": [
+          "local-app/public/lenses.js flow step",
+          "dist/lenses.js flow step",
+          "dist/app.js legacy reader step",
+          "local-app/public/app.js !p.code && p.fn authored-step branch",
+          "dist/zoom.js renderProcess authored annotation branch"
+        ]
+      },
+      {
+        "units": "flow-detail5",
+        "implementations": [
+          "dist/app.js legacy reader detail"
+        ]
+      },
+      {
+        "units": "file-role6",
+        "implementations": [
+          "local-app/public/app.js !p.code file branch",
+          "dist/zoom.js renderModules role cards",
+          "dist/zoom.js renderFunctions file role + boundary"
+        ]
+      },
+      {
+        "units": "startup20",
+        "implementations": [
+          "local-app/public/startup.js overview/stage/step/loops",
+          "scripts/build-guide.py static print guide startup7 sections mapped to local11, runtime5"
+        ]
+      },
+      {
+        "units": "rust-topic5 plus16variants",
+        "implementations": [
+          "local-app/public/lenses.js rust",
+          "dist/lenses.js rust"
+        ]
+      },
+      {
+        "units": "component11 catalogs; static has171 structural cards, local lists crates",
+        "implementations": [
+          "dist/zoom.js renderArea",
+          "local-app/public/app.js area component listing"
+        ]
+      },
+      {
+        "units": "atlas-topic4",
+        "implementations": [
+          "dist/atlas.js topic-banner + observed guide destination",
+          "journey block/sync local and static bridges"
+        ]
+      }
+    ],
+    "discoveredAfterCandidate2": {
+      "reason": "server.mjs /api/index merges annotations.roles and startup-guide.roles; first inventory counted only annotations.roles",
+      "previousFixedCount": 92,
+      "newAdditionalCount": 13,
+      "minimumUnionCount": 108,
+      "units": [
+        {
+          "id": "file-role:bin/reth/src/main.rs",
+          "kind": "file-role",
+          "purpose": "CLIへEthereumノードの起動処理を渡し、起動後の終了結果を待つ。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/ethereum/cli/src/app.rs",
+          "kind": "file-role",
+          "purpose": "実行環境・ログ・metricsを準備し、サブコマンドに対応した実行経路を選ぶ。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/cli/runner/src/lib.rs",
+          "kind": "file-role",
+          "purpose": "実行環境でコマンドを実行し、完了・シグナル・criticalタスクのpanicに応じて終了処理を行う。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/cli/commands/src/node.rs",
+          "kind": "file-role",
+          "purpose": "引数をNodeConfigへ変換し、DB付きNodeBuilderをlauncherへ渡す。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/node/builder/src/launch/engine.rs",
+          "kind": "file-role",
+          "purpose": "設定・provider・部品を準備し、pipeline・Engine・RPC等を接続してNodeHandleを返す。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/node/builder/src/components/builder.rs",
+          "kind": "file-role",
+          "purpose": "EVM、pool、ネットワーク、payload builder、consensusのbuilderを呼び、依存を渡す。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/engine/tree/src/tree/mod.rs",
+          "kind": "file-role",
+          "purpose": "専用スレッドでEngine要求を処理し、チェーン状態と永続化の進行を調整する。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/net/network/src/manager.rs",
+          "kind": "file-role",
+          "purpose": "handleからの要求とswarmイベントをpollし、ピア通信やネットワーク状態を進める。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/engine/tree/src/backfill.rs",
+          "kind": "file-role",
+          "purpose": "段階的同期pipelineをIdle/Runningで管理し、targetに応じてタスクを起動して結果を返す。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/engine/tree/src/launch.rs",
+          "kind": "file-role",
+          "purpose": "downloader・persistence・tree・要求handler・backfillを結び、orchestratorを作る。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/engine/tree/src/chain.rs",
+          "kind": "file-role",
+          "purpose": "handlerとbackfillをpollし、開始・完了やチェーンイベントを上下へ伝える。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/engine/tree/src/engine.rs",
+          "kind": "file-role",
+          "purpose": "要求ストリーム・ブロックのダウンロード処理・treeのチャネルを接続し、要求と結果イベントを取り次ぐ。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        },
+        {
+          "id": "file-role:crates/node/builder/src/handle.rs",
+          "kind": "file-role",
+          "purpose": "ノードの部品群と終了Futureを保持し、終了待機の入口を提供する。",
+          "source": "startup-guide.roles",
+          "status": "not-measured"
+        }
+      ],
+      "doesNotRewriteCandidate2Criteria": true,
+      "overviewsAdded": [
+        "learning-home:main",
+        "atlas-overview:main",
+        "product-help:local-installation"
+      ]
+    },
+    "producerRegistry": [
+      {
+        "producer": "ui/learning.js homeHtml",
+        "routes": [
+          "local /",
+          "static index.html"
+        ],
+        "classification": "independent authored navigation overview",
+        "units": [
+          "learning-home:main"
+        ]
+      },
+      {
+        "producer": "ui/learning.js lessonHtml and diagram",
+        "routes": [
+          "/#lesson=id",
+          "index.html#lesson=id"
+        ],
+        "classification": "lesson7; figures, checks and paragraph/term variants belong to each lesson",
+        "units": "learning7"
+      },
+      {
+        "producer": "ui/lenses.js render/lessonArticle",
+        "routes": [
+          "/reader#lens=flow|structure|rust",
+          "lenses.html#..."
+        ],
+        "classification": "flow6 + overview/group3 + structure + Rust5; all16 selected variants and TS comparison are replica cases",
+        "units": "existing flow/Rust/structure units"
+      },
+      {
+        "producer": "dist/app.js render/insight/renderCode",
+        "routes": [
+          "reader.html?step=id"
+        ],
+        "classification": "same flow6/detail5; explanation/language/evidence/line-selection variants are mandatory replica cases",
+        "units": "flow-step6/flow-detail5"
+      },
+      {
+        "producer": "dist/app.js edge(i)",
+        "routes": [
+          "reader.html edge dialogs0..4"
+        ],
+        "classification": "connection claims of the caller flow unit; five modal replicas, not separate promises",
+        "units": "flow-step rpc/recover/submit/queue/batch"
+      },
+      {
+        "producer": "dist/app.js insight questions/notes and export/present",
+        "routes": [
+          "reader notes/questions/presentation"
+        ],
+        "classification": "user-authored notes/questions and presentation of existing source/claims; no new fixed Reth teaching unit; retention/privacy/function cases still required",
+        "units": "same current flow/detail unit"
+      },
+      {
+        "producer": "local-app/public/app.js area branch",
+        "routes": [
+          "/reader#area=id"
+        ],
+        "classification": "area primary/followup/extra23 plus catalogue navigation",
+        "units": "area23/component11"
+      },
+      {
+        "producer": "local-app/public/app.js !p.code file branch",
+        "routes": [
+          "/reader#path=path"
+        ],
+        "classification": "published roles are runtime union19; all are authored process summaries, not navigation exemptions",
+        "units": "file-role19",
+        "currentProducer": "authored transaction6 + startup guide13 → derived annotations19 → API roles19 (guide overlap13); all19 must reach fileRoleBridge"
+      },
+      {
+        "producer": "local-app/public/app.js !p.code && p.fn",
+        "routes": [
+          "/reader#path=path&fn=line"
+        ],
+        "classification": "known step6 text/signature branch is separate teaching replica; unknown functions expose original docs and lexical declarations without claiming analysis",
+        "units": "flow-step6; other declarations are upstream-source views"
+      },
+      {
+        "producer": "local-app/public/app.js p.code",
+        "routes": [
+          "/reader#path&code=1&start&end"
+        ],
+        "classification": "guided original source + manual range/user notes; context and selected-source functional replica",
+        "units": "same source-owning context/teaching unit"
+      },
+      {
+        "producer": "local-app/public/app.js p.notes",
+        "routes": [
+          "/reader#notes=1"
+        ],
+        "classification": "user-owned saved notes and generated AI explanations, labelled unreviewed; no new fixed authored Reth explanation",
+        "units": "supplemental persistence/return-navigation cases"
+      },
+      {
+        "producer": "local-app/public/files.js renderTree/renderInspector",
+        "routes": [
+          "/files?path&line"
+        ],
+        "classification": "repository index and original 400-line windows; inherited contextual guidance belongs to source owner; unknown files are explicitly not explained",
+        "units": "same source-owning units; full upstream review remains separate"
+      },
+      {
+        "producer": "local-app/public/startup.js renderOverview/renderStage/renderStep/renderLoops/renderConnections",
+        "routes": [
+          "/startup",
+          "/startup?stage",
+          "/startup?step"
+        ],
+        "classification": "startup20; check/rust/edge/IO claims included in each step/loop purpose ledger",
+        "units": "startup20"
+      },
+      {
+        "producer": "scripts/build-guide.py + docs/reth-startup-guide.md",
+        "routes": [
+          "/guide",
+          "dist/startup.html",
+          "docs/reading-guide.html"
+        ],
+        "classification": "static replica: startup7 narrative sections mapped to local11; runtime prose4 + loop5 metadata; same G1 purposes, separate G2/CSP/cold checks",
+        "units": "startup20"
+      },
+      {
+        "producer": "dist/atlas.js renderMap/topic-banner",
+        "routes": [
+          "explore.html"
+        ],
+        "classification": "overall map is own overview; selected topics4 include destination-fit and actual guide route; area descriptions attach to component/area catalogues",
+        "units": "atlas-overview1/atlas-topic4/component11"
+      },
+      {
+        "producer": "dist/atlas.js openFile/renderSource/updateSelection",
+        "routes": [
+          "explore.html?file&line"
+        ],
+        "classification": "source viewer plus inherited area/source metadata and user reading queue; no authored function analysis; same source-owning functional replicas",
+        "units": "same source-owning units"
+      },
+      {
+        "producer": "dist/zoom.js renderArea",
+        "routes": [
+          "zoom.html?area"
+        ],
+        "classification": "area guide replica plus 171 structural cards across11catalogues; RPC4 cards are substantive process claims needing code",
+        "units": "area23/component11"
+      },
+      {
+        "producer": "dist/zoom.js renderModules/renderFunctions/renderProcess",
+        "routes": [
+          "zoom.html?area&c&d&f&fn"
+        ],
+        "classification": "component and role19/annotated flow6 are authored replicas; other source declarations remain original/lexically extracted",
+        "units": "component11/file-role19/flow-step6",
+        "currentProducer": "authored transaction6 + startup guide13 → DRILL.roles19; role evidence renders independently of later function-catalogue load success"
+      },
+      {
+        "producer": "ui/reading-help.js lessonBridge/journeyBridge/codeHtml/termHtml",
+        "routes": [
+          "embedded across all routes"
+        ],
+        "classification": "shared guidance; contexts/line hints/glossary and four assistance combinations are separate measured dimensions, not automatic G1 passes",
+        "units": "attached owning units"
+      },
+      {
+        "producer": "scripts/build-design.py implementation page",
+        "routes": [
+          "implementation.html"
+        ],
+        "classification": "independent product help; G2 exact Reth code adjacency is NA with reason, but command/link/function/current-validation claims must match sources",
+        "units": [
+          "product-help:local-installation"
+        ]
+      }
+    ],
+    "pastScopeCorrection": "Candidate2 observed the fixed92 and failed. That did not establish inventory completeness: thirteen merged roles and three overview/help units had been omitted.",
+    "currentRoleProducers": {
+      "version": "candidate5 preparation",
+      "authored": {
+        "transactionRoles": {
+          "count": 6,
+          "producer": "scripts/build-drill.py authored transaction roles"
+        },
+        "startupRoles": {
+          "count": 13,
+          "producer": "local-app/startup-guide.json roles"
+        }
+      },
+      "derived": {
+        "drill": {
+          "count": 19,
+          "producer": "build-drill exact same-commit/path/conflict-checked merge"
+        },
+        "annotations": {
+          "count": 19,
+          "producer": "build-annotations from derived drill roles"
+        },
+        "api": {
+          "count": 19,
+          "producer": "annotations19 + startup-guide13 with13 identical overlaps"
+        }
+      },
+      "unitCount": 19,
+      "criteriaUnchanged": true,
+      "historicalInventoryRule": "The fixed criteria phrase annotations6+guide13 records the discovery-time producers. It is preserved and not silently rewritten to the later generated state.",
+      "meaning": "Generated original seed text/catalogue availability is separate from authored explanation or full-file semantic review."
+    }
+  },
+  "baseline": {
+    "status": "incomplete",
+    "capturedBeforeCandidateInlineCommentRevision": true,
+    "observedFindings": [
+      {
+        "id": "F1",
+        "severity": "blocking",
+        "scope": "learning:all7",
+        "finding": "本文で扱う問い全体に対し、代表抜粋1件だけを置いて十分と扱った。特にsendは復元と委譲しか読めず、キュー・検証・プール追加・返答を追えない"
+      },
+      {
+        "id": "F2",
+        "severity": "blocking",
+        "scope": "shared-reader",
+        "finding": "説明を原文から離れた操作パネルへ配置し、コードと説明を往復する負担を学習者へ押し付けた"
+      },
+      {
+        "id": "F3",
+        "severity": "blocking",
+        "scope": "rust-topic:all5",
+        "finding": "step未指定のRust topicページは該当コードへのリンクしかなく、同じページで原文を読めない"
+      },
+      {
+        "id": "F4",
+        "severity": "blocking",
+        "scope": "startup-loop:all5",
+        "finding": "loop一覧は原文リンクしかなく、同じ場所で原文に補助コメントを付けて読む経路がない"
+      },
+      {
+        "id": "F5",
+        "severity": "blocking",
+        "scope": "flow-detail:5",
+        "finding": "既存reading-helpのtxlookupはstepsだけ。detail5の専用contextがなく、一部が無補助または過大な別文脈へマッチする"
+      },
+      {
+        "id": "F6",
+        "severity": "blocking",
+        "scope": "atlas-topic:block,atlas-topic:sync",
+        "finding": "ready:falseの入口候補であり、目的に対応する経路は未完成。既存部分解説へのリンクを足すだけでは完成しない"
+      },
+      {
+        "id": "F7",
+        "severity": "major",
+        "scope": "all",
+        "finding": "原文が固定hashと一致することと、本文を裏付ける範囲・条件が十分なことを混同していた"
+      },
+      {
+        "id": "F8",
+        "severity": "major",
+        "scope": "all",
+        "finding": "操作回帰テストの緑を理解しやすさの根拠と扱い、全ページの固定課題を再実行しないまま完了を伝えた"
+      }
+    ]
+  },
+  "causeAnalysis": [
+    {
+      "cause": "最初の目的を受入条件へ落とさなかった",
+      "mechanism": "コードを読んで入力→処理→結果を説明できることより、リンクやボタンが存在することを優先した",
+      "prevention": "全説明単位の目的・主張・根拠範囲・次の担当を一覧化し、G1を独立レビューする"
+    },
+    {
+      "cause": "局所の症状へ収束した",
+      "mechanism": "ヒントを閉じた操作だけを直し、ページ全体や他の解説surfaceへの同じ設計問題を点検しなかった",
+      "prevention": "共通UI変更ごとにG6の全surface一覧を固定し、未計測を残す"
+    },
+    {
+      "cause": "表示上の成功を意味上の成功と誤認した",
+      "mechanism": "hash整合やテスト合格を、学習者が説明できることと取り違えた",
+      "prevention": "ソース整合・UI動作・AI模擬理解・実人間理解の4種類を別欄で報告する"
+    },
+    {
+      "cause": "代表抜粋とscope文による過小評価",
+      "mechanism": "ここでは入口だけという注記で本文の広い目的との不一致を許容した",
+      "prevention": "目的を勝手に縮小せず、必要な呼出先・結果の戻りまで補う。関連例と呼出経路は明示して区別する"
+    },
+    {
+      "cause": "自分で期待結果を作り自分で合格にした",
+      "mechanism": "自己採点と成功したやり直しを中心に見て、最初の失敗や未測定を見落とした",
+      "prevention": "baseline/candidateを分離し、固定課題を独立ペルソナ/レビュアーが再実行。失敗ログは保持する"
+    },
+    {
+      "cause": "任意の代表コードと任意の言語説明があればよいと考えた",
+      "mechanism": "rootから最初の対応1例だけ追加する指示があり、Rusttopicの目的・文中の主張とコードの注目行を対応づけなかった。実装担当もその指示を機能テストで満たせばよいと扱った。 step.languageをtopic無関係に流用しても、表示とhost数のテストでは検出できなかった。",
+      "prevention": "topic×stepごとに目的→根拠行→説明を明示し、呼出先や対になる処理の不足を独立レビューする。全16組合せを再実行する。"
+    },
+    {
+      "cause": "テストが実アプリの読み込み順序を再現していなかった",
+      "mechanism": "loopレンダー前に共有dataを注入した単体テストだけを通し、cold entryでmodule/deferの順序が違う場合を見逃した。",
+      "prevention": "初期読込で共有dataが後着するケースを含め、実ブラウザのcold entryと画面内原文の行範囲を確認する。"
+    },
+    {
+      "cause": "同じ教材の別実装を部分対応で済ませた",
+      "mechanism": "静的startupをloop5だけ修正し、本文7節とlocal11読みどころの目的対応を確認しなかった。共有データがあれば全surface対応とみなした。",
+      "prevention": "surfaceごとの実装と目的対応表を作り、原文/補助/操作を実際に開いて確認する。コピー一致・データ存在だけでG6合格にしない。"
+    },
+    {
+      "cause": "同じ処理の根拠列を表示実装ごとに別管理した",
+      "mechanism": "lesson sendに詳細経路を加えても、動作別lenses、area pool、ローカル関数説明、静的zoomの説明へ共有されなかった。ページ概念の棚卸しだけで分岐ごとの説明実装を数え切れなかった。",
+      "prevention": "operation/fileRoleの目的と根拠列を一か所へ集めて共有し、92単位ごとに全render branchの実UI観察を対応づける。新しいbranch発見は同unitの検査対象へ追加し、未確認を隠さない。"
+    },
+    {
+      "cause": "著述ファイル一つの件数を実際の公開説明一覧とみなした",
+      "mechanism": "annotations.roles6と静的drill.rolesを数え、/api/indexでstartup-guide.roles13が追加mergeされる経路を調べなかった。全ページという要求を一つのdata系統の在庫へ縮めた。",
+      "prevention": "各公開API/rendererが実際に使う全dataのunionを取得し、authoring→merge→route→表示まで照合する。過去criteria/hashを改変せず、新たに見つかった既存単位を次版の分母へ追加し、未計測を維持する。"
+    },
+    {
+      "cause": "同じ主張をする別の著述producerへ意味修正を伝播させなかった",
+      "mechanism": "startup guideの273field/57sourceを独立レビューしても、canonical learning:startup/rethは別のlesson-code-links列を使っていた。同じmain→部品→稼働の目的を主張しながら旧13/6列が残り、guideの意味合格を教材全体へ一般化しかけた。",
+      "prevention": "独立レビュー済みのclaim-source対応を、そのclaimを表示する全producerへ照合する。lesson本文/目的/接続文とguideの範囲は別々に確認し、同じ著述を共有metadataから構成する。本文を主要だけと言い換えて根拠の欠落を免除しない。",
+      "evidence": "outputs/global-reading-loop/candidate3-learning-startup-reth-prefreeze-findings.json",
+      "status": "prefreeze counterexample; no frozen candidate success claimed"
+    },
+    {
+      "cause": "固定版を読まず、同名・過去実装から反例を断定した",
+      "mechanism": "rootがsubmit通常経路は事前tx.hash保持と推測して修正依頼したが、Aが固定版L110–113のAddedTransactionOutcomeからのhash抽出を示して拒否した。root/Cが原文88–116を読み直し、誤説明の採用前に止めた。",
+      "prevention": "反例の断定前にcommit/path/返却式/型を現物読取する。未読はneeds-reviewとし、独立担当が根拠を示して提案を拒否できるようにする。",
+      "evidence": "outputs/global-reading-loop/candidate3-root-false-positive-rejected.json",
+      "status": "prevented by independent source evidence; no erroneous runtime edit"
+    },
+    {
+      "cause": "印刷資料への暗黙の例外で、同じコード解説surfaceのG4を確認しなかった",
+      "mechanism": "Cはstandalone startupの原文・隣接コメント・同ページ参照・CSP・Markdownを検査し、補助switchのない印刷用docを暗黙に別扱いした。rootもfreeze前に全producerへのG4適用を固定criteriaと突き合わせず候補3を凍結した。実画面はcode56panelにcheckbox0、印刷buttonだけだった。",
+      "prevention": "コード解説を持つ全surfaceへ、原文を残した2独立補助と4combosの適用をfreeze前に照合する。根拠のないprint例外や、原文ごと閉じる操作を補助OFFと扱わない。適用不明はneeds-reviewとして止める。",
+      "evidence": "outputs/global-reading-loop/candidate-3/static-guide-G4-failure.json",
+      "status": "candidate3 FAIL; repair pending; candidate4 must restart all108×2round"
+    },
+    {
+      "cause": "同じdata19件の存在を、全rendererで19件へ到達することと取り違えた再発",
+      "mechanism": "fileRoleLinks19とlocal index19は整ったが、static zoomはDRILL.roles6で既知役割を判定していた。startup13がその条件へ接続されず、mainのstatic表示は汎用未作成/原文0、localだけ20sourceだった。rootがdata inventoryとrenderer分岐の契約を実UIで全19へ突き合わせる前に候補4をfreezeした。",
+      "prevention": "authoring→各生成データ→renderer条件→source bridgeの全経路をunitごとに照合し、各公開役割をlocal/static両方で実遷移する。data件数・host生成関数・localの成功をstatic成功へ一般化しない。prefreeze回帰も実際のDRILL.roles unionを検査する。",
+      "evidence": "outputs/global-reading-loop/candidate-4/data-reviewer-ui.json#A-C4-STATIC-ROLE-MAIN-001",
+      "status": "candidate4 FAIL; new candidate must rerun all108×2round"
+    }
+  ],
+  "candidateRounds": [
+    {
+      "id": "candidate-1",
+      "runtimeHash": "2a3e79a88dce308f0a412929139bc8fe667db7565db8c7a0321ebf48c96440e8",
+      "criteriaHash": "88769515e3681584f8b93f8ad84476168acaf0f3e6c44861b35e8a7a8223d737",
+      "reviewer": "global_review",
+      "result": "FAIL",
+      "observedUnits": 58,
+      "totalUnits": 92,
+      "unobservedUnitIds": [
+        "flow-detail:rpc-contract",
+        "flow-detail:recovery-hook",
+        "flow-detail:forward",
+        "flow-detail:batch-runner",
+        "flow-detail:pool-test",
+        "atlas-topic:transaction",
+        "atlas-topic:block",
+        "atlas-topic:sync",
+        "atlas-topic:boot",
+        "component:node",
+        "component:rpc",
+        "component:pool",
+        "component:network",
+        "component:sync",
+        "component:engine",
+        "component:execution",
+        "component:payload",
+        "component:storage",
+        "component:extension",
+        "component:foundation",
+        "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+        "file-role:crates/transaction-pool/src/batcher.rs",
+        "file-role:crates/transaction-pool/src/lib.rs",
+        "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "file-role:crates/rpc/rpc/src/eth/core.rs",
+        "startup-overview:main",
+        "startup-stage:cli",
+        "startup-stage:prepare",
+        "flow-overview:main",
+        "flow-group:receive",
+        "flow-group:dispatch",
+        "flow-group:validate",
+        "structure-overview:main"
+      ],
+      "records": 62,
+      "failedUnitIds": [
+        "startup-loop:1",
+        "startup-loop:2",
+        "startup-loop:3",
+        "startup-loop:4",
+        "startup-loop:5",
+        "rust-topic:borrow",
+        "rust-topic:future",
+        "rust-topic:result",
+        "rust-topic:trait",
+        "rust-topic:channel",
+        "atlas-topic:block",
+        "atlas-topic:sync"
+      ],
+      "findings": [
+        {
+          "id": "C1-RUST-01",
+          "gate": "G1",
+          "units": [
+            "rust-topic:borrow",
+            "rust-topic:future",
+            "rust-topic:result",
+            "rust-topic:trait",
+            "rust-topic:channel"
+          ],
+          "observation": "全5topicで同ページの原文は最初の1stepだけ。topicで述べる呼出先/要求処理側/返答の根拠が他ページリンクに残る。コードが1つ見えることでは目的を満たさない。",
+          "examples": [
+            "channel: queueの要求送信/返答待ちは見えるがbatch処理側の原文はリンクだけ",
+            "future: 最初のrpcにはawaitはあるがポーリング/spawnの根拠がない",
+            "trait: 最初のrpcだけではtraitの約束/既定処理/具体実装を比べられない"
+          ]
+        },
+        {
+          "id": "C1-RUST-02",
+          "gate": "G1",
+          "observation": "lessonArticleがstep.languageをtopic無関係に流用し、future:batchはiterator/unzip/zip、borrow:submitは構造体分解、trait:rpcはawait?の説明になる。全16組合せを実表示して検出。"
+        },
+        {
+          "id": "C1-LOOP-01",
+          "gate": "G2",
+          "units": [
+            "startup-loop:1",
+            "startup-loop:2",
+            "startup-loop:3",
+            "startup-loop:4",
+            "startup-loop:5"
+          ],
+          "observation": "実アプリcold entryでstage=runの5loop全てに原文0行/補助0。module初期mountがdefer共有dataより先にrenderLoopsを評価するとfallback表示で固定される。Nodeテストはglobal dataを先に注入してしまい検出しなかった。",
+          "screenshot": "candidate-1-loop-cold-failure.jpg"
+        },
+        {
+          "id": "C1-ATLAS-01",
+          "gate": "G1",
+          "units": [
+            "atlas-topic:block",
+            "atlas-topic:sync"
+          ],
+          "observation": "入口候補のready:falseが残り目的に対応する実行/取得/保存経路が未完成。追加調査中。"
+        }
+      ],
+      "functionalEvidence": {
+        "learningPages": 7,
+        "areaMainPages": 11,
+        "areaFollowups": 11,
+        "areaExtra": 1,
+        "startupSteps": 11,
+        "flowSteps": 6,
+        "rustTopics": 5,
+        "rustContextVariants": 16,
+        "loopColdEntries": 5
+      },
+      "limitations": [
+        "独立技術レビュー・実DOM観察であり、人間の理解検証ではない",
+        "未確認34単位をpassとして補完しない",
+        "コード/補助表示成功だけでG1やG3の意味整合を合格にしない"
+      ],
+      "allGatesPassed": false,
+      "lateSourceFindings": [
+        {
+          "id": "C1-STATIC-01",
+          "gate": "G2/G6",
+          "status": "fail",
+          "phase": "candidate2-preparation source audit of unchanged candidate1 replica",
+          "surface": "dist/startup.html",
+          "observation": "静的startupの起動説明7節はリンクだけで原文が同ページに無い。loop5原文を追加しても起動説明全体の複製を覆っていなかった。local11との対応を明示して各節へ原文を生成する必要がある。",
+          "doesNotChangeEarlierObservationCount": true
+        }
+      ]
+    },
+    {
+      "id": "candidate-2",
+      "runtimeHash": "b536cb560ca82a7b4d0a24589639ec3479fad703a60ca70205c5712f523266e5",
+      "criteriaHash": "88769515e3681584f8b93f8ad84476168acaf0f3e6c44861b35e8a7a8223d737",
+      "reviewer": "global_review plus curriculum_sources UI and beginner_eval independent semantics",
+      "result": "FAIL",
+      "round": 1,
+      "observedUnits": 92,
+      "totalUnits": 92,
+      "ownObservedUnits": 75,
+      "peerObservedUnits": 17,
+      "unobservedUnitIds": [],
+      "failedUnitIds": [
+        "area:pool",
+        "atlas-topic:transaction",
+        "component:rpc",
+        "flow-step:rpc",
+        "flow-step:recover",
+        "flow-step:submit",
+        "flow-step:queue",
+        "flow-step:batch",
+        "flow-step:pool",
+        "rust-topic:trait",
+        "rust-topic:channel",
+        "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+        "file-role:crates/transaction-pool/src/batcher.rs",
+        "file-role:crates/transaction-pool/src/lib.rs",
+        "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "file-role:crates/rpc/rpc/src/eth/core.rs",
+        "startup-step:dispatch",
+        "startup-step:tree",
+        "startup-step:backfill",
+        "startup-loop:3",
+        "startup-loop:5"
+      ],
+      "findings": [
+        {
+          "id": "C2-G1-POOL",
+          "gate": "G1",
+          "units": [
+            "flow-step:pool",
+            "area:pool"
+          ],
+          "result": "fail",
+          "observation": "検証/追加の目的を示すが原文はvalidate呼出しと内部追加入口まで。areaはchainId一例を添えるだけで、主要な検証条件/worker/limit/addの実装が同ページに無い。",
+          "evidence": "candidate-2-flow-pool-failure.json"
+        },
+        {
+          "id": "C2-G2-REPLICA",
+          "gate": "G2/G6",
+          "units": [
+            "flow-step:rpc",
+            "flow-step:recover",
+            "flow-step:submit",
+            "flow-step:queue",
+            "flow-step:batch",
+            "flow-step:pool"
+          ],
+          "result": "fail",
+          "observation": "local /reader#path&fn と static zoom.renderProcess の6処理ずつ計12表示は説明/宣言だけで原文コード行と隣接補助が0。代表lensesだけでは同単位の別実装を覆えない。",
+          "evidence": "candidate-2-global-round-1-dom.json local-function/static-function records"
+        },
+        {
+          "id": "C2-G2-ROLE",
+          "gate": "G1/G2/G6",
+          "units": [
+            "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+            "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+            "file-role:crates/transaction-pool/src/batcher.rs",
+            "file-role:crates/transaction-pool/src/lib.rs",
+            "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+            "file-role:crates/rpc/rpc/src/eth/core.rs",
+            "component:rpc"
+          ],
+          "result": "fail",
+          "observation": "file-role6のrole/input/outputとRPC4責務カードは処理の主張を含むが原文/隣接補助がない。navigation-onlyとして免除しない。",
+          "evidence": "candidate-2/data-reviewer-ui.json"
+        },
+        {
+          "id": "C2-G3-DIRECTION",
+          "gate": "G3/G5",
+          "units": [
+            "rust-topic:trait",
+            "rust-topic:channel"
+          ],
+          "result": "fail",
+          "observation": "trait4組のsupportが下のrecover/submitへ案内するが実際は上側。channel/batch選択時queueの下のbatchも実際は上側。B独立16組は11pass/5fail。futureの位置表現は曖昧さを次候補で除去するが、B最終判定の確定failへは算入しない。",
+          "evidence": "candidate-2/beginner-rust-independent-raw.json"
+        },
+        {
+          "id": "C2-G1-ATLAS-TX",
+          "gate": "G1/G6",
+          "units": [
+            "atlas-topic:transaction"
+          ],
+          "result": "fail",
+          "observation": "RPC受付からpool追加まで追うと掲げるがguideの行先zoom?area=rpcはRPC入口と任意の復元だけで、送信フロー/lesson send/lensesへのリンクが0。",
+          "evidence": "candidate-2-global-round-1-dom.json atlas-topic:transaction"
+        },
+        {
+          "id": "C2-G1-RECOVER",
+          "gate": "G1",
+          "units": [
+            "learning:rpc",
+            "learning:send",
+            "flow-step:recover"
+          ],
+          "result": "not-measured",
+          "observation": "復元hook呼出しだけで読み取り/署名復元の主要条件を満たすかの判定は保留。既存hook本体と必要なtry_recover実装の接続を次候補で確認する。",
+          "evidence": "candidate-2/root-findings.json"
+        },
+        {
+          "id": "C2-G1-STARTUP",
+          "gate": "G1/G6",
+          "units": [
+            "startup-step:dispatch",
+            "startup-step:tree",
+            "startup-step:backfill",
+            "startup-loop:3",
+            "startup-loop:5"
+          ],
+          "result": "fail",
+          "observation": "静的節1の実行環境/ログ準備はdispatch159–192の外。専用OS thread作成はrun517–606の外（spawn460–480）。backfillのrun_as_fut→run_loop/stage順/unwind本体も外部リンクのままで、同じ場所の原文列が目的を閉じない。",
+          "evidence": "candidate-2/beginner-static-startup-independent.json"
+        }
+      ],
+      "rawRecords": 100,
+      "sourceDOM": {
+        "uniqueContextsObservedAndVisible": 109,
+        "instances": 271,
+        "nativeStaticContexts": 16,
+        "originalHashAndRangeMismatches": 0,
+        "notLearningPass": true
+      },
+      "supplementalEvidence": [
+        "candidate-2-global-round-1-source-dom-check-final.json",
+        "candidate-2-manual-source-retention.json",
+        "candidate-2/data-reviewer-catalogue-cards.json",
+        "candidate-2/root-browser-round1.json",
+        "candidate-2/beginner-round-1.json",
+        "candidate-2/beginner-rust-independent-raw.json",
+        "candidate-2/beginner-static-startup-independent-raw.json",
+        "candidate-2/beginner-rust-independent.json",
+        "candidate-2/beginner-static-startup-independent.json"
+      ],
+      "additionalNotMeasured": [
+        "local catalogue Cargo routes beyond one navigation per area remain unobserved in this candidate; peer records this explicitly",
+        "unresolved recovery scope adjudication is not a pass",
+        "all-gate pass statuses are not inferred from successful source display"
+      ],
+      "subsequentRound": {
+        "status": "not-completed",
+        "reason": "blocking G1/G2/G6 failures; peer catalogue round2 remains candidate2 evidence and is not a consecutive full pass"
+      },
+      "humanStudyParticipants": 0,
+      "allGatesPassed": false,
+      "beginnerTaskComparison": {
+        "pages": 7,
+        "taskSelfPass": 7,
+        "taskSelfFail": 0,
+        "evidence": "candidate-2/beginner-round-1.json",
+        "notGlobalPass": true
+      },
+      "independentRustReview": {
+        "pairs": 16,
+        "pass": 11,
+        "fail": 5,
+        "evidence": "candidate-2/beginner-rust-independent.json"
+      },
+      "independentStaticStartupReview": {
+        "sections": {
+          "pass": 6,
+          "fail": 1
+        },
+        "runtime": {
+          "pass": 3,
+          "fail": 2
+        },
+        "evidence": "candidate-2/beginner-static-startup-independent.json"
+      },
+      "inventoryScopeLimitation": "Fixed92 were observed and failed; later producer/merge audit revealed16 pre-existing omitted units, so full-site inventory completeness was also not achieved."
+    },
+    {
+      "id": "candidate-3",
+      "runtimeHash": "563e3ecf33cdbeab4e0c773a2026d43d9fc378a36f23371ecc530eb19bf194ff",
+      "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+      "result": "fail",
+      "observationScope": "partial UI; 36 C-owned primary units visited, all108 not completed",
+      "findings": [
+        "Static startup G4 assistance controls absent"
+      ],
+      "evidence": "outputs/global-reading-loop/candidate-3/global-review-partial.json"
+    },
+    {
+      "id": "candidate-4",
+      "runtimeHash": "dcf485512c812028c1828d1938a769e527f660f2e9d868d1392e394250e424af",
+      "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+      "result": "fail",
+      "observationScope": "partial; C learning7, all108 not completed",
+      "findings": [
+        "static zoom main role excluded by DRILL.roles6 gate"
+      ],
+      "evidence": "outputs/global-reading-loop/candidate-4/global-review-partial.json"
+    }
+  ],
+  "humanStudy": {
+    "participants": 0,
+    "status": "not-measured"
+  },
+  "overallComplete": false,
+  "criteriaHistory": [
+    {
+      "version": 1,
+      "criteriaHash": "88769515e3681584f8b93f8ad84476168acaf0f3e6c44861b35e8a7a8223d737",
+      "minimumUnits": 92,
+      "unitIds": [
+        "learning:blockchain",
+        "learning:ethereum",
+        "learning:rpc",
+        "learning:reth",
+        "learning:send",
+        "learning:startup",
+        "learning:reading",
+        "area:node",
+        "followup:node",
+        "area:rpc",
+        "followup:rpc",
+        "area:pool",
+        "followup:pool",
+        "area-extra:pool",
+        "area:network",
+        "followup:network",
+        "area:sync",
+        "followup:sync",
+        "area:engine",
+        "followup:engine",
+        "area:execution",
+        "followup:execution",
+        "area:payload",
+        "followup:payload",
+        "area:storage",
+        "followup:storage",
+        "area:extension",
+        "followup:extension",
+        "area:foundation",
+        "followup:foundation",
+        "startup-step:entry",
+        "startup-step:dispatch",
+        "startup-step:supervisor",
+        "startup-step:database",
+        "startup-step:context",
+        "startup-step:components",
+        "startup-step:services",
+        "startup-step:orchestrator",
+        "startup-step:tree",
+        "startup-step:network",
+        "startup-step:backfill",
+        "startup-loop:1",
+        "startup-loop:2",
+        "startup-loop:3",
+        "startup-loop:4",
+        "startup-loop:5",
+        "flow-step:rpc",
+        "flow-step:recover",
+        "flow-step:submit",
+        "flow-step:queue",
+        "flow-step:batch",
+        "flow-step:pool",
+        "flow-detail:rpc-contract",
+        "flow-detail:recovery-hook",
+        "flow-detail:forward",
+        "flow-detail:batch-runner",
+        "flow-detail:pool-test",
+        "rust-topic:borrow",
+        "rust-topic:future",
+        "rust-topic:result",
+        "rust-topic:trait",
+        "rust-topic:channel",
+        "atlas-topic:transaction",
+        "atlas-topic:block",
+        "atlas-topic:sync",
+        "atlas-topic:boot",
+        "component:node",
+        "component:rpc",
+        "component:pool",
+        "component:network",
+        "component:sync",
+        "component:engine",
+        "component:execution",
+        "component:payload",
+        "component:storage",
+        "component:extension",
+        "component:foundation",
+        "file-role:crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+        "file-role:crates/rpc/rpc-eth-api/src/core.rs",
+        "file-role:crates/transaction-pool/src/batcher.rs",
+        "file-role:crates/transaction-pool/src/lib.rs",
+        "file-role:crates/rpc/rpc/src/eth/helpers/transaction.rs",
+        "file-role:crates/rpc/rpc/src/eth/core.rs",
+        "startup-overview:main",
+        "startup-stage:cli",
+        "startup-stage:prepare",
+        "startup-stage:run",
+        "flow-overview:main",
+        "flow-group:receive",
+        "flow-group:dispatch",
+        "flow-group:validate",
+        "structure-overview:main"
+      ],
+      "reason": "fixed candidate1/candidate2 criteria preserved before runtime-merge inventory correction"
+    }
+  ],
+  "comparisonLimits": {
+    "evidence": "outputs/global-reading-loop/beginner-protocol-audit.json",
+    "legacyResultsPreserved": true,
+    "strictSameLoadComparison": false,
+    "reasons": [
+      "baseline did not execute all four assistance combinations, while candidate1/2 did.",
+      "candidate1/2 counted assistance switching and learning actions together within max10.",
+      "The old1/7→5/7→7/7 figures cannot establish an equal-load improvement comparison.",
+      "All seven legacy learning-task records left unsaved-note preservation not-measured; their success does not complete G4."
+    ],
+    "prospectiveCandidate4": {
+      "learningTask": "New explicitly fixed new/first protocol with max10 learning actions; no direct operation-count comparison to older combined measurements.",
+      "functionalG4": "Independent four combinations plus original/controls/selection/URL and unsaved-note preservation where note UI exists; distinct renderer branches separately tested.",
+      "humanStudyParticipants": 0
+    },
+    "prohibition": "Do not subtract switches from old recorded operation totals, rewrite old scores, or treat new task performance as a matched historical comparison."
+  }
+}
