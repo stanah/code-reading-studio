@@ -1,0 +1,54 @@
+{
+  "candidate": 8,
+  "revision": 2,
+  "status": "pre-implementation protocol; revision1 adoption withheld; canonical runtime remains candidate7",
+  "definedAt": "2026-10-25T20:01:00.914163+00:00",
+  "observedFailure": {
+    "runtime": "d4f613b2600c79ce61d78d80058f8550f1c9c6e3271d5732bdc56e6fa14b6a3a",
+    "fresh": "fresh-persona5; separate AI without implementation history; human0",
+    "partialAt10Actions": [
+      "reth",
+      "send",
+      "startup"
+    ],
+    "readingReturn": "Selected original L923 remained below actual viewport; source1/open/AX selection was insufficient. Independent reviewer reproduced row top1263.72/bottom1288.77 with viewport height1169.",
+    "firstFailuresPreserved": true
+  },
+  "whyEarlierJudgementWasInsufficient": [
+    {
+      "proxy": "Source present, control present, selected line restored",
+      "missing": "Actual code row and adjacent comment within viewport after return",
+      "prevention": "R5 real geometry plus screenshot after explicit navigation; hidden DOM never counts as visibility."
+    },
+    {
+      "proxy": "One visible source or a small action count",
+      "missing": "Readers still choose among55 Reth/37 startup titles and distinguish normal path from204-line validation detail",
+      "prevention": "Meaning-based primary reading order and landmarks; all claims/full ranges kept; same10-action task and unanswered branches recorded."
+    },
+    {
+      "proxy": "A main sequence of handler names",
+      "missing": "Different NewPayload/FCU/persistence inputs and replies; a serial task prompt can itself teach an incorrect connection",
+      "prevention": "Independently verify receiver/return/conditional branches before primary UI; original partial is retained, revised task cannot claim strict baseline equivalence."
+    },
+    {
+      "proxy": "Representative renderer and a first context four-state test",
+      "missing": "Other source contexts and purpose-specific Rust variants",
+      "prevention": "Every published context each4states twice, native purpose variants local/static, and fixed owner/producers inventory retained."
+    },
+    {
+      "proxy": "Automated test pass or source fit",
+      "missing": "First-use operation, UI geometry, and learning evidence are separate",
+      "prevention": "Independent source/UI/AI result records; no human comprehension or whole-code completion claim."
+    }
+  ],
+  "nextCandidate": "Revision2 implementation is isolated pending source/fixed-point and actual UI review, then freeze before formal2round matrix; no revision1 adoption.",
+  "limits": {
+    "humanParticipants": 0,
+    "reviewedExcerptFiles": 61,
+    "fullFileReviews": 2,
+    "trackedRustFiles": 1283,
+    "functionBranchCoverage": "not-measured",
+    "functionalLoopComplete": false,
+    "wholeCodeComplete": false
+  }
+}

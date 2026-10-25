@@ -1,0 +1,104 @@
+{
+  "version": 4,
+  "definedBeforeEvaluation": true,
+  "tasks": [
+    "blockchain",
+    "ethereum",
+    "rpc",
+    "reth",
+    "send",
+    "startup",
+    "reading"
+  ],
+  "maxLearningActionsPerPage": 10,
+  "countedActions": [
+    "open source or term",
+    "choose flow",
+    "choose destination",
+    "open selected destination",
+    "follow implementation",
+    "return",
+    "change assistance for answer"
+  ],
+  "excludedSetup": [
+    "specified URL",
+    "profile setup before task",
+    "simple page/source scroll"
+  ],
+  "coldStartingState": "reload document for every lesson and round; no transient original-open/selected-line map from prior lesson successes",
+  "g4Separate": true,
+  "humanParticipants": 0,
+  "freshTasks": {
+    "blockchain": "なぜ届いたブロックをそのまま記録せず確かめるか。原文で一つの確認を示す。",
+    "ethereum": "状態とは何か。取引を実行する処理と記録する処理の根拠を示す。",
+    "rpc": "RPCで取引を送ると何を受け取り、成功時に何が終わっているか。",
+    "reth": "Rethの主な担当を追う。届いたブロックの検証・実行と返答、採用する履歴を更新する別の要求、採用後に保存する条件と完了通知が、それぞれどうつながるかをコードで説明する。",
+    "send": "受信した署名済み取引がプールへ入る通常経路の入力・主要分岐・結果と返答元を追う。",
+    "startup": "起動入口から動き続ける処理へつながる担当を追い、待つ箇所と止まる条件を説明する。",
+    "reading": "実コードの受け取る値、主要な処理、返す結果を見つけ、関連実装を読んで元へ戻る。"
+  },
+  "candidate": 8,
+  "revision": 2,
+  "status": "protocol-defined-before-formal-evaluation; runtime-not-frozen",
+  "definedAt": "2026-10-25T19:59:03.893631+00:00",
+  "personas": [
+    {
+      "id": "novice",
+      "chain": "new",
+      "code": "first"
+    },
+    {
+      "id": "programmer",
+      "chain": "new",
+      "code": "other"
+    },
+    {
+      "id": "rust-reader",
+      "chain": "known",
+      "code": "rust"
+    }
+  ],
+  "rounds": 2,
+  "freshness": "First novice round uses a newly delegated AI without implementation/history. Its second round is repeated exposure and is labelled so; no AI result is human evidence. Source/UI reviewers are warm reviewers.",
+  "taskChange": {
+    "reth": {
+      "old": "Rethの主な担当を、受信・検証/実行・保存・応答のつながりとしてコードで追う。",
+      "reason": "Old prompt could suggest one serial NewPayload-to-save-to-reply chain. These are distinct input/response paths. Preserve first partial result; revised task is a new explicit protocol, never a strict same-task improvement claim.",
+      "baseline": "candidate-8/fresh-persona5-preflight/report.json unchanged"
+    },
+    "others": "Original wording and max10 preserved. An additional primary path cannot substitute for page-wide evidence or branch understanding."
+  },
+  "recordEachTask": [
+    "actual start URL, runtime/data/config hashes and profile",
+    "cold reload per lesson and round",
+    "each counted action with label/target and timestamp",
+    "answer in own words with observed file/line evidence",
+    "unread branches, unresolved questions, attempts beyond cap are not success",
+    "source-open count and selected original/comment geometry after explicit navigation",
+    "first failure retained; retries/new runtime are separate observations"
+  ],
+  "additionalGates": {
+    "R1": "new/first cold focus opens one primary original per scope; automatic call following at most3; explicit parallel not counted as automatic",
+    "R2": "Each active source has current role and same-page next/previous/picker; actual call vs asynchronous request/reply vs related reading labelled distinctly; call/back restores origin selection/URL/draft",
+    "R3": "All personas can manually choose focus/parallel and each of four symbol-list/comment settings; manual state persists on same-question rerender/preferences; initial explicit destination wins only on fresh explicit request",
+    "R4": "Original108 owner G1-G6 all applicable pairs and all affected producers/replicas checked twice on one frozen candidate; every published context (current148 plus any reviewed additions) individually four states twice; Rust native all purpose-specific contexts local/static four states twice, Atlas route/payload preserved",
+    "R5": "Actual original row and all adjacent authored comments, when enabled and fitting available space, fully visible inside code pane and browser safe viewport after explicit entry/call/back/previous/next/phase/picker. Record dimensions and sticky occlusion; impossible fit needs review, never DOM-nonhidden PASS. One compact navigator per logical scope. Cold concept intro does not auto-skip. Manual editor/raw priority and focus preserved.",
+    "R6": "All7 lessons identify main question and meaning-based primary reading order without shrinking original source ranges or hiding existing explanation claims. Every original/detail remains reachable same page in one deliberate selection; in-function landmarks point to actual conditions/results. Priority is independent of existing essential/technical flags. No straight arrow invented across separate inputs."
+  },
+  "stateMatrix": {
+    "generic": "Every source context on its actual generic consumer, each4 states,2 rounds. Additional nonrepresentative contexts are counted explicitly.",
+    "rust": "All native purpose contexts across5 topics including batch runner on local and static,4 states,2 rounds. Atlas21 Rust route payloads and42 URL variants remain separate.",
+    "conditional": "same asset bytes, explicitly configured late data and fetch failure; editor/raw focus and keyboard retry restoration. Failure retry is not successful recovery evidence.",
+    "viewport": "R5 producer/action/profile/control cross-product applicability inventory fixed before formal freeze; no representative producer generalization; actual sizes only. Narrow viewport unmeasured unless safely available in own test surface."
+  },
+  "separateEvidence": [
+    "upstream fidelity and semantic review",
+    "automated tests/build fixed point",
+    "actual browser state and geometry",
+    "AI simulated learning performance",
+    "human learning (0; unmet)",
+    "whole-code coverage (not achieved; inventory denominator retained)"
+  ],
+  "acceptance": "Functional loop complete only after every applicable fixed criterion passes two rounds on same frozen runtime/data/config. Any fail or not-measured keeps incomplete. Whole Reth and human learning remain separate unmet goals.",
+  "metadataCorrection": "Before formal freeze: restore original task string accidentally aliased in protocol authoring; original candidate7 and fresh5 evidence unchanged."
+}

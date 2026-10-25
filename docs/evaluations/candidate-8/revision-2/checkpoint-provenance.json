@@ -1,0 +1,11 @@
+{
+  "scope": "Compact checkpoint. Full original raw AI/UI evidence remains in workspace outputs/global-reading-loop/candidate-8, immutable. It is not all included in this publication.",
+  "files": {
+    "revision-1-independent-preflight-summary.json": "10f20b82eda7eddb6386312e8cbbdc6c12faa8d5d1bc2deec295c00dd327efb2",
+    "revision-1-reading-return923.png": "84751dcd1478e62f17ad611c8de58042ef54a4da21ea39273281f998078450a6"
+  },
+  "rawOriginals": {
+    "fresh-persona5-preflight/report.json": "a7026b42875ee20437bc5dae7bab629b8059b644ffd4afb9b995f74006a30312"
+  },
+  "image": "Actual first-use screenshot after return; selected original L923 is below viewport. Not a revised UI screenshot."
+}

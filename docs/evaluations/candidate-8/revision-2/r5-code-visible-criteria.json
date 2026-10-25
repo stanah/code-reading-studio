@@ -1,0 +1,381 @@
+{
+  "candidate": 8,
+  "revision": 2,
+  "definedBeforeRevisionImplementation": true,
+  "kind": "R5-code-visible gate proposal, not a pass record",
+  "baselineFailure": {
+    "report": "../../fresh-persona5-preflight/report.json",
+    "image": "../../fresh-persona5-preflight/reading-representative.png",
+    "runtime": "d4f613b2600c79ce61d78d80058f8550f1c9c6e3271d5732bdc56e6fa14b6a3a",
+    "problem": "L923 selected/nonhidden but original code falls below viewport after call/back; repetitive help/nav occupies code reading area."
+  },
+  "required": {
+    "R5.1": "One compact reading navigator per logical scope, moved/reused near the active original; no duplicate mode/selector explanation in parallel sources.",
+    "R5.2": "Explicit source entry/call/back/prev/next/phase/picker keeps the requested original row fully inside both its inner code viewport and actual browser viewport, below relevant sticky headers.",
+    "R5.3": "When Japanese comments are enabled and that line has an adjacent authored comment, the whole comment and target row are visible together if their combined height fits the available code viewport. If not, record needsReview/fail; do not silently omit the comment from the criterion.",
+    "R5.4": "A dictionary list and open term hint do not stack above and push out a short selected original. Term help remains reachable near the clicked code.",
+    "R5.5": "Same question rerender/prefs preserve manual mode/controls/line/draft/URL. New explicit input selects its target. Atlas manual raw/editor priority is retained.",
+    "R5.6": "Cold lesson entry preserves concept introduction; no automatic jump past lesson text. Code visibility applies after explicit original navigation, not to an unseen initial source below introduction."
+  },
+  "geometry": {
+    "viewport": "actual window.innerWidth/innerHeight recorded; no fixed fabricated test dimensions",
+    "visibility": "All ancestor details open, connected, not hidden, plus row rect top/bottom inside viewport and within pre client box. DOM text/nonhidden alone never passes.",
+    "occlusion": "Record relevant sticky/fixed headers/phase bar or dialog header and use their actual bottom as safe top.",
+    "width": "Full pinned source width/ranges and whitespace content remain; first wrapping stays unchanged.",
+    "impossibleFit": "needsReview with raw measured heights; no lowered thresholds."
+  },
+  "matrix": [
+    {
+      "producer": "lesson7",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "journey",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "operation/legacy",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "file-role",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "component",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "area",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "local-guide",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "static-startup",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "Rust-local",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "Rust-static",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "Atlas-context-and-route",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "generic-reader",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "files",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "local-selected-function",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    },
+    {
+      "producer": "static-zoom-function",
+      "actions": [
+        "explicit-entry",
+        "source-picker",
+        "next-and-previous",
+        "actual-call-and-back-if-present",
+        "phase-if-present",
+        "term-open-and-back"
+      ],
+      "profiles": [
+        "new/first",
+        "new/other",
+        "known/rust"
+      ],
+      "controls": [
+        "00",
+        "01",
+        "10",
+        "11"
+      ],
+      "formalStatus": "not-measured"
+    }
+  ],
+  "codeAndEvidencePreservation": {
+    "contexts": 148,
+    "lineHints": 762,
+    "routes": 114,
+    "sourceByteChangePermitted": false
+  },
+  "baselineAndRevisionSeparation": "Old d4 files/workspace/ports immutable; new revision uses separate workspace and ports."
+}

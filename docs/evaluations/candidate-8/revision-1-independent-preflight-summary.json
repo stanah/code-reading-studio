@@ -1,0 +1,208 @@
+{
+  "role": "independent AI simulated novice; not human validation",
+  "runtime": "d4f613b2600c79ce61d78d80058f8550f1c9c6e3271d5732bdc56e6fa14b6a3a",
+  "helpData": "bafe57717adb813866ef74763f9627daa8912c967712d2dafc87edca88bb8ef3",
+  "pinnedReth": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "scope": "Independent AI simulated novice preflight of isolated candidate-8 preview before main application. Not human validation, not all-feature acceptance, no full-branch-read or human-comprehension claim.",
+  "uiFindings": [
+    {
+      "severity": "major comprehension limitation",
+      "lesson": "reth",
+      "operation": 10,
+      "at": "2026-10-25T19:37:55.788Z",
+      "text": "55箇所の題名から主担当を選んで飛んだため、受信→実行→採用→保存の連続をコードで接続できなかった。"
+    },
+    {
+      "severity": "major comprehension limitation",
+      "lesson": "send",
+      "operation": 7,
+      "at": "2026-10-25T19:39:05.161Z",
+      "source": "validate_stateless L452–655",
+      "text": "flow4初期に204行。意味を拾えた主要条件と未理解のEIP分岐が混在し、全条件理解とは言えない。"
+    },
+    {
+      "severity": "context limitation",
+      "lesson": "rpc",
+      "operation": 4,
+      "at": "2026-10-25T19:36:12.304Z",
+      "source": "send_pool_transaction L32–114",
+      "text": "通常経路を探すと最初は長いblob変換。通常のL108/111/113案内が原文下部にあり主線を探す負担がある。"
+    },
+    {
+      "severity": "viewport context limitation",
+      "lesson": "reading",
+      "operation": 5,
+      "source": "core.rs L923",
+      "screenshot": "reading-representative.png",
+      "text": "AXの選択中L923へ戻れた。ただし代表viewportではL923補助コメントが下端にあり、生のL923行は折り返し下。補助・記号一覧・ナビゲーションが大きく、短い5行でも全文は一度に見えていない。"
+    },
+    {
+      "severity": "positive bounded observation",
+      "lesson": "reading",
+      "operation": 5,
+      "text": "実線の下線→関連実装→元の原文へ戻るを2段辿り、呼び出し行選択が保存された。"
+    },
+    {
+      "severity": "positive bounded observation",
+      "lesson": "all",
+      "text": "一つずつ読むでは原文は1つ。Ethereumで並べるを自分で選べ、実際の展開原文数は2になった。初期の状態読取は閉じたままで3原文ではなかった。大きいページの並べる表示は試していない。"
+    }
+  ],
+  "cleanup": {
+    "prefsRestored": true,
+    "notesTouched": false,
+    "queueSaved": false,
+    "aiSent": false,
+    "profileExpanded": false,
+    "profileExpansionRestored": true,
+    "dedicatedTabClosed": true
+  },
+  "lessons": [
+    {
+      "lesson": "blockchain",
+      "operationCount": 1,
+      "answer": "届いただけでは共通ルールを満たすとわからないから各ノードが検証する。画面で読んだ一例は親ハッシュが違えばL294–298でErr、親番号+1と番号が違えばL309–314でErrになる。L316の成功も採用・確定完了ではない。",
+      "status": null,
+      "unresolved": [
+        "なぜ別の履歴を採用するかの合意の具体的方法はこの画面だけでは説明できない。",
+        "初期表示のmainnet設定は今回の問いから遠く、genesis/Paris/Blobの多数の語は理解せず通過した。"
+      ],
+      "maxConcurrentSources": 1,
+      "readLines": [
+        "spec.rs L114–143 (初期表示、全項目の意味は未理解)",
+        "validation.rs L290–317、特に294–298,300–306,309–316"
+      ],
+      "taskCompletionAtOperation": null
+    },
+    {
+      "lesson": "ethereum",
+      "operationCount": 3,
+      "answer": "状態は現在の残高やプログラムのデータ。アドレスに対応する口座情報を読むL73–80が一例。取引実行ではL620–621でblock内の取引を一つずつexecute_transactionへ渡し、L627で後処理結果、L631で結果を返す。レシートはL17で種類/実行結果/累積ガスを取り、L22–24で成功印/累積ガス/ログを入れる。",
+      "status": null,
+      "unresolved": [
+        "execute_transactionの内部はまだ見ていない。実行の具体的な残高更新までは説明できない。",
+        "BAL補助が長く、今回の取引実行の主線との重要度の違いを判断しにくい。",
+        "Receiptを作ることと保存/確定が別なのは文から分かるが、この頁には実際に保存する根拠はない。"
+      ],
+      "maxConcurrentSources": 2,
+      "readLines": [
+        "latest.rs L69–84",
+        "execute.rs L596–632 主に614,620–631",
+        "receipt.rs L12–27"
+      ],
+      "taskCompletionAtOperation": null
+    },
+    {
+      "lesson": "rpc",
+      "operationCount": 6,
+      "answer": "署名済み取引を送る入口はtxというバイト列を受け取る。L923で担当へ渡し結果を待ち、成功ならハッシュを返す。担当のL89で復元しL90–94で送信処理を待つ。さらに読んだ通常経路L108/111/113ではローカルのプール追加結果のhashを返す。プールはまだブロックに入っていない取引を検証して保持する場所なので、送金実行や履歴確定の完了とは言えない。転送設定がある場合L97/102/104の返答は転送先RPCから来る。",
+      "status": null,
+      "unresolved": [
+        "復元の具体的方法やプール検証内容はまだ読んでいない。",
+        "通常経路を知りたく呼び出し先を開くと83行あり、最初に長いblob変換が現れる。末尾の通常経路行の案内と読む範囲補助で要点を探せたが、初見にはこの長さの中で主線を選ぶ負担がある。"
+      ],
+      "maxConcurrentSources": 1,
+      "readLines": [
+        "core.rs L920–924",
+        "helpers/transaction.rs L81–109 主に84–95",
+        "rpc/src/eth/helpers/transaction.rs L32–114 主に89–114"
+      ],
+      "taskCompletionAtOperation": null
+    },
+    {
+      "lesson": "reth",
+      "operationCount": 10,
+      "answer": "部分回答。Reth内部のEngine treeはNewPayload {payload,tx}を受け、on_new_payloadへ渡し、L1707で結果を返答口へ返す。on_new_payloadは不正祖先/同期中/通常の取り込みを分ける。実行本体execute_blockは状態からDB/EVM/executorを作り、L1085の取引処理、L1098のfinish、L1113の状態変更の出力を返す。計算したstate_rootがヘッダーと違えばL889–906でエラー。履歴指示は別のForkchoiceUpdated要求。保存はtreeから返答口付きで依頼し、保存サービスが受信してon_save_blocksを呼び、save_blocks/commit後の位置を返す。保存結果はtreeのon_persistence_completeが受け取りfinishする。NewPayload返答と保存完了は別。",
+      "status": "partial; operation cap reached",
+      "unresolved": [
+        "10操作で終了。on_new_payload→execute_block間、検証成功→履歴採用→保存対象選択間を原文では接続できていない。直読できた離れた担当を列挙した部分回答であり受信から保存までの全経路追跡の合格ではない。",
+        "55候補を見て主担当らしい題名を選んだ。未知の関数名が連続し、どこまで読むべきかは判断しづらい。",
+        "表示原文は一つのままで、前の入出力を比較するには記憶に頼った。原文を並べると55箇所が開くかもしれず、この段階では選べなかった。"
+      ],
+      "maxConcurrentSources": 1,
+      "readLines": [
+        "components/builder L353–404 (初期、型条件の意味は未理解)",
+        "pool add_transaction L495–528 主に495–503",
+        "tree NewPayload L1690–1718",
+        "on_new_payload L735–807 主に779–806",
+        "execute_block L1017–1121 主に1038–1054,1078–1120",
+        "state root L818–935 主に836,876–906,934",
+        "fork_choice_updated L378–405",
+        "persist_blocks/advance_persistence L1425–1461",
+        "persistence run L93–130",
+        "on_save_blocks L163–225",
+        "on_persistence_complete L1531–1575"
+      ],
+      "taskCompletionAtOperation": null
+    },
+    {
+      "lesson": "send",
+      "operationCount": 10,
+      "answer": "署名済み入力はBytesで、復元された取引と元バイト列を組にしてLocalとして送る。通常経路は転送先の分岐に入らずL111で追加依頼を待つ。追加側L496–503は返答口を要求に添えてキューへ送信し、その返答を待つ。受信側はpollでバッチを取り、process_batchのL71–72/91–93/101–103がプール追加結果を元のresponse_txへ返す。検証は未対応形式、サイズ、ガス上限、手数料、chain ID等を調べ、状態を使う側は口座読取/コード/通し番号/残高を確認する。Validでも内部追加が失敗し得る。内部追加成功はhashと状態を返すが、容量で直ちに捨てられるとDiscardedOnInsertへ変わる。これが通常経路のhash又はエラーとしてRPCへ戻り、ブロック取り込み/送金完了/確定を意味しない。",
+      "status": "partial; operation cap reached",
+      "unresolved": [
+        "10操作上限。復元hookの具体的な署名検査、検証タスクを渡す/受け取る10–13、nonce/balanceの具体比較16–17は未読。全分岐や全経路の理解とはしない。",
+        "flow4初期のvalidate_statelessは204行あり、補助コメントも一緒に長く展開する。主要条件を拾う読み方はできたが全条件の適用時点までは把握していない。",
+        "flow間の前後説明で関係を補い、処理名から飛んだ箇所は呼び出しの連続を自分では確認できていない。"
+      ],
+      "maxConcurrentSources": 1,
+      "readLines": [
+        "core.rs L920–924",
+        "transaction recover L81–109",
+        "send_pool L32–114 主に89–114",
+        "add_pool L489–504",
+        "batch poll L108–137",
+        "batch process L69–105",
+        "pool validate L383–391",
+        "validate_stateless L452–655 主に461–484,490–492,494–523,535–555,563–597,654",
+        "validate_stateful L657–727 主に671–695,712–726",
+        "internal add L661–742 主に687,702,736,741",
+        "internal add one L578–639 主に585–593,618–635"
+      ],
+      "taskCompletionAtOperation": null
+    },
+    {
+      "lesson": "startup",
+      "operationCount": 10,
+      "answer": "mainはCli::parseで指示を読み、L42でノード起動を待ち、L44で起動後の終了を別に待つ。設定処理はNodeConfigを組み、DBを開き、builderをlauncherへ渡す。部品構成はEVM/pool/network等を作り、Engine側は要求ストリームやpipelineを組み合わせる。稼働中のEngineはloopとselectでorchestratorイベント/候補作成/終了要求を待つ。orchestratorのイベントなし、FatalError、設定されたbackfill完了、graceful shutdown等で抜け、終了結果をexitへ送る。通信のpollは内部要求とnetworkイベントを上限付きで扱いPendingを返して継続する。CLI側は処理完了/重要タスクpanic/Ctrl-C/UnixのSIGTERMを監視。NodeHandleの終了Futureは内部がPendingならPending、結果があれば成功又は失敗を返す。",
+      "status": "partial; operation cap reached",
+      "unresolved": [
+        "10操作上限。公開Cli.run→CliApp→FnLauncher→Engine launcherの連続は未読。起動入口から全ての部品がつながる実装経路を自力で再現できる状態ではない。",
+        "network/Engineの待機とCLI終了監視は区別できたが、実際のスレッド構成全ては未確認。",
+        "待つ場所は題名から選べる一方、37候補のうち目的に必要な最小集合を初見で見極めるには負担がある。"
+      ],
+      "maxConcurrentSources": 1,
+      "readLines": [
+        "main.rs L20–49 主に40,42,44,46–47",
+        "CLI supervisor L228–294",
+        "Node execute L157–226",
+        "components L353–404 主に388–402",
+        "engine services L145–266 主に163,195,248–266",
+        "engine event loop L317–413 主に332–354,381–410",
+        "ChainOrchestrator L75–152",
+        "NetworkManager L1134–1203",
+        "FullNode/NodeHandle L417–445",
+        "NodeHandle L8–26",
+        "NodeExitFuture L34–51"
+      ],
+      "taskCompletionAtOperation": null
+    },
+    {
+      "lesson": "reading",
+      "operationCount": 9,
+      "answer": "L921のtx: Bytesが受け取るデータ、RpcResult<B256>がハッシュ又はエラーの結果を示す。L922はログ、L923がEthTransactionsへ渡して待ち、成功をOkで返す主要処理。関連実装へ進むと、L89で復元した取引を得てL90–94で元データと共に送信へ渡す。復元の既定実装L1436–1438ではdecodeした入力をtry_recoverへ渡し、署名復元失敗をエラーにする。戻る操作を二度使い、元のRPC呼び出し行L923の選択表示へ戻れた。",
+      "status": "bounded reading task reached at operation 5; not whole send path",
+      "unresolved": [
+        "復元の暗号計算の中身はこの範囲にはなく説明できない。",
+        "返り先のL106で「この行の解説はありません」と出たが、行選択と元の関数の全文は残っており、その上のL99–100で文脈を再確認できた。"
+      ],
+      "maxConcurrentSources": 1,
+      "readLines": [
+        "core.rs L920–924",
+        "helpers/transaction.rs L81–109",
+        "PoolTransaction recovery L1402–1466 主に1403,1436–1438,1460–1465"
+      ],
+      "taskCompletionAtOperation": 5
+    }
+  ]
+}
