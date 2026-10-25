@@ -77,8 +77,8 @@
     "question": "通信の出来事がない間は、どう待つ？",
     "role": "内部の要求やネットワークの出来事を取り出して処理します。",
     "input": "ノード内部からの要求と、ネットワーク側の出来事。",
-    "output": "今すぐ返す最終結果がなければPoll::Pending。",
-    "boundary": "仕事が残る場合も実行を譲り、再び起こしてもらうよう通知します。停止や同期待ちの完了を意味しません。",
+    "output": "この抜粋の戻り値は、再pollを求める分岐も末尾もPoll::Pendingです。最終の完了結果は返していません。",
+    "boundary": "上限に達し、続きがあるかもしれないときはwake_by_refで再pollを求め、Pendingで実行を譲ります。残件があると確定した印ではなく、停止や同期の完了も示しません。",
     "context": "startup:network",
     "followup": {
       "context": "area:network-reputation",
@@ -88,7 +88,23 @@
       "output": "変更なしで戻る場合か、相手の評価更新・リセットの結果outcome。",
       "boundary": "この抜粋はoutcomeを得るまでです。結果に応じた遮断など後続の処理全体は含みません。信頼済みでも全ての変更が免除されるわけではありません。",
       "selfCheck": "信頼済み相手へのTimeoutによる変更と、未登録の相手への変更をどう扱うか説明する"
-    }
+    },
+    "readings": [
+      {
+        "context": "startup:network",
+        "title": "内部要求・通信を進め、今回の処理を区切る",
+        "purpose": "内部要求と通信イベントの取得、件数上限の条件、再pollの要求と二つのPendingへの戻り方を原文で確かめる。",
+        "connection": "maybe_more_*は次に示すmacroが返すboolです。trueは上限に達したことを表し、残件の確定ではありません。",
+        "essential": true
+      },
+      {
+        "context": "area:network-budget",
+        "title": "通信の一回の処理件数をmacroで確かめる",
+        "purpose": "maybe_more_*が残件の確定ではなく、処理件数の上限に達したことを表す理由を原文で確かめる。",
+        "connection": "直前のNetworkManagerが呼ぶmacroの定義です。別の稼働タスクを始める場面ではありません。取得結果のboolがmanagerのL1194の条件へ戻ります。",
+        "essential": true
+      }
+    ]
   },
   {
     "area": "sync",

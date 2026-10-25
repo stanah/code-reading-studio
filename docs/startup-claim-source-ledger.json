@@ -10,7 +10,7 @@
     "staticRuntimeSections": 4,
     "startupRoles": 13,
     "claimRecords": 273,
-    "sourceContexts": 57
+    "sourceContexts": 58
   },
   "claims": [
     {
@@ -5510,6 +5510,15 @@
           "lastLine": "    }"
         },
         {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        },
+        {
           "context": "area:startup-network-builder",
           "lines": [
             770,
@@ -5546,6 +5555,15 @@
           "lastLine": "    }"
         },
         {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        },
+        {
           "context": "area:startup-network-builder",
           "lines": [
             770,
@@ -5580,6 +5598,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         },
         {
           "context": "area:startup-network-builder",
@@ -5663,6 +5690,15 @@
           "lastLine": "    }"
         },
         {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        },
+        {
           "context": "area:startup-network-builder",
           "lines": [
             770,
@@ -5722,7 +5758,7 @@
     {
       "unit": "startup-step:network",
       "field": "actions.2",
-      "text": "上限まで処理しても仕事が残っていれば、wakeを予約してPendingを返す。",
+      "text": "処理量が上限に達したら、まだ仕事がある可能性としてwakeを予約し、Pendingを返す。",
       "kind": "implementation-claim",
       "evidence": [
         {
@@ -5733,6 +5769,15 @@
           ],
           "firstLine": "            this.swarm.poll_next_unpin(cx),",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         }
       ],
       "semanticStatus": "awaiting-independent-review"
@@ -5751,6 +5796,15 @@
           ],
           "firstLine": "        // all streams are fully drained and import futures pending",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         }
       ],
       "semanticStatus": "awaiting-independent-review"
@@ -5769,6 +5823,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         },
         {
           "context": "area:startup-network-builder",
@@ -5805,6 +5868,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         },
         {
           "context": "area:startup-network-builder",
@@ -7913,6 +7985,15 @@
           "lastLine": "    }"
         },
         {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        },
+        {
           "context": "area:startup-network-builder",
           "lines": [
             770,
@@ -7947,6 +8028,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         },
         {
           "context": "area:startup-network-builder",
@@ -7985,6 +8075,15 @@
           "lastLine": "    }"
         },
         {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        },
+        {
           "context": "area:startup-network-builder",
           "lines": [
             770,
@@ -8019,6 +8118,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         },
         {
           "context": "area:startup-network-builder",
@@ -8975,6 +9083,15 @@
           "lastLine": "    }"
         },
         {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        },
+        {
           "context": "area:journey-sync-run",
           "lines": [
             151,
@@ -9504,6 +9621,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         },
         {
           "context": "area:startup-network-builder",
@@ -10062,6 +10188,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         }
       ],
       "semanticStatus": "awaiting-independent-review"
@@ -12188,6 +12323,15 @@
           "lastLine": "    }"
         },
         {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        },
+        {
           "context": "area:startup-network-builder",
           "lines": [
             770,
@@ -12222,6 +12366,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         },
         {
           "context": "area:startup-network-builder",
@@ -14814,6 +14967,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         }
       ],
       "semanticStatus": "awaiting-independent-review"
@@ -14850,6 +15012,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         }
       ],
       "semanticStatus": "awaiting-independent-review"
@@ -14886,6 +15057,15 @@
           ],
           "firstLine": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {",
           "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
         }
       ],
       "semanticStatus": "awaiting-independent-review"
@@ -16184,6 +16364,17 @@
         "hash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
         "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/manager.rs#L1134-L1203",
         "code": "impl<N: NetworkPrimitives> Future for NetworkManager<N> {\n    type Output = ();\n\n    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {\n        let start = Instant::now();\n        let mut poll_durations = NetworkManagerPollDurations::default();\n\n        let this = self.get_mut();\n\n        // poll new block imports (expected to be a noop for POS)\n        while let Poll::Ready(outcome) = this.block_import.poll(cx) {\n            this.on_block_import_result(outcome);\n        }\n\n        // These loops drive the entire state of network and does a lot of work. Under heavy load\n        // (many messages/events), data may arrive faster than it can be processed (incoming\n        // messages/requests -> events), and it is possible that more data has already arrived by\n        // the time an internal event is processed. Which could turn this loop into a busy loop.\n        // Without yielding back to the executor, it can starve other tasks waiting on that\n        // executor to execute them, or drive underlying resources To prevent this, we\n        // preemptively return control when the `budget` is exhausted. The value itself is chosen\n        // somewhat arbitrarily, it is high enough so the swarm can make meaningful progress but\n        // low enough that this loop does not starve other tasks for too long. If the budget is\n        // exhausted we manually yield back control to the (coop) scheduler. This manual yield\n        // point should prevent situations where polling appears to be frozen. See also\n        // <https://tokio.rs/blog/2020-04-preemption> And tokio's docs on cooperative scheduling\n        // <https://docs.rs/tokio/latest/tokio/task/#cooperative-scheduling>\n        //\n        // Testing has shown that this loop naturally reaches the pending state within 1-5\n        // iterations in << 100µs in most cases. On average it requires ~50µs, which is inside the\n        // range of what's recommended as rule of thumb.\n        // <https://ryhl.io/blog/async-what-is-blocking/>\n\n        // process incoming messages from a handle (`TransactionsManager` has one)\n        //\n        // will only be closed if the channel was deliberately closed since we always have an\n        // instance of `NetworkHandle`\n        let start_network_handle = Instant::now();\n        let maybe_more_handle_messages = poll_nested_stream_with_budget!(\n            \"net\",\n            \"Network message channel\",\n            DEFAULT_BUDGET_TRY_DRAIN_NETWORK_HANDLE_CHANNEL,\n            this.from_handle_rx.poll_next_unpin(cx),\n            |msg| this.on_handle_message(msg),\n            error!(\"Network channel closed\");\n        );\n        poll_durations.acc_network_handle = start_network_handle.elapsed();\n\n        // process incoming messages from the network\n        let maybe_more_swarm_events = poll_nested_stream_with_budget!(\n            \"net\",\n            \"Swarm events stream\",\n            DEFAULT_BUDGET_TRY_DRAIN_SWARM,\n            this.swarm.poll_next_unpin(cx),\n            |event| this.on_swarm_event(event),\n        );\n        poll_durations.acc_swarm =\n            start_network_handle.elapsed() - poll_durations.acc_network_handle;\n\n        // all streams are fully drained and import futures pending\n        if maybe_more_handle_messages || maybe_more_swarm_events {\n            // make sure we're woken up again\n            cx.waker().wake_by_ref();\n            return Poll::Pending\n        }\n\n        this.update_poll_metrics(start, poll_durations);\n\n        Poll::Pending\n    }"
+      }
+    },
+    "area:network-budget": {
+      "title": "通信を一回にどこまで進めるかを決める",
+      "source": {
+        "path": "crates/net/network/src/budget.rs",
+        "start": 38,
+        "end": 62,
+        "hash": "6b00b2871168e4155ae0cfe459333f604404e3935601ccaf2b9f2c13866be795",
+        "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/budget.rs#L38-L62",
+        "code": "/// Polls the given stream. Breaks with `true` if there maybe is more work.\n#[macro_export]\nmacro_rules! poll_nested_stream_with_budget {\n    ($target:literal, $label:literal, $budget:ident, $poll_stream:expr, $on_ready_some:expr $(, $on_ready_none:expr;)? $(,)?) => {{\n        let mut budget: u32 = $budget;\n\n            loop {\n                match $poll_stream {\n                    Poll::Ready(Some(item)) => {\n                        $on_ready_some(item);\n\n                        budget -= 1;\n                        if budget == 0 {\n                            break true\n                        }\n                    }\n                    Poll::Ready(None) => {\n                        $($on_ready_none;)? // todo: handle error case with $target and $label\n                        break false\n                    }\n                    Poll::Pending => break false,\n                }\n            }\n    }};\n}"
       }
     },
     "area:journey-sync-run": {

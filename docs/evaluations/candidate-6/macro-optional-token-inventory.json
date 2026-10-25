@@ -1,0 +1,45 @@
+{
+  "contexts": 148,
+  "rows": [
+    {
+      "id": "area:journey-block-parent",
+      "path": "crates/engine/tree/src/tree/payload_validator.rs",
+      "questionLines": [
+        {
+          "line": 508,
+          "text": "                    self.convert_to_block(input)?,",
+          "classification": "Result propagation in normal branch or expanded macro body; not optional repetition"
+        },
+        {
+          "line": 514,
+          "text": "                return Err(InsertBlockError::new(self.convert_to_block(input)?, e.into()).into())",
+          "classification": "Result propagation in normal branch or expanded macro body; not optional repetition"
+        },
+        {
+          "line": 530,
+          "text": "                        let block = validated_block.try_into_inner().expect(\"sole handle\")?;",
+          "classification": "Result propagation in normal branch or expanded macro body; not optional repetition"
+        }
+      ]
+    },
+    {
+      "id": "area:network-budget",
+      "path": "crates/net/network/src/budget.rs",
+      "questionLines": [
+        {
+          "line": 41,
+          "text": "    ($target:literal, $label:literal, $budget:ident, $poll_stream:expr, $on_ready_some:expr $(, $on_ready_none:expr;)? $(,)?) => {{",
+          "override": "macro-optional",
+          "classification": "macro optional repetition"
+        },
+        {
+          "line": 55,
+          "text": "                        $($on_ready_none;)? // todo: handle error case with $target and $label",
+          "override": "macro-optional",
+          "classification": "macro optional repetition"
+        }
+      ]
+    }
+  ],
+  "sourceCheck": "Pinned payload_validator.rs475–535 and budget.rs38–62 re-read; the mere presence of macro_rules does not change every ? in a containing excerpt."
+}

@@ -1,0 +1,22 @@
+{
+  "observer": "A/curriculum_sources",
+  "at": "2026-10-25T16:14:53.748088+00:00",
+  "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "path": "crates/net/network/src/budget.rs",
+  "range": [
+    38,
+    62
+  ],
+  "newHint": {
+    "line": 40,
+    "match": "macro_rules! poll_nested_stream_with_budget",
+    "label": "マクロの定義と返す値",
+    "explanation": "これはマクロの定義です。呼び出し側から上限値と、取り出し・一件処理の式を受け取り、下のループでtrueかfalseを決めます。Futureを返す関数ではありません。"
+  },
+  "sourceAtTarget": "macro_rules! poll_nested_stream_with_budget {",
+  "sourceHash": "6b00b2871168e4155ae0cfe459333f604404e3935601ccaf2b9f2c13866be795",
+  "meaningJudgment": "pass",
+  "basis": "L40はmacro_rules宣言でありfn/asyncではない。L41はbudget識別子、poll式、項目処理式（および任意のNone時処理）を受け取るパターン。L45のmatchでpoll式を評価し、L47で処理式を呼び、L49–51でbudget減算→0時true、L54–58でNone/Pending時falseとしてループを抜ける。Futureを返す関数と区別する契約補助としてfit。",
+  "limits": "このhint追加は実UIの到達/可読性/学習成績の合格ではない。既存source-review.jsonと失敗履歴は変更せず保存。",
+  "runtimeMutationByReviewer": false
+}

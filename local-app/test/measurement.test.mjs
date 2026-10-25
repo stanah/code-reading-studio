@@ -8,7 +8,7 @@ import {measure,policyHash,runtimeHash,projectRoot} from '../../scripts/measure-
 
 test('[FR-COV-001] [FR-COV-002] [FR-COV-003] all files stay in the denominator and excerpts never count as full-file reviews',async()=>{
  const result=await measure();assert.equal(result.metrics.totalTracked,1872);assert.equal(result.inventory.length,1872);assert.equal(new Set(result.inventory.map(f=>f.path)).size,1872);
- assert.equal(result.metrics.totalRust,1283);assert.equal(result.metrics.anchoredRustFiles,60);assert.equal(result.metrics.fullyReviewedRustFiles,2);
+ assert.equal(result.metrics.totalRust,1283);assert.equal(result.metrics.anchoredRustFiles,61);assert.equal(result.metrics.fullyReviewedRustFiles,2);
  assert.ok(result.inventory.some(f=>f.kind==='rust-example'));assert.ok(result.inventory.some(f=>f.kind==='rust-test-or-bench'));
  assert.ok(result.inventory.filter(f=>f.status==='excerpt-only').every(f=>f.evidence.length));assert.equal(result.productComplete,false);
  for(const id of ['FR-COV-002','FR-COV-003','FR-EVAL-003'])assert.notEqual(result.gates.find(g=>g.id===id).status,'pass');
@@ -57,7 +57,7 @@ test('[FR-READ-002] a correct hash with a different displayed excerpt cannot cou
   assert.equal((await measure({root:dir})).metrics.invalidEvidence,0,'fixture is valid before the displayed source is tampered');
   const c={window:{}};vm.runInNewContext(await readFile(join(dir,'dist/reading-help-data.js'),'utf8'),c);c.window.READING_HELP_DATA.contexts['area:foundation'].source.code='not the pinned excerpt';
   await writeFile(join(dir,'dist/reading-help-data.js'),'window.READING_HELP_DATA = '+JSON.stringify(c.window.READING_HELP_DATA)+';');
-  const result=await measure({root:dir});assert.ok(result.metrics.invalidEvidence>0);assert.equal(result.metrics.guidedAreas,10);assert.equal(result.metrics.anchoredRustFiles,60);assert.ok(!result.inventory.find(f=>f.path==='crates/chainspec/src/spec.rs').evidence.some(e=>e.start===114));assert.equal(result.gates.find(g=>g.id==='FR-READ-002').status,'unmet');
+  const result=await measure({root:dir});assert.ok(result.metrics.invalidEvidence>0);assert.equal(result.metrics.guidedAreas,10);assert.equal(result.metrics.anchoredRustFiles,61);assert.ok(!result.inventory.find(f=>f.path==='crates/chainspec/src/spec.rs').evidence.some(e=>e.start===114));assert.equal(result.gates.find(g=>g.id==='FR-READ-002').status,'unmet');
  }finally{await rm(dir,{recursive:true,force:true});}
 });
 

@@ -149,3 +149,26 @@ test('a runtime scope beginning with an existing reference still opens its first
   assert.ok(html.includes('data-reading-help="'+unique.context+'" data-help-commit="'+guide.commit+'" data-help-open="true"'));
   assert.equal((html.match(/data-reading-help=/g)||[]).length,1);
 });
+
+test('network budget source reaches every startup claim producer and each unique original is a shared focus target',()=>{
+  const budget='area:network-budget';
+  const source=ctx.READING_HELP_DATA.contexts[budget]?.source;
+  assert.ok(source,'macro original must be published, a placeholder host is insufficient');
+  assert.equal(source.path,'crates/net/network/src/budget.rs');
+  assert.equal(source.start,38);assert.equal(source.end,62);
+  assert.match(source.code,/budget -= 1/);assert.match(source.code,/break true/);assert.match(source.code,/Poll::Pending => break false/);
+  for(const [name,refs]of [['network step',guide.readingScopes.steps.network],['network loop',guide.readingScopes.loops['4']],['static network explanation',guide.readingScopes.staticRuntime[2].readings]]){
+    assert.equal(refs.filter(r=>r.context===budget).length,1,name+' includes the macro exactly once');
+    assert.ok(refs.find(r=>r.context===budget).purpose.includes('true'));
+  }
+  const step=renderStep(guide,resolveView(guide,'?step=network'));
+  assert.ok(step.includes('data-startup-context="'+budget+'" data-reading-stage="'+budget+'"'));
+  assert.ok(step.includes('data-startup-sequence="step-network" data-reading-navigation-scope="true"'),'whole step sequence is shared call-navigation scope');
+  assert.ok(step.includes('data-reading-back hidden>呼び出した原文へ戻る'),'shared actual-call return is distinct from reference return');
+  const loops=renderLoops(guide);
+  const sources=[...loops.matchAll(/data-startup-context="([^"]+)" data-reading-stage="([^"]+)"/g)];
+  assert.equal(sources.length,new Set(sources.map(m=>m[1])).size,'one focusable owner per original');
+  assert.ok(sources.some(m=>m[1]===budget&&m[2]===budget));
+  assert.ok(loops.includes('id="startup-loops" data-reading-navigation-scope="true"'),'all five loops share existing original owners for calls');
+  assert.doesNotMatch(loops,/data-startup-context-ref="[^"]+" data-reading-stage=/,'reference wrappers do not shadow the actual original target');
+});

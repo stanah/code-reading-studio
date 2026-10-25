@@ -1,0 +1,2124 @@
+{
+  "kind": "Independent candidate6 source/wording proposal review; no implementation or acceptance claim",
+  "observer": "A/curriculum_sources",
+  "author": "B/beginner_eval",
+  "at": "2026-10-25T15:45:34.155734+00:00",
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "proposalManifestSha256": "abb79d099bbce1817b4a9b28381567c33649570c615bc8ae28b134709f39372d",
+  "baseline": {
+    "candidate": "5",
+    "runtimeHash": "03b1d054782fcb02841cf5aa0751d2387dbc5ee5b4b781b788c2aef96fc1b607",
+    "status": "FAIL retained",
+    "knownFailure": "Novice Reth flow discovery failed to reach execution/state check within fixed action limit; technical source/UI passes do not erase G5 failure."
+  },
+  "status": "pass-source-fit-with-required-budget-integration",
+  "adoptionCondition": "主案8ファイルに加え、今回レビューしたbudget overlay（6ファイル、重複を除く全11canonical）を導入する。新networkの主要条件はmacro同ページ原文で閉じるため、147contextの主案だけを完成扱いにしない。Renderer及び各surface到達/G4は未実装・未測定の別ゲート。",
+  "scope": {
+    "canonicalProposedFiles": 8,
+    "allCanonicalShaAndPatchesReplayed": true,
+    "mainContexts": 147,
+    "mainHints": 744,
+    "mainLessonStages": 140,
+    "oldLessonStages": 122,
+    "oldLessonSourcesAndRelativeOrderRetained": true,
+    "original147SourceRangesHashesUnchanged": true,
+    "functionContractsIndependentlyRead": 20,
+    "changedHintOccurrencesIndependentlyRead": 38,
+    "changedHintContextCount": 19,
+    "networkHintTargets": 6,
+    "balHintTargets": 4,
+    "optionalMacroSource": 1,
+    "optionalMacroHintTargets": 6,
+    "optionalContexts": 148,
+    "optionalHints": 750,
+    "optionalLessonStages": 142,
+    "optionalSourceBindings": 7,
+    "targetedProducerFiles": 23,
+    "targetedMatchedFieldsRead": 139,
+    "functionContractCaveat": "20関数の本体・主要分岐は独立に読んだ。変更のない147context全体の意味を今回あらためて監査したとは申告しない。字句の一致・既存レビューのexact carry・今回の意味レビューを区別する。",
+    "canonicalUnionFileCount": 11,
+    "overlayCanonicalFiles": 6
+  },
+  "fidelityEvidence": {
+    "main": "a-proposal-fidelity-check.json",
+    "optional": "a-optional-fidelity-check.json",
+    "initialFindingsPreserved": "source-review-initial-findings.json",
+    "reviewerHarnessAttempt": "Initial structural helper assumed every pack detail had source and raised KeyError; fixed helper to compare optional source values. This was evaluator setup only, not a product finding.",
+    "allIndependentConsumerXrefsAndOverlayPatches": "a-budget-consumer-check.json",
+    "areaPrecisionAndRetention": "a-optional-area-fidelity-check.json",
+    "pinned147OriginalBytes": "a-original-source-fidelity.json",
+    "priorSixOwnerInsufficientSnapshot": "source-review-before-area-gap.json"
+  },
+  "functionReviews": [
+    {
+      "context": "tx:recover",
+      "fn": "send_raw_transaction",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/transaction.rs",
+      "start": 84,
+      "end": 96,
+      "code": "    fn send_raw_transaction(\n        &self,\n        tx: Bytes,\n    ) -> impl Future<Output = Result<B256, Self::Error>> + Send {\n        async move {\n            let pool_transaction = self.recover_raw_pool_transaction(&tx)?;\n            self.send_pool_transaction(\n                TransactionOrigin::Local,\n                WithEncoded::new(tx, pool_transaction),\n            )\n            .await\n        }\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "tx:submit",
+      "fn": "send_pool_transaction",
+      "path": "crates/rpc/rpc/src/eth/helpers/transaction.rs",
+      "start": 32,
+      "end": 114,
+      "code": "    async fn send_pool_transaction(\n        &self,\n        origin: reth_transaction_pool::TransactionOrigin,\n        tx: WithEncoded<PoolTx<Self::Pool>>,\n    ) -> Result<B256, Self::Error> {\n        let (tx, mut pool_transaction) = tx.split();\n\n        // Optionally convert legacy blob sidecars to EIP-7594 format when Osaka is active\n        // This is opt-in via --rpc.force-blob-sidecar-upcasting\n        if self.inner.force_blob_sidecar_upcasting() && pool_transaction.is_eip4844() {\n            let EthBlobTransactionSidecar::Present(sidecar) = pool_transaction.take_blob() else {\n                return Err(EthApiError::PoolError(RpcPoolError::Eip4844(\n                    Eip4844PoolTransactionError::MissingEip4844BlobSidecar,\n                )));\n            };\n            let sidecar = sidecar.into_sidecar();\n\n            let sidecar = match sidecar {\n                BlobTransactionSidecarVariant::Eip4844(sidecar) => {\n                    let latest = self\n                        .provider()\n                        .latest_header()?\n                        .ok_or(EthApiError::HeaderNotFound(BlockId::latest()))?;\n                    // Convert to EIP-7594 if next block is Osaka\n                    if self\n                        .provider()\n                        .chain_spec()\n                        .is_osaka_active_at_timestamp(latest.timestamp().saturating_add(12))\n                    {\n                        BlobTransactionSidecarVariant::Eip7594(\n                            self.blob_sidecar_converter().convert(sidecar).await.ok_or_else(\n                                || {\n                                    RpcPoolError::Eip4844(\n                                        Eip4844PoolTransactionError::InvalidEip4844Blob(\n                                            BlobTransactionValidationError::InvalidProof,\n                                        ),\n                                    )\n                                },\n                            )?,\n                        )\n                    } else {\n                        BlobTransactionSidecarVariant::Eip4844(sidecar)\n                    }\n                }\n                sidecar => sidecar,\n            };\n\n            pool_transaction =\n                EthPoolTransaction::try_from_eip4844(pool_transaction.into_consensus(), sidecar)\n                    .ok_or_else(|| {\n                        RpcPoolError::Eip4844(\n                            Eip4844PoolTransactionError::MissingEip4844BlobSidecar,\n                        )\n                    })?;\n        }\n\n        // forward the transaction to the specific endpoint if configured.\n        if let Some(client) = self.raw_tx_forwarder() {\n            tracing::debug!(target: \"rpc::eth\", hash = %pool_transaction.hash(), \"forwarding raw transaction to forwarder\");\n            let rlp_hex = hex::encode_prefixed(&tx);\n\n            // broadcast raw transaction to subscribers if there is any.\n            self.broadcast_raw_transaction(tx);\n\n            let hash =\n                client.request(\"eth_sendRawTransaction\", (rlp_hex,)).await.inspect_err(|err| {\n                    tracing::debug!(target: \"rpc::eth\", %err, hash=% *pool_transaction.hash(), \"failed to forward raw transaction\");\n                }).map_err(EthApiError::other)?;\n\n            // Retain tx in local tx pool after forwarding, for local RPC usage.\n            let _ = self.inner.add_pool_transaction(origin, pool_transaction).await;\n\n            return Ok(hash);\n        }\n\n        // broadcast raw transaction to subscribers if there is any.\n        self.broadcast_raw_transaction(tx);\n\n        let AddedTransactionOutcome { hash, .. } =\n            self.inner.add_pool_transaction(origin, pool_transaction).await?;\n\n        Ok(hash)\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "tx:recovery-hook",
+      "fn": "recover_raw_transaction_with_cache",
+      "path": "crates/transaction-pool/src/traits.rs",
+      "start": 1447,
+      "end": 1453,
+      "code": "    fn recover_raw_transaction_with_cache(\n        data: &[u8],\n        cache: &reth_evm::SenderRecoveryCache,\n    ) -> Result<Self, RawPoolTransactionError> {\n        Self::try_recover_with_cache(Self::decode_raw_transaction(data)?, cache)\n            .map_err(|_| RawPoolTransactionError::InvalidTransactionSignature)\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "tx:recovery-hook",
+      "fn": "recover_raw_transaction",
+      "path": "crates/transaction-pool/src/traits.rs",
+      "start": 1436,
+      "end": 1439,
+      "code": "    fn recover_raw_transaction(data: &[u8]) -> Result<Self, RawPoolTransactionError> {\n        Self::try_recover(Self::decode_raw_transaction(data)?)\n            .map_err(|_| RawPoolTransactionError::InvalidTransactionSignature)\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "tx:queue",
+      "fn": "add_pool_transaction",
+      "path": "crates/rpc/rpc/src/eth/core.rs",
+      "start": 491,
+      "end": 504,
+      "code": "    pub async fn add_pool_transaction(\n        &self,\n        origin: reth_transaction_pool::TransactionOrigin,\n        transaction: <N::Pool as TransactionPool>::Transaction,\n    ) -> Result<AddedTransactionOutcome, EthApiError> {\n        let (response_tx, response_rx) = tokio::sync::oneshot::channel();\n        let request = reth_transaction_pool::BatchTxRequest::new(origin, transaction, response_tx);\n\n        self.tx_batch_sender()\n            .send(request)\n            .map_err(|_| reth_rpc_eth_types::EthApiError::BatchTxSendError)?;\n\n        Ok(response_rx.await??)\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "tx:batch",
+      "fn": "process_batch",
+      "path": "crates/transaction-pool/src/batcher.rs",
+      "start": 76,
+      "end": 105,
+      "code": "    async fn process_batch(pool: &Pool, batch: Vec<BatchTxRequest<Pool::Transaction>>) {\n        if batch.len() == 1 {\n            Self::process_request(pool, batch.into_iter().next().expect(\"batch is not empty\"))\n                .await;\n            return\n        }\n\n        // Same-origin batches can skip the per-transaction origins allocation.\n        let mut batch_iter = batch.iter();\n        if let Some(origin) = batch_iter.next().map(|req| req.origin) &&\n            batch_iter.all(|req| req.origin == origin)\n        {\n            let (transactions, response_txs): (Vec<_>, Vec<_>) =\n                batch.into_iter().map(|req| (req.pool_tx, req.response_tx)).unzip();\n\n            let pool_results = pool.add_transactions(origin, transactions).await;\n            for (response_tx, pool_result) in response_txs.into_iter().zip(pool_results) {\n                let _ = response_tx.send(pool_result);\n            }\n            return\n        }\n\n        let (transactions, response_txs): (Vec<_>, Vec<_>) =\n            batch.into_iter().map(|req| ((req.origin, req.pool_tx), req.response_tx)).unzip();\n\n        let pool_results = pool.add_transactions_with_origins(transactions).await;\n        for (response_tx, pool_result) in response_txs.into_iter().zip(pool_results) {\n            let _ = response_tx.send(pool_result);\n        }\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "tx:pool",
+      "fn": "add_transaction",
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 495,
+      "end": 503,
+      "code": "    async fn add_transaction(\n        &self,\n        origin: TransactionOrigin,\n        transaction: Self::Transaction,\n    ) -> PoolResult<AddedTransactionOutcome> {\n        let tx = self.validate(origin, transaction).await;\n        let mut results = self.pool.add_transactions(origin, std::iter::once(tx));\n        results.pop().expect(\"result length is the same as the input\")\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "tx:pool",
+      "fn": "add_transactions",
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 505,
+      "end": 516,
+      "code": "    async fn add_transactions(\n        &self,\n        origin: TransactionOrigin,\n        transactions: Vec<Self::Transaction>,\n    ) -> Vec<PoolResult<AddedTransactionOutcome>> {\n        if transactions.is_empty() {\n            return Vec::new()\n        }\n        let validated =\n            self.pool.validator().validate_transactions_with_origin(origin, transactions).await;\n        self.pool.add_transactions(origin, validated)\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "tx:pool",
+      "fn": "add_transactions_with_origins",
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 518,
+      "end": 528,
+      "code": "    async fn add_transactions_with_origins(\n        &self,\n        transactions: Vec<(TransactionOrigin, Self::Transaction)>,\n    ) -> Vec<PoolResult<AddedTransactionOutcome>> {\n        if transactions.is_empty() {\n            return Vec::new()\n        }\n        let origins: Vec<_> = transactions.iter().map(|(origin, _)| *origin).collect();\n        let validated = self.pool.validator().validate_transactions(transactions).await;\n        self.pool.add_transactions_with_origins(origins.into_iter().zip(validated))\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-validation-dispatch",
+      "fn": "validate",
+      "path": "crates/transaction-pool/src/lib.rs",
+      "start": 384,
+      "end": 390,
+      "code": "    async fn validate(\n        &self,\n        origin: TransactionOrigin,\n        transaction: V::Transaction,\n    ) -> TransactionValidationOutcome<V::Transaction> {\n        self.pool.validator().validate_transaction(origin, transaction).await\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-pool-limit",
+      "fn": "add_transactions",
+      "path": "crates/transaction-pool/src/pool/mod.rs",
+      "start": 661,
+      "end": 667,
+      "code": "    pub fn add_transactions(\n        &self,\n        origin: TransactionOrigin,\n        transactions: impl IntoIterator<Item = TransactionValidationOutcome<T::Transaction>>,\n    ) -> Vec<PoolResult<AddedTransactionOutcome>> {\n        self.add_transactions_with_origins(transactions.into_iter().map(|tx| (origin, tx)))\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-validation-task",
+      "fn": "validate_transaction",
+      "path": "crates/transaction-pool/src/validate/task.rs",
+      "start": 233,
+      "end": 264,
+      "code": "    async fn validate_transaction(\n        &self,\n        origin: TransactionOrigin,\n        transaction: Self::Transaction,\n    ) -> TransactionValidationOutcome<Self::Transaction> {\n        let hash = *transaction.hash();\n        let (tx, rx) = oneshot::channel();\n        {\n            let res = {\n                let validator = self.validator.clone();\n                let fut = Box::pin(async move {\n                    let res = validator.validate_transaction(origin, transaction).await;\n                    let _ = tx.send(res);\n                });\n                self.to_validation_task.send(fut).await\n            };\n            if res.is_err() {\n                return TransactionValidationOutcome::Error(\n                    hash,\n                    Box::new(TransactionValidatorError::ValidationServiceUnreachable),\n                );\n            }\n        }\n\n        match rx.await {\n            Ok(res) => res,\n            Err(_) => TransactionValidationOutcome::Error(\n                hash,\n                Box::new(TransactionValidatorError::ValidationServiceUnreachable),\n            ),\n        }\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-validation-entry",
+      "fn": "validate_transaction",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 1010,
+      "end": 1016,
+      "code": "    async fn validate_transaction(\n        &self,\n        origin: TransactionOrigin,\n        transaction: Self::Transaction,\n    ) -> TransactionValidationOutcome<Self::Transaction> {\n        self.validate_one(origin, transaction)\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-validation-order",
+      "fn": "validate_one",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 371,
+      "end": 378,
+      "code": "    pub fn validate_one(\n        &self,\n        origin: TransactionOrigin,\n        transaction: Tx,\n    ) -> TransactionValidationOutcome<Tx> {\n        let mut state: Option<StateProviderBox> = None;\n        self.validate_one_with_provider(origin, transaction, &mut state, || self.client.latest())\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-stateless",
+      "fn": "validate_stateless",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 455,
+      "end": 655,
+      "code": "    pub fn validate_stateless(\n        &self,\n        origin: TransactionOrigin,\n        transaction: &Tx,\n    ) -> Result<(), InvalidPoolTransactionError> {\n        // Checks for tx_type\n        match transaction.ty() {\n            // Accept only legacy transactions until EIP-2718/2930 activates\n            EIP2930_TX_TYPE_ID if !self.eip2718 => {\n                return Err(InvalidTransactionError::Eip2930Disabled.into())\n            }\n            // Reject dynamic fee transactions until EIP-1559 activates.\n            EIP1559_TX_TYPE_ID if !self.eip1559 => {\n                return Err(InvalidTransactionError::Eip1559Disabled.into())\n            }\n            // Reject blob transactions.\n            EIP4844_TX_TYPE_ID if !self.eip4844 => {\n                return Err(InvalidTransactionError::Eip4844Disabled.into())\n            }\n            // Reject EIP-7702 transactions.\n            EIP7702_TX_TYPE_ID if !self.eip7702 => {\n                return Err(InvalidTransactionError::Eip7702Disabled.into())\n            }\n            // Accept known transaction types when their respective fork is active\n            LEGACY_TX_TYPE_ID | EIP2930_TX_TYPE_ID | EIP1559_TX_TYPE_ID | EIP4844_TX_TYPE_ID |\n            EIP7702_TX_TYPE_ID => {}\n\n            ty if !self.other_tx_types.bit(ty as usize) => {\n                return Err(InvalidTransactionError::TxTypeNotSupported.into())\n            }\n\n            _ => {}\n        };\n\n        // Reject transactions with a nonce equal to U64::max according to EIP-2681\n        if transaction.requires_nonce_bound_check() && transaction.nonce() == u64::MAX {\n            return Err(InvalidPoolTransactionError::Eip2681)\n        }\n\n        // Reject transactions over defined size to prevent DOS attacks\n        if transaction.is_eip4844() {\n            // Since blob transactions are pulled instead of pushed, and only the consensus data is\n            // kept in memory while the sidecar is cached on disk, there is no critical limit that\n            // should be enforced. Still, enforcing some cap on the dynamic transaction data. blob\n            // txs also must be executable right away when they enter the pool.\n            let tx_size = transaction.input().len().saturating_add(\n                transaction\n                    .access_list()\n                    .map(|access_list| access_list.length())\n                    .unwrap_or_default(),\n            );\n            if tx_size > self.max_tx_input_bytes {\n                self.validation_metrics.rejected_oversized_data.increment(1);\n                return Err(InvalidPoolTransactionError::OversizedData {\n                    size: tx_size,\n                    limit: self.max_tx_input_bytes,\n                })\n            }\n        } else {\n            // ensure the size of the non-blob transaction\n            let tx_size = transaction.encoded_length();\n            if tx_size > self.max_tx_input_bytes {\n                self.validation_metrics.rejected_oversized_data.increment(1);\n                return Err(InvalidPoolTransactionError::OversizedData {\n                    size: tx_size,\n                    limit: self.max_tx_input_bytes,\n                })\n            }\n        }\n\n        // Check whether the init code size has been exceeded.\n        if self.fork_tracker.is_shanghai_activated() {\n            let max_initcode_size =\n                self.fork_tracker.max_initcode_size.load(std::sync::atomic::Ordering::Relaxed);\n            transaction.ensure_max_init_code_size(max_initcode_size)?;\n        }\n\n        // Checks for gas limit\n        let transaction_gas_limit = transaction.gas_limit();\n        let block_gas_limit = self.max_gas_limit();\n        if transaction_gas_limit > block_gas_limit {\n            return Err(InvalidPoolTransactionError::ExceedsGasLimit(\n                transaction_gas_limit,\n                block_gas_limit,\n            ))\n        }\n\n        // Check individual transaction gas limit if configured\n        if let Some(max_tx_gas_limit) = self.max_tx_gas_limit &&\n            transaction_gas_limit > max_tx_gas_limit\n        {\n            return Err(InvalidPoolTransactionError::MaxTxGasLimitExceeded(\n                transaction_gas_limit,\n                max_tx_gas_limit,\n            ))\n        }\n\n        // Ensure max_priority_fee_per_gas (if EIP1559) is less than max_fee_per_gas if any.\n        if transaction.max_priority_fee_per_gas() > Some(transaction.max_fee_per_gas()) {\n            self.validation_metrics.rejected_tip_above_fee_cap.increment(1);\n            return Err(InvalidTransactionError::TipAboveFeeCap.into())\n        }\n\n        // determine whether the transaction should be treated as local\n        let is_local = self.local_transactions_config.is_local(origin, transaction.sender_ref());\n\n        // Ensure max possible transaction fee doesn't exceed configured transaction fee cap.\n        // Only for transactions locally submitted for acceptance into the pool.\n        if is_local {\n            match self.tx_fee_cap {\n                Some(0) | None => {} // Skip if cap is 0 or None\n                Some(tx_fee_cap_wei) => {\n                    let max_tx_fee_wei = transaction.cost().saturating_sub(transaction.value());\n                    if max_tx_fee_wei > tx_fee_cap_wei {\n                        self.validation_metrics.rejected_exceeds_fee_cap.increment(1);\n                        return Err(InvalidPoolTransactionError::ExceedsFeeCap {\n                            max_tx_fee_wei: max_tx_fee_wei.saturating_to(),\n                            tx_fee_cap_wei,\n                        })\n                    }\n                }\n            }\n        }\n\n        // Drop dynamic fee transactions with a fee lower than the configured fee for acceptance\n        // into the pool.\n        if transaction.is_dynamic_fee() &&\n            transaction.max_priority_fee_per_gas() < self.minimum_priority_fee\n        {\n            self.validation_metrics.rejected_priority_fee_below_minimum.increment(1);\n            return Err(InvalidPoolTransactionError::PriorityFeeBelowMinimum {\n                minimum_priority_fee: self\n                    .minimum_priority_fee\n                    .expect(\"minimum priority fee is expected inside if statement\"),\n            })\n        }\n\n        // Checks for chainid\n        if let Some(chain_id) = transaction.chain_id() &&\n            chain_id != self.chain_id()\n        {\n            return Err(InvalidTransactionError::ChainIdMismatch.into())\n        }\n\n        if transaction.is_eip7702() {\n            // Prague fork is required for 7702 txs\n            if !self.fork_tracker.is_prague_activated() {\n                return Err(InvalidTransactionError::TxTypeNotSupported.into())\n            }\n\n            if transaction.authorization_list().is_none_or(|l| l.is_empty()) {\n                return Err(Eip7702PoolTransactionError::MissingEip7702AuthorizationList.into())\n            }\n        }\n\n        ensure_intrinsic_gas(transaction, &self.fork_tracker).inspect_err(|_| {\n            self.validation_metrics.rejected_intrinsic_gas_too_low.increment(1);\n        })?;\n\n        // light blob tx pre-checks\n        if transaction.is_eip4844() {\n            // Cancun fork is required for blob txs\n            if !self.fork_tracker.is_cancun_activated() {\n                return Err(InvalidTransactionError::TxTypeNotSupported.into())\n            }\n\n            let blob_count = transaction.blob_count().unwrap_or(0);\n            if blob_count == 0 {\n                // no blobs\n                self.validation_metrics.invalid_4844.increment(1);\n                return Err(InvalidPoolTransactionError::Eip4844(\n                    Eip4844PoolTransactionError::NoEip4844Blobs,\n                ))\n            }\n\n            let max_blob_count = self.fork_tracker.max_blob_count();\n            if blob_count > max_blob_count {\n                self.validation_metrics.invalid_4844.increment(1);\n                return Err(InvalidPoolTransactionError::Eip4844(\n                    Eip4844PoolTransactionError::TooManyEip4844Blobs {\n                        have: blob_count,\n                        permitted: max_blob_count,\n                    },\n                ))\n            }\n        }\n\n        // Transaction gas limit validation (EIP-7825 for Osaka+)\n        let tx_gas_limit_cap =\n            self.fork_tracker.tx_gas_limit_cap.load(std::sync::atomic::Ordering::Relaxed);\n        if tx_gas_limit_cap > 0 && transaction.gas_limit() > tx_gas_limit_cap {\n            return Err(InvalidTransactionError::GasLimitTooHigh.into())\n        }\n\n        // Run additional stateless validation if configured\n        if let Some(check) = &self.additional_stateless_validation {\n            check(origin, transaction)?;\n        }\n\n        Ok(())\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-stateful",
+      "fn": "validate_stateful",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 661,
+      "end": 727,
+      "code": "    pub fn validate_stateful<P>(\n        &self,\n        origin: TransactionOrigin,\n        mut transaction: Tx,\n        state: P,\n    ) -> TransactionValidationOutcome<Tx>\n    where\n        P: AccountInfoReader,\n    {\n        // Use provider to get account info\n        let account = match state.basic_account(transaction.sender_ref()) {\n            Ok(account) => account.unwrap_or_default(),\n            Err(err) => {\n                return TransactionValidationOutcome::Error(*transaction.hash(), Box::new(err))\n            }\n        };\n\n        // check for bytecode\n        match self.validate_sender_bytecode(&transaction, &account, &state) {\n            Err(outcome) => return outcome,\n            Ok(Err(err)) => return TransactionValidationOutcome::Invalid(transaction, err),\n            _ => {}\n        };\n\n        // Checks for nonce\n        if transaction.requires_nonce_check() &&\n            let Err(err) = self.validate_sender_nonce(&transaction, &account)\n        {\n            return TransactionValidationOutcome::Invalid(transaction, err)\n        }\n\n        // checks for max cost not exceedng account_balance\n        if let Err(err) = self.validate_sender_balance(&transaction, &account) {\n            return TransactionValidationOutcome::Invalid(transaction, err)\n        }\n\n        // heavy blob tx validation\n        let maybe_blob_sidecar = match self.validate_eip4844(&mut transaction) {\n            Err(err) => return TransactionValidationOutcome::Invalid(transaction, err),\n            Ok(sidecar) => sidecar,\n        };\n\n        // Run additional stateful validation if configured\n        if let Some(check) = &self.additional_stateful_validation &&\n            let Err(err) = check(origin, &transaction, &state)\n        {\n            return TransactionValidationOutcome::Invalid(transaction, err)\n        }\n\n        let authorities = self.recover_authorities(&transaction);\n        // Return the valid transaction\n        TransactionValidationOutcome::Valid {\n            balance: account.balance,\n            state_nonce: account.nonce,\n            bytecode_hash: account.bytecode_hash,\n            transaction: ValidTransaction::new(transaction, maybe_blob_sidecar),\n            // by this point assume all external transactions should be propagated\n            propagate: match origin {\n                TransactionOrigin::External => true,\n                TransactionOrigin::Local => {\n                    self.local_transactions_config.propagate_local_transactions\n                }\n                TransactionOrigin::Private => false,\n            },\n            authorities,\n        }\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-nonce",
+      "fn": "validate_sender_nonce",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 767,
+      "end": 782,
+      "code": "    pub fn validate_sender_nonce(\n        &self,\n        transaction: &Tx,\n        sender: &Account,\n    ) -> Result<(), InvalidPoolTransactionError> {\n        let tx_nonce = transaction.nonce();\n\n        if tx_nonce < sender.nonce {\n            return Err(InvalidTransactionError::NonceNotConsistent {\n                tx: tx_nonce,\n                state: sender.nonce,\n            }\n            .into())\n        }\n        Ok(())\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:pool-balance",
+      "fn": "validate_sender_balance",
+      "path": "crates/transaction-pool/src/validate/eth.rs",
+      "start": 785,
+      "end": 800,
+      "code": "    pub fn validate_sender_balance(\n        &self,\n        transaction: &Tx,\n        sender: &Account,\n    ) -> Result<(), InvalidPoolTransactionError> {\n        let cost = transaction.cost();\n\n        if !self.disable_balance_check && cost > &sender.balance {\n            let expected = *cost;\n            return Err(InvalidTransactionError::InsufficientFunds(\n                GotExpected { got: sender.balance, expected }.into(),\n            )\n            .into())\n        }\n        Ok(())\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:send-pool-add",
+      "fn": "add_transaction",
+      "path": "crates/transaction-pool/src/pool/mod.rs",
+      "start": 578,
+      "end": 638,
+      "code": "    fn add_transaction(\n        &self,\n        pool: &mut RwLockWriteGuard<'_, TxPool<T>>,\n        origin: TransactionOrigin,\n        tx: TransactionValidationOutcome<T::Transaction>,\n        timestamp: Instant,\n    ) -> (PoolResult<AddedTransactionOutcome>, Option<AddedTransactionMeta<T::Transaction>>) {\n        match tx {\n            TransactionValidationOutcome::Valid {\n                balance,\n                state_nonce,\n                transaction,\n                propagate,\n                bytecode_hash,\n                authorities,\n            } => {\n                let sender_id = self.get_sender_id(transaction.sender());\n                let transaction_id = TransactionId::new(sender_id, transaction.nonce());\n\n                // split the valid transaction and the blob sidecar if it has any\n                let (transaction, blob_sidecar) = match transaction {\n                    ValidTransaction::Valid(tx) => (tx, None),\n                    ValidTransaction::ValidWithSidecar { transaction, sidecar } => {\n                        debug_assert!(\n                            transaction.is_eip4844(),\n                            \"validator returned sidecar for non EIP-4844 transaction\"\n                        );\n                        (transaction, Some(sidecar))\n                    }\n                };\n\n                let tx = ValidPoolTransaction {\n                    transaction,\n                    transaction_id,\n                    propagate,\n                    timestamp,\n                    origin,\n                    authority_ids: authorities.map(|auths| self.get_sender_ids(auths)),\n                };\n\n                let added = match pool.add_transaction(tx, balance, state_nonce, bytecode_hash) {\n                    Ok(added) => added,\n                    Err(err) => return (Err(err), None),\n                };\n                let hash = *added.hash();\n                let state = added.transaction_state();\n\n                let meta = AddedTransactionMeta { added, blob_sidecar };\n\n                (Ok(AddedTransactionOutcome { hash, state }), Some(meta))\n            }\n            TransactionValidationOutcome::Invalid(tx, err) => {\n                self.with_event_listener(|listener| listener.invalid(tx.hash()));\n                (Err(PoolError::new(*tx.hash(), err)), None)\n            }\n            TransactionValidationOutcome::Error(tx_hash, err) => {\n                self.with_event_listener(|listener| listener.discarded(&tx_hash));\n                (Err(PoolError::other(tx_hash, err)), None)\n            }\n        }\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    },
+    {
+      "context": "area:rpc-balance-read",
+      "fn": "balance",
+      "path": "crates/rpc/rpc-eth-api/src/helpers/state.rs",
+      "start": 79,
+      "end": 90,
+      "code": "    fn balance(\n        &self,\n        address: Address,\n        block_id: Option<BlockId>,\n    ) -> impl Future<Output = Result<U256, Self::Error>> + Send {\n        self.spawn_blocking_io_with_state(block_id.unwrap_or_default(), move |_, state| {\n            Ok(state\n                .account_balance(&address)\n                .map_err(Self::Error::from_eth_err)?\n                .unwrap_or_default())\n        })\n    }",
+      "expressionsAllExact": true,
+      "semanticReview": "pass-input-completion-value-vs-separate-reply",
+      "basis": "Independent source read, not merely expression match",
+      "judgment": "pass-source-meaning"
+    }
+  ],
+  "additionalSemanticReviews": [
+    {
+      "id": "network-budget-wake",
+      "judgment": "pass-with-macro-integration",
+      "source": [
+        "crates/net/network/src/manager.rs1134–1204",
+        "crates/net/network/src/budget.rs38–62"
+      ],
+      "basis": "Ready(Some)ごとに呼出元から受け取った処理を実行してからbudgetを減らす。0なら次の項目をpollする前にtrueで抜けるため、残件の確定ではない。Ready(None)/Pendingはfalse。どちらかがtrueならmanagerはwake_by_refを呼んでPendingを返す。最後のPending行には明示wakeが無いが、取得先pollのwaker登録内部まで断定しない。",
+      "hints": 6
+    },
+    {
+      "id": "BAL-local-branches",
+      "judgment": "pass",
+      "source": [
+        "crates/evm/evm/src/execute.rs596–632"
+      ],
+      "basis": "header.block_access_list_hash().is_someでhas_balを決め、Some(Bal::new)/Noneと前処理後・取引後のindex更新を分ける。取引ループ自体はBAL条件の外にある。execute_transactionのRust Errでは?で後続に進まず、ExecutionResultのRevertと異なる点は既存説明を維持する。BAL全形式やindex内部計算の説明済みとはしない。",
+      "hints": 4
+    },
+    {
+      "id": "normal-forwarder-contract",
+      "judgment": "pass",
+      "source": [
+        "crates/rpc/rpc/src/eth/helpers/transaction.rs32–114",
+        "crates/rpc/rpc-eth-api/src/helpers/transaction.rs84–109",
+        "crates/rpc/rpc/src/eth/core.rs491–504",
+        "crates/transaction-pool/src/batcher.rs19–39,69–105",
+        "crates/transaction-pool/src/pool/mod.rs661–742"
+      ],
+      "basis": "blob sidecar処理のエラーは分岐前にも返り得る。転送設定時はclient.request.await?の失敗でlocal追加前に戻り、成功時はlocal追加もawaitするがlet _でResultを捨て、転送先hashを返す。通常はlocal追加await?後にAddedTransactionOutcome.hashを取り出す。queueのresponse_rx.await??は受信失敗とPoolErrorを分ける。batchの非同期完了値()と要求別oneshot返信は別。pool容量制限は一度の追加OkをDiscardedOnInsertへ変え得る。転送先サーバー内部の待機方針は推測しない。"
+    },
+    {
+      "id": "return-types-and-variants",
+      "judgment": "pass",
+      "source": [
+        "crates/transaction-pool/src/error.rs10",
+        "crates/transaction-pool/src/batcher.rs25,69–105",
+        "crates/transaction-pool/src/validate/task.rs233–264",
+        "crates/transaction-pool/src/validate/eth.rs367–435,455–655,661–727,767–800"
+      ],
+      "basis": "PoolResultはResult<T,PoolError>の別名、response_txはResult<AddedTransactionOutcome,PoolError>を送る。Valid/Invalid/Errorは検証結果で追加成功の保証ではない。stateless/nonce/balanceはResult<(),InvalidPoolTransactionError>、statefulは非asyncで検証enumを返す。残高helperは完了値がU256/Self::ErrorのFutureを返す。20宣言hintは入力・完了値・別返信を区別している。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "A6-001",
+      "claim": "network true means budget exhausted, maybe more work",
+      "source": "crates/net/network/src/budget.rs38–62",
+      "basis": "manager.rs1172/1183 delegate; true condition is macro lines47–51, Ready(None)/Pending false54–58. Macro evidence is correct but main proposal context147 has no samepage macro. Optional proposal must be adopted and all network producers connected for samepage source obligation.",
+      "notResult": "Not a runtime defect newly observed; candidate6 remains unimplemented.",
+      "initialStatus": "requires-main-proposal-integration",
+      "finalStatus": "resolved-in-proposal-not-runtime",
+      "resolution": "Macro原文38–62と6隣接hintを追加。独立した消費側逆参照でlesson2/role1/guide3/area1の7論理ownerを確認し、各同ページ列にnetwork→macroが一回ずつ接続する。主案のnetwork説明はこの追加又は同等の独立レビュー済み根拠との同時導入が必要。"
+    },
+    {
+      "id": "A6-002",
+      "claim": "Both paths never wait for block inclusion/finality",
+      "source": "crates/rpc/rpc/src/eth/helpers/transaction.rs97–104",
+      "basis": "Only remote client.request await is visible; remote internal wait policy opaque. Hash alone cannot establish inclusion/execution/finality. B agreed to precise wording, final patch pending.",
+      "initialStatus": "precision-question-acknowledged-by-B",
+      "finalStatus": "resolved-in-proposal-not-runtime",
+      "resolution": "Hash-only claim now says it cannot prove inclusion/execution/finality; does not claim remote internal wait policy. Normal local add vs forwarded RPC result and discarded awaited local add Result remain explicit."
+    },
+    {
+      "id": "A6-003",
+      "claim": "phase essential proof vs initial opening set",
+      "basis": "Reth pool phase says request/reply but task/worker are detail. Existing original remains samepage, so distinguish initial UI open set from sufficient proof and do not exempt condition/reply claims.",
+      "authorResponse": "B confirmed required-source-set was a lower bound, not complete actual call/reply closure. Will preserve lower-bound artifact, add closure-v2 (reth49/55, startup36/36, send19/19, reading19/19). Runtime has not adopted flags and no UI success inferred.",
+      "initialStatus": "confirmed-insufficient-essential-closure-B-revision-pending",
+      "finalStatus": "resolved-in-proposal-not-runtime",
+      "resolution": "closure-v2 retains old lower bound but marks dependency sources required: reth49/55,startup36/36,send19/19,reading19/19. Optional macro makes startup37/37. No original source or body claim deleted and no essential flag counted as UI/learning pass."
+    },
+    {
+      "id": "A6-004",
+      "claim": "optional macro binding applied to all network explanatory producers",
+      "basis": "optional initial3owners omitted startup-guide readingScopes steps.network, loops.4, staticRuntime[2].readings, all containing startup:network with budget claims. B acknowledged, preparing separate scope integration proposal.",
+      "notResult": "No P/runtime edits by reviewer.",
+      "initialStatus": "confirmed-optional-producer-gap-B-acknowledged",
+      "finalStatus": "resolved-in-proposal-not-runtime",
+      "resolution": "Guide steps.network,loops.4,staticRuntime[2] each add macro after startup:network; allold entries and other guide content exact. Total6metadata/guide bindings."
+    },
+    {
+      "id": "R6-005",
+      "reportedBy": "root",
+      "basis": "ui/area-readings.json network single context also displays budgetconditions; optional6producerbindings omitthisarea. Needsnetwork+macro samepage sequence andcorrectmaybeMore/Pending boundary before main+optional complete claim.",
+      "preservedPreviousSnapshot": "source-review-before-area-gap.json",
+      "initialStatus": "pending-proposal-fix",
+      "finalStatus": "resolved-in-proposal-not-runtime",
+      "resolution": "optional area networkにscalar fallbackを保持したままreadings=[startup:network,area:network-budget]を追加。outputは両分岐Pending、boundaryは上限到達/残件可能性へ精密化。旧question/role/input/followup・他area内容はexact保持。rootの発見をAが独立に全消費側逆参照で再検証。",
+      "evidence": "a-optional-area-fidelity-check.json + a-budget-consumer-check.json"
+    }
+  ],
+  "allProducerTargetedReview": {
+    "inventorySha256": "af38b5ba15293e6441fac91e3a2177462c47e70eef623fc41c93e429e36256b1",
+    "counts": {
+      "producers": 23,
+      "proposedMatchedFields": 139,
+      "unclassified": 0
+    },
+    "records": [
+      {
+        "index": 0,
+        "file": "ui/area-readings.json",
+        "pointer": "/1/followup/output",
+        "textSha256": "2be53f23d5a5a120d5033f96f77b3c78f68b01123f7befe1ef5b4c68cacaa8b1",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 1,
+        "file": "ui/area-source-excerpts.json",
+        "pointer": "/file-batch-create/title",
+        "textSha256": "f3d5e36d6d4169df8ca48e8d8d827ab0e62c4f9558fea285067bbc7d52eec43f",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 2,
+        "file": "ui/component-code-links.json",
+        "pointer": "/1/readings/3/connection",
+        "textSha256": "34cce1dd7620d469bf020ff8c65472529604ec4398ea9ce8c304a523fd8d99a5",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 3,
+        "file": "ui/component-code-links.json",
+        "pointer": "/1/readings/6/purpose",
+        "textSha256": "71db821c7642d5fe8fa9c1c1aa0919798f51552178b7209264186d88e2d99ea9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 4,
+        "file": "ui/component-code-links.json",
+        "pointer": "/2/readings/0/connection",
+        "textSha256": "53e912055a6030a5690b1cb3bc51f31e9e6eab116f7bb5463f48c5bdb49ab7d1",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 5,
+        "file": "ui/component-code-links.json",
+        "pointer": "/2/readings/3/purpose",
+        "textSha256": "b5934933cb0ced60ddf4e818283ce79dc25587fc1cfc0e9675af005688a4f0e6",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 6,
+        "file": "ui/component-code-links.json",
+        "pointer": "/2/readings/4/title",
+        "textSha256": "f3d5e36d6d4169df8ca48e8d8d827ab0e62c4f9558fea285067bbc7d52eec43f",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 7,
+        "file": "ui/component-code-links.json",
+        "pointer": "/2/readings/5/purpose",
+        "textSha256": "b0048e332e11b1603b1c7ce7a42e1845f01d7d40e20643b2a30a96810e398315",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 8,
+        "file": "ui/component-code-links.json",
+        "pointer": "/2/readings/7/purpose",
+        "textSha256": "734656abfdf1cde164fe7ae150c9070a0922e876f80f84bcc52513cfeceba564",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 9,
+        "file": "ui/component-code-links.json",
+        "pointer": "/2/readings/8/connection",
+        "textSha256": "c05c83a41187213f232e3435dbd491a8dc81750588869be7f5f39af490c278bd",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 10,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/0/readings/1/connection",
+        "textSha256": "aefeff42211fbe78f29de6ce0b826a8d92545b8ebf2aeaa215036c4fa69a9653",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 11,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/0/readings/3/purpose",
+        "textSha256": "b0048e332e11b1603b1c7ce7a42e1845f01d7d40e20643b2a30a96810e398315",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 12,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/0/readings/5/purpose",
+        "textSha256": "734656abfdf1cde164fe7ae150c9070a0922e876f80f84bcc52513cfeceba564",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 13,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/0/readings/6/connection",
+        "textSha256": "37d5af4fce99778eca72863f2a322fd732fd53c6590078749cbba315c995f874",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 14,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/0/readings/9/purpose",
+        "textSha256": "71db821c7642d5fe8fa9c1c1aa0919798f51552178b7209264186d88e2d99ea9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 15,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/2/readings/13/connection",
+        "textSha256": "7571a1768f012d73d316bd67b62f0e2288483270376595d1464bf2b144eda1a6",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 16,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/4/goal",
+        "textSha256": "934b642ce0288bf9c3ec83f833ce1c1b618af4e5dc7e5daed448fd36dfde6d90",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 17,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/4/readings/1/purpose",
+        "textSha256": "b0048e332e11b1603b1c7ce7a42e1845f01d7d40e20643b2a30a96810e398315",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 18,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/4/readings/3/purpose",
+        "textSha256": "734656abfdf1cde164fe7ae150c9070a0922e876f80f84bcc52513cfeceba564",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 19,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/4/readings/4/connection",
+        "textSha256": "d48def073dadcf69133e56788352161e11c370f1e8b9c1b1702f60890cdeb0ef",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 20,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/5/readings/1/purpose",
+        "textSha256": "925f1c24bbd2fa793f04164ee3610927a45c19b44fa5e82d224511166f1f7fd3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 21,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/5/readings/2/title",
+        "textSha256": "f3d5e36d6d4169df8ca48e8d8d827ab0e62c4f9558fea285067bbc7d52eec43f",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 22,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/5/readings/4/connection",
+        "textSha256": "b7d740d173d75b87f09055b1033c12b57b1225b3861afa74f2894b57ea02b5e9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 23,
+        "file": "ui/file-role-code-links.json",
+        "pointer": "/5/readings/5/connection",
+        "textSha256": "e1ca2a7438e3f16c4a187664afa6963eab9e44097847de5fbab0cdb5ef904d39",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 24,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/2/readings/4/purpose",
+        "textSha256": "90d444e268ea0ed3091e6cd6a32e8e2f2756700c485eec42d2df6dedf92cc088",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 25,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/2/readings/4/connection",
+        "textSha256": "5f19e0d1db88d5e7c0e882b3cc3b51e676124e7210ef2d39fd8466798ea1351f",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 26,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/3/readings/10/purpose",
+        "textSha256": "3cc1d401f1106e01f8fd6aae43ab7f56c6a07db75fc12c21427c32559a636cb7",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 27,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/3/readings/11/connection",
+        "textSha256": "7eb46d31bf33d3f198e3b323c8b6ee7d151e8d134d29f7412b42f6223e7ffb00",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 28,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/3/readings/24/connection",
+        "textSha256": "bea1f8f69ac350509fa9313fd2aef8019aa16199a9d1f97c8431dec6dc47386c",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 29,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/3/phases/1/relationship",
+        "textSha256": "16c7337daf30a54defa6f47601994df2e58c06527ff3946070b8f90831e66965",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 30,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/title",
+        "textSha256": "0e284cb46a2ef782f655fd55316f95cb7dbf45a776a1346e3d55dc608d150a24",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 31,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/scope",
+        "textSha256": "5de759c5757f985aea482a48db4012490cdce53f48047893e9dc6031a015fa1d",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 32,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/2/purpose",
+        "textSha256": "90d444e268ea0ed3091e6cd6a32e8e2f2756700c485eec42d2df6dedf92cc088",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 33,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/2/connection",
+        "textSha256": "04207c73b6e7222ef34b3c68537a5f3097cca4318b5c041022842ba618c1bb1d",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 34,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/3/group",
+        "textSha256": "c2c9cc18c283d7c6cec4ef4b9f0d4f9852ce518a9184373f77bd19b5abfe0aa3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 35,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/4/purpose",
+        "textSha256": "bd9aa66b3b0cdf7597898659ab2e4c095bbc38721a3166a4eb85149cb750eaeb",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 36,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/4/group",
+        "textSha256": "c2c9cc18c283d7c6cec4ef4b9f0d4f9852ce518a9184373f77bd19b5abfe0aa3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 37,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/5/group",
+        "textSha256": "c2c9cc18c283d7c6cec4ef4b9f0d4f9852ce518a9184373f77bd19b5abfe0aa3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 38,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/6/group",
+        "textSha256": "c2c9cc18c283d7c6cec4ef4b9f0d4f9852ce518a9184373f77bd19b5abfe0aa3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 39,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/7/group",
+        "textSha256": "c2c9cc18c283d7c6cec4ef4b9f0d4f9852ce518a9184373f77bd19b5abfe0aa3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 40,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/readings/18/connection",
+        "textSha256": "baaf664b2b9ea63c0525448eda445c0ce084ad6e0ea1815d594bebbb351f982c",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 41,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/phases/1/title",
+        "textSha256": "c2c9cc18c283d7c6cec4ef4b9f0d4f9852ce518a9184373f77bd19b5abfe0aa3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 42,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/phases/1/relationship",
+        "textSha256": "f53964ad2f0b9a57e800b30e40d21d764d7a49e308b1357b1703e80a3dfc21c1",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 43,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/4/phases/4/relationship",
+        "textSha256": "0b43d3385f22abf1b52b8630704c3697264653db09a3a8dc38f0153ba30d180f",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 44,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/title",
+        "textSha256": "de27b3a718cb12af4675a1d6ddaa3542d9f6cbed4049011df18ad56ea3c6d979",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 45,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/why",
+        "textSha256": "31c374f2e3be831f08ef147dde6925f68befb12be1ccfb720b44147bb63125e2",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 46,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/scope",
+        "textSha256": "d63df6e55d22dfc530de95f005379ba4008962601c5bf3032e1c4386b514219f",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 47,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/readings/1/connection",
+        "textSha256": "b0fd1d596c0d28be9ccb4de6e9b90dffde401c61742712c1b92ab253e9a282c5",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 48,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/readings/2/purpose",
+        "textSha256": "90d444e268ea0ed3091e6cd6a32e8e2f2756700c485eec42d2df6dedf92cc088",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 49,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/readings/2/connection",
+        "textSha256": "04207c73b6e7222ef34b3c68537a5f3097cca4318b5c041022842ba618c1bb1d",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 50,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/readings/4/purpose",
+        "textSha256": "bd9aa66b3b0cdf7597898659ab2e4c095bbc38721a3166a4eb85149cb750eaeb",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 51,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/readings/18/connection",
+        "textSha256": "baaf664b2b9ea63c0525448eda445c0ce084ad6e0ea1815d594bebbb351f982c",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 52,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/phases/1/relationship",
+        "textSha256": "c922a77b859a7b053cfa25a3ce644f1d169be8263e756081e27caa435dec8d4e",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 53,
+        "file": "ui/lesson-code-links.json",
+        "pointer": "/6/phases/2/relationship",
+        "textSha256": "59adde257c71e98f5ee0df7172da31dad27795d973625dc1100da81939c56bc6",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 54,
+        "file": "ui/operation-code-links.json",
+        "pointer": "/0/connections/tx:recovery-hook",
+        "textSha256": "527b16b8782385a9ccc304b1a1345424a24501af04082d57835da8d6118e0e5c",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 55,
+        "file": "ui/operation-code-links.json",
+        "pointer": "/1/connections/tx:recovery-hook",
+        "textSha256": "527b16b8782385a9ccc304b1a1345424a24501af04082d57835da8d6118e0e5c",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 56,
+        "file": "ui/operation-code-links.json",
+        "pointer": "/2/title",
+        "textSha256": "3a84a0751577ee51ecf385a64dffa765585791388fdc706eb1e5a71c14347035",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 57,
+        "file": "ui/operation-code-links.json",
+        "pointer": "/2/connections/tx:batch",
+        "textSha256": "947eaa6d1632dee976483d7605be20970837bb0c5c33aff8bc216b53c1b8bb57",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 58,
+        "file": "ui/operation-code-links.json",
+        "pointer": "/3/connections/tx:batch",
+        "textSha256": "947eaa6d1632dee976483d7605be20970837bb0c5c33aff8bc216b53c1b8bb57",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 59,
+        "file": "ui/operation-code-links.json",
+        "pointer": "/4/title",
+        "textSha256": "043ece1fe6d8cc46088c61cc0d53681b43cb6daa3a9a80211b11b52ddecd5846",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 60,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/terms/double-question/meaning",
+        "textSha256": "f2805dcb4afbf3e4038a4cb75c31bd952f4a685bc08a73e739924b06f4659905",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 61,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:recover/intro",
+        "textSha256": "8cd2e148aafb3a078bb76031de01013c920522c10c518c12851fdc10bec9aea2",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 62,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:recover/lines/1/explanation",
+        "textSha256": "183b489ccbbf4c5bd06c4b69fb9ff18bff750623227a7dcaf08d646d4a831f70",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 63,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:submit/intro",
+        "textSha256": "ff918c33030506ea8634251c4d79bf33a320df2dac6d5136248ec29621d27bcd",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 64,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:submit/lines/0/explanation",
+        "textSha256": "45f659ca4af64709fc64678d6558dfbb3673ce0cda648ccb7baae509e69e60e5",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 65,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:submit/lines/4/label",
+        "textSha256": "8262f72bdaaa0a4b9ee9ca59b2c887975e17e801d4363a2ce1f7831f992978fb",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 66,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:submit/lines/5/explanation",
+        "textSha256": "8c5a7215d00ccd0a35830b3c7158a66030c8399feb6b509a1500c333b120c7a6",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 67,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:queue/intro",
+        "textSha256": "d401f8eca14db97867ff5d45058d786a6fcd817f3722886df7e4b342ea671a7e",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 68,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:queue/lines/3/explanation",
+        "textSha256": "ac4cb692471ff456de1bcff97da9f15e2205f05a62d11914819e160f2689a331",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 69,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:queue/lines/4/label",
+        "textSha256": "e422617aff49540fecdb7b9a639bf5ea5367c5a948839e6a8cfb5b1e8c1c8cc3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 70,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:queue/lines/4/explanation",
+        "textSha256": "2e9954c19df4ab8c5e7f28de8768fda98f5226ef1f79f240bd90572ec60d9ee9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 71,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:batch/lines/1/explanation",
+        "textSha256": "9b6c5db433c238e49e460778dcd064b80436f8324d90b55202451aeda1ccc012",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 72,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:batch/lines/2/explanation",
+        "textSha256": "319d8de5970d0505274732b7b61c70f8587b593bb18638acdec6bda1b9c7ffa4",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 73,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:rpc-balance-entry/lines/1/explanation",
+        "textSha256": "43fe01b389182ead8b4eb3ee192952327f06ec219d321d690c267916bccd30aa",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 74,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:send-validation-task/lines/1/explanation",
+        "textSha256": "a496f7cb44569ea78b7a2d6b5cfd4a180599c57241d14b4eeda4c0946cc5e585",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 75,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:send-pool-add/lines/3/explanation",
+        "textSha256": "e8ab226fb2ab646aa6e0ac8935aba83192548d30b5c653e586c94d169a99b0ff",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 76,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:send-pool-limit/lines/7/explanation",
+        "textSha256": "882fa4e31bda369c142c7a5a0eea3cb01bd93aca4fd55132071d2b33af3dcfdf",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 77,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:rpc-launch/intro",
+        "textSha256": "4b0a3b348107e54d15ef2287f72b1193ede09e9bb35c0a3d4b92acb1b4ce81ee",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 78,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:node-handle/intro",
+        "textSha256": "1ab7da7e94a92f73388266a928a0abc65a0b1b78b86689e748a658e8f1356120",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 79,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:node-handle/lines/0/explanation",
+        "textSha256": "6b0836b77cb09ccbef662294171f8b9c6686b851b0e6521526cb039b3e6f52b6",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 80,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:recovery-hook/lines/0/label",
+        "textSha256": "e5b6023479941e2916cb1ba39ab4a16f6007dbfe07f33d2edda71d8d747f8002",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 81,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:recovery-hook/lines/1/explanation",
+        "textSha256": "b320347cafd7bfeaa61f76b8361657dd4a97c50389b6cb70e455745f398af459",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 82,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:forward/lines/2/explanation",
+        "textSha256": "f9b427c3259c32f7cf238431bf9aec43c0b88643164c79ee05adf97623769d7a",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 83,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:pool-test/lines/0/label",
+        "textSha256": "0b2c922eb418f6e0b104cec4ac117700e92dc345bfdf6fdd03bf88a2b0e93753",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 84,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:pool-test/lines/7/explanation",
+        "textSha256": "4bc2e5121522faaa9d87c2e891877af50a9a9037c0514983af6c896d133cb30a",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 85,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/tx:trait-implementation/note",
+        "textSha256": "08e46ef707dbe563a24293a4adb71f3699db1f388f49d0b863cad2b2d4cbc655",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 86,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:file-pool-get/lines/1/explanation",
+        "textSha256": "1adc4c8a695e071d7d6e152814ec7655edac97c120654a5e2cb4179736a0c919",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 87,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:file-pool-get/lines/2/explanation",
+        "textSha256": "96655f46f8b0e8443e689c9f9218dd982be6f461a52e893957dcc7993913d459",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 88,
+        "file": "ui/reading-help-content.json",
+        "pointer": "/contexts/area:file-rpc-inner/lines/4/label",
+        "textSha256": "26dc391fd9bba4edc8433d074444de29956bc904be9be91863384a9c5f9c6af8",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 89,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:83",
+        "textSha256": "115b2efe3bb4fe99d27552e4418e63183c7e23ad1842322c9bbd1863dc99f36b",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 90,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:102",
+        "textSha256": "8c07665a2b60b13957e2fd68262f7dc650870a42632a0ef564498387335d26d8",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 91,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:107",
+        "textSha256": "1a8d23cb617be7d95ee02640c32dcbf8a6b0e7b637e441cb9dabf65f326a1d96",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 92,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:108",
+        "textSha256": "9f3b645256557734937977d9f9b17dc92fa7caa3630a36dff79db89c61a86c0d",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 93,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:109",
+        "textSha256": "33bf0d64be83240842c51270cf447a825669c7e35b5298b896fa6dfb3f17dbc8",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 94,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:113",
+        "textSha256": "07a4b4a67efd7616a71b1d5e7af6d1637e18664243a93df6dd58bd260146aea3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 95,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:114",
+        "textSha256": "c103daad0a1b874763b17ac46de63f40e3473cf50709b188af5c7515dddf48a7",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 96,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:122",
+        "textSha256": "0ab89546e63c509c6215081edd443cb3b90319e2c94f6866bcab0c1c0c524472",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 97,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:126",
+        "textSha256": "afb8d88c6d6d9d6668ac0f4ee0a4766bfa5c57359f6ba48832412315ec13bc1d",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 98,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:147",
+        "textSha256": "fbc795a1e7bc8e89f42ad13f8a12ff6e98e526eeb8964293ecdbc6fee7056838",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 99,
+        "file": "ui/learning-content.js",
+        "pointer": "literal:152",
+        "textSha256": "81b31a6518b0295750028853f8881ae99acb76701e5a8fc8b2590d2b5fced0a3",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 100,
+        "file": "ui/learning.js",
+        "pointer": "literal:87",
+        "textSha256": "312b9b30a4e9bb0abefb9da7de8053a70db839a04179d08e03baca4939a9146f",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 101,
+        "file": "ui/learning.js",
+        "pointer": "literal:111",
+        "textSha256": "c8fdd2db1e5f2bb29668b835fc46c1facbe710775ef8f6c564e7c06ddc41fedc",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 102,
+        "file": "ui/reading-help.js",
+        "pointer": "literal:72",
+        "textSha256": "ef44101cf87149e99c58d043d8ddaaaa19f60242ba207c1505a5005befc2209a",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 103,
+        "file": "ui/reading-help.js",
+        "pointer": "literal:74",
+        "textSha256": "ef44101cf87149e99c58d043d8ddaaaa19f60242ba207c1505a5005befc2209a",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 104,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:42",
+        "textSha256": "a8a6136336893409de75fcdec29f2e3f44e4fd4c27404d3540fbf9677fc7120e",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 105,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:49",
+        "textSha256": "df4dd363bf8e03f0f835b110a7cd65a63d9325e9bec01614ea144773d8e810f9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 106,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:59",
+        "textSha256": "53dbcb8e55dc438624fcac59c8138f2d23c525ff37c24304c6587407e8056853",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 107,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:77",
+        "textSha256": "ed5470e5145dbb6a1f2284329fccbc4c0359cb73a97dc4889514464b47d04060",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 108,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:101",
+        "textSha256": "e0059c8e7d14d906cfd0468c3155463b5bc498893c03dc0c15e577da8d9ecbc2",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 109,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:114",
+        "textSha256": "452fccd32436bd1b5358aa3cf45bca64acb73a59a286ffdb6c66d4a5783a0d0e",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 110,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:119",
+        "textSha256": "19936c09c924f1ad18670f014abcc308de0027578b7da26ef37563563226806d",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 111,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:127",
+        "textSha256": "52c90c96ee057717aea31b40f0a9ad9e77275d49247221456a807180fb9bd0b4",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 112,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:132",
+        "textSha256": "7a99d7cc32f3eeb22e0280bc56a9e886a6c140c34aa09ae28b5d49c80e1407c0",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 113,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:144",
+        "textSha256": "2445a71cc3ba51c7a7ea392405f8bd7563de6e715fc88fd26137da7257c3a010",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 114,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:148",
+        "textSha256": "3d01251effb5fbf8928ff1dcbd9a3f88e39d2aca1e41de0b81386306dc992546",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 115,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:162",
+        "textSha256": "9ddcb33ad970f555dd0c35aea269ae6de0570f09d7a2eb493e3d009924ea078b",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 116,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:170",
+        "textSha256": "3ed01255f123dac4ad4c2103a433ea5b99d74d59b0fdfda8c4276e855716b31b",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 117,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:176",
+        "textSha256": "91124905d5bc6a5c3612bedc06fda3deb0902338cb8d99c297fa848df1ef798d",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 118,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:181",
+        "textSha256": "f941e229e3006c17bbfa5f7a7c993586656cfc7420475db909915eecb6c70aec",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 119,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:186",
+        "textSha256": "a3bf7dd8bbc0916d622d89434dc81fbc24ec5d542e3d2ec2063269a707d2d3b9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 120,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:191",
+        "textSha256": "b7f364c5b96e0a4aae0e2d46665b844f1a6882dbe3c4b20324a02494799f79a9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 121,
+        "file": "local-app/public/lenses.js",
+        "pointer": "literal:194",
+        "textSha256": "a3bf7dd8bbc0916d622d89434dc81fbc24ec5d542e3d2ec2063269a707d2d3b9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 122,
+        "file": "local-app/public/app.js",
+        "pointer": "literal:86",
+        "textSha256": "cea87ea059ee9fc0e7f2ded2d54664e26bc87d2b4883c95816e45aa94d143fa7",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 123,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/0/branch",
+        "textSha256": "b5785f57833a72c6e0c624434d4cb2e9a20eba0d18066e5e41c1c947099acea0",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 124,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/1/detail",
+        "textSha256": "a924c3ba82c1fe5b7f68e8909fda9338a4bc9fc3ecef1d86da964c9a547dbf11",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 125,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/1/branch",
+        "textSha256": "dfbdd041d4fbdd9e6bd8a2d09c550cb4ffd0e44fc3a5037728429aafd734db03",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 126,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/2/symbol",
+        "textSha256": "871b65ee9b6d3a07fad74760a1c533ef4513acd554f93ea1afcac60f4cd9e9a4",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 127,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/2/output",
+        "textSha256": "7d5ad20b5d5e46b4d3f1c493f5ff9dbadfaaaa371e2936a05730865a2b5a1f95",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 128,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/2/branch",
+        "textSha256": "f721bdf8e88446599ac1eacf398f72494b7858ad518513e4c93abdd92f05c03f",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 129,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/3/question",
+        "textSha256": "968467ccc5d125ab548b99a1b29ecd108991aff71cd0f80f403ae29d85ee7e6a",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 130,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/3/detail",
+        "textSha256": "d447aed96423c9294cadb1f129e0132f5607e02ac82f4c9d220c791ac475bb28",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 131,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/4/output",
+        "textSha256": "ac58c1718aa0b54258d8b0a170686ead074ddd56504d177a3b34dd6a19e92c80",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 132,
+        "file": "dist/reth-data.js",
+        "pointer": "/steps/4/side",
+        "textSha256": "d9a11bdbdd2e52aeaef4ff7cde8bc3d512013156d7b4feeb0ed94e01472b4f42",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 133,
+        "file": "dist/reth-data.js",
+        "pointer": "/details/2/symbol",
+        "textSha256": "af2c5c9ec0707fc4c75570a892cda9abc3deab1163a40d9bba9e7d38feee07d9",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 134,
+        "file": "dist/reth-data.js",
+        "pointer": "/details/2/summary",
+        "textSha256": "81d3ab4bc69f6845a0381aadb8e5fceefbff1342b4230e5d4b8e91a498d11846",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 135,
+        "file": "dist/reth-data.js",
+        "pointer": "/details/2/side",
+        "textSha256": "12750b28d99dd49230153564807f37f5fb9a0abc84eef4da4aaf2d64a37462cd",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 136,
+        "file": "dist/reth-data.js",
+        "pointer": "/details/4/summary",
+        "textSha256": "7da4d89c6f6960416d66a3fdf1ae1d2caea05aaa0543d441f054a96462cf6d29",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 137,
+        "file": "scripts/build-drill.py",
+        "pointer": "literal:81",
+        "textSha256": "06568f517a18728de600b0900774f69a7ddb8b5240d5d03767f5f6e54dc589ca",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      },
+      {
+        "index": 138,
+        "file": "docs/reading-guide.html",
+        "pointer": "prose:0",
+        "textSha256": "e019c8c6bc0d9e43c014660e49c645c80a06d94045dfa58439aeeddb0976c232",
+        "judgment": "pass-targeted-normal-forwarder-contract",
+        "limit": "This occurrence was read in context; not a full semantic audit of all claims in this producer."
+      }
+    ],
+    "generatedConsumersNotYetVerified": [
+      {
+        "from": "ui/learning-content.js",
+        "to": [
+          "dist/learning-content.js",
+          "local-app/public/learning-content.js"
+        ],
+        "mechanism": "build-design copy"
+      },
+      {
+        "from": "ui/learning.js",
+        "to": [
+          "dist/learning.js",
+          "local-app/public/learning.js"
+        ],
+        "mechanism": "build-design copy"
+      },
+      {
+        "from": "ui/reading-help-content.json + source/config links",
+        "to": [
+          "dist/reading-help-data.js",
+          "docs/reading-help-data.js",
+          "local-app/public/reading-help-data.js"
+        ],
+        "mechanism": "build-help generate;744 primary hints,147 existing contexts"
+      },
+      {
+        "from": "local-app/public/lenses.js",
+        "to": [
+          "dist/lenses.js"
+        ],
+        "mechanism": "build-lenses copy"
+      },
+      {
+        "from": "dist/reth-data.js + drill/atlas",
+        "to": [
+          "local-app/annotations.json",
+          "dist/lenses-pack.js"
+        ],
+        "mechanism": "build-annotations/build-lenses derive"
+      },
+      {
+        "from": "shared reading help + guide",
+        "to": [
+          "docs/reading-guide.html",
+          "dist/startup.html",
+          "local guide API/widget bodies"
+        ],
+        "mechanism": "build-guide/build-design and local server restart as applicable"
+      }
+    ],
+    "basis": "Read every139match and surrounding changedfield. Internal queue/pool contracts need not repeat outerbranch qualifier on eachsentence; outerresult producers nowdistinguish normal/forwarder. Existing localflow diagram explicitly normal. Operation6 derive canonicalsend connections; role2/component1 overrides also corrected. Area followup correctly distinguishesinnerPoolTx/helpererror fromouterB256Future. Generatedcopies and actualDOM still require rebuild/newfreeze checks.",
+    "limits": "The regexinventory does not establish fullproducer semanticcoverage; unaffected nonresponseclaims useexact existing reviewcarry. Newreturnboundary phrasing was read manually, not accepted from authorsclassification.",
+    "budgetConsumerAudit": {
+      "definition": "Sourcehint definition/derivedledger are not displayowners. Scalararea plus itsnewreadings countone logicalowner.",
+      "independentConsumerCount": 7,
+      "components": [
+        "lesson:blockchain",
+        "lesson:startup",
+        "role:crates/net/network/src/manager.rs",
+        "guide:steps/network",
+        "guide:loops/4",
+        "guide:staticRuntime/2",
+        "area:network"
+      ],
+      "allSamePageNetworkThenMacroOnce": true,
+      "allSixOverlayPatchesReplayed": true,
+      "meaning": "Macrobreaktrue is reached afterbudgetdecrement==0; manager ORcondition wakesandreturnsPending. Area output/boundary isprecise, andoldquestion/role/input/followup retained. Actualrenderroute/controlreachability muststill be tested afterimplementation."
+    }
+  },
+  "samePageRetentionAndPhases": {
+    "status": "pass-authoring-dependencies-not-UI",
+    "lessons": [
+      {
+        "lesson": "blockchain",
+        "before": 3,
+        "after": 3,
+        "retained": true,
+        "relativeOrderRetained": true,
+        "phases": [],
+        "phasePartitionExact": true,
+        "essentialDetailPartitionExact": true,
+        "flagsMatchPhaseSets": true
+      },
+      {
+        "lesson": "ethereum",
+        "before": 3,
+        "after": 3,
+        "retained": true,
+        "relativeOrderRetained": true,
+        "phases": [],
+        "phasePartitionExact": true,
+        "essentialDetailPartitionExact": true,
+        "flagsMatchPhaseSets": true
+      },
+      {
+        "lesson": "rpc",
+        "before": 5,
+        "after": 5,
+        "retained": true,
+        "relativeOrderRetained": true,
+        "phases": [],
+        "phasePartitionExact": true,
+        "essentialDetailPartitionExact": true,
+        "flagsMatchPhaseSets": true
+      },
+      {
+        "lesson": "reth",
+        "before": 54,
+        "after": 55,
+        "retained": true,
+        "relativeOrderRetained": true,
+        "phases": [
+          {
+            "id": "composition-rpc",
+            "title": "部品の構成とRPCの窓口",
+            "contexts": [
+              "startup:components",
+              "area:startup-node-components",
+              "area:startup-component-choice",
+              "area:startup-network-builder",
+              "area:startup-network-start",
+              "area:startup-payload-spawn",
+              "startup:services",
+              "area:startup-engine-build",
+              "area:startup-tree-spawn",
+              "area:rpc-launch",
+              "area:node-handle",
+              "tx:rpc"
+            ],
+            "essentialContexts": [
+              "startup:components",
+              "startup:services",
+              "area:startup-engine-build",
+              "area:rpc-launch",
+              "area:node-handle",
+              "tx:rpc"
+            ],
+            "detailContexts": [
+              "area:startup-node-components",
+              "area:startup-component-choice",
+              "area:startup-network-builder",
+              "area:startup-network-start",
+              "area:startup-payload-spawn",
+              "area:startup-tree-spawn"
+            ]
+          },
+          {
+            "id": "pool",
+            "title": "取引の検証と保持",
+            "contexts": [
+              "tx:pool",
+              "area:send-validation-dispatch",
+              "area:send-validation-task",
+              "area:send-validation-worker",
+              "area:send-validation-entry",
+              "area:send-validation-order",
+              "area:send-stateless",
+              "area:send-stateful",
+              "area:send-nonce",
+              "area:pool-balance",
+              "area:send-pool-limit",
+              "area:send-pool-add"
+            ],
+            "essentialContexts": [
+              "tx:pool",
+              "area:send-validation-dispatch",
+              "area:send-validation-task",
+              "area:send-validation-worker",
+              "area:send-validation-entry",
+              "area:send-validation-order",
+              "area:send-stateless",
+              "area:send-stateful",
+              "area:send-nonce",
+              "area:pool-balance",
+              "area:send-pool-limit",
+              "area:send-pool-add"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "block",
+            "title": "ブロックの実行と状態の検査",
+            "contexts": [
+              "area:journey-block-dispatch",
+              "area:journey-block-receive",
+              "area:journey-block-insert",
+              "area:journey-block-validate-call",
+              "area:journey-block-insert-state",
+              "area:journey-block-validator-entry",
+              "area:journey-block-parent",
+              "area:journey-block-execute-choice",
+              "area:journey-block-executor",
+              "area:journey-block-execute",
+              "area:journey-block-after-execute",
+              "area:journey-block-postcheck",
+              "area:journey-block-consensus-check",
+              "area:journey-block-postconditions",
+              "area:journey-block-root"
+            ],
+            "essentialContexts": [
+              "area:journey-block-dispatch",
+              "area:journey-block-receive",
+              "area:journey-block-insert",
+              "area:journey-block-validate-call",
+              "area:journey-block-insert-state",
+              "area:journey-block-validator-entry",
+              "area:journey-block-parent",
+              "area:journey-block-execute-choice",
+              "area:journey-block-executor",
+              "area:journey-block-execute",
+              "area:journey-block-after-execute",
+              "area:journey-block-postcheck",
+              "area:journey-block-consensus-check",
+              "area:journey-block-postconditions",
+              "area:journey-block-root"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "choice-save",
+            "title": "履歴の指示・採用反映・保存",
+            "contexts": [
+              "area:journey-block-forkchoice-message",
+              "area:journey-block-forkchoice",
+              "area:journey-block-forkchoice-precheck",
+              "area:journey-block-canonical",
+              "area:journey-block-forkchoice-consistency",
+              "area:journey-block-canonical-state",
+              "area:journey-block-forkchoice-markers",
+              "startup:tree",
+              "area:startup-tree-pressure",
+              "area:startup-tree-wait",
+              "area:journey-block-save-start",
+              "area:journey-block-save-target",
+              "area:journey-block-save-queue",
+              "area:journey-block-save-worker",
+              "area:journey-block-save-write",
+              "area:journey-block-save-complete"
+            ],
+            "essentialContexts": [
+              "area:journey-block-forkchoice-message",
+              "area:journey-block-forkchoice",
+              "area:journey-block-forkchoice-precheck",
+              "area:journey-block-canonical",
+              "area:journey-block-forkchoice-consistency",
+              "area:journey-block-canonical-state",
+              "area:journey-block-forkchoice-markers",
+              "startup:tree",
+              "area:startup-tree-pressure",
+              "area:startup-tree-wait",
+              "area:journey-block-save-start",
+              "area:journey-block-save-target",
+              "area:journey-block-save-queue",
+              "area:journey-block-save-worker",
+              "area:journey-block-save-write",
+              "area:journey-block-save-complete"
+            ],
+            "detailContexts": []
+          }
+        ],
+        "phasePartitionExact": true,
+        "essentialDetailPartitionExact": true,
+        "flagsMatchPhaseSets": true
+      },
+      {
+        "lesson": "send",
+        "before": 19,
+        "after": 19,
+        "retained": true,
+        "relativeOrderRetained": true,
+        "phases": [
+          {
+            "id": "receive",
+            "title": "受信データと復元",
+            "contexts": [
+              "tx:rpc",
+              "tx:recover",
+              "tx:recovery-hook"
+            ],
+            "essentialContexts": [
+              "tx:rpc",
+              "tx:recover",
+              "tx:recovery-hook"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "request-reply",
+            "title": "送信先の分岐と追加の依頼・返答",
+            "contexts": [
+              "tx:submit",
+              "tx:queue",
+              "area:send-receive",
+              "tx:batch",
+              "tx:pool"
+            ],
+            "essentialContexts": [
+              "tx:submit",
+              "tx:queue",
+              "area:send-receive",
+              "tx:batch",
+              "tx:pool"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "validation-transport",
+            "title": "検証の依頼と返答",
+            "contexts": [
+              "area:send-validation-dispatch",
+              "area:send-validation-task",
+              "area:send-validation-worker",
+              "area:send-validation-entry",
+              "area:send-validation-order"
+            ],
+            "essentialContexts": [
+              "area:send-validation-dispatch",
+              "area:send-validation-task",
+              "area:send-validation-worker",
+              "area:send-validation-entry",
+              "area:send-validation-order"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "validation-conditions",
+            "title": "データと状態の検査条件",
+            "contexts": [
+              "area:send-stateless",
+              "area:send-stateful",
+              "area:send-nonce",
+              "area:pool-balance"
+            ],
+            "essentialContexts": [
+              "area:send-stateless",
+              "area:send-stateful",
+              "area:send-nonce",
+              "area:pool-balance"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "pool-result",
+            "title": "内部追加・容量制限と結果",
+            "contexts": [
+              "area:send-pool-limit",
+              "area:send-pool-add"
+            ],
+            "essentialContexts": [
+              "area:send-pool-limit",
+              "area:send-pool-add"
+            ],
+            "detailContexts": []
+          }
+        ],
+        "phasePartitionExact": true,
+        "essentialDetailPartitionExact": true,
+        "flagsMatchPhaseSets": true
+      },
+      {
+        "lesson": "startup",
+        "before": 36,
+        "after": 36,
+        "retained": true,
+        "relativeOrderRetained": true,
+        "phases": [
+          {
+            "id": "cli-watch",
+            "title": "CLIと実行の監視",
+            "contexts": [
+              "startup:entry",
+              "area:startup-cli-entry",
+              "area:startup-cli-configure",
+              "area:startup-cli-prepare",
+              "startup:dispatch",
+              "startup:supervisor",
+              "area:loop-cli"
+            ],
+            "essentialContexts": [
+              "startup:entry",
+              "area:startup-cli-entry",
+              "area:startup-cli-configure",
+              "area:startup-cli-prepare",
+              "startup:dispatch",
+              "startup:supervisor",
+              "area:loop-cli"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "launch",
+            "title": "設定と起動先の受け渡し",
+            "contexts": [
+              "startup:database",
+              "area:startup-launcher-entry",
+              "area:startup-node-selection",
+              "area:startup-node-components",
+              "area:startup-component-choice",
+              "area:startup-builder-launch",
+              "area:startup-builder-dispatch",
+              "area:startup-debug-adapter",
+              "area:startup-debug-inner",
+              "area:startup-engine-dispatch",
+              "startup:context"
+            ],
+            "essentialContexts": [
+              "startup:database",
+              "area:startup-launcher-entry",
+              "area:startup-node-selection",
+              "area:startup-node-components",
+              "area:startup-component-choice",
+              "area:startup-builder-launch",
+              "area:startup-builder-dispatch",
+              "area:startup-debug-adapter",
+              "area:startup-debug-inner",
+              "area:startup-engine-dispatch",
+              "startup:context"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "components",
+            "title": "実行・プール・通信の組み立て",
+            "contexts": [
+              "startup:components",
+              "area:startup-network-builder",
+              "area:startup-network-start",
+              "area:startup-payload-spawn"
+            ],
+            "essentialContexts": [
+              "startup:components",
+              "area:startup-network-builder",
+              "area:startup-network-start",
+              "area:startup-payload-spawn"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "engine-rpc",
+            "title": "EngineとRPCの接続",
+            "contexts": [
+              "startup:services",
+              "area:startup-engine-build",
+              "area:startup-tree-spawn",
+              "startup:backfill",
+              "area:rpc-launch"
+            ],
+            "essentialContexts": [
+              "startup:services",
+              "area:startup-engine-build",
+              "area:startup-tree-spawn",
+              "startup:backfill",
+              "area:rpc-launch"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "running-exit",
+            "title": "稼働中の進行と終了",
+            "contexts": [
+              "startup:orchestrator",
+              "area:startup-orchestrator-poll",
+              "area:startup-engine-poll",
+              "area:startup-engine-channel",
+              "startup:network",
+              "area:node-handle",
+              "area:startup-debug-return",
+              "area:startup-node-wait",
+              "area:node-exit"
+            ],
+            "essentialContexts": [
+              "startup:orchestrator",
+              "area:startup-orchestrator-poll",
+              "area:startup-engine-poll",
+              "area:startup-engine-channel",
+              "startup:network",
+              "area:node-handle",
+              "area:startup-debug-return",
+              "area:startup-node-wait",
+              "area:node-exit"
+            ],
+            "detailContexts": []
+          }
+        ],
+        "phasePartitionExact": true,
+        "essentialDetailPartitionExact": true,
+        "flagsMatchPhaseSets": true
+      },
+      {
+        "lesson": "reading",
+        "before": 2,
+        "after": 19,
+        "retained": true,
+        "relativeOrderRetained": true,
+        "phases": [
+          {
+            "id": "reading-input",
+            "title": "受信データと復元",
+            "contexts": [
+              "tx:rpc",
+              "tx:recover",
+              "tx:recovery-hook"
+            ],
+            "essentialContexts": [
+              "tx:rpc",
+              "tx:recover",
+              "tx:recovery-hook"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "reading-destination",
+            "title": "送信先の分岐と依頼・返答",
+            "contexts": [
+              "tx:submit",
+              "tx:queue",
+              "area:send-receive",
+              "tx:batch"
+            ],
+            "essentialContexts": [
+              "tx:submit",
+              "tx:queue",
+              "area:send-receive",
+              "tx:batch"
+            ],
+            "detailContexts": []
+          },
+          {
+            "id": "reading-acceptance",
+            "title": "検証・追加結果と応答の境界",
+            "contexts": [
+              "tx:pool",
+              "area:send-validation-dispatch",
+              "area:send-validation-task",
+              "area:send-validation-worker",
+              "area:send-validation-entry",
+              "area:send-validation-order",
+              "area:send-stateless",
+              "area:send-stateful",
+              "area:send-nonce",
+              "area:pool-balance",
+              "area:send-pool-limit",
+              "area:send-pool-add"
+            ],
+            "essentialContexts": [
+              "tx:pool",
+              "area:send-validation-dispatch",
+              "area:send-validation-task",
+              "area:send-validation-worker",
+              "area:send-validation-entry",
+              "area:send-validation-order",
+              "area:send-stateless",
+              "area:send-stateful",
+              "area:send-nonce",
+              "area:pool-balance",
+              "area:send-pool-limit",
+              "area:send-pool-add"
+            ],
+            "detailContexts": []
+          }
+        ],
+        "phasePartitionExact": true,
+        "essentialDetailPartitionExact": true,
+        "flagsMatchPhaseSets": true
+      }
+    ],
+    "closureSha256": "6e9515ef82d3ff18191c0d34a9bf96dca4521aeeee157b02f89ce2029dfba43d",
+    "essentialCountsMain": {
+      "reth": 49,
+      "send": 19,
+      "startup": 36,
+      "reading": 19
+    },
+    "optionalStartupEssential": 37,
+    "meaning": "Rethの構成/RPCの例、プール検証、NewPayload実行、forkchoice・採用反映・保存は別の責務。各要求のたびに全てを一直線に実行する関係ではないと明示する。sendは依頼と逆向きの返答を追い、検証キューと追加キューを区別する。startupはmainだけでなくCLI/Debug/Engineと終了の受渡しを保持する。readingには受付時点の既存の問いを確かめる19contextを同ページ接続する。phaseの分割・順序・flagとの整合は別の機械検証に保存する。",
+    "notAProofOfLearning": "essential=trueだけで読解・表示を合格にしない。一phaseが最大16の長い原文範囲を含むため、スクロール負担、適切な流れの選択、元へ戻る操作、実際の返答の説明、状態保持は表示実装後に測る。55範囲を一度に開いて操作数だけ減らすことは合格条件ではない。"
+  },
+  "externalPrimarySources": [
+    {
+      "url": "https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_sendrawtransaction",
+      "read": "OfficialsendRawTransactionsigned-data/hashcontractandseparatereceiptlookup",
+      "supports": "Returninghashdoesnotitselfproveinclusion/execution/finality",
+      "doesNotSupport": "AnyclaimaboutforwardedRPCserverinternalwaitingpolicy"
+    }
+  ],
+  "notMeasured": [
+    "Candidate6 renderer implementation",
+    "Newfreeze UI controls/source retention/manual-open/profile/draft tests",
+    "Candidate6 fixedaction novice7lessons×2",
+    "Human learning; participants0",
+    "Complete1283Rustfileexplanatorycoverage",
+    "Independentfreshsemanticapprovalofall147unchangedcontexts"
+  ],
+  "mutations": {
+    "PFilesEditedByReviewer": false,
+    "runtimeEdited": false,
+    "proposalEditedByReviewer": false,
+    "onlyReviewerArtifactsWrittenUnderCandidate6": true
+  },
+  "finalCanonicalBaseShaStillMatches": {
+    "ui/reading-help-content.json": true,
+    "ui/lesson-code-links.json": true,
+    "ui/learning-content.js": true,
+    "ui/learning.js": true,
+    "dist/reth-data.js": true,
+    "local-app/public/lenses.js": true,
+    "ui/file-role-code-links.json": true,
+    "ui/component-code-links.json": true
+  },
+  "additionalPreventionAfterRootGap": "Aの一度目のoptional確認はmanifestに宣言された6ownerを検査したが、共通contextの全消費側を独立に列挙していなかった。rootのarea反例で不足が判明した。以後はcontext ID→canonical全producerの逆参照集合とproposal接続集合を比較してから完了を判断する。旧判定ファイルを保持し、後の成功で上書きしない。",
+  "sourceByteFidelityEvidence": "a-original-source-fidelity.json:147contextすべての固定原文とhashを独立比較して一致。これは147件の意味レビュー合格ではない。",
+  "overlayManifestSha256": "648f3c244f7f4ea60fa21fc592f7905ced5f5e32891b44755787c4809e4af9b3",
+  "budgetRegistrySha256": "1769ec6cfc422fae62794da80fcc9744eb7ca4940768419670c178b783b8983e",
+  "openSourceFindings": [],
+  "closedProposalFindingsCount": 5
+}

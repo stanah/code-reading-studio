@@ -1,5 +1,6 @@
 // Build source-backed hints from the same pinned Git objects as the reading guides.
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto');
+const {buildRouteRegistry}=require('./reading-route-registry.cjs');
 const root=path.resolve(__dirname,'..');const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const target=JSON.parse(read('reading-target.json')),authored=JSON.parse(read('ui/reading-help-content.json')),guide=JSON.parse(read('local-app/startup-guide.json')),ctx={window:{}};
 vm.runInNewContext(read('dist/reth-data.js'),ctx);
@@ -86,6 +87,7 @@ for(const [i,rows] of startupSequences.entries()){
 }
 const areaReadings=JSON.parse(read('ui/area-readings.json'));
 for(const row of areaReadings)for(const [part,label] of [[row,row.area],[row.followup,row.area+':followup']])if(part?.readings)validatePath({goal:part.question,scope:part.boundary,readings:part.readings},'area:'+label);
-const output='window.READING_HELP_DATA = '+JSON.stringify({commit:target.commit,version:target.version,terms:authored.terms,contexts,sourceOwners,lessonLinks,journeyLinks,fileRoleLinks,componentLinks,operationLinks,areaReadings})+';\n';
+const routeRegistry=buildRouteRegistry({commit:target.commit,contexts,lessonLinks,journeyLinks,fileRoleLinks,componentLinks,operationLinks,areaReadings,guide});
+const output='window.READING_HELP_DATA = '+JSON.stringify({commit:target.commit,version:target.version,terms:authored.terms,contexts,sourceOwners,lessonLinks,journeyLinks,fileRoleLinks,componentLinks,operationLinks,areaReadings,routeRegistry})+';\n';
 for(const dir of ['dist','local-app/public'])fs.writeFileSync(path.join(root,dir,'reading-help-data.js'),output);
 console.log(`Built ${Object.keys(contexts).length} contexts with ${Object.values(contexts).reduce((n,c)=>n+c.lines.length,0)} source-checked line hints; ${lessonLinks.reduce((n,l)=>n+l.readings.length,0)} lesson reading stages; ${journeyLinks.reduce((n,j)=>n+j.readings.length,0)} journey stages`);

@@ -289,6 +289,11 @@
       "name": "true・false",
       "meaning": "条件が成り立つかどうかを表す2つの値です。",
       "example": "検査に合格したという結果と、トランザクションの実行結果が成功したことは別に読みます。"
+    },
+    "macro-optional": {
+      "name": "マクロの ?（0回か1回）",
+      "meaning": "マクロの $(...) ? は、かっこ内のパターンや展開を0回または1回使う指定です。関数の失敗を返す ? とは読み方が異なります。",
+      "example": "$(, $on_ready_none:expr;)? は終了時の処理を省略できる引数のまとまり、$(,)? は末尾のカンマを省略できる指定です。$($on_ready_none;)? は、指定があるときだけその処理を展開します。"
     }
   },
   "contexts": {
@@ -328,7 +333,7 @@
       "note": "L920は人向けのコメントです。L924の } はこの関数の処理の終わりを示します。L922のログと、L923の結果の受け渡しを分けて読みます。"
     },
     "tx:recover": {
-      "intro": "RPCの受付担当が、署名済みの取引データを読み取り、署名と取引データから送信者のアドレスを求めます。元のデータと読み取り結果を、Reth内部のプール追加処理へ渡します。",
+      "intro": "RPCの受付担当が、署名済みの取引データを読み取り、署名と取引データから送信者のアドレスを求めます。元のデータと読み取り結果を送信処理へ渡し、通常のローカル追加か、設定された転送先の処理の結果を待ちます。",
       "terms": [
         "bytes",
         "recover",
@@ -336,10 +341,16 @@
       ],
       "lines": [
         {
+          "line": 84,
+          "match": "fn send_raw_transaction(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "元のバイト列txを受け取ります。これはFutureを返す関数で、その非同期処理が完了すると後続の送信処理のハッシュまたはSelf::Errorが得られます。途中の復元済み取引だけを返す関数ではありません。"
+        },
+        {
           "line": 86,
           "match": "tx: Bytes",
           "label": "送信用データを受け取る",
-          "explanation": "txは元のバイト列です。この関数全体は後続の追加結果まで待ち、最終的にハッシュまたはエラーを返します。"
+          "explanation": "txは元のバイト列です。この関数全体は後続の送信処理まで待ち、ハッシュまたはエラーを返します。通常はローカル追加結果、転送設定がある場合は転送先RPCの結果に従います。"
         },
         {
           "line": 89,
@@ -357,19 +368,25 @@
           "line": 94,
           "match": ".await",
           "label": "後続の結果を待つ",
-          "explanation": "次の送信処理が終わるのを待ち、その結果をこの関数の結果にします。"
+          "explanation": "次の送信処理が終わるのを待ち、その結果をこの関数の結果にします。後続の通常経路と転送経路では、成功として返す条件が異なります。"
         }
       ],
       "note": ""
     },
     "tx:submit": {
-      "intro": "設定による分岐を確認し、通常の経路ではプール追加の結果からハッシュを返します。",
+      "intro": "通常はローカルのプール追加結果からハッシュを返します。転送先が設定されている場合は転送先RPCの結果を使い、転送後のローカル追加の成否は返答の条件にしません。",
       "terms": [
         "pool",
         "hash",
         "bytes"
       ],
       "lines": [
+        {
+          "line": 32,
+          "match": "async fn send_pool_transaction(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "取引の出所originと、元のバイト列を添えたプール用取引を受け取る非同期処理です。完了時の結果はハッシュまたはSelf::Errorです。通常の追加と転送設定時の返答の出所は、この中の分岐で分かれます。"
+        },
         {
           "line": 37,
           "match": "tx.split()",
@@ -380,7 +397,25 @@
           "line": 89,
           "match": "raw_tx_forwarder",
           "label": "転送する設定を確認する",
-          "explanation": "転送先がある場合は別の経路へ進みます。その前には設定に応じたblob sidecarの変換があります。"
+          "explanation": "転送先がある場合は、別のRPCから結果を受け取る経路へ進みます。その前には設定に応じたblob sidecarの変換があります。"
+        },
+        {
+          "line": 97,
+          "match": "client.request(\"eth_sendRawTransaction\"",
+          "label": "転送先RPCの結果を待つ",
+          "explanation": "元の取引を転送先へ送り、そのRPCのハッシュまたはエラーを受け取ります。転送に失敗した場合は、この処理もエラーを返します。"
+        },
+        {
+          "line": 102,
+          "match": "let _ = self.inner.add_pool_transaction",
+          "label": "転送後のローカル追加結果は返答条件にしない",
+          "explanation": "転送成功後、ローカルへの追加も試みて待ちます。ただし結果をlet _で捨てるため、ローカル追加が失敗しても、ここで転送先の成功を失敗へ変えません。"
+        },
+        {
+          "line": 104,
+          "match": "return Ok(hash)",
+          "label": "転送先が返したハッシュで終える",
+          "explanation": "転送先RPCから得たhashを返して関数を終えます。下の通常経路へ続くわけではなく、ローカルのプール追加成功を保証する返答でもありません。"
         },
         {
           "line": 111,
@@ -392,19 +427,25 @@
           "line": 113,
           "match": "Ok(hash)",
           "label": "識別子を返す",
-          "explanation": "成功時に取り出したhashを返します。ブロックへの取り込みや確定の通知ではありません。"
+          "explanation": "この通常経路では、ローカル追加の成功結果から取り出したhashを返します。ブロックへの取り込みや確定の通知ではありません。"
         }
       ],
       "note": "通常経路はL108・111・113。上の変換・転送の分岐は、必要なときに原文で確かめます。"
     },
     "tx:queue": {
-      "intro": "RPCの受付担当が「この取引をプールに追加して」という依頼を内部キューへ渡し、検証・追加が成功したかの返事を待ちます。ブロックへの取り込みを待つ処理ではありません。",
+      "intro": "このメソッドの呼び出し元が「この取引をプールに追加して」という依頼を内部キューへ渡し、検証・追加の返答を待ちます。返り値を使うかどうかは呼び出し元の分岐で異なり、このメソッド自体は追加結果かエラーを返します。ブロックへの取り込みを待つ処理ではありません。",
       "terms": [
         "pool",
         "channel",
         "hash"
       ],
       "lines": [
+        {
+          "line": 491,
+          "match": "pub async fn add_pool_transaction(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所originと未検証取引を受け取る非同期処理です。完了するとAddedTransactionOutcomeまたはEthApiErrorを返します。要求をキューへ送れた時点では、この結果はまだ得られません。"
+        },
         {
           "line": 496,
           "match": "oneshot::channel()",
@@ -452,6 +493,12 @@
           "explanation": "その要求の返答口へ、得られた追加結果を送ります。"
         },
         {
+          "line": 76,
+          "match": "async fn process_batch(pool: &Pool, batch: Vec<BatchTxRequest<Pool::Transaction>>) {",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "プールと、取引・出所・返答口を含む要求のまとまりを受け取ります。この非同期処理自体の完了値は()です。追加結果は、下の処理で要求ごとのresponse_txへ送ります。"
+        },
+        {
           "line": 91,
           "match": "pool.add_transactions",
           "label": "同じ出所の要求をまとめる",
@@ -482,6 +529,12 @@
       ],
       "lines": [
         {
+          "line": 495,
+          "match": "async fn add_transaction(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所originと一件の取引を受け取り、検証と追加を待つ非同期処理です。完了値は、その取引の追加結果AddedTransactionOutcomeまたはPoolErrorです。"
+        },
+        {
           "line": 500,
           "match": "self.validate",
           "label": "検証結果を待つ",
@@ -498,6 +551,18 @@
           "match": "results.pop()",
           "label": "追加結果を返す",
           "explanation": "1件分の結果を取り出して返します。ブロック取り込みやレシートを待つ処理ではありません。"
+        },
+        {
+          "line": 505,
+          "match": "async fn add_transactions(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "同じ出所originを持つ複数取引を受け取る非同期処理です。完了すると、各取引の追加結果またはエラーを並べたVecを返します。"
+        },
+        {
+          "line": 518,
+          "match": "async fn add_transactions_with_origins(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所と取引を組にした複数件を受け取る非同期処理です。完了すると、それぞれの追加結果またはエラーを並べたVecを返します。"
         }
       ],
       "note": ""
@@ -914,10 +979,22 @@
           "explanation": "実行環境がこのFutureを進めるときに呼ぶ処理です。"
         },
         {
+          "line": 1172,
+          "match": "let maybe_more_handle_messages =",
+          "label": "内部要求の処理件数に上限を設ける",
+          "explanation": "内部要求を、1回のpollで扱う件数の上限付きで処理します。返るtrueは上限に達したという印です。まだ要求が残る可能性があるためで、残件が必ずあるという確定ではありません。"
+        },
+        {
           "line": 1176,
           "match": "from_handle_rx.poll_next_unpin",
           "label": "内部からの要求を取り出す",
           "explanation": "ノード内部の別の部品から届いた要求を処理します。"
+        },
+        {
+          "line": 1183,
+          "match": "let maybe_more_swarm_events =",
+          "label": "通信側の処理件数にも上限を設ける",
+          "explanation": "ネットワーク側の出来事も上限付きで処理し、上限に達したかを受け取ります。上限到達時は処理できる分が残る可能性があります。"
         },
         {
           "line": 1187,
@@ -926,10 +1003,28 @@
           "explanation": "ネットワーク側で起きた出来事を処理します。"
         },
         {
+          "line": 1194,
+          "match": "if maybe_more_handle_messages || maybe_more_swarm_events",
+          "label": "今回の処理を区切る条件",
+          "explanation": "どちらかの処理が件数の上限に達した場合は、このpollで処理を続けず、次のpollを求める分岐へ入ります。"
+        },
+        {
+          "line": 1196,
+          "match": "cx.waker().wake_by_ref()",
+          "label": "もう一度進めてもらうよう知らせる",
+          "explanation": "このFutureを再びpollしてもらうよう実行器へ知らせます。ネットワークの相手へデータを送る操作ではありません。"
+        },
+        {
+          "line": 1197,
+          "match": "return Poll::Pending",
+          "label": "再pollを求めたあと今回は戻る",
+          "explanation": "今回はPendingで処理を区切ります。直前に再pollを求めているので、常に新しい外部入力だけを待つ場合とは異なります。"
+        },
+        {
           "line": 1202,
           "match": "Poll::Pending",
-          "label": "いったん実行を譲る",
-          "explanation": "今すぐ返す最終結果はないと実行環境へ伝えます。"
+          "label": "今回のpollで最終結果を返さない",
+          "explanation": "上の再poll予約の分岐に入らなかった場合も、最終結果ではなくPendingを返します。この行ではwake_by_refを呼んでいません。上の分岐と戻る前の処理が違います。"
         }
       ],
       "note": "",
@@ -1082,10 +1177,28 @@
           "explanation": "blockという引数で、送信者が復元されたトランザクションを含むブロックを受け取ります。成功時の結果か実行エラーを返します。"
         },
         {
+          "line": 606,
+          "match": "let has_bal =",
+          "label": "BALを扱うかをヘッダーから判断する",
+          "explanation": "ヘッダーのblock_access_list_hashがSomeならhas_balをtrueにします。以降でBAL用の処理を加えるかを、この値で分けます。"
+        },
+        {
+          "line": 608,
+          "match": "if has_bal",
+          "label": "BAL用の記録を組み立てる値を用意する",
+          "explanation": "trueなら次の行でBAL用の記録を組み立てる値をSomeにし、falseならNoneにします。BALの有無は、下の取引ループ自体を実行しないという条件ではありません。"
+        },
+        {
           "line": 614,
           "match": "apply_pre_execution_changes",
           "label": "実行前の変更を行う",
           "explanation": "ブロック内の要求を処理する前に必要な変更を行います。失敗なら?でエラーを返します。"
+        },
+        {
+          "line": 617,
+          "match": "bump_bal_index()",
+          "label": "前処理のあと、BAL有りの場合だけ進める",
+          "explanation": "BALがある場合だけ、前処理のあとでBAL用のindexを進めます。indexの内部での使い方やBALの全形式は、必要な場合に追加の原文で確認します。"
         },
         {
           "line": 620,
@@ -1098,6 +1211,12 @@
           "match": "execute_transaction(tx)?",
           "label": "一件を実行し、処理エラーを確かめる",
           "explanation": "取引を実行します。この?はRustのResult::Errならブロックの処理を中断してエラーを返します。EthereumのコントラクトのRevert（処理の取り消し）は、正常に得られたExecutionResultに含まれる失敗結果で、失敗印のレシートへ進みます。"
+        },
+        {
+          "line": 623,
+          "match": "bump_bal_index()",
+          "label": "取引のあともBAL有りの場合だけ進める",
+          "explanation": "各取引を実行したあとも、BALがある場合だけindexを進めます。取引の実行そのものは、BALがない場合も行います。"
         },
         {
           "line": 627,
@@ -1397,6 +1516,12 @@
         "if"
       ],
       "lines": [
+        {
+          "line": 785,
+          "match": "pub fn validate_sender_balance(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "取引と送信者の口座情報を借りて、必要額と残高を検査します。成功ならOk(())、失敗ならInvalidPoolTransactionErrorです。検査の有効・無効と比較条件は下の行で確かめます。"
+        },
         {
           "line": 790,
           "match": "let cost =",
@@ -1851,6 +1976,12 @@
       ],
       "lines": [
         {
+          "line": 79,
+          "match": "fn balance(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "アドレスaddressと任意のブロック指定block_idを受け取ります。Futureの完了値は残高U256またはSelf::Errorです。取引のプール追加を待つ操作ではありません。"
+        },
+        {
           "line": 84,
           "match": "spawn_blocking_io_with_state",
           "label": "読む時点の状態を用意する",
@@ -1923,9 +2054,9 @@
       "lines": [
         {
           "line": 384,
-          "match": "async fn validate",
-          "label": "取引と出所を検証の入口で受け取る",
-          "explanation": "originはRPC・P2Pなどの出所、transactionは検証したい取引です。"
+          "match": "async fn validate(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所originと検証したい取引を受け取ります。設定されたvalidatorの処理を待ち、完了値としてTransactionValidationOutcomeを返します。この型のValidと実際のプール追加成功は別です。"
         },
         {
           "line": 389,
@@ -1944,6 +2075,12 @@
         "await"
       ],
       "lines": [
+        {
+          "line": 233,
+          "match": "async fn validate_transaction(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所originと取引を受け取る非同期処理です。別の検証タスクへ仕事を渡して返事を待ち、完了値として検証結果TransactionValidationOutcomeを返します。"
+        },
         {
           "line": 239,
           "match": "oneshot::channel()",
@@ -1981,9 +2118,9 @@
       "lines": [
         {
           "line": 1010,
-          "match": "async fn validate_transaction",
-          "label": "validatorに求められた操作を実装する",
-          "explanation": "TransactionValidatorという共通の取り決めに対する、Ethereum用の実装です。"
+          "match": "async fn validate_transaction(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "TransactionValidatorの操作に対するEthereumの実装です。出所originと取引を受け取り、完了値として検証結果TransactionValidationOutcomeを返します。"
         },
         {
           "line": 1015,
@@ -2003,6 +2140,12 @@
         "option"
       ],
       "lines": [
+        {
+          "line": 371,
+          "match": "pub fn validate_one(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所originと取引を受け取り、一件の検証結果TransactionValidationOutcomeを返します。必要になったときの最新状態の取得方法も、次の処理へ渡します。"
+        },
         {
           "line": 377,
           "match": "self.validate_one_with_provider(origin, transaction, &mut state",
@@ -2044,6 +2187,12 @@
         "result"
       ],
       "lines": [
+        {
+          "line": 455,
+          "match": "pub fn validate_stateless(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所originと借りた取引を受け取り、データだけで検査します。成功なら追加の値のないOk(())、失敗ならInvalidPoolTransactionErrorを返します。状態付き検査やプール追加はこの結果とは別です。"
+        },
         {
           "line": 461,
           "match": "match transaction.ty()",
@@ -2141,6 +2290,12 @@
       ],
       "lines": [
         {
+          "line": 661,
+          "match": "pub fn validate_stateful<P>(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所origin、取引、口座情報を読める状態stateを受け取り、検証結果TransactionValidationOutcomeを返します。この関数はasyncではありません。"
+        },
+        {
           "line": 671,
           "match": "let account = match state.basic_account",
           "label": "送信者の現在の状態を読む",
@@ -2194,6 +2349,12 @@
       ],
       "lines": [
         {
+          "line": 767,
+          "match": "pub fn validate_sender_nonce(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "取引と送信者の口座情報を借りて、通し番号を検査します。成功ならOk(())、失敗ならInvalidPoolTransactionErrorです。比較する条件は下の行で確かめます。"
+        },
+        {
           "line": 772,
           "match": "let tx_nonce",
           "label": "取引の通し番号を読む",
@@ -2222,6 +2383,12 @@
         "hash"
       ],
       "lines": [
+        {
+          "line": 578,
+          "match": "fn add_transaction(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "書込用の内部プール、出所、検証結果、時刻を受け取ります。取引の追加結果と、通知等に使う任意の追加情報を組にして返します。Futureを返す関数ではありません。"
+        },
         {
           "line": 585,
           "match": "match tx {",
@@ -2264,6 +2431,12 @@
       ],
       "lines": [
         {
+          "line": 661,
+          "match": "pub fn add_transactions(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "出所originと検証結果の列を受け取り、内部追加へ渡します。この関数はasyncではなく、各取引の追加結果またはエラーを並べたVecを返します。"
+        },
+        {
           "line": 666,
           "match": "self.add_transactions_with_origins",
           "label": "出所を添えて共通の追加処理へ渡す",
@@ -2303,7 +2476,7 @@
           "line": 741,
           "match": "results",
           "label": "最終的な追加結果を返す",
-          "explanation": "この結果が公開プールのadd_transaction、追加担当の返答経路、RPC受付へ戻ります。"
+          "explanation": "この追加結果は公開プール、batcherの返答口、add_pool_transactionの呼び出し元へ戻ります。通常の送信経路は応答に使い、転送後のローカル追加では呼び出し元が結果を捨てます。"
         }
       ],
       "note": ""
@@ -2612,6 +2785,12 @@
           "explanation": "Someならキャッシュを使うhook、Noneなら通常のtry_recoverへ渡します。このoptメソッドと、RPCが別々に選んで呼ぶ下のraw hookを区別します。"
         },
         {
+          "line": 1436,
+          "match": "fn recover_raw_transaction(data: &[u8]) -> Result<Self, RawPoolTransactionError> {",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "借りた受信バイト列を受け取り、このプール取引型SelfまたはRawPoolTransactionErrorを返す既定の操作です。cacheを渡す別のhookと区別します。"
+        },
+        {
           "line": 1437,
           "match": "Self::try_recover(Self::decode_raw_transaction",
           "label": "データを読み、送信者を求める",
@@ -2622,6 +2801,12 @@
           "match": ".map_err(|_| RawPoolTransactionError::InvalidTransactionSignature)",
           "label": "署名の問題を専用のエラーにする",
           "explanation": "送信者を求められない場合はInvalidTransactionSignatureとして返します。"
+        },
+        {
+          "line": 1447,
+          "match": "fn recover_raw_transaction_with_cache(",
+          "label": "受け取る値と、この処理の結果",
+          "explanation": "借りた受信バイト列と復元用cacheを受け取り、このプール取引型SelfまたはRawPoolTransactionErrorを返す既定の操作です。この宣言はasyncではありません。"
         },
         {
           "line": 1451,
@@ -6318,6 +6503,65 @@
         }
       ],
       "note": ""
+    },
+    "area:network-budget": {
+      "intro": "NetworkManagerが使うmacroの定義です。取得できた項目を処理し、一回の上限まで数えます。trueは上限到達の印で、残件があることを直接確認した値ではありません。",
+      "terms": [
+        "poll"
+      ],
+      "lines": [
+        {
+          "line": 40,
+          "match": "macro_rules! poll_nested_stream_with_budget",
+          "label": "マクロの定義と返す値",
+          "explanation": "これはマクロの定義です。呼び出し側から上限値と、取り出し・一件処理の式を受け取り、下のループでtrueかfalseを決めます。Futureを返す関数ではありません。"
+        },
+        {
+          "line": 42,
+          "match": "let mut budget: u32",
+          "label": "一回に処理する件数の上限を持つ",
+          "explanation": "呼び出し側が渡した上限を、このmacro内で減らすbudgetへ入れます。"
+        },
+        {
+          "line": 46,
+          "match": "Poll::Ready(Some(item))",
+          "label": "一件受け取れた場合",
+          "explanation": "項目があれば、呼び出し側が渡した処理をこのitemに対して実行します。"
+        },
+        {
+          "line": 49,
+          "match": "budget -= 1",
+          "label": "処理した件数を数える",
+          "explanation": "一件処理するごとに残りの件数を減らします。"
+        },
+        {
+          "line": 50,
+          "match": "if budget == 0",
+          "label": "上限に達したら今回は止める",
+          "explanation": "残りが0なら次のbreak trueでmacroのループを終えます。次の一件があるかを確認する前に止めるので、trueは残件の確定ではありません。"
+        },
+        {
+          "line": 54,
+          "match": "Poll::Ready(None)",
+          "label": "取得先が終了した場合",
+          "explanation": "指定があれば終了時の処理を行い、falseでこのループを終えます。"
+        },
+        {
+          "line": 58,
+          "match": "Poll::Pending => break false",
+          "label": "今は項目を得られない場合",
+          "explanation": "取得先がPendingなら、上限到達の印を付けずfalseで戻ります。"
+        }
+      ],
+      "note": "macro呼び出しはFutureを返す関数呼び出しとは違います。返したboolがmanagerのmaybe_more_*に入り、trueならwake_by_refとPendingへ進む関係を比較します。",
+      "tokenHints": {
+        "41": {
+          "?": "macro-optional"
+        },
+        "55": {
+          "?": "macro-optional"
+        }
+      }
     }
   }
 }

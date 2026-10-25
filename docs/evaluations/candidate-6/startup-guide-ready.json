@@ -1,0 +1,38 @@
+{
+  "phase": "candidate6 prefreeze implementation verification; not formal2round results",
+  "status": "ready for cold preflight",
+  "functionalCases": 4,
+  "issues": [],
+  "tests": {
+    "count": 21,
+    "status": "pass",
+    "evidence": "startup-guide-tests-final.tap"
+  },
+  "guide": {
+    "panels": 57,
+    "controls": 114,
+    "sourceLines": 2768,
+    "comments": 305,
+    "budgetOriginalCopies": 1,
+    "guideSha256": "4af0fdbde455b76ac15823a69fcc5da0a2e1227b9cccd2fd872bbf2f19268f43",
+    "helpDataSha256": "b7788427d75e8db45ed05d0c14a051806b72e970949a07d1ceef8cb4f7529247"
+  },
+  "sourceDeltaIndependent": "startup-budget-source-delta-independent.json",
+  "preservedFailures": [
+    "startup-budget-before-publication.tap",
+    "macro-symbol-before.tap",
+    "startup-guide-prefreeze-ui.json: incorrect Result operator for macro repetition"
+  ],
+  "exactMacroFidelity": "4real display implementations match pinned38–62 byte/range/hash",
+  "controls": "Each4display representative macro40 tested all4 combinations; no memo editor on these guide surfaces. Actual memo separately required during formal full evaluation.",
+  "cleanup": {
+    "dedicatedTabClosed": true,
+    "globalPrefsChanged": 0,
+    "notesSavedDeletedOrSent": 0
+  },
+  "limits": [
+    "UI capture prefrozen; do not mix into next frozen2round success.",
+    "G1 source delta and operability distinct from cold novice learning/human study."
+  ],
+  "runtimeEditing": "complete; root can integrate/freeze after its own gates"
+}

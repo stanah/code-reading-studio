@@ -1,0 +1,40 @@
+{
+  "candidate": 6,
+  "frozenAt": "2026-10-25T16:22:23.245Z",
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "totalUnits": 108,
+  "sourceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "sourceDataHash": "b7788427d75e8db45ed05d0c14a051806b72e970949a07d1ceef8cb4f7529247",
+  "sourceEvidence": {
+    "contexts": 148,
+    "lineHints": 751,
+    "lessonStages": 142,
+    "routeRegistry": 88,
+    "consumerBoundContexts": 142,
+    "sourceFilesWithExcerpts": 61,
+    "totalRustFiles": 1283,
+    "fullyReviewedRustFiles": 2
+  },
+  "localUrl": "http://127.0.0.1:4317",
+  "staticUrl": "http://127.0.0.1:4398",
+  "isolatedWarmReviewerOrigin": "http://localhost:4317",
+  "isolatedFreshReviewerOrigin": "http://localhost:4398",
+  "tests": {
+    "total": 88,
+    "pass": 88,
+    "fail": 0
+  },
+  "generationIdempotent": true,
+  "ownership": {
+    "global_review": 73,
+    "curriculum_sources": 30,
+    "rootRust": 5
+  },
+  "learningProtocol": "learning-protocol.json",
+  "rounds": "pending full formal two rounds; preflight is not acceptance",
+  "humanParticipants": 0,
+  "humanComprehension": "not-verified",
+  "productComplete": false,
+  "serverSession": 17180
+}

@@ -1248,5 +1248,15 @@
       "hash": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80",
       "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/engine/tree/src/tree/mod.rs#L608-L678"
     }
+  },
+  "network-budget": {
+    "title": "通信を一回にどこまで進めるかを決める",
+    "source": {
+      "path": "crates/net/network/src/budget.rs",
+      "start": 38,
+      "end": 62,
+      "hash": "6b00b2871168e4155ae0cfe459333f604404e3935601ccaf2b9f2c13866be795",
+      "url": "https://github.com/paradigmxyz/reth/blob/3d592ece6de8c4559987416a544fc215fd6d6921/crates/net/network/src/budget.rs#L38-L62"
+    }
   }
 }

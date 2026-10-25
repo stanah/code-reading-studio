@@ -1,0 +1,583 @@
+{
+  "kind": "Independent source-semantic delta review by beginner_eval; actual UI not measured",
+  "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "status": "PASS-source-delta-only",
+  "textChanges": [
+    {
+      "unit": "startup-step:network",
+      "field": "actions.2",
+      "before": "上限まで処理しても仕事が残っていれば、wakeを予約してPendingを返す。",
+      "after": "処理量が上限に達したら、まだ仕事がある可能性としてwakeを予約し、Pendingを返す。"
+    }
+  ],
+  "unchangedClaimTexts": 272,
+  "all273KeysPreserved": true,
+  "existing57OriginalSourcesUnchanged": [
+    {
+      "context": "startup:entry",
+      "sourceHash": "c4ed52ceb9229e33f57a561ff510d33210f6241ae7ea132e75ce6b870bc03039",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-cli-entry",
+      "sourceHash": "577f1e0a8c7039100049df7918aaf02bbc07689036fa8c41bee0e585ea438e8b",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-cli-configure",
+      "sourceHash": "6aa59a8adcb2c71e7f16bf9f9e2d37091fe812d35c920df00e71537f813137ec",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-node-wait",
+      "sourceHash": "5c2adced29ea651dafde068f1c9da6ec084c7d7fca3179613f1f3cc566b6da1e",
+      "unchanged": true
+    },
+    {
+      "context": "area:node-exit",
+      "sourceHash": "ebf7213c538babcaeb8db341934e038b5112fac76ee0bc7e7f07810013d7bebc",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-cli-prepare",
+      "sourceHash": "a6c790c8388f9a764d54829cb936cc008bf91383af93bc4034d3747142867696",
+      "unchanged": true
+    },
+    {
+      "context": "startup:dispatch",
+      "sourceHash": "11990060943f28db389a5ea613c82038a2522a0aeee93f8dba203f691d6c47ce",
+      "unchanged": true
+    },
+    {
+      "context": "startup:supervisor",
+      "sourceHash": "fd8f6cb68f2d5d33c869f37e71f21b1dbd88409975937bde54b10c490523c4d7",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-launcher-entry",
+      "sourceHash": "861f42a577b70ee0953aa72bb46ba89af4c83c5ab87c89e15ee740d06ae911ca",
+      "unchanged": true
+    },
+    {
+      "context": "area:loop-cli",
+      "sourceHash": "c28085da2ec8d3805bb10bbd2cd855a1ad5a85621bf59b0b233ff4b08ab10cab",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-tree-spawn",
+      "sourceHash": "c86542aa8aef20457bf4865e090ca525399b78d38e513c383af89cfdbe3eb3a7",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-network-start",
+      "sourceHash": "cee2419b3443def05b5d7aa428cc6ef84fa08c1f01ff5403e3ef8227f5aa7df5",
+      "unchanged": true
+    },
+    {
+      "context": "startup:database",
+      "sourceHash": "9384d866ad37362fa8511251d545288a5a761f74f7b50da1078c2129b422c107",
+      "unchanged": true
+    },
+    {
+      "context": "startup:context",
+      "sourceHash": "436272bfdcb8086fbe1524d1825544d6d0af3c4c9e23fa2a88352f38b68338c7",
+      "unchanged": true
+    },
+    {
+      "context": "startup:components",
+      "sourceHash": "71ca3f898e0a92f9d9ed87cbf87231d624e33ef2748f41235df558ad928f5e5a",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-node-selection",
+      "sourceHash": "fca33b28937d139a43efd38df358c8d7496808859e9bbdba5e5e68f849adc865",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-node-components",
+      "sourceHash": "4b643da504829019c73d460defa622046ca87bebc2f7b872618f9916664813cc",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-component-choice",
+      "sourceHash": "375884d2b503f1246c58a6147123aeafd73ff58a8919dc41fc0946e533c75f0b",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-network-builder",
+      "sourceHash": "732728a841eb03e70fc81a4ee3d8d7d7a78886bba5677f0b8aed0c41691aa88e",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-payload-spawn",
+      "sourceHash": "855d512d773954cfd06c403f540f77d6dc790ba55cd22b97134a362072680fdd",
+      "unchanged": true
+    },
+    {
+      "context": "startup:services",
+      "sourceHash": "526c2a28152b1255cb3c7765f6f2cb2999aa36e994d9f25bb0fe666d4264225d",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-engine-build",
+      "sourceHash": "67ddab393df33c9177110652c9718098f659812a3b8ea557424e8da497a50440",
+      "unchanged": true
+    },
+    {
+      "context": "startup:backfill",
+      "sourceHash": "4559afe98f571ec47beb0abffc0694975513588d6fae391e64321d3edf0c6211",
+      "unchanged": true
+    },
+    {
+      "context": "area:rpc-launch",
+      "sourceHash": "1f587935df27b9e9b1695425728f7f2e4e6a9e44a136c5e8e18e80e4e140c8ab",
+      "unchanged": true
+    },
+    {
+      "context": "startup:orchestrator",
+      "sourceHash": "0cf8f72815fa6529f79a88ef9eb36406a3222894f5b1882601e85000e6489692",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-orchestrator-poll",
+      "sourceHash": "4ae9eb17486289bd32ed5db4b016addcc4b5100b6548518908ac5af93d3d9d4f",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-engine-poll",
+      "sourceHash": "d9fb82575da6018645a03ceb4c7a8665ab2e6f2deec11e948e216636e1e58e92",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-engine-channel",
+      "sourceHash": "7b6266b0f75f515c7f4bd1dbd24d679aa590bb3943e1b69497395a42ed13f636",
+      "unchanged": true
+    },
+    {
+      "context": "area:node-handle",
+      "sourceHash": "04aebdce464223aae3b0dd3b6085a6f6b062d6bc8a10cf24c91b43da35cb4a54",
+      "unchanged": true
+    },
+    {
+      "context": "startup:tree",
+      "sourceHash": "470b758be1389d3bd7fc7c0177a685ca4eeb2cb9f2339abed411673aba0dab94",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-tree-pressure",
+      "sourceHash": "e538ae5ba22df639ddfab6f3f9c65f6f89b2961a77139d12ddfdac99d04d2588",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-tree-wait",
+      "sourceHash": "d65e1f4472f10413b03df95ddc1067979521f7fa2f346084152b84b430d7da80",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-block-save-start",
+      "sourceHash": "f8ee7a543ce985f60e68bb29bc78f0f9a1fe28c276b8bf34ad2cc1eb360a891a",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-block-save-complete",
+      "sourceHash": "d5ca7e38795af67e413db2c488b16fe35f7762bb0680437f9cb0fedb09060f29",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-backfill-gate",
+      "sourceHash": "b84c51a3c34c41ce8efe17bc5a87a1c189b489a2c4ffacef7faf083bf934ecf8",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-backfill-events",
+      "sourceHash": "3c729b2277c37acfdb5471c13fd14b0dda5bd23f907ca44d562863f9b21477fd",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-backfill-finished",
+      "sourceHash": "81b74262579fff0fcbf520fb5c963aef0d292fa9b8d0f8a5c777c446eec08fbe",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-block-receive",
+      "sourceHash": "b8a846de8c725500dbae5f49d28fce04294f1461f472219b744945050ad1fbbf",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-block-forkchoice-precheck",
+      "sourceHash": "f600ce2b61e2fa44e60d1d74fb75f517eef1599a724fa2a295bbf587438bad5a",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-block-save-target",
+      "sourceHash": "9ab158190b28692ec0c8b0acfe0bb663c1208d2452a9bb8a648b16dad774a302",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-block-dispatch",
+      "sourceHash": "950be0ffff535603eabe63701940b633c87691f6b22483fc172389b5d4779401",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-block-canonical-state",
+      "sourceHash": "a23b29f4a59fe4e21fdb6136db5a22488d6f8b82652489b08681a1f368302497",
+      "unchanged": true
+    },
+    {
+      "context": "startup:network",
+      "sourceHash": "b125fa83aa6585d42fcde364a7c001aa47ba86621c72b14261274814b3768664",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-sync-run",
+      "sourceHash": "5e25bdd2473abb8e9e0250b936f011c2ce94a7d0812884c6eea527e97b69f412",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-sync-default-order",
+      "sourceHash": "7b79f1e1d7052ba7a95ebb5c0b69918a97c11b5ed70f2743dc4c20c6d493e810",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-sync-online-order",
+      "sourceHash": "9db4181f2b4d7379521f8c3213e98c658a0adfec37b690cb28d1a270055e97be",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-sync-execution-order",
+      "sourceHash": "59466b5adec500d4f4e762f36f68fea9de4e0527eefb05213589f1964ed71199",
+      "unchanged": true
+    },
+    {
+      "context": "area:journey-sync-offline-order",
+      "sourceHash": "4ea54dedb10faef1c27c0b9c0a41203ffc9ece9d19b0b0089043f0858c61fd28",
+      "unchanged": true
+    },
+    {
+      "context": "area:sync",
+      "sourceHash": "c5de87c96b9f8224d1151587ff4e51f03914b720f7ab0f160d91955ce685099a",
+      "unchanged": true
+    },
+    {
+      "context": "area:sync-unwind",
+      "sourceHash": "8c38b504093ea8e6b3e42301b29889f9f7be0d99191d86ae8deb2f710088b4d4",
+      "unchanged": true
+    },
+    {
+      "context": "area:loop-engine",
+      "sourceHash": "4df33038adafbba10133d79fc403ff5cc60b8273d3a1a71192da21ed9916ebe1",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-builder-launch",
+      "sourceHash": "f677e5afd3cd4c184ca2ad605c08613aef0e5dc9450112b83a9fe80940d4e315",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-builder-dispatch",
+      "sourceHash": "9ef1c3113d359f2f12bc8443b26281218a2560ab115dc6d5c2e25b87635790bb",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-debug-adapter",
+      "sourceHash": "4c0c8da9f41e23ffe4188cbc53600e05b4aee327d5fb8e07d6c1a381c582d5aa",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-debug-inner",
+      "sourceHash": "51723cf23e2fc47655dd684c6f5ffa492fb17204a34b242004ab436891e156d2",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-engine-dispatch",
+      "sourceHash": "96df36e2f299996e2a3accdc685631ac264d574729d982ef97a3833c97e4db16",
+      "unchanged": true
+    },
+    {
+      "context": "area:startup-debug-return",
+      "sourceHash": "d51ed52bbf214bc53131467df8aa0cd2c1253a0b5583aba5285c9aba7c0facda",
+      "unchanged": true
+    }
+  ],
+  "newMacroHash": "6b00b2871168e4155ae0cfe459333f604404e3935601ccaf2b9f2c13866be795",
+  "meaningCheck": {
+    "limitHit": "Ready(Some(item)) processes item then decrements; zero returns true before peeking another item.",
+    "possibleNotCertain": "The English comment says maybe; no residual-item probe occurs before true.",
+    "caller": "Either maybe_more flag true causes wake_by_ref and return Pending. Otherwise caller also returns Pending at end.",
+    "wording": "The new action says limit reached and work may remain, so it does not assert the existence of another item.",
+    "limits": "Does not establish network-peer behavior or future executor timing internals."
+  },
+  "action2and3Evidence": [
+    {
+      "unit": "startup-step:network",
+      "field": "actions.2",
+      "text": "処理量が上限に達したら、まだ仕事がある可能性としてwakeを予約し、Pendingを返す。",
+      "kind": "implementation-claim",
+      "evidence": [
+        {
+          "context": "startup:network",
+          "lines": [
+            1187,
+            1203
+          ],
+          "firstLine": "            this.swarm.poll_next_unpin(cx),",
+          "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        }
+      ],
+      "semanticStatus": "awaiting-independent-review"
+    },
+    {
+      "unit": "startup-step:network",
+      "field": "actions.3",
+      "text": "何も直ちに進められなければPendingを返す。",
+      "kind": "implementation-claim",
+      "evidence": [
+        {
+          "context": "startup:network",
+          "lines": [
+            1193,
+            1203
+          ],
+          "firstLine": "        // all streams are fully drained and import futures pending",
+          "lastLine": "    }"
+        },
+        {
+          "context": "area:network-budget",
+          "lines": [
+            38,
+            62
+          ],
+          "firstLine": "/// Polls the given stream. Breaks with `true` if there maybe is more work.",
+          "lastLine": "}"
+        }
+      ],
+      "semanticStatus": "awaiting-independent-review"
+    }
+  ],
+  "evidenceContextChanges": [
+    {
+      "unit": "startup-step:network",
+      "field": "title",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-step:network",
+      "field": "question",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-step:network",
+      "field": "summary",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-step:network",
+      "field": "boundary",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-step:network",
+      "field": "actions.2",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-step:network",
+      "field": "actions.3",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-step:network",
+      "field": "check.question",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-step:network",
+      "field": "check.answer",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-loop:4",
+      "field": "name",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-loop:4",
+      "field": "role",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-loop:4",
+      "field": "trigger",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-loop:4",
+      "field": "wait",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-overview:main",
+      "field": "summary",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-stage:run",
+      "field": "summary",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "startup-step:components",
+      "field": "edges.5",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "static-runtime-section:3",
+      "field": "heading",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "static-runtime-section:3",
+      "field": "paragraph",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "file-role:crates/net/network/src/manager.rs",
+      "field": "role",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "file-role:crates/net/network/src/manager.rs",
+      "field": "input",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    },
+    {
+      "unit": "file-role:crates/net/network/src/manager.rs",
+      "field": "output",
+      "added": [
+        "area:network-budget"
+      ],
+      "removed": []
+    }
+  ],
+  "guideBindings": [
+    {
+      "scope": "steps.network",
+      "contextOrder": [
+        "startup:network",
+        "area:network-budget",
+        "area:startup-network-builder",
+        "area:startup-network-start"
+      ],
+      "macroExactlyOnce": true
+    },
+    {
+      "scope": "loops.4",
+      "contextOrder": [
+        "startup:network",
+        "area:network-budget",
+        "area:startup-network-builder",
+        "area:startup-network-start"
+      ],
+      "macroExactlyOnce": true
+    },
+    {
+      "scope": "staticRuntime.2",
+      "contextOrder": [
+        "startup:network",
+        "area:network-budget",
+        "area:startup-network-builder",
+        "area:startup-network-start"
+      ],
+      "macroExactlyOnce": true
+    }
+  ],
+  "staticSSR": {
+    "macroBlocks": 1,
+    "originalLineRange": [
+      38,
+      62
+    ],
+    "exactCodeMatchesPinned": true,
+    "sha256": "de06d40a3bb86d36472d46e51712b7ead27fffed263e155d88fe00addecea494"
+  },
+  "artifacts": {
+    "guideSha256": "ca7411b0e0d3c22919b4b09e5bbf0f457e936f765c31b00ab41503f9cb4c6161",
+    "ledgerSha256": "d533352a6e2c72c154cf62960f7ede7ac4c69c6a4d17da4e696f5ef587d3dcfb",
+    "oldReviewedSnapshot": "candidate3-startup-ledger-snapshot-3.json",
+    "prefreezeRecord": "startup-budget-prefreeze.json"
+  },
+  "notClaimed": [
+    "UI readability",
+    "late-load behavior",
+    "code-source navigation success",
+    "all108 pass",
+    "human understanding"
+  ],
+  "canonicalWrites": 0
+}

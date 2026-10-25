@@ -388,7 +388,7 @@
       "actions": [
         "handleの受信チャネルを処理する。",
         "swarmのイベントストリームを処理する。",
-        "上限まで処理しても仕事が残っていれば、wakeを予約してPendingを返す。",
+        "処理量が上限に達したら、まだ仕事がある可能性としてwakeを予約し、Pendingを返す。",
         "何も直ちに進められなければPendingを返す。"
       ],
       "boundary": "Future::pollの中の反復。CLI終了監視やEngine Treeとは別のタスクで、nodeの部品初期化時にspawnされる。",
@@ -964,6 +964,10 @@
           "purpose": "NetworkManagerが内部要求と通信イベントを進め、予算や待機状態で制御を返す実装を読む。"
         },
         {
+          "context": "area:network-budget",
+          "purpose": "NetworkManagerのmaybe_more条件を作るmacroで、上限到達時のtrueとNone/Pending時のfalseを原文から確かめる。"
+        },
+        {
           "context": "area:startup-network-builder",
           "purpose": "Ethereumのnetwork builderがネットワークの起動へ渡し、handleを返す箇所を読む。"
         },
@@ -1134,6 +1138,10 @@
         {
           "context": "startup:network",
           "purpose": "NetworkManagerが内部要求と通信イベントを進め、予算や待機状態で制御を返す実装を読む。"
+        },
+        {
+          "context": "area:network-budget",
+          "purpose": "NetworkManagerのmaybe_more条件を作るmacroで、上限到達時のtrueとNone/Pending時のfalseを原文から確かめる。"
         },
         {
           "context": "area:startup-network-builder",
@@ -1515,6 +1523,10 @@
           {
             "context": "startup:network",
             "purpose": "NetworkManagerが内部要求と通信イベントを進め、予算や待機状態で制御を返す実装を読む。"
+          },
+          {
+            "context": "area:network-budget",
+            "purpose": "NetworkManagerのmaybe_more条件を作るmacroで、上限到達時のtrueとNone/Pending時のfalseを原文から確かめる。"
           },
           {
             "context": "area:startup-network-builder",

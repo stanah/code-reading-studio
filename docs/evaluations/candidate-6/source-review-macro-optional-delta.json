@@ -1,0 +1,31 @@
+{
+  "observer": "A/curriculum_sources",
+  "at": "2026-10-25T16:18:53.015116+00:00",
+  "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "path": "crates/net/network/src/budget.rs",
+  "lines": {
+    "40": "macro_rules! poll_nested_stream_with_budget {",
+    "41": "    ($target:literal, $label:literal, $budget:ident, $poll_stream:expr, $on_ready_some:expr $(, $on_ready_none:expr;)? $(,)?) => {{",
+    "55": "                        $($on_ready_none;)? // todo: handle error case with $target and $label"
+  },
+  "term": {
+    "name": "マクロの ?（0回か1回）",
+    "meaning": "マクロの $(...) ? は、かっこ内のパターンや展開を0回または1回使う指定です。関数の失敗を返す ? とは読み方が異なります。",
+    "example": "$(, $on_ready_none:expr;)? は終了時の処理を省略できる引数のまとまり、$(,)? は末尾のカンマを省略できる指定です。$($on_ready_none;)? は、指定があるときだけその処理を展開します。"
+  },
+  "tokenHints": {
+    "41": {
+      "?": "macro-optional"
+    },
+    "55": {
+      "?": "macro-optional"
+    }
+  },
+  "meaningJudgment": "pass",
+  "basis": "L41の$(, $on_ready_none:expr;)?と$(,)?はマクロ入力パターンの0回又は1回の反復を表し、L55の$($on_ready_none;)?は入力が存在する場合に展開する任意部分。Rust式のResult/Optionに対する早期returnの?ではない。L40 macro_rules宣言の補助と合わせて、呼出先にある記号の意味を正確に分ける。",
+  "remainingLimits": "Macroの展開規則の局所説明の意味確認。全macro構文やUI/学習の合格を意味しない。既存source-review及び初期failログは保持。",
+  "primaryLanguageReference": {
+    "url": "https://doc.rust-lang.org/reference/macros-by-example.html#repetitions",
+    "basis": "Rust Reference repetition operators: ? denotes an optional fragment with zero or one occurrence, in matcher/transcriber; not expression error propagation."
+  }
+}

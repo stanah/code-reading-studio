@@ -44,7 +44,7 @@
         "context": "tx:pool",
         "title": "検証してプールに追加",
         "purpose": "公開の追加APIで検証と内部プールへの追加をつなぎ、結果を返す。",
-        "connection": "追加結果はbatch→queue→EthApiの送信実装→共通のsend_raw_transactionへ戻ります。次は送信とは別の、ハッシュからの読取操作です。"
+        "connection": "通常経路では追加結果がbatch→queue→EthApiの送信実装→共通のsend_raw_transactionへ戻り、応答に使われます。転送設定時は転送先RPCの結果を返し、転送後のローカル追加結果は捨てます。次は送信とは別の、ハッシュからの読取操作です。"
       },
       {
         "context": "area:file-tx-get-entry",
@@ -330,7 +330,7 @@
         "context": "tx:pool",
         "title": "検証してプールに追加",
         "purpose": "公開追加APIが検証後の追加結果を返す。",
-        "connection": "結果はbatcherのresponse_txからqueueへ戻り、send_pool_transactionがハッシュまたはエラーを返します。外部転送の場合はこの具象送信実装内で別のRPCの結果を返します。"
+        "connection": "通常経路ではbatcherのresponse_txからqueueへ追加結果が戻り、send_pool_transactionがハッシュまたはエラーを返します。転送設定時は別RPCの結果を使い、転送後のローカル追加失敗は返答に反映しません。"
       }
     ]
   },
@@ -910,6 +910,13 @@
         "purpose": "NetworkManagerが内部要求と通信イベントを進め、予算や待機状態で制御を返す実装を読む。",
         "title": "ネットワークの入出力をpollで進める",
         "connection": "pollはイベントを担当へ渡し、今すぐ進めるものがなければPendingで実行を譲ります。起動時のhandle返却と、稼働中の入力待ちは別です。"
+      },
+      {
+        "context": "area:network-budget",
+        "title": "通信の一回の処理件数をmacroで確かめる",
+        "purpose": "maybe_more_*が残件の確定ではなく、処理件数の上限に達したことを表す理由を原文で確かめる。",
+        "connection": "直前のNetworkManagerが呼ぶmacroの定義です。別の稼働タスクを始める場面ではありません。取得結果のboolがmanagerのL1194の条件へ戻ります。",
+        "essential": true
       }
     ]
   },

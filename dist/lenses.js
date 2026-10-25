@@ -17,7 +17,7 @@ const rustEvidence={
   submit:{purpose:'共有する対象と、受け取った値の所有を区別する',claims:[{line:33,match:'&self',text:'L33 の &self は EthApi を借りる引数です。一方 L35 の tx は値で受け取り、L37 の split() がそれを消費して二つへ分けます。& が付く対象を確認して読み分けます。'},{line:37,match:'tx.split()',text:'mut は pool_transaction の束縛を変更可能にします。&mut self の意味ではありません。'}]}
  },
  future:{
-  rpc:{purpose:'非同期の呼出結果を待つ入口を読む',claims:[{line:921,match:'async fn',text:'L921 の async fn は Future を返す関数です。L923 の .await が send_raw_transaction の結果を待ちます。ここに別スレッドの起動指示はありません。'},{line:923,match:'.await?',text:'この待機の先は recover の async move と、その先の queue の返答待ちです。同ページの「デコードして送信者を復元」と「追加要求をチャネルへ送る」の節で比較できます。'}]},
+  rpc:{purpose:'非同期の呼出結果を待つ入口を読む',claims:[{line:921,match:'async fn',text:'L921 の async fn は Future を返す関数です。L923 の .await が send_raw_transaction の結果を待ちます。ここに別スレッドの起動指示はありません。'},{line:923,match:'.await?',text:'通常のローカル追加経路で比べると、この待機の先はrecoverのasync moveと、その先のqueueの返答待ちです。同ページの「デコードして送信者を復元」と「追加要求をチャネルへ送る」の節で比較できます。'}]},
   recover:{purpose:'Future を返す型と、その本体を読む',claims:[{line:87,match:'impl Future',text:'L87 は具体的な型名を隠して Future を返す宣言です。結果は Result、+ Send はその Future をスレッド間で移せる条件です。'},{line:88,match:'async move',text:'L88 で Future の本体を作り、L94 で次の処理を待ちます。作っただけで本体が完了するわけではありません。'}]},
   queue:{purpose:'要求を渡した後の待機を読む',claims:[{line:503,match:'response_rx.await',text:'L503 は要求ごとの返答を待ちます。キューへ送れた L500 と、返答が来る L503 は別の時点です。待っている間ずっとスレッドを占有する、という意味ではありません。'}]},
   batch:{purpose:'待たれる処理と、進行させる側をつなぐ',claims:[{line:71,match:'.await',text:'L71 は単件のプール追加を待ちます。複数件では L91 / L101 の追加を待ちます。処理を開始させる側は、同ページの「Future が進む側」の poll と tokio::spawn にあります。'},{line:91,match:'.await',text:'Future の作成・実行器による poll・.await の待機を分けて読みます。into_iter / unzip はこの非同期の仕組み自体ではありません。'}]}
@@ -49,13 +49,13 @@ const rustSupport={
 const groups=[
  {id:'receive',name:'1. 要求を受け取り、送信者を復元する',input:'署名済みのバイト列',output:'送信者を復元した取引と元のバイト列',outputLabel:'途中で次へ渡すデータ',note:'この図は途中の受け渡しを示します。RPC関数やsend_raw_transaction全体の戻り値ではありません。復元した取引と元データは、次のEthereum向け送信処理へ渡します。',ids:['rpc','recover']},
  {id:'dispatch',name:'2. Ethereum向け実装からキューへ渡す',input:'復元したトランザクションと元データ',output:'追加する取引・origin・返信先を持つキューの要求',outputLabel:'途中でキューへ渡すデータ',note:'通常経路の要求送信を示します。受付側の関数は、要求を渡した後も返信用チャネルで追加結果を待ちます。キューへの送信と関数の戻り値を分けて読みます。',ids:['submit','queue']},
- {id:'validate',name:'3. 検証して保持し、結果を返す',input:'追加要求',output:'取引ごとのプール追加結果、またはエラー',outputLabel:'返信用チャネルへ戻す結果',note:'成功時のAddedTransactionOutcomeはhashとstateを持ち、返信用チャネルで返します。process_batchの非同期処理の完了値()とは別です。RPCに返すハッシュを取り出すのは、上位のsend_pool_transactionです。',ids:['batch','pool']}
+ {id:'validate',name:'3. 検証して保持し、結果を返す',input:'追加要求',output:'取引ごとのプール追加結果、またはエラー',outputLabel:'返信用チャネルへ戻す結果',note:'成功時のAddedTransactionOutcomeはhashとstateを持ち、返信用チャネルで返します。process_batchの非同期処理の完了値()とは別です。通常経路では、上位のsend_pool_transactionが追加結果からRPCへ返すハッシュを取り出します。転送設定時は転送先RPCのハッシュを使い、転送後のローカル追加結果は返答に使いません。',ids:['batch','pool']}
 ];
 
 const firstReading={
  rpc:{summary:'アプリから届いた送信要求を、Rethの送信処理へ渡す入口です。ここではまだ、ブロックへの取り込みを行いません。',input:'署名済みトランザクションのバイト列',output:'成功なら識別用のハッシュ、失敗ならRPCのエラー'},
  recover:{summary:'署名済みデータを読み解き、署名から送信者を復元して送信処理へ渡します。読み取れないデータや署名の問題は失敗になります。この関数全体は、さらに先の追加や転送の結果を待ちます。',input:'署名済みのバイト列',output:'成功なら取引のハッシュ、失敗ならエラー',transferLabel:'途中で送信処理へ渡すもの',transfer:'送信者を復元したトランザクションと元のバイト列'},
- submit:{summary:'Ethereum向けの実装が次の処理を決めます。通常はプールへの追加を依頼しますが、設定による外部転送などの分岐もあります。',input:'origin（取引の出所）と、復元したトランザクション・元のバイト列',output:'成功なら識別用のハッシュ、失敗ならエラー'},
+ submit:{summary:'Ethereum向けの実装が次の処理を決めます。通常はローカル追加結果を使い、転送設定時は転送先RPCの結果を使います。転送後のローカル追加も試みますが、その失敗は転送先の成功の返答を変えません。',input:'origin（取引の出所）と、復元したトランザクション・元のバイト列',output:'成功なら識別用のハッシュ、失敗ならエラー'},
  queue:{summary:'追加の要求を内部キューへ渡し、結果が返るのを待ちます。要求を渡せたことと、プールへの追加成功は別です。',input:'origin（取引の出所）と、プールへ追加したいトランザクション',output:'取引のハッシュとプール内の状態を持つ追加結果、またはエラー'},
  batch:{summary:'キューから届いた複数の追加要求をまとめて扱い、それぞれの結果を返信用チャネルで返します。',input:'キューに届いた追加要求',output:'()（この非同期処理の完了を表す値）',transferLabel:'返信用チャネルへ送るもの',transfer:'要求ごとのプール追加結果（成功時はハッシュと状態）、またはエラー'},
  pool:{summary:'トランザクションを検証し、プールへ追加します。成功しても、ブロックへの取り込みや確定まで終わったという意味ではありません。',input:'origin（取引の出所）と、追加を依頼されたトランザクション',output:'取引のハッシュとプール内の状態を持つ追加結果、またはエラー'}

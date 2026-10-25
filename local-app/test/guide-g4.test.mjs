@@ -31,3 +31,25 @@ test('portable/static/local guide dependencies are identical, revisioned, and al
   }
   assert.match(server,/script-src 'self' 'sha256-/);assert.ok(server.includes("'/guide-reading.js':'guide-reading.js'"));
 });
+
+test('guide budget original is portable, shared-focusable, and retains its reviewed macro boundaries',async()=>{
+  const id='area:network-budget',html=await read('../../dist/startup.html');
+  const source=scope.READING_HELP_DATA.contexts[id]?.source;
+  assert.ok(source,'reviewed canonical macro exists');
+  assert.equal(source.start,38);assert.equal(source.end,62);
+  assert.match(source.code,/budget -= 1/);assert.match(source.code,/break true/);assert.match(source.code,/Poll::Pending => break false/);
+  assert.ok(html.includes('data-guide-context="'+id+'" data-reading-stage="'+id+'"'),'SSR shell supports shared focus');
+  assert.ok(html.includes('<article id="guide-content" data-reading-navigation-scope="true">'),'all existing guide originals form one call-navigation scope');
+  const adapter=await read('../public/guide-reading.js');
+  assert.ok(adapter.includes('shell.dataset.readingStage = context'),'adapted shell preserves shared focus');
+  assert.ok(adapter.includes("back.dataset.readingBack = ''"),'existing-source calls have an actual return control');
+  assert.equal((html.match(/data-guide-context="area:network-budget"/g)||[]).length,1,'one copy after all static producers are rendered');
+  const report=inspectGuideG4(html,scope.ReadingHelp,commit);
+  assert.equal(report.status,'pass',JSON.stringify(report.issues));
+});
+
+test('macro repetition question marks never advertise Result error propagation',()=>{
+  const macro=scope.ReadingHelp.render('area:network-budget',commit,{openCode:true});
+  assert.doesNotMatch(macro,/data-rh-term="question"/,'L41 macro optional repetition is not the postfix Result operator');
+  assert.match(scope.ReadingHelp.render('tx:rpc',commit,{openCode:true}),/data-rh-term="question"/,'ordinary await? retains its genuine Result explanation');
+});

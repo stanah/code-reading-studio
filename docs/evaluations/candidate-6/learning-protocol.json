@@ -1,0 +1,52 @@
+{
+  "version": 3,
+  "candidate": 6,
+  "definedBeforeEvaluation": true,
+  "tasks": [
+    "blockchain",
+    "ethereum",
+    "rpc",
+    "reth",
+    "send",
+    "startup",
+    "reading"
+  ],
+  "maxLearningActionsPerPage": 10,
+  "countedActions": [
+    "open source or term",
+    "choose flow",
+    "choose destination",
+    "open selected destination",
+    "follow implementation",
+    "return",
+    "change assistance for answer"
+  ],
+  "excludedSetup": [
+    "specified URL",
+    "profile setup before task",
+    "simple page/source scroll"
+  ],
+  "coldStartingState": "reload document for every lesson and round; no transient original-open/selected-line map from prior lesson successes",
+  "reviewers": [
+    {
+      "id": "beginner_eval",
+      "kind": "warm AI simulation; implementation/source reviewer; not an independent human",
+      "chain": "new",
+      "code": "other",
+      "origin": "http://localhost:4317",
+      "rounds": 2,
+      "restore": "first after evaluation"
+    },
+    {
+      "id": "fresh_persona3",
+      "kind": "new AI simulation without implementation history; not a human",
+      "chain": "new",
+      "code": "first",
+      "origin": "http://localhost:4398",
+      "rounds": 1
+    }
+  ],
+  "g4Separate": true,
+  "comparisonLimit": "Do not treat candidate5 warm state-preserving second-round result as a strict same-start comparison. Previous failures retained.",
+  "humanParticipants": 0
+}

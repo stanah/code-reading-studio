@@ -1,0 +1,39 @@
+{
+  "kind": "implementation checkpoint; formal evaluation in progress",
+  "candidate": 6,
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "criteriaHash": "fca66caf72d018f340620812df742a3fd722789172e7a231136479fcc84dd5d1",
+  "referenceCommit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "tests": {
+    "total": 88,
+    "pass": 88,
+    "fail": 0
+  },
+  "functionalAudit": {
+    "units": 108,
+    "requiredRounds": 2,
+    "status": "in progress; not accepted"
+  },
+  "sourceEvidence": {
+    "contexts": 148,
+    "lineHints": 751,
+    "lessonStages": 142,
+    "routeRegistry": 88,
+    "consumerBoundContexts": 142,
+    "sourceFilesWithExcerpts": 61,
+    "totalRustFiles": 1283,
+    "fullyReviewedRustFiles": 2
+  },
+  "changes": [
+    "Group originals by coherent reading flow with preserved major-path source closure",
+    "Open reviewed callees and macro definitions on the same page and return to caller line",
+    "Derive Atlas availability and same-page preview from actual consumer routes",
+    "Propagate local/forwarded RPC response boundaries and network budget source to all corresponding teaching views"
+  ],
+  "humanStudy": {
+    "participants": 0,
+    "status": "not-verified"
+  },
+  "productComplete": false,
+  "publication": "Git checkpoint only; no site deployment or product acceptance"
+}

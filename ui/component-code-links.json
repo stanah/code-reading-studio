@@ -157,7 +157,7 @@
         "context": "tx:pool",
         "title": "検証してプールに追加",
         "purpose": "公開の追加APIで検証と内部プールへの追加をつなぎ、結果を返す。",
-        "connection": "追加結果はbatcherの返答口からEthApiInner.add_pool_transactionへ戻り、send_pool_transactionがハッシュまたはエラーを返します。traitの実装、保持する部品、送信と返答を対応づけます。"
+        "connection": "追加結果はbatcherの返答口からEthApiInner.add_pool_transactionへ戻ります。通常経路はその結果からハッシュまたはエラーを返し、転送設定時は別RPCの結果を使ってローカル追加の失敗を返答に反映しません。traitの実装、保持する部品、送信と返答を対応づけます。"
       }
     ]
   },

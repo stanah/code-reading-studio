@@ -7721,8 +7721,13 @@
       "area": "network",
       "classification": "path-based",
       "learningScope": "rust",
-      "evidence": [],
-      "status": "unexplained"
+      "evidence": [
+        {
+          "start": 38,
+          "end": 62
+        }
+      ],
+      "status": "excerpt-only"
     },
     {
       "path": "crates/net/network/src/builder.rs",

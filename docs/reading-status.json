@@ -4,13 +4,13 @@
     "version": "v2.7.0",
     "commit": "3d592ece6de8c4559987416a544fc215fd6d6921"
   },
-  "measurementEngineHash": "567d1d882f9854d3c427055a41eca6b7d2ab8117c88c2cbf3919fe444654255b",
+  "measurementEngineHash": "f43b854ec09f747b5e7c24d6b4daf666bf35f72a85c497f3dbb2fe54deb515bd",
   "policyHash": "96218e2a2f4036e3f7e49e59816f2a393f9b5c0a3fa70c5acca32fc308df7922",
   "metrics": {
     "inventoryAccounted": 1872,
     "totalTracked": 1872,
     "totalRust": 1283,
-    "anchoredRustFiles": 60,
+    "anchoredRustFiles": 61,
     "fullyReviewedRustFiles": 2,
     "guidedAreas": 11,
     "totalAreas": 11,
@@ -114,7 +114,7 @@
       "id": "network",
       "name": "P2P ネットワーク",
       "totalRust": 193,
-      "anchoredRustFiles": 6,
+      "anchoredRustFiles": 7,
       "guided": true
     },
     {

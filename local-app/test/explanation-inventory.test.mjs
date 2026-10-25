@@ -35,7 +35,11 @@ test('all six operations share their canonical source readings, with both reques
   for(const source of ids)assert.ok(roleIds.includes(source),'static selected function '+id+' cannot refer to a file-role source list that omits '+source);
   for(const source of ids){
    const rendered=help.render(source,data.commit,{operation:id});
-   for(const jump of rendered.matchAll(/data-reading-jump="([^"]+)"/g))assert.ok(ids.includes(jump[1]),id+' implementation jump has no target on this page');
+   for(const jump of rendered.matchAll(/data-reading-jump="([^"]+)"/g)){
+    if(ids.includes(jump[1]))continue;
+    assert.ok(help.callRoutes.some(route=>route.from===source&&route.to===jump[1]),id+' only reviewed calls can add an implementation');
+    assert.ok(help.contextBridge(jump[1],true).includes('data-reading-stage="'+jump[1]+'"'),id+' deferred implementation has source and owner');
+   }
   }
  }
 });

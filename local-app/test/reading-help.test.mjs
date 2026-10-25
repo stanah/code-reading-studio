@@ -73,7 +73,7 @@ test('[FR-READ-002] every reading in each lesson links its pinned code, owner an
  assert.equal(data.lessonLinks.length,7);
  for(const r of data.lessonLinks){
   const readings=r.readings?.length?r.readings:[{context:r.context}],html=help.lessonBridge(r.lesson,true);
-  const sections=[...html.matchAll(/<section class="learn-reading-stage"[^>]*data-reading-stage="([^"]+)">([\s\S]*?)<\/section>/g)];
+  const sections=[...html.matchAll(/<section class="learn-reading-stage"[^>]*data-reading-stage="([^"]+)"[^>]*>([\s\S]*?)<\/section>/g)];
   assert.equal(sections.length,readings.length,r.lesson);
   for(const [i,[,id,section]] of sections.entries()){
    assert.equal(id,readings[i].context);
@@ -88,4 +88,44 @@ test('[FR-READ-002] every reading in each lesson links its pinned code, owner an
   const stat=help.lessonBridge(r.lesson,false);assert.equal((stat.match(/target="_blank"/g)||[]).length,2*readings.length);
  }
  assert.equal(help.lessonBridge('missing',true),'');
+});
+
+test('major paths retain every original and divide coherent reading flows without hiding required implementations',()=>{
+ for(const id of ['reth','startup','send','reading']){
+  const r=data.lessonLinks.find(x=>x.lesson===id),html=help.lessonBridge(id,true);
+  assert.ok(r.phases.length>=3&&r.phases.length<=5,id);
+  assert.equal((html.match(/data-reading-phase=/g)||[]).length,r.phases.length,id+' flow choices');
+  assert.equal((html.match(/data-reading-stage=/g)||[]).length,r.readings.length,id+' preserves all sources');
+  assert.deepEqual(Array.from(r.phases.flatMap(p=>p.contexts)),Array.from(r.readings.map(x=>x.context)),id+' no missing/duplicated phase stage');
+  const first=r.phases[0];
+  for(const item of r.readings){
+   const stage=html.split(`data-reading-stage="${item.context}"`)[1].split('</section>')[0];
+   const shouldOpen=first.essentialContexts.includes(item.context);
+   assert.equal(stage.includes('data-help-open="true"'),shouldOpen,id+' initial preview '+item.context);
+  }
+  assert.match(html,/処理を選ぶとそのコードへ移動します/);
+  assert.match(html,/もう一度表示/);
+ }
+});
+
+test('registry preview and standalone contexts use the same pinned code and ownership',()=>{
+ const r=data.lessonLinks.find(x=>x.lesson==='send');
+ const html=help.routeBridge({...r,id:'lesson:send',key:'send'},true);
+ assert.ok(html.includes('data-reading-stage="area:send-stateful"'));
+ const standalone=help.contextBridge('startup:network',true);
+ assert.ok(standalone.includes('data-reading-stage="startup:network"'));
+ assert.ok(standalone.includes('data-reading-stage="area:network-budget"'));
+ assert.equal(help.contextBridge('unknown',true),'');
+});
+
+test('macro optional repetition never uses the Result error propagation explanation',()=>{
+ const c=data.contexts['area:network-budget'],html=help.codeHtml(c);
+ for(const number of [41,55]){
+  const row=html.split(`data-code-line="${number}"`)[1].split('</code>')[0];
+  assert.match(row,/data-rh-term="macro-optional"/);
+  assert.doesNotMatch(row,/data-rh-term="question"/);
+ }
+ const rendered=help.render('area:network-budget',data.commit);
+ assert.doesNotMatch(rendered,/data-rh-term="question"/);
+ assert.match(data.terms['macro-optional'].meaning,/0回または1回/);
 });

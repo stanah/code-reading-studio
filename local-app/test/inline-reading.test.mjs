@@ -39,7 +39,9 @@ test('in-page implementation links are attached to reviewed call sites and prese
   const from=data.contexts[route.from],to=data.contexts[route.to];
   assert.ok(from&&to,route.from+' -> '+route.to);
   assert.ok(from.source.code.split('\n')[route.line-from.source.start]?.includes(route.match),route.from+' L'+route.line);
-  assert.ok(to.source.code.split('\n').some(line=>line.match(/\bfn\s+([A-Za-z_][A-Za-z_0-9]*)/)?.[1]===route.targetFn),route.to+' defines '+route.targetFn);
+  assert.ok(to.source.code.split('\n').some(line=>line.match(route.kind==='macro'?/\bmacro_rules!\s+([A-Za-z_][A-Za-z_0-9]*)/:/\bfn\s+([A-Za-z_][A-Za-z_0-9]*)/)?.[1]===route.targetFn),route.to+' defines '+route.targetFn);
+  const declaration=to.source.start+to.source.code.split('\n').findIndex(line=>line.match(route.kind==='macro'?/\bmacro_rules!\s+([A-Za-z_][A-Za-z_0-9]*)/:/\bfn\s+([A-Za-z_][A-Za-z_0-9]*)/)?.[1]===route.targetFn);
+  assert.ok(to.lines.some(hint=>hint.line===declaration),route.to+' target declaration has an adjacent contract comment');
   const lesson=data.lessonLinks.find(r=>r.readings?.some(x=>x.context===route.from)&&r.readings.some(x=>x.context===route.to));
   assert.ok(lesson,route.from+' call and implementation are on the same page');
   const html=help.render(route.from,data.commit,{lesson:lesson.lesson});
@@ -48,4 +50,13 @@ test('in-page implementation links are attached to reviewed call sites and prese
   const original=[...html.matchAll(/<code>([\s\S]*?)<\/code>/g)].map(m=>decode(m[1])).join('\n');
   assert.equal(original,from.source.code,route.from+' original text with links');
  }
+});
+
+// A narrow page can follow an already-reviewed implementation without changing pages.
+test('reviewed call targets stay available on narrow operations and standalone excerpts',()=>{
+ const html=help.render('tx:recover',data.commit,{operation:'recover'});
+ assert.match(html,/data-reading-jump="tx:submit"/);
+ const standalone=help.render('startup:network',data.commit);
+ assert.match(standalone,/data-reading-jump="area:network-budget"/);
+ assert.match(standalone,/マクロ定義を読む/);
 });

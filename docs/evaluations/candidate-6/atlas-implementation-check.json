@@ -1,0 +1,153 @@
+{
+  "kind": "Atlas candidate6 implementation and prefreeze verification, not formal two-round acceptance",
+  "observer": "A/curriculum_sources",
+  "at": "2026-10-25T16:20:04.134318+00:00",
+  "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+  "files": [
+    {
+      "path": "scripts/build-help.cjs",
+      "sha256": "27f750b0570ceabb58ac17e9bc49fc1e28b67f84ad17c3414a322c776f7ea761"
+    },
+    {
+      "path": "scripts/reading-route-registry.cjs",
+      "sha256": "2ddc1dd7a1973d64c975a063e42e805432bd1e675d0b3033570e8964993123e2"
+    },
+    {
+      "path": "dist/atlas.js",
+      "sha256": "db49356381654f0e2ddc68cc9e9638131bf30c57e5d28f4e57bf466910647371"
+    },
+    {
+      "path": "dist/explore.html",
+      "sha256": "2210d3928914597f229c50753bdd118d5f6d0e7c5ed1ca789e5732dc38ebdb60"
+    },
+    {
+      "path": "local-app/test/atlas-reading-routes.test.mjs",
+      "sha256": "a1fc8d0d7ebae4950adc6875fe9429fe0f305fc6c0b9c126ca57cbb5a5305fd0"
+    }
+  ],
+  "registry": {
+    "version": 1,
+    "commit": "3d592ece6de8c4559987416a544fc215fd6d6921",
+    "routes": 88,
+    "consumerBoundContexts": 142,
+    "filesWithSomeSupportedRanges": 61,
+    "kinds": {
+      "area": 22,
+      "area-extra": 1,
+      "component": 4,
+      "file-role": 19,
+      "guide-loop": 5,
+      "guide-runtime": 4,
+      "guide-startup": 7,
+      "guide-step": 11,
+      "journey": 2,
+      "lesson": 7,
+      "operation": 6
+    },
+    "excludedUnboundContexts": [
+      "area:pool-validation",
+      "area:rpc-recovery",
+      "tx:forward",
+      "tx:batch-runner",
+      "tx:pool-test",
+      "tx:trait-contract"
+    ],
+    "fileWholeReviewClaim": false
+  },
+  "unitTests": {
+    "command": "node --test local-app/test/atlas-reading-routes.test.mjs",
+    "tests": 8,
+    "pass": 8,
+    "fail": 0,
+    "actualAtlasAdapterRoutesExercised": 88,
+    "cases": [
+      "all producer sequences including scalar area/guide/runtime/extra",
+      "published registry equals fresh current derivation",
+      "consumer-bound availability and stale unused context negative",
+      "samepage mount before optional source request resolves",
+      "every88route in real Atlas adapter",
+      "mismatched commit cannot claim support",
+      "raw fetch reject/retry preserves route/question/selection/URL",
+      "late registry/API keeps manual panel and nonempty draft",
+      "close/file switch keeps perfile draft; unrelated source not labelled explained"
+    ],
+    "limits": "DOM-style VM tests execute actual Atlas/shared bridge output; they do not prove browser viewport or a novice learning outcome."
+  },
+  "browser": {
+    "artifact": "atlas-ui-preflight.json",
+    "origin": "http://127.0.0.1:4398",
+    "createdTabClosed": true,
+    "observations": 12,
+    "lineFidelity": [
+      {
+        "case": "main initial preview",
+        "count": 30,
+        "sameAsInitial": true,
+        "pinnedExact": true
+      },
+      {
+        "case": "main 4combos 00",
+        "count": 30,
+        "sameAsInitial": true,
+        "pinnedExact": true
+      },
+      {
+        "case": "main 4combos 01",
+        "count": 30,
+        "sameAsInitial": true,
+        "pinnedExact": true
+      },
+      {
+        "case": "main 4combos 10",
+        "count": 30,
+        "sameAsInitial": true,
+        "pinnedExact": true
+      },
+      {
+        "case": "main 4combos 11",
+        "count": 30,
+        "sameAsInitial": true,
+        "pinnedExact": true
+      }
+    ],
+    "cases": [
+      "main selectedL42 exact30original lines",
+      "two controls 4combinations with question/line/URL maintained",
+      "startup37 phase5→macroL40 and adjacent declaration comment in same modal",
+      "manual raw panel stays open through preview switch",
+      "close/reopen perfile nonempty draft",
+      "RPC options omit old unbound fragments",
+      "RPC helper→submitL32 and return to callerL90 without navigation or draft loss"
+    ],
+    "questionCleanup": {
+      "createdTabClosed": true,
+      "unsavedQuestionRestoredToEmpty": true,
+      "noQueueSavePressed": true,
+      "noNoteSaveOrDelete": true,
+      "globalProfileUnchanged": true
+    },
+    "sourceFetchFailure": "covered in actual adapter VM with rejected fetch; no browser network failure was induced",
+    "lateData": "covered in actual adapter VM; browser normal dependency load observed",
+    "memo": "Atlas has no separate explicit memo editor here; used actual unsaved #reading-question and did not click queue-add. No note save/delete was performed.",
+    "profile": "Read new/first from visible controls and kept global selectors unchanged."
+  },
+  "preservedFinding": {
+    "id": "Atlas-unbound-fragment-exposure",
+    "discoveredBy": "root independent review during preflight",
+    "before": "Initial registry offered all148contexts as direct choices, exposing6contexts outside registered current consumer routes.",
+    "fix": "files/context choices now derive only the142context union of actual registered consumer readings. All148source records retained for existing app consumers; no source/body removed.",
+    "negativeRegression": "Adding an unbound fake source cannot make its file available; legacy unused pool-validation/rpc-recovery are absent from choices.",
+    "oldObservations": "Initial main preflight is retained as development evidence; final RPC options were observed after142context registry generation. No mixed-version formal pass is claimed."
+  },
+  "notMeasured": [
+    "Candidate6 final frozen all108units×2",
+    "Candidate6 novice7lessons×2",
+    "human understanding",
+    "full1283Rustfile explanation coverage"
+  ],
+  "sourceDeltaReviews": [
+    "source-review-macro-contract-delta.json",
+    "source-review-macro-optional-delta.json"
+  ],
+  "readyForParentIntegration": true
+}

@@ -1,0 +1,57 @@
+{
+  "candidate": 6,
+  "result": "formal evaluation pending",
+  "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+  "files": [
+    {
+      "file": "atlas-implementation-check.json",
+      "sha256": "4f2605487ba32afcb459ce806ab499f0cc033d46995129b8beaf70ca024a726f"
+    },
+    {
+      "file": "design-and-evaluation.md",
+      "sha256": "517af1d3213fca3daaa432fe99fb678a8e21119ad800f0f935eba932ca56b85c"
+    },
+    {
+      "file": "freeze.json",
+      "sha256": "964efac88282be0bb2e47f3b1b8b02fb5b02f060cb02475a93617e26c0972c40"
+    },
+    {
+      "file": "generation-idempotence.json",
+      "sha256": "0bf88bcaa225b6fa2ff50eafbb242b5613232b99fcc2efaca46d870ab662aafc"
+    },
+    {
+      "file": "learning-protocol.json",
+      "sha256": "0a28c6fa0146739cbebe997c4d97b4084efc6fe9546ec256bd1ae770aa478443"
+    },
+    {
+      "file": "macro-optional-token-inventory.json",
+      "sha256": "a93461dcdc339105c958236c8f3f45a5e7c8e7a48900a6a27145a838d17ee37e"
+    },
+    {
+      "file": "source-review-macro-contract-delta.json",
+      "sha256": "02d6dfae86d3fb1fd024e722187e77551d8a0e70f86c45e074fec0f5d7f309d3"
+    },
+    {
+      "file": "source-review-macro-optional-delta.json",
+      "sha256": "7733984d914fcf7c157653d61179619602b250cbf5bd2d462416b4eda1bd3d41"
+    },
+    {
+      "file": "source-review.json",
+      "sha256": "a2ca9f7935584fe691acb674e437dafa69cc1d2164b5fee581f37d968ae1307e"
+    },
+    {
+      "file": "startup-budget-source-delta-independent.json",
+      "sha256": "063b2aba614afa4e4c70224263aded0b4baf62bb08d9908c04d6809e67909986"
+    },
+    {
+      "file": "startup-guide-ready.json",
+      "sha256": "ce03d2663c1623b73b7cb5c2036f97d0677698ba25341a884d6e811b8f55eb2d"
+    },
+    {
+      "file": "tests.tap",
+      "sha256": "060737dce7e32e43fb521068ed9501a9a67c157e254cb66429551d4a6182444a"
+    }
+  ],
+  "humanParticipants": 0,
+  "productComplete": false
+}

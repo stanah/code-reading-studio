@@ -2182,5 +2182,17 @@
       "humanStudyParticipants": 0
     },
     "prohibition": "Do not subtract switches from old recorded operation totals, rewrite old scores, or treat new task performance as a matched historical comparison."
+  },
+  "candidate6Checkpoint": {
+    "runtimeHash": "32ef60cb6b7238322a44a98ed1b2bd91568cd9a3ecc073ae5ab0779b3fefd8ca",
+    "tests": {
+      "total": 88,
+      "pass": 88,
+      "fail": 0
+    },
+    "functionalAudit": "108 units; same-build two rounds pending",
+    "details": "docs/evaluations/candidate-6/design-and-evaluation.md",
+    "sourceCoverage": "61/1283 excerpt-only source files, 2 full-file reviews; not full repository completion",
+    "humanParticipants": 0
   }
 }

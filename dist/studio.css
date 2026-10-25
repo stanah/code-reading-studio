@@ -111,3 +111,20 @@ button.next-code,button.next-code:hover{background:#26765e;color:#fff!important}
 .learn-code-picker{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:18px 0 26px;padding:14px;background:#f2f7f4;border:1px solid #d8e5dc;border-radius:8px}.learn-code-picker label{display:flex;align-items:center;gap:10px;flex:1;min-width:200px;font-size:13px}.learn-code-picker select{min-width:0;width:100%;font-size:13px;padding:8px;border:1px solid #bdcec3;border-radius:5px;background:white}.learn-code-picker button{white-space:nowrap;font-size:13px}
 
 .learn-code-group{margin:18px 0;border:1px solid #cadcd0;border-radius:8px;padding:0 18px}.learn-code-group>summary{cursor:pointer;padding:17px 0;color:var(--studio-green);font-size:16px;font-weight:600;line-height:1.7}.learn-code-group>summary>span{font-size:12px;font-weight:400;color:var(--studio-muted)}.learn-code-group>.learn-reading-stage:first-of-type{margin-top:8px}
+
+/* Flow selection opens a coherent set of originals without removing detailed sources. */
+.learn-code-phases{position:sticky;top:70px;z-index:3;display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:var(--studio-bg,#f9faf7);border:1px solid #c8d9cc;border-radius:8px;box-shadow:0 3px 8px #14251b12}
+.learn-code-phases button{font-size:12px;line-height:1.6;padding:8px 12px;text-align:left;background:white;color:var(--studio-green)}
+.learn-code-phases button[aria-pressed=true]{background:#26765e;color:white;border-color:#26765e}
+.learn-code-advanced{margin:16px 0;font-size:13px}.learn-code-advanced>summary{cursor:pointer;color:var(--studio-muted);padding:9px 0}.learn-code-advanced .learn-code-picker{margin:8px 0 18px}.learn-phase-relationship{font-size:14px;line-height:1.9;color:var(--studio-muted)}
+.rh-source{scroll-margin-top:155px}.learn-core-code .rh-code,pre.rh-code{max-height:min(50vh,550px)}
+.rh-basics{max-height:110px;overflow:auto}
+[data-reading-help][data-code=first] .rh-code-line{display:flex;min-width:0;align-items:baseline}
+[data-reading-help][data-code=first] .rh-code-line>.rh-line-number{flex:0 0 4em}
+[data-reading-help][data-code=first] .rh-code-line>code{display:block;min-width:0;flex:1;white-space:pre-wrap;overflow-wrap:anywhere}
+.rh-followed-source{border:1px solid #c8d9cc;padding:20px;border-radius:8px}
+.atlas .source-content{display:block;overflow:auto}
+#source-explanation{padding:20px;min-width:0}#source-explanation:empty{display:none}
+#source-original{padding:0 18px 18px}#source-original>summary{cursor:pointer;padding:12px 0;font-size:13px}
+#source-original #source-lines{max-height:55vh;min-height:200px;overflow:auto}
+@media(max-width:700px){.learn-code-phases{position:static}.rh-source{scroll-margin-top:90px}.learn-code-phases button{flex:1 1 130px}}
