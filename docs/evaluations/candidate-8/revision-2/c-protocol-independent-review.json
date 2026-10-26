@@ -1,0 +1,48 @@
+{
+  "candidate": 8,
+  "revision": 2,
+  "reviewer": "C-independent",
+  "kind": "definition review, not implementation/UI acceptance",
+  "bindings": {
+    "learning-protocol.json": "8a98306518dd04f50e51c87b1d14a2ff2a7e70e2c1db9f28b8513690b628ebad",
+    "proposal/r5-code-visible-criteria.json": "b35b22815dc872a8487ad5b4a85bbb60a21adaa14369ff1ef324fa194175b63d"
+  },
+  "status": "definition direction fits original goal; explicit inventory clarifications required before freeze",
+  "positive": [
+    "Reth task separates NewPayload verification/reply, FCU adoption, and saving conditions/completion instead of implying a serial call chain. Historical partial remains and strict same-task improvement is disclaimed.",
+    "R5 requires actual original/comment visibility, safe viewport and inner clipping, not selected/nonhidden/sourcecount only.",
+    "R6 priority is separate from technical essential flags and retains every source/range/claim; primary completion is not full closure or human comprehension.",
+    "R4 preserves all108 and expands source-specific states without retroactiveC7pass."
+  ],
+  "clarifications": [
+    {
+      "id": "C-R5-ALL-COMMENTS",
+      "required": "Same-line comment selection must collect all [data-comment-for=line] elements, not first querySelector only; original923 has two comments. Use combined union with row."
+    },
+    {
+      "id": "C-R5-CLIP",
+      "required": "Available area must intersect actual inner code pane clientbox, browser viewport and actual sticky/dialog/navigation occlusion; record scrollbars/borders. Include any open term panel occlusion if positioned over code."
+    },
+    {
+      "id": "C-R5-R6-ACTION",
+      "required": "Add R6 primary/landmark selections and typed transitions as explicit R5actions in the freeze inventory, including multiple landmarks within one long context; ordinary context-first sourcepicker cannot stand for them."
+    },
+    {
+      "id": "C-R5-APPLICABILITY",
+      "required": "Replace producerwide if-present at final freeze with concrete action/URL/expectedcontext/line applicability, and reasons for disabled single-source previous/picker or navigation-only views. Closed original is not missing and document fallback does not silently exempt controls."
+    },
+    {
+      "id": "C-R5-COLD",
+      "required": "Record cold document scroll and conceptintro geometry after asynchronous mount; distinguish explicit source/line URLs and resumed history from coldlessonentry, so neither native restoration nor manual correction is mislabeled."
+    },
+    {
+      "id": "C-R5-SETTLED",
+      "required": "Record geometry after navigation has settled; avoid accepting or rejecting a transient smoothscroll snapshot. Preserve first failed/interrupted observation and any later settled one separately."
+    }
+  ],
+  "implementationReview": "pending finalrevision2manifest and allprimarymetadata",
+  "canonicalEdits": false,
+  "C7OrOldVSuccessCarry": false,
+  "humanParticipants": 0,
+  "reviewedAt": "2026-10-25T20:06:38.144313+00:00"
+}

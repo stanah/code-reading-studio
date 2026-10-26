@@ -1,0 +1,103 @@
+{
+  "candidate": 8,
+  "revision": 2,
+  "status": "WIP checkpoint at user request; NOT APPLIED; NO FINAL FREEZE OR ACCEPTANCE",
+  "recordedAt": "2026-10-26T00:07:16.477248+00:00",
+  "baseCommit": "d82da2b",
+  "baseCodeCandidate": 7,
+  "baseRuntimeHash": "40f226f339608f3f1cb1208f4ba826a8cb6af8b490e3510d2691f77da680ea9f",
+  "patch": "implementation-wip.patch.gz",
+  "patchSHA256": "e3c52de5209100a6cbf0e6912d2a562075d94b3d238c7768239d89eab5ab7417",
+  "files": [
+    {
+      "path": "dist/atlas.js",
+      "baseSHA256": "58fbdd017c37e0c6033936a6b4ba79935beaac75e7884495637860ede45501a2",
+      "wipSHA256": "494e6a4706a835eecef81f0ebd91ece484f61f0326b621e0567061990c64d49a",
+      "bytes": 29591
+    },
+    {
+      "path": "dist/explore.html",
+      "baseSHA256": "a96c8b85460f4cec2b366360b6bb359fa944e2ea3a5e4b93eaed6ec261552ed8",
+      "wipSHA256": "820d521a8d0cef584e7b0a549ae16a06e46ef6eb7920b0ee411c621c905919f8",
+      "bytes": 10318
+    },
+    {
+      "path": "dist/zoom.js",
+      "baseSHA256": "dae0f921b76d8f01487c5c612040fe029837b58a457067317664b76a5386b5c4",
+      "wipSHA256": "ff61636b149b0087537805eafeb57ac73c4aa4cfeafc0fc055942626747107e0",
+      "bytes": 16887
+    },
+    {
+      "path": "local-app/public/app.js",
+      "baseSHA256": "d7cacdbe1e7b370a0c981e5f806f41903bf6017d4b5828ac953dbb24a2b09e20",
+      "wipSHA256": "510eabecea7d803cf35012da8bffa5887fc30b0ec594fefc88c8d900023e6a7e",
+      "bytes": 17911
+    },
+    {
+      "path": "local-app/public/lenses.js",
+      "baseSHA256": "8e137ad6d82276c84b2dc2cdb0c4fdd7b0f30a51358c68da5fbf27f24b25bacb",
+      "wipSHA256": "351119b89db13ba845c16282b44f2619837314e769cd04f9503d88849a11cbee",
+      "bytes": 28613
+    },
+    {
+      "path": "local-app/public/startup.js",
+      "baseSHA256": "7e6f628ceaa6d57f7f387dec11382c2839a131c673c0c6cb9834e5c6a47fbe38",
+      "wipSHA256": "0a61be8ac93367efcd73a6c820db20d5f9eb6d8a0c24489666a432ff76163ad0",
+      "bytes": 21854
+    },
+    {
+      "path": "local-app/test/atlas-reading-routes.test.mjs",
+      "baseSHA256": "f518f2e3eaac807d9afcc26389754b46516cca6be157748c6199d37bdb7e1f6a",
+      "wipSHA256": "de189fb06c3e0ae3b1097286d3ba88887c5be9f690286c3919a72f527b7d5a69",
+      "bytes": 21854
+    },
+    {
+      "path": "local-app/test/reading-display-mode.test.mjs",
+      "baseSHA256": null,
+      "wipSHA256": "24fdcd29806055c62e3345a6a2da71d4c3cc6c4d42dd882d015e463c7b27060e",
+      "bytes": 4018
+    },
+    {
+      "path": "local-app/test/reading-help.test.mjs",
+      "baseSHA256": "ac9994e62fbdefddccb0484b39c4669e8120dea6ef949ebcd54c364cdccad703",
+      "wipSHA256": "935f709ed61f3616503cea18f5edbbfcd091d15f84f688c58744b1239ca5648c",
+      "bytes": 8759
+    },
+    {
+      "path": "ui/reading-consumer-sites.json",
+      "baseSHA256": "3edd48bde195890087fe8ca0174f4de70edbf9a22523fd2b57f35aa38ace5519",
+      "wipSHA256": "9c48cd812b440412086a79552738cbf3a626c21c026b9e5a61ba5c5259dd0fe4",
+      "bytes": 124341
+    },
+    {
+      "path": "ui/reading-help.js",
+      "baseSHA256": "2003ab6b06af0506c7e9de16ad93a934aed98a76aae1e5dd7a7c5219a805f6db",
+      "wipSHA256": "b9adaaba01340e1d1d3a933a3978f969c22e0b3a3bfb707aad97a8bea13de23c",
+      "bytes": 54487
+    },
+    {
+      "path": "ui/studio.css",
+      "baseSHA256": "9b5af6da1907da4dec3821d45b5de4c870ba13a86293b98bae743a5f6b1da0af",
+      "wipSHA256": "8ae16f4c5e93ba45382feb536c65dc62d6e6540a9649472bc83ac2b11b7a2c2b",
+      "bytes": 36046
+    }
+  ],
+  "tests": "wip-preview-tests.tap contains47 selected tests passed; not full119-test suite and not final fixed-point proof",
+  "preservedUIEvidence": "wip-reading-return923-before-final-fixes.png is intermediate actual browser observation; not fullR5acceptance",
+  "sourceOfSnapshot": "isolated revision2 validation workspace; authored files selected by revision1 proposal file inventory; generated replicas may be stale and must be rebuilt",
+  "pending": [
+    "Finish primary trail specification and source rubric; startup component glue needs independent source/consumer proof",
+    "Finish shared navigation/viewport implementation and source review",
+    "Regenerate all derived artifacts and consumer fingerprints; full tests and two-pass fixed point",
+    "Freeze final runtime/data/config and concrete action applicability",
+    "Run complete two-round108owner/all-context4state/producer/Atlas/Rust matrix",
+    "Rerun cold learning tasks with separate AI novice/programmer/Rust personas",
+    "Human learning and whole-code coverage remain unverified"
+  ],
+  "resumeRule": "Use patch against exact base source hashes. Do not promote prior preview results to a final runtime. Keep original failures.",
+  "functionalLoopComplete": false,
+  "humanParticipants": 0,
+  "canonicalApplicationCodeChanged": false,
+  "archiveSHA256": "7bf5dce2a656dfffcd5c518d3daa20764da88c08d66601b8258383f1710f5140",
+  "patchFormat": "gzip, mtime0; decompress before git apply. Existing patchSHA256 refers to exact decompressed bytes. Compression preserves unified-diff blank context lines verbatim."
+}

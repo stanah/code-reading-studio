@@ -1,0 +1,510 @@
+[
+  {
+    "label": "short-rpc-call-back-11",
+    "active": [
+      "tx:rpc"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      true,
+      true
+    ],
+    "codeRowCount": 5,
+    "comments": [
+      {
+        "bottom": 670.859375,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 583.265625
+      },
+      {
+        "bottom": 770.453125,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 682.859375
+      }
+    ],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:rpc",
+    "line": 923,
+    "navCount": 1,
+    "pre": {
+      "bottom": 838.9375,
+      "height": 550,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 288.9375
+    },
+    "row": {
+      "bottom": 800.5,
+      "height": 25.046875,
+      "left": 251.5,
+      "right": 911.5,
+      "top": 775.453125
+    },
+    "rowInside": true,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=bafe57717adb",
+      "reading-help.js?v=ff5222563104",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "923",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  },
+  {
+    "label": "rpc-return-fourstates-11",
+    "active": [
+      "tx:rpc"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      true,
+      true
+    ],
+    "codeRowCount": 5,
+    "comments": [
+      {
+        "bottom": 735.859375,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 648.265625
+      },
+      {
+        "bottom": 835.453125,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 747.859375
+      }
+    ],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:rpc",
+    "line": 923,
+    "navCount": 1,
+    "pre": {
+      "bottom": 903.9375,
+      "height": 550,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 353.9375
+    },
+    "row": {
+      "bottom": 865.5,
+      "height": 25.046875,
+      "left": 251.5,
+      "right": 911.5,
+      "top": 840.453125
+    },
+    "rowInside": true,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=9ae3de2f39ee",
+      "reading-help.js?v=b9adaaba0134",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "923",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  },
+  {
+    "label": "rpc-return-fourstates-10",
+    "active": [
+      "tx:rpc"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      true,
+      false
+    ],
+    "codeRowCount": 5,
+    "comments": [],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:rpc",
+    "line": 923,
+    "navCount": 1,
+    "pre": {
+      "bottom": 513.484375,
+      "height": 151.234375,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 362.25
+    },
+    "row": {
+      "bottom": 475.4375,
+      "height": 25.046875,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 450.390625
+    },
+    "rowInside": true,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=9ae3de2f39ee",
+      "reading-help.js?v=b9adaaba0134",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "923",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  },
+  {
+    "label": "rpc-return-fourstates-01",
+    "active": [
+      "tx:rpc"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      false,
+      true
+    ],
+    "codeRowCount": 5,
+    "comments": [
+      {
+        "bottom": 735.859375,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 648.265625
+      },
+      {
+        "bottom": 835.453125,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 747.859375
+      }
+    ],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:rpc",
+    "line": 923,
+    "navCount": 1,
+    "pre": {
+      "bottom": 903.9375,
+      "height": 550,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 353.9375
+    },
+    "row": {
+      "bottom": 865.5,
+      "height": 25.046875,
+      "left": 251.5,
+      "right": 911.5,
+      "top": 840.453125
+    },
+    "rowInside": true,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=9ae3de2f39ee",
+      "reading-help.js?v=b9adaaba0134",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "923",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  },
+  {
+    "label": "rpc-return-fourstates-00",
+    "active": [
+      "tx:rpc"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      false,
+      false
+    ],
+    "codeRowCount": 5,
+    "comments": [],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:rpc",
+    "line": 923,
+    "navCount": 1,
+    "pre": {
+      "bottom": 513.484375,
+      "height": 151.234375,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 362.25
+    },
+    "row": {
+      "bottom": 475.4375,
+      "height": 25.046875,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 450.390625
+    },
+    "rowInside": true,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=9ae3de2f39ee",
+      "reading-help.js?v=b9adaaba0134",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "923",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  },
+  {
+    "label": "source-closed-next-remains-operable",
+    "active": [
+      "tx:recover"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      true,
+      true
+    ],
+    "codeRowCount": 29,
+    "comments": [],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:recover",
+    "line": 99,
+    "navCount": 1,
+    "pre": {
+      "bottom": 964.703125,
+      "height": 550,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 414.703125
+    },
+    "row": {
+      "bottom": 1379.65625,
+      "height": 49.09375,
+      "left": 251.5,
+      "right": 911.5,
+      "top": 1330.5625
+    },
+    "rowInside": false,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=9ae3de2f39ee",
+      "reading-help.js?v=b9adaaba0134",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "84",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  },
+  {
+    "label": "previous-after-closed-next",
+    "active": [
+      "tx:rpc"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      true,
+      true
+    ],
+    "codeRowCount": 5,
+    "comments": [
+      {
+        "bottom": 735.859375,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 648.265625
+      },
+      {
+        "bottom": 835.453125,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 747.859375
+      }
+    ],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:rpc",
+    "line": 923,
+    "navCount": 1,
+    "pre": {
+      "bottom": 903.9375,
+      "height": 550,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 353.9375
+    },
+    "row": {
+      "bottom": 865.5,
+      "height": 25.046875,
+      "left": 251.5,
+      "right": 911.5,
+      "top": 840.453125
+    },
+    "rowInside": true,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=9ae3de2f39ee",
+      "reading-help.js?v=b9adaaba0134",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "923",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  },
+  {
+    "label": "source-closed-next-actual-selected84-correction",
+    "active": [
+      "tx:recover"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      true,
+      true
+    ],
+    "codeRowCount": 29,
+    "comments": [
+      {
+        "bottom": 538.484375,
+        "height": 111.640625,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 426.84375
+      }
+    ],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:recover",
+    "line": 84,
+    "navCount": 1,
+    "pre": {
+      "bottom": 964.703125,
+      "height": 550,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 414.703125
+    },
+    "row": {
+      "bottom": 568.53125,
+      "height": 25.046875,
+      "left": 251.5,
+      "right": 911.5,
+      "top": 543.484375
+    },
+    "rowInside": true,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=9ae3de2f39ee",
+      "reading-help.js?v=b9adaaba0134",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "84",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  },
+  {
+    "label": "term-close-keeps-source-selection-and-focus-row921",
+    "active": [
+      "tx:rpc"
+    ],
+    "ancestorVisible": true,
+    "checkboxes": [
+      true,
+      true
+    ],
+    "codeRowCount": 5,
+    "comments": [
+      {
+        "bottom": 476.578125,
+        "height": 87.59375,
+        "left": 303.5,
+        "right": 893.5,
+        "top": 388.984375
+      }
+    ],
+    "commentsInside": true,
+    "dictAfterCode": true,
+    "id": "tx:rpc",
+    "line": 921,
+    "navCount": 1,
+    "pre": {
+      "bottom": 903.9375,
+      "height": 550,
+      "left": 251.5,
+      "right": 926.5,
+      "top": 353.9375
+    },
+    "row": {
+      "bottom": 506.625,
+      "height": 25.046875,
+      "left": 251.5,
+      "right": 911.5,
+      "top": 481.578125
+    },
+    "rowInside": true,
+    "scripts": [
+      "learning-content.js?v=3fc8778066c0",
+      "learning.js?v=207f4f1e6733",
+      "reading-help-data.js?v=9ae3de2f39ee",
+      "reading-help.js?v=b9adaaba0134",
+      "reading-coverage-data.js?v=76827db51bd9",
+      "area-reading.js?v=7b55586b98bd",
+      "studio.js?v=bd9d2c345539"
+    ],
+    "selected": "923",
+    "url": "http://localhost:4430/index.html#lesson=reading",
+    "viewport": {
+      "height": 1169,
+      "width": 1190
+    }
+  }
+]

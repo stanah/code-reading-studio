@@ -1,0 +1,18 @@
+[
+  {
+    "kind": "harness-api-unavailable",
+    "observed": "compareDocumentPosition unavailable in CUA read-only DOM facade",
+    "fix": "Compare serialized rendered markup order; no product change."
+  },
+  {
+    "kind": "harness-wrong-expected-line",
+    "case": "source-closed-next-remains-operable",
+    "observed": "probe requested L99 but preserved actual target was L84. Initial rowInside=false stays in raw log.",
+    "correction": "Rerun next/previous and measure actual selected L84; do not classify this wrong-point measurement as product visibility failure."
+  },
+  {
+    "kind": "preflight-product-attribute",
+    "observed": "Single moved nav left an inactive host data-reading-active=true",
+    "fix": "Update active state on all hosts before skipping hosts without a bar; measured active array then single."
+  }
+]

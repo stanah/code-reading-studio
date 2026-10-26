@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "method": "Decompress archived gzip, apply patch to copied exact base files in temporary directory, compare all12 SHA256 values; canonical code untouched.",
+  "files": [
+    {
+      "path": "dist/atlas.js",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "dist/explore.html",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "dist/zoom.js",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "local-app/public/app.js",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "local-app/public/lenses.js",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "local-app/public/startup.js",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "local-app/test/atlas-reading-routes.test.mjs",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "local-app/test/reading-display-mode.test.mjs",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "local-app/test/reading-help.test.mjs",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "ui/reading-consumer-sites.json",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "ui/reading-help.js",
+      "matchesRecordedSHA256": true
+    },
+    {
+      "path": "ui/studio.css",
+      "matchesRecordedSHA256": true
+    }
+  ],
+  "notAcceptance": "Not full tests, semantic review, fixed point or final UI acceptance.",
+  "archiveVerified": true
+}
